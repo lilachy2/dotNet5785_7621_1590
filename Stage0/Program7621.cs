@@ -7,10 +7,10 @@ partial class Program
      static void Main(string[] args)
     {
         Wwlcome7621();
-        Welcom1590();
+        Welcome1590();
         Console.ReadKey();
     }
-    static partial void Welcom1590();
+    static partial void Welcome1590();
     private static void Wwlcome7621()
     {
         Console.WriteLine("Enter your name: ");
