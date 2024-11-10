@@ -10,6 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalFacade", "DalFacade\DalFacade.csproj", "{EDEBED65-B6E6-401C-97BF-985D288CEDE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalList", "DalList\DalList.csproj", "{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalTest", "DalTest\DalTest.csproj", "{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +26,24 @@ Global
 		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EDEBED65-B6E6-401C-97BF-985D288CEDE6} = {B6CC8AE7-ED68-4CA8-BF71-1075A7E12AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {262C9879-18BE-4DF5-B182-F8C7F2EB097D}
