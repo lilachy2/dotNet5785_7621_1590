@@ -13,9 +13,9 @@ internal class Config
     private static int nextCallId = StartCallId;
     internal static int NextCall { get => nextCallId++; }
     //  - ENUM
-    internal enum CallType { FoodPreparation, FoodDelivery, Other }
-    internal static DateTime Clock { get; set; } = DateTime.Now;
-    internal static TimeSpan RiskRange { get; set; } = TimeSpan.FromHours(1);
+    //internal enum CallType { FoodPreparation, FoodDelivery, Other }
+    //internal static DateTime Clock { get; set; } = DateTime.Now;
+    //internal static TimeSpan RiskRange { get; set; } = TimeSpan.FromHours(1);
 
     // Additional features to read
     internal static string Description { get; set; } = string.Empty;
@@ -46,7 +46,7 @@ internal class Config
     // משתני תצורה נוספים להקצאה
     internal static int CallId { get; set; }
     internal static int VolunteerId { get; set; }
-    internal static DateTime EntryTime { get; set; } = Clock;
+    internal static DateTime EntryTime { get; set; }/* = Clock*/
     internal static DateTime? ActualCompletionTime { get; set; } = null;
     internal static AssignmentCompletionType? CompletionType { get; set; } = null;
 
@@ -64,9 +64,9 @@ internal class Config
     internal static int Next_NextCallId { get => next_NextCallId++; }
 
     //configuration Clock
-    internal static DateTime Clock { get; set; } = DateTime.Now;
+    internal static DateTime Clock1 { get; set; } = DateTime.Now;
     //configuration RiskRange
-    internal static DateTime RiskRange { get; set; } /*= TimeSpan.FromHours(1)*/
+    internal static DateTime RiskRange1 { get; set; } /*= TimeSpan.FromHours(1)*/
 
      //configuration NextAssignmentId
 

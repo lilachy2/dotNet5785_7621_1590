@@ -1,7 +1,6 @@
 ﻿namespace DO;
 
 
-//ENUM types references are therefore not written
 
 /// <summary>
 /// Course Entity
@@ -13,21 +12,22 @@
 /// <param name="Longitude"> // Longitude - a number indicating how far a point on Earth is east or west of the equator.
 /// <param name="DateTime"> Time (date and time) when the call was opened by the manager. </param>
 /// <param name=""> Time (date and time) by which the reading should be closed. </param>
-/// <param name="">  </param>
+/// 
+/// <param name=""> The class representing the call entity contains details for a "call", including a unique runner ID number. </param>
 
 
 public record Call
 (
+      double Latitude,
+    double Longitude,
     int Id = 0,
     string? VerbalDescription = null,
     string ReadAddress = " ",
-    double? Latitude = null,
-    double? Longitude = null,
+  
     DateTime OpeningTime = default,
     DateTime? MaxEndTime = null
 )
 {
-    // בנאי ריק הנדרש עבור XmlSerializer
-    public Call() : this(0, null, " ", null, null, default, null) { }
+    public Call() : this(default, default) { }
 }
 

@@ -1,6 +1,11 @@
 ﻿namespace DO;
 
 // Volunteer
+/// <param name="TreatedOnTime"> // was treated in time
+/// <param name="cancellation">// self cancellation
+/// <param name="AdminCancelled"> // Canceling an administrator
+/// <param name="Expired"> // Cancellation has expired
+/// להשלים !!!
 public enum role
 {
     Volunteer,
@@ -21,9 +26,13 @@ public enum distance_type
 // Assignment
 internal enum AssignmentCompletionType
 {
-    TreatedOnTime, // was treated in time
-    VolunteerCancelled, // self cancellation
-    AdminCancelled, // Canceling an administrator
-    Expired // Cancellation has expired
+    TreatedOnTime, 
+    VolunteerCancelled, 
+    AdminCancelled, 
+    Expired 
+}
+public enum FinishType
+{
+    Treated, SelfCancel, ManagerCancel, ExpiredCancel
 }
 
