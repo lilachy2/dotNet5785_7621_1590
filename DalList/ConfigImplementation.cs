@@ -21,22 +21,24 @@ internal class ConfigImplementation : IConfig
             get => Config.start_NextAssignmentId;
             set => Config.start_NextAssignmentId = value;
         }
+         public TimeSpan RiskRange
+         {
+        get => Config.RiskRange;
+        set => Config.RiskRange = value;
+         }
 
-        public DateTime Clock
+
+    public DateTime Clock
         {
             get => Config.Clock;
             set => Config.Clock = value;
         }
 
-        public TimeSpan RiskRange
-        {
-            get => Config.RiskRange;
-            set => Config.RiskRange = value;
-        }
+       
 
         public void Reset()
         {
             Config.Reset();
         }
-    }
-}
+ }
+

@@ -12,10 +12,6 @@ internal class Config
     internal const int StartCallId = 1000;
     private static int nextCallId = StartCallId;
     internal static int NextCall { get => nextCallId++; }
-    //  - ENUM
-    //internal enum CallType { FoodPreparation, FoodDelivery, Other }
-    //internal static DateTime Clock { get; set; } = DateTime.Now;
-    //internal static TimeSpan RiskRange { get; set; } = TimeSpan.FromHours(1);
 
     // Additional features to read
     internal static string Description { get; set; } = string.Empty;
@@ -40,8 +36,7 @@ internal class Config
         Expired // Cancellation has expired
     }
 
-    //// שעון המערכת
-    //internal static DateTime Clock { get; set; } = DateTime.Now;
+    
 
     // משתני תצורה נוספים להקצאה
     internal static int CallId { get; set; }
@@ -64,9 +59,9 @@ internal class Config
     internal static int Next_NextCallId { get => next_NextCallId++; }
 
     //configuration Clock
-    internal static DateTime Clock1 { get; set; } = DateTime.Now;
+    internal static DateTime Clock { get; set; }
     //configuration RiskRange
-    internal static DateTime RiskRange1 { get; set; } /*= TimeSpan.FromHours(1)*/
+    internal static DateTime RiskRange { get; set; } 
 
      //configuration NextAssignmentId
 
@@ -79,8 +74,6 @@ internal class Config
 
         next_NextAssignmentId = start_NextAssignmentId;
         next_NextCallId = start_NextCallId;
-        Clock = DateTime.Now;
-        //RiskRange = TimeSpan.FromHours(1);
 
 
         nextCallId = StartCallId;
@@ -91,7 +84,7 @@ internal class Config
         OpeningTime = DateTime.Now;
         MaxEndTime = null;
         Clock = DateTime.Now;
-        RiskRange = TimeSpan.FromHours(1);
+        RiskRange = DateTime.Now.AddHours(1);
 
         // Assignment
         next_Assignment_CallId = start_Assignment_CallId;
