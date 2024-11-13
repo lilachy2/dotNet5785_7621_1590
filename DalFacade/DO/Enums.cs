@@ -6,7 +6,7 @@
 /// <param name="AdminCancelled"> // Canceling an administrator
 /// <param name="Expired"> // Cancellation has expired
 /// להשלים !!!
-public enum role
+public enum Role
 {
     Volunteer,
     Manager
@@ -22,24 +22,21 @@ public enum distance_type
 
 // Call
 // להחליט ביחד 
-
-// Assignment
-//internal enum AssignmentCompletionType
-//{
-//    TreatedOnTime, 
-//    VolunteerCancelled, 
-//    AdminCancelled, 
-//    Expired 
-//}
-public enum FinishType
+public enum Calltype
 {
-    Treated, SelfCancel, ManagerCancel, ExpiredCancel
+    fainting,
+    birth,
+    resuscitation,
+    allergy,
+    heartattack,
+    broken_bone,
+    security_event
+
 }
-
-internal enum AssignmentCompletionType
+public enum AssignmentCompletionType
 {
-    TreatedOnTime, // was treated in time
-    VolunteerCancelled, // self cancellation
-    AdminCancelled, // Canceling an administrator
-    Expired // Cancellation has expired
+    TreatedOnTime,
+    VolunteerCancelled,
+    AdminCancelled,
+    Expired
 }

@@ -20,7 +20,8 @@ public record Call
 (
       double Latitude,
     double Longitude,
-    int Id = 0,
+    Calltype Calltype,
+    int Id ,
     string? VerbalDescription = null,
     string ReadAddress = " ",
   
@@ -28,6 +29,6 @@ public record Call
     DateTime? MaxEndTime = null
 )
 {
-    public Call() : this(default, default) { }
+    public Call() : this(default, default, default, default) { }
 }
 

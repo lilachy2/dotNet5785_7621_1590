@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <param name="Create">// create/add method
 /// <param name="Delete">Delete method of an existing object
 /// <param name="DeleteAll">// Method for deleting all objects of a certain type DeleteAll
-/// <param name="Read">//Method for deleting all objects of a certain type DeleteAll
+/// <param name="Read">//A request/receive method of a single object
 /// <param name="ReadAll">// A request/receive method for all objects of a certain type
 /// <param name="Update"> // Update method of an existing object
 

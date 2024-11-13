@@ -25,11 +25,13 @@ public record Volunteer
      string Name,
      int Number_phone ,
      string Email ,
-     string? Password = null,
+     Role Role =Role.Volunteer, // להוסיף 
+     distance_type Distance_Type= distance_type.Aerial_distance, // להוסיך
+     //string? Password = null,
      string? FullCurrentAddress=  null,
       double? Latitude   = null, 
       double? Longitude = null, 
-      bool Activ =false,
+      bool Active =true,
      double? distance = null
 
 )
