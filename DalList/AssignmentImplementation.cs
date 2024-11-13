@@ -3,18 +3,32 @@ using DalApi;
 using DO;
 using System.Collections.Generic;
 
+/// <param name="Create">// create/add method
+/// <param name="Delete">Delete method of an existing object
+/// <param name="DeleteAll">// Method for deleting all objects of a certain type DeleteAll
+/// <param name="Read">//Method for deleting all objects of a certain type DeleteAll
+/// <param name="ReadAll">// A request/receive method for all objects of a certain type
+/// <param name="Update"> // Update method of an existing object
+/// 
+/// <param name="newId1 ">// Generates the next available ID for the Assignment
+/// <param name="newItem "> // Creates a new Assignment object with the generated IDs
+/// <param name="">
+
+
 public class AssignmentImplementation : IAssignment
 {
     public void Create(Assignment item)
     {
-        int newId1 = Config.Next_Assignment_CallId;
-        int newId2 = Config.Next_Assignment_Id;
-        Assignment newItem = new Assignment() { Id = newId1, CallId= newId2};
+        int newId1 = Config.NextAssignmentId;
+        //int newId2 = Config.NextAssignmentId;
+        Assignment newItem = new Assignment() { Id = newId1/*, CallId= newId2*/};
         DataSource.Assignments.Add(newItem);
         ///return newItem.Id;
     }
 
-        public void Delete(int id)
+    /// <param name="item">// Searches for the Assignment by ID
+    /// <param name="Remove">/ Removes the found Assignment from the DataSource
+    public void Delete(int id)
     {
         var item = DataSource.Assignments.Find(x => x?.Id == id);
 
@@ -26,12 +40,15 @@ public class AssignmentImplementation : IAssignment
             DataSource.Assignments.Remove(item);
     }
 
+    /// <param name="item">  // Retrieves the list of all Assignments
+
     public void DeleteAll()
     {
         var item = DataSource.Assignments;
         item.Clear();
     }
 
+    /// <param name="item">// Searches for the Assignment by ID
     public Assignment? Read(int id)
     {
         var item = DataSource.Assignments.Find(x => x?.Id == id);
@@ -47,6 +64,8 @@ public class AssignmentImplementation : IAssignment
     {
         return new List<Assignment>(DataSource.Assignments);///ask about ?
     }
+
+    /// <param name="old">// Searches for the old Assignment
 
     public void Update(Assignment item)
     {

@@ -3,6 +3,13 @@ using DalApi;
 using DO;
 using System.Collections.Generic;
 
+/// <param name="Create">// create/add method
+/// <param name="Delete">Delete method of an existing object
+/// <param name="DeleteAll">// Method for deleting all objects of a certain type DeleteAll
+/// <param name="Read">//Method for deleting all objects of a certain type DeleteAll
+/// <param name="ReadAll">// A request/receive method for all objects of a certain type
+/// <param name="Update"> // Update method of an existing object
+/// 
 public class VolunteerImplementation : IVolunteer
 {
     public void Create(Volunteer item)
@@ -18,6 +25,8 @@ public class VolunteerImplementation : IVolunteer
         }
     }
 
+    /// <param name="item">// Searches for the Assignment by ID
+    /// <param name="Remove">/ Removes the found Assignment from the DataSource
     public void Delete(int id)
     {
 
@@ -31,12 +40,15 @@ public class VolunteerImplementation : IVolunteer
         DataSource.Volunteers.Remove(item);
     }
 
-    public void DeleteAll()
+    /// <param name="item">  // Retrieves the list of all Assignments
+   public void DeleteAll()
     {
         var item = DataSource.Volunteers;
             item.Clear();
         
     }
+
+    /// <param name="item">// Searches for the Assignment by ID
 
     public Volunteer? Read(int id)
     {
@@ -54,6 +66,8 @@ public class VolunteerImplementation : IVolunteer
     {
         return new List<Volunteer?>(DataSource.Volunteers) ;///ask about ?
     }
+
+    /// <param name="old">// Searches for the old Assignment
 
     public void Update(Volunteer item)
     {

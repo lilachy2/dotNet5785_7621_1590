@@ -24,15 +24,22 @@ public enum distance_type
 // להחליט ביחד 
 
 // Assignment
-internal enum AssignmentCompletionType
-{
-    TreatedOnTime, 
-    VolunteerCancelled, 
-    AdminCancelled, 
-    Expired 
-}
+//internal enum AssignmentCompletionType
+//{
+//    TreatedOnTime, 
+//    VolunteerCancelled, 
+//    AdminCancelled, 
+//    Expired 
+//}
 public enum FinishType
 {
     Treated, SelfCancel, ManagerCancel, ExpiredCancel
 }
 
+internal enum AssignmentCompletionType
+{
+    TreatedOnTime, // was treated in time
+    VolunteerCancelled, // self cancellation
+    AdminCancelled, // Canceling an administrator
+    Expired // Cancellation has expired
+}

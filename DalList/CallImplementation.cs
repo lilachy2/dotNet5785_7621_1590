@@ -2,17 +2,26 @@
 using DalApi;
 using DO;
 using System.Collections.Generic;
+/// <param name="Create">// create/add method
+/// <param name="Delete">Delete method of an existing object
+/// <param name="DeleteAll">// Method for deleting all objects of a certain type DeleteAll
+/// <param name="Read">//Method for deleting all objects of a certain type DeleteAll
+/// <param name="ReadAll">// A request/receive method for all objects of a certain type
+/// <param name="Update"> // Update method of an existing object
 
 public class CallImplementation : ICall
 {
     public void Create(Call item)
     {
-        int newId = Config.NextCall;
+        int newId = Config.NextCallId;
+            //NextCall;
         Call newItem = new Call() { Id = newId };   
         DataSource.Calls.Add(newItem);
         ///return newItem.Id;
     }
 
+    /// <param name="item">// Searches for the Assignment by ID
+    /// <param name="Remove">/ Removes the found Assignment from the DataSource
     public void Delete(int id)
     {
         var item = DataSource.Calls.Find(x => x?.Id == id);
@@ -25,11 +34,14 @@ public class CallImplementation : ICall
             DataSource.Calls.Remove(item);
     }
 
+    /// <param name="item">  // Retrieves the list of all Assignments
     public void DeleteAll()
     {
         var item = DataSource.Calls;
         item.Clear();
     }
+
+    /// <param name="item">// Searches for the Assignment by ID
 
     public Call? Read(int id)
     {
@@ -47,6 +59,7 @@ public class CallImplementation : ICall
         return new List<Call>(DataSource.Calls);///ask about ?
     }
 
+    /// <param name="old">// Searches for the old Assignment
     public void Update(Call item)
     {
         Call? old = DataSource.Calls.Find(x => x?.Id == item.Id);
