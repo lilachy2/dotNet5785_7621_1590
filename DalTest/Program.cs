@@ -560,21 +560,44 @@ namespace DalTest
                 switch (choice)
                 {
                     case ConfigMenuOption.AdvanceSystemClock:
-                        // קידום שעון המערכת
-                        break;
+                        Console.Write("Enter the number of hours to advance the clock: ");
+                        int hours = int.Parse(Console.ReadLine() ?? "0");
+                        s_dalConfig!.Clock = s_dalConfig.Clock.AddHours(hours);
+                        Console.WriteLine($"System clock advanced by {hours} hours."); break;
+                    
                     case ConfigMenuOption.ShowSystemClock:
                         Console.WriteLine($"Current System Clock: {s_dalConfig?.Clock}");
                         break;
+                   
                     case ConfigMenuOption.SetConfigVariable:
-                        // קביעת ערך למשתנה תצורה
+                        Console.WriteLine("Choose the variable to set:");
+                        Console.WriteLine("1. Risk Range (in hours)");
+
+                        int option = int.Parse(Console.ReadLine() ?? "0");
+
+                        switch (option)
+                        {
+                            case 1:
+                                Console.Write("Enter the new risk range in hours: ");
+                                double hours = double.Parse(Console.ReadLine() ?? "1");
+                                s_dalConfig!.RiskRange = TimeSpan.FromHours(hours);
+                                Console.WriteLine($"Risk range set to {hours} hours.");
+                                break;
+                            default:
+                                Console.WriteLine("Invalid option.");
+                                break;
+                        }
                         break;
+                   
                     case ConfigMenuOption.ShowConfigVariable:
-                        // הצגת ערך נוכחי של משתנה תצורה
-                        break;
+                        Console.WriteLine($"Current System Clock: {s_dalConfig.Clock}");
+                        Console.WriteLine($"Risk Range: {s_dalConfig.RiskRange.TotalHours} hours"); break;
+                   
                     case ConfigMenuOption.ResetConfig:
                         s_dalConfig?.Reset();
                         Console.WriteLine("Config reset to default.");
                         break;
+                    
                     case ConfigMenuOption.Exit:
                         exit = true;
                         break;
