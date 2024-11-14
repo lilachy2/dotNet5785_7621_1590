@@ -7,7 +7,7 @@ using DalApi;
 /// <param name="">  </param>
 /// <param name="">  </param>
 
-internal class ConfigImplementation : IConfig
+public class ConfigImplementation : IConfig
 {
      public int NextCallId
         {
