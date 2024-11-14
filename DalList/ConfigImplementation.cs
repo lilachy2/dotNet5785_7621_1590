@@ -9,17 +9,14 @@ using DalApi;
 
 internal class ConfigImplementation : IConfig
 {
-    //אומרים שלא צריך את ה 2 הראשונים , לבדוק 
      public int NextCallId
         {
             get => Config.startCallId;
-            set => Config.startCallId = value;
         }
 
         public int NextAssignmentId
         {
             get => Config.startAssignmentId;
-            set => Config.startAssignmentId = value;
         }
          public TimeSpan RiskRange
          {

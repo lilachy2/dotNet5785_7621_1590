@@ -18,13 +18,12 @@
 
 public record Call
 (
-      double Latitude,
+    double Latitude,
     double Longitude,
     Calltype Calltype,
     int Id ,
     string? VerbalDescription = null,
     string ReadAddress = " ",
-  
     DateTime OpeningTime = default,
     DateTime? MaxEndTime = null
 )

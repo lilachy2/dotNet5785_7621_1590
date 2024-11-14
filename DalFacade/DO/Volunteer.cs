@@ -27,7 +27,6 @@ public record Volunteer
      string Email ,
      Role Role =Role.Volunteer, // להוסיף 
      distance_type Distance_Type= distance_type.Aerial_distance, // להוסיך
-     //string? Password = null,
      string? FullCurrentAddress=  null,
       double? Latitude   = null, 
       double? Longitude = null, 

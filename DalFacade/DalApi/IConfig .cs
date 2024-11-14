@@ -10,8 +10,8 @@
 //The class represents defining interfaces for the data entities under the DalApi library
 public interface IConfig
 {
-    int NextCallId { get; set; } 
-    int NextAssignmentId { get; set; }
+    int NextCallId { get;  } 
+    int NextAssignmentId { get;  }
     DateTime Clock { get; set; } 
     TimeSpan RiskRange { get; set; } 
 

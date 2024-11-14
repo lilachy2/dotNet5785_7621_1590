@@ -23,7 +23,7 @@ public record Assignment
         int CallId = 0,
         int VolunteerId = 0,
         DateTime? time_end_treatment=null,
-    FinishType? EndOfTime=null 
+    AssignmentCompletionType? EndOfTime=default 
 
 
  )
