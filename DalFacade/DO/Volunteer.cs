@@ -35,6 +35,8 @@ public record Volunteer
 
 )
 {
-    Volunteer val1 = new(1, " ", 0, " ");
+
+    public Volunteer() : this(1, " ", 0, " ") { }
+
 }
 
