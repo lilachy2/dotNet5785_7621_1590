@@ -513,7 +513,7 @@ namespace DalTest
 
                 Console.Write("Enter the end time of treatment (time_end_treatment) in format (yyyy-MM-dd HH:mm:ss) or leave empty if not applicable: ");
                 DateTime? timeEndTreatment = null;
-                string endTreatmentInput = Console.ReadLine();
+                string? endTreatmentInput = Console.ReadLine();
                 if (!string.IsNullOrEmpty(endTreatmentInput) && DateTime.TryParse(endTreatmentInput, out DateTime parsedEnd))
                 {
                     timeEndTreatment = parsedEnd;
@@ -521,7 +521,7 @@ namespace DalTest
 
                 Console.Write("Enter the completion type (EndOfTime) (e.g., Completed, Cancelled) or leave empty for default: ");
                 AssignmentCompletionType? endOfTime = null;
-                string endOfTimeInput = Console.ReadLine();
+                string? endOfTimeInput = Console.ReadLine();
                 if (Enum.TryParse(endOfTimeInput, out AssignmentCompletionType parsedCompletionType))
                 {
                     endOfTime = parsedCompletionType;
@@ -579,9 +579,9 @@ namespace DalTest
                         {
                             case 1:
                                 Console.Write("Enter the new risk range in hours: ");
-                                double hours = double.Parse(Console.ReadLine() ?? "1");
-                                s_dalConfig!.RiskRange = TimeSpan.FromHours(hours);
-                                Console.WriteLine($"Risk range set to {hours} hours.");
+                                double hours1 = double.Parse(Console.ReadLine() ?? "1");
+                                s_dalConfig!.RiskRange = TimeSpan.FromHours(hours1);
+                                Console.WriteLine($"Risk range set to {hours1} hours.");
                                 break;
                             default:
                                 Console.WriteLine("Invalid option.");
@@ -590,7 +590,7 @@ namespace DalTest
                         break;
                    
                     case ConfigMenuOption.ShowConfigVariable:
-                        Console.WriteLine($"Current System Clock: {s_dalConfig.Clock}");
+                        Console.WriteLine($"Current System Clock: {s_dalConfig!.Clock}");
                         Console.WriteLine($"Risk Range: {s_dalConfig.RiskRange.TotalHours} hours"); break;
                    
                     case ConfigMenuOption.ResetConfig:
