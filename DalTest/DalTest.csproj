@@ -9,9 +9,8 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
-
+	  <OutputType>Exe</OutputType>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DalFacade\DalFacade.csproj" />
     <ProjectReference Include="..\DalList\DalList.csproj" />

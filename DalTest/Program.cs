@@ -60,7 +60,7 @@ namespace DalTest
             ResetConfig
         }
 
-        static void Main()
+        static void Main(string[] args)
         {
             try
             {
