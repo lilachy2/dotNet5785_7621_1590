@@ -53,12 +53,13 @@ public static class Initialization
     public static void CreateVolunteers()
     {
         bool isFirst = true;
+        int id;
+        int i = new int(); // for the arr
+        i = 0;
 
         foreach (var name in Names)
         {
-            int id;
-            int i = new int(); // for the arr
-            i = 0;
+        
             do
             {
                 id = s_rand.Next(MIN_ID, MAX_ID);
@@ -103,12 +104,13 @@ public static class Initialization
 
     public static void CreateCalls()
     {
+        int index1 = s_rand.Next(0, 15);
+        int index2 = s_rand.Next(0, 6);
+        int tempID = new int(); // for the arr
 
         for (int i = 0; i < 50; i++)
         {
-            int index1 = s_rand.Next(0, 15);
-            int index2 = s_rand.Next(0, 6);
-            int tempID = new int(); // for the arr
+         
 
             do
             {
@@ -261,7 +263,7 @@ public static class Initialization
         s_dalAssignment.DeleteAll();
 
         Console.WriteLine("Initializing Volunteers list ...");
-        CreateVolunteers();
+        CreateVolunteers(); ///////////////////////////////////////////////////////////////
         Console.WriteLine("Initializing Calls list ...");
         CreateCalls();
         Console.WriteLine("Initializing Assignments list ...");

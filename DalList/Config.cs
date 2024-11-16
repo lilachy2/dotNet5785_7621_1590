@@ -8,7 +8,7 @@ internal static class Config
     // הגדרת מזהה רץ לישות קריאה
     internal const int startCallId = 1000;
     private static int nextCallId = startCallId;
-    internal static int NextCallId { get => nextCallId++; }
+    internal static int NextCallId { get => nextCallId= nextCallId+1; }
 
     // הגדרת מזהה רץ לישות מתנדב
     internal const int startVolunteerId = 1000;
@@ -16,7 +16,7 @@ internal static class Config
     // הגדרת מזהה רץ לישות הקצאה
     internal const int startAssignmentId = 1000;
     private static int nextAssignmentId = startAssignmentId;
-    internal static int NextAssignmentId { get => nextAssignmentId++; }
+    internal static int NextAssignmentId { get => nextAssignmentId= nextAssignmentId+1; }
 
     // משתנים נוספים בהתאם למשתני התצורה של המערכת
     internal static DateTime Clock { get; set; } = DateTime.Now;
