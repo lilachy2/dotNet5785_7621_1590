@@ -2,44 +2,48 @@
 using DalApi;
 using DO;
 using Microsoft.VisualBasic;
+using System.Collections.Generic;
 using System.Data;
 using System.Net;
 
-/// <param name="Random"> A field that all entities will use, 
-/// to generate random numbers while filling in the values ​​of the objects.
-/// <param name=""> 
-/// <param name=""> 
+// <param name="s_dalVolunteer">fields of the appropriate interface type.</param>
+// <param name="s_dalCall">fields of the appropriate interface type.</param>
+// <param name="s_dalAssignment">fields of the appropriate interface type.</param>
+// <param name="s_dalConfig">fields of the appropriate interface type.</param>
+// <param name="s_rand">Random number generator.</param>
+// <param name="MIN_ID">Minimum ID value.</param
+// <param name="MAX_ID">Maximum ID value.</param>
+ //<param name = "Names" > List of possible names.</param>
 public static class Initialization
 {
-    /// <param name=""> fields of the appropriate interface type.
-    private static IVolunteer? s_dalVolunteer;
-    private static ICall? s_dalCall;
-    private static IAssignment? s_dalAssignment;
-    private static IConfig? s_dalConfig;
+    private static IVolunteer? s_dalVolunteer;  
+    private static ICall? s_dalCall;  
+    private static IAssignment? s_dalAssignment; 
+    private static IConfig? s_dalConfig; 
 
+    private static readonly Random s_rand = new();  
+    private static int MIN_ID = 10000000; 
+    private static int MAX_ID = 99999999;  
 
-    private static readonly Random s_rand = new();
-    private static int MIN_ID = 10000000;
-    private static int MAX_ID = 99999999;
+    static string[] Names =  
+    {
+        "Avi Cohen", "Sara Levi", "Yael Ben David", "Nir Azulay", "Tamar Gilad",
+        "Roni Shaked", "Lior Peretz", "Meir Shechter", "Efrat Halevi", "Ofir Bar",
+        "Maya Tzur", "Noa Mizrahi", "David Erez", "Tal Koren", "Hila Malka"
+    };
 
-    static string[] Names =
+    static string[] Addresses =  // <param name="Addresses">List of possible addresses.</param>
+    {
+        "7 Presidents St, Petah Tikva, Israel", "Lev Academic Center, Jerusalem, Israel", "45 Rothschild Blvd, Tel Aviv, Israel",
+        "12 Herzl St, Haifa, Israel", "20 King David St, Jerusalem, Israel", "3 HaNasi Blvd, Be'er Sheva, Israel",
+        "14 Jabotinsky St, Rishon LeZion, Israel", "10 Arlozorov St, Tel Aviv, Israel",
+        "22 Hillel St, Jerusalem, Israel", "8 Dizengoff St, Tel Aviv, Israel", "5 Ben Yehuda St, Haifa, Israel",
+        "16 Weizmann St, Rehovot, Israel", "9 Begin Ave, Ashdod, Israel",  "11 Allenby St, Tel Aviv, Israel",
+        "4 Hanegev St, Eilat, Israel"
+    };
 
-{
-    "Avi Cohen", "Sara Levi", "Yael Ben David", "Nir Azulay", "Tamar Gilad",
-    "Roni Shaked", "Lior Peretz", "Meir Shechter", "Efrat Halevi", "Ofir Bar",
-    "Maya Tzur", "Noa Mizrahi", "David Erez", "Tal Koren", "Hila Malka"
-};
-    static string[] Addresses =
-{
-    "7 Presidents St, Petah Tikva, Israel", "Lev Academic Center, Jerusalem, Israel", "45 Rothschild Blvd, Tel Aviv, Israel",
-    "12 Herzl St, Haifa, Israel", "20 King David St, Jerusalem, Israel", "3 HaNasi Blvd, Be'er Sheva, Israel",
-    "14 Jabotinsky St, Rishon LeZion, Israel", "10 Arlozorov St, Tel Aviv, Israel",
-    "22 Hillel St, Jerusalem, Israel", "8 Dizengoff St, Tel Aviv, Israel", "5 Ben Yehuda St, Haifa, Israel",
-    "16 Weizmann St, Rehovot, Israel", "9 Begin Ave, Ashdod, Israel",  "11 Allenby St, Tel Aviv, Israel",
-    "4 Hanegev St, Eilat, Israel"
-};
-    static readonly string[] Descriptions =
-  {
+    static readonly string[] Descriptions =  // <param name="Descriptions">List of event descriptions.</param>
+    {
         "A situation where someone has fainted and needs assistance.",            // fainting
         "A birth event requiring medical personnel to assist with delivery.",      // birth
         "A resuscitation call where CPR or other life-saving measures are needed.", // resuscitation
@@ -47,76 +51,107 @@ public static class Initialization
         "A heart attack event requiring urgent medical intervention.",             // heartattack
         "A call for a broken bone injury that needs stabilization and treatment.", // broken_bone
         "A security event involving a threat or emergency requiring a quick response." // security_event
-   };
+    };
 
 
-    public static void CreateVolunteers()
+public static void CreateVolunteers()
     {
+        // Latitude and longitude range in Israel
+        double minLatitude = 29.5;
+        double maxLatitude = 33.5;
+        double minLongitude = 34.3;
+        double maxLongitude = 35.9;
+        /// <param name="i"> // For the array index </param>
+        /// <param name="p1"> // To perform conversion for the constructor </param>
+        /// <param name="address"> // Initial password or null until the volunteer updates it </param>
+        /// <param name="maxDistance"> // Default distance in kilometers </param>
+        /// <param name="rand"> // For latitude and longitude </param>
+        /// <param name="minLatitude"> // Latitude range in Israel </param>
+        /// <param name="maxLatitude"> // Latitude range in Israel </param>
+        /// <param name="minLongitude"> // Longitude range in Israel </param>
+        /// <param name="maxLongitude"> // Longitude range in Israel </param>
+        /// <param name="randomLatitude"> // Random latitude in Israel </param>
+        /// <param name="randomLongitude"> // Random longitude in Israel </param>
+
         bool isFirst = true;
         int id;
-        int i = new int(); // for the arr
+        int i = new int(); // For the array index
         i = 0;
 
         foreach (var name in Names)
         {
-        
             do
             {
                 id = s_rand.Next(MIN_ID, MAX_ID);
             } while (s_dalVolunteer!.Read(id) != null);
 
-
-
             string phone = "05" + s_rand.Next(0, 8).ToString() + s_rand.Next(1000000, 9999999).ToString();
-            int p1 = int.Parse(phone); // כדי לבצע המרה בשביל הבנאי
+            int p1 = int.Parse(phone); // To perform conversion for the constructor
             string email = name.Replace(" ", ".").ToLower() + "@volunteer.org";
-            //string? password = null; // סיסמא ראשונית או null עד שהמתנדב יעדכן
+            //string? password = null; // Initial password or null until the volunteer updates it
             string? address = Addresses[i];
             Role role;
             if (isFirst)
             {
-                role = Role.Manager;//one Manager
+                role = Role.Manager; // One Manager
                 isFirst = false;
             }
             role = Role.Volunteer;
             distance_type distanceType = distance_type.Aerial_distance;
 
-            double? maxDistance = s_rand.Next(5, 20); // מרחק ברירת מחדל בקילומטר
+            double? maxDistance = s_rand.Next(5, 20); // Default distance in kilometers
 
-            Random rand = new Random(); // לקווי אורך ורוחב
+            Random rand = new Random(); // For latitude and longitude
             bool active = true;
 
-            // טווחי קו רוחב ואורך בישראל
-            double minLatitude = 29.5;
-            double maxLatitude = 33.5;
-            double minLongitude = 34.3;
-            double maxLongitude = 35.9;
+           
             double randomLatitude = s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude;
             double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
 
             s_dalVolunteer.Create(new Volunteer(id, name, p1, email, role, distanceType, address, randomLatitude, randomLongitude, active, maxDistance));
             i = i + 1;
-
         }
 
 
+
     }
+
+    /// <param name="index1"> // Random index for address selection </param>
+    /// <param name="index2"> // Random index for call type selection </param>
+    /// <param name="tempID"> // For the array </param>
+    /// <param name="address"> // Random address selected from the list </param>
+    /// <param name="calltype"> // Random call type assigned </param>
+    /// <param name="VerbalDescription"> // Description for the selected call type </param>
+    /// <param name="active"> // Call status (always active in this case) </param>
+    /// <param name="randomLatitude"> // Random latitude in Israel </param>
+    /// <param name="randomLongitude"> // Random longitude in Israel </param>
+    /// <param name="currentTime"> // System clock representing the current time </param>
+    /// <param name="maxTimeSpanBackwards"> // Maximum range for setting call open time, e.g., up to 30 days ago </param>
+    /// <param name="randomOffset"> // Random offset to generate a random open time </param>
+    /// <param name="openTime"> // Randomly generated open time for the call </param>
+    /// <param name="maxEndTime"> // Max end time, may be null if no end time is assigned </param>
+    /// <param name="hasEndTime"> // Randomly decides if there should be an end time (50% chance) </param>
+    /// <param name="riskSpan"> // Base risk range to add to calculate end time </param>
+    /// <param name="extraHours"> // Random extra hours added to the max end time </param>
+    /// <param name="extraMinutes"> // Random extra minutes added to the max end time </param>
 
     public static void CreateCalls()
     {
         int index1 = s_rand.Next(0, 15);
         int index2 = s_rand.Next(0, 6);
-        int tempID = new int(); // for the arr
+        int tempID = new int();
+        // Latitude and longitude range in Israel
+        double minLatitude = 29.5;
+        double maxLatitude = 33.5;
+        double minLongitude = 34.3;
+        double maxLongitude = 35.9;
 
         for (int i = 0; i < 50; i++)
         {
-         
-
             do
             {
                 tempID = s_dalConfig!.NextCallId;
             } while (s_dalCall!.Read(tempID) != null);
-
 
             string? address = Addresses[index1];
             Calltype calltype = (Calltype)index2;
@@ -124,47 +159,35 @@ public static class Initialization
             string? VerbalDescription = Descriptions[index2];
             bool active = true;
 
-            // טווחי קו רוחב ואורך בישראל
-            double minLatitude = 29.5;
-            double maxLatitude = 33.5;
-            double minLongitude = 34.3;
-            double maxLongitude = 35.9;
             double randomLatitude = s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude;
             double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
 
-            DateTime currentTime = s_dalConfig.Clock; // The system clock representing the current time
-            TimeSpan maxTimeSpanBackwards = TimeSpan.FromDays(30); // Maximum range for setting call open time, e.g., up to 30 days ago
+            DateTime currentTime = s_dalConfig.Clock;
+            TimeSpan maxTimeSpanBackwards = TimeSpan.FromDays(30);
 
-            // Generate a random opening time that is before the current time, within a maximum of 30 days in the past
             TimeSpan randomOffset = new TimeSpan(
-                s_rand.Next(0, (int)maxTimeSpanBackwards.TotalDays),    // Random days backwards
-                s_rand.Next(0, 24),                                     // Random hours
-                s_rand.Next(0, 60),                                     // Random minutes
-                s_rand.Next(0, 60)                                      // Random seconds
+                s_rand.Next(0, (int)maxTimeSpanBackwards.TotalDays),
+                s_rand.Next(0, 24),
+                s_rand.Next(0, 60),
+                s_rand.Next(0, 60)
             );
 
-            DateTime openTime = currentTime - randomOffset; // Calculate a random open time
+            DateTime openTime = currentTime - randomOffset;
 
-            // Define a random max end time or leave it null if there's no end time
             DateTime? maxEndTime = null;
-            bool hasEndTime = s_rand.Next(0, 2) == 1; // Randomly decide if there's an end time, 50% chance
+            bool hasEndTime = s_rand.Next(0, 2) == 1;
 
             if (hasEndTime)
             {
-                TimeSpan riskSpan = s_dalConfig.RiskRange; // The base risk range to add
-                int extraHours = s_rand.Next(1, 24);       // Random number of hours
-                int extraMinutes = s_rand.Next(1, 60);     // Random number of minutes
+                TimeSpan riskSpan = s_dalConfig.RiskRange;
+                int extraHours = s_rand.Next(1, 24);
+                int extraMinutes = s_rand.Next(1, 60);
 
-                // Calculate max end time based on open time and adding random time
                 maxEndTime = openTime.Add(riskSpan).AddHours(extraHours).AddMinutes(extraMinutes);
             }
 
             s_dalCall.Create(new Call(randomLatitude, randomLongitude, calltype, tempID, VerbalDescription, address, openTime, maxEndTime));
         }
-
-
-
-
     }
 
     public static void CreateAssignment()
@@ -178,20 +201,12 @@ public static class Initialization
             int tempID = new int(); // Assignment
             Call tempCall = callist[i]; //1 call from the list 
             Volunteer? tempVolunteer = volunteerlist[index1]; // volunteer
-
             do
             {
                 tempID = s_dalConfig!.NextAssignmentId;
             } while (s_dalAssignment!.Read(tempID) != null);
-
-
-
-
-
-
             DateTime openTime = tempCall.OpeningTime;         // Retrieve open time from the call
             DateTime? maxEndTime = tempCall.MaxEndTime;    // Retrieve max end time from the call
-
             // Generate a random entry time between openTime and maxEndTime
             DateTime entryTime;
             if (maxEndTime.HasValue)
@@ -203,19 +218,15 @@ public static class Initialization
                 // If no max end time is defined, use the current time as an upper bound
                 entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
             }
-
             // Determine end time and status
             DateTime? endTime = null;
             AssignmentCompletionType? endOfTreatment = null;
-
             bool isExpired = maxEndTime.HasValue && entryTime > maxEndTime.Value;
-
             //for the times will make sence
             if (!isExpired)
             {
                 // Randomly decide if treatment ends on time, is cancelled, or remains active
                 int endTypeDecision = s_rand.Next(0, 4); // 0: Treated on Time, 1: VolunteerCancelled, 2: AdminCancelled, 3: Active
-
                 switch (endTypeDecision)
                 {
                     case 0:
@@ -240,8 +251,6 @@ public static class Initialization
                 // If the call has expired, set status to Expired and leave endTime as null
                 endOfTreatment = AssignmentCompletionType.Expired;
             }
-
-
             s_dalAssignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.id ?? 0, endTime, endOfTreatment));
         }
     }
@@ -263,7 +272,7 @@ public static class Initialization
         s_dalAssignment.DeleteAll();
 
         Console.WriteLine("Initializing Volunteers list ...");
-        CreateVolunteers(); ///////////////////////////////////////////////////////////////
+        CreateVolunteers(); 
         Console.WriteLine("Initializing Calls list ...");
         CreateCalls();
         Console.WriteLine("Initializing Assignments list ...");
