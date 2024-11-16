@@ -7,71 +7,87 @@ namespace DalTest
 {
     public class Program
     {
-        private static IVolunteer? s_dalVolunteer;
-        private static ICall? s_dalCall;
-        private static IAssignment? s_dalAssignment;
-        private static IConfig? s_dalConfig;
+        // The data access layer for different entities, declared as nullable IVolunteer, ICall, IAssignment, IConfig types
+        private static IVolunteer? s_dalVolunteer;  // Data access layer for Volunteers
+        private static ICall? s_dalCall;            // Data access layer for Calls
+        private static IAssignment? s_dalAssignment; // Data access layer for Assignments
+        private static IConfig? s_dalConfig;        // Data access layer for Configurations
 
+        // Enum representing the options available in the Main Menu
         public enum MainMenuOption
         {
-            Exit, VolunteerMenu, CallMenu, AssignmentMenu, ConfigMenu, InitializeData, ShowAllData, ResetDatabase
+            Exit,                  // Exit the program
+            VolunteerMenu,         // Go to the Volunteer Menu
+            CallMenu,              // Go to the Call Menu
+            AssignmentMenu,        // Go to the Assignment Menu
+            ConfigMenu,            // Go to the Config Menu
+            InitializeData,        // Initialize data for the application
+            ShowAllData,           // Show all data stored
+            ResetDatabase          // Reset the database
         }
 
+        // Enum representing the options available in the Volunteer Menu
         public enum VolunteerMenuOption
         {
-            Exit,
-            Create,
-            Read,
-            ReadAll,
-            Update,
-            Delete,
-            DeleteAll
+            Exit,                  // Exit the Volunteer Menu
+            Create,                // Create a new Volunteer
+            Read,                  // Read a specific Volunteer
+            ReadAll,               // Read all Volunteers
+            Update,                // Update a Volunteer
+            Delete,                // Delete a specific Volunteer
+            DeleteAll             // Delete all Volunteers
         }
 
+        // Enum representing the options available in the Call Menu
         public enum CallMenuOption
         {
-            Exit,
-            Create,
-            Read,
-            ReadAll,
-            Update,
-            Delete,
-            DeleteAll
+            Exit,                  // Exit the Call Menu
+            Create,                // Create a new Call
+            Read,                  // Read a specific Call
+            ReadAll,               // Read all Calls
+            Update,                // Update a Call
+            Delete,                // Delete a specific Call
+            DeleteAll             // Delete all Calls
         }
 
+        // Enum representing the options available in the Assignment Menu
         public enum AssignmentMenuOption
         {
-            Exit,
-            Create,
-            Read,
-            ReadAll,
-            Update,
-            Delete,
-            DeleteAll
+            Exit,                  // Exit the Assignment Menu
+            Create,                // Create a new Assignment
+            Read,                  // Read a specific Assignment
+            ReadAll,               // Read all Assignments
+            Update,                // Update an Assignment
+            Delete,                // Delete a specific Assignment
+            DeleteAll             // Delete all Assignments
         }
 
+        // Enum representing the options available in the Config Menu
         public enum ConfigMenuOption
         {
-            Exit,
-            AdvanceSystemClock,
-            ShowSystemClock,
-            SetConfigVariable,
-            ShowConfigVariable,
-            ResetConfig
+            Exit,                  // Exit the Config Menu
+            AdvanceSystemClock,    // Advance the system clock
+            ShowSystemClock,       // Show the current system clock
+            SetConfigVariable,     // Set a specific configuration variable
+            ShowConfigVariable,    // Show a specific configuration variable
+            ResetConfig            // Reset the configuration settings
         }
 
+        // Main entry point of the application
         static void Main(string[] args)
         {
             try
             {
-                s_dalVolunteer = new VolunteerImplementation();
-                s_dalCall = new CallImplementation();
-                s_dalAssignment = new AssignmentImplementation();
-                s_dalConfig = new ConfigImplementation();
+                // Initialize data access layers for different entities
+                s_dalVolunteer = new VolunteerImplementation();  // Create Volunteer implementation
+                s_dalCall = new CallImplementation();            // Create Call implementation
+                s_dalAssignment = new AssignmentImplementation(); // Create Assignment implementation
+                s_dalConfig = new ConfigImplementation();        // Create Config implementation
 
-                bool exit = false;
+                bool exit = false;  // Flag to control the exit condition of the main loop
                 while (!exit)
                 {
+                    // Display Main Menu
                     Console.WriteLine("\nMain Menu:");
                     Console.WriteLine("1. Volunteer Menu");
                     Console.WriteLine("2. Call Menu");
@@ -82,42 +98,44 @@ namespace DalTest
                     Console.WriteLine("7. Reset Database");
                     Console.WriteLine("0. Exit");
 
+                    // Read the user's choice from the console and cast it to the MainMenuOption enum
                     MainMenuOption choice = (MainMenuOption)int.Parse(Console.ReadLine() ?? "0");
 
+                    // Process the selected menu option
                     switch (choice)
                     {
                         case MainMenuOption.VolunteerMenu:
-                            VolunteerMenu();
+                            VolunteerMenu();  // Open the Volunteer Menu
                             break;
                         case MainMenuOption.CallMenu:
-                            CallMenu();
+                            CallMenu();  // Open the Call Menu
                             break;
                         case MainMenuOption.AssignmentMenu:
-                            AssignmentMenu();
+                            AssignmentMenu();  // Open the Assignment Menu
                             break;
                         case MainMenuOption.ConfigMenu:
-                            ConfigMenu();
+                            ConfigMenu();  // Open the Config Menu
                             break;
                         case MainMenuOption.InitializeData:
-                            // קריאה לפונקציית אתחול
-                            Initialization.Do(s_dalVolunteer, s_dalCall, s_dalAssignment , s_dalConfig);
+                            // Call the initialization function to populate the system with initial data
+                            Initialization.Do(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
                             break;
                         case MainMenuOption.ShowAllData:
-                            // הצגת כל הנתונים
-                          print(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
+                            // Display all the data in the system
+                            print(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
                             break;
                         case MainMenuOption.ResetDatabase:
+                            // Reset the database by reading all entities and calling the reset function
                             s_dalVolunteer.ReadAll();
                             s_dalCall.ReadAll();
                             s_dalAssignment.ReadAll();
-                            s_dalConfig.Reset();
-
-                            // איפוס בסיס הנתונים והתצורה
+                            s_dalConfig.Reset();  // Reset the configuration
                             break;
                         case MainMenuOption.Exit:
-                            exit = true;
+                            exit = true;  // Set exit flag to true to break the loop
                             break;
                         default:
+                            // Handle invalid menu choices
                             Console.WriteLine("Invalid choice, try again.");
                             break;
                     }
@@ -125,9 +143,11 @@ namespace DalTest
             }
             catch (Exception ex)
             {
+                // Catch and display any exceptions that occur during initialization
                 Console.WriteLine($"An error occurred during initialization: {ex.Message}");
             }
         }
+
 
         private static void VolunteerMenu()
         {
@@ -148,41 +168,32 @@ namespace DalTest
                 switch (choice)
                 {
                     case VolunteerMenuOption.Create:
-                        // מתודה להוספת מתנדב
-                        // קליטת נתונים מהמשתמש
+                        // Method to add a volunteer
+                        // Input data from the user
 
-                        Volunteer volunteer = helpV();
-                        s_dalVolunteer!.Create(volunteer);
+                        Volunteer volunteer = helpV(); // Helper method to get volunteer data
+                        s_dalVolunteer!.Create(volunteer); // Create the volunteer
 
                         break;
                     case VolunteerMenuOption.Read:
-                        Console.WriteLine("enter id you want read" );
+                        Console.WriteLine("Enter ID you want to read:");
                         int tempid = int.Parse(Console.ReadLine() ?? "0");
-                        s_dalVolunteer!.Read(tempid);
-
-                        // מתודה לתצוגת מתנדב לפי מזהה
+                        s_dalVolunteer!.Read(tempid); // Method to display volunteer by ID
                         break;
                     case VolunteerMenuOption.ReadAll:
-          
-                        s_dalVolunteer!.ReadAll();
-
-                        // מתודה להצגת כל המתנדבים
+                        s_dalVolunteer!.ReadAll(); // Method to display all volunteers
                         break;
                     case VolunteerMenuOption.Update:
-                        Volunteer volunteer1 = helpV();
-                        s_dalVolunteer!.Update(volunteer1);
-
-                        // מתודה לעדכון מתנדב קיים
+                        Volunteer volunteer1 = helpV(); // Get updated volunteer data
+                        s_dalVolunteer!.Update(volunteer1); // Update the volunteer information
                         break;
                     case VolunteerMenuOption.Delete:
-                        Console.WriteLine("enter id you want read");
+                        Console.WriteLine("Enter ID you want to delete:");
                         int tempid2 = int.Parse(Console.ReadLine() ?? "0");
-                        s_dalVolunteer!.Delete(tempid2);
-                        // מתודה למחיקת מתנדב לפי מזהה
+                        s_dalVolunteer!.Delete(tempid2); // Method to delete volunteer by ID
                         break;
                     case VolunteerMenuOption.DeleteAll:
-                        s_dalVolunteer!.DeleteAll();
-                        // מתודה למחיקת כל המתנדבים
+                        s_dalVolunteer!.DeleteAll(); // Method to delete all volunteers
                         break;
                     case VolunteerMenuOption.Exit:
                         exit = true;
@@ -236,7 +247,7 @@ namespace DalTest
             return  new Volunteer(id, name, numberPhone, email, role, distanceType, fullCurrentAddress, latitude, longitude, active, distance);
 
 
-        }
+        } // for things that repeat themselves
         public static void print(IVolunteer? s_dalVolunteer, ICall? s_dalCall, IAssignment? s_dalAssignment, IConfig? s_dalConfig)
         {
           
@@ -297,7 +308,7 @@ namespace DalTest
 
 
 
-        private static void CallMenu()
+        private static void CallMenu() // Choosing where to enter
         {
             bool exit = false;
             while (!exit)
@@ -362,7 +373,7 @@ namespace DalTest
             }
 
         }
-        public static Call helpC()
+        public static Call helpC() // for things that repeat themselves
         {
             Console.Write("Enter Latitude: ");
             double latitude = double.Parse(Console.ReadLine() ?? "0");
@@ -390,7 +401,9 @@ namespace DalTest
             string? maxEndTimeInput = Console.ReadLine();
             DateTime? maxEndTime = string.IsNullOrWhiteSpace(maxEndTimeInput) ? null : DateTime.Parse(maxEndTimeInput);
 
-            // יצירת אובייקט Call לפי הבנאי
+
+            // Create a Call object according to the constructor
+
             return new Call(
                 Latitude: latitude,
                 Longitude: longitude,
