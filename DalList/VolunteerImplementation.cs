@@ -64,6 +64,21 @@ public class VolunteerImplementation : IVolunteer
 
     public List<Volunteer?> ReadAll()
     {
+        List<Volunteer?> volunteers = new List<Volunteer?>(DataSource.Volunteers);
+
+        // print 
+        foreach (var volunteer in volunteers)
+        {
+            if (volunteer != null)
+            {
+                Console.WriteLine(volunteer); 
+            }
+            else
+            {
+                Console.WriteLine("Null Volunteer");
+            }
+        }
+
         return new List<Volunteer?>(DataSource.Volunteers) ;///ask about ?
     }
 

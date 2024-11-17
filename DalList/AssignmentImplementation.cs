@@ -62,6 +62,21 @@ public class AssignmentImplementation : IAssignment
 
     public List<Assignment> ReadAll()
     {
+        List<Assignment?> Assignment = new List<Assignment?>(DataSource.Assignments);
+
+        // print 
+        foreach (var Assignment1 in Assignment)
+        {
+            if (Assignment1 != null)
+            {
+                Console.WriteLine(Assignment1);
+            }
+            else
+            {
+                Console.WriteLine("Null Volunteer");
+            }
+        }
+
         return new List<Assignment>(DataSource.Assignments);///ask about ?
     }
 

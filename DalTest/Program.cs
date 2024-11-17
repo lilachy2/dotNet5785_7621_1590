@@ -156,8 +156,8 @@ namespace DalTest
             {
                 Console.WriteLine("\nVolunteer Menu:");
                 Console.WriteLine("1. Add Volunteer");
-                Console.WriteLine("2. Display Volunteer by ID");
-                Console.WriteLine("3. Display All Volunteers");
+                Console.WriteLine("2. Read All Volunteer by ID");
+                Console.WriteLine("3. Read All All Volunteers");
                 Console.WriteLine("4. Update Volunteer");
                 Console.WriteLine("5. Delete Volunteer");
                 Console.WriteLine("6. Delete All Volunteers");
@@ -294,7 +294,6 @@ namespace DalTest
                 if (s_dalConfig != null)
                 {
                     Console.WriteLine($"System Clock: {s_dalConfig.Clock}");
-                    // הצגת ערכי תצורה נוספים, אם ישנם
                 }
                 else
                 {

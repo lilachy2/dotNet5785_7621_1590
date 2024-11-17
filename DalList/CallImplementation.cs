@@ -56,6 +56,21 @@ public class CallImplementation : ICall
 
     public List<Call> ReadAll()
     {
+        List<Call?> calls = new List<Call?>(DataSource.Calls);
+
+        // print 
+        foreach (var call in calls)
+        {
+            if (call != null)
+            {
+                Console.WriteLine(call);
+            }
+            else
+            {
+                Console.WriteLine("Null Volunteer");
+            }
+        }
+
         return new List<Call>(DataSource.Calls);///ask about ?
     }
 
