@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /// <param name="ReadAll">// A request/receive method for all objects of a certain type
 /// <param name="Update"> // Update method of an existing object
 /// 
-public class VolunteerImplementation : IVolunteer
+internal class VolunteerImplementation : IVolunteer
 {
     public void Create(Volunteer item)
     {
@@ -62,9 +62,9 @@ public class VolunteerImplementation : IVolunteer
             return item;
     }
 
-    public List<Volunteer?> ReadAll()
+    public List<Volunteer> ReadAll() // was?
     {
-        List<Volunteer?> volunteers = new List<Volunteer?>(DataSource.Volunteers);
+        List<Volunteer> volunteers = new List<Volunteer>(DataSource.Volunteers);
 
         // print 
         foreach (var volunteer in volunteers)
@@ -79,7 +79,7 @@ public class VolunteerImplementation : IVolunteer
             }
         }
 
-        return new List<Volunteer?>(DataSource.Volunteers) ;///ask about ?
+        return new List<Volunteer>(DataSource.Volunteers) ;///ask about ?
     }
 
     /// <param name="old">// Searches for the old Assignment

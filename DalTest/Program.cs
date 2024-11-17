@@ -7,11 +7,19 @@ namespace DalTest
 {
     public class Program
     {
-        // The data access layer for different entities, declared as nullable IVolunteer, ICall, IAssignment, IConfig types
-        private static IVolunteer? s_dalVolunteer;  // Data access layer for Volunteers
-        private static ICall? s_dalCall;            // Data access layer for Calls
-        private static IAssignment? s_dalAssignment; // Data access layer for Assignments
-        private static IConfig? s_dalConfig;        // Data access layer for Configurations
+        // stage1
+        //// The data access layer for different entities, declared as nullable IVolunteer, ICall, IAssignment, IConfig types
+        //private static IVolunteer? s_dalVolunteer;  // Data access layer for Volunteers
+        //private static ICall? s_dalCall;            // Data access layer for Calls
+        //private static IAssignment? s_dalAssignment; // Data access layer for Assignments
+        //private static IConfig? s_dalConfig;        // Data access layer for Configurations
+
+        static readonly IDal s_dal = new DalList(); //stage 2
+
+        private static readonly Random s_rand = new();
+        private const int MIN_ID = 200000000;
+        private const int MAX_ID = 400000000;
+
 
         // Enum representing the options available in the Main Menu
         public enum MainMenuOption
@@ -244,62 +252,62 @@ namespace DalTest
             Console.WriteLine("Enter Distance (or press Enter to skip):");
             string distanceInput = Console.ReadLine() ?? "";
             double? distance = string.IsNullOrWhiteSpace(distanceInput) ? null : double.Parse(distanceInput);
-            return  new Volunteer(id, name, numberPhone, email, role, distanceType, fullCurrentAddress, latitude, longitude, active, distance);
+            return new Volunteer(id, name, numberPhone, email, role, distanceType, fullCurrentAddress, latitude, longitude, active, distance);
 
 
         } // for things that repeat themselves
         public static void print(IVolunteer? s_dalVolunteer, ICall? s_dalCall, IAssignment? s_dalAssignment, IConfig? s_dalConfig)
         {
-          
-                Console.WriteLine("Volunteer Data:");
-                if (s_dalVolunteer != null)
-                {
-                    foreach (var volunteer in s_dalVolunteer.ReadAll())
-                    {
-                        Console.WriteLine(volunteer); // Assuming ToString() is overridden for Volunteer
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No Volunteer data available.");
-                }
 
-                Console.WriteLine("\nCall Data:");
-                if (s_dalCall != null)
+            Console.WriteLine("Volunteer Data:");
+            if (s_dalVolunteer != null)
+            {
+                foreach (var volunteer in s_dalVolunteer.ReadAll())
                 {
-                    foreach (var call in s_dalCall.ReadAll())
-                    {
-                        Console.WriteLine(call); // Assuming ToString() is overridden for Call
-                    }
+                    Console.WriteLine(volunteer); // Assuming ToString() is overridden for Volunteer
                 }
-                else
-                {
-                    Console.WriteLine("No Call data available.");
-                }
+            }
+            else
+            {
+                Console.WriteLine("No Volunteer data available.");
+            }
 
-                Console.WriteLine("\nAssignment Data:");
-                if (s_dalAssignment != null)
+            Console.WriteLine("\nCall Data:");
+            if (s_dalCall != null)
+            {
+                foreach (var call in s_dalCall.ReadAll())
                 {
-                    foreach (var assignment in s_dalAssignment.ReadAll())
-                    {
-                        Console.WriteLine(assignment); // Assuming ToString() is overridden for Assignment
-                    }
+                    Console.WriteLine(call); // Assuming ToString() is overridden for Call
                 }
-                else
-                {
-                    Console.WriteLine("No Assignment data available.");
-                }
+            }
+            else
+            {
+                Console.WriteLine("No Call data available.");
+            }
 
-                Console.WriteLine("\nConfig Data:");
-                if (s_dalConfig != null)
+            Console.WriteLine("\nAssignment Data:");
+            if (s_dalAssignment != null)
+            {
+                foreach (var assignment in s_dalAssignment.ReadAll())
                 {
-                    Console.WriteLine($"System Clock: {s_dalConfig.Clock}");
+                    Console.WriteLine(assignment); // Assuming ToString() is overridden for Assignment
                 }
-                else
-                {
-                    Console.WriteLine("No Config data available.");
-                }
-            
+            }
+            else
+            {
+                Console.WriteLine("No Assignment data available.");
+            }
+
+            Console.WriteLine("\nConfig Data:");
+            if (s_dalConfig != null)
+            {
+                Console.WriteLine($"System Clock: {s_dalConfig.Clock}");
+            }
+            else
+            {
+                Console.WriteLine("No Config data available.");
+            }
+
 
 
 
@@ -459,7 +467,7 @@ namespace DalTest
                         case "2":
                             Console.WriteLine("Enter the ID of the object to Read:");
                             int idToRead = int.Parse(Console.ReadLine() ?? "0");
-                            s_dalAssignment!.Read(idToRead);    
+                            s_dalAssignment!.Read(idToRead);
                             // Code to read and display the object by ID
 
                             break;
@@ -471,7 +479,7 @@ namespace DalTest
 
                         case "4":
                             Console.WriteLine("Enter the ID of the object to update:");
-                         
+
                             Assignment ToUpdate = helpA();
                             s_dalAssignment!.Create(ToUpdate);
 
@@ -503,7 +511,7 @@ namespace DalTest
                 }
             }
 
-           static Assignment helpA()
+            static Assignment helpA()
             {
 
                 Console.Write("Enter Assignment ID (integer): ");
@@ -552,7 +560,7 @@ namespace DalTest
 
 
 
-    }
+        }
 
         private static void ConfigMenu()
         {
@@ -576,11 +584,11 @@ namespace DalTest
                         int hours = int.Parse(Console.ReadLine() ?? "0");
                         s_dalConfig!.Clock = s_dalConfig.Clock.AddHours(hours);
                         Console.WriteLine($"System clock advanced by {hours} hours."); break;
-                    
+
                     case ConfigMenuOption.ShowSystemClock:
                         Console.WriteLine($"Current System Clock: {s_dalConfig?.Clock}");
                         break;
-                   
+
                     case ConfigMenuOption.SetConfigVariable:
                         Console.WriteLine("Choose the variable to set:");
                         Console.WriteLine("1. Risk Range (in hours)");
@@ -600,16 +608,16 @@ namespace DalTest
                                 break;
                         }
                         break;
-                   
+
                     case ConfigMenuOption.ShowConfigVariable:
                         Console.WriteLine($"Current System Clock: {s_dalConfig!.Clock}");
                         Console.WriteLine($"Risk Range: {s_dalConfig.RiskRange.TotalHours} hours"); break;
-                   
+
                     case ConfigMenuOption.ResetConfig:
                         s_dalConfig?.Reset();
                         Console.WriteLine("Config reset to default.");
                         break;
-                    
+
                     case ConfigMenuOption.Exit:
                         exit = true;
                         break;

@@ -10,12 +10,12 @@ using DO;
 /// //The class represents defining interfaces for the data entities under the DalApi library
 
 
-public interface IAssignment
+public interface IAssignment: ICrud<Assignment>   
 {
-    void Create(Assignment item); 
-    Assignment? Read(int id); 
-    List<Assignment> ReadAll(); 
-    void Update(Assignment item); 
-    void Delete(int id); 
-    void DeleteAll(); 
+    //void Create(Assignment item); 
+    //Assignment? Read(int id); 
+    //List<Assignment> ReadAll(); 
+    //void Update(Assignment item); 
+    //void Delete(int id); 
+    //void DeleteAll(); 
 }

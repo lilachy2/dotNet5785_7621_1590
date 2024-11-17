@@ -15,7 +15,7 @@ using System.Collections.Generic;
 /// <param name="">
 
 
-public class AssignmentImplementation : IAssignment
+internal class AssignmentImplementation : IAssignment
 {
     public void Create(Assignment item)
     {
@@ -62,7 +62,7 @@ public class AssignmentImplementation : IAssignment
 
     public List<Assignment> ReadAll()
     {
-        List<Assignment?> Assignment = new List<Assignment?>(DataSource.Assignments);
+        List<Assignment> Assignment = new List<Assignment>(DataSource.Assignments);
 
         // print 
         foreach (var Assignment1 in Assignment)

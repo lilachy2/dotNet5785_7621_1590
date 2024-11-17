@@ -9,7 +9,7 @@ using System.Collections.Generic;
 /// <param name="ReadAll">// A request/receive method for all objects of a certain type
 /// <param name="Update"> // Update method of an existing object
 
-public class CallImplementation : ICall
+internal  class CallImplementation : ICall
 {
     public void Create(Call item)
     {
@@ -56,7 +56,7 @@ public class CallImplementation : ICall
 
     public List<Call> ReadAll()
     {
-        List<Call?> calls = new List<Call?>(DataSource.Calls);
+        List<Call> calls = new List<Call>(DataSource.Calls);
 
         // print 
         foreach (var call in calls)

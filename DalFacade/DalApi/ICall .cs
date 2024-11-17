@@ -9,12 +9,12 @@ using DO;
 /// <param name="">
 /// //The class represents defining interfaces for the data entities under the DalApi library
 
-public interface ICall
+public interface ICall:ICrud<Call>  
 {
-    void Create(Call item);
-    Call? Read(int id); 
-    List<Call> ReadAll(); 
-    void Update(Call item); 
-    void Delete(int id);
-    void DeleteAll(); 
+    //void Create(Call item);
+    //Call? Read(int id); 
+    //List<Call> ReadAll(); 
+    //void Update(Call item); 
+    //void Delete(int id);
+    //void DeleteAll(); 
 }
