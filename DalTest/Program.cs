@@ -1,10 +1,9 @@
-﻿using Dal;
+﻿namespace DalTest;
+using Dal;
 using DalApi;
 using DO;
-using System.Security.Cryptography.X509Certificates;
 
-namespace DalTest
-{
+
     public class Program
     {
         // stage1
@@ -86,11 +85,13 @@ namespace DalTest
         {
             try
             {
+                //stage 1
                 // Initialize data access layers for different entities
-                s_dalVolunteer = new VolunteerImplementation();  // Create Volunteer implementation
-                s_dalCall = new CallImplementation();            // Create Call implementation
-                s_dalAssignment = new AssignmentImplementation(); // Create Assignment implementation
-                s_dalConfig = new ConfigImplementation();        // Create Config implementation
+                //s_dalVolunteer = new VolunteerImplementation();  // Create Volunteer implementation
+                //s_dalCall = new CallImplementation();            // Create Call implementation
+                //s_dalAssignment = new AssignmentImplementation(); // Create Assignment implementation
+                //s_dalConfig = new ConfigImplementation();        // Create Config implementation
+
 
                 bool exit = false;  // Flag to control the exit condition of the main loop
                 while (!exit)
@@ -126,18 +127,23 @@ namespace DalTest
                             break;
                         case MainMenuOption.InitializeData:
                             // Call the initialization function to populate the system with initial data
-                            Initialization.Do(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
+                            Initialization.Do(s_dal); //stage 2
+                            // Initialization.Do(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
                             break;
                         case MainMenuOption.ShowAllData:
                             // Display all the data in the system
-                            print(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
+                           // print(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);//stage1
+                            print(s_dal);//stage2
                             break;
                         case MainMenuOption.ResetDatabase:
-                            // Reset the database by reading all entities and calling the reset function
-                            s_dalVolunteer.ReadAll();
-                            s_dalCall.ReadAll();
-                            s_dalAssignment.ReadAll();
-                            s_dalConfig.Reset();  // Reset the configuration
+                        // Reset the database by reading all entities and calling the reset function
+                        //stage1
+                        //s_dalVolunteer.ReadAll();
+                        //s_dalCall.ReadAll();
+                        //s_dalAssignment.ReadAll();
+                        //s_dalConfig.Reset();  // Reset the configuration
+
+                        s_dal.ResetDB();    //stage2
                             break;
                         case MainMenuOption.Exit:
                             exit = true;  // Set exit flag to true to break the loop
@@ -180,28 +186,33 @@ namespace DalTest
                         // Input data from the user
 
                         Volunteer volunteer = helpV(); // Helper method to get volunteer data
-                        s_dalVolunteer!.Create(volunteer); // Create the volunteer
+                        s_dal.Volunteer!.Create(volunteer); // Create the volunteer
 
                         break;
                     case VolunteerMenuOption.Read:
                         Console.WriteLine("Enter ID you want to read:");
                         int tempid = int.Parse(Console.ReadLine() ?? "0");
-                        s_dalVolunteer!.Read(tempid); // Method to display volunteer by ID
+                        //s_dalVolunteer!.Read(tempid); // Method to display volunteer by ID
+                        s_dal.Volunteer!.Read(tempid); // Method to display volunteer by ID
                         break;
                     case VolunteerMenuOption.ReadAll:
-                        s_dalVolunteer!.ReadAll(); // Method to display all volunteers
+                        //s_dalVolunteer!.ReadAll(); // Method to display all volunteers
+                        s_dal.Volunteer!.ReadAll(); // Method to display all volunteers
                         break;
                     case VolunteerMenuOption.Update:
                         Volunteer volunteer1 = helpV(); // Get updated volunteer data
-                        s_dalVolunteer!.Update(volunteer1); // Update the volunteer information
+                        //s_dalVolunteer!.Update(volunteer1); // Update the volunteer information
+                        s_dal.Volunteer!.Update(volunteer1); // Update the volunteer information
                         break;
                     case VolunteerMenuOption.Delete:
                         Console.WriteLine("Enter ID you want to delete:");
                         int tempid2 = int.Parse(Console.ReadLine() ?? "0");
-                        s_dalVolunteer!.Delete(tempid2); // Method to delete volunteer by ID
+                        //s_dalVolunteer!.Delete(tempid2); // Method to delete volunteer by ID
+                        s_dal.Volunteer!.Delete(tempid2); // Method to delete volunteer by ID
                         break;
                     case VolunteerMenuOption.DeleteAll:
-                        s_dalVolunteer!.DeleteAll(); // Method to delete all volunteers
+                        //s_dalVolunteer!.DeleteAll(); // Method to delete all volunteers
+                        s_dal.Volunteer!.DeleteAll(); // Method to delete all volunteers
                         break;
                     case VolunteerMenuOption.Exit:
                         exit = true;
@@ -256,13 +267,13 @@ namespace DalTest
 
 
         } // for things that repeat themselves
-        public static void print(IVolunteer? s_dalVolunteer, ICall? s_dalCall, IAssignment? s_dalAssignment, IConfig? s_dalConfig)
+        public static void print(IDal s_dal)
         {
 
             Console.WriteLine("Volunteer Data:");
-            if (s_dalVolunteer != null)
+            if (s_dal.Volunteer != null)
             {
-                foreach (var volunteer in s_dalVolunteer.ReadAll())
+                foreach (var volunteer in s_dal.Volunteer.ReadAll())
                 {
                     Console.WriteLine(volunteer); // Assuming ToString() is overridden for Volunteer
                 }
@@ -273,9 +284,9 @@ namespace DalTest
             }
 
             Console.WriteLine("\nCall Data:");
-            if (s_dalCall != null)
+            if (s_dal.Call != null)
             {
-                foreach (var call in s_dalCall.ReadAll())
+                foreach (var call in s_dal.Call.ReadAll())
                 {
                     Console.WriteLine(call); // Assuming ToString() is overridden for Call
                 }
@@ -286,9 +297,9 @@ namespace DalTest
             }
 
             Console.WriteLine("\nAssignment Data:");
-            if (s_dalAssignment != null)
+            if (s_dal.Assignment != null)
             {
-                foreach (var assignment in s_dalAssignment.ReadAll())
+                foreach (var assignment in s_dal.Assignment.ReadAll())
                 {
                     Console.WriteLine(assignment); // Assuming ToString() is overridden for Assignment
                 }
@@ -299,9 +310,9 @@ namespace DalTest
             }
 
             Console.WriteLine("\nConfig Data:");
-            if (s_dalConfig != null)
+            if (s_dal.Config != null)
             {
-                Console.WriteLine($"System Clock: {s_dalConfig.Clock}");
+                Console.WriteLine($"System Clock: {s_dal.Config.Clock}");
             }
             else
             {
@@ -335,26 +346,30 @@ namespace DalTest
                 {
                     case CallMenuOption.Create:
                         Call call1 = helpC();
-                        s_dalCall!.Create(call1);
+                        s_dal.Call!.Create(call1);
+                        //s_dalCall!.Create(call1);
                         Console.WriteLine("50 calls have been created.");
                         break;
 
                     case CallMenuOption.Read:
                         Console.Write("Enter Call ID to display: ");
                         int id = int.Parse(Console.ReadLine() ?? "0");
-                        var call = s_dalCall?.Read(id);
+                        //var call = s_dalCall?.Read(id);
+                        var call = s_dal.Call?.Read(id);
 
                         break;
 
                     case CallMenuOption.ReadAll:
-                        s_dalCall?.ReadAll();
+                        s_dal.Call?.ReadAll();
+                        //s_dalCall?.ReadAll();
 
                         break;
 
                     case CallMenuOption.Update:
                         {
                             Call call2 = helpC();
-                            s_dalCall!.Update(call2);
+                            s_dal.Call!.Update(call2);
+                            //s_dalCall!.Update(call2);
 
                         }
                         break;
@@ -362,11 +377,13 @@ namespace DalTest
                     case CallMenuOption.Delete:
                         Console.Write("Enter Call ID to delete: ");
                         int deleteId = int.Parse(Console.ReadLine() ?? "0");
-                        s_dalCall?.Delete(deleteId);
+                        s_dal.Call?.Delete(deleteId);
+                        //s_dalCall?.Delete(deleteId);
                         break;
 
                     case CallMenuOption.DeleteAll:
-                        s_dalCall?.DeleteAll();
+                       // s_dalCall?.DeleteAll();
+                        s_dal.Call?.DeleteAll();
                         break;
 
                     case CallMenuOption.Exit:
@@ -460,20 +477,23 @@ namespace DalTest
                             Console.WriteLine("Adding a new object");
                             // Code to create a new object and add it to the list
                             Assignment Assi = helpA();
-                            s_dalAssignment!.Create(Assi);
+                            //s_dalAssignment!.Create(Assi);
+                            s_dal.Assignment!.Create(Assi);
 
                             break;
 
                         case "2":
                             Console.WriteLine("Enter the ID of the object to Read:");
                             int idToRead = int.Parse(Console.ReadLine() ?? "0");
-                            s_dalAssignment!.Read(idToRead);
+                            s_dal.Assignment!.Read(idToRead);
+                           // s_dalAssignment!.Read(idToRead);
                             // Code to read and display the object by ID
 
                             break;
 
                         case "3":
-                            s_dalAssignment!.ReadAll();
+                           // s_dalAssignment!.ReadAll();
+                            s_dal.Assignment!.ReadAll();
                             // Code to display all objects of this type
                             break;
 
@@ -481,7 +501,8 @@ namespace DalTest
                             Console.WriteLine("Enter the ID of the object to update:");
 
                             Assignment ToUpdate = helpA();
-                            s_dalAssignment!.Create(ToUpdate);
+                            //s_dalAssignment!.Create(ToUpdate);
+                            s_dal.Assignment!.Create(ToUpdate);
 
                             // Code to update the object by ID
                             break;
@@ -489,14 +510,16 @@ namespace DalTest
                         case "5":
                             Console.WriteLine("Enter the ID of the object to delete:");
                             int idToDelete = int.Parse(Console.ReadLine() ?? "0");
-                            s_dalAssignment!.Delete(idToDelete);
+                            //s_dalAssignment!.Delete(idToDelete);
+                            s_dal.Assignment!.Delete(idToDelete);
                             // Code to delete the object by ID
                             break;
 
                         case "6":
                             Console.WriteLine("Deleting all objects in the list");
                             // Code to delete all objects of this type
-                            s_dalAssignment!.DeleteAll();
+                            s_dal.Assignment!.DeleteAll();
+                          //  s_dalAssignment!.DeleteAll();
                             break;
 
                         default:
@@ -582,11 +605,13 @@ namespace DalTest
                     case ConfigMenuOption.AdvanceSystemClock:
                         Console.Write("Enter the number of hours to advance the clock: ");
                         int hours = int.Parse(Console.ReadLine() ?? "0");
-                        s_dalConfig!.Clock = s_dalConfig.Clock.AddHours(hours);
+                      //  s_dalConfig!.Clock = s_dalConfig.Clock.AddHours(hours);
+                        s_dal.Config!.Clock = s_dal.Config.Clock.AddHours(hours);
                         Console.WriteLine($"System clock advanced by {hours} hours."); break;
 
                     case ConfigMenuOption.ShowSystemClock:
-                        Console.WriteLine($"Current System Clock: {s_dalConfig?.Clock}");
+                        //Console.WriteLine($"Current System Clock: {s_dalConfig.Clock}");
+                        Console.WriteLine($"Current System Clock: {s_dal.Config.Clock}");
                         break;
 
                     case ConfigMenuOption.SetConfigVariable:
@@ -600,7 +625,8 @@ namespace DalTest
                             case 1:
                                 Console.Write("Enter the new risk range in hours: ");
                                 double hours1 = double.Parse(Console.ReadLine() ?? "1");
-                                s_dalConfig!.RiskRange = TimeSpan.FromHours(hours1);
+                              //  s_dalConfig!.RiskRange = TimeSpan.FromHours(hours1);
+                                s_dal.Config!.RiskRange = TimeSpan.FromHours(hours1);
                                 Console.WriteLine($"Risk range set to {hours1} hours.");
                                 break;
                             default:
@@ -610,11 +636,14 @@ namespace DalTest
                         break;
 
                     case ConfigMenuOption.ShowConfigVariable:
-                        Console.WriteLine($"Current System Clock: {s_dalConfig!.Clock}");
-                        Console.WriteLine($"Risk Range: {s_dalConfig.RiskRange.TotalHours} hours"); break;
+                       // Console.WriteLine($"Current System Clock: {s_dalConfig!.Clock}");
+                        Console.WriteLine($"Current System Clock: {s_dal.Config!.Clock}");
+                        Console.WriteLine($"Risk Range: {s_dal.Config.RiskRange.TotalHours} hours"); break;
+                       // Console.WriteLine($"Risk Range: {s_dalConfig.RiskRange.TotalHours} hours"); break;
 
                     case ConfigMenuOption.ResetConfig:
-                        s_dalConfig?.Reset();
+                        s_dal.Config?.Reset();
+                     //   s_dalConfig?.Reset();
                         Console.WriteLine("Config reset to default.");
                         break;
 
@@ -632,4 +661,4 @@ namespace DalTest
 
 
 
-}
+

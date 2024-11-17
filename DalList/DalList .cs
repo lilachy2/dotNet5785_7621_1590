@@ -1,8 +1,7 @@
 ﻿namespace Dal;
 using DalApi;
-using DO;
-
 sealed public class DalList : IDal
+
 {
     public IConfig Config { get; } = new ConfigImplementation();
     public ICall Call { get; } = new CallImplementation();
