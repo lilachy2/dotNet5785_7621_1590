@@ -34,7 +34,8 @@ internal class AssignmentImplementation : IAssignment
 
         if (item == null)
         {
-            throw new Exception($"Volunteer with ID={id} does not exist");
+            //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
+            throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
         }
         else
             DataSource.Assignments.Remove(item);
@@ -107,7 +108,10 @@ internal class AssignmentImplementation : IAssignment
 
         if (old == null)
         {
-            throw new Exception($"Volunteer with ID={item.Id} does not exist");
+
+            //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
+            throw new DalDeletionImpossible($"Volunteer with ID={item.Id} does not exist"); // stag 2
+
         }
         else
         {

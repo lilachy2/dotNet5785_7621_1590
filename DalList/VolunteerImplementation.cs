@@ -18,7 +18,11 @@ internal class VolunteerImplementation : IVolunteer
         //if (Read(item.id)!=null)//stage1
         if (Read(v => v.id == item.id) != null)
         {
-                throw new Exception($"Volunteer with ID={item.id} does exist");
+                //throw new Exception($"Volunteer with ID={item.id} does exist"); // stage1
+                throw new DalAlreadyExistsException($"Volunteer with ID={item.id} does exist"); // stage 2
+
+
+
             }
             else
             {
@@ -36,8 +40,9 @@ internal class VolunteerImplementation : IVolunteer
 
         if (item == null)
         {
-            throw new Exception($"Volunteer with ID={id} does not exist");
-        }
+//throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
+            throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
+                                                                                       }
         else
         DataSource.Volunteers.Remove(item);
     }
@@ -107,7 +112,8 @@ internal class VolunteerImplementation : IVolunteer
 
         if (old == null)
         {
-            throw new Exception($"Volunteer with ID={item.id} does not exist");
+            //throw new Exception($"Volunteer with ID={item.id} does not exist"); // // stag 1
+            throw new DalDeletionImpossible($"Volunteer with ID={item.id} does not exist"); // stag 2
         }
         else
         {

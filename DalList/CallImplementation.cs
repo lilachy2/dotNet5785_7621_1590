@@ -11,13 +11,13 @@ using System.Linq;
 /// <param name="ReadAll">// A request/receive method for all objects of a certain type
 /// <param name="Update"> // Update method of an existing object
 
-internal  class CallImplementation : ICall
+internal class CallImplementation : ICall
 {
     public void Create(Call item)
     {
         int newId = Config.NextCallId;
-            //NextCall;
-        Call newItem = new Call() { Id = newId };   
+        //NextCall;
+        Call newItem = new Call() { Id = newId };
         DataSource.Calls.Add(newItem);
         ///return newItem.Id;
     }
@@ -30,7 +30,8 @@ internal  class CallImplementation : ICall
 
         if (item == null)
         {
-            throw new Exception($"Volunteer with ID={id} does not exist");
+            //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
+            throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
         }
         else
             DataSource.Calls.Remove(item);
@@ -98,7 +99,8 @@ internal  class CallImplementation : ICall
 
         if (old == null)
         {
-            throw new Exception($"Volunteer with ID={item.Id} does not exist");
+            //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
+            throw new DalDeletionImpossible($"Volunteer with ID={item.Id} does not exist"); // stag 2
         }
         else
         {
