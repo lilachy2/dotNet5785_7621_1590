@@ -45,7 +45,9 @@ internal  class CallImplementation : ICall
 
     public Call? Read(int id)
     {
-        var item = DataSource.Calls.Find(x => x?.Id == id);
+        //var item = DataSource.Calls.Find(x => x?.Id == id);  // stage1
+        var item = DataSource.Calls.FirstOrDefault(item => item.Id == id); //stage 2
+
 
         if (item == null)
             return null;
@@ -54,25 +56,32 @@ internal  class CallImplementation : ICall
             return item;
     }
 
-    public List<Call> ReadAll()
-    {
-        List<Call> calls = new List<Call>(DataSource.Calls);
+    //public List<Call> ReadAll() // stage1
+    //{
+    //    List<Call> calls = new List<Call>(DataSource.Calls);
 
-        // print 
-        foreach (var call in calls)
-        {
-            if (call != null)
-            {
-                Console.WriteLine(call);
-            }
-            else
-            {
-                Console.WriteLine("Null Volunteer");
-            }
-        }
+    //    // print 
+    //    foreach (var call in calls)
+    //    {
+    //        if (call != null)
+    //        {
+    //            Console.WriteLine(call);
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Null Volunteer");
+    //        }
+    //    }
 
-        return new List<Call>(DataSource.Calls);///ask about ?
-    }
+    //    return new List<Call>(DataSource.Calls);///ask about ?
+    //} 
+
+    public IEnumerable<Call> ReadAll(Func<Call, bool>? filter = null) //stage 2
+    => filter == null
+        ? DataSource.Calls.Select(item => item)
+        : DataSource.Calls.Where(filter);
+
+
 
     /// <param name="old">// Searches for the old Assignment
     public void Update(Call item)

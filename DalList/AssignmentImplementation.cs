@@ -49,36 +49,55 @@ internal class AssignmentImplementation : IAssignment
     }
 
     /// <param name="item">// Searches for the Assignment by ID
-    public Assignment? Read(int id)
+    //public Assignment? Read(int id)  // // stage1
+    //{
+
+    //    //var item = DataSource.Assignments.Find(x => x?.Id == id); // stage 1
+    //    var item = DataSource.Assignments.FirstOrDefault(item => item.Id == id); //stage 2
+
+
+    //    if (item == null)
+    //        return null;
+
+    //    else
+    //        return item;
+    //}
+
+    public Assignment? Read(Func <Assignment, bool>  filter)  //stage 2
     {
-        var item = DataSource.Assignments.Find(x => x?.Id == id);
-
-        if (item == null)
-            return null;
-
-        else
-            return item;
+        return DataSource.Assignments.FirstOrDefault(filter);
     }
 
-    public List<Assignment> ReadAll()
-    {
-        List<Assignment> Assignment = new List<Assignment>(DataSource.Assignments);
 
-        // print 
-        foreach (var Assignment1 in Assignment)
-        {
-            if (Assignment1 != null)
-            {
-                Console.WriteLine(Assignment1);
-            }
-            else
-            {
-                Console.WriteLine("Null Volunteer");
-            }
-        }
 
-        return new List<Assignment>(DataSource.Assignments);///ask about ?
-    }
+
+
+    //public List<Assignment> ReadAll()  // stage1
+    //{
+    //    List<Assignment> Assignment = new List<Assignment>(DataSource.Assignments);
+
+    //    // print 
+    //    foreach (var Assignment1 in Assignment)
+    //    {
+    //        if (Assignment1 != null)
+    //        {
+    //            Console.WriteLine(Assignment1);
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Null Volunteer");
+    //        }
+    //    }
+
+    //    return new List<Assignment>(DataSource.Assignments);///ask about ?
+    //}
+
+
+    public IEnumerable<Assignment> ReadAll(Func<Assignment, bool>? filter = null) //stage 2
+        => filter == null
+            ? DataSource.Assignments.Select(item => item)
+            : DataSource.Assignments.Where(filter);
+
 
     /// <param name="old">// Searches for the old Assignment
 

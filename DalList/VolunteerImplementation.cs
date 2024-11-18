@@ -53,7 +53,9 @@ internal class VolunteerImplementation : IVolunteer
     public Volunteer? Read(int id)
     {
 
-        var item = DataSource.Volunteers.Find(x => x?.id == id);
+        //var item = DataSource.Volunteers.Find(x => x?.id == id);  // stage1
+        var item = DataSource.Volunteers.FirstOrDefault(item => item.id == id); //stage 2
+
 
         if (item == null)
             return null;
@@ -62,25 +64,32 @@ internal class VolunteerImplementation : IVolunteer
             return item;
     }
 
-    public List<Volunteer> ReadAll() // was?
-    {
-        List<Volunteer> volunteers = new List<Volunteer>(DataSource.Volunteers);
 
-        // print 
-        foreach (var volunteer in volunteers)
-        {
-            if (volunteer != null)
-            {
-                Console.WriteLine(volunteer); 
-            }
-            else
-            {
-                Console.WriteLine("Null Volunteer");
-            }
-        }
+    //public List<Volunteer> ReadAll() // was?  // stage1
+    //{
+    //    List<Volunteer> volunteers = new List<Volunteer>(DataSource.Volunteers);
 
-        return new List<Volunteer>(DataSource.Volunteers) ;///ask about ?
-    }
+    //    // print 
+    //    foreach (var volunteer in volunteers)
+    //    {
+    //        if (volunteer != null)
+    //        {
+    //            Console.WriteLine(volunteer); 
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Null Volunteer");
+    //        }
+    //    }
+
+    //    return new List<Volunteer>(DataSource.Volunteers) ;///ask about ?
+    //}  
+
+    public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null) //stage 2
+    => filter == null
+        ? DataSource.Volunteers.Select(item => item)
+        : DataSource.Volunteers.Where(filter);
+
 
     /// <param name="old">// Searches for the old Assignment
 
