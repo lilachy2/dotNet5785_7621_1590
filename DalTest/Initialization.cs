@@ -88,9 +88,11 @@ public static void CreateVolunteers()
             do
             {
                 id = s_rand.Next(MIN_ID, MAX_ID);
-            }
+              
+             }
             //while (s_dalVolunteer!.Read(id) != null); //stage1
-            while (s_dal!.Volunteer.Read(id) != null); //stage2
+            //while (s_dal!.Volunteer.Read(id) != null); //stage2
+            while (s_dal!.Volunteer.Read(v => v.id == id) != null);//stage2
 
             string phone = "05" + s_rand.Next(0, 8).ToString() + s_rand.Next(1000000, 9999999).ToString();
             int p1 = int.Parse(phone); // To perform conversion for the constructor
@@ -161,7 +163,7 @@ public static void CreateVolunteers()
                 tempID = s_dal!.Config.NextCallId; //stage2
                 //tempID = s_dalConfig!.NextCallId; //stage1
             }
-            while (s_dal!.Call.Read(tempID) != null); //stage2
+            while (s_dal!.Call.Read(c => c.Id == tempID) != null); //stage2
             //while (s_dalCall!.Read(tempID) != null); //stage1
 
             string? address = Addresses[index1];
@@ -209,24 +211,29 @@ public static void CreateVolunteers()
     public static void CreateAssignment()
     {
         //List<Call> callist = s_dalCall!.ReadAll(); //stage1
-        List<Call> callist = s_dal!.Call.ReadAll();//stage 2
+        //List<Call> callist = s_dal!.Call.ReadAll();//stage 2
+        IEnumerable<Call> callist = s_dal!.Call.ReadAll();
+
 
         //List<Volunteer?> volunteerlist = s_dalVolunteer!.ReadAll(); //stage1
-        List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
+        //List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
+        IEnumerable<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll();
 
         for (int i = 0; i < 50; i++)
         {
             int index1 = s_rand.Next(0, 15);
             int index2 = s_rand.Next(0, 6);
             int tempID = new int(); // Assignment
-            Call tempCall = callist[i]; //1 call from the list 
-            Volunteer? tempVolunteer = volunteerlist[index1]; // volunteer
+            List<Call> callList = s_dal!.Call.ReadAll().ToList();
+            Call tempCall = callList[i];
+            List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
+            Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
             do
             {
                 tempID = s_dal!.Config.NextAssignmentId; //stage2
                 //tempID = s_dalConfig!.NextAssignmentId; //stage1
 
-            } while (s_dal!.Assignment.Read(tempID) != null); //stage2
+            } while (s_dal!.Assignment.Read(a => a.Id == tempID) != null); //stage2
             //} while (s_dalAssignment!.Read(tempID) != null); //stage1
 
             DateTime openTime = tempCall.OpeningTime;         // Retrieve open time from the call

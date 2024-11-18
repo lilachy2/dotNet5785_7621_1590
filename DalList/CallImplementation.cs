@@ -2,6 +2,8 @@
 using DalApi;
 using DO;
 using System.Collections.Generic;
+using System.Linq;
+
 /// <param name="Create">// create/add method
 /// <param name="Delete">Delete method of an existing object
 /// <param name="DeleteAll">// Method for deleting all objects of a certain type DeleteAll
@@ -43,18 +45,24 @@ internal  class CallImplementation : ICall
 
     /// <param name="item">// Searches for the Assignment by ID
 
-    public Call? Read(int id)
+    //public Call? Read(int id)//stage1
+    //{
+    //    //var item = DataSource.Calls.Find(x => x?.Id == id);  // stage1
+    //    var item = DataSource.Calls.FirstOrDefault(item => item.Id == id); //stage 2
+
+
+    //    if (item == null)
+    //        return null;
+
+    //    else
+    //        return item;
+    //}
+
+    public Call? Read(Func<Call, bool> filter)  //stage 2
     {
-        //var item = DataSource.Calls.Find(x => x?.Id == id);  // stage1
-        var item = DataSource.Calls.FirstOrDefault(item => item.Id == id); //stage 2
-
-
-        if (item == null)
-            return null;
-
-        else
-            return item;
+        return DataSource.Calls.FirstOrDefault(filter);
     }
+
 
     //public List<Call> ReadAll() // stage1
     //{
