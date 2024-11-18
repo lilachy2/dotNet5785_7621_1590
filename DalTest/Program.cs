@@ -16,6 +16,7 @@ namespace DalTest
 
         static readonly IDal s_dal = new DalList(); //stage 2
 
+
         private static readonly Random s_rand = new();
         private const int MIN_ID = 200000000;
         private const int MAX_ID = 400000000;
