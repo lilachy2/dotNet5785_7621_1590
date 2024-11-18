@@ -13,7 +13,7 @@ using System.Net;
 // <param name="s_rand">Random number generator.</param>
 // <param name="MIN_ID">Minimum ID value.</param
 // <param name="MAX_ID">Maximum ID value.</param>
- //<param name = "Names" > List of possible names.</param>
+//<param name = "Names" > List of possible names.</param>
 public static class Initialization
 {
     // stage1
@@ -23,14 +23,14 @@ public static class Initialization
     //private static IConfig? s_dalConfig;
 
     private static IDal? s_dal; //stage 2
- 
 
 
-    private static readonly Random s_rand = new();  
-    private static int MIN_ID = 10000000; 
-    private static int MAX_ID = 99999999;  
 
-    static string[] Names =  
+    private static readonly Random s_rand = new();
+    private static int MIN_ID = 10000000;
+    private static int MAX_ID = 99999999;
+
+    static string[] Names =
     {
         "Avi Cohen", "Sara Levi", "Yael Ben David", "Nir Azulay", "Tamar Gilad",
         "Roni Shaked", "Lior Peretz", "Meir Shechter", "Efrat Halevi", "Ofir Bar",
@@ -59,7 +59,7 @@ public static class Initialization
     };
 
 
-public static void CreateVolunteers()
+    public static void CreateVolunteers()
     {
         // Latitude and longitude range in Israel
         double minLatitude = 29.5;
@@ -88,8 +88,8 @@ public static void CreateVolunteers()
             do
             {
                 id = s_rand.Next(MIN_ID, MAX_ID);
-              
-             }
+
+            }
             //while (s_dalVolunteer!.Read(id) != null); //stage1
             //while (s_dal!.Volunteer.Read(id) != null); //stage2
             while (s_dal!.Volunteer.Read(v => v.id == id) != null);//stage2
@@ -113,7 +113,7 @@ public static void CreateVolunteers()
             Random rand = new Random(); // For latitude and longitude
             bool active = true;
 
-           
+
             double randomLatitude = s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude;
             double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
 
@@ -212,22 +212,27 @@ public static void CreateVolunteers()
     {
         //List<Call> callist = s_dalCall!.ReadAll(); //stage1
         //List<Call> callist = s_dal!.Call.ReadAll();//stage 2
-        IEnumerable<Call> callist = s_dal!.Call.ReadAll();
 
 
         //List<Volunteer?> volunteerlist = s_dalVolunteer!.ReadAll(); //stage1
         //List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
         IEnumerable<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll();
+        IEnumerable<Call> callist = s_dal!.Call.ReadAll();
 
         for (int i = 0; i < 50; i++)
         {
             int index1 = s_rand.Next(0, 15);
             int index2 = s_rand.Next(0, 6);
             int tempID = new int(); // Assignment
-            List<Call> callList = s_dal!.Call.ReadAll().ToList();
-            Call tempCall = callList[i];
-            List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
-            Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
+
+            ////List<Call> callList = s_dal!.Call.ReadAll().ToList();
+            //Call tempCall = callList[i];
+            ////List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
+            //Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
+
+            Call tempCall = callist.ElementAt(index2);  
+            Volunteer? tempVolunteer = volunteerlist.ElementAt(index1); 
+
             do
             {
                 tempID = s_dal!.Config.NextAssignmentId; //stage2
@@ -315,7 +320,7 @@ public static void CreateVolunteers()
 
 
         Console.WriteLine("Initializing Volunteers list ...");
-        CreateVolunteers(); 
+        CreateVolunteers();
         Console.WriteLine("Initializing Calls list ...");
         CreateCalls();
         Console.WriteLine("Initializing Assignments list ...");
