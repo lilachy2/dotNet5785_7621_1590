@@ -10,11 +10,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalFacade", "DalFacade\DalFacade.csproj", "{EDEBED65-B6E6-401C-97BF-985D288CEDE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalFacade", "DalFacade\DalFacade.csproj", "{EDEBED65-B6E6-401C-97BF-985D288CEDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalList", "DalList\DalList.csproj", "{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalList", "DalList\DalList.csproj", "{5DD6F6E1-E652-4AEF-BD6C-9FA1B1E78E00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalTest", "DalTest\DalTest.csproj", "{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalTest", "DalTest\DalTest.csproj", "{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalXml", "DalXml\DalXml.csproj", "{F000BF47-ABF8-4415-A1DE-C36092C80A91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{8EAE9629-7AE1-430C-AA0B-0E1805D39E8A}"
+	ProjectSection(SolutionItems) = preProject
+		xml\Assignments.xml = xml\Assignments.xml
+		xml\Calls.xml = xml\Calls.xml
+		xml\data-config.xml = xml\data-config.xml
+		xml\Volunteer.xml = xml\Volunteer.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,12 +48,17 @@ Global
 		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F000BF47-ABF8-4415-A1DE-C36092C80A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F000BF47-ABF8-4415-A1DE-C36092C80A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F000BF47-ABF8-4415-A1DE-C36092C80A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F000BF47-ABF8-4415-A1DE-C36092C80A91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EDEBED65-B6E6-401C-97BF-985D288CEDE6} = {B6CC8AE7-ED68-4CA8-BF71-1075A7E12AAA}
+		{F000BF47-ABF8-4415-A1DE-C36092C80A91} = {B6CC8AE7-ED68-4CA8-BF71-1075A7E12AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {262C9879-18BE-4DF5-B182-F8C7F2EB097D}

@@ -18,16 +18,16 @@ internal class VolunteerImplementation : IVolunteer
         //if (Read(item.id)!=null)//stage1
         if (Read(v => v.id == item.id) != null)
         {
-                //throw new Exception($"Volunteer with ID={item.id} does exist"); // stage1
-                throw new DalAlreadyExistsException($"Volunteer with ID={item.id} does exist"); // stage 2
+            //throw new Exception($"Volunteer with ID={item.id} does exist"); // stage1
+            throw new DalAlreadyExistsException($"Volunteer with ID={item.id} does exist"); // stage 2
 
 
 
-            }
-            else
-            {
+        }
+        else
+        {
             DataSource.Volunteers.Add(item);
-           /// return item.id; ??void...
+            /// return item.id; ??void...
         }
     }
 
@@ -40,19 +40,19 @@ internal class VolunteerImplementation : IVolunteer
 
         if (item == null)
         {
-//throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
+            //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
             throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
-                                                                                       }
+        }
         else
-        DataSource.Volunteers.Remove(item);
+            DataSource.Volunteers.Remove(item);
     }
 
     /// <param name="item">  // Retrieves the list of all Assignments
-   public void DeleteAll()
+    public void DeleteAll()
     {
         var item = DataSource.Volunteers;
-            item.Clear();
-        
+        item.Clear();
+
     }
 
     /// <param name="item">// Searches for the Assignment by ID

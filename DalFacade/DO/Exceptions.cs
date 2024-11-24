@@ -15,6 +15,8 @@ public class DalAlreadyExistsException : Exception
 public class DalDeletionImpossible : Exception
 {
     public DalDeletionImpossible(string? message) : base(message) { }
-
-
+}
+public class DalXMLFileLoadCreateException : Exception // Stage3
+{
+    public DalXMLFileLoadCreateException(string? message) : base(message) { }
 }
