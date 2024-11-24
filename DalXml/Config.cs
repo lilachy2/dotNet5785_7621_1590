@@ -8,6 +8,7 @@
 /// <param name="RiskRange"> // Represents the risk range date
 /// <param name="Reset"> // Resets configuration to default values
 
+//is this all the running items?
 internal static class Config
 {
     internal const string s_data_config_xml = "data-config";
@@ -33,10 +34,10 @@ internal static class Config
         set => XMLTools.SetConfigDateVal(s_data_config_xml, "Clock", value);
     }
 
-    internal static DateTime RiskRange
+    internal static TimeSpan RiskRange
     {
-        get => XMLTools.GetConfigDateVal(s_data_config_xml, "RiskRange");
-        set => XMLTools.SetConfigDateVal(s_data_config_xml, "RiskRange", value);
+        get => XMLTools.GetConfigSpanVal(s_data_config_xml, "RiskRange");
+        set => XMLTools.SetConfigSpanVal(s_data_config_xml, "RiskRange", value);
     }
 
     internal static void Reset()
@@ -45,6 +46,6 @@ internal static class Config
         NextAssignmentID = 1000;
 
         Clock = DateTime.Now;
-        RiskRange = DateTime.Now;
+        RiskRange = TimeSpan.FromHours(1);
     }
 }
