@@ -12,11 +12,13 @@ using DO;
         //private static ICall? s_dalCall;            // Data access layer for Calls
         //private static IAssignment? s_dalAssignment; // Data access layer for Assignments
         //private static IConfig? s_dalConfig;        // Data access layer for Configurations
+        
+        //static readonly IDal s_dal = new DalList(); //stage 2
+    static readonly IDal s_dal = new DalXml(); //stage 3
 
-        static readonly IDal s_dal = new DalList(); //stage 2
 
 
-        private static readonly Random s_rand = new();
+    private static readonly Random s_rand = new();
         private const int MIN_ID = 200000000;
         private const int MAX_ID = 400000000;
 

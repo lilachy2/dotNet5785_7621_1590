@@ -207,7 +207,7 @@ public static class Initialization
             s_dal!.Call.Create(new Call(randomLatitude, randomLongitude, calltype, tempID, VerbalDescription, address, openTime, maxEndTime)); //stage
         }
     }
-
+    
     public static void CreateAssignment()
     {
         //List<Call> callist = s_dalCall!.ReadAll(); //stage1
