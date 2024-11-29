@@ -35,8 +35,8 @@ public record Volunteer
 
 )
 {
-   
-    public Volunteer() : this(1, " ", 0, " ") { }
+    //1, " ", 0, " "
+    public Volunteer() : this(1, "", 0, "" ) { }
 
 }
 

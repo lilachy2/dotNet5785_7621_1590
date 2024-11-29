@@ -163,10 +163,10 @@ using DO;
                 // Catch and display any exceptions that occur during initialization
                 Console.WriteLine($"An error occurred during initialization: {ex.Message}");
             }
-        }
+    }
 
 
-        private static void VolunteerMenu()
+    private static void VolunteerMenu()
         {
             bool exit = false;
             while (!exit)

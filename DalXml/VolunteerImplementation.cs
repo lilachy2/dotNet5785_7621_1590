@@ -15,12 +15,19 @@ internal class VolunteerImplementation : IVolunteer
     {
         return new Volunteer()
         {
-            id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
+             id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
+            // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
+            //id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
+
             Name = (string?)v.Element("Name") ?? "",
             Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
             Email = (string?)v.Element("Email") ?? "",
-            Role = v.ToEnumNullable<Role>("Role") ?? Role.Volunteer,
-            Distance_Type = v.ToEnumNullable<distance_type>("Distance_Type") ?? distance_type.Aerial_distance,
+
+            Role = Enum.Parse<Role>((string?)v.Element("Role") ?? Role.Volunteer.ToString()),
+            Distance_Type = Enum.Parse<distance_type>((string?)v.Element("Distance_Type") ?? distance_type.Aerial_distance.ToString()),
+
+            //Role = v.ToEnumNullable<Role>("Role") ?? Role.Volunteer,
+            //Distance_Type = v.ToEnumNullable<distance_type>("Distance_Type") ?? distance_type.Aerial_distance,
             FullCurrentAddress = (string?)v.Element("FullCurrentAddress"),
             Latitude = v.ToDoubleNullable("Latitude"),
             Longitude = v.ToDoubleNullable("Longitude"),
@@ -35,8 +42,11 @@ internal class VolunteerImplementation : IVolunteer
         if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.id))
             throw new DalAlreadyExistsException($"Volunteer with ID={item.id} already exists.");
 
-        volunteersRoot.Add(new XElement("Volunteer", CreateVolunteerElement(item)));
+        volunteersRoot.Add(new XElement("Volunteers", CreateVolunteerElement(item)));
+        Console.WriteLine("Saving XML data...");
         XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
+        Console.WriteLine("Data saved.");
+
     }
     private static XElement CreateVolunteerElement(Volunteer v)
     {
@@ -57,15 +67,28 @@ internal class VolunteerImplementation : IVolunteer
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        XElement volunteersRoot = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml);
+
+        XElement? volunteerElem = volunteersRoot.Elements()
+                                                 .FirstOrDefault(v => (int?)v.Element("Id") == id)
+                             ?? throw new DalDoesNotExistException($"Volunteer with ID={id} does not exist.");
+
+        volunteerElem.Remove();
+
+        XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
     }
 
     public void DeleteAll()
     {
-        throw new NotImplementedException();
+        XElement volunteersRoot = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml);
+
+        volunteersRoot.RemoveAll();
+
+        XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
     }
 
     public Volunteer? Read(Func<Volunteer, bool> filter)
+    
     {
         return XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
                                   .Elements()
