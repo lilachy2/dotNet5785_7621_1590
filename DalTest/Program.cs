@@ -197,7 +197,7 @@ using DO;
                         int tempid = int.Parse(Console.ReadLine() ?? "0");
                     //s_dalVolunteer!.Read(tempid); // Method to display volunteer by ID
                     //s_dal.Volunteer!.Read(tempid); // Method to display volunteer by ID
-                    var volunteerExists = s_dal.Volunteer!.Read(v => v.id == tempid) != null;
+                    var volunteerExists = s_dal.Volunteer!.Read(v => v.Id == tempid) != null;
                     Console.WriteLine(volunteerExists ? "Volunteer exists" : "Volunteer does not exist");
                     break;
                     case VolunteerMenuOption.ReadAll:
@@ -491,7 +491,7 @@ using DO;
                         case "2":
                             Console.WriteLine("Enter the ID of the object to Read:");
                             int idToRead = int.Parse(Console.ReadLine() ?? "0");
-                        var volunteerExists = s_dal.Volunteer!.Read(v => v.id == idToRead) != null;
+                        var volunteerExists = s_dal.Volunteer!.Read(v => v.Id == idToRead) != null;
                         Console.WriteLine(volunteerExists ? "Volunteer exists" : "Volunteer does not exist");
                         // s_dalAssignment!.Read(idToRead);
                         // Code to read and display the object by ID

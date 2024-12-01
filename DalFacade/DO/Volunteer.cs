@@ -21,7 +21,7 @@ public record Volunteer
      /// <param name=" distance> Air distance, walking distance, car travel distance. The default is air distance.
 
      // The class represents the data entities under the DO directory
-     int id , 
+     int  Id , 
      string Name,
      int Number_phone ,
      string Email ,

@@ -22,7 +22,7 @@ public static class Initialization
     //private static IAssignment? s_dalAssignment; 
     //private static IConfig? s_dalConfig;
 
-    private static IDal? s_dal; //stage 2
+    private static IDal? s_dal; //stage 2 
 
 
 
@@ -92,7 +92,7 @@ public static class Initialization
             }
             //while (s_dalVolunteer!.Read(id) != null); //stage1
             //while (s_dal!.Volunteer.Read(id) != null); //stage2
-            while (s_dal!.Volunteer.Read(v => v.id == id) != null);//stage2
+            while (s_dal!.Volunteer.Read(v => v.Id == id) != null);//stage2
 
             string phone = "05" + s_rand.Next(0, 8).ToString() + s_rand.Next(1000000, 9999999).ToString();
             int p1 = int.Parse(phone); // To perform conversion for the constructor
@@ -155,11 +155,17 @@ public static class Initialization
         double maxLatitude = 33.5;
         double minLongitude = 34.3;
         double maxLongitude = 35.9;
+        bool first = true; // if tempID first can be null
 
         for (int i = 0; i < 50; i++)
         {
             do
             {
+                if (first== true)
+               //{ tempID = s_dal.Config.NextCallId; //stage2
+               { tempID = s_dal!.Config.NextCallId; //stage2
+                    first = false;  
+               }
                 tempID = s_dal!.Config.NextCallId; //stage2
                 //tempID = s_dalConfig!.NextCallId; //stage1
             }
@@ -207,90 +213,198 @@ public static class Initialization
             s_dal!.Call.Create(new Call(randomLatitude, randomLongitude, calltype, tempID, VerbalDescription, address, openTime, maxEndTime)); //stage
         }
     }
-    
+
     public static void CreateAssignment()
     {
-        //List<Call> callist = s_dalCall!.ReadAll(); //stage1
-        //List<Call> callist = s_dal!.Call.ReadAll();//stage 2
+        // קריאה לרשימות של מתנדבים וקריאות
+        IEnumerable<Volunteer>? volunteerlist = s_dal?.Volunteer.ReadAll();
+        IEnumerable<Call>? callist = s_dal?.Call.ReadAll();
 
-
-        //List<Volunteer?> volunteerlist = s_dalVolunteer!.ReadAll(); //stage1
-        //List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
-        IEnumerable<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll();
-        IEnumerable<Call> callist = s_dal!.Call.ReadAll();
-
-        for (int i = 0; i < 50; i++)
+        // אם יש בעיה עם רשימות, עצור את ביצוע הקוד
+        if (volunteerlist == null || !volunteerlist.Any())
         {
-            int index1 = s_rand.Next(0, 15);
-            int index2 = s_rand.Next(0, 6);
-            int tempID = new int(); // Assignment
+            Console.WriteLine("No volunteers found.");
+            return;
+        }
 
-            ////List<Call> callList = s_dal!.Call.ReadAll().ToList();
-            //Call tempCall = callList[i];
-            ////List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
-            //Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
+        if (callist == null || !callist.Any())
+        {
+            Console.WriteLine("No calls found.");
+            return;
+        }
 
-            Call tempCall = callist.ElementAt(index2);  
-            Volunteer? tempVolunteer = volunteerlist.ElementAt(index1); 
+        foreach (Call tempCall in callist)
+        {
+            // בחירת אינדקס רנדומלי למתנדב וקריאה
+            int index1 = s_rand.Next(0, volunteerlist.Count());  // ודא שהאינדקס בתווך החוקי
+            int index2 = s_rand.Next(0, callist.Count());        // ודא שהאינדקס בתווך החוקי
+            int tempID = s_dal!.Config.NextAssignmentId;  // שלב שלב-2 ליצירת מזהה חדש
 
-            do
+            // בחירת המתנדב והקריאה לפי האינדקסים הרנדומליים
+            Volunteer? tempVolunteer = volunteerlist.ElementAtOrDefault(index1);
+            Call? tempCall1 = callist.ElementAtOrDefault(index2);
+
+            if (tempVolunteer == null || tempCall1 == null)
             {
-                tempID = s_dal!.Config.NextAssignmentId; //stage2
-                //tempID = s_dalConfig!.NextAssignmentId; //stage1
+                // אם לא נמצא מתנדב או קריאה, דלג על ביצוע המשימה הזאת
+                Console.WriteLine("Invalid volunteer or call index.");
+                continue;
+            }
 
-            } while (s_dal!.Assignment.Read(a => a.Id == tempID) != null); //stage2
-            //} while (s_dalAssignment!.Read(tempID) != null); //stage1
+            // בדיקת מזהה assignment אם כבר קיים
+            while (s_dal!.Assignment.Read(a => a.Id == tempID) != null)
+            {
+                tempID = s_dal!.Config.NextAssignmentId; // הפעל את המונה שוב במקרה של קיום מזהה קודם
+            }
 
-            DateTime openTime = tempCall.OpeningTime;         // Retrieve open time from the call
-            DateTime? maxEndTime = tempCall.MaxEndTime;    // Retrieve max end time from the call
-            // Generate a random entry time between openTime and maxEndTime
+            // קבלת זמן פתיחה וזמן סיום מקסימלי מהקריאה
+            DateTime openTime = tempCall.OpeningTime;
+            DateTime? maxEndTime = tempCall.MaxEndTime;
+
+            // חישוב זמן כניסה אקראי בין זמן הפתיחה לזמן הסיום המקסימלי
             DateTime entryTime;
             if (maxEndTime.HasValue)
             {
-                entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(maxEndTime.Value - openTime).TotalMinutes));
+                int totalMinutes = (int)(maxEndTime.Value - openTime).TotalMinutes;
+                if (totalMinutes > 0)
+                {
+                    entryTime = openTime.AddMinutes(s_rand.Next(1, totalMinutes));
+                }
+                else
+                {
+                    entryTime = openTime;  // אם הזמן הסופי המקסימלי הוא פחות מ-1 דקה, השתמש בזמן פתיחה
+                }
             }
             else
             {
-                // If no max end time is defined, use the current time as an upper bound
                 entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
             }
-            // Determine end time and status
+
+            // קביעת זמני סיום ותוצאות סיום (האם בוצע טיפול בזמן, בוטל על ידי מתנדב, בוטל על ידי מנהל, פעיל)
             DateTime? endTime = null;
             AssignmentCompletionType? endOfTreatment = null;
             bool isExpired = maxEndTime.HasValue && entryTime > maxEndTime.Value;
-            //for the times will make sence
+
+            // חישוב אם הזמן לא עבר את זמן הסיום
             if (!isExpired)
             {
-                // Randomly decide if treatment ends on time, is cancelled, or remains active
                 int endTypeDecision = s_rand.Next(0, 4); // 0: Treated on Time, 1: VolunteerCancelled, 2: AdminCancelled, 3: Active
                 switch (endTypeDecision)
                 {
                     case 0:
                         endOfTreatment = AssignmentCompletionType.TreatedOnTime;
-                        endTime = entryTime.AddMinutes(s_rand.Next(1, 60)); // Random end time within an hour
+                        endTime = entryTime.AddMinutes(s_rand.Next(1, 60)); // זמן סיום אקראי בתוך שעה
                         break;
                     case 1:
                         endOfTreatment = AssignmentCompletionType.VolunteerCancelled;
-                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
+                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // זמן סיום אקראי בתוך 30 דקות
                         break;
                     case 2:
                         endOfTreatment = AssignmentCompletionType.AdminCancelled;
-                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
+                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // זמן סיום אקראי בתוך 30 דקות
                         break;
                     case 3:
-                        // Active call - no end time, no completion type
+                        // טיפול פעיל - אין זמן סיום, אין סוג סיום
                         break;
                 }
             }
             else
             {
-                // If the call has expired, set status to Expired and leave endTime as null
+                // אם הקריאה פג, הגדר את הסטטוס כ"פג"
                 endOfTreatment = AssignmentCompletionType.Expired;
             }
-            s_dal!.Assignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.id ?? 0, endTime, endOfTreatment)); //stage2
-            //s_dalAssignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.id ?? 0, endTime, endOfTreatment)); //stage1
+
+            // יצירת המשימה החדשה
+            Assignment newAssignment = new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.Id ?? 0, endTime, endOfTreatment);
+            s_dal!.Assignment.Create(newAssignment);
         }
     }
+
+
+    ////    public static void CreateAssignment()
+    ////    {
+    ////        List<Call> callist = s_dalCall!.ReadAll(); //stage1
+    ////        List<Call> callist = s_dal!.Call.ReadAll();//stage 2
+
+
+    ////        List<Volunteer?> volunteerlist = s_dalVolunteer!.ReadAll(); //stage1
+    ////        List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
+    ////        IEnumerable<Volunteer>? volunteerlist = s_dal?.Volunteer.ReadAll();
+    ////        IEnumerable<Call>? callist = s_dal.Call?.ReadAll();
+
+    ////        foreach (Call iteam in callist)
+    ////        {
+
+    ////            int index1 = s_rand.Next(0, 15);
+    ////            int index2 = s_rand.Next(0, 6);
+    ////            int tempID = new int(); // Assignment
+
+    ////            //List<Call> callList = s_dal!.Call.ReadAll().ToList();
+    ////            Call tempCall = callList[i];
+    ////            //List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
+    ////            Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
+
+    ////            Call tempCall = callist.ElementAt(index2);
+    ////            Volunteer? tempVolunteer = volunteerlist.ElementAt(index1);
+
+    ////            do
+    ////            {
+    ////                tempID = s_dal!.Config.NextAssignmentId; //stage2
+    ////                tempID = s_dalConfig!.NextAssignmentId; //stage1
+
+    ////            } while (s_dal!.Assignment.Read(a => a.Id == tempID) != null); //stage2
+    ////        } while (s_dalAssignment!.Read(tempID) != null) ; //stage1
+
+    ////        DateTime openTime = tempCall.OpeningTime;         // Retrieve open time from the call
+    ////        DateTime? maxEndTime = tempCall.MaxEndTime;    // Retrieve max end time from the call
+    ////        Generate a random entry time between openTime and maxEndTime
+    ////       DateTime entryTime;
+    ////        if (maxEndTime.HasValue)
+    ////        {
+    ////            entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(maxEndTime.Value - openTime).TotalMinutes));
+    ////        }
+    ////        else
+    ////        {
+    ////            If no max end time is defined, use the current time as an upper bound
+    ////                entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
+    ////        }
+    ////        Determine end time and status
+    ////       DateTime? endTime = null;
+    ////        AssignmentCompletionType? endOfTreatment = null;
+    ////        bool isExpired = maxEndTime.HasValue && entryTime > maxEndTime.Value;
+    ////        for the times will make sence
+    ////            if (!isExpired)
+    ////            {
+    ////                Randomly decide if treatment ends on time, is cancelled, or remains active
+    ////                int endTypeDecision = s_rand.Next(0, 4); // 0: Treated on Time, 1: VolunteerCancelled, 2: AdminCancelled, 3: Active
+    ////                switch (endTypeDecision)
+    ////                {
+    ////                    case 0:
+    ////                        endOfTreatment = AssignmentCompletionType.TreatedOnTime;
+    ////                        endTime = entryTime.AddMinutes(s_rand.Next(1, 60)); // Random end time within an hour
+    ////                        break;
+    ////                    case 1:
+    ////                        endOfTreatment = AssignmentCompletionType.VolunteerCancelled;
+    ////                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
+    ////                        break;
+    ////                    case 2:
+    ////                        endOfTreatment = AssignmentCompletionType.AdminCancelled;
+    ////                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
+    ////                        break;
+    ////                    case 3:
+    ////                        Active call -no end time, no completion type
+    ////                        break;
+    ////                }
+    ////            }
+    ////            else
+    ////            {
+    ////                If the call has expired, set status to Expired and leave endTime as null
+    ////                endOfTreatment = AssignmentCompletionType.Expired;
+    ////            }
+    ////        s_dal!.Assignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.Id ?? 0, endTime, endOfTreatment)); //stage2
+    ////        s_dalAssignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.id ?? 0, endTime, endOfTreatment)); //stage1
+    ////    }
+    ////}
 
     //stage1
     //public static void Do(IVolunteer? dalVolunteer, ICall? dalCall, IAssignment? dalAssignment, IConfig? dalConfig)
@@ -318,13 +432,14 @@ public static class Initialization
 
         s_dal.ResetDB();//stage 2
 
-
         Console.WriteLine("Initializing Volunteers list ...");
         CreateVolunteers();
-        Console.WriteLine("Initializing Calls list ...");
-        CreateCalls();
         Console.WriteLine("Initializing Assignments list ...");
         CreateAssignment();
+        Console.WriteLine("Initializing Calls list ...");
+        CreateCalls();
+      
+       
 
 
     }

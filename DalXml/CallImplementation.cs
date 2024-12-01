@@ -24,6 +24,7 @@ internal class CallImplementation : ICall
         XMLTools.SaveListToXMLSerializer(Calls, Config.s_Calls_xml);
     }
 
+
     public void Delete(int id)
     {
         List<Call> Calls = XMLTools.LoadListFromXMLSerializer<Call>(Config.s_Calls_xml);

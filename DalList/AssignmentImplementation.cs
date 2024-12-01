@@ -50,28 +50,24 @@ internal class AssignmentImplementation : IAssignment
     }
 
     /// <param name="item">// Searches for the Assignment by ID
-    //public Assignment? Read(int id)  // // stage1
-    //{
+    public Assignment? Read(int id)  // // stage1
+    {
 
-    //    //var item = DataSource.Assignments.Find(x => x?.Id == id); // stage 1
-    //    var item = DataSource.Assignments.FirstOrDefault(item => item.Id == id); //stage 2
+        //var item = DataSource.Assignments.Find(x => x?.Id == id); // stage 1
+        var item = DataSource.Assignments.FirstOrDefault(item => item.Id == id); //stage 2
 
 
-    //    if (item == null)
-    //        return null;
+        if (item == null)
+            return null;
 
-    //    else
-    //        return item;
-    //}
+        else
+            return item;
+    }
 
     public Assignment? Read(Func <Assignment, bool>  filter)  //stage 2
     {
         return DataSource.Assignments.FirstOrDefault(filter);
     }
-
-
-
-
 
     //public List<Assignment> ReadAll()  // stage1
     //{

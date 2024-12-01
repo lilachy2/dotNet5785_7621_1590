@@ -16,10 +16,10 @@ internal class VolunteerImplementation : IVolunteer
     public void Create(Volunteer item)
     {
         //if (Read(item.id)!=null)//stage1
-        if (Read(v => v.id == item.id) != null)
+        if (Read(v => v.Id == item.Id) != null)
         {
             //throw new Exception($"Volunteer with ID={item.id} does exist"); // stage1
-            throw new DalAlreadyExistsException($"Volunteer with ID={item.id} does exist"); // stage 2
+            throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} does exist"); // stage 2
 
 
 
@@ -36,7 +36,7 @@ internal class VolunteerImplementation : IVolunteer
     public void Delete(int id)
     {
 
-        var item = DataSource.Volunteers.Find(x => x?.id == id);
+        var item = DataSource.Volunteers.Find(x => x?.Id == id);
 
         if (item == null)
         {
@@ -57,19 +57,19 @@ internal class VolunteerImplementation : IVolunteer
 
     /// <param name="item">// Searches for the Assignment by ID
 
-    //public Volunteer? Read(int id)//stage1
-    //{
+    public Volunteer? Read(int id)//stage1
+    {
 
-    //    //var item = DataSource.Volunteers.Find(x => x?.id == id);  // stage1
-    //    var item = DataSource.Volunteers.FirstOrDefault(item => item.id == id); //stage 2
+        //var item = DataSource.Volunteers.Find(x => x?.id == id);  // stage1
+        var item = DataSource.Volunteers.FirstOrDefault(item => item.Id == id); //stage 2
 
 
-    //    if (item == null)
-    //        return null;
+        if (item == null)
+            return null;
 
-    //    else
-    //        return item;
-    //}
+        else
+            return item;
+    }
 
 
     public Volunteer? Read(Func<Volunteer, bool> filter)  //stage 2
@@ -108,12 +108,12 @@ internal class VolunteerImplementation : IVolunteer
 
     public void Update(Volunteer item)
     {
-        Volunteer? old = DataSource.Volunteers.Find(x => x?.id == item.id);
+        Volunteer? old = DataSource.Volunteers.Find(x => x?.Id == item.Id);
 
         if (old == null)
         {
             //throw new Exception($"Volunteer with ID={item.id} does not exist"); // // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={item.id} does not exist"); // stag 2
+            throw new DalDeletionImpossible($"Volunteer with ID={item.Id} does not exist"); // stag 2
         }
         else
         {
