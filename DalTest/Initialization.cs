@@ -203,6 +203,8 @@ public static class Initialization
 
             //    maxEndTime = openTime.Add(riskSpan).AddHours(extraHours).AddMinutes(extraMinutes);
             //}
+            //
+
 
 
             DateTime openTime = s_dal!.Config.Clock.AddDays(-1);
