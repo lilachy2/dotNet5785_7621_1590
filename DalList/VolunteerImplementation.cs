@@ -20,9 +20,6 @@ internal class VolunteerImplementation : IVolunteer
         {
             //throw new Exception($"Volunteer with ID={item.id} does exist"); // stage1
             throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} does exist"); // stage 2
-
-
-
         }
         else
         {
