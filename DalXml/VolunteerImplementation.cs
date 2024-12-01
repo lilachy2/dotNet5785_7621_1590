@@ -15,7 +15,7 @@ internal class VolunteerImplementation : IVolunteer
     {
         return new Volunteer()
         {
-             id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
+             Id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
             // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
             //id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
 
@@ -39,8 +39,8 @@ internal class VolunteerImplementation : IVolunteer
     {
         XElement volunteersRoot = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml);
 
-        if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.id))
-            throw new DalAlreadyExistsException($"Volunteer with ID={item.id} already exists.");
+        if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.Id))
+            throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} already exists.");
 
         volunteersRoot.Add(new XElement("Volunteers", CreateVolunteerElement(item)));
         Console.WriteLine("Saving XML data...");
@@ -51,7 +51,7 @@ internal class VolunteerImplementation : IVolunteer
     private static XElement CreateVolunteerElement(Volunteer v)
     {
         return new XElement("Volunteer",
-            new XElement("Id", v.id),
+            new XElement("Id", v.Id),
             new XElement("Name", v.Name),
             new XElement("Number_phone", v.Number_phone),
             new XElement("Email", v.Email),
@@ -86,7 +86,20 @@ internal class VolunteerImplementation : IVolunteer
 
         XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
     }
+    public Volunteer? Read(int id)
+    {
+        XElement? studentElem =
+    XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml).Elements().FirstOrDefault(st => (int?)st.Element("Id") == id);
+        return studentElem is null ? null : GetVolunteer(studentElem);
+    }
 
+    //public Volunteer? Read(int id)//stage1 //dot do like this !!!!!
+    //{
+    //    return XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
+    //                            .Elements()
+    //                            .Select(v => GetVolunteer(v))
+    //                            .FirstOrDefault(item => item.id == id);
+    //}
     public Volunteer? Read(Func<Volunteer, bool> filter)
     
     {
@@ -108,8 +121,8 @@ internal class VolunteerImplementation : IVolunteer
     {
         XElement volunteersRoot = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml);
 
-        XElement? volunteerElem = volunteersRoot.Elements().FirstOrDefault(v => (int?)v.Element("Id") == item.id)
-                                 ?? throw new DalAlreadyExistsException($"Volunteer with ID={item.id} does not exist.");
+        XElement? volunteerElem = volunteersRoot.Elements().FirstOrDefault(v => (int?)v.Element("Id") == item.Id)
+                                 ?? throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} does not exist.");
 
         volunteerElem.Remove();
 

@@ -14,15 +14,16 @@ using System.Linq;
 /// <param name="Update(Assignment item)"> //Updates an existing entity object
 internal class AssignmentImplementation : IAssignment
 {
+    //v => (int?) v.Element("Id") == item.Id)
     public void Create(Assignment item)
     {
         List<Assignment> Assignments = XMLTools.LoadListFromXMLSerializer<Assignment>(Config.s_Assignments_xml);
-        if (Assignments.Any(c => c.Id == item.Id))
-            throw new DalAlreadyExistsException($"Course with ID={item.Id} does Not exist");
+        //if (Assignments.Any(c => c.Id == item.Id))
+        //    throw new DalAlreadyExistsException($"Course with ID={item.Id} does Not exist");
         int newId1 = Config.NextAssignmentID;
-        Assignment newItem = new Assignment() { Id = newId1};
+        Assignment newItem = item with { Id = newId1};
         Assignments.Add(item);
-        XMLTools.SaveListToXMLSerializer(Assignments, Config.s_Calls_xml);
+        XMLTools.SaveListToXMLSerializer(Assignments, Config.s_Assignments_xml);
     }
 
     public void Delete(int id)
@@ -42,6 +43,13 @@ internal class AssignmentImplementation : IAssignment
     {
         List<Assignment> Assignments = XMLTools.LoadListFromXMLSerializer<Assignment>(Config.s_Assignments_xml);
         var v = Assignments.FirstOrDefault(filter);
+        return v;
+    }
+
+    public Assignment? Read(int id)
+    {
+        List<Assignment> Assignments = XMLTools.LoadListFromXMLSerializer<Assignment>(Config.s_Assignments_xml);
+        var v = Assignments.FirstOrDefault(item => item.Id == id);
         return v;
     }
 

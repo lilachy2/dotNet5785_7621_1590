@@ -15,10 +15,8 @@ internal class CallImplementation : ICall
     public void Create(Call item)
     {
         List<Call> Calls = XMLTools.LoadListFromXMLSerializer<Call>(Config.s_Calls_xml);
-        if (Calls.Any(c => c.Id == item.Id))
-            throw new DalAlreadyExistsException($"Course with ID={item.Id} does Not exist");
         int newId = Config.NextCallId;
-        Call newItem = new Call() { Id = newId };
+        Call newItem = item with { Id = newId };
         Calls.Add(newItem);
 
         XMLTools.SaveListToXMLSerializer(Calls, Config.s_Calls_xml);
@@ -43,6 +41,12 @@ internal class CallImplementation : ICall
         var v=  Calls.FirstOrDefault(filter);
         return v;
     }
+    public Call? Read(int id)
+    {
+        List<Call> Calls = XMLTools.LoadListFromXMLSerializer<Call>(Config.s_Calls_xml);
+        var v = Calls.FirstOrDefault(item => item.Id == id);
+        return v;
+    }
 
     public IEnumerable<Call> ReadAll(Func<Call, bool>? filter = null)
     {
@@ -53,9 +57,8 @@ internal class CallImplementation : ICall
         : Calls.Where(filter);
 
     }
-
     public void Update(Call item)
-    {
+    { 
         List<Call> Calls = XMLTools.LoadListFromXMLSerializer<Call>(Config.s_Calls_xml);
         if (Calls.RemoveAll(it => it.Id == item.Id) == 0)
             throw new DalDoesNotExistException($"Course with ID={item.Id} does Not exist");
