@@ -65,25 +65,25 @@ internal class CallImplementation : ICall
     }
 
 
-    public List<Call> ReadAll() // stage1
-    {
-        List<Call> calls = new List<Call>(DataSource.Calls);
+    //public List<Call> ReadAll() // stage1
+    //{
+    //    List<Call> calls = new List<Call>(DataSource.Calls);
 
-        // print 
-        foreach (var call in calls)
-        {
-            if (call != null)
-            {
-                Console.WriteLine(call);
-            }
-            else
-            {
-                Console.WriteLine("Null Volunteer");
-            }
-        }
+    //    // print 
+    //    foreach (var call in calls)
+    //    {
+    //        if (call != null)
+    //        {
+    //            Console.WriteLine(call);
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Null Volunteer");
+    //        }
+    //    }
 
-        return new List<Call>(DataSource.Calls);///ask about ?
-    }
+    //    return new List<Call>(DataSource.Calls);///ask about ?
+    //} 
 
     public IEnumerable<Call> ReadAll(Func<Call, bool>? filter = null) //stage 2
     => filter == null

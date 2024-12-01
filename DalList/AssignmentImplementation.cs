@@ -21,7 +21,7 @@ internal class AssignmentImplementation : IAssignment
     {
         int newId1 = Config.NextAssignmentId;
         //int newId2 = Config.NextAssignmentId;
-        Assignment newItem = new Assignment() { Id = newId1/*, CallId= newId2*/};
+        Assignment newItem = new Assignment() { Id = newId1 };
         DataSource.Assignments.Add(newItem);
         ///return newItem.Id;
     }
@@ -64,10 +64,14 @@ internal class AssignmentImplementation : IAssignment
             return item;
     }
 
-    public Assignment? Read(Func <Assignment, bool>  filter)  //stage 2
+    public Assignment? Read(Func<Assignment, bool> filter)  //stage 2
     {
         return DataSource.Assignments.FirstOrDefault(filter);
     }
+
+
+
+
 
     //public List<Assignment> ReadAll()  // stage1
     //{

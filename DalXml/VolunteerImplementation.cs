@@ -3,7 +3,6 @@ using DalApi;
 using DO;
 using System;
 using System.Collections.Generic;
-using System.Threading.Channels;
 using System.Xml.Linq;
 
 //XElement
@@ -16,7 +15,7 @@ internal class VolunteerImplementation : IVolunteer
     {
         return new Volunteer()
         {
-             id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
+            Id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
             // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
             //id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
 
@@ -35,19 +34,12 @@ internal class VolunteerImplementation : IVolunteer
             Active = (bool?)v.Element("Active") ?? true,
             distance = v.ToDoubleNullable("distance")
         };
-
-
-
-
     }
     public void Create(Volunteer item)
     {
         XElement volunteersRoot = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml);
 
-        if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.id))
-            throw new DalAlreadyExistsException($"Volunteer with ID={item.id} already exists.");
-
-        if (volunteersRoot.Elements().Any(v => (int)v.Element("Id") == item.Id))
+        if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.Id))
             throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} already exists.");
 
         volunteersRoot.Add(new XElement("Volunteers", CreateVolunteerElement(item)));
@@ -109,10 +101,10 @@ internal class VolunteerImplementation : IVolunteer
     //                            .FirstOrDefault(item => item.id == id);
     //}
     public Volunteer? Read(Func<Volunteer, bool> filter)
-    
+
     {
         return XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
-                                  .Elements() // return all XELEMET IN s_Volunteers_xml
+                                  .Elements()
                                   .Select(v => GetVolunteer(v))
                                   .FirstOrDefault(filter);
     }
