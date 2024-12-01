@@ -11,7 +11,7 @@
 //is this all the running items?
 internal static class Config
 {
-    internal const string s_data_config_xml = "data-config";
+    internal const string s_data_config_xml = "data-config.xml";
     internal const string s_Assignments_xml = "Assignments.xml";
     internal const string s_Volunteers_xml = "Volunteers.xml";
     internal const string s_Calls_xml = "Calls.xml";
@@ -24,8 +24,8 @@ internal static class Config
 
     internal static int NextAssignmentID
     {
-        get => XMLTools.GetAndIncreaseConfigIntVal(s_data_config_xml, "NextCallId");
-        private set => XMLTools.SetConfigIntVal(s_data_config_xml, "NextCallId", value);
+        get => XMLTools.GetAndIncreaseConfigIntVal(s_data_config_xml, "NextAssignmentId");
+        private set => XMLTools.SetConfigIntVal(s_data_config_xml, "NextAssignmentId", value);
     }
 
     internal static DateTime Clock

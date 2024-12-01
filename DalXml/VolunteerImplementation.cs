@@ -16,10 +16,9 @@ internal class VolunteerImplementation : IVolunteer
     {
         return new Volunteer()
         {
-
-            // Id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
-            //Id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
-            Id = (int?)v.Element("Id") ?? throw new FormatException("ID element is missing or invalid."),
+             id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
+            // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
+            //id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
 
             Name = (string?)v.Element("Name") ?? "",
             Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
@@ -45,8 +44,8 @@ internal class VolunteerImplementation : IVolunteer
     {
         XElement volunteersRoot = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml);
 
-        //if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.Id))
-        //    throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} already exists.");
+        if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.id))
+            throw new DalAlreadyExistsException($"Volunteer with ID={item.id} already exists.");
 
         if (volunteersRoot.Elements().Any(v => (int)v.Element("Id") == item.Id))
             throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} already exists.");
@@ -95,7 +94,20 @@ internal class VolunteerImplementation : IVolunteer
 
         XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
     }
+    public Volunteer? Read(int id)
+    {
+        XElement? studentElem =
+    XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml).Elements().FirstOrDefault(st => (int?)st.Element("Id") == id);
+        return studentElem is null ? null : GetVolunteer(studentElem);
+    }
 
+    //public Volunteer? Read(int id)//stage1 //dot do like this !!!!!
+    //{
+    //    return XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
+    //                            .Elements()
+    //                            .Select(v => GetVolunteer(v))
+    //                            .FirstOrDefault(item => item.id == id);
+    //}
     public Volunteer? Read(Func<Volunteer, bool> filter)
     
     {
