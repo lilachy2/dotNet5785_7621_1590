@@ -14,7 +14,6 @@ using System.Linq;
 /// <param name="Update(Assignment item)"> //Updates an existing entity object
 internal class AssignmentImplementation : IAssignment
 {
-    //v => (int?) v.Element("Id") == item.Id)
     public void Create(Assignment item)
     {
         List<Assignment> Assignments = XMLTools.LoadListFromXMLSerializer<Assignment>(Config.s_Assignments_xml);

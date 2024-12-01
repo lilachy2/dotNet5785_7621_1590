@@ -110,7 +110,7 @@ public static class Initialization
 
             double? maxDistance = s_rand.Next(5, 20); // Default distance in kilometers
 
-            Random rand = new Random(); // For latitude and longitude
+            //Random rand = new Random(); // For latitude and longitude
             bool active = true;
 
 
@@ -222,188 +222,190 @@ public static class Initialization
         }
     }
 
-    //public static void CreateAssignment()
-    //{
-    //    //List<Call> callist = s_dalCall!.ReadAll(); //stage1
-    //    //List<Call> callist = s_dal!.Call.ReadAll();//stage 2
-
-
-    //    //List<Volunteer?> volunteerlist = s_dalVolunteer!.ReadAll(); //stage1
-    //    //List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
-    //    IEnumerable<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll();
-    //    IEnumerable<Call> callist = s_dal!.Call.ReadAll();
-
-    //   foreach(var item in callist)
-    //    {
-    //        int i = 0;
-    //        int index1 = Initialization.s_rand.Next(0, 15);
-    //        int index2 = Initialization.s_rand.Next(0, 6);
-    //       // int tempID = new int(); // Assignment
-
-    //        ////List<Call> callList = s_dal!.Call.ReadAll().ToList();
-    //        //Call tempCall = callList[i];
-    //        ////List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
-    //        //Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
-
-    //        Call tempCall = callist.ElementAt(index2);
-    //        Volunteer tempVolunteer = volunteerlist.ElementAt(index1);
-
-    //        //RUN NUM
-    //        //do
-    //        //{
-    //        //    tempID = s_dal!.Config.NextAssignmentId; //stage2
-    //        //    //tempID = s_dalConfig!.NextAssignmentId; //stage1
-
-    //        //} while (s_dal!.Assignment.Read(a => a.Id == tempID) != null); //stage2
-    //        ////} while (s_dalAssignment!.Read(tempID) != null); //stage1
-
-    //        DateTime openTime = tempCall.OpeningTime;         // Retrieve open time from the call
-    //        DateTime? maxEndTime = tempCall.MaxEndTime;    // Retrieve max end time from the call
-    //        // Generate a random entry time between openTime and maxEndTime
-    //        DateTime entryTime;
-    //        if (maxEndTime.HasValue)
-    //        {
-    //            entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(maxEndTime.Value - openTime).TotalMinutes));
-    //        }
-    //        else
-    //        {
-    //            // If no max end time is defined, use the current time as an upper bound
-    //            entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
-    //        }
-    //        // Determine end time and status
-    //        DateTime? endTime = null;
-    //        AssignmentCompletionType? endOfTreatment = null;
-    //        bool isExpired = maxEndTime.HasValue && entryTime > maxEndTime.Value;
-    //        //for the times will make sence
-    //        if (!isExpired)
-    //        {
-    //            // Randomly decide if treatment ends on time, is cancelled, or remains active
-    //            int endTypeDecision = s_rand.Next(0, 4); // 0: Treated on Time, 1: VolunteerCancelled, 2: AdminCancelled, 3: Active
-    //            switch (endTypeDecision)
-    //            {
-    //                case 0:
-    //                    endOfTreatment = AssignmentCompletionType.TreatedOnTime;
-    //                    endTime = entryTime.AddMinutes(s_rand.Next(1, 60)); // Random end time within an hour
-    //                    break;
-    //                case 1:
-    //                    endOfTreatment = AssignmentCompletionType.VolunteerCancelled;
-    //                    endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
-    //                    break;
-    //                case 2:
-    //                    endOfTreatment = AssignmentCompletionType.AdminCancelled;
-    //                    endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
-    //                    break;
-    //                case 3:
-    //                    // Active call - no end time, no completion type
-    //                    break;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            // If the call has expired, set status to Expired and leave endTime as null
-    //            endOfTreatment = AssignmentCompletionType.Expired;
-    //        }
-    //        s_dal!.Assignment.Create(new Assignment(entryTime, default, tempCall.Id, tempVolunteer?.Id ?? 0, endTime, endOfTreatment)); //stage2
-    //                                                                                                                                   //s_dalAssignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.id ?? 0, endTime, endOfTreatment)); //stage1
-
-    //    }
-
-    //}
-
     public static void CreateAssignment()
     {
-        IEnumerable<Volunteer> volunteerList = s_dal!.Volunteer.ReadAll();
-        IEnumerable<Call> callList = s_dal!.Call.ReadAll();
+        //List<Call> callist = s_dalCall!.ReadAll(); //stage1
+        //List<Call> callist = s_dal!.Call.ReadAll();//stage 2
 
-        // בדיקה שאין מתנדבים או קריאות
-        if (!volunteerList.Any() || !callList.Any())
+
+        //List<Volunteer?> volunteerlist = s_dalVolunteer!.ReadAll(); //stage1
+        //List<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll(); //stage2
+        IEnumerable<Volunteer> volunteerlist = s_dal!.Volunteer.ReadAll();
+        IEnumerable<Call> callist = s_dal!.Call.ReadAll();
+
+        foreach (var item in callist)
         {
-            Console.WriteLine("Error: No volunteers or calls available to create assignments.");
-            return;
-        }
+            int i = 0;
+            int index1 = Initialization.s_rand.Next(1, 15);
+            int index2 = Initialization.s_rand.Next(0, 6);
+            // int tempID = new int(); // Assignment
 
-        foreach (var item in callList)
-        {
-            // קביעת טווחים בטוחים לאינדקסים אקראיים
-            int volunteerIndex = Initialization.s_rand.Next(0, volunteerList.Count());
-            int callIndex = Initialization.s_rand.Next(0, callList.Count());
+            ////List<Call> callList = s_dal!.Call.ReadAll().ToList();
+            //Call tempCall = callList[i];
+            ////List<Volunteer> volunteerlist1 = s_dal!.Volunteer.ReadAll().ToList();
+            //Volunteer? tempVolunteer = volunteerlist1[index1]; // volunteer
 
-            // שליפת קריאה ומתנדב
-            Call tempCall = callList.ElementAt(callIndex);
-            Volunteer? tempVolunteer = volunteerList.ElementAt(volunteerIndex);//problemmmmmm
+            Call tempCall = callist.ElementAt(index2);
+            Volunteer tempVolunteer = volunteerlist.ElementAt(index1);
 
-            if (tempVolunteer == null)
-            {
-                Console.WriteLine($"Error: Volunteer at index {volunteerIndex} is null.");
-                continue; // דילוג על המקרה הנוכחי
-            }
+            //RUN NUM
+            //do
+            //{
+            //    tempID = s_dal!.Config.NextAssignmentId; //stage2
+            //    //tempID = s_dalConfig!.NextAssignmentId; //stage1
 
-            // זמני פתיחה וסיום
-            DateTime openTime = tempCall.OpeningTime;
-            DateTime? maxEndTime = tempCall.MaxEndTime;
+            //} while (s_dal!.Assignment.Read(a => a.Id == tempID) != null); //stage2
+            ////} while (s_dalAssignment!.Read(tempID) != null); //stage1
 
+            DateTime openTime = tempCall.OpeningTime;         // Retrieve open time from the call
+            DateTime? maxEndTime = tempCall.MaxEndTime;    // Retrieve max end time from the call
+            // Generate a random entry time between openTime and maxEndTime
             DateTime entryTime;
             if (maxEndTime.HasValue)
             {
-                entryTime = openTime.AddMinutes(
-                    Initialization.s_rand.Next(1, (int)(maxEndTime.Value - openTime).TotalMinutes));
+                entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(maxEndTime.Value - openTime).TotalMinutes));
             }
             else
             {
-                entryTime = openTime.AddMinutes(
-                    Initialization.s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
+                // If no max end time is defined, use the current time as an upper bound
+                entryTime = openTime.AddMinutes(s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
             }
-
-            // קביעת סטטוס וסיום
+            // Determine end time and status
             DateTime? endTime = null;
             AssignmentCompletionType? endOfTreatment = null;
             bool isExpired = maxEndTime.HasValue && entryTime > maxEndTime.Value;
-
+            //for the times will make sence
             if (!isExpired)
             {
-                int endTypeDecision = Initialization.s_rand.Next(0, 4);
+                // Randomly decide if treatment ends on time, is cancelled, or remains active
+                int endTypeDecision = s_rand.Next(0, 4); // 0: Treated on Time, 1: VolunteerCancelled, 2: AdminCancelled, 3: Active
                 switch (endTypeDecision)
                 {
                     case 0:
                         endOfTreatment = AssignmentCompletionType.TreatedOnTime;
-                        endTime = entryTime.AddMinutes(Initialization.s_rand.Next(1, 60));
+                        endTime = entryTime.AddMinutes(s_rand.Next(1, 60)); // Random end time within an hour
                         break;
                     case 1:
                         endOfTreatment = AssignmentCompletionType.VolunteerCancelled;
-                        endTime = entryTime.AddMinutes(Initialization.s_rand.Next(1, 30));
+                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
                         break;
                     case 2:
                         endOfTreatment = AssignmentCompletionType.AdminCancelled;
-                        endTime = entryTime.AddMinutes(Initialization.s_rand.Next(1, 30));
+                        endTime = entryTime.AddMinutes(s_rand.Next(1, 30)); // Random end time within 30 minutes
                         break;
                     case 3:
-                        // Active
+                        // Active call - no end time, no completion type
                         break;
                 }
             }
             else
             {
+                // If the call has expired, set status to Expired and leave endTime as null
                 endOfTreatment = AssignmentCompletionType.Expired;
             }
+            s_dal!.Assignment.Create(new Assignment(entryTime, default, tempCall.Id, tempVolunteer?.Id ?? 0, endTime, endOfTreatment)); //stage2
+                                                                                                                                        //s_dalAssignment.Create(new Assignment(entryTime, tempID, tempCall.Id, tempVolunteer?.id ?? 0, endTime, endOfTreatment)); //stage1
 
-            try
-            {
-                // יצירת משימה
-                s_dal!.Assignment.Create(new Assignment(
-                    entryTime,
-                    default,
-                    tempCall.Id,
-                    tempVolunteer.Id,
-                    endTime,
-                    endOfTreatment
-                ));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error creating assignment: {ex.Message}");
-            }
         }
+
     }
+
+    //public static void CreateAssignment()
+    //{
+    //    IEnumerable<Volunteer> volunteerList = s_dal!.Volunteer.ReadAll();
+    //    IEnumerable<Call> callList = s_dal!.Call.ReadAll();
+
+    //    //List<Volunteer> volunteerList = s_dal!.Volunteer.ReadAll().ToList();
+    //    //List<Call> callList = s_dal!.Call.ReadAll().ToList();
+
+
+    //    //if (!volunteerList.Any() || !callList.Any())
+    //    //{
+    //    //    Console.WriteLine("Error: No volunteers or calls available to create assignments.");
+    //    //    return;
+    //    //}
+
+    //    foreach (var item in callList)
+    //    {
+    //        // קביעת טווחים בטוחים לאינדקסים אקראיים
+    //        int volunteerIndex = Initialization.s_rand.Next(0, volunteerList.Count());
+    //        int callIndex = Initialization.s_rand.Next(0, callList.Count());
+
+    //        // שליפת קריאה ומתנדב
+    //        Call tempCall = callList.ElementAt(callIndex);
+    //        Volunteer? tempVolunteer = volunteerList.ElementAt(volunteerIndex);//problemmmmmm
+
+    //        if (tempVolunteer == null)
+    //        {
+    //            Console.WriteLine($"Error: Volunteer at index {volunteerIndex} is null.");
+    //            continue; // דילוג על המקרה הנוכחי
+    //        }
+
+    //        // זמני פתיחה וסיום
+    //        DateTime openTime = tempCall.OpeningTime;
+    //        DateTime? maxEndTime = tempCall.MaxEndTime;
+
+    //        DateTime entryTime;
+    //        if (maxEndTime.HasValue)
+    //        {
+    //            entryTime = openTime.AddMinutes(
+    //                Initialization.s_rand.Next(1, (int)(maxEndTime.Value - openTime).TotalMinutes));
+    //        }
+    //        else
+    //        {
+    //            entryTime = openTime.AddMinutes(
+    //                Initialization.s_rand.Next(1, (int)(DateTime.Now - openTime).TotalMinutes));
+    //        }
+
+    //        // קביעת סטטוס וסיום
+    //        DateTime? endTime = null;
+    //        AssignmentCompletionType? endOfTreatment = null;
+    //        bool isExpired = maxEndTime.HasValue && entryTime > maxEndTime.Value;
+
+    //        if (!isExpired)
+    //        {
+    //            int endTypeDecision = Initialization.s_rand.Next(0, 4);
+    //            switch (endTypeDecision)
+    //            {
+    //                case 0:
+    //                    endOfTreatment = AssignmentCompletionType.TreatedOnTime;
+    //                    endTime = entryTime.AddMinutes(Initialization.s_rand.Next(1, 60));
+    //                    break;
+    //                case 1:
+    //                    endOfTreatment = AssignmentCompletionType.VolunteerCancelled;
+    //                    endTime = entryTime.AddMinutes(Initialization.s_rand.Next(1, 30));
+    //                    break;
+    //                case 2:
+    //                    endOfTreatment = AssignmentCompletionType.AdminCancelled;
+    //                    endTime = entryTime.AddMinutes(Initialization.s_rand.Next(1, 30));
+    //                    break;
+    //                case 3:
+    //                    // Active
+    //                    break;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            endOfTreatment = AssignmentCompletionType.Expired;
+    //        }
+
+    //        try
+    //        {
+    //            s_dal!.Assignment.Create(new Assignment(
+    //                entryTime,
+    //                default,
+    //                tempCall.Id,
+    //                tempVolunteer.Id,
+    //                endTime,
+    //                endOfTreatment
+    //            ));
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error creating assignment: {ex.Message}");
+    //        }
+    //    }
+    //}
 
 
     //stage1

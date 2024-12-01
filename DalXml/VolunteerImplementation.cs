@@ -3,6 +3,7 @@ using DalApi;
 using DO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 //XElement
@@ -13,26 +14,39 @@ internal class VolunteerImplementation : IVolunteer
 {
     static Volunteer GetVolunteer(XElement v)
     {
-        return new Volunteer()
+       return new Volunteer()
         {
-            Id = v.ToIntNullable("Id") ?? throw new FormatException("Invalid ID format."),
-            // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
-            //id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
+           Id = int.TryParse((string?)v.Element("Id"), out var Id) ? Id : throw new FormatException("can't convert id"),
 
-            Name = (string?)v.Element("Name") ?? "",
-            Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
-            Email = (string?)v.Element("Email") ?? "",
+           Active = bool.TryParse((string?)v.Element("Active"), out bool active) ? active : throw new FormatException("can't convert active"),
 
-            Role = Enum.Parse<Role>((string?)v.Element("Role") ?? Role.Volunteer.ToString()),
-            Distance_Type = Enum.Parse<distance_type>((string?)v.Element("Distance_Type") ?? distance_type.Aerial_distance.ToString()),
+            Role = Role.TryParse((string?)v.Element("Role"), out Role role) ? role : throw new FormatException("can't convert role "),
 
-            //Role = v.ToEnumNullable<Role>("Role") ?? Role.Volunteer,
-            //Distance_Type = v.ToEnumNullable<distance_type>("Distance_Type") ?? distance_type.Aerial_distance,
-            FullCurrentAddress = (string?)v.Element("FullCurrentAddress"),
-            Latitude = v.ToDoubleNullable("Latitude"),
-            Longitude = v.ToDoubleNullable("Longitude"),
-            Active = (bool?)v.Element("Active") ?? true,
-            distance = v.ToDoubleNullable("distance")
+            //TypeDistance = Distance.TryParse((string?)s.Element("distance"), out Distance dis) ? dis : throw new FormatException("can't convert distance "),
+            //password = (string?)s.Element("password") ?? null,
+            FullCurrentAddress = (string?)v.Element("FullCurrentAddress") ?? null,
+            Longitude = double.TryParse((string?)v.Element("longitude"), out double longitude) ? longitude : null,
+            Latitude = double.TryParse((string?)v.Element("latitude"), out double latitude) ? latitude : null,
+            distance = double.TryParse((string?)v.Element("maxDistance"), out double maxDis) ? maxDis : null,
+
+
+            //Id = int.TryParse((string?)v.Element("ID"), out var id) ? id : throw new FormatException("can't convert id"),            // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
+            ////id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
+
+            //Name = (string?)v.Element("Name") ?? "",
+            //Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
+            //Email = (string?)v.Element("Email") ?? "",
+
+            ////Role = Enum.Parse<Role>((string?)v.Element("Role") ?? Role.Volunteer.ToString()),
+            //Distance_Type = Enum.Parse<distance_type>((string?)v.Element("Distance_Type") ?? distance_type.Aerial_distance.ToString()),
+
+            ////Role = v.ToEnumNullable<Role>("Role") ?? Role.Volunteer,
+            ////Distance_Type = v.ToEnumNullable<distance_type>("Distance_Type") ?? distance_type.Aerial_distance,
+            //FullCurrentAddress = (string?)v.Element("FullCurrentAddress"),
+            //Latitude = v.ToDoubleNullable("Latitude"),
+            //Longitude = v.ToDoubleNullable("Longitude"),
+            //Active = (bool?)v.Element("Active") ?? true,
+            //distance = v.ToDoubleNullable("distance")
         };
     }
     public void Create(Volunteer item)
@@ -107,15 +121,35 @@ internal class VolunteerImplementation : IVolunteer
                                   .Elements()
                                   .Select(v => GetVolunteer(v))
                                   .FirstOrDefault(filter);
-    }
 
+
+    }
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
     {
-        var volunteers = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
-                                            .Elements()
-                                            .Select(v => GetVolunteer(v));
-        return filter == null ? volunteers : volunteers.Where(filter);
+        List<Volunteer> Volunteers = XMLTools.LoadListFromXMLSerializer<Volunteer>(Config.s_Volunteers_xml);
+
+        return filter == null
+       ? Volunteers.Select(item => item)
+       : Volunteers.Where(filter);
+        
     }
+    //public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
+    //{
+    //    //var volunteers = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
+    //    //                                    .Elements()
+    //    //                                    .Select(v => GetVolunteer(v));
+    //    //return filter == null ? volunteers : volunteers.Where(filter);
+
+    //    // נסיון
+    //    //List<Volunteer> Volunteer = XMLTools.LoadListFromXMLSerializer<Volunteer>(Config.s_Volunteers_xml);
+    //    //return filter == null
+    //    //   ? Volunteer.Select(item => item)
+    //    //   : Volunteer.Where(filter);
+     
+
+
+
+    //}
 
     public void Update(Volunteer item)
     {
