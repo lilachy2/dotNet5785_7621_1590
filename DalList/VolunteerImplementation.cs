@@ -76,25 +76,7 @@ internal class VolunteerImplementation : IVolunteer
     }
 
 
-    //public List<Volunteer> ReadAll() // was?  // stage1
-    //{
-    //    List<Volunteer> volunteers = new List<Volunteer>(DataSource.Volunteers);
 
-    //    // print 
-    //    foreach (var volunteer in volunteers)
-    //    {
-    //        if (volunteer != null)
-    //        {
-    //            Console.WriteLine(volunteer); 
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Null Volunteer");
-    //        }
-    //    }
-
-    //    return new List<Volunteer>(DataSource.Volunteers) ;///ask about ?
-    //}  
 
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null) //stage 2
     => filter == null

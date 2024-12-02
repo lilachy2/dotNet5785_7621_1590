@@ -17,11 +17,9 @@ internal class AssignmentImplementation : IAssignment
     public void Create(Assignment item)
     {
         List<Assignment> Assignments = XMLTools.LoadListFromXMLSerializer<Assignment>(Config.s_Assignments_xml);
-        //if (Assignments.Any(c => c.Id == item.Id))
-        //    throw new DalAlreadyExistsException($"Course with ID={item.Id} does Not exist");
         int newId1 = Config.NextAssignmentID;
         Assignment newItem = item with { Id = newId1};
-        Assignments.Add(item);
+        Assignments.Add(newItem);
         XMLTools.SaveListToXMLSerializer(Assignments, Config.s_Assignments_xml);
     }
 

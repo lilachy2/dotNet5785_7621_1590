@@ -32,23 +32,6 @@ internal class VolunteerImplementation : IVolunteer
             distance = double.TryParse((string?)v.Element("maxDistance"), out double maxDis) ? maxDis : null,
 
 
-            //Id = int.TryParse((string?)v.Element("ID"), out var id) ? id : throw new FormatException("can't convert id"),            // id = (int)v.Element("Id"),  // אם אתה בטוח שהערך תמיד קיים כ- int
-            ////id = (int?)v.Element("id") ?? throw new FormatException("ID element is missing or invalid."),
-
-            //Name = (string?)v.Element("Name") ?? "",
-            //Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
-            //Email = (string?)v.Element("Email") ?? "",
-
-            ////Role = Enum.Parse<Role>((string?)v.Element("Role") ?? Role.Volunteer.ToString()),
-            //Distance_Type = Enum.Parse<distance_type>((string?)v.Element("Distance_Type") ?? distance_type.Aerial_distance.ToString()),
-
-            ////Role = v.ToEnumNullable<Role>("Role") ?? Role.Volunteer,
-            ////Distance_Type = v.ToEnumNullable<distance_type>("Distance_Type") ?? distance_type.Aerial_distance,
-            //FullCurrentAddress = (string?)v.Element("FullCurrentAddress"),
-            //Latitude = v.ToDoubleNullable("Latitude"),
-            //Longitude = v.ToDoubleNullable("Longitude"),
-            //Active = (bool?)v.Element("Active") ?? true,
-            //distance = v.ToDoubleNullable("distance")
         };
         return s;
     }
@@ -110,13 +93,7 @@ internal class VolunteerImplementation : IVolunteer
         return studentElem is null ? null : GetVolunteer(studentElem);
     }
 
-    //public Volunteer? Read(int id)//stage1 //dot do like this !!!!!
-    //{
-    //    return XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
-    //                            .Elements()
-    //                            .Select(v => GetVolunteer(v))
-    //                            .FirstOrDefault(item => item.id == id);
-    //}
+   
     public Volunteer? Read(Func<Volunteer, bool> filter)
 
     {
@@ -127,16 +104,7 @@ internal class VolunteerImplementation : IVolunteer
 
 
     }
-   // public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
-   // {
-   //     List<Volunteer> Volunteers = XMLTools.LoadListFromXMLSerializer<Volunteer>(Config.s_Volunteers_xml);
 
-   //     return filter == null
-   //    ? Volunteers.Select(item => item)
-   //    : Volunteers.Where(filter);
-        
-    
-   //}
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
     {
         var volunteers = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
@@ -144,23 +112,7 @@ internal class VolunteerImplementation : IVolunteer
                                             .Select(v => GetVolunteer(v));
         return filter == null ? volunteers : volunteers.Where(filter);
     }
-    //public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
-    //{
-    //    //var volunteers = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
-    //    //                                    .Elements()
-    //    //                                    .Select(v => GetVolunteer(v));
-    //    //return filter == null ? volunteers : volunteers.Where(filter);
-
-    //    // נסיון
-    //    //List<Volunteer> Volunteer = XMLTools.LoadListFromXMLSerializer<Volunteer>(Config.s_Volunteers_xml);
-    //    //return filter == null
-    //    //   ? Volunteer.Select(item => item)
-    //    //   : Volunteer.Where(filter);
-
-
-
-
-    //}
+   
 
     public void Update(Volunteer item)
     {
