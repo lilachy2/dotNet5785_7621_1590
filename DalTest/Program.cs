@@ -248,7 +248,7 @@ public class Program
         Console.WriteLine("Enter Role (0 = Volunteer, 1 = Manager):");
         Role role = (Role)int.Parse(Console.ReadLine() ?? "0");
 
-        Console.WriteLine("Enter Distance Type (0 = Aerial_distance, 1 = Driving_distance):");
+        Console.WriteLine("Enter Distance Type (0 = Aerial_distance, 1 =  Walking_distance, 2= Driving_distance ):");
         distance_type distanceType = (distance_type)int.Parse(Console.ReadLine() ?? "0");
 
         Console.WriteLine("Enter Full Current Address (or press Enter to skip):");
@@ -413,7 +413,7 @@ public class Program
         Console.Write("Enter Longitude: ");
         double longitude = double.Parse(Console.ReadLine() ?? "0");
 
-        Console.Write("Enter Call Type (0 - Type1, 1 - Type2, etc.): ");
+        Console.Write("Enter Call Type (0 -fainting,1-birth,2-resuscitation,3-allergy,4-heartattack,5-broken_bone,6-security_event): ");
         int callTypeInput = int.Parse(Console.ReadLine() ?? "0");
         Calltype callType = (Calltype)callTypeInput;
 
