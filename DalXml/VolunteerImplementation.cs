@@ -14,11 +14,13 @@ internal class VolunteerImplementation : IVolunteer
 {
     static Volunteer GetVolunteer(XElement v)
     {
-       return new Volunteer()
+        Volunteer s= new DO.Volunteer()
         {
-           Id = int.TryParse((string?)v.Element("Id"), out var Id) ? Id : throw new FormatException("can't convert id"),
-
-           Active = bool.TryParse((string?)v.Element("Active"), out bool active) ? active : throw new FormatException("can't convert active"),
+            Id = int.TryParse((string?)v.Element("Id"), out var ID) ? ID : throw new FormatException("can't convert id"),
+            Name = (string?)v.Element("Name") ?? "",
+            Number_phone = (string?)v.Element("Number") ?? "", 
+            //Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
+            Active = bool.TryParse((string?)v.Element("Active"), out bool active) ? active : throw new FormatException("can't convert active"),
 
             Role = Role.TryParse((string?)v.Element("Role"), out Role role) ? role : throw new FormatException("can't convert role "),
 
@@ -48,6 +50,7 @@ internal class VolunteerImplementation : IVolunteer
             //Active = (bool?)v.Element("Active") ?? true,
             //distance = v.ToDoubleNullable("distance")
         };
+        return s;
     }
     public void Create(Volunteer item)
     {
@@ -56,7 +59,7 @@ internal class VolunteerImplementation : IVolunteer
         if (volunteersRoot.Elements().Any(v => (int?)v.Element("Id") == item.Id))
             throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} already exists.");
 
-        volunteersRoot.Add(new XElement("Volunteers", CreateVolunteerElement(item)));
+        volunteersRoot.Add(new XElement(CreateVolunteerElement(item)));
         Console.WriteLine("Saving XML data...");
         XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
         Console.WriteLine("Data saved.");
@@ -124,14 +127,22 @@ internal class VolunteerImplementation : IVolunteer
 
 
     }
+   // public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
+   // {
+   //     List<Volunteer> Volunteers = XMLTools.LoadListFromXMLSerializer<Volunteer>(Config.s_Volunteers_xml);
+
+   //     return filter == null
+   //    ? Volunteers.Select(item => item)
+   //    : Volunteers.Where(filter);
+        
+    
+   //}
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
     {
-        List<Volunteer> Volunteers = XMLTools.LoadListFromXMLSerializer<Volunteer>(Config.s_Volunteers_xml);
-
-        return filter == null
-       ? Volunteers.Select(item => item)
-       : Volunteers.Where(filter);
-        
+        var volunteers = XMLTools.LoadListFromXMLElement(Config.s_Volunteers_xml)
+                                            .Elements()
+                                            .Select(v => GetVolunteer(v));
+        return filter == null ? volunteers : volunteers.Where(filter);
     }
     //public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null)
     //{
@@ -145,7 +156,7 @@ internal class VolunteerImplementation : IVolunteer
     //    //return filter == null
     //    //   ? Volunteer.Select(item => item)
     //    //   : Volunteer.Where(filter);
-     
+
 
 
 

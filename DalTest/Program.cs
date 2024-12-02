@@ -238,7 +238,9 @@ public class Program
         string name = Console.ReadLine() ?? "";
 
         Console.WriteLine("Enter Volunteer Phone Number:");
-        int numberPhone = int.Parse(Console.ReadLine() ?? "0");
+        ///*int*/ string numberPhone = int.Parse(Console.ReadLine() ?? "0");
+        string numberPhone = Console.ReadLine() ?? "0";
+
 
         Console.WriteLine("Enter Volunteer Email:");
         string email = Console.ReadLine() ?? "";
@@ -268,7 +270,7 @@ public class Program
         Console.WriteLine("Enter Distance (or press Enter to skip):");
         string distanceInput = Console.ReadLine() ?? "";
         double? distance = string.IsNullOrWhiteSpace(distanceInput) ? null : double.Parse(distanceInput);
-        return new Volunteer(id, name, numberPhone, email, role, distanceType, fullCurrentAddress, latitude, longitude, active, distance);
+        return new Volunteer(id, name, numberPhone, email, role, distanceType, active, fullCurrentAddress, latitude, longitude, distance);
 
 
     } // for things that repeat themselves

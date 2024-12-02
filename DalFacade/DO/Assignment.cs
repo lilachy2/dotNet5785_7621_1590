@@ -17,16 +17,16 @@ namespace DO;
 ///as well as the identification number of the call and the volunteer's social security number.
 
 public record Assignment
- (
-      DateTime time_entry_treatment,
-        int Id = 0,
-        int CallId = 0,
-        int VolunteerId = 0,
-        DateTime? time_end_treatment=null,
-    AssignmentCompletionType? EndOfTime=default 
-
-
- )
+(
+    int Id,
+    int CallId,
+    int VolunteerId,
+    DateTime time_entry_treatment,
+    DateTime? time_end_treatment = null,
+    AssignmentCompletionType? EndOfTime = default
+)
 {
-    public Assignment() : this(default(DateTime)) { }
+    // בנאי ברירת מחדל
+    public Assignment() : this(0, 0, 0, default(DateTime)) { }
 }
+

@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>31.05902063741717</Latitude>
-    <Longitude>35.03537288970614</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.589533107658216</Latitude>
+    <Longitude>34.80500738102303</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.262521326112726</Latitude>
-    <Longitude>35.786910906821475</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.203358608079725</Latitude>
+    <Longitude>35.79249831352731</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.881212252491917</Latitude>
-    <Longitude>35.60472349896027</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.329259200908744</Latitude>
+    <Longitude>35.35276098705609</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.779941048303094</Latitude>
-    <Longitude>35.76238670489368</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.322487861808</Latitude>
+    <Longitude>35.577161498188985</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.27491282168688</Latitude>
-    <Longitude>34.54955797550644</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.81387891927296</Latitude>
+    <Longitude>34.84250092553478</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.67610478175981</Latitude>
-    <Longitude>34.42310227426819</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.529612186280808</Latitude>
+    <Longitude>34.438918143266534</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.517286272412804</Latitude>
-    <Longitude>35.075808739680056</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.187811998195436</Latitude>
+    <Longitude>35.56553317782044</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.12083119715161</Latitude>
-    <Longitude>34.92511189828541</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.73480013416886</Latitude>
+    <Longitude>35.056298152824354</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.86982443200942</Latitude>
-    <Longitude>34.70203750485556</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.352309810915344</Latitude>
+    <Longitude>34.776465193221256</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.546161278169954</Latitude>
-    <Longitude>35.201693564270506</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.28755434885819</Latitude>
+    <Longitude>34.69157990123823</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.699684472163714</Latitude>
-    <Longitude>35.063468635366284</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.04744224572653</Latitude>
+    <Longitude>34.45313108748139</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.6585591764362</Latitude>
-    <Longitude>35.13630350808884</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.14776197380212</Latitude>
+    <Longitude>35.71290558922702</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.396012224526594</Latitude>
-    <Longitude>35.20861585910516</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.65366034366365</Latitude>
+    <Longitude>35.01046234908704</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.62815896675141</Latitude>
-    <Longitude>35.87893910272885</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.01198859936763</Latitude>
+    <Longitude>34.93606510648168</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.342929806681255</Latitude>
-    <Longitude>34.31043285586798</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.129922110971435</Latitude>
+    <Longitude>34.53168541232038</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.55853164300447</Latitude>
-    <Longitude>35.55249443473107</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.631108800302364</Latitude>
+    <Longitude>34.586337969407204</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.40530478717711</Latitude>
-    <Longitude>35.1542146253933</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.17793632244905</Latitude>
+    <Longitude>34.87280934628595</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.4041059602616</Latitude>
-    <Longitude>34.31613510621868</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.917364419941556</Latitude>
+    <Longitude>34.402373787796705</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.58186436426506</Latitude>
-    <Longitude>35.73132171365789</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.45314595709963</Latitude>
+    <Longitude>35.412796649392384</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.58586935660415</Latitude>
-    <Longitude>34.38671320639399</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.19031285189069</Latitude>
+    <Longitude>35.606642954684574</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.88093797219983</Latitude>
-    <Longitude>35.22618625267339</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.45277207245126</Latitude>
+    <Longitude>35.091016386344705</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.32662601198895</Latitude>
-    <Longitude>35.679098968034516</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.485774616604083</Latitude>
+    <Longitude>35.69067272865791</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.66705929948442</Latitude>
-    <Longitude>34.870738643536725</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.669955106481574</Latitude>
+    <Longitude>35.51148053761156</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.92338080692697</Latitude>
-    <Longitude>34.54651569037338</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.442474782216806</Latitude>
+    <Longitude>35.45629547840765</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.076279177096552</Latitude>
-    <Longitude>35.06921885117054</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.0537825909258</Latitude>
+    <Longitude>35.75219227868805</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.017973996705756</Latitude>
-    <Longitude>35.74634029030796</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.467950401665306</Latitude>
+    <Longitude>34.56820136520706</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.234011917178194</Latitude>
-    <Longitude>35.24518206432521</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.80561114317896</Latitude>
+    <Longitude>35.128253521139655</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.814506457925038</Latitude>
-    <Longitude>35.07816888376595</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.674867009397246</Latitude>
+    <Longitude>35.14652518588328</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.888698370599684</Latitude>
-    <Longitude>35.67267721196105</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.00472072745322</Latitude>
+    <Longitude>35.20179607097538</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.289598716951033</Latitude>
-    <Longitude>35.81422459346759</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.989272436132502</Latitude>
+    <Longitude>35.25278586262648</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.70606455212918</Latitude>
-    <Longitude>35.58399154364157</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.586346638116858</Latitude>
+    <Longitude>35.49707470258357</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.50092848472618</Latitude>
-    <Longitude>34.81369570241379</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.90617482236232</Latitude>
+    <Longitude>34.50452146706882</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.06037154837186</Latitude>
-    <Longitude>35.320648311584165</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.657670953034163</Latitude>
+    <Longitude>35.47688268010445</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.92535149731724</Latitude>
-    <Longitude>34.46047307880127</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.06593578307522</Latitude>
+    <Longitude>35.033022145798455</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.64011793519391</Latitude>
-    <Longitude>35.39437292010085</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.80985229118234</Latitude>
+    <Longitude>34.644785719331374</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.51647945345522</Latitude>
-    <Longitude>35.14906234499274</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.08743868032979</Latitude>
+    <Longitude>34.953063593526984</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.863769943433727</Latitude>
-    <Longitude>35.33744711880084</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.952334209251948</Latitude>
+    <Longitude>35.09928959285705</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.505525276751566</Latitude>
-    <Longitude>34.50327741885589</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.857512983922824</Latitude>
+    <Longitude>34.83662528687564</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.142368426173384</Latitude>
-    <Longitude>34.571236751844715</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.950537100922975</Latitude>
+    <Longitude>35.16078022560038</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.783794139296322</Latitude>
-    <Longitude>35.194688374331044</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.827187991345294</Latitude>
+    <Longitude>35.456372508207444</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.836461902967386</Latitude>
-    <Longitude>34.31727407273472</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.02726397286957</Latitude>
+    <Longitude>35.71600698912725</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.52315129713557</Latitude>
-    <Longitude>35.67224557941844</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.24110088416163</Latitude>
+    <Longitude>34.47787311768686</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.11684951449585</Latitude>
-    <Longitude>34.61351297467204</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.36335059672501</Latitude>
+    <Longitude>34.846710553248165</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.44669819712464</Latitude>
-    <Longitude>35.25417097453152</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.16947950670656</Latitude>
+    <Longitude>35.227554563083295</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.12611804616004</Latitude>
-    <Longitude>35.224121979339415</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.48327190560404</Latitude>
+    <Longitude>35.59137929339239</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.578040809817054</Latitude>
-    <Longitude>35.37382414516712</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.63071014274498</Latitude>
+    <Longitude>35.25310318003467</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.76001940615321</Latitude>
-    <Longitude>35.202083389238716</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.204299520627387</Latitude>
+    <Longitude>34.99026535672555</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.54851875214025</Latitude>
-    <Longitude>34.561937406770795</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.38903629696427</Latitude>
+    <Longitude>35.52546530038064</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.346443395820366</Latitude>
-    <Longitude>35.65203420661459</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.825140225723608</Latitude>
+    <Longitude>34.85734385467839</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.06306145172876</Latitude>
-    <Longitude>34.74491450175259</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.952498005940246</Latitude>
+    <Longitude>34.625915503354705</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2024-11-30T23:04:19</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
+    <OpeningTime>2024-12-01T10:11:48</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Data;
+using System.Net;
+using System.Numerics;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DO;
@@ -23,20 +27,17 @@ public record Volunteer
      // The class represents the data entities under the DO directory
      int Id , 
      string Name,
-     int Number_phone ,
+     /*int*/  string Number_phone ,
      string Email ,
-     Role Role =Role.Volunteer, // להוסיף 
-     distance_type Distance_Type= distance_type.Aerial_distance, // להוסיך
+     Role Role, // להוסיף 
+     distance_type Distance_Type, // להוסיך
+       bool Active,
      string? FullCurrentAddress=  null,
       double? Latitude   = null, 
-      double? Longitude = null, 
-      bool Active =true,
-     double? distance = null
-
+      double? Longitude = null,
+double? distance = null
 )
 {
-    //1, " ", 0, " "
-    public Volunteer() : this(1, "", 0, "" ) { }
-
+    public Volunteer() : this(0, "", "", "" ,default(Role),default(distance_type),true)  { }
 }
 
