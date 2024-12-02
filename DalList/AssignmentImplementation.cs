@@ -20,8 +20,7 @@ internal class AssignmentImplementation : IAssignment
     public void Create(Assignment item)
     {
         int newId1 = Config.NextAssignmentId;
-        //int newId2 = Config.NextAssignmentId;
-        Assignment newItem = new Assignment() { Id = newId1 };
+        Assignment newItem = item with { Id = newId1 };
         DataSource.Assignments.Add(newItem);
         ///return newItem.Id;
     }

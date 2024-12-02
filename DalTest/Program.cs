@@ -1,6 +1,6 @@
 ﻿namespace DalTest;
-using Dal;
 using DalApi;
+using Dal;
 using DO;
 
 
@@ -14,7 +14,9 @@ public class Program
     //private static IConfig? s_dalConfig;        // Data access layer for Configurations
 
     //static readonly IDal s_dal = new DalList(); //stage 2
-    static readonly IDal s_dal = new DalXml(); //stage 3
+    //static readonly IDal s_dal = new DalXml(); //stage 3
+    static readonly IDal s_dal = Factory.Get; //stage 4
+
 
 
 
@@ -130,8 +132,9 @@ public class Program
                         break;
                     case MainMenuOption.InitializeData:
                         // Call the initialization function to populate the system with initial data
-                        Initialization.Do(s_dal); //stage 2
-                                                  // Initialization.Do(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
+                        //Initialization.Do(s_dal); //stage 2
+                        Initialization.Do(); //stage 4
+                                             // Initialization.Do(s_dalVolunteer, s_dalCall, s_dalAssignment, s_dalConfig);
                         break;
                     case MainMenuOption.ShowAllData:
                         // Display all the data in the system

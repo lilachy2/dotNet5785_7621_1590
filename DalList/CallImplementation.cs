@@ -16,10 +16,8 @@ internal class CallImplementation : ICall
     public void Create(Call item)
     {
         int newId = Config.NextCallId;
-        //NextCall;
-        Call newItem = new Call() { Id = newId };
+        Call newItem = item with { Id = newId };
         DataSource.Calls.Add(newItem);
-        ///return newItem.Id;
     }
 
     /// <param name="item">// Searches for the Assignment by ID
