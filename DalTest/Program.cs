@@ -241,12 +241,14 @@ public class Program
         string name = Console.ReadLine() ?? "";
 
         Console.WriteLine("Enter Volunteer Phone Number:");
-        ///*int*/ string numberPhone = int.Parse(Console.ReadLine() ?? "0");
         string numberPhone = Console.ReadLine() ?? "0";
 
 
         Console.WriteLine("Enter Volunteer Email:");
         string email = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Enter Strong Password (include numbers and letters):");
+        string password = Console.ReadLine() ?? "";
 
         Console.WriteLine("Enter Role (0 = Volunteer, 1 = Manager):");
         Role role = (Role)int.Parse(Console.ReadLine() ?? "0");
@@ -273,7 +275,7 @@ public class Program
         Console.WriteLine("Enter Distance (or press Enter to skip):");
         string distanceInput = Console.ReadLine() ?? "";
         double? distance = string.IsNullOrWhiteSpace(distanceInput) ? null : double.Parse(distanceInput);
-        return new Volunteer(id, name, numberPhone, email, role, distanceType, active, fullCurrentAddress, latitude, longitude, distance);
+        return new Volunteer(id, name, numberPhone, email,password, role, distanceType, active, fullCurrentAddress, latitude, longitude, distance);
 
 
     } // for things that repeat themselves

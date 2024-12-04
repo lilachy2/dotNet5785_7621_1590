@@ -98,7 +98,7 @@ public static class Initialization
             ////string p1 = phone; // To perform conversion for the constructor
             //int p1 = int.Parse(phone); // To perform conversion for the constructor
             string email = name.Replace(" ", ".").ToLower() + "@volunteer.org";
-            //string? password = null; // Initial password or null until the volunteer updates it
+            string? password = "Hey1234@"; // Initial password or null until the volunteer updates it
             string? address = Addresses[i];
             Role role;
             if (isFirst)
@@ -119,7 +119,7 @@ public static class Initialization
             double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
 
             //s_dalVolunteer.Create(new Volunteer(id, name, p1, email, role, distanceType, address, randomLatitude, randomLongitude, active, maxDistance)); //stage1
-            s_dal!.Volunteer.Create(new Volunteer(id, name, phone, email, role, distanceType, active, address, randomLatitude, randomLongitude, maxDistance)); //stage2
+            s_dal!.Volunteer.Create(new Volunteer(id, name, phone, email, password, role, distanceType, active, address, randomLatitude, randomLongitude, maxDistance)); //stage2
             i = i + 1;
         }
 

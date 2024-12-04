@@ -11,7 +11,7 @@ namespace BO;
 /// <param name="Status"> // The current status of the call (open, in progress, closed, expired, etc.)
 /// <param name="TotalAssignments"> // The total number of assignments for the call (how many times it was taken, canceled, etc.)
 
-public class CallInListBO
+public class CallInList
 {
     public int Id { get; init; }
     public int CallId { get; init; }

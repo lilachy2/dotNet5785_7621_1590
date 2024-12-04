@@ -5,6 +5,13 @@ public enum Role
     Volunteer
 }
 
+public enum TimeUnit
+{
+    Minute,
+    Hour,
+    Month,
+    Year
+}
 public enum DistanceType
 {
     AirDistance,
@@ -17,7 +24,7 @@ public enum CallType
     Emergency,
     NonEmergency,
     Maintenance,
-        None
+    None
 }
 
 public enum CompletionType
@@ -36,4 +43,22 @@ public enum CompletionStatus
     Handled,    // The call was successfully handled.
     Cancelled,  // The call was cancelled.
     Expired     // The call expired without being handled.
+}
+
+public enum CallinlistEnum
+{
+
+}
+public enum VolInList
+{
+
+}
+
+public enum ClosedCallInListEnum
+{
+
+}
+public enum OpenCallInListEnum
+{
+
 }

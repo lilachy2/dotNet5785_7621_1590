@@ -27,17 +27,18 @@ public record Volunteer
      // The class represents the data entities under the DO directory
      int Id , 
      string Name,
-     /*int*/  string Number_phone ,
+     string Number_phone ,
      string Email ,
-     Role Role, // להוסיף 
-     distance_type Distance_Type, // להוסיך
-       bool Active,
+     string? Password ,
+     Role Role,  
+     distance_type Distance_Type, 
+     bool Active,
      string? FullCurrentAddress=  null,
-      double? Latitude   = null, 
-      double? Longitude = null,
-double? distance = null
+     double? Latitude   = null, 
+     double? Longitude = null,
+     double? distance = null
 )
 {
-    public Volunteer() : this(0, "", "", "" ,default(Role),default(distance_type),true)  { }
+    public Volunteer() : this(0, "", "", "" , "Hey1234@", default(Role),default(distance_type),true)  { }
 }
 

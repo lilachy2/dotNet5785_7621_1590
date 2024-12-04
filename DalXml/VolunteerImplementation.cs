@@ -19,13 +19,10 @@ internal class VolunteerImplementation : IVolunteer
             Id = int.TryParse((string?)v.Element("Id"), out var ID) ? ID : throw new FormatException("can't convert id"),
             Name = (string?)v.Element("Name") ?? "",
             Number_phone = (string?)v.Element("Number") ?? "", 
-            //Number_phone = v.ToIntNullable("Number_phone") ?? throw new FormatException("Invalid phone number format."),
+            Email = (string?)v.Element("Number") ?? "", 
+            Password = (string?)v.Element("Password") ?? "",
             Active = bool.TryParse((string?)v.Element("Active"), out bool active) ? active : throw new FormatException("can't convert active"),
-
             Role = Role.TryParse((string?)v.Element("Role"), out Role role) ? role : throw new FormatException("can't convert role "),
-
-            //TypeDistance = Distance.TryParse((string?)s.Element("distance"), out Distance dis) ? dis : throw new FormatException("can't convert distance "),
-            //password = (string?)s.Element("password") ?? null,
             FullCurrentAddress = (string?)v.Element("FullCurrentAddress") ?? null,
             Longitude = double.TryParse((string?)v.Element("longitude"), out double longitude) ? longitude : null,
             Latitude = double.TryParse((string?)v.Element("latitude"), out double latitude) ? latitude : null,
@@ -55,6 +52,7 @@ internal class VolunteerImplementation : IVolunteer
             new XElement("Name", v.Name),
             new XElement("Number_phone", v.Number_phone),
             new XElement("Email", v.Email),
+            new XElement("Password", v.Password),
             new XElement("Role", v.Role),
             new XElement("Distance_Type", v.Distance_Type),
             new XElement("FullCurrentAddress", v.FullCurrentAddress),
