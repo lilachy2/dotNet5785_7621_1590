@@ -11,9 +11,9 @@
 public interface IAdmin
 {
     DateTime GetClock();
-    void ForwardClock(BO.TimeUnit unit);
-    int GetMaxRange();
+    void UpdateClock(BO.TimeUnit unit);
+    TimeSpan GetMaxRange();
     void ResetDB();
     void InitializeDB();
-    void SetMaxRange(int maxRange);
+    void SetMaxRange(TimeSpan maxRange);
 }

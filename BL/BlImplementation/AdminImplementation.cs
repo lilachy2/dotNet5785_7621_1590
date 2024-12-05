@@ -2,39 +2,69 @@
 namespace BlImplementation;
 using BlApi;
 using BO;
+using DalApi;
+using Helpers;
 using System;
 
 internal class AdminImplementation : IAdmin
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
-    public void ForwardClock(TimeUnit unit)
+    public void UpdateClock(TimeUnit unit)
     {
-        throw new NotImplementedException();
+        DateTime newTime = ClockManager.Now;
+
+        switch (unit)
+        {
+            case TimeUnit.Minute:
+                newTime = ClockManager.Now.AddMinutes(1);
+                break;
+            case TimeUnit.Hour:
+                newTime = ClockManager.Now.AddHours(1);
+                break;
+            case TimeUnit.Day:
+                newTime = ClockManager.Now.AddDays(1);
+                break;
+            case TimeUnit.Month:
+                newTime = ClockManager.Now.AddMonths(1);
+                break;
+            case TimeUnit.Year:
+                newTime = ClockManager.Now.AddYears(1);
+                break;
+            default:
+                throw new ArgumentException("Invalid TimeUnit value");
+        }
+
+        ClockManager.UpdateClock(newTime);
     }
+
 
     public DateTime GetClock()
     {
-        throw new NotImplementedException();
+        return ClockManager.Now;
     }
 
-    public int GetMaxRange()
+    public TimeSpan GetMaxRange()
     {
-        throw new NotImplementedException();
+        return _dal.Config.RiskRange;
     }
+
 
     public void InitializeDB()
     {
-        throw new NotImplementedException();
+        ResetDB();
+
+      //  _dal.Initialization(); ??
     }
 
     public void ResetDB()
     {
-        throw new NotImplementedException();
+        _dal.ResetDB();
+
     }
 
-    public void SetMaxRange(int maxRange)
+    public void SetMaxRange(TimeSpan maxRange)
     {
-        throw new NotImplementedException();
+        _dal.Config.RiskRange = maxRange;
     }
 }
 

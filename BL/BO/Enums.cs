@@ -9,6 +9,7 @@ public enum TimeUnit
 {
     Minute,
     Hour,
+    Day,
     Month,
     Year
 }
