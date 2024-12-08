@@ -1,9 +1,9 @@
 ﻿namespace BO;
-public enum Role
-{
-    Admin,
-    Volunteer
-}
+//public enum Role
+//{
+//    Admin,
+//    Volunteer
+//}
 
 public enum TimeUnit
 {
