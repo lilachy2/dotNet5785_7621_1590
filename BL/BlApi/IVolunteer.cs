@@ -21,7 +21,7 @@ namespace BlApi;
 /// // Adds a new volunteer; validates data; throws if already exists
 public interface IVolunteer
 {
-    BO.VolunteerInList GetAskForListVal(BO.VolInList volInList, bool active);
+    List<BO.VolunteerInList> GetAskForListVal(BO.VolInList volInList, bool active);
 
     DO.Role PasswordEntered(/*string*/int  Name, string password);
     //BO.Role PasswordEntered(/*string*/int  Name, string password);

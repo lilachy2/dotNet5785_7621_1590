@@ -5,6 +5,7 @@ using BO;
 using DalApi;
 using DO;
 using Helpers;
+using System.Collections.Generic;
 
 internal class VolunteerImplementation : IVolunteer
 {
@@ -20,11 +21,11 @@ internal class VolunteerImplementation : IVolunteer
         var volunteer = _dal.Volunteer.Read(Name);
         if (volunteer == null)
 
-            throw new DO.DalDoesNotExistException("The user does not exist");
+            throw new BO.BlDoesNotExistException("The user does not exist");
 
         if (volunteer.Password != password)
 
-            throw new DO.DalIncorrectPasswordException("The password is incorrect");
+            throw new BO.BlIncorrectPasswordException("The password is incorrect");
 
         return volunteer.Role;
     }
@@ -106,7 +107,7 @@ internal class VolunteerImplementation : IVolunteer
         }
         catch (DO.DalAlreadyExistsException ex)
         {
-            throw new /*BO.BlAlreadyExistsException*/ DalAlreadyExistsException($"Student with ID={boVolunteer.Id} already exists", ex);
+            throw new BO.BlAlreadyExistsException DalAlreadyExistsException($"Student with ID={boVolunteer.Id} already exists", ex);
         }
 
 
@@ -114,7 +115,19 @@ internal class VolunteerImplementation : IVolunteer
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        try
+        { // בשביל אם נזרק חריגה מ READ
+            var volunteers = _dal.Volunteer.Read(id);
+            if (// לא יכול למחוק  )
+                throw //
+
+            var volunteers1 = _dal.Volunteer.Delete(id);
+        }
+        catch { }
+
+
+
+
     }
 
 
@@ -168,9 +181,38 @@ internal class VolunteerImplementation : IVolunteer
 
     } // מתודות עזר
 
-    public BO.VolunteerInList GetAskForListVal(BO.VolInList volInList, bool active)
+    public List<BO.VolunteerInList> GetAskForListVal(BO.VolInList volInList, bool active)
     {
-        throw new NotImplementedException();
+        var volunteers = _dal.Volunteer.ReadAll();
+        
+
+        if (active == null)
+        {
+            // doing convert
+            List<BO.VolunteerInList> list = volunteers
+                .Select(v => new BO.VolunteerInList
+                {
+                    Id = v.Id,
+                }).ToList();
+            return list;
+        }
+
+        if (active!=null)
+        {
+            volunteers = volunteers.Where(v => v.Active == active).ToList();
+            return volunteers;
+
+        }
+
+        if (volInList==null)
+        {
+            volunteers = volunteers.Where(v => v.Id == id).ToList();
+            return volunteers;
+        }
+
+
+
+
 
 
     }
