@@ -1,4 +1,6 @@
 ﻿
+using Helpers;
+
 namespace BO;
 
 /// <param name="Id"> // The unique identifier for the call entity
