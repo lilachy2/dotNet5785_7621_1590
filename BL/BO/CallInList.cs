@@ -15,7 +15,7 @@ public class CallInList
 {
     public int Id { get; init; }
     public int CallId { get; init; }
-    public CallType CallType { get; init; }
+    public Calltype CallType { get; init; }
     public DateTime OpenTime { get; init; }
     public TimeSpan? TimeRemaining { get; init; }
     public string? VolunteerName { get; init; }

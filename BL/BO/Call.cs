@@ -17,7 +17,7 @@ namespace BO;
 public class Call
 {
     public int Id { get; init; }
-    public CallType CallType { get; init; }  
+    public Calltype Calltype { get; init; }  
     public string? Description { get; init; } 
     public string? FullAddress { get; init; } 
     public double? Latitude { get; init; }  

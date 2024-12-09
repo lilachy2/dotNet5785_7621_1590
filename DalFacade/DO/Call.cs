@@ -18,8 +18,8 @@
 
 public record Call
 (
-    double Latitude,
-    double Longitude,
+    double? Latitude,
+    double? Longitude,
     Calltype Calltype,
     int Id ,
     string? VerbalDescription = null,
@@ -28,6 +28,23 @@ public record Call
     DateTime? MaxEndTime = null
 )
 {
+    private global::BO.Calltype calltype;
+    private string? description;
+    private string? fullAddress;
+    private DateTime openTime;
+
     public Call() : this(default, default, default, default) { }
+
+    public Call(double? latitude, double? longitude, global::BO.Calltype calltype, int id, string? description, string? fullAddress, DateTime openTime, DateTime? maxEndTime)
+    {
+        Latitude = latitude;
+        Longitude = longitude;
+        this.calltype = calltype;
+        Id = id;
+        this.description = description;
+        this.fullAddress = fullAddress;
+        this.openTime = openTime;
+        MaxEndTime = maxEndTime;
+    }
 }
 

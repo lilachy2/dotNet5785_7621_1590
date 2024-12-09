@@ -20,12 +20,15 @@ public enum DistanceType
     DrivingDistance
 }
 
-public enum CallType
+public enum Calltype
 {
-    Emergency,
-    NonEmergency,
-    Maintenance,
-    None
+    fainting,
+    birth,
+    resuscitation,
+    allergy,
+    heartattack,
+    broken_bone,
+    security_event
 }
 
 public enum CompletionType

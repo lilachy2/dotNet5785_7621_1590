@@ -52,8 +52,8 @@ internal class AdminImplementation : IAdmin
     public void InitializeDB()
     {
         ResetDB();
-
-      //  _dal.Initialization(); ??
+        DalTest.Initialization.Do();
+        ClockManager.UpdateClock(ClockManager.Now);
     }
 
     public void ResetDB()

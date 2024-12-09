@@ -19,7 +19,7 @@ public class VolunteerInList
         public int TotalCallsCancelled { get; init; }
         public int TotalCallsExpired { get; init; }
         public int? CurrentCallId { get; init; }
-        public CallType CurrentCallType { get; init; }
+        public Calltype CurrentCallType { get; init; }
     
 
 
