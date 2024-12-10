@@ -52,9 +52,27 @@ public enum CompletionStatus
 public enum CallinlistEnum
 {
 
+
+
 }
 public enum VolInList
 {
+    Id,                // Volunteer ID
+    Name,              // Full name
+    Number_phone,      // Mobile phone number
+    Email,             // Email address
+    FullCurrentAddress, // Current full address
+    Password,          // Password
+    Latitude,          // Latitude of the current address
+    Longitude,         // Longitude of the current address
+    Role,              // Role (Admin or Volunteer)
+    Active,            // Is the volunteer currently active
+    Distance,          // Maximum distance to accept a call
+    DistanceType,      // Distance type preference
+    TotalHandledCalls, // Total number of handled calls
+    TotalCancelledCalls, // Total number of canceled calls
+    TotalExpiredCalls, // Total number of calls that expired
+    CurrentCall        // Current call in progress handled by the volunteer
 
 }
 
