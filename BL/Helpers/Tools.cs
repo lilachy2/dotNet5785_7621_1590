@@ -5,13 +5,15 @@ namespace Helpers;
 // for help fun
 internal static class Tools
 {
+    private static readonly DalApi.IDal _dal = DalApi.Factory.Get;
+
     //public static string ToStringProperty<T>(this T t)
     //{
 
 
     //}
 
-    private static bool HelpCheck(BO.Volunteer volunteer) ////// להשלים
+    public static bool HelpCheck(BO.Volunteer volunteer) ////// להשלים
     {
               DalApi.IDal _dal = DalApi.Factory.Get;
 
@@ -80,6 +82,14 @@ internal static class Tools
 
     }
 
+    private static bool HelpCheckdelete(BO.Volunteer volunteer)
+    {
+        DO.Volunteer doVolunteer=_dal.Volunteer.Read(volunteer.Id);
+        
+
+
+
+    }
 
 
 

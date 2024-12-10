@@ -93,10 +93,10 @@ internal class VolunteerImplementation : IVolunteer
       boVolunteer.Role,
       boVolunteer.DistanceType,
       boVolunteer.Active,
-      boVolunteer.FullCurrentAddress ?? string.Empty, // אם FullCurrentAddress הוא null, נשתמש במיתר ריק
-      boVolunteer.Latitude ?? 0, // אם Latitude הוא null, נשתמש ב-0
-      boVolunteer.Longitude ?? 0, // אם Longitude הוא null, נשתמש ב-0
-      boVolunteer.Distance ?? 0 // אם Distance הוא null, נשתמש ב-0
+      boVolunteer.FullCurrentAddress ?? string.Empty,  
+      boVolunteer.Latitude ?? 0,  
+      boVolunteer.Longitude ?? 0,  
+      boVolunteer.Distance ?? 0 
   );
 
 
@@ -107,7 +107,7 @@ internal class VolunteerImplementation : IVolunteer
         }
         catch (DO.DalAlreadyExistsException ex)
         {
-            throw new BO.BlAlreadyExistsException DalAlreadyExistsException($"Student with ID={boVolunteer.Id} already exists", ex);
+            throw new BO.BlAlreadyExistsException ($"Student with ID={boVolunteer.Id} already exists", ex);
         }
 
 
@@ -118,10 +118,11 @@ internal class VolunteerImplementation : IVolunteer
         try
         { // בשביל אם נזרק חריגה מ READ
             var volunteers = _dal.Volunteer.Read(id);
+
             if (// לא יכול למחוק  )
                 throw //
 
-            var volunteers1 = _dal.Volunteer.Delete(id);
+             _dal.Volunteer.Delete(id);
         }
         catch { }
 
@@ -135,8 +136,51 @@ internal class VolunteerImplementation : IVolunteer
 
     public BO.Volunteer? Read(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            // פנייה לשכבת הנתונים כדי לקבל את פרטי המתנדב
+            var volunteerEntity = _dal.Volunteer.Read(id);
+            if (volunteerEntity == null)
+            {
+                throw new Exception($"Volunteer with ID {id} does not exist.");
+            }
+
+            // קבלת פרטי הקריאה שבטיפולו (במידה וקיימת)
+            BO.CallInProgress? callInProgress = null;
+            //if (volunteerEntity.CurrentCallId.HasValue)
+            {
+                var callEntity = _dal.Call.Read(volunteerEntity.CurrentCallId.Value);
+                if (callEntity != null)
+                {
+                    callInProgress = new BO.CallInProgress
+                    {
+                        CallId = callEntity.Id,
+                        Description = callEntity.VerbalDescription,
+                        StartTime = callEntity.OpeningTime,
+                        // שדות נוספים בהתאם לדרישות המערכת
+                    };
+                }
+            }
+
+            // יצירת אובייקט הישות הלוגית "מתנדב"
+            var volunteerBO = new BO.Volunteer
+            {
+                Id = volunteerEntity.Id,
+                Name = volunteerEntity.Name,
+                Number_phone = volunteerEntity.Number_phone,
+                CallInProgress = callInProgress,
+                // שדות נוספים בהתאם לדרישות המערכת
+            };
+
+            return volunteerBO;
+        }
+        catch (Exception ex)
+        {
+            // טיפול בחריגות משכבת הנתונים
+            throw new Exception($"Error while retrieving volunteer data: {ex.Message}", ex);
+        }
     }
+
 
     public void Update(BO.Volunteer boVolunteer, int Id)
     {
