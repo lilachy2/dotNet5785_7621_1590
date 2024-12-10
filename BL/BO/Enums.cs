@@ -13,12 +13,12 @@ public enum TimeUnit
     Month,
     Year
 }
-public enum DistanceType
-{
-    AirDistance,
-    WalkingDistance,
-    DrivingDistance
-}
+//public enum DistanceType
+//{
+//    AirDistance,
+//    WalkingDistance,
+//    DrivingDistance
+//}
 
 public enum Calltype
 {
@@ -83,4 +83,11 @@ public enum ClosedCallInListEnum
 public enum OpenCallInListEnum
 {
 
+}
+public enum DistanceType
+{
+    Aerial_distance,
+    walking_distance,
+    driving_distance,
+    change_distance_type
 }

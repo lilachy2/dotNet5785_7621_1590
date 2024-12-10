@@ -37,6 +37,7 @@ public record Volunteer
      double? Latitude   = null, 
      double? Longitude = null,
      double? distance = null
+
 )
 {
     public Volunteer() : this(0, "", "", "" , "Hey1234@", default(Role),default(distance_type),true)  { }
