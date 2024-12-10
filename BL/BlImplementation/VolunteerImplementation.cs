@@ -8,7 +8,7 @@ using System.Collections.Generic;
 internal class VolunteerImplementation : IVolunteer
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
-    public IEnumerable<VolunteerInList> GetAskForListVal(bool? Active, BO.VolInList? sortBy)
+    public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
         var volunteers = _dal.Volunteer.ReadAll();
 
@@ -50,7 +50,7 @@ internal class VolunteerImplementation : IVolunteer
 
         return volunteer.Role;
     }
-    public BO.Volunteer Volunteer_details(int id)
+    public BO.Volunteer VolunteerDetails(int id)
     {
         try
         {
@@ -67,14 +67,74 @@ internal class VolunteerImplementation : IVolunteer
                 FullCurrentAddress = doVolunteer.FullCurrentAddress,
                 Latitude = doVolunteer.Latitude,
                 Longitude = doVolunteer.Longitude,
-                Role = (BO.Role)doVolunteer.Role, 
+                Role = (BO.Role)doVolunteer.Role,
                 Active = doVolunteer.Active,
                 Distance = doVolunteer.distance,
-                DistanceType = (BO.DistanceType)doVolunteer.Distance_Type, 
+                DistanceType = (BO.DistanceType)doVolunteer.Distance_Type,
                 TotalHandledCalls = 0,
-                TotalCancelledCalls = 0, 
+                TotalCancelledCalls = 0,
                 TotalExpiredCalls = 0,
-                CurrentCall = null 
+                CurrentCall = null
+            };
+
+            // חיפוש קריאה פעילה לפי מזהה מתנדב
+            var calls = _dal.Call.ReadAll(); // הנחה שמחזיר את כל הקריאות
+            var callInProgress = calls.FirstOrDefault(call => call.VolunteerId == id && call.Status == DO.CallStatus.InProgress);
+
+            if (callInProgress != null)
+            {
+                boVolunteer.CurrentCall = new BO.CallInProgress
+                {
+                    Id = callInProgress.Id,
+                    CallId = callInProgress.CallId,
+                    CallType = (BO.Calltype)callInProgress.Calltype,
+                    Description = callInProgress.VerbalDescription,
+                    FullAddress = callInProgress.Address,
+                    OpenTime = callInProgress.StartTime,
+                    MaxCompletionTime = callInProgress.MaxCompletionTime,
+                    EnterTime = callInProgress.VolunteerEnterTime,
+                    DistanceFromVolunteer = callInProgress.DistanceFromVolunteer,
+                    Status = (BO.CallStatus)callInProgress.Status
+                };
+            }
+
+            return boVolunteer;
+        }
+        catch (DO.DalDoesNotExistException ex)
+        {
+            throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.", ex);
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlGeneralException("Failed to retrieve volunteer details.", ex);
+        }
+    }
+
+    public BO.Volunteer Read(int id)
+    {
+        try
+        {
+            var doVolunteer = _dal.Volunteer.Read(id)
+                              ?? throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.");
+
+            var boVolunteer = new BO.Volunteer
+            {
+                Id = doVolunteer.Id,
+                Name = doVolunteer.Name,
+                Number_phone = doVolunteer.Number_phone,
+                Email = doVolunteer.Email,
+                Password = doVolunteer.Password,
+                FullCurrentAddress = doVolunteer.FullCurrentAddress,
+                Latitude = doVolunteer.Latitude,
+                Longitude = doVolunteer.Longitude,
+                Role = (BO.Role)doVolunteer.Role,
+                Active = doVolunteer.Active,
+                Distance = doVolunteer.distance,
+                DistanceType = (BO.DistanceType)doVolunteer.Distance_Type,
+                TotalHandledCalls = 0,
+                TotalCancelledCalls = 0,
+                TotalExpiredCalls = 0,
+                CurrentCall = null
             };
 
             var doCall = _dal.Call.Read(id);
@@ -96,63 +156,129 @@ internal class VolunteerImplementation : IVolunteer
             throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.");
         }
     }
-
-    public void Delete(int id)
+    public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
         try
         {
-            var volunteer = _dal.Volunteer.Read(id);
+            var requester = _dal.Volunteer.Read(requesterId);
 
-            if (volunteer == null)
+            if (boVolunteer.Id != requesterId && requester.Role != DO.Role.Manager)
             {
-                throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.");
+                throw new Incompatible_ID("Requester is not authorized to update this volunteer.");
             }
 
-            // קריאת היסטוריית הקריאות של המתנדב (ניתן להוסיף פונקציה מתאימה בשכבת הנתונים)
-            //var handledCalls = GetCallsByVolunteerId(id);//add
-            var handledCalls = Tools.GetCallsByVolunteerId(id);
+           Tools.ValidateVolunteerData(boVolunteer);
 
-            if (handledCalls.Any(call => call.Status == DO.AssignmentCompletionType.TreatedOnTime ||
-                              call.Status == DO.AssignmentCompletionType.VolunteerCancelled ||
-                              call.Status == DO.AssignmentCompletionType.AdminCancelled ||
-                              call.Status == DO.AssignmentCompletionType.Expired))
+
+            var doVolunteer = new DO.Volunteer
             {
-                throw new BO.BlDeletionImpossibleException($"Cannot delete volunteer with ID={id}. The volunteer has handled or is currently handling calls.");
-            }
+                Id = boVolunteer.Id,
+                Name = boVolunteer.Name,
+                Number_phone = boVolunteer.Number_phone,
+                Email = boVolunteer.Email,
+                Password = boVolunteer.Password,
+                FullCurrentAddress = boVolunteer.FullCurrentAddress,
+                Latitude = boVolunteer.Latitude,
+                Longitude = boVolunteer.Longitude,
+                Role = (requesterId == boVolunteer.Id) ? requester.Role : (DO.Role)boVolunteer.Role, //only the manager can change the role.
+                Active = boVolunteer.Active,
+                distance = boVolunteer.Distance,
+                Distance_Type = (DO.distance_type)boVolunteer.DistanceType
+            };
 
-
-            // מחיקת המתנדב
-            _dal.Volunteer.Delete(id);
+            _dal.Volunteer.Update(doVolunteer);
         }
         catch (DO.DalDoesNotExistException ex)
         {
-            // חריגה אם המתנדב לא נמצא בשכבת הנתונים
-            throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.", ex);
+            throw new BO.BlDoesNotExistException($"Volunteer with ID={boVolunteer.Id} does not exist.", ex);
         }
-        catch (BO.BlDeletionImpossibleException ex)
+        catch (Exception ex)
         {
-            // חריגה אם המחיקה אינה אפשרית (חריגת מחיקה מה-DAL)
-            throw new BO.BlDeletionImpossibleException($"Unable to delete volunteer with ID={id}.", ex);
+            throw new BO.BlGeneralException("Failed to update volunteer details.", ex);
         }
     }
-
 
     public void Create(BO.Volunteer boVolunteer)
     {
-        throw new NotImplementedException();
+
+        DO.Volunteer doVolunteer = new DO.Volunteer(
+      boVolunteer.Id,
+      boVolunteer.Name,
+      boVolunteer.Number_phone,
+      boVolunteer.Email,
+      boVolunteer.Password,
+      (DO.Role)boVolunteer.Role,
+      (DO.distance_type)boVolunteer.DistanceType,
+      boVolunteer.Active,
+      boVolunteer.FullCurrentAddress ?? string.Empty,
+      boVolunteer.Latitude ?? 0,
+      boVolunteer.Longitude ?? 0,
+      boVolunteer.Distance ?? 0
+  );
+
+
+
+        try
+        {
+            _dal.Volunteer.Create(doVolunteer);
+        }
+        catch (DO.DalAlreadyExistsException ex)
+        {
+            throw new BO.BlAlreadyExistsException($"Student with ID={boVolunteer.Id} already exists", ex);
+        }
+
+
     }
 
-    public BO.Volunteer? Read(int id)
+    public void Delete(int id)
     {
-        throw new NotImplementedException();
+        //try
+        //{
+        //    var volunteer = _dal.Volunteer.Read(id);
+
+        //    if (volunteer == null)
+        //    {
+        //        throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.");
+        //    }
+
+        //    // קריאת היסטוריית הקריאות של המתנדב (ניתן להוסיף פונקציה מתאימה בשכבת הנתונים)
+        //    //var handledCalls = GetCallsByVolunteerId(id);//add
+        //    //var handledCalls = Tools.GetCallsByVolunteerId(id);
+        //    var handledCalls = volunteer.TotalHandledCalls;
+
+        //    if (handledCalls.Any(call => call.Status == DO.AssignmentCompletionType.TreatedOnTime ||
+        //                      call.Status == DO.AssignmentCompletionType.VolunteerCancelled ||
+        //                      call.Status == DO.AssignmentCompletionType.AdminCancelled ||
+        //                      call.Status == DO.AssignmentCompletionType.Expired))
+        //    {
+        //        throw new BO.BlDeletionImpossibleException($"Cannot delete volunteer with ID={id}. The volunteer has handled or is currently handling calls.");
+        //    }
+
+
+        //    // מחיקת המתנדב
+        //    _dal.Volunteer.Delete(id);
+        //}
+        //catch (DO.DalDoesNotExistException ex)
+        //{
+        //    // חריגה אם המתנדב לא נמצא בשכבת הנתונים
+        //    throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.", ex);
+        //}
+        //catch (BO.BlDeletionImpossibleException ex)
+        //{
+        //    // חריגה אם המחיקה אינה אפשרית (חריגת מחיקה מה-DAL)
+        //    throw new BO.BlDeletionImpossibleException($"Unable to delete volunteer with ID={id}.", ex);
+        //}
     }
 
-    public void Update(BO.Volunteer boVolunteer, int id)
-    {
-        throw new NotImplementedException();
-    }
 
-   
+
+
+
+
+
+
+
+
 }
 
 

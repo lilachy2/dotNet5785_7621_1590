@@ -1,5 +1,6 @@
 ﻿using DalApi;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Helpers;
 // for help fun
@@ -7,9 +8,9 @@ internal static class Tools
 {
     private static readonly DalApi.IDal _dal = DalApi.Factory.Get;
 
-   
 
-  
+
+
     public static string ToStringProperty<T>(this T t)
     {
         string str = "";
@@ -28,52 +29,130 @@ internal static class Tools
         }
         return str;
     }
-    public static bool HelpCheck(BO.Volunteer volunteer)
-    { 
-        // 5. בדיקת קווי רוחב ואורך - חייב להיות בין -90 ל-90 עבור Latitude ו- בין -180 ל-180 עבור Longitude
-        if (volunteer.Latitude < -90 || volunteer.Latitude > 90 || volunteer.Longitude < -180 || volunteer.Longitude > 180)
+
+    internal static async Task ValidateVolunteerData(BO.Volunteer boVolunteer)
+    {
+        // Validate the ID of the volunteer.
+        if (boVolunteer.Id <= 0 || boVolunteer.Id.ToString().Length < 8 || boVolunteer.Id.ToString().Length > 9)
         {
-            return false; // קווי אורך/רוחב לא תקינים
+            throw new ArgumentException("Invalid ID. It must be 8-9 digits.");
         }
 
-        // 6. בדיקת תפקיד - רק מנהל יכול לשנות את תפקיד המתנדב
-        if (volunteer.Role != BO.Role.Manager )
+        // Validate the FullName field.
+        if (string.IsNullOrWhiteSpace(boVolunteer.Name))
         {
-            return false; // מתנדב לא יכול לשנות את תפקידו
+            throw new ArgumentException("Name cannot be null or empty.");
         }
 
-        // 7. בדיקת מרחק - אם קיים, חייב להיות ערך חיובי
-        if (volunteer.Distance.HasValue && volunteer.Distance <= 0)
+        // Validate the PhoneNumber field.
+        if (!Regex.IsMatch(boVolunteer.Number_phone, @"^0\d{9}$"))
         {
-            return false; // אם המרחק לא תקין
+            throw new ArgumentException("PhoneNumber must be 10 digits and start with 0.");
         }
 
-        // 8. בדיקת סטטוס פעיל - חייב להיות אמת או שקר
-        if (volunteer.Active != true && volunteer.Active != false)
+        // Validate the Email field.
+        if (!Regex.IsMatch(boVolunteer.Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
         {
-            return false; // אם הסטטוס לא תקין
+            throw new ArgumentException("Invalid Email format.");
         }
 
-        // 9. בדיקת סיסמה - אם קיימת, חייבת להיות באורך מינימלי של 6 תווים
-        if (!string.IsNullOrEmpty(volunteer.Password) && volunteer.Password.Length < 6)
+        // Validate the Latitude field.
+        if (boVolunteer.Latitude.HasValue && (boVolunteer.Latitude.Value < -90 || boVolunteer.Latitude.Value > 90))
         {
-            return false; // אם הסיסמה קצרה מדי
+            throw new ArgumentException("Latitude must be between -90 and 90.");
         }
 
-        // 10. בדיקת שדות מספריים - לדוגמה, TotalHandledCalls, TotalCancelledCalls, TotalExpiredCalls
-        if (volunteer.TotalHandledCalls < 0 || volunteer.TotalCancelledCalls < 0 || volunteer.TotalExpiredCalls < 0)
+        // Validate the Longitude field.
+        if (boVolunteer.Longitude.HasValue && (boVolunteer.Longitude.Value < -180 || boVolunteer.Longitude.Value > 180))
         {
-            return false; // שדות מספריים לא תקינים
+            throw new ArgumentException("Longitude must be between -180 and 180.");
         }
 
-        return true; // כל הבדיקות עברו בהצלחה
+        // Validate the address
+        var isAddressValid = await Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+        if (!isAddressValid)
+        {
+            throw new ArgumentException("The address provided is invalid.");
+        }
+    }
 
 
+
+    public static async Task<bool> IsAddressValid(string address)
+    {
+        string baseUrl = "https://geocode.maps.co/search";
+        string query = $"{baseUrl}?q={Uri.EscapeDataString(address)}";
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(query);
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return false;
+            }
+        }
+    }
+
+
+    internal static void CheckId(int id)
+    {
+        // Convert the integer ID to a string to process individual digits
+        string idString = id.ToString();
+
+        // Ensure the ID is exactly 9 digits long
+        if (idString.Length != 9)
+        {
+            throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
+        }
+
+        int sum = 0;
+
+        // Iterate through each digit in the ID
+        for (int i = 0; i < 9; i++)
+        {
+            // Convert the character to its numeric value
+            int digit = idString[i] - '0';
+
+            // Determine the multiplier: 1 for odd positions, 2 for even positions
+            int multiplier = (i % 2) + 1;
+
+            // Multiply the digit by the multiplier
+            int product = digit * multiplier;
+
+            // If the result is two digits, sum the digits (e.g., 14 -> 1 + 4)
+            if (product > 9)
+            {
+                product = product / 10 + product % 10;
+            }
+
+            // Add the processed digit to the total sum
+            sum += product;
+        }
+
+        // תעודת זהות תקינה אם סכום ספרות הביקורת מתחלק ב-10
+        if (sum % 10 != 0)
+        {
+            throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
+        }
     }
 
     private static bool HelpCheckdelete(BO.Volunteer volunteer)
     {
-        DO.Volunteer doVolunteer=_dal.Volunteer.Read(volunteer.Id);
+        DO.Volunteer doVolunteer = _dal.Volunteer.Read(volunteer.Id);
 
         return true;
 
@@ -81,26 +160,44 @@ internal static class Tools
     }
 
 
-    public static IEnumerable<DO.Assignment> GetCallsByVolunteerId(int volunteerId)
-    {
-        try
-        {
-            // קריאת רשימת כל הקריאות משכבת הנתונים
-            var allCalls = _dal.Assignment.ReadAll();
+    //public static IEnumerable<DO.Assignment> GetCallsByVolunteerId(int volunteerId)
+    //{
+    //    try
+    //    {
+    //        // קריאת רשימת כל הקריאות משכבת הנתונים
+    //        var allCalls = _dal.Assignment.ReadAll();
 
-            // סינון קריאות לפי מזהה מתנדב
-            var callsByVolunteer = allCalls.Where(call => call.VolunteerId == volunteerId);
+    //        // סינון קריאות לפי מזהה מתנדב
+    //        var callsByVolunteer = allCalls.Where(call => call.VolunteerId == volunteerId);
 
-            // החזרת הקריאות או אוסף ריק אם אין תוצאות
-            return callsByVolunteer.Any() ? callsByVolunteer : Enumerable.Empty<DO.Assignment>();
-        }
-        catch (Exception ex)
-        {
-            throw new DO.DalException($"Failed to retrieve calls for Volunteer ID={volunteerId}.", ex);
-        }
-    }
+    //        // החזרת הקריאות או אוסף ריק אם אין תוצאות
+    //        return callsByVolunteer.Any() ? callsByVolunteer : Enumerable.Empty<DO.Assignment>();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw new DO.DalException($"Failed to retrieve calls for Volunteer ID={volunteerId}.", ex);
+    //    }
+    //}
 
 
+
+    //internal static void CheckLogic(BO.Volunteer boVolunteer)
+    //{
+    //    try
+    //    {
+    //        CheckId(boVolunteer.Id);
+    //        CheckPhonnumber(boVolunteer.Number_phone);
+    //        CheckEmail(boVolunteer.Email);
+    //        CheckPassword(boVolunteer.Password);
+    //        CheckAddress(boVolunteer);
+
+    //    }
+    //    catch (BO.BlWrongItemtException ex)
+    //    {
+    //        throw new BO.BlWrongItemtException($"the item have logic problem", ex);
+    //    }
+
+    //}
 
 }
 

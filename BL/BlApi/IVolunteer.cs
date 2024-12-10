@@ -23,13 +23,11 @@ namespace BlApi;
 /// // Adds a new volunteer; validates data; throws if already exists
 public interface IVolunteer
 {
-    IEnumerable<VolunteerInList> GetAskForListVal(bool? Active, BO.VolInList? sortBy);
+    IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy);
 
     DO.Role PasswordEntered(int Id, string password);
 
-    BO.Volunteer Volunteer_details(int id);
     BO.Volunteer? Read(int id);
-    //IEnumerable<BO.VolunteerInList> ReadAll(BO.VolunteerFieldSort? sort = null, BO.VolunteerFieldFilter? filter = null, object? value = null);
 
     void Update(BO.Volunteer boVolunteer , int id);
 
