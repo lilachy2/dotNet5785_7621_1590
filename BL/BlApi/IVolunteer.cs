@@ -1,5 +1,7 @@
 ﻿
 
+using BO;
+
 namespace BlApi;
 
 /// <param name="BO.Role PasswordEntered(string Name, string password)"> 
@@ -21,7 +23,7 @@ namespace BlApi;
 /// // Adds a new volunteer; validates data; throws if already exists
 public interface IVolunteer
 {
-    List<BO.VolunteerInList> GetAskForListVal(BO.VolInList volInList, bool active);
+    IEnumerable<VolunteerInList> GetAskForListVal(bool? Active, BO.VolInList? sortBy);
 
     DO.Role PasswordEntered(/*string*/int  Name, string password);
     //BO.Role PasswordEntered(/*string*/int  Name, string password);

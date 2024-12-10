@@ -13,7 +13,7 @@ internal static class Tools
 
     //}
 
-    public static bool HelpCheck(BO.Volunteer volunteer) ////// להשלים
+  
     public static string ToStringProperty<T>(this T t)
     {
         string str = "";
@@ -32,7 +32,8 @@ internal static class Tools
         }
         return str;
     }
-
+    public static bool HelpCheck(BO.Volunteer volunteer)
+    { 
         // 5. בדיקת קווי רוחב ואורך - חייב להיות בין -90 ל-90 עבור Latitude ו- בין -180 ל-180 עבור Longitude
         if (volunteer.Latitude < -90 || volunteer.Latitude > 90 || volunteer.Longitude < -180 || volunteer.Longitude > 180)
         {
@@ -40,7 +41,7 @@ internal static class Tools
         }
 
         // 6. בדיקת תפקיד - רק מנהל יכול לשנות את תפקיד המתנדב
-        if (volunteer.Role != Role.Manager &)
+        if (volunteer.Role != BO.Role.Manager )
         {
             return false; // מתנדב לא יכול לשנות את תפקידו
         }
@@ -77,8 +78,8 @@ internal static class Tools
     private static bool HelpCheckdelete(BO.Volunteer volunteer)
     {
         DO.Volunteer doVolunteer=_dal.Volunteer.Read(volunteer.Id);
-        
 
+        return true;
 
 
     }

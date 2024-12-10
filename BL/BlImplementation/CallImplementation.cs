@@ -59,13 +59,13 @@ internal class CallImplementation : ICall
         return new()
         {
             Id = id,
-            Latitude= doCall.Latitude,
-            Longitude= doCall.Longitude,
-           Calltype= doCall.Calltype,
-           Description= doCall.,
-           FullAddress= doCall.adress,
-            OpenTime= doCall.,
-           MaxEndTime= doCall.MaxEndTime,
+           // Latitude= doCall.Latitude,
+           // Longitude= doCall.Longitude,
+           //Calltype= doCall.Calltype,
+           //Description= doCall.,
+           //FullAddress= doCall.adress,
+           // OpenTime= doCall.,
+           //MaxEndTime= doCall.MaxEndTime,
         };
     }
 

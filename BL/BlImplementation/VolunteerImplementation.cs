@@ -2,8 +2,6 @@
 namespace BlImplementation;
 using BlApi;
 using BO;
-using DalApi;
-using DO;
 using Helpers;
 using System.Collections.Generic;
 
@@ -67,7 +65,7 @@ internal class VolunteerImplementation : IVolunteer
                 CallId = doCall.Id,
                 Description = doCall.VerbalDescription,
                 //Status = (BO.CallStatus)doCall.,
-                CallType = (BO.CallType)doCall.Calltype,
+                CallType = (BO.Calltype)doCall.Calltype,
                 //StartTime = doCall.OpeningTime,
                 //EndTime = doCall.MaxEndTime
             };
@@ -93,10 +91,10 @@ internal class VolunteerImplementation : IVolunteer
       boVolunteer.Role,
       boVolunteer.DistanceType,
       boVolunteer.Active,
-      boVolunteer.FullCurrentAddress ?? string.Empty,  
-      boVolunteer.Latitude ?? 0,  
-      boVolunteer.Longitude ?? 0,  
-      boVolunteer.Distance ?? 0 
+      boVolunteer.FullCurrentAddress ?? string.Empty,
+      boVolunteer.Latitude ?? 0,
+      boVolunteer.Longitude ?? 0,
+      boVolunteer.Distance ?? 0
   );
 
 
@@ -107,24 +105,25 @@ internal class VolunteerImplementation : IVolunteer
         }
         catch (DO.DalAlreadyExistsException ex)
         {
-            throw new BO.BlAlreadyExistsException ($"Student with ID={boVolunteer.Id} already exists", ex);
+            throw new BO.BlAlreadyExistsException($"Student with ID={boVolunteer.Id} already exists", ex);
         }
 
 
     }
 
-    public void Delete(int id)
+    public void Delete(int id)//need to finish
     {
-        try
-        { // בשביל אם נזרק חריגה מ READ
-            var volunteers = _dal.Volunteer.Read(id);
+        //try
+        //{ // בשביל אם נזרק חריגה מ READ
+        //    var volunteers = _dal.Volunteer.Read(id);
 
-            if (// לא יכול למחוק  )
-                throw //
-
-             _dal.Volunteer.Delete(id);
-        }
-        catch { }
+        //    if (// לא יכול למחוק  )
+        //        throw //...
+                 
+                
+        //     _dal.Volunteer.Delete(id);
+        //}
+        //catch { }
 
 
 
@@ -186,7 +185,7 @@ internal class VolunteerImplementation : IVolunteer
     {
         try
         {
-            if (boVolunteer.Id == Id || _dal.Volunteer.Read(Id).Role == Role.Manager)
+            if (boVolunteer.Id == Id || _dal.Volunteer.Read(Id).Role == BO.Role.Manager)
                 throw new Incompatible_ID("ID number does not match the requested one.");
 
             //if (BO.HelpCheck(BO.Volunteer volunteer))
@@ -225,40 +224,66 @@ internal class VolunteerImplementation : IVolunteer
 
     } // מתודות עזר
 
-    public List<BO.VolunteerInList> GetAskForListVal(BO.VolInList volInList, bool active)
+
+    public IEnumerable<VolunteerInList> GetAskForListVal(bool? Active, BO.VolInList? sortBy)
     {
         var volunteers = _dal.Volunteer.ReadAll();
-        
 
-        if (active == null)
+        if (Active.HasValue)
         {
-            // doing convert
-            List<BO.VolunteerInList> list = volunteers
-                .Select(v => new BO.VolunteerInList
-                {
-                    Id = v.Id,
-                }).ToList();
-            return list;
+            volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
         }
 
-        if (active!=null)
+        // Sort the list by the selected field or by ID if no field is selected
+        volunteers = sortBy switch
         {
-            volunteers = volunteers.Where(v => v.Active == active).ToList();
-            return volunteers;
+            BO.VolInList.Name => volunteers.OrderBy(volunteer => volunteer.Name), // Sort by volunteer's full name
+            BO.VolInList.Role => volunteers.OrderBy(volunteer => volunteer.Role),     // Sort by volunteer's job (role)
+            BO.VolInList.IsActive => volunteers.OrderBy(volunteer => volunteer.Active), // Sort by activity status (active/inactive)
+            _ => volunteers.OrderBy(volunteer => volunteer.Id) // Default: sort by volunteer ID
+        };
 
-        }
-
-        if (volInList==null)
+        // Convert the data to the logical entity "VolunteerInList" for display
+        return volunteers.Select(volunteer => new VolunteerInList
         {
-            volunteers = volunteers.Where(v => v.Id == id).ToList();
-            return volunteers;
-        }
-
-
-
-
-
-
+            Id = volunteer.Id,
+            FullName = volunteer.Name,
+            IsActive = volunteer.Active
+        });
     }
 
+  
+
+    //public List<BO.VolunteerInList> GetAskForListVal(BO.VolInList volInList, bool active)
+    //{
+    //    var volunteers = _dal.Volunteer.ReadAll();
+
+
+    //    if (active == null)
+    //    {
+    //        // doing convert
+    //        List<BO.VolunteerInList> list = volunteers
+    //            .Select(v => new BO.VolunteerInList
+    //            {
+    //                Id = v.Id,
+    //            }).ToList();
+    //        return list;
+    //    }
+
+    //    if (active != null)
+    //    {
+    //        volunteers = volunteers.Where(v => v.Active == active).ToList();
+    //        return volunteers;
+
+    //    }
+
+    //    if (volInList == null)
+    //    {
+    //        volunteers = volunteers.Where(v => v.Id == id).ToList();
+    //        return volunteers;
+    //    }
+
+
+
 }
+
