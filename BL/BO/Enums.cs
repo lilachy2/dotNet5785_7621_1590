@@ -13,12 +13,12 @@ public enum TimeUnit
     Month,
     Year
 }
-//public enum DistanceType
-//{
-//    AirDistance,
-//    WalkingDistance,
-//    DrivingDistance
-//}
+public enum DistanceType
+{
+    AirDistance,
+    WalkingDistance,
+    DrivingDistance
+}
 
 public enum Calltype
 {
@@ -73,7 +73,6 @@ public enum VolInList
     TotalCancelledCalls, // Total number of canceled calls
     TotalExpiredCalls, // Total number of calls that expired
     CurrentCall        // Current call in progress handled by the volunteer
-
 }
 
 public enum ClosedCallInListEnum
