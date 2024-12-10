@@ -20,16 +20,16 @@ internal class CallImplementation : ICall
 
     public void Create(Call boCall)
     {
-        DO.Call doCall =
-        new(boCall.Latitude, boCall.Longitude, boCall.Calltype, boCall.Id, boCall.Description, boCall.FullAddress, boCall.OpenTime, boCall.MaxEndTime);
-        try
-        {
-            _dal.Call.Create(doCall);
-        }
-        catch (DO.DalAlreadyExistsException ex)
-        {
-            throw new BO.BlAlreadyExistsException($"Call with ID={boCall.Id} already exists", ex);
-        }
+        //DO.Call doCall =
+        //new(boCall.Latitude, boCall.Longitude, boCall.Calltype, boCall.Id, boCall.Description, boCall.FullAddress, boCall.OpenTime, boCall.MaxEndTime);
+        //try
+        //{
+        //    _dal.Call.Create(doCall);
+        //}
+        //catch (DO.DalAlreadyExistsException ex)
+        //{
+        //    throw new BO.BlAlreadyExistsException($"Call with ID={boCall.Id} already exists", ex);
+        //}
     }
 
     public void Delete(int id)
@@ -54,8 +54,8 @@ internal class CallImplementation : ICall
 
     public Call? Read(int id)
     {
-        var doCall = _dal.Call.Read(id) ??
-    throw new BO.BlDoesNotExistException($"Call with ID={id} does Not exist");
+        var doCall = _dal.Call.Read(id) ?? throw new NotImplementedException();
+       // throw new BO.BlDoesNotExistException($"Call with ID={id} does Not exist");
         return new()
         {
             Id = id,

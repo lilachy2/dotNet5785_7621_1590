@@ -25,8 +25,7 @@ public interface IVolunteer
 {
     IEnumerable<VolunteerInList> GetAskForListVal(bool? Active, BO.VolInList? sortBy);
 
-    DO.Role PasswordEntered(/*string*/int  Name, string password);
-    //BO.Role PasswordEntered(/*string*/int  Name, string password);
+    DO.Role PasswordEntered(int Id, string password);
 
     BO.Volunteer Volunteer_details(int id);
     BO.Volunteer? Read(int id);

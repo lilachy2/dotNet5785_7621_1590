@@ -1,4 +1,4 @@
-﻿
+﻿using DalApi;
 using System.Reflection;
 
 namespace Helpers;
@@ -7,11 +7,7 @@ internal static class Tools
 {
     private static readonly DalApi.IDal _dal = DalApi.Factory.Get;
 
-    //public static string ToStringProperty<T>(this T t)
-    //{
-
-
-    //}
+   
 
   
     public static string ToStringProperty<T>(this T t)
@@ -84,6 +80,25 @@ internal static class Tools
 
     }
 
+
+    public static IEnumerable<DO.Assignment> GetCallsByVolunteerId(int volunteerId)
+    {
+        try
+        {
+            // קריאת רשימת כל הקריאות משכבת הנתונים
+            var allCalls = _dal.Assignment.ReadAll();
+
+            // סינון קריאות לפי מזהה מתנדב
+            var callsByVolunteer = allCalls.Where(call => call.VolunteerId == volunteerId);
+
+            // החזרת הקריאות או אוסף ריק אם אין תוצאות
+            return callsByVolunteer.Any() ? callsByVolunteer : Enumerable.Empty<DO.Assignment>();
+        }
+        catch (Exception ex)
+        {
+            throw new DO.DalException($"Failed to retrieve calls for Volunteer ID={volunteerId}.", ex);
+        }
+    }
 
 
 
