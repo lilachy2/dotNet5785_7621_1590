@@ -129,7 +129,7 @@ internal class VolunteerImplementation : IVolunteer
             // חריגה אם המתנדב לא נמצא בשכבת הנתונים
             throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.", ex);
         }
-        catch (DO.DalDeletionImpossibleException ex)
+        catch (BO.BlDeletionImpossibleException ex)
         {
             // חריגה אם המחיקה אינה אפשרית (חריגת מחיקה מה-DAL)
             throw new BO.BlDeletionImpossibleException($"Unable to delete volunteer with ID={id}.", ex);
