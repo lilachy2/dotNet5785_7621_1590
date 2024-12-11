@@ -1,7 +1,6 @@
 ﻿namespace BlImplementation;
 using BlApi;
 using BO;
-using DO;
 using Helpers;
 using System.Collections.Generic;
 
@@ -168,6 +167,7 @@ internal class VolunteerImplementation : IVolunteer
             }
 
            Tools.ValidateVolunteerData(boVolunteer);
+            VolunteerManager.CheckLogic(boVolunteer);
 
 
             var doVolunteer = new DO.Volunteer

@@ -18,6 +18,10 @@ public class BlNullPropertyException : Exception
 {
     public BlNullPropertyException(string? message) : base(message) { }
 }
+public class Incompatible_ID : Exception
+{
+    public Incompatible_ID(string? message) : base(message) { }
+}
 public class BlIncorrectPasswordException : Exception
 {
     public BlIncorrectPasswordException(string? message) : base(message) { }

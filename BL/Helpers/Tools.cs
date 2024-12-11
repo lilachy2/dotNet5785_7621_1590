@@ -45,16 +45,11 @@ internal static class Tools
         }
 
         // Validate the PhoneNumber field.
-        if (!Regex.IsMatch(boVolunteer.Number_phone, @"^0\d{9}$"))
-        {
-            throw new ArgumentException("PhoneNumber must be 10 digits and start with 0.");
-        }
+        VolunteerManager.CheckPhonnumber(boVolunteer.Number_phone);
+
 
         // Validate the Email field.
-        if (!Regex.IsMatch(boVolunteer.Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-        {
-            throw new ArgumentException("Invalid Email format.");
-        }
+        VolunteerManager.CheckEmail(boVolunteer.Email);
 
         // Validate the Latitude field.
         if (boVolunteer.Latitude.HasValue && (boVolunteer.Latitude.Value < -90 || boVolunteer.Latitude.Value > 90))
@@ -150,14 +145,14 @@ internal static class Tools
         }
     }
 
-    private static bool HelpCheckdelete(BO.Volunteer volunteer)
-    {
-        DO.Volunteer doVolunteer = _dal.Volunteer.Read(volunteer.Id);
+    //private static bool HelpCheckdelete(BO.Volunteer volunteer)
+    //{
+    //    DO.Volunteer doVolunteer = _dal.Volunteer.Read(volunteer.Id);
 
-        return true;
+    //    return true;
 
 
-    }
+    //}
 
 
     //public static IEnumerable<DO.Assignment> GetCallsByVolunteerId(int volunteerId)
@@ -181,23 +176,7 @@ internal static class Tools
 
 
 
-    //internal static void CheckLogic(BO.Volunteer boVolunteer)
-    //{
-    //    try
-    //    {
-    //        CheckId(boVolunteer.Id);
-    //        CheckPhonnumber(boVolunteer.Number_phone);
-    //        CheckEmail(boVolunteer.Email);
-    //        CheckPassword(boVolunteer.Password);
-    //        CheckAddress(boVolunteer);
-
-    //    }
-    //    catch (BO.BlWrongItemtException ex)
-    //    {
-    //        throw new BO.BlWrongItemtException($"the item have logic problem", ex);
-    //    }
-
-    //}
+    
 
 }
 

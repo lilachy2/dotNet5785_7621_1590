@@ -28,12 +28,13 @@ public record Call
     DateTime? MaxEndTime = null
 )
 {
+    public Call() : this(default, default, default, default) { }
+
+
     //private global::BO.Calltype calltype;
     //private string? description;
     //private string? fullAddress;
     //private DateTime openTime;
-
-    public Call() : this(default, default, default, default) { }
 
     //public Call(double? latitude, double? longitude, global::BO.Calltype calltype, int id, string? description, string? fullAddress, DateTime openTime, DateTime? maxEndTime)
     //{
