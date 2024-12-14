@@ -13,13 +13,13 @@ namespace BO;
 
 public class CallInList
 {
-    public int Id { get; init; }
+    public int? Id { get; init; }
     public int CallId { get; init; }
     public Calltype CallType { get; init; }
     public DateTime OpenTime { get; init; }
     public TimeSpan? TimeRemaining { get; init; }
     public string? VolunteerName { get; init; }
     public TimeSpan? CompletionTime { get; init; }
-    public CallStatus Status { get; init; }
+    public CallStatus/* CallinlistEnum? */Status { get; init; }
     public int TotalAssignments { get; init; }
 }

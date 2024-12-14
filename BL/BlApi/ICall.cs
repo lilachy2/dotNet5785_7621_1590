@@ -15,7 +15,8 @@ namespace BlApi;
 public interface ICall
 {
     int[] GetCallStatusesCounts();
-    BO.CallInList callInList(BO.CallinlistEnum? CallFilter, object? filter, BO.CallinlistEnum? CallOrder);
+    public IEnumerable<BO.CallInList> GetCallsList(BO.CallInListField? filterField = null,object? filterValue = null,BO.CallInListField? sortField = null);
+
     BO.Call? Read(int id);
     void Update(BO.Call boCall);
     void Delete(int id);

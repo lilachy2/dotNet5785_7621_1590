@@ -14,7 +14,7 @@ namespace BO;
         public string? VolunteerName { get; set; }  
         public DateTime EnterTime { get; set; } 
         public DateTime? CompletionTime { get; set; } 
-        public CompletionStatus? CompletionStatus { get; set; } 
+        public /*CompletionStatus?*/  CallAssignmentEnum? CompletionStatus { get; set; } 
     }
 
    

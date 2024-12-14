@@ -18,5 +18,5 @@ public class ClosedCallInList
     public DateTime OpenTime { get; init; }
     public DateTime EnterTime { get; init; }
     public DateTime? EndTime { get; init; }
-    public CompletionType? CompletionStatus { get; init; }
+    public /*CompletionType?*/  CallAssignmentEnum? CompletionStatus { get; init; }
 }

@@ -41,13 +41,16 @@ public enum Calltype
     allergy,
     heartattack,
     broken_bone,
-    security_event
+    security_event,
+        None
 
 }
 public enum AssignmentCompletionType
 {
-    TreatedOnTime,
-    VolunteerCancelled,
-    AdminCancelled,
+    TreatedOnTime, 
+    VolunteerCancelled, // ביטול עצמי
+    AdminCancelled, // ביטול מנהל 
     Expired
+
+
 }

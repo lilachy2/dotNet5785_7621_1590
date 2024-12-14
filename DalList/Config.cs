@@ -37,4 +37,10 @@ internal static class Config
         Clock = DateTime.Now;
         RiskRange = TimeSpan.FromHours(1);
     }
+    ///for  stage 4 
+    public static TimeSpan GetRiskRange()
+    {
+        return RiskRange;
+    }
+
 }

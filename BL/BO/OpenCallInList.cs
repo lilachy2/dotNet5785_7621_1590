@@ -19,3 +19,4 @@ public class OpenCallInList
     public DateTime? MaxEndTime { get; init; }
     public double DistanceFromVolunteer { get; init; }
 }
+

@@ -16,15 +16,16 @@ namespace BO;
 
 public class Call
 {
+    // רשימת קריאות
     public int Id { get; init; }
     public Calltype Calltype { get; init; }  
     public string? Description { get; init; } 
-    public string? FullAddress { get; init; } 
-    public double? Latitude { get; init; }  
-    public double? Longitude { get; init; } 
+    public string FullAddress { get; set; } 
+    public double Latitude { get; set; }  
+    public double Longitude { get; set; } 
     public DateTime OpenTime { get; init; }  
-    public DateTime? MaxEndTime { get; init; } 
+    public DateTime? MaxEndTime { get; set; } 
     public CallStatus Status { get; set; } 
-    public List<BO.CallAssignInList>? CallAssignments { get; set; }
+    public List<BO.CallAssignInList>? CallAssignments { get; set; }  // list!!
     public override string ToString() => this.ToStringProperty();
 }

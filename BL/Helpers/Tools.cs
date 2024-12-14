@@ -1,5 +1,9 @@
-﻿using DalApi;
+﻿using BlApi;
+using BO;
+using DalApi;
+using DO;
 using System.Reflection;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace Helpers;
@@ -7,9 +11,6 @@ namespace Helpers;
 internal static class Tools
 {
     private static readonly DalApi.IDal _dal = DalApi.Factory.Get;
-
-
-
 
     public static string ToStringProperty<T>(this T t)
     {
@@ -71,12 +72,47 @@ internal static class Tools
         }
     }
 
+    //public static async Task<bool> IsAddressValid(string address)
+    //{
+    //    string baseUrl = "https://geocode.maps.co/search";
+    //    string query = $"{baseUrl}?q={Uri.EscapeDataString(address)}";
+
+    //    using (HttpClient client = new HttpClient())
+    //    {
+    //        try
+    //        {
+    //            HttpResponseMessage response = await client.GetAsync(query);
+    //            if (response.IsSuccessStatusCode)
+    //            {
+    //                string result = await response.Content.ReadAsStringAsync();
+    //                return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
+    //            }
+    //            else
+    //            {
+    //                Console.WriteLine($"Error: {response.StatusCode}");
+    //                return false;
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Exception: {ex.Message}");
+    //            return false;
+    //        }
+    //    }
+    //}
 
 
+
+    private const string BaseUrl = "https://geocode.maps.co/search"; // For lines of longitude and latitude 
+
+    /// <summary>
+    /// Checks if an address is valid using the Geocode API.
+    /// </summary>
+    /// <param name="address">The address to validate.</param>
+    /// <returns>True if the address is valid, otherwise false.</returns>
     public static async Task<bool> IsAddressValid(string address)
     {
-        string baseUrl = "https://geocode.maps.co/search";
-        string query = $"{baseUrl}?q={Uri.EscapeDataString(address)}";
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
 
         using (HttpClient client = new HttpClient())
         {
@@ -88,16 +124,71 @@ internal static class Tools
                     string result = await response.Content.ReadAsStringAsync();
                     return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
                 }
-                else
-                {
-                    Console.WriteLine($"Error: {response.StatusCode}");
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception: {ex.Message}");
                 return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets the latitude of a given address.
+    /// </summary>
+    /// <param name="address">The address to process.</param>
+    /// <returns>The latitude, or null if the address is invalid or not found.</returns>
+    public static async Task<double> GetLatitudeAsync(string address)
+    {
+        var coordinates = await GetCoordinatesAsync(address);
+        return coordinates?.Latitude?? 0;
+    }
+
+    /// <summary>
+    /// Gets the longitude of a given address.
+    /// </summary>
+    /// <param name="address">The address to process.</param>
+    /// <returns>The longitude, or null if the address is invalid or not found.</returns>
+    public static async Task<double> GetLongitudeAsync(string address)
+    {
+        var coordinates = await GetCoordinatesAsync(address);
+        return coordinates?.Longitude ?? 0 ;
+    }
+
+    /// <summary>
+    /// Computes the latitude and longitude of a given address using the Geocode API.
+    /// </summary>
+    /// <param name="address">The address to process.</param>
+    /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
+    private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
+    {
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(query);
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+
+                    JsonDocument jsonDocument = JsonDocument.Parse(result);
+                    JsonElement results = jsonDocument.RootElement;
+
+                    if (results.GetArrayLength() > 0)
+                    {
+                        JsonElement firstResult = results[0];
+                        double latitude = double.Parse(firstResult.GetProperty("lat").GetString());
+                        double longitude = double.Parse(firstResult.GetProperty("lon").GetString());
+                        return (latitude, longitude);
+                    }
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
             }
         }
     }
@@ -148,10 +239,7 @@ internal static class Tools
     //private static bool HelpCheckdelete(BO.Volunteer volunteer)
     //{
     //    DO.Volunteer doVolunteer = _dal.Volunteer.Read(volunteer.Id);
-
     //    return true;
-
-
     //}
 
 
@@ -176,7 +264,65 @@ internal static class Tools
 
 
 
-    
+
+    //public static BO.Volunteer CreatClosedCallInList(int id) { }
+    //public static BO.Volunteer CreatOpenCallInList(int id) { }
+    //public static BO.Volunteer CreatCallInProgress(int id) { }
+    //public static BO.Volunteer CreatOpenCallInList(int id) { }
+
+   
+    public static int TotalHandledCalls(int Id)
+    {
+        // Count how many were treated on time
+        return _dal.Assignment.ReadAll()
+            .Count(a => a.VolunteerId == Id &&
+                        a.EndOfTime == AssignmentCompletionType.TreatedOnTime);
+
+    }
+    public static int TotalCallsCancelledhelp(int Id)
+    {
+        // Count how many were canceled
+        return _dal.Assignment.ReadAll()
+            .Count(a => a.VolunteerId == Id &&
+                        a.EndOfTime == AssignmentCompletionType.VolunteerCancelled || a.EndOfTime == AssignmentCompletionType.AdminCancelled);
+
+    }
+    public static int TotalCallsExpiredelo(int Id)
+    {
+        // Count how many were Expired
+        return _dal.Assignment.ReadAll()
+            .Count(a => a.VolunteerId == Id &&
+                        a.EndOfTime == AssignmentCompletionType.Expired);
+
+    }
+    public static int? CurrentCallIdhelp(int Id)
+    {
+        // check CurrentCallId
+        var assignment = _dal.Assignment.ReadAll()
+                .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
+        return assignment?.CallId;
+
+    }
+    public static BO.Calltype CurrentCallType(int Id)
+    {
+
+        // בדיקת האם יש קריאה בטיפול
+        var assignment = _dal.Assignment.ReadAll()
+            .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
+
+        // אם לא קיימת קריאה בטיפולו, מחזיר None
+        if (assignment == null)
+        {
+            return BO.Calltype.None;
+        }
+        var call = _dal.Call.ReadAll()
+           .FirstOrDefault(c => c.Id == assignment.CallId).Calltype;
+        return (BO.Calltype)call;
+
+    }
+
+ 
+
 
 }
 
