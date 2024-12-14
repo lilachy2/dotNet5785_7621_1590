@@ -2,8 +2,7 @@
 namespace BlImplementation;
 using BlApi;
 using BO;
-using DalApi;
-using DO;
+
 using Helpers;
 using System;
 using System.Collections.Generic;
@@ -330,48 +329,123 @@ internal class CallImplementation : BlApi.ICall
     // NOT OK
 
 
+    //public void UpdateEndTreatment(int volunteerId, int assignmentId)
+    //{
+    //    try
+    //    {
+    //        // שלב 1: שליפת פרטי ההקצאה מה-DAL
+    //        var assignment = _dal.Assignment.Read(assignmentId)
+    //            ?? throw new BO.Incompatible_ID("Assignment ID does not exist.");
+
+    //        // שלב 2: בדיקת הרשאה - האם המתנדב הוא זה שהוקצה לקריאה
+    //        if (assignment.VolunteerId != volunteerId)
+    //        {
+    //            throw new BO.Incompatible_ID("Volunteer ID does not exist.");
+    //        }
+    //        //המרה bocall
+    //        var boCall = CallManager.GetViewingCall(volunteerId);
+    //        // שלב 5: עדכון סיום טיפול
+    //        if(boCall.Status != CallStatus.Closed|| boCall.Status != CallStatus.Expired || boCall.Status != CallStatus.InProgress)
+    //        {
+    //            var CallAssignInListParameter = CallManager.GetCallAssignInList(assignment.CallId);
+    //           if( CallAssignInListParameter.CompletionTime != null)
+    //            {
+    //                CallAssignInListParameter.CompletionStatus = CallAssignmentEnum.TreatedOnTime;  // שינוי סטטוס הקריאה ל-"טופלה"
+    //                CallAssignInListParameter.CompletionTime = DateTime.Now;    // עדכון זמן סיום טיפול בפועל"
+    //                // שלב 6: ביצוע העדכון ב-DAL
+    //                var NewAssignment = CallManager.GetViewingAssignment(assignmentId);
+    //                _dal.Assignment.Update(NewAssignment);
+
+    //            }
+    //        }
+    //    }
+    //    catch (DO.AssignmentNotFoundException ex)
+    //    {
+    //        // חריגה אם לא נמצאה הקצאה עם מזהה כזה
+    //        throw new BO.AssignmentNotFoundException($"Assignment with ID {assignmentId} was not found.", ex);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // כל חריגה אחרת
+    //        throw new BO.UpdateEndTreatmentException($"An error occurred while updating the assignment treatment end: {ex.Message}", ex);
+    //    }
+    //}
+
+
+
     public void UpdateEndTreatment(int volunteerId, int assignmentId)
     {
         try
         {
             // שלב 1: שליפת פרטי ההקצאה מה-DAL
             var assignment = _dal.Assignment.Read(assignmentId)
-                ?? throw new BO.Incompatible_ID("Assignment ID does not exist.");
+                ?? throw new BO.BlDoesNotExistException($"Assignment with ID {assignmentId} was not found.");
 
             // שלב 2: בדיקת הרשאה - האם המתנדב הוא זה שהוקצה לקריאה
             if (assignment.VolunteerId != volunteerId)
             {
-                throw new BO.Incompatible_ID("Volunteer ID does not exist.");
+                throw new BO.BlPermissionException("The volunteer is not authorized to update this assignment.");
             }
-            //המרה bocall
-            var boCall = CallManager.GetViewingCall(volunteerId);
-            // שלב 5: עדכון סיום טיפול
-            if(boCall.Status != CallStatus.Closed|| boCall.Status != CallStatus.Expired || boCall.Status != CallStatus.InProgress)
-            {
-                var CallAssignInListParameter = CallManager.GetCallAssignInList(assignment.CallId);
-               if( CallAssignInListParameter.CompletionTime != null)
-                {
-                    CallAssignInListParameter.CompletionStatus = CallAssignmentEnum.TreatedOnTime;  // שינוי סטטוס הקריאה ל-"טופלה"
-                    CallAssignInListParameter.CompletionTime = DateTime.Now;    // עדכון זמן סיום טיפול בפועל"
-                    // שלב 6: ביצוע העדכון ב-DAL
-                    var NewAssignment = CallManager.GetViewingAssignment(assignmentId);
-                    _dal.Assignment.Update(NewAssignment);
 
-                }
+
+           
+            var call = CallManager.GetViewingCall(volunteerId);
+
+            if (call == null)
+            {
+                throw new BO.BlDoesNotExistException($"Call with ID {assignment.CallId} was not found.");
             }
+           
+            // שלב 4: בדיקת סטטוס הקריאה - האם היא לא סגורה או פג תוקף
+            if (call.Status == BO.CallStatus.Closed || call.Status == BO.CallStatus.Expired || call.Status == BO.CallStatus.InProgress)
+            {
+                throw new BO.BlCallStatusNotOpenException("The call is already closed, expired, or in progress and cannot be updated.");
+            }
+
+            // שלב 5: בדיקת אם זמן סיום טיפול בפועל כבר הוזן
+            if (assignment.time_end_treatment != null)
+            {
+                throw new BO.InvalidOperationException("The treatment has already been completed.");
+            }
+
+            // שלב 6: עדכון סיום טיפול
+            assignment.EndOfTime = DO.AssignmentCompletionType.TreatedOnTime;  // שינוי סטטוס הקריאה ל-"טופלה"
+            assignment.time_end_treatment = DateTime.Now;  // עדכון זמן סיום טיפול בפועל
+
+            // שלב 7: ביצוע העדכון ב-DAL
+            _dal.Assignment.Update(assignment);
         }
-        catch (DO.AssignmentNotFoundException ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            // חריגה אם לא נמצאה הקצאה עם מזהה כזה
-            throw new BO.AssignmentNotFoundException($"Assignment with ID {assignmentId} was not found.", ex);
+            // חריגה אם לא נמצאה הקצאה או קריאה עם מזהה כזה
+            throw new BO.BlDoesNotExistException($"Assignment or Call with specified ID was not found.", ex);
+        }
+        catch (DO.DalDeletionImpossibleException ex)
+        {
+            // חריגה במקרה שלא ניתן למחוק/לעדכן את ההקצאה
+            throw new BO.BlDeletionImpossibleException($"Deletion or update of the assignment is impossible: {ex.Message}", ex);
+        }
+        catch (BO.BlPermissionException ex)
+        {
+            // חריגה במקרה של הרשאה שגויה
+            throw new BO.BlPermissionException($"Permission denied: {ex.Message}", ex);
+        }
+        catch (BO.BlCallStatusNotOpenException ex)
+        {
+            // חריגה אם סטטוס הקריאה לא מאפשר סיום טיפול
+            throw new BO.BlCallStatusNotOpenException($"Call status issue: {ex.Message}", ex);
+        }
+        catch (BO.BlMaximum_time_to_finish_readingException ex)
+        {
+            // חריגה אם זמן סיום טיפול כבר הוזן
+            throw new BO.BlMaximum_time_to_finish_readingException($"Treatment already completed: {ex.Message}", ex);
         }
         catch (Exception ex)
         {
             // כל חריגה אחרת
-            throw new BO.UpdateEndTreatmentException($"An error occurred while updating the assignment treatment end: {ex.Message}", ex);
+            throw new BO.BlGeneralException($"An error occurred while updating the assignment treatment end: {ex.Message}", ex);
         }
     }
-
 
 
 
