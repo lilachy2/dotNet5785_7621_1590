@@ -20,6 +20,6 @@ public class CallInList
     public TimeSpan? TimeRemaining { get; init; }
     public string? VolunteerName { get; init; }
     public TimeSpan? CompletionTime { get; init; }
-    public CallStatus/* CallinlistEnum? */Status { get; init; }
+    public CallStatus Status { get; init; }
     public int TotalAssignments { get; init; }
 }

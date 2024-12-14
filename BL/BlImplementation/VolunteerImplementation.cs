@@ -161,10 +161,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
-            //            //יש לבקש את הרשומה משכבת הנתונים ולבדוק אילו שדות השתנו
-            //            יש לוודא שמותר לשנות את השדות האלה(בהתאם למבקש - המנהל או המתנדב בעצמו)
-            //למשל: רק מנהל יוכל לעדכן את תפקיד המתנדב(משתמש מתנדב לא יוכל לעדכן את התפקיד)
-
             _dal.Volunteer.Update(DOVolunteer);
         }
         catch (DO.DalDoesNotExistException ex)

@@ -51,6 +51,4 @@ public enum AssignmentCompletionType
     VolunteerCancelled, // ביטול עצמי
     AdminCancelled, // ביטול מנהל 
     Expired
-
-
 }

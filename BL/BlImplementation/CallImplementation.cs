@@ -194,67 +194,191 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"There is no call with the received ID = {callId}");
         }
     }
-    public List<BO.Call> GetCloseCall(int volunteerId, BO.Calltype? callType, ClosedCallInListEnum? closedCallInListEnum)
+    public List<BO.ClosedCallInList> GetCloseCall(int volunteerId, BO.Calltype? callType, ClosedCallInListEnum? closedCallInListEnum)
     {
         try
         {
-            // שלב 1: שליפת כל הקריאות מה-DAL
             var allCalls = _dal.Call.ReadAll().ToList();
 
-            // שלב 2: שליפת פרטי המתנדב
             DO.Volunteer volunteer = _dal.Volunteer.Read(volunteerId)
                 ?? throw new BO.Incompatible_ID("Volunteer ID does not exist.");
 
-            // שלב 3: המרת כל קריאה ל-Business Object (BO) בעזרת הפונקציה שסיפקת
             var boCalls = allCalls
                 .Select(c =>
                 {
-                    var boCall = VolunteerManager.GetClosedCallInList(c.Id); // פונקציית המרה שסיפקת
+                    var boCall = CallManager.GetCallInList(c.Id); // Conversion function provided
                     return boCall;
                 })
                 .ToList();
 
-            // שלב 4: סינון לפי סטטוס - רק קריאות סגורות
-            //////////////////////// לבדוק ! כי ב OpenCallInList אין שדה של ססטוס 
             var filteredCalls = boCalls
-                .Where(c => c.Status == BO.CallStatus.Closed )
+                .Where(c => c.Status == BO.CallStatus.Closed)
                 .ToList();
 
-            // שלב 5: סינון לפי סוג הקריאה אם יש ערך ב-callType
+            // Filter by volunteer ID - only calls provided by the specific volunteer
+            var boClosedCalls = filteredCalls
+                 .Where(c => c.Id == volunteerId)
+                .Select(c =>
+                {
+                    var boCall = VolunteerManager.GetClosedCallInList(volunteerId); // Conversion function provided
+                    return boCall;
+                })
+                .ToList();
+
+
+            // Step 5: Filter by call type if a value is provided for callType
             if (callType.HasValue)
             {
-                filteredCalls = filteredCalls.Where(c => c.Calltype == callType.Value).ToList();
+                boClosedCalls = boClosedCalls.Where(c => c.CallType == callType.Value).ToList();
             }
 
-            // שלב 6: מיון הרשימה לפי הפרמטר השלישי
-            if (openCallInListEnum.HasValue)
+            // Step 6: Sort the list according to the value in closedCallInListEnum
+            if (closedCallInListEnum.HasValue)
             {
-                filteredCalls = openCallInListEnum switch
+                boClosedCalls = closedCallInListEnum switch
                 {
-                    OpenCallInListEnum.Id => filteredCalls.OrderBy(c => c.Id).ToList(),
-                    OpenCallInListEnum.DistanceFromVolunteer => filteredCalls.OrderBy(c => c.DistanceFromVolunteer).ToList(),
-                    OpenCallInListEnum.OpenTime => filteredCalls.OrderBy(c => c.OpenTime).ToList(),
-                    _ => filteredCalls.OrderBy(c => c.Id).ToList()
+                    ClosedCallInListEnum.Id => boClosedCalls.OrderBy(c => c.Id).ToList(),
+                    ClosedCallInListEnum.CallType => boClosedCalls.OrderBy(c => c.CallType).ToList(),
+                    ClosedCallInListEnum.FullAddress => boClosedCalls.OrderBy(c => c.FullAddress).ToList(),
+                    ClosedCallInListEnum.OpenTime => boClosedCalls.OrderBy(c => c.OpenTime).ToList(),
+                    ClosedCallInListEnum.EnterTime => boClosedCalls.OrderBy(c => c.EnterTime).ToList(),
+                    ClosedCallInListEnum.EndTime => boClosedCalls.OrderBy(c => c.EndTime).ToList(),
+                    ClosedCallInListEnum.CompletionStatus => boClosedCalls.OrderBy(c => c.CompletionStatus).ToList(),
+                    _ => boClosedCalls.OrderBy(c => c.Id).ToList() // Default if no matching value is found
                 };
             }
             else
             {
-                filteredCalls = filteredCalls.OrderBy(c => c.Id).ToList();
+                // If closedCallInListEnum is not provided, sort by Id
+                boClosedCalls = boClosedCalls.OrderBy(c => c.Id).ToList();
             }
 
-            // שלב 7: החזרת התוצאה
-            return filteredCalls;
+            // Step 7: Return the result
+            return boClosedCalls;
         }
-       
-    
         catch (Exception ex)
         {
             throw new BlGetCloseCallException($"An error occurred while retrieving closed calls: {ex.Message}");
         }
     }
 
+    public List<BO.OpenCallInList> GetOpenCall(int volunteerId, BO.Calltype? callType, OpenCallInListEnum? openCallInListEnum)
+    {
+        try
+        {
+            // Step 1: Retrieve all calls from the DAL
+            var allCalls = _dal.Call.ReadAll().ToList();
+
+            // Step 2: Retrieve volunteer details
+            DO.Volunteer volunteer = _dal.Volunteer.Read(volunteerId)
+                ?? throw new BO.Incompatible_ID("Volunteer ID does not exist.");
+
+            // Step 3: Convert each call to a Business Object (BO) using the provided conversion function
+            var boCalls = allCalls
+                .Select(c =>
+                {
+                    var boCall = CallManager.GetCallInList(c.Id); // Conversion function provided
+                    return boCall;
+                })
+                .ToList();
+
+            // Step 4: Filter by status - only open calls or open at risk calls
+            var filteredCalls = boCalls
+                .Where(c => c.Status == BO.CallStatus.Open || c.Status == BO.CallStatus.OpenAtRisk)
+                .ToList();
+
+            var boOpenCalls = filteredCalls
+                .Select(c =>
+                {
+                    var boCall = VolunteerManager.GetOpenCallInList(volunteerId); // Conversion function provided
+                    return boCall;
+                })
+                .ToList();
+
+            // Step 5: Filter by call type if a value is provided for callType
+            if (callType.HasValue)
+            {
+                boOpenCalls = boOpenCalls.Where(c => c.CallType == callType.Value).ToList();
+            }
+
+            // Step 6: Sort the list according to the third parameter
+            if (openCallInListEnum.HasValue)
+            {
+                boOpenCalls = openCallInListEnum switch
+                {
+                    OpenCallInListEnum.Id => boOpenCalls.OrderBy(c => c.Id).ToList(),
+                    OpenCallInListEnum.DistanceFromVolunteer => boOpenCalls.OrderBy(c => c.DistanceFromVolunteer).ToList(),
+                    OpenCallInListEnum.OpenTime => boOpenCalls.OrderBy(c => c.OpenTime).ToList(),
+                    _ => boOpenCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
+                };
+            }
+            else
+            {
+                boOpenCalls = boOpenCalls.OrderBy(c => c.Id).ToList();
+            }
+
+            // Step 7: Return the result
+            return boOpenCalls;
+        }
+        catch (Exception ex)
+        {
+            throw new BlGetOpenCallException($"Error retrieving open calls: {ex.Message}");
+        }
+    }
+
 
     // NOT OK
+
+
+    public void UpdateEndTreatment(int volunteerId, int assignmentId)
+    {
+        try
+        {
+            // שלב 1: שליפת פרטי ההקצאה מה-DAL
+            var assignment = _dal.Assignment.Read(assignmentId)
+                ?? throw new BO.Incompatible_ID("Assignment ID does not exist.");
+
+            // שלב 2: בדיקת הרשאה - האם המתנדב הוא זה שהוקצה לקריאה
+            if (assignment.VolunteerId != volunteerId)
+            {
+                throw new BO.Incompatible_ID("Volunteer ID does not exist.");
+            }
+            //המרה bocall
+            var boCall = CallManager.GetViewingCall(volunteerId);
+            // שלב 5: עדכון סיום טיפול
+            if(boCall.Status != CallStatus.Closed|| boCall.Status != CallStatus.Expired || boCall.Status != CallStatus.InProgress)
+            {
+                var CallAssignInListParameter = CallManager.GetCallAssignInList(assignment.CallId);
+               if( CallAssignInListParameter.CompletionTime != null)
+                {
+                    CallAssignInListParameter.CompletionStatus = CallAssignmentEnum.TreatedOnTime;  // שינוי סטטוס הקריאה ל-"טופלה"
+                    CallAssignInListParameter.CompletionTime = DateTime.Now;    // עדכון זמן סיום טיפול בפועל"
+                    // שלב 6: ביצוע העדכון ב-DAL
+                    var NewAssignment = CallManager.GetViewingAssignment(assignmentId);
+                    _dal.Assignment.Update(NewAssignment);
+
+                }
+            }
+        }
+        catch (DO.AssignmentNotFoundException ex)
+        {
+            // חריגה אם לא נמצאה הקצאה עם מזהה כזה
+            throw new BO.AssignmentNotFoundException($"Assignment with ID {assignmentId} was not found.", ex);
+        }
+        catch (Exception ex)
+        {
+            // כל חריגה אחרת
+            throw new BO.UpdateEndTreatmentException($"An error occurred while updating the assignment treatment end: {ex.Message}", ex);
+        }
+    }
+
+
+
+
+
+
+
+
 
 
 
@@ -263,89 +387,7 @@ internal class CallImplementation : BlApi.ICall
         throw new NotImplementedException();
     }
 
-    //public int[] GetCallStatusesCounts() // לא נכון
-    //{
-    //    // שליפת רשימת הקריאות משכבת הנתונים
-    //    var assignments = _dal.Call.ReadAll();
-    //    var assignments1 = CallManager.GetViewingCall();
-    //    assignments.
 
-    //    // שימוש ב-GroupBy כדי לקבץ את הקריאות לפי הסטטוס שלהן ולספור כמה יש בכל סטטוס
-    //    var groupedassignments = assignments
-    //        .GroupBy(call => call.Calltype) // קיבוץ לפי הסטטוס של הקריאה
-    //        .ToDictionary(group => group.Key, group => group.Count()); // המרת הקבוצות למילון (סטטוס -> כמות)
-
-    //    // יצירת מערך שבו כל אינדקס מייצג סטטוס מתוך ה-Enum CallStatus
-    //    int[] statusCounts = new int[Enum.GetValues<CallStatus>().Length];
-
-    //    // מילוי המערך בכמויות שהתקבלו בקבוצות
-    //    foreach (var group in groupedassignments)
-    //    {
-    //        int statusIndex = (int)group.Key; // הסטטוס מתורגם לאינדקס (מתוך Enum)
-    //        statusCounts[statusIndex] = group.Value; // עדכון הערך במערך
-    //    }
-
-    //    return statusCounts;
-    //}
-
-
-
-    public List<BO.Call> GetOpenCallsForVolunteer(int volunteerId, BO.Calltype? callType, OpenCallInListEnum? openCallInListEnum)
-    {
-        try
-        {
-            // שלב 1: שליפת כל הקריאות מה-DAL
-            var allCalls = _dal.Call.ReadAll().ToList();
-
-            // שלב 2: שליפת פרטי המתנדב
-            DO.Volunteer volunteer = _dal.Volunteer.Read(volunteerId)
-                ?? throw new BO.Incompatible_ID("Volunteer ID does not exist.");
-
-            // שלב 3: המרת כל קריאה ל-Business Object (BO) בעזרת הפונקציה שסיפקת
-            var boCalls = allCalls
-                .Select(c =>
-                {
-                    var boCall = VolunteerManager.GetOpenCallInList(c.Id); // פונקציית המרה שסיפקת
-                    return boCall;
-                })
-                .ToList();
-
-            // שלב 4: סינון לפי סטטוס - רק קריאות פתוחות או פתוחות בסיכון
-            //////////////////////// לבדוק ! כי ב OpenCallInList אין שדה של ססטוס 
-            var filteredCalls = boCalls
-                .Where(c => c.Status == BO.CallStatus.Open || c.Status == BO.CallStatus.OpenAtRisk)
-                .ToList();
-
-            // שלב 5: סינון לפי סוג הקריאה אם יש ערך ב-callType
-            if (callType.HasValue)
-            {
-                filteredCalls = filteredCalls.Where(c => c.Calltype == callType.Value).ToList();
-            }
-
-            // שלב 6: מיון הרשימה לפי הפרמטר השלישי
-            if (openCallInListEnum.HasValue)
-            {
-                filteredCalls = openCallInListEnum switch
-                {
-                    OpenCallInListEnum.Id => filteredCalls.OrderBy(c => c.Id).ToList(),
-                    OpenCallInListEnum.DistanceFromVolunteer => filteredCalls.OrderBy(c => c.DistanceFromVolunteer).ToList(),
-                    OpenCallInListEnum.OpenTime => filteredCalls.OrderBy(c => c.OpenTime).ToList(),
-                    _ => filteredCalls.OrderBy(c => c.Id).ToList()
-                };
-            }
-            else
-            {
-                filteredCalls = filteredCalls.OrderBy(c => c.Id).ToList();
-            }
-
-            // שלב 7: החזרת התוצאה
-            return filteredCalls;
-        }
-        catch (Exception ex)
-        {
-            throw new BlGetOpenCallException($"Error retrieving open calls: {ex.Message}");
-        }
-    }
 
 
 
@@ -392,8 +434,4 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
-    public void UpdateEndTreatment(int id, int callid)
-    {
-        throw new NotImplementedException();
-    }
 }
