@@ -39,12 +39,18 @@ internal static class ClockManager //stage 4
         //(students becomes not active after 5 years etc.)
         
        // VolunteerManager.PeriodicVolunteersUpdates(oldClock, newClock); //stage 4 //finish
+        CallManager.UpdateCallsToExpired(oldClock, newClock);
         //etc ...
 
         //Calling all the observers of clock update
         ClockUpdatedObservers?.Invoke(); //prepared for stage 5
     }
     #endregion Stage 4
+
+
+
+
+
 
 
     #region Stage 5

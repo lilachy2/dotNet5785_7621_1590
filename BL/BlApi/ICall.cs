@@ -20,7 +20,7 @@ public interface ICall
     BO.Call? Read(int id);
     void Update(BO.Call boCall);
     void Delete(int id);
-    void Create(BO.Call boCall);
+    void Create(BO.Call boCall); 
     List<BO.ClosedCallInList> GetCloseCall(int id, BO.Calltype? callType, BO.ClosedCallInListEnum?  closedCallInListEnum);
     List<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? callType, BO.OpenCallInListEnum?  openedCallInListEnum);
     void UpdateEndTreatment(int id, int callid);

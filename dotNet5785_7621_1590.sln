@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stage0", "Stage0\Stage0.csproj", "{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6CC8AE7-ED68-4CA8-BF71-1075A7E12AAA}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -27,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{8EAE9629-7AE
 		xml\Volunteers.xml = xml\Volunteers.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlTest", "BlTest\BlTest.csproj", "{5C338043-3C4A-47BE-BC63-7F0914C22F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlTest", "BlTest\BlTest.csproj", "{5C338043-3C4A-47BE-BC63-7F0914C22F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{403F9615-3450-47DE-8B33-399CB4BA9E27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{403F9615-3450-47DE-8B33-399CB4BA9E27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E2F71D8-8D17-4A45-A9E9-DB6D0910A83B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDEBED65-B6E6-401C-97BF-985D288CEDE6}.Release|Any CPU.ActiveCfg = Release|Any CPU

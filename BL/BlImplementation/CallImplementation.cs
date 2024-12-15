@@ -7,7 +7,7 @@ using Helpers;
 using System;
 using System.Collections.Generic;
 
-internal class CallImplementation : BlApi.ICall
+internal class CallImplementation : ICall
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
 

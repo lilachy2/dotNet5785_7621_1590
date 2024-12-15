@@ -48,7 +48,7 @@ public enum Calltype
 public enum AssignmentCompletionType
 {
     TreatedOnTime, 
-    VolunteerCancelled, // ביטול עצמי
-    AdminCancelled, // ביטול מנהל 
+    VolunteerCancelled, // self cancellation
+    AdminCancelled, // Canceling an administrator
     Expired
 }

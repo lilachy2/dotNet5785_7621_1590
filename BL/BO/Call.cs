@@ -18,12 +18,12 @@ public class Call
 {
     // רשימת קריאות
     public int Id { get; init; }
-    public Calltype Calltype { get; init; }  
-    public string? Description { get; init; } 
+    public Calltype Calltype { get; set; }  
+    public string? Description { get; set; } 
     public string FullAddress { get; set; } 
     public double Latitude { get; set; }  
     public double Longitude { get; set; } 
-    public DateTime OpenTime { get; init; }  
+    public DateTime OpenTime { get; set; }  
     public DateTime? MaxEndTime { get; set; } 
     public CallStatus Status { get; set; } 
     public List<BO.CallAssignInList>? CallAssignments { get; set; }  // list!!

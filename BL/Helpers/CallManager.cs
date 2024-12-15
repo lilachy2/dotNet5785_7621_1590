@@ -159,7 +159,7 @@ internal static class CallManager
     /// <returns>The angle in radians</returns>
     public static CallStatus CalculateCallStatus(int callId)
     {
-        // שליפת הקריאה המתאימה מתוך ה-DAL
+        // Fetching the appropriate call from the DAL
         var call = _dal.Call.ReadAll().FirstOrDefault(c => c.Id == callId);
 
         if (call == null)
@@ -167,36 +167,36 @@ internal static class CallManager
             throw new ArgumentException($"Call with ID {callId} not found.");
         }
 
-        // זמן מקסימלי לסיום הקריאה
+        // Maximum time for the call to end
         DateTime? maxEndTime = call.MaxEndTime;
 
-        // שליפת כל האסיינמנטים של הקריאה
+        // Fetching all assignments related to the call
         var assignments = _dal.Assignment.ReadAll()
             .Where(a => a.CallId == callId)
             .ToList();
 
         if (!assignments.Any())
         {
-            return CallStatus.Open; // קריאה ללא אסיינמנטים, נחשבת כפתוחה
+            return CallStatus.Open; // Call with no assignments is considered open
         }
 
-        // שימוש בזמן הנוכחי
+        // Using the current time
         DateTime currentClock = ClockManager.Now;
 
-        // קריאה שהסתיימה ומבוטלת
+        // Call that has ended and was canceled
         if (assignments.Any(a => a.EndOfTime == AssignmentCompletionType.AdminCancelled ||
                                  a.EndOfTime == AssignmentCompletionType.VolunteerCancelled))
         {
             return CallStatus.Closed;
         }
 
-        // קריאה שפג תוקפה
+        // Call that has expired
         if (maxEndTime.HasValue && maxEndTime <= currentClock)
         {
             return CallStatus.Expired;
         }
 
-        // קריאה בטיפול בסיכון
+        // Call in progress and at risk
         if (assignments.Any(a => a.time_entry_treatment != default &&
                                  a.time_end_treatment == null &&
                                  maxEndTime.HasValue &&
@@ -205,13 +205,13 @@ internal static class CallManager
             return CallStatus.InProgressAtRisk;
         }
 
-        // קריאה בטיפול
+        // Call in progress
         if (assignments.Any(a => a.time_end_treatment == null))
         {
             return CallStatus.InProgress;
         }
 
-        // קריאה פתוחה בסיכון
+        // Open call at risk
         if (assignments.All(a => a.time_end_treatment == null) &&
             maxEndTime.HasValue &&
             maxEndTime <= currentClock)
@@ -219,12 +219,12 @@ internal static class CallManager
             return CallStatus.OpenAtRisk;
         }
 
-        // קריאה פתוחה
+        // Open call
         return CallStatus.Open;
-    }  
+    }
 
 
-   
+
 
 
 
@@ -313,44 +313,6 @@ internal static class CallManager
         };
     }
 
-
-
-
-    //public static BO.Call GetAdding_updateCall(int VolunteerId)
-    //{
-    //    DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
-
-    //    //Find the appropriate CALL  and  Assignmentn by volunteer ID
-    //    var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-    //    var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
-
-    //    if (Tools.IsAddressValid(doCall.ReadAddress).Result == false)
-    //    {
-    //        throw new BlInvalidaddress("The address is invalid.");
-    //    }
-
-    //    MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime); // if not good throw expection
-
-
-    //    // Create the object
-    //    return new BO.Call
-    //    {
-    //        Id = doCall.Id, // Call identifier
-    //        Calltype = (BO.Calltype)doCall.Calltype, // Enum conversion
-    //        Description = doCall.VerbalDescription,
-    //        FullAddress = doCall.ReadAddress, // Full address of the call
-
-    //        Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
-    //        Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the address
-
-    //        OpenTime = doCall.OpeningTime, // לבדוק שעון מערכת בזןמ בדיקה 
-
-
-    //        MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
-    //        Status = CalculateCallStatus(doCall.Id), // Current status of the call
-
-    //    };
-    //}
     public static void MaxEndTimeCheck(DateTime? MaxEndTime, DateTime OpeningTime)
     {
         if (MaxEndTime < OpeningTime || MaxEndTime < ClockManager.Now)
@@ -483,12 +445,45 @@ internal static class CallManager
         return completedAssignment.time_end_treatment - completedAssignment.time_entry_treatment;
     }
 
+    public static void UpdateCallsToExpired(DateTime oldClock, DateTime newClock)
+    {
+        // שליפת כל ההקצאות שעדיין פתוחות וזמן הסיום שלהן עבר
+        var assignmentsToUpdate = _dal.Assignment.ReadAll()
+            .Where(a => a.EndOfTime == null && a.time_entry_treatment <= newClock && a.CallId != 0)
+            .ToList();
 
+        // עדכון ההקצאות וזמן הסיום שלהן
+        var updatedAssignments = assignmentsToUpdate
+            .Select(a => new DO.Assignment
+            {
+                Id = a.Id,
+                CallId = a.CallId,
+                VolunteerId = a.VolunteerId,
+                time_entry_treatment = a.time_entry_treatment,
+                time_end_treatment = newClock, // עדכון זמן סיום
+                EndOfTime = DO.AssignmentCompletionType.Expired // סטטוס "פג תוקף"
+            }).ToList();
 
+        // עדכון כל ההקצאות ב-DAL
+        updatedAssignments.ForEach(a => _dal.Assignment.Update(a));
 
+        // עדכון הקריאות עצמן - באמצעות שימוש ישיר ב-CallId של ההקצאות
+        var callIdsToUpdate = updatedAssignments.Select(a => a.CallId).Distinct().ToList();
 
+        var callsToUpdate = _dal.Call.ReadAll()
+            .Where(c => callIdsToUpdate.Contains(c.Id))
+            .ToList();
+
+        callsToUpdate.ForEach(call => _dal.Call.Update(call));
+    }
 
 }
+
+
+
+
+
+
 
 
 

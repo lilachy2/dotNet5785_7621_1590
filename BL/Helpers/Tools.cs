@@ -236,39 +236,7 @@ internal static class Tools
         }
     }
 
-    //private static bool HelpCheckdelete(BO.Volunteer volunteer)
-    //{
-    //    DO.Volunteer doVolunteer = _dal.Volunteer.Read(volunteer.Id);
-    //    return true;
-    //}
-
-
-    //public static IEnumerable<DO.Assignment> GetCallsByVolunteerId(int volunteerId)
-    //{
-    //    try
-    //    {
-    //        // קריאת רשימת כל הקריאות משכבת הנתונים
-    //        var allCalls = _dal.Assignment.ReadAll();
-
-    //        // סינון קריאות לפי מזהה מתנדב
-    //        var callsByVolunteer = allCalls.Where(call => call.VolunteerId == volunteerId);
-
-    //        // החזרת הקריאות או אוסף ריק אם אין תוצאות
-    //        return callsByVolunteer.Any() ? callsByVolunteer : Enumerable.Empty<DO.Assignment>();
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new DO.DalException($"Failed to retrieve calls for Volunteer ID={volunteerId}.", ex);
-    //    }
-    //}
-
-
-
-
-    //public static BO.Volunteer CreatClosedCallInList(int id) { }
-    //public static BO.Volunteer CreatOpenCallInList(int id) { }
-    //public static BO.Volunteer CreatCallInProgress(int id) { }
-    //public static BO.Volunteer CreatOpenCallInList(int id) { }
+    
 
    
     public static int TotalHandledCalls(int Id)
