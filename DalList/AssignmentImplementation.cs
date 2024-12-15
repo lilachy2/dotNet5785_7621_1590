@@ -34,7 +34,7 @@ internal class AssignmentImplementation : IAssignment
         if (item == null)
         {
             //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
+            throw new DO.Incompatible_ID($"Assignment with ID={id} does not exist"); // stag 2
         }
         else
             DataSource.Assignments.Remove(item);
@@ -53,7 +53,7 @@ internal class AssignmentImplementation : IAssignment
     {
 
         //var item = DataSource.Assignments.Find(x => x?.Id == id); // stage 1
-        var item = DataSource.Assignments.FirstOrDefault(item => item.Id == id); //stage 2
+        var item = DataSource.Assignments.FirstOrDefault(item => item.Id == id)?? throw new DO.Incompatible_ID($"Assignment with ID {id} was not found."); //stage 2
 
 
         if (item == null)
@@ -67,30 +67,6 @@ internal class AssignmentImplementation : IAssignment
     {
         return DataSource.Assignments.FirstOrDefault(filter);
     }
-
-
-
-
-
-    //public List<Assignment> ReadAll()  // stage1
-    //{
-    //    List<Assignment> Assignment = new List<Assignment>(DataSource.Assignments);
-
-    //    // print 
-    //    foreach (var Assignment1 in Assignment)
-    //    {
-    //        if (Assignment1 != null)
-    //        {
-    //            Console.WriteLine(Assignment1);
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Null Volunteer");
-    //        }
-    //    }
-
-    //    return new List<Assignment>(DataSource.Assignments);///ask about ?
-    //}
 
 
     public IEnumerable<Assignment> ReadAll(Func<Assignment, bool>? filter = null) //stage 2
@@ -109,7 +85,7 @@ internal class AssignmentImplementation : IAssignment
         {
 
             //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={item.Id} does not exist"); // stag 2
+            throw new DO.Incompatible_ID($"Assignment with ID={item.Id} does not exist"); // stag 2
 
         }
         else

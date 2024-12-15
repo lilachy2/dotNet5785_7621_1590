@@ -72,10 +72,10 @@ public class BlNo_assignments_volunteerException : Exception
               : base(message, innerException) { }
 }
 
-public class BlCallStatusNotOpenException : Exception
+public class BlCallStatusNotOKException : Exception
 {
-    public BlCallStatusNotOpenException(string? message) : base(message) { }
-    public BlCallStatusNotOpenException(string message, Exception innerException)
+    public BlCallStatusNotOKException(string? message) : base(message) { }
+    public BlCallStatusNotOKException(string message, Exception innerException)
               : base(message, innerException) { }
 }
 public class BlMaximum_time_to_finish_readingException : Exception
@@ -94,6 +94,14 @@ public class BlGetOpenCallException : Exception
 {
     public BlGetOpenCallException(string? message) : base(message) { }
     public BlGetOpenCallException(string message, Exception innerException)
+              : base(message, innerException) { }
+}
+
+
+public class Bl_Volunteer_Cant_UpdateCancelTreatmentException : Exception
+{
+    public Bl_Volunteer_Cant_UpdateCancelTreatmentException(string? message) : base(message) { }
+    public Bl_Volunteer_Cant_UpdateCancelTreatmentException(string message, Exception innerException)
               : base(message, innerException) { }
 }
 

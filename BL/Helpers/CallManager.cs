@@ -316,41 +316,41 @@ internal static class CallManager
 
 
 
-    public static BO.Call GetAdding_updateCall(int VolunteerId)
-    {
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+    //public static BO.Call GetAdding_updateCall(int VolunteerId)
+    //{
+    //    DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
-        //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-        var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+    //    //Find the appropriate CALL  and  Assignmentn by volunteer ID
+    //    var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
+    //    var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
-        if (Tools.IsAddressValid(doCall.ReadAddress).Result == false)
-        {
-            throw new BlInvalidaddress("The address is invalid.");
-        }
+    //    if (Tools.IsAddressValid(doCall.ReadAddress).Result == false)
+    //    {
+    //        throw new BlInvalidaddress("The address is invalid.");
+    //    }
 
-        MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime); // if not good throw expection
-
-
-        // Create the object
-        return new BO.Call
-        {
-            Id = doCall.Id, // Call identifier
-            Calltype = (BO.Calltype)doCall.Calltype, // Enum conversion
-            Description = doCall.VerbalDescription,
-            FullAddress = doCall.ReadAddress, // Full address of the call
-
-            Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
-            Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the address
-
-            OpenTime = doCall.OpeningTime, // לבדוק שעון מערכת בזןמ בדיקה 
+    //    MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime); // if not good throw expection
 
 
-            MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
-            Status = CalculateCallStatus(doCall.Id), // Current status of the call
+    //    // Create the object
+    //    return new BO.Call
+    //    {
+    //        Id = doCall.Id, // Call identifier
+    //        Calltype = (BO.Calltype)doCall.Calltype, // Enum conversion
+    //        Description = doCall.VerbalDescription,
+    //        FullAddress = doCall.ReadAddress, // Full address of the call
 
-        };
-    }
+    //        Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
+    //        Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the address
+
+    //        OpenTime = doCall.OpeningTime, // לבדוק שעון מערכת בזןמ בדיקה 
+
+
+    //        MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
+    //        Status = CalculateCallStatus(doCall.Id), // Current status of the call
+
+    //    };
+    //}
     public static void MaxEndTimeCheck(DateTime? MaxEndTime, DateTime OpeningTime)
     {
         if (MaxEndTime < OpeningTime || MaxEndTime < ClockManager.Now)
@@ -390,6 +390,7 @@ internal static class CallManager
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == Id && a.EndOfTime == null).FirstOrDefault();// לבדוק
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+        var GetTotalAssignmentsForCall = _dal.Assignment.ReadAll().Where(a => a.Id == Id);
 
         return new BO.CallInList
         {
@@ -403,7 +404,7 @@ internal static class CallManager
 
             CompletionTime = CalculateCompletionTime(doAssignment.Id), // Total time taken to complete the call
             Status = CalculateCallStatus(doCall.Id), // Current status of the call
-            TotalAssignments = GetTotalAssignmentsForCall(doCall.Id) // Total number of assignments for the call
+            TotalAssignments = GetTotalAssignmentsForCall.Count(a=> a.CallId == doAssignment.CallId) // Total number of assignments for the call
 
         };
 
@@ -467,7 +468,7 @@ internal static class CallManager
     public static TimeSpan? CalculateCompletionTime(int callId)
     {
         // Retrieve all assignments related to the call
-        var assignments = _dal.Assignment.ReadAll().Where(a => a.CallId == callId && ); // קריאות שטופלו
+        var assignments = _dal.Assignment.ReadAll().Where(a => a.CallId == callId ); 
 
         // Check if the call has been completed
         var completedAssignment = assignments

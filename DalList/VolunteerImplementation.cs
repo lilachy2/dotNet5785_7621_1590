@@ -19,7 +19,7 @@ internal class VolunteerImplementation : IVolunteer
         if (Read(v => v.Id == item.Id) != null)
         {
             //throw new Exception($"Volunteer with ID={item.id} does exist"); // stage1
-            throw new DalAlreadyExistsException($"Volunteer with ID={item.Id} does exist"); // stage 2
+            throw new DO.Incompatible_ID($"Volunteer with ID={item.Id} does exist"); // stage 2
 
         }
         else
@@ -39,7 +39,7 @@ internal class VolunteerImplementation : IVolunteer
         if (item == null)
         {
             //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
+            throw new DO.Incompatible_ID($"Volunteer with ID={id} does exist"); // stage 2
         }
         else
             DataSource.Volunteers.Remove(item);
@@ -59,7 +59,8 @@ internal class VolunteerImplementation : IVolunteer
     {
 
         //var item = DataSource.Volunteers.Find(x => x?.id == id);  // stage1
-        var item = DataSource.Volunteers.FirstOrDefault(item => item.Id == id); //stage 2
+        var item = DataSource.Volunteers.FirstOrDefault(item => item.Id == id)??throw new DO.Incompatible_ID($"Volunteer with ID={id} does exist"); // stage 2
+         //stage 2
 
 
         if (item == null)
@@ -93,7 +94,7 @@ internal class VolunteerImplementation : IVolunteer
         if (old == null)
         {
             //throw new Exception($"Volunteer with ID={item.id} does not exist"); // // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={item.Id} does not exist"); // stag 2
+            throw new DO.Incompatible_ID($"Volunteer with ID={item.Id} does exist"); // stage 2
         }
         else
         {

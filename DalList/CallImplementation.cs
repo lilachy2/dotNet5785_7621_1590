@@ -29,7 +29,7 @@ internal class CallImplementation : ICall
         if (item == null)
         {
             //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={id} does not exist"); // stag 2
+            throw new DO.Incompatible_ID($"Call with ID={id} does not exist"); // stag 2
         }
         else
             DataSource.Calls.Remove(item);
@@ -47,7 +47,7 @@ internal class CallImplementation : ICall
     public Call? Read(int id)//stage1
     {
         //var item = DataSource.Calls.Find(x => x?.Id == id);  // stage1
-        var item = DataSource.Calls.FirstOrDefault(item => item.Id == id); //stage 2
+        var item = DataSource.Calls.FirstOrDefault(item => item.Id == id) ?? throw new DO.Incompatible_ID($"Call with ID={id} does not exist"); //stage 2
 
 
         if (item == null)
@@ -60,6 +60,7 @@ internal class CallImplementation : ICall
     public Call? Read(Func<Call, bool> filter)  //stage 2
     {
         return DataSource.Calls.FirstOrDefault(filter);
+
     }
 
     public IEnumerable<Call> ReadAll(Func<Call, bool>? filter = null) //stage 2
@@ -77,7 +78,7 @@ internal class CallImplementation : ICall
         if (old == null)
         {
             //throw new Exception($"Volunteer with ID={id} does not exist"); // stag 1
-            throw new DalDeletionImpossible($"Volunteer with ID={item.Id} does not exist"); // stag 2
+            throw new DO.Incompatible_ID($"Call with ID={item.Id} does not exist"); // stag 2
         }
         else
         {
