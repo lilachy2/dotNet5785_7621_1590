@@ -72,10 +72,17 @@ internal static class Tools
         }
     }
 
+
+    //private const string BaseUrl = "https://geocode.maps.co/search"; // For lines of longitude and latitude 
+
+    /// <summary>
+    /// Checks if an address is valid using the Geocode API.
+    /// </summary>
+    /// <param name="address">The address to validate.</param>
+    /// <returns>True if the address is valid, otherwise false.</returns>
     //public static async Task<bool> IsAddressValid(string address)
     //{
-    //    string baseUrl = "https://geocode.maps.co/search";
-    //    string query = $"{baseUrl}?q={Uri.EscapeDataString(address)}";
+    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
 
     //    using (HttpClient client = new HttpClient())
     //    {
@@ -87,51 +94,57 @@ internal static class Tools
     //                string result = await response.Content.ReadAsStringAsync();
     //                return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
     //            }
-    //            else
-    //            {
-    //                Console.WriteLine($"Error: {response.StatusCode}");
-    //                return false;
-    //            }
+    //            return false;
     //        }
-    //        catch (Exception ex)
+    //        catch
     //        {
-    //            Console.WriteLine($"Exception: {ex.Message}");
     //            return false;
     //        }
     //    }
     //}
 
 
+    private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
+    private const string BaseUrl = "https://eu1.locationiq.com/v1/search.php";
 
-    private const string BaseUrl = "https://geocode.maps.co/search"; // For lines of longitude and latitude 
-
-    /// <summary>
-    /// Checks if an address is valid using the Geocode API.
-    /// </summary>
-    /// <param name="address">The address to validate.</param>
-    /// <returns>True if the address is valid, otherwise false.</returns>
     public static async Task<bool> IsAddressValid(string address)
     {
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
+
+        // כתובת ה-API בלי ה-API Key
         string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
 
         using (HttpClient client = new HttpClient())
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(query);
-                if (response.IsSuccessStatusCode)
+                // הוספת ה-API Key ל-Headers של הבקשה
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer 67589f7ea5000746604541qlg6b8a20");
+
+                HttpResponseMessage response = await client.GetAsync(query); // בקשה סינכרונית
+
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+
+                if (response.IsSuccessStatusCode) // אם הבקשה הצליחה
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
                 }
+
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error: {ex.Message}");
                 return false;
             }
         }
     }
+
+
+
+
 
     /// <summary>
     /// Gets the latitude of a given address.

@@ -13,6 +13,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     {
         var volunteers = _dal.Volunteer.ReadAll();
 
+
         if (Active.HasValue)
         {
             volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
@@ -26,12 +27,17 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             _ => volunteers.OrderBy(volunteer => volunteer.Id) // Default: sort by volunteer ID
         };
 
-        return volunteers.Select(volunteer => new VolunteerInList
-        {
-            Id = volunteer.Id,
-            FullName = volunteer.Name,
-            IsActive = volunteer.Active
-        });
+        return volunteers
+    .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
+    //.Where(v => v != null) // סינון אם יש מתנדבים שלא נמצאו
+    .ToList();
+
+        //return volunteers.Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)).ToList();
+        //{
+        //    Id = volunteer.Id,
+        //    FullName = volunteer.Name,
+        //    IsActive = volunteer.Active
+        //});
     }
     public DO.Role PasswordEntered(int Id, string password)
     {
@@ -173,45 +179,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         }
     }
 
-    //public void Delete(int id)
-    //{
-    //    try
-    //    {
-    //        var volunteer = _dal.Volunteer.Read(id);
-
-    //        if (volunteer == null)
-    //        {
-    //            throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.");
-    //        }
-
-    //        // קריאת היסטוריית הקריאות של המתנדב (ניתן להוסיף פונקציה מתאימה בשכבת הנתונים)
-    //        //var handledCalls = GetCallsByVolunteerId(id);//add
-    //        //var handledCalls = Tools.GetCallsByVolunteerId(id);
-    //        var handledCalls = volunteer.TotalHandledCalls;
-
-    //        if (handledCalls.Any(call => call.Status == DO.AssignmentCompletionType.TreatedOnTime ||
-    //                          call.Status == DO.AssignmentCompletionType.VolunteerCancelled ||
-    //                          call.Status == DO.AssignmentCompletionType.AdminCancelled ||
-    //                          call.Status == DO.AssignmentCompletionType.Expired))
-    //        {
-    //            throw new BO.BlDeletionImpossibleException($"Cannot delete volunteer with ID={id}. The volunteer has handled or is currently handling calls.");
-    //        }
-
-
-    //        // מחיקת המתנדב
-    //        _dal.Volunteer.Delete(id);
-    //    }
-    //    catch (DO.DalDoesNotExistException ex)
-    //    {
-    //        // חריגה אם המתנדב לא נמצא בשכבת הנתונים
-    //        throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.", ex);
-    //    }
-    //    catch (BO.BlDeletionImpossibleException ex)
-    //    {
-    //        // חריגה אם המחיקה אינה אפשרית (חריגת מחיקה מה-DAL)
-    //        throw new BO.BlDeletionImpossibleException($"Unable to delete volunteer with ID={id}.", ex);
-    //    }
-    //}
+    
 
     public void Delete(int volunteerId)
     {

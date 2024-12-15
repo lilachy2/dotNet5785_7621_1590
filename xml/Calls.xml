@@ -1,2 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Call>
+    <Latitude>33.03281232858086</Latitude>
+    <Longitude>35.76374119645558</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1000</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.20017662699182</Latitude>
+    <Longitude>35.478017262921234</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1001</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.990447719345774</Latitude>
+    <Longitude>35.20953876542366</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1002</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.93978313507929</Latitude>
+    <Longitude>35.46247679932774</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1003</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.03220491371416</Latitude>
+    <Longitude>35.899336171929114</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1004</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.429401797496695</Latitude>
+    <Longitude>35.50408127181096</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1005</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.59876941360349</Latitude>
+    <Longitude>34.66871501627593</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1006</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.81704121876197</Latitude>
+    <Longitude>35.810853490452814</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1007</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.56697344448318</Latitude>
+    <Longitude>34.41576916855928</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1008</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.986584044373934</Latitude>
+    <Longitude>35.329746447456145</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1009</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.44516944593821</Latitude>
+    <Longitude>35.78300032786088</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1010</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.95299813417677</Latitude>
+    <Longitude>35.83817663313628</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1011</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.73580359114643</Latitude>
+    <Longitude>35.050878456649954</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1012</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.892485640049106</Latitude>
+    <Longitude>34.97151002131073</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1013</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.31873441721347</Latitude>
+    <Longitude>35.30723699168085</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1014</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.654542320108266</Latitude>
+    <Longitude>34.42467185831496</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1015</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.478737759064558</Latitude>
+    <Longitude>34.64534346545571</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1016</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.937316734849624</Latitude>
+    <Longitude>35.32835511810513</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1017</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.707269502598116</Latitude>
+    <Longitude>34.336056921310075</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1018</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.0072829629215</Latitude>
+    <Longitude>35.83566269414682</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1019</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.25135053921591</Latitude>
+    <Longitude>34.30187174233667</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1020</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.708971248260884</Latitude>
+    <Longitude>35.77670583507412</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1021</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.167125416657434</Latitude>
+    <Longitude>34.39565390556906</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1022</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.55438319209802</Latitude>
+    <Longitude>34.33721827531952</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1023</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.502993775580467</Latitude>
+    <Longitude>34.62216250788426</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1024</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.681285499468604</Latitude>
+    <Longitude>34.64279530775792</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1025</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.80816040842199</Latitude>
+    <Longitude>34.317378461914274</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1026</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.137534410266763</Latitude>
+    <Longitude>34.816760238382564</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1027</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.65004214368738</Latitude>
+    <Longitude>34.635330087138655</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1028</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.14727498088101</Latitude>
+    <Longitude>34.74648682776896</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1029</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.76926012902136</Latitude>
+    <Longitude>35.32366227904472</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1030</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.44630289481949</Latitude>
+    <Longitude>35.18227848236711</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1031</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.697125631361935</Latitude>
+    <Longitude>35.66356894920623</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1032</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.62163732172979</Latitude>
+    <Longitude>35.61190795205735</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1033</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.712719980207318</Latitude>
+    <Longitude>35.30644183156291</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1034</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.49159348428702</Latitude>
+    <Longitude>34.72412980986147</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1035</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.77981805096431</Latitude>
+    <Longitude>34.83798451266305</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1036</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.21088978565637</Latitude>
+    <Longitude>35.388540456079355</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1037</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.985753647038038</Latitude>
+    <Longitude>34.622979876423024</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1038</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.82054187777333</Latitude>
+    <Longitude>35.320467661111984</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1039</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.47363360563497</Latitude>
+    <Longitude>34.36659586568815</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1040</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.37208351532919</Latitude>
+    <Longitude>34.51049935153691</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1041</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.587401704413868</Latitude>
+    <Longitude>35.037334422906724</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1042</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.3554554565341</Latitude>
+    <Longitude>34.42772562201819</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1043</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.60583580546194</Latitude>
+    <Longitude>35.22946925670476</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1044</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.386447849628475</Latitude>
+    <Longitude>35.79692198212887</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1045</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.767951361631624</Latitude>
+    <Longitude>34.38931152014357</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1046</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.23075647514244</Latitude>
+    <Longitude>35.54882065379584</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1047</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.556462387075847</Latitude>
+    <Longitude>34.44225946231323</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1048</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.939442116751042</Latitude>
+    <Longitude>34.80385190832101</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1049</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-14T20:48:02</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+</ArrayOfCall>

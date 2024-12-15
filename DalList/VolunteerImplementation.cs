@@ -59,10 +59,7 @@ internal class VolunteerImplementation : IVolunteer
     {
 
         //var item = DataSource.Volunteers.Find(x => x?.id == id);  // stage1
-        var item = DataSource.Volunteers.FirstOrDefault(item => item.Id == id)??throw new DO.Incompatible_ID($"Volunteer with ID={id} does exist"); // stage 2
-         //stage 2
-
-
+        var item = DataSource.Volunteers.FirstOrDefault(item => item.Id == id);
         if (item == null)
             return null;
 

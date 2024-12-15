@@ -19,7 +19,7 @@ internal class VolunteerImplementation : IVolunteer
             Id = int.TryParse((string?)v.Element("Id"), out var ID) ? ID : throw new FormatException("can't convert id"),
             Name = (string?)v.Element("Name") ?? "",
             Number_phone = (string?)v.Element("Number") ?? "", 
-            Email = (string?)v.Element("Number") ?? "", 
+            Email = (string?)v.Element("Email") ?? "", 
             Password = (string?)v.Element("Password") ?? "",
             Active = bool.TryParse((string?)v.Element("Active"), out bool active) ? active : throw new FormatException("can't convert active"),
             Role = Role.TryParse((string?)v.Element("Role"), out Role role) ? role : throw new FormatException("can't convert role "),
@@ -27,8 +27,6 @@ internal class VolunteerImplementation : IVolunteer
             Longitude = double.TryParse((string?)v.Element("longitude"), out double longitude) ? longitude : null,
             Latitude = double.TryParse((string?)v.Element("latitude"), out double latitude) ? latitude : null,
             distance = double.TryParse((string?)v.Element("maxDistance"), out double maxDis) ? maxDis : null,
-
-
         };
         return s;
     }

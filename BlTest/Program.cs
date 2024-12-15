@@ -16,7 +16,6 @@
         GET_CLOCK,
         FORWARD_CLOCK,
         GET_MAX_RANGE,
-        DEFINITION,
         RESET,
         INITIALIZATION,
     }
@@ -24,7 +23,7 @@
     public enum IVolunteer
     {
         EXIT,
-        EnterSystem,
+        ENTER_SYSTEM,
         GET_VOLUNTEER_LIST,
         READ,
         UPDATE,
@@ -35,17 +34,17 @@
     public enum ICall
     {
         EXIT,
-        CountCalls,
-        GetCallsList,
-        Read,
-        Update,
-        Delete,
-        Create,
-        GetClosedCalls,
-        GetOpenCalls,
-        CloseTreatment,
-        CancelTreatment,
-        ChooseForTreatment,
+        COUNT_CALLS,
+        GET_CALLS_LIST,
+        READ,
+        UPDATE,
+        DELETE,
+        CREATE,
+        GET_CLOSED_CALLS,
+        GET_OPEN_CALLS,
+        CLOSE_TREATMENT,
+        CANCEL_TREATMENT,
+        CHOOSE_FOR_TREATMENT,
     }
 
     internal class Program
@@ -57,7 +56,7 @@
             try
             {
                 OPTION option = ShowMainMenu();
-                while (OPTION.EXIT != option) // As long as you haven't chosen an exit
+                while (OPTION.EXIT != option) // כל עוד לא בחרנו יציאה
                 {
                     switch (option)
                     {
@@ -74,7 +73,7 @@
                     option = ShowMainMenu();
                 }
             }
-            catch (Exception ex)   // If any anomaly is detected
+            catch (Exception ex) // לטיפול בחריגות
             {
                 Console.WriteLine(ex.Message);
             }
@@ -86,14 +85,13 @@
             do
             {
                 Console.WriteLine(@"
-OPTION Options:
+Main Menu:
 0 - Exit
 1 - Admin
 2 - Volunteer
 3 - Call
 ");
-
-            } while (!int.TryParse(Console.ReadLine(), out choice));
+            } while (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(OPTION), choice));
 
             return (OPTION)choice;
         }
@@ -103,17 +101,16 @@ OPTION Options:
             int choice;
             do
             {
-                Console.WriteLine(@$"
-Config Options:
+                Console.WriteLine(@"
+Admin Menu:
 0 - Exit
-1 - Get clock
+1 - Get Clock
 2 - Forward Clock
 3 - Get Max Range
-4 - Definition
-5 - Reset
-6 - Initialization");
-
-            } while (!int.TryParse(Console.ReadLine(), out choice));
+4 - Reset
+5 - Initialization
+");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(IAdmin), choice));
 
             return (IAdmin)choice;
         }
@@ -123,17 +120,17 @@ Config Options:
             int choice;
             do
             {
-                Console.WriteLine(@$"
-Volunteer Options:
+                Console.WriteLine(@"
+Volunteer Menu:
 0 - Exit
 1 - Enter System
 2 - Get Volunteer List
-3 - Read Volunteer
-4 - Update Volunteer
-5 - Delete Volunteer
-6 - Create Volunteer");
-
-            } while (!int.TryParse(Console.ReadLine(), out choice));
+3 - Read
+4 - Update
+5 - Delete
+6 - Create
+");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(IVolunteer), choice));
 
             return (IVolunteer)choice;
         }
@@ -143,22 +140,22 @@ Volunteer Options:
             int choice;
             do
             {
-                Console.WriteLine(@$"
-Call Options:
+                Console.WriteLine(@"
+Call Menu:
 0 - Exit
 1 - Count Calls
 2 - Get Calls List
-3 - Read Call
-4 - Update Call
-5 - Delete Call
-6 - Create Call
+3 - Read
+4 - Update
+5 - Delete
+6 - Create
 7 - Get Closed Calls
 8 - Get Open Calls
 9 - Close Treatment
 10 - Cancel Treatment
-11 - Choose For Treatment");
-
-            } while (!int.TryParse(Console.ReadLine(), out choice));
+11 - Choose For Treatment
+");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(ICall), choice));
 
             return (ICall)choice;
         }
@@ -167,71 +164,60 @@ Call Options:
         {
             try
             {
-                switch (ShowAdminMenu())
+                IAdmin option = ShowAdminMenu();
+                while (option != IAdmin.EXIT)
                 {
-                    case IAdmin.GET_CLOCK:
-                        Console.WriteLine(s_bl.Admin.GetClock());
-                        break;
+                    switch (option)
+                    {
+                        case IAdmin.GET_CLOCK:
+                            Console.WriteLine($"Current Clock: {s_bl.Admin.GetClock()}");
+                            break;
 
-                    case IAdmin.FORWARD_CLOCK:
-                        // Get the time unit for advancing the clock
-                        Console.WriteLine("Enter the time unit to advance the clock (minute, hour, day, month, year): ");
-                        var unitInput = Console.ReadLine();
-                        if (Enum.TryParse(unitInput, true, out BO.TimeUnit unit))
-                        {
-                            s_bl.Admin.UpdateClock(unit);
-                            Console.WriteLine($"Clock advanced by 1 {unit}.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid time unit.");
-                        }
-                        break;
+                        case IAdmin.FORWARD_CLOCK:
+                            Console.WriteLine("Enter time unit to forward the clock (Minute, Hour, Day, Month, Year): ");
+                            if (Enum.TryParse(Console.ReadLine(), true, out BO.TimeUnit unit))
+                            {
+                                s_bl.Admin.UpdateClock(unit);
+                                Console.WriteLine("Clock forwarded successfully.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid time unit.");
+                            }
+                            break;
 
-                    case IAdmin.GET_MAX_RANGE:
-                        Console.WriteLine($"Current risk time range: {s_bl.Admin.GetMaxRange()}");
-                        break;
+                        case IAdmin.GET_MAX_RANGE:
+                            Console.WriteLine($"Max range: {s_bl.Admin.GetMaxRange()}");
+                            break;
 
-                    case IAdmin.DEFINITION:
-                        // Additional logic for definitions if needed
-                        break;
+                        case IAdmin.RESET:
+                            Console.WriteLine("Are you sure you want to reset the database? (y/n)");
+                            if (Console.ReadLine()?.ToLower() == "y")
+                            {
+                                s_bl.Admin.ResetDB();
+                                Console.WriteLine("Database reset successfully.");
+                            }
+                            break;
 
-                    case IAdmin.RESET:
-                        Console.WriteLine("Are you sure you want to reset the database? (y/n)");
-                        var confirmReset = Console.ReadLine();
-                        if (confirmReset?.ToLower() == "y")
-                        {
-                            s_bl.Admin.ResetDB();
-                            Console.WriteLine("Database has been reset.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Reset cancelled.");
-                        }
-                        break;
+                        case IAdmin.INITIALIZATION:
+                            Console.WriteLine("Are you sure you want to initialize the database? (y/n)");
+                            if (Console.ReadLine()?.ToLower() == "y")
+                            {
+                                s_bl.Admin.InitializeDB();
+                                Console.WriteLine("Database initialized successfully.");
+                            }
+                            break;
 
-                    case IAdmin.INITIALIZATION:
-                        Console.WriteLine("Are you sure you want to initialize the database? (y/n)");
-                        var confirmInit = Console.ReadLine();
-                        if (confirmInit?.ToLower() == "y")
-                        {
-                            s_bl.Admin.InitializeDB();
-                            Console.WriteLine("Database has been initialized.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Initialization cancelled.");
-                        }
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid option.");
-                        break;
+                        default:
+                            Console.WriteLine("Invalid option.");
+                            break;
+                    }
+                    option = ShowAdminMenu();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 
@@ -239,76 +225,131 @@ Call Options:
         {
             try
             {
-                switch (ShowVolunteerMenu())
+                IVolunteer option = ShowVolunteerMenu();
+                while (option != IVolunteer.EXIT)
                 {
-                    case IVolunteer.EnterSystem:
-                        // Handle system login or authentication for the volunteer
-                        Console.WriteLine("Enter your volunteer ID and password to authenticate:");
-                        int volunteerId = int.Parse(Console.ReadLine());
-                        string password = Console.ReadLine();
-                        var role = s_bl.Volunteer.PasswordEntered(volunteerId, password);
-                        Console.WriteLine($"Authentication successful, role: {role}");
-                        break;
+                    switch (option)
+                    {
+                        case IVolunteer.ENTER_SYSTEM: // 1
+                            Console.WriteLine("Enter your ID: ");
+                            int id = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter your password: ");
+                            string password = Console.ReadLine();
+                            var role = s_bl.Volunteer.PasswordEntered(id, password);
+                            Console.WriteLine($"Welcome! Role: {role}");
+                            break;
 
-                    case IVolunteer.GET_VOLUNTEER_LIST:
-                        Console.WriteLine("Fetching volunteer list...");
-                        var volunteers = s_bl.Volunteer.ReadAll(true, BO.VolInList.Name);
-                        foreach (var volunteer in volunteers)
-                        {
-                            Console.WriteLine($"Volunteer ID: {volunteer.Id}, Name: {volunteer.FullName}");
-                        }
-                        break;
+                        case IVolunteer.GET_VOLUNTEER_LIST: // 2
+                            Console.WriteLine("Enter filter: Active (true/false) or leave blank: ");
+                            bool? active = null;
+                            var input = Console.ReadLine();
+                            if (bool.TryParse(input, out var parsedActive))
+                            {
+                                active = parsedActive;
+                            }
 
-                    case IVolunteer.READ:
-                        Console.WriteLine("Enter the volunteer ID to view details:");
-                        int volunteerReadId = int.Parse(Console.ReadLine());
-                        var volunteerDetails = s_bl.Volunteer.Read(volunteerReadId);
-                        if (volunteerDetails != null)
-                        {
-                            Console.WriteLine($"ID: {volunteerDetails.Id}, Name: {volunteerDetails.Name}, Active: {volunteerDetails.Active}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Volunteer not found.");
-                        }
-                        break;
+                            Console.WriteLine("Enter sorting criteria: Name, ID, or leave blank: ");
+                            var sortByInput = Console.ReadLine();
+                            BO.VolInList? sortBy = Enum.TryParse(sortByInput, true, out BO.VolInList parsedSort) ? parsedSort : null;
 
-                    case IVolunteer.UPDATE:
-                        Console.WriteLine("Enter the volunteer ID to update:");
-                        int volunteerUpdateId = int.Parse(Console.ReadLine());
-                        var volunteerToUpdate = s_bl.Volunteer.Read(volunteerUpdateId);
-                        if (volunteerToUpdate != null)
-                        {
-                            Console.WriteLine("Enter new volunteer name:");
-                            volunteerToUpdate.Name = Console.ReadLine();
-                            s_bl.Volunteer.Update(volunteerToUpdate, volunteerUpdateId);
-                            Console.WriteLine("Volunteer updated.");
-                        }
-                        break;
+                            var volunteers = s_bl.Volunteer.ReadAll(active, sortBy);
+                            foreach (var v in volunteers)
+                            {
+                                Console.WriteLine($"ID: {v.Id}, Full Name: {v.FullName}, Active: {v.IsActive}, " +
+                                                  $"Total Calls Handled: {v.TotalCallsHandled}, Total Calls Cancelled: {v.TotalCallsCancelled}, " +
+                                                  $"Total Calls Expired: {v.TotalCallsExpired}, Current Call ID: {v.CurrentCallId}, " +
+                                                  $"Current Call Type: {v.CurrentCallType}");
+                            }
+                            break;
 
-                    case IVolunteer.DELETE:
-                        Console.WriteLine("Enter the volunteer ID to delete:");
-                        int volunteerDeleteId = int.Parse(Console.ReadLine());
-                        s_bl.Volunteer.Delete(volunteerDeleteId);
-                        Console.WriteLine("Volunteer deleted.");
-                        break;
 
-                    case IVolunteer.CREATE:
-                        Console.WriteLine("Enter the volunteer name to create:");
-                        string volunteerName = Console.ReadLine();
-                        var newVolunteer = new BO.Volunteer { Name = volunteerName, Active = true };
-                        s_bl.Volunteer.Create(newVolunteer);
-                        Console.WriteLine("New volunteer created.");
-                        break;
+                        case IVolunteer.READ: // 3
+                            Console.WriteLine("Enter Volunteer ID: ");
+                            int readId = int.Parse(Console.ReadLine());
+                            var volunteer = s_bl.Volunteer.Read(readId);
+                            if (volunteer != null)
+                            {
+                                Console.WriteLine($"ID: {volunteer.Id}, Name: {volunteer.Name}, Phone: {volunteer.Number_phone}, Email: {volunteer.Email}, Address: {volunteer.FullCurrentAddress}, Active: {volunteer.Active}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Volunteer not found.");
+                            }
+                            break;
 
-                    default:
-                        Console.WriteLine("Invalid option.");
-                        break;
+                        case IVolunteer.UPDATE: // 4
+                            Console.WriteLine("Enter Volunteer ID to update: ");
+                            int updateId = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter updated name: ");
+                            string updatedName = Console.ReadLine();
+                            Console.WriteLine("Enter updated phone number: ");
+                            string updatedPhone = Console.ReadLine();
+                            Console.WriteLine("Enter updated email: ");
+                            string updatedEmail = Console.ReadLine();
+                            Console.WriteLine("Enter updated address: ");
+                            string updatedAddress = Console.ReadLine();
+                            Console.WriteLine("Enter updated activity status (true/false): ");
+                            bool updatedActive = bool.Parse(Console.ReadLine());
+
+                            BO.Volunteer updatedVolunteer = new BO.Volunteer
+                            {
+                                Id = updateId,
+                                Name = updatedName,
+                                Number_phone = updatedPhone,
+                                Email = updatedEmail,
+                                FullCurrentAddress = updatedAddress,
+                                Active = updatedActive
+                            };
+
+                            s_bl.Volunteer.Update(updatedVolunteer, updateId);
+                            Console.WriteLine("Volunteer updated successfully.");
+                            break;
+
+                        case IVolunteer.DELETE: // 5
+                            Console.WriteLine("Enter Volunteer ID to delete: ");
+                            int deleteId = int.Parse(Console.ReadLine());
+                            s_bl.Volunteer.Delete(deleteId);
+                            Console.WriteLine("Volunteer deleted successfully.");
+                            break;
+
+                        case IVolunteer.CREATE: // 6
+                            Console.WriteLine("Enter new Volunteer ID: ");
+                            int newId = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter new Volunteer Name: ");
+                            string newName = Console.ReadLine();
+                            Console.WriteLine("Enter new Volunteer Phone: ");
+                            string newPhone = Console.ReadLine();
+                            Console.WriteLine("Enter new Volunteer Email: ");
+                            string newEmail = Console.ReadLine();
+                            Console.WriteLine("Enter new Volunteer Address: ");
+                            string newAddress = Console.ReadLine();
+                            Console.WriteLine("Is the Volunteer active? (true/false): ");
+                            bool newActive = bool.Parse(Console.ReadLine());
+
+                            BO.Volunteer newVolunteer = new BO.Volunteer
+                            {
+                                Id = newId,
+                                Name = newName,
+                                Number_phone = newPhone,
+                                Email = newEmail,
+                                FullCurrentAddress = newAddress,
+                                Active = newActive
+                            };
+
+                            s_bl.Volunteer.Create(newVolunteer);
+                            Console.WriteLine("New Volunteer created successfully.");
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid option.");
+                            break;
+                    }
+                    option = ShowVolunteerMenu();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 
@@ -316,115 +357,16 @@ Call Options:
         {
             try
             {
-                switch (ShowCallMenu())
+                ICall option = ShowCallMenu();
+                while (option != ICall.EXIT)
                 {
-                    case ICall.CountCalls:
-                        Console.WriteLine("Fetching call status counts...");
-                        var callStatuses = s_bl.Call.GetCallStatusesCounts();
-                        Console.WriteLine($"Open calls: {callStatuses[0]}, In progress: {callStatuses[1]}, Closed: {callStatuses[2]}");
-                        break;
-
-                    case ICall.GetCallsList:
-                        Console.WriteLine("Fetching call list...");
-                        var calls = s_bl.Call.GetCallsList();
-                        foreach (var call in calls)
-                        {
-                            Console.WriteLine($"Call ID: {call.Id}, Status: {call.Status}");
-                        }
-                        break;
-
-                    case ICall.Read:
-                        Console.WriteLine("Enter the call ID to view details:");
-                        int callReadId = int.Parse(Console.ReadLine());
-                        var callDetails = s_bl.Call.Read(callReadId);
-                        if (callDetails != null)
-                        {
-                            Console.WriteLine($"ID: {callDetails.Id}, Description: {callDetails.Description}, Status: {callDetails.Status}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Call not found.");
-                        }
-                        break;
-
-                    case ICall.Update:
-                        Console.WriteLine("Enter the call ID to update:");
-                        int callUpdateId = int.Parse(Console.ReadLine());
-                        var callToUpdate = s_bl.Call.Read(callUpdateId);
-                        if (callToUpdate != null)
-                        {
-                            Console.WriteLine("Enter new call description:");
-                            callToUpdate.Description = Console.ReadLine();
-                            s_bl.Call.Update(callToUpdate);
-                            Console.WriteLine("Call updated.");
-                        }
-                        break;
-
-                    case ICall.Delete:
-                        Console.WriteLine("Enter the call ID to delete:");
-                        int callDeleteId = int.Parse(Console.ReadLine());
-                        s_bl.Call.Delete(callDeleteId);
-                        Console.WriteLine("Call deleted.");
-                        break;
-
-                    case ICall.Create:
-                        Console.WriteLine("Enter new call description:");
-                        string newCallDescription = Console.ReadLine();
-                        var newCall = new BO.Call { Description = newCallDescription, Status = BO.CallStatus.Open };
-                        s_bl.Call.Create(newCall);
-                        Console.WriteLine("New call created.");
-                        break;
-
-                    case ICall.GetClosedCalls:
-                        Console.WriteLine("Enter volunteer ID to view closed calls:");
-                        int volunteerClosedId = int.Parse(Console.ReadLine());
-                        var closedCalls = s_bl.Call.GetCloseCall(volunteerClosedId, null, null);
-                        foreach (var closedCall in closedCalls)
-                        {
-                            Console.WriteLine($"Closed call ID: {closedCall.Id}, Description: {closedCall.FullAddress}");
-                        }
-                        break;
-
-                    case ICall.GetOpenCalls:
-                        Console.WriteLine("Enter volunteer ID to view open calls:");
-                        int volunteerOpenId = int.Parse(Console.ReadLine());
-                        var openCalls = s_bl.Call.GetOpenCall(volunteerOpenId, null, null);
-                        foreach (var openCall in openCalls)
-                        {
-                            Console.WriteLine($"Open call ID: {openCall.Id}, Description: {openCall.Description}");
-                        }
-                        break;
-
-                    case ICall.CloseTreatment:
-                        Console.WriteLine("Enter call ID to close treatment:");
-                        int closeCallId = int.Parse(Console.ReadLine());
-                        s_bl.Call.UpdateEndTreatment(closeCallId, closeCallId);
-                        Console.WriteLine("Treatment closed.");
-                        break;
-
-                    case ICall.CancelTreatment:
-                        Console.WriteLine("Enter call ID to cancel treatment:");
-                        int cancelCallId = int.Parse(Console.ReadLine());
-                        s_bl.Call.UpdateCancelTreatment(cancelCallId, cancelCallId);
-                        Console.WriteLine("Treatment canceled.");
-                        break;
-
-                    case ICall.ChooseForTreatment:
-                        Console.WriteLine("Enter volunteer ID and call ID to choose treatment:");
-                        int chooseVolunteerId = int.Parse(Console.ReadLine());
-                        int chooseCallId = int.Parse(Console.ReadLine());
-                        s_bl.Call.ChooseCall(chooseVolunteerId, chooseCallId);
-                        Console.WriteLine("Call selected for treatment.");
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid option.");
-                        break;
+                    // Handle options similarly as above
+                    option = ShowCallMenu();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
     }
