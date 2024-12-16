@@ -109,37 +109,38 @@ internal static class Tools
 
     public static async Task<bool> IsAddressValid(string address)
     {
-        if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
+        //if (string.IsNullOrWhiteSpace(address))
+        //    throw new ArgumentException("Address cannot be null or empty.");
 
-        // כתובת ה-API בלי ה-API Key
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
+        //// כתובת ה-API בלי ה-API Key
+        //string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
 
-        using (HttpClient client = new HttpClient())
-        {
-            try
-            {
-                // הוספת ה-API Key ל-Headers של הבקשה
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer 67589f7ea5000746604541qlg6b8a20");
+        //using (HttpClient client = new HttpClient())
+        //{
+        //    try
+        //    {
+        //        // הוספת ה-API Key ל-Headers של הבקשה
+        //        client.DefaultRequestHeaders.Add("Authorization", "Bearer 67589f7ea5000746604541qlg6b8a20");
 
-                HttpResponseMessage response = await client.GetAsync(query); // בקשה סינכרונית
+        //        HttpResponseMessage response = await client.GetAsync(query); // בקשה סינכרונית
 
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+        //        Console.WriteLine($"Response Status Code: {response.StatusCode}");
 
-                if (response.IsSuccessStatusCode) // אם הבקשה הצליחה
-                {
-                    string result = await response.Content.ReadAsStringAsync();
-                    return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
-                }
+        //        if (response.IsSuccessStatusCode) // אם הבקשה הצליחה
+        //        {
+        //            string result = await response.Content.ReadAsStringAsync();
+        //            return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
+        //        }
 
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error: {ex.Message}");
+        //        return false;
+        //    }
+        //}
+        return true; //for debug
     }
 
 

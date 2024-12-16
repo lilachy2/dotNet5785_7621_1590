@@ -48,13 +48,13 @@ internal static class CallManager
         }
 
         // Validate that the latitude is within valid range (-90 to 90).
-        if (boCall.Latitude!= null && (boCall.Latitude < -90 || boCall.Latitude > 90))
+        if (boCall.Latitude != null && (boCall.Latitude < -90 || boCall.Latitude > 90))
         {
             throw new ArgumentException("Latitude must be between -90 and 90.");
         }
 
         // Validate that the longitude is within valid range (-180 to 180).
-        if (boCall.Longitude!=null && (boCall.Longitude < -180 || boCall.Longitude > 180))
+        if (boCall.Longitude != null && (boCall.Longitude < -180 || boCall.Longitude > 180))
         {
             throw new ArgumentException("Longitude must be between -180 and 180.");
         }
@@ -80,10 +80,12 @@ internal static class CallManager
         DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
+        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId /*&& a.EndOfTime == null*/).FirstOrDefault();
+        if (doAssignment == null)
+        { 
+            return null;
+        }
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
-
-
         // בודק האם הכתובת אמיתית ומחזיר קווי אורך ורוחב עבור הכתובת 
 
         if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress).Result == false)// לא כתובת אמיתית 

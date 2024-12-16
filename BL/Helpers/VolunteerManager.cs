@@ -24,55 +24,7 @@ internal static class VolunteerManager
         }
 
     }
-    //internal static void CheckLogic(BO.Volunteer boVolunteer)
-    //{
-    //    try
-    //    {
-    //        Tools.CheckId(boVolunteer.Id);
-
-
-    //        // If not compatible
-    //        if (boVolunteer.Id != requesterId && requester.Role != DO.Role.Manager)
-    //        {
-    //            throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
-    //        }
-
-    //        // Updating the role is only allowed if the requester is a manager
-    //        BO.Role roleToUpdate = (requesterId == boVolunteer.Id) ? requester.Role : (DO.Role)boVolunteer.Role;
-
-    //        // בדיקת הרשאות
-    //        if (boVolunteer.Id != requesterId && requester.Role != DO.Role.Manager)
-    //        {
-    //            throw new Incompatible_ID("Requester is not authorized to update this volunteer.");
-    //        }
-    //        var existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id);
-
-    //        // בדיקת אילו שדות השתנו
-    //        List<string> changedFields = new List<string>();
-    //        if (boVolunteer.Name != existingVolunteer.Name) changedFields.Add(nameof(boVolunteer.Name));
-    //        if (boVolunteer.Number_phone != existingVolunteer.Number_phone) changedFields.Add(nameof(boVolunteer.Number_phone));
-    //        if (boVolunteer.Email != existingVolunteer.Email) changedFields.Add(nameof(boVolunteer.Email));
-    //        if (boVolunteer.Password != existingVolunteer.Password) changedFields.Add(nameof(boVolunteer.Password));
-    //        if (boVolunteer.FullCurrentAddress != existingVolunteer.FullCurrentAddress) changedFields.Add(nameof(boVolunteer.FullCurrentAddress));
-    //        if (boVolunteer.Role != (BO.Role?)existingVolunteer.Role) changedFields.Add(nameof(boVolunteer.Role));
-    //        if (boVolunteer.Active != existingVolunteer.Active) changedFields.Add(nameof(boVolunteer.Active));
-    //        if (boVolunteer.Distance != existingVolunteer.Distance) changedFields.Add(nameof(boVolunteer.Distance));
-    //        if (boVolunteer.DistanceType != (BO.distance_type?)existingVolunteer.Distance_Type) changedFields.Add(nameof(boVolunteer.DistanceType));
-
-    //        // ווידוא שמותר לשנות את השדות
-    //        if (changedFields.Contains(nameof(boVolunteer.Role)) && requester.Role != DO.Role.Manager)
-    //        {
-    //            throw new InvalidOperationException("Only a manager can update the volunteer's role.");
-    //        }
-
-
-    //    }
-    //    catch (BO.BlWrongItemtException ex)
-    //    {
-    //        throw new BO.BlWrongItemtException($"the item have logic problem", ex);
-    //    }
-
-    //}
+  
 
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
@@ -187,35 +139,54 @@ internal static class VolunteerManager
     public static BO.Volunteer GetVolunteer(int id)
     {
         DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");// ז
-
-        return new BO.Volunteer
-        {
-            Id = doVolunteer.Id,
-            Name = doVolunteer.Name,
-            Number_phone = doVolunteer.Number_phone,
-            Email = doVolunteer.Email,
-            FullCurrentAddress = doVolunteer.FullCurrentAddress,
-            Password = doVolunteer.Password,
-            Latitude = doVolunteer.Latitude,
-            Longitude = doVolunteer.Longitude,
-            Role = (BO.Role)doVolunteer.Role, // המרה ישירה בין ה-Enums
-            Active = doVolunteer.Active,
-            Distance = doVolunteer.distance,
-            DistanceType = (BO.DistanceType)doVolunteer.Distance_Type, // המרה ישירה בין ה-Enums
-
-
-
-            TotalHandledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.TreatedOnTime),
-            TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
-                (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
-            TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
-
-            CurrentCall = CallManager.GetCallInProgress(doVolunteer.Id), //CallAssignInProgress  בפונקצית עזר של 
-                                                                         // RegistrationDate = v.RegistrationDate // Replace with the volunteer's registration date
+        if (CallManager.GetCallInProgress(doVolunteer.Id) == null)
+            return new BO.Volunteer
+            {
+                Id = doVolunteer.Id,
+                Name = doVolunteer.Name,
+                Number_phone = doVolunteer.Number_phone,
+                Email = doVolunteer.Email,
+                FullCurrentAddress = doVolunteer.FullCurrentAddress,
+                Password = doVolunteer.Password,
+                Latitude = doVolunteer.Latitude,
+                Longitude = doVolunteer.Longitude,
+                Role = (BO.Role)doVolunteer.Role, // המרה ישירה בין ה-Enums
+                Active = doVolunteer.Active,
+                Distance = doVolunteer.distance,
+                DistanceType = (BO.DistanceType)doVolunteer.Distance_Type, // המרה ישירה בין ה-Enums
+                TotalHandledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.TreatedOnTime),
+                TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
+                    (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
+                TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
+                CurrentCall =null
+              
 
 
+            };
+        else
+            return new BO.Volunteer
+            {
+                Id = doVolunteer.Id,
+                Name = doVolunteer.Name,
+                Number_phone = doVolunteer.Number_phone,
+                Email = doVolunteer.Email,
+                FullCurrentAddress = doVolunteer.FullCurrentAddress,
+                Password = doVolunteer.Password,
+                Latitude = doVolunteer.Latitude,
+                Longitude = doVolunteer.Longitude,
+                Role = (BO.Role)doVolunteer.Role, // המרה ישירה בין ה-Enums
+                Active = doVolunteer.Active,
+                Distance = doVolunteer.distance,
+                DistanceType = (BO.DistanceType)doVolunteer.Distance_Type, // המרה ישירה בין ה-Enums
+                TotalHandledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.TreatedOnTime),
+                TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
+                    (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
+                TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
+                CurrentCall = CallManager.GetCallInProgress(doVolunteer.Id), //CallAssignInProgress  בפונקצית עזר של 
 
-        };
+
+
+            };
     }
 
     public static DO.Volunteer BOconvertDO(BO.Volunteer Volunteer)
@@ -248,7 +219,7 @@ internal static class VolunteerManager
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-        var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+       // var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
         return new BO.VolunteerInList
         {
             Id = doVolunteer.Id,

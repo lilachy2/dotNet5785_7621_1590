@@ -1,6 +1,7 @@
 ﻿namespace BlTest
 {
     using BlApi;
+    using DalApi;
 
     public enum OPTION
     {
@@ -24,7 +25,7 @@
     {
         EXIT,
         ENTER_SYSTEM,
-        GET_VOLUNTEER_LIST,
+        READ_ALL,
         READ,
         UPDATE,
         DELETE,
@@ -50,7 +51,6 @@
     internal class Program
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-
         static void Main(string[] args)
         {
             try
@@ -124,7 +124,7 @@ Admin Menu:
 Volunteer Menu:
 0 - Exit
 1 - Enter System
-2 - Get Volunteer List
+2 - Get Volunteer List (ReadAll)
 3 - Read
 4 - Update
 5 - Delete
@@ -191,21 +191,17 @@ Call Menu:
                             break;
 
                         case IAdmin.RESET:
-                            Console.WriteLine("Are you sure you want to reset the database? (y/n)");
-                            if (Console.ReadLine()?.ToLower() == "y")
-                            {
+                           
                                 s_bl.Admin.ResetDB();
                                 Console.WriteLine("Database reset successfully.");
-                            }
+                            
                             break;
 
                         case IAdmin.INITIALIZATION:
-                            Console.WriteLine("Are you sure you want to initialize the database? (y/n)");
-                            if (Console.ReadLine()?.ToLower() == "y")
-                            {
+                           
                                 s_bl.Admin.InitializeDB();
                                 Console.WriteLine("Database initialized successfully.");
-                            }
+                            
                             break;
 
                         default:
@@ -239,7 +235,7 @@ Call Menu:
                             Console.WriteLine($"Welcome! Role: {role}");
                             break;
 
-                        case IVolunteer.GET_VOLUNTEER_LIST: // 2
+                        case IVolunteer.READ_ALL: // 2
                             Console.WriteLine("Enter filter: Active (true/false) or leave blank: ");
                             bool? active = null;
                             var input = Console.ReadLine();
@@ -264,6 +260,7 @@ Call Menu:
 
 
                         case IVolunteer.READ: // 3
+                            
                             Console.WriteLine("Enter Volunteer ID: ");
                             int readId = int.Parse(Console.ReadLine());
                             var volunteer = s_bl.Volunteer.Read(readId);
@@ -313,19 +310,46 @@ Call Menu:
                             break;
 
                         case IVolunteer.CREATE: // 6
+                                                // בקשת נתונים מהמשתמש
                             Console.WriteLine("Enter new Volunteer ID: ");
                             int newId = int.Parse(Console.ReadLine());
+
                             Console.WriteLine("Enter new Volunteer Name: ");
                             string newName = Console.ReadLine();
+
                             Console.WriteLine("Enter new Volunteer Phone: ");
                             string newPhone = Console.ReadLine();
+
                             Console.WriteLine("Enter new Volunteer Email: ");
                             string newEmail = Console.ReadLine();
+
                             Console.WriteLine("Enter new Volunteer Address: ");
                             string newAddress = Console.ReadLine();
+
+                            Console.WriteLine("Enter new Volunteer Password: ");
+                            string newPassword = Console.ReadLine();
+
+                            Console.WriteLine("Enter new Volunteer Role (e.g. Admin, Member): ");
+                            string newRoleString = Console.ReadLine();
+                            DO.Role newRole = Enum.TryParse(newRoleString, out DO.Role Role) ? Role : DO.Role.Volunteer; // Default to 'Member' if invalid
+
+                            Console.WriteLine("Enter new Volunteer Distance Type (Aerial_distance,\r\n    walking_distance,\r\n    driving_distance,\r\n    change_distance_type): ");
+                            string newDistanceTypeString = Console.ReadLine();
+                            DO.distance_type newDistanceType = Enum.TryParse(newDistanceTypeString, out DO.distance_type distanceType) ? distanceType : DO.distance_type.Aerial_distance; // Default to 'Aerial_distance' if invalid
+
                             Console.WriteLine("Is the Volunteer active? (true/false): ");
                             bool newActive = bool.Parse(Console.ReadLine());
+                            //Not OK
+                            Console.WriteLine("Enter new Volunteer Latitude: ");
+                            double newLatitude = double.Parse(Console.ReadLine());
 
+                            Console.WriteLine("Enter new Volunteer Longitude: ");
+                            double newLongitude = double.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Enter new Volunteer Distance: ");
+                            double newDistance = double.Parse(Console.ReadLine());
+
+                            // יצירת אובייקט BO.Volunteer עם כל הנתונים
                             BO.Volunteer newVolunteer = new BO.Volunteer
                             {
                                 Id = newId,
@@ -333,9 +357,17 @@ Call Menu:
                                 Number_phone = newPhone,
                                 Email = newEmail,
                                 FullCurrentAddress = newAddress,
-                                Active = newActive
+                                Password = newPassword,  // סיסמה
+                                Role = (BO.Role)newRole,  // תפקיד
+                                DistanceType = (BO.DistanceType)newDistanceType,  // סוג המרחק
+                                Active = newActive,
+
+                                Latitude = newLatitude,  // קו רוחב
+                                Longitude = newLongitude,  // קו אורך
+                                Distance = newDistance  // מרחק
                             };
 
+                            // יצירת המתנדב במערכת
                             s_bl.Volunteer.Create(newVolunteer);
                             Console.WriteLine("New Volunteer created successfully.");
                             break;
@@ -343,6 +375,7 @@ Call Menu:
                         default:
                             Console.WriteLine("Invalid option.");
                             break;
+
                     }
                     option = ShowVolunteerMenu();
                 }

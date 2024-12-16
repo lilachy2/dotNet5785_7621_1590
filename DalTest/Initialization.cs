@@ -216,17 +216,17 @@ public static class Initialization
                 {
                     case 0:
                         finish = AssignmentCompletionType.TreatedOnTime;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(300, 3000)); // הוסף דיליי רנדומלי לזמן הסיום
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(300, 3000)); 
 
                         break;
                     case 1:
                         finish = AssignmentCompletionType.VolunteerCancelled;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 30)); // הוסף דיליי רנדומלי לזמן הסיום
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 30)); 
 
                         break;
                     case 2:
                         finish = AssignmentCompletionType.AdminCancelled;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 30)); // הוסף דיליי רנדומלי לזמן הסיום
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 30));
 
                         break;
                    
@@ -238,7 +238,6 @@ public static class Initialization
                 
              
 
-                // יצירת משימה
                 s_dal.Assignment?.Create(new Assignment(
                 0,
                 callToAssign.Id,

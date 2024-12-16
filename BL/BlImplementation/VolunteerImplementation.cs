@@ -9,36 +9,70 @@ using System.Collections.Generic;
 internal class VolunteerImplementation : BlApi.IVolunteer
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
+    //public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
+    //{
+    //    var volunteers = _dal.Volunteer.ReadAll();
+
+
+    //    if (Active.HasValue)
+    //    {
+    //        volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
+    //    }
+
+    //    volunteers = sortBy switch
+    //    {
+    //        BO.VolInList.Name => volunteers.OrderBy(volunteer => volunteer.Name), // Sort by volunteer's full name
+    //        BO.VolInList.Role => volunteers.OrderBy(volunteer => volunteer.Role),     // Sort by volunteer's job (role)
+    //        BO.VolInList.IsActive => volunteers.OrderBy(volunteer => volunteer.Active), // Sort by activity status (active/inactive)
+    //        _ => volunteers.OrderBy(volunteer => volunteer.Id) // Default: sort by volunteer ID
+    //    };
+
+    //    return volunteers
+    //.Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
+    ////.Where(v => v != null) // סינון אם יש מתנדבים שלא נמצאו
+    //.ToList();
+
+    //    //return volunteers.Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)).ToList();
+    //    //{
+    //    //    Id = volunteer.Id,
+    //    //    FullName = volunteer.Name,
+    //    //    IsActive = volunteer.Active
+    //    //});
+    //}
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
+        // קוראים לכל המתנדבים
         var volunteers = _dal.Volunteer.ReadAll();
 
-
+        // אם יש ערך ב-Active, מסננים את המתנדבים לפי הסטטוס של פעילותם
         if (Active.HasValue)
         {
             volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
         }
 
-        volunteers = sortBy switch
+        // מיון המתנדבים לפי קריטריון שנבחר
+        switch (sortBy)
         {
-            BO.VolInList.Name => volunteers.OrderBy(volunteer => volunteer.Name), // Sort by volunteer's full name
-            BO.VolInList.Role => volunteers.OrderBy(volunteer => volunteer.Role),     // Sort by volunteer's job (role)
-            BO.VolInList.IsActive => volunteers.OrderBy(volunteer => volunteer.Active), // Sort by activity status (active/inactive)
-            _ => volunteers.OrderBy(volunteer => volunteer.Id) // Default: sort by volunteer ID
-        };
+            case BO.VolInList.Name:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // מיין לפי שם
+                break;
+            case BO.VolInList.Role:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Role); // מיין לפי תפקיד
+                break;
+            case BO.VolInList.IsActive:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // מיין לפי מצב פעילות (פעיל/לא פעיל)
+                break;
+            default:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // מיון ברירת מחדל לפי מזהה
+                break;
+        }
 
+        // מחזירים את הרשימה לאחר מיון וסינון
         return volunteers
-    .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
-    //.Where(v => v != null) // סינון אם יש מתנדבים שלא נמצאו
-    .ToList();
-
-        //return volunteers.Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)).ToList();
-        //{
-        //    Id = volunteer.Id,
-        //    FullName = volunteer.Name,
-        //    IsActive = volunteer.Active
-        //});
+            .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)) // ממירים לכל מתנדב ברשימה לפי המזהה
+            .ToList();
     }
+
     public DO.Role PasswordEntered(int Id, string password)
     {
         /// <summary>
@@ -75,66 +109,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
     }
 
-    //public BO.Volunteer VolunteerDetails(int id)
-    //{
-    //    try
-    //    {
-    //        var doVolunteer = _dal.Volunteer.Read(id)
-    //                          ?? throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.");
-
-    //        var boVolunteer = new BO.Volunteer
-    //        {
-    //            Id = doVolunteer.Id,
-    //            Name = doVolunteer.Name,
-    //            Number_phone = doVolunteer.Number_phone,
-    //            Email = doVolunteer.Email,
-    //            Password = doVolunteer.Password,
-    //            FullCurrentAddress = doVolunteer.FullCurrentAddress,
-    //            Latitude = doVolunteer.Latitude,
-    //            Longitude = doVolunteer.Longitude,
-    //            Role = (BO.Role)doVolunteer.Role,
-    //            Active = doVolunteer.Active,
-    //            Distance = doVolunteer.distance,
-    //            DistanceType = (BO.DistanceType)doVolunteer.Distance_Type,
-    //            TotalHandledCalls = 0,
-    //            TotalCancelledCalls = 0,
-    //            TotalExpiredCalls = 0,
-    //            CurrentCall = null
-    //        };
-
-    //        // חיפוש קריאה פעילה לפי מזהה מתנדב
-    //        var calls = _dal.Call.ReadAll(); // הנחה שמחזיר את כל הקריאות
-    //        var callInProgress = calls.FirstOrDefault(call => call.VolunteerId == id && call.Status == DO.CallStatus.InProgress);
-
-    //        if (callInProgress != null)
-    //        {
-    //            boVolunteer.CurrentCall = new BO.CallInProgress
-    //            {
-    //                Id = callInProgress.Id,
-    //                CallId = callInProgress.CallId,
-    //                CallType = (BO.Calltype)callInProgress.Calltype,
-    //                Description = callInProgress.VerbalDescription,
-    //                FullAddress = callInProgress.Address,
-    //                OpenTime = callInProgress.StartTime,
-    //                MaxCompletionTime = callInProgress.MaxCompletionTime,
-    //                EnterTime = callInProgress.VolunteerEnterTime,
-    //                DistanceFromVolunteer = callInProgress.DistanceFromVolunteer,
-    //                Status = (BO.CallStatus)callInProgress.Status
-    //            };
-    //        }
-
-    //        return boVolunteer;
-    //    }
-    //    catch (DO.DalDoesNotExistException ex)
-    //    {
-    //        throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist.", ex);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new BO.BlGeneralException("Failed to retrieve volunteer details.", ex);
-    //    }
-    //}
-
+   
    
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
