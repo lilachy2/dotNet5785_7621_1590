@@ -65,7 +65,7 @@ internal static class Tools
         }
 
         // Validate the address
-        var isAddressValid = await Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+        var isAddressValid = /*await*/ Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
         if (!isAddressValid)
         {
             throw new ArgumentException("The address provided is invalid.");
@@ -105,46 +105,99 @@ internal static class Tools
 
 
     private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
-    private const string BaseUrl = "https://eu1.locationiq.com/v1/search.php";
+    //private const string BaseUrl = "https://eu1.locationiq.com/v1/search.php";
+    private const string BaseUrl = "https://geocode.maps.co/search";
 
-    public static async Task<bool> IsAddressValid(string address)
+    //public static async Task<bool> IsAddressValid(string address)
+    //{
+    //    if (string.IsNullOrWhiteSpace(address))
+    //        throw new ArgumentException("Address cannot be null or empty.");
+
+    //    string query = $"{BaseUrl}?key={ApiKey}&q={Uri.EscapeDataString(address)}&format=json";
+
+    //    using (HttpClient client = new HttpClient())
+    //    {
+    //        try
+    //        {
+    //            HttpResponseMessage response = await client.GetAsync(query);
+
+    //            Console.WriteLine($"Response Status Code: {response.StatusCode}");
+    //            string result = await response.Content.ReadAsStringAsync();
+    //            Console.WriteLine($"Response Content: {result}");
+
+    //            if (response.IsSuccessStatusCode)
+    //            {
+    //                return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\"") && result.Contains("\"lon\"");
+    //            }
+
+    //            return false;
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error: {ex.Message}");
+    //            return false;
+    //        }
+    //    }
+    //}
+
+    //public static async Task<bool> IsAddressValid(string address)
+    //{
+    //    if (string.IsNullOrWhiteSpace(address))
+    //        throw new ArgumentException("Address cannot be null or empty.");
+
+    //    // בניית ה-URL לבקשה
+    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+
+    //    using (HttpClient client = new HttpClient())
+    //    {
+    //        try
+    //        {
+    //            HttpResponseMessage response = await client.GetAsync(query); // שליחת הבקשה
+
+    //            Console.WriteLine($"Response Status Code: {response.StatusCode}");
+
+    //            // בדיקת סטטוס הבקשה בלבד
+    //            return response.IsSuccessStatusCode; // מחזיר TRUE אם סטטוס HTTP הוא 200
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error: {ex.Message}");
+    //            return false;
+    //        }
+    //    }
+    //}
+
+    public static bool IsAddressValid(string address)
     {
-        //if (string.IsNullOrWhiteSpace(address))
-        //    throw new ArgumentException("Address cannot be null or empty.");
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
 
-        //// כתובת ה-API בלי ה-API Key
-        //string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
+        // בניית ה-URL לבקשה
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
 
-        //using (HttpClient client = new HttpClient())
-        //{
-        //    try
-        //    {
-        //        // הוספת ה-API Key ל-Headers של הבקשה
-        //        client.DefaultRequestHeaders.Add("Authorization", "Bearer 67589f7ea5000746604541qlg6b8a20");
+        bool isValid = false; // משתנה בוליאני
 
-        //        HttpResponseMessage response = await client.GetAsync(query); // בקשה סינכרונית
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                // שליחת הבקשה באופן סינכרוני
+                HttpResponseMessage response = client.GetAsync(query).Result;
 
-        //        Console.WriteLine($"Response Status Code: {response.StatusCode}");
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
 
-        //        if (response.IsSuccessStatusCode) // אם הבקשה הצליחה
-        //        {
-        //            string result = await response.Content.ReadAsStringAsync();
-        //            return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
-        //        }
+                // בדיקה אם הסטטוס הצליח
+                isValid = response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                isValid = false;
+            }
+        }
 
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error: {ex.Message}");
-        //        return false;
-        //    }
-        //}
-        return true; //for debug
+        return isValid; // החזרת התוצאה
     }
-
-
-
 
 
     /// <summary>

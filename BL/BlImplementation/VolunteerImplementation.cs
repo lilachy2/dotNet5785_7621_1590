@@ -131,7 +131,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             VolunteerManager.CheckFormat(boVolunteer);
             // check logic
             //If the address format is correct, enter the latitude and longitude.
-            if ( Tools.IsAddressValid(requester.FullCurrentAddress).Result== true)
+            if ( Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
             {
                 boVolunteer.Latitude= Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result; 
                 boVolunteer.Longitude= Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result; 
@@ -213,6 +213,10 @@ internal class VolunteerImplementation : BlApi.IVolunteer
                 VolunteerManager.CheckLogic(boVolunteer, null, false); // Pass null for a new volunteer
             }
 
+            // we need add 
+            boVolunteer.Latitude = Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress).Result;
+            boVolunteer.Longitude = Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress).Result;
+          
             // 5. Add the volunteer to the data layer
             _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
         }

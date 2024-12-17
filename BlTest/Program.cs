@@ -309,68 +309,164 @@ Call Menu:
                             Console.WriteLine("Volunteer deleted successfully.");
                             break;
 
-                        case IVolunteer.CREATE: // 6
-                                                // בקשת נתונים מהמשתמש
-                            Console.WriteLine("Enter new Volunteer ID: ");
-                            int newId = int.Parse(Console.ReadLine());
+                        //case IVolunteer.CREATE: // 6
+                        //                        // בקשת נתונים מהמשתמש
+                        //    Console.WriteLine("Enter new Volunteer ID: ");
+                        //    int newId = int.Parse(Console.ReadLine());
 
-                            Console.WriteLine("Enter new Volunteer Name: ");
-                            string newName = Console.ReadLine();
+                        //    Console.WriteLine("Enter new Volunteer Name: ");
+                        //    string newName = Console.ReadLine();
 
-                            Console.WriteLine("Enter new Volunteer Phone: ");
-                            string newPhone = Console.ReadLine();
+                        //    Console.WriteLine("Enter new Volunteer Phone: ");
+                        //    string newPhone = Console.ReadLine();
 
-                            Console.WriteLine("Enter new Volunteer Email: ");
-                            string newEmail = Console.ReadLine();
+                        //    Console.WriteLine("Enter new Volunteer Email: ");
+                        //    string newEmail = Console.ReadLine();
 
-                            Console.WriteLine("Enter new Volunteer Address: ");
-                            string newAddress = Console.ReadLine();
+                        //    Console.WriteLine("Enter new Volunteer Address: ");
+                        //    string newAddress = Console.ReadLine();
 
-                            Console.WriteLine("Enter new Volunteer Password: ");
-                            string newPassword = Console.ReadLine();
+                        //    Console.WriteLine("Enter new Volunteer Password: ");
+                        //    string newPassword = Console.ReadLine();
 
-                            Console.WriteLine("Enter new Volunteer Role (e.g. Admin, Member): ");
-                            string newRoleString = Console.ReadLine();
-                            DO.Role newRole = Enum.TryParse(newRoleString, out DO.Role Role) ? Role : DO.Role.Volunteer; // Default to 'Member' if invalid
+                        //    Console.WriteLine("Enter new Volunteer Role (e.g. Admin, Member): ");
+                        //    string newRoleString = Console.ReadLine();
+                        //    DO.Role newRole = Enum.TryParse(newRoleString, out DO.Role Role) ? Role : DO.Role.Volunteer; // Default to 'Member' if invalid
 
-                            Console.WriteLine("Enter new Volunteer Distance Type (Aerial_distance,\r\n    walking_distance,\r\n    driving_distance,\r\n    change_distance_type): ");
-                            string newDistanceTypeString = Console.ReadLine();
-                            DO.distance_type newDistanceType = Enum.TryParse(newDistanceTypeString, out DO.distance_type distanceType) ? distanceType : DO.distance_type.Aerial_distance; // Default to 'Aerial_distance' if invalid
+                        //    Console.WriteLine("Enter new Volunteer Distance Type (Aerial_distance,\r\n    walking_distance,\r\n    driving_distance,\r\n    change_distance_type): ");
+                        //    string newDistanceTypeString = Console.ReadLine();
+                        //    DO.distance_type newDistanceType = Enum.TryParse(newDistanceTypeString, out DO.distance_type distanceType) ? distanceType : DO.distance_type.Aerial_distance; // Default to 'Aerial_distance' if invalid
 
-                            Console.WriteLine("Is the Volunteer active? (true/false): ");
-                            bool newActive = bool.Parse(Console.ReadLine());
-                            //Not OK
-                            Console.WriteLine("Enter new Volunteer Latitude: ");
-                            double newLatitude = double.Parse(Console.ReadLine());
+                        //    Console.WriteLine("Is the Volunteer active? (true/false): ");
+                        //    bool newActive = bool.Parse(Console.ReadLine());
+                        //    //Not OK
+                        //    Console.WriteLine("Enter new Volunteer Latitude: ");
+                        //    double newLatitude = double.Parse(Console.ReadLine());
 
-                            Console.WriteLine("Enter new Volunteer Longitude: ");
-                            double newLongitude = double.Parse(Console.ReadLine());
+                        //    Console.WriteLine("Enter new Volunteer Longitude: ");
+                        //    double newLongitude = double.Parse(Console.ReadLine());
 
-                            Console.WriteLine("Enter new Volunteer Distance: ");
-                            double newDistance = double.Parse(Console.ReadLine());
+                        //    Console.WriteLine("Enter new Volunteer Distance: ");
+                        //    double newDistance = double.Parse(Console.ReadLine());
 
-                            // יצירת אובייקט BO.Volunteer עם כל הנתונים
-                            BO.Volunteer newVolunteer = new BO.Volunteer
+                        //    // יצירת אובייקט BO.Volunteer עם כל הנתונים
+                        //    BO.Volunteer newVolunteer = new BO.Volunteer
+                        //    {
+                        //        Id = newId,
+                        //        Name = newName,
+                        //        Number_phone = newPhone,
+                        //        Email = newEmail,
+                        //        FullCurrentAddress = newAddress,
+                        //        Password = newPassword,  // סיסמה
+                        //        Role = (BO.Role)newRole,  // תפקיד
+                        //        DistanceType = (BO.DistanceType)newDistanceType,  // סוג המרחק
+                        //        Active = newActive,
+
+                        //        Latitude = newLatitude,  // קו רוחב
+                        //        Longitude = newLongitude,  // קו אורך
+                        //        Distance = newDistance  // מרחק
+                        //    };
+
+                        //    // יצירת המתנדב במערכת
+                        //    s_bl.Volunteer.Create(newVolunteer);
+                        //    Console.WriteLine("New Volunteer created successfully.");
+                        //    break;
+                        case IVolunteer.CREATE:
                             {
-                                Id = newId,
-                                Name = newName,
-                                Number_phone = newPhone,
-                                Email = newEmail,
-                                FullCurrentAddress = newAddress,
-                                Password = newPassword,  // סיסמה
-                                Role = (BO.Role)newRole,  // תפקיד
-                                DistanceType = (BO.DistanceType)newDistanceType,  // סוג המרחק
-                                Active = newActive,
 
-                                Latitude = newLatitude,  // קו רוחב
-                                Longitude = newLongitude,  // קו אורך
-                                Distance = newDistance  // מרחק
-                            };
+                                Console.WriteLine("Please enter volunteer details:");
+                                Console.WriteLine("Please enter the ID :");
+                                string idCreat = Console.ReadLine();  // לוקחים את הקלט מהמשתמש
 
-                            // יצירת המתנדב במערכת
-                            s_bl.Volunteer.Create(newVolunteer);
-                            Console.WriteLine("New Volunteer created successfully.");
-                            break;
+                                if (!int.TryParse(idCreat, out int idC))  // מנסים להמיר את הקלט למספר
+                                {
+                                    throw new BO.Incompatible_ID($"Invalid ID{idCreat} format");  // זורקים חריגה אם המזהה לא תקני
+                                }
+                                // Full Name
+                                Console.WriteLine("Full Name:");
+                                string fullNameUp = Console.ReadLine();
+
+                                // Phone Number
+                                Console.WriteLine("Phone Number:");
+                                string phoneNumberUp = Console.ReadLine();
+
+                                // Email
+                                Console.WriteLine("Email:");
+                                string emailUp = Console.ReadLine();
+
+                                // Distance Type
+                                Console.WriteLine("Distance Type (Aerial_distance, walking_distance, driving_distance):");
+                                string distanceTypeInputUp = Console.ReadLine();
+                                BO.DistanceType distanceType;
+                                if (!Enum.TryParse(distanceTypeInputUp, true, out distanceType))
+                                {
+                                    throw new BO.Incompatible_ID("Invalid distance type. Defaulting to Aerial.");
+
+                                }
+
+                                // Role
+                                Console.WriteLine("Role (Volunteer, Manager):");
+                                string roleUp = Console.ReadLine();
+                                BO.Role roleup;
+                                if (!Enum.TryParse(roleUp, true, out roleup))
+                                {
+                                    throw new BO.Incompatible_ID("Invalid role. Defaulting to Volunteer.");
+
+                                }
+
+                                // Active
+                                Console.WriteLine("Active (true/false):");
+                                bool IsActive;
+                                if (!bool.TryParse(Console.ReadLine(), out IsActive))
+                                {
+                                    throw new BO.Incompatible_ID("Invalid input for Active. Defaulting to false.");
+                                }
+
+                                // Password
+                                Console.WriteLine("Password:");
+                                string passwordUp = Console.ReadLine();
+
+                                // Full Address
+                                Console.WriteLine("Full Address:");
+                                string fullAddressUp = Console.ReadLine();
+
+                                // Max Reading
+                                Console.WriteLine("Max Reading:");
+                                int maxReading;
+                                if (!int.TryParse(Console.ReadLine(), out maxReading))
+                                {
+                                    throw new BO.Incompatible_ID("Invalid input for Max Reading. Defaulting to 0.");
+
+                                }
+
+                                // Create the new Volunteer object
+                                BO.Volunteer newVolunteer = new BO.Volunteer
+                                {
+                                    Id = idC,
+                                    Name = fullNameUp,
+                                    Number_phone = phoneNumberUp,
+                                    Email = emailUp,
+                                    DistanceType = distanceType,
+                                    Role = roleup,
+                                    Active = IsActive,
+                                    Password = passwordUp,
+                                    FullCurrentAddress = fullAddressUp,
+                                    Latitude = 0,
+                                    Longitude = 0,
+                                    Distance = maxReading,
+                                    TotalHandledCalls = 0,
+                                    TotalCancelledCalls = 0,
+                                    TotalExpiredCalls = 0,
+                                    CurrentCall = null,
+                                };
+
+                                // Call the Create method
+                                s_bl.Volunteer.Create(newVolunteer);
+                                break;
+
+                            }
+
+
 
                         default:
                             Console.WriteLine("Invalid option.");

@@ -66,7 +66,7 @@ internal static class CallManager
         }
 
         // Validate the address format using an external API.
-        if (!Tools.IsAddressValid(boCall.FullAddress).Result)
+        if (!Tools.IsAddressValid(boCall.FullAddress)/*.Result*/)
         {
             throw new ArgumentException("The address is invalid.");
         }
@@ -88,7 +88,7 @@ internal static class CallManager
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
         // בודק האם הכתובת אמיתית ומחזיר קווי אורך ורוחב עבור הכתובת 
 
-        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress).Result == false)// לא כתובת אמיתית 
+        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == false)// לא כתובת אמיתית 
         {
             throw new BlInvalidaddress("Invalid address of Volunteer");// 
         }
@@ -292,7 +292,7 @@ internal static class CallManager
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
         // logic chack
-        if (Tools.IsAddressValid(doCall.ReadAddress).Result)
+        if (Tools.IsAddressValid(doCall.ReadAddress))
             throw new BlInvalidaddress($"The address = {doCall.ReadAddress}provided is invalid.");
         MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime);// If not good throw an exception from within the method
 

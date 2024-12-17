@@ -24,7 +24,7 @@ internal static class VolunteerManager
         }
 
     }
-  
+
 
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
@@ -34,31 +34,37 @@ internal static class VolunteerManager
             throw new BO.Incompatible_ID("Invalid ID: The ID does not pass validation.");
         }
 
-        // Check if the role was changed
-        if (boVolunteer.Role != existingVolunteer.Role)
+        if (existingVolunteer != null)
         {
-            if (!isManager)
+            // Check if the role was changed
+            if (boVolunteer.Role != null)
+
             {
-                throw new BO.BlPermissionException("Only a manager is authorized to update the volunteer's role.");
+                if (boVolunteer.Role != existingVolunteer.Role)
+                {
+                    if (!isManager)
+                    {
+                        throw new BO.BlPermissionException("Only a manager is authorized to update the volunteer's role.");
+                    }
+                }
             }
-        }
-
-        // Check if the password was changed
-        if (boVolunteer.Password != existingVolunteer.Password && !isManager)
-        {
-            throw new BO.BlIncorrectPasswordException("Only the volunteer or a manager can update the password.");
-        }
-
-        // Check if the active status was changed
-        if (boVolunteer.Active != existingVolunteer.Active)
-        {
-            if (!isManager)
+            // Check if the password was changed
+            if (boVolunteer.Password != existingVolunteer.Password && !isManager)
             {
-                throw new BO.BlGeneralException("Only a manager is authorized to change the active status.");
+                throw new BO.BlIncorrectPasswordException("Only the volunteer or a manager can update the password.");
             }
-        }
 
-        // Add additional checks here for other properties if necessary
+            // Check if the active status was changed
+            if (boVolunteer.Active != existingVolunteer.Active)
+            {
+                if (!isManager)
+                {
+                    throw new BO.BlGeneralException("Only a manager is authorized to change the active status.");
+                }
+            }
+
+            // Add additional checks here for other properties if necessary
+        }
     }
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, int requesterId, DO.Role requesterRole)
     {
@@ -268,7 +274,7 @@ internal static class VolunteerManager
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
-        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress).Result == false)// לא כתובת אמיתית 
+        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result */== false)// לא כתובת אמיתית 
         {
             throw new BlInvalidaddress("Invalid address of Volunteer");// 
         }
