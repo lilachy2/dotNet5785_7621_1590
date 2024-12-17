@@ -486,11 +486,125 @@ Call Menu:
         {
             try
             {
-                ICall option = ShowCallMenu();
+                ICall option = ShowCallMenu(); // הצגת התפריט הראשי
                 while (option != ICall.EXIT)
                 {
-                    // Handle options similarly as above
-                    option = ShowCallMenu();
+                    switch (option)
+                    {
+                        case ICall.COUNT_CALLS:
+                            CountCalls(); // קריאה לפונקציה לספירת קריאות
+                            break;
+
+                        case ICall.GET_CALLS_LIST:
+                            GetCallsList(); // קריאה לפונקציה להציג את רשימת הקריאות
+                            break;
+
+                        case ICall.READ:
+                            ReadCall(); // קריאה לפונקציה לקרוא פרטי קריאה לפי ID
+                            break;
+
+                        case ICall.UPDATE:
+                            UpdateCall(); // קריאה לפונקציה לעדכון קריאה
+                            break;
+
+                        case ICall.DELETE:
+                            DeleteCall(); // קריאה לפונקציה למחיקת קריאה
+                            break;
+
+                        case ICall.CREATE:
+                            CreateCall(); // קריאה לפונקציה ליצור קריאה חדשה
+                            break;
+
+                        case ICall.GET_CLOSED_CALLS:
+                            GetClosedCalls(); // קריאה לפונקציה לקבל קריאות סגורות
+                            break;
+
+                        case ICall.GET_OPEN_CALLS:
+                            GetOpenCalls(); // קריאה לפונקציה לקבל קריאות פתוחות
+                            break;
+
+                        case ICall.CLOSE_TREATMENT:
+                            CloseTreatment(); // קריאה לפונקציה לסגור טיפול
+                            break;
+
+                        case ICall.CANCEL_TREATMENT:
+                            CancelTreatment(); // קריאה לפונקציה לבטל טיפול
+                            break;
+
+                        case ICall.CHOOSE_FOR_TREATMENT:
+                            ChooseForTreatment(); // קריאה לפונקציה לבחור טיפול
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid option selected.");
+                            break;
+                    }
+
+                    option = ShowCallMenu(); // הצגת התפריט מחדש לאחר ביצוע הפעולה
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}"); // טיפול בשגיאות
+            }
+        }
+
+        // פונקציות לדוגמא שמטפלות בכל פעולה בתפריט
+
+        private static void CountCalls()
+        {
+            // קריאה ל-ICall לספירת קריאות
+            var counts = s_bl.Call.GetCallStatusesCounts();
+            Console.WriteLine($"Total calls: {counts[0]}, Closed calls: {counts[1]}");
+        }
+
+        private static void GetCallsList()
+        {
+            // הצגת תפריט המשתמש
+            Console.WriteLine("Testing GetCallsList()...");
+
+            // שדות עבור הסינון והמיון
+            BO.CallInListField? filterField = null;
+            object? filterValue = null;
+            BO.CallInListField? sortField = null;
+
+            // בחירת שדה סינון
+            Console.WriteLine("Enter filter field (Status, CallType, VolunteerName, or press Enter to skip):");
+            string filterFieldInput = Console.ReadLine();
+            if (!string.IsNullOrEmpty(filterFieldInput))
+            {
+                Enum.TryParse(filterFieldInput, out filterField);
+            }
+
+            // בחירת ערך סינון
+            Console.WriteLine("Enter filter value (e.g., Status, CallType, VolunteerName or press Enter to skip):");
+            filterValue = Console.ReadLine(); // כאן נוכל לשדרג לפי סוגים שונים של סינונים
+
+            // בחירת שדה למיון
+            Console.WriteLine("Enter sort field (CallId, OpenTime, Status, VolunteerName or press Enter to skip):");
+            string sortFieldInput = Console.ReadLine();
+            if (!string.IsNullOrEmpty(sortFieldInput))
+            {
+                Enum.TryParse(sortFieldInput, out sortField);
+            }
+
+            // קריאה לפונקציה מתוך האובייקט המתאים
+            try
+            {
+                var callsList = s_bl.Call.GetCallsList(filterField, filterValue, sortField);
+
+                // הדפסת הקריאות המתקבלות
+                if (callsList != null && callsList.Any())
+                {
+                    Console.WriteLine("Calls List:");
+                    foreach (var call in callsList)
+                    {
+                        Console.WriteLine(call.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No calls match the given filter and sorting parameters.");
                 }
             }
             catch (Exception ex)
@@ -498,5 +612,105 @@ Call Menu:
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
+
+
+        private static void ReadCall()
+        {
+            // קריאה ל-ICall להציג פרטי קריאה לפי ID
+            Console.Write("Enter the call ID to read: ");
+            int callId = int.Parse(Console.ReadLine());
+            var call = s_bl.Call.Read(callId);
+            if (call != null)
+            {
+                Console.WriteLine(call.ToString());
+            }
+            else
+            {
+                Console.WriteLine("Call not found.");
+            }
+        }
+
+        private static void UpdateCall()
+        {
+            // קריאה ל-ICall לעדכון קריאה
+            Console.Write("Enter the call ID to update: ");
+            int callId = int.Parse(Console.ReadLine());
+            var updatedCall = new BO.Call(); // יצירת אובייקט קריאה חדש (נחוץ למלא את המידע הנכון)
+            s_bl.Call.Update(updatedCall);
+            Console.WriteLine("Call updated.");
+        }
+
+        private static void DeleteCall()
+        {
+            // קריאה ל-ICall למחיקת קריאה
+            Console.Write("Enter the call ID to delete: ");
+            int callId = int.Parse(Console.ReadLine());
+            s_bl.Call.Delete(callId);
+            Console.WriteLine("Call deleted.");
+        }
+
+        private static void CreateCall()
+        {
+            // קריאה ל-ICall ליצירת קריאה חדשה
+            var newCall = new BO.Call(); // יצירת אובייקט קריאה חדש (נחוץ למלא את המידע הנכון)
+            s_bl.Call.Create(newCall);
+            Console.WriteLine("New call created.");
+        }
+
+        private static void GetClosedCalls()
+        {
+            // קריאה ל-ICall לקבלת קריאות סגורות
+            Console.Write("Enter volunteer ID: ");
+            int volunteerId = int.Parse(Console.ReadLine());
+            var closedCalls = s_bl.Call.GetCloseCall(volunteerId, null, null);
+            foreach (var closedCall in closedCalls)
+            {
+                Console.WriteLine(closedCall.ToString());
+            }
+        }
+
+        private static void GetOpenCalls()
+        {
+            // קריאה ל-ICall לקבלת קריאות פתוחות
+            Console.Write("Enter volunteer ID: ");
+            int volunteerId = int.Parse(Console.ReadLine());
+            var openCalls = s_bl.Call.GetOpenCall(volunteerId, null, null);
+            foreach (var openCall in openCalls)
+            {
+                Console.WriteLine(openCall.ToString());
+            }
+        }
+
+        private static void CloseTreatment()
+        {
+            // קריאה ל-ICall לסגור טיפול
+            Console.Write("Enter the call ID to close treatment: ");
+            int callId = int.Parse(Console.ReadLine());
+            s_bl.Call.UpdateEndTreatment(callId, callId);
+            Console.WriteLine("Treatment closed.");
+        }
+
+        private static void CancelTreatment()
+        {
+            // קריאה ל-ICall לבטל טיפול
+            Console.Write("Enter the call ID to cancel treatment: ");
+            int callId = int.Parse(Console.ReadLine());
+            s_bl.Call.UpdateCancelTreatment(callId, callId);
+            Console.WriteLine("Treatment canceled.");
+        }
+
+        private static void ChooseForTreatment()
+        {
+            // קריאה ל-ICall לבחור טיפול
+            Console.Write("Enter volunteer ID: ");
+            int volunteerId = int.Parse(Console.ReadLine());
+            Console.Write("Enter the call ID to choose: ");
+            int callId = int.Parse(Console.ReadLine());
+            s_bl.Call.ChooseCall(volunteerId, callId);
+            Console.WriteLine("Call chosen for treatment.");
+        }
+
+
     }
 }
