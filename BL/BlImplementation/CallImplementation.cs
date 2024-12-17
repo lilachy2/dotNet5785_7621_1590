@@ -2,12 +2,13 @@
 namespace BlImplementation;
 using BlApi;
 using BO;
+using DalApi;
 using DO;
 using Helpers;
 using System;
 using System.Collections.Generic;
 
-internal class CallImplementation : ICall
+internal class CallImplementation : BlApi.ICall
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
 
@@ -132,13 +133,32 @@ internal class CallImplementation : ICall
     }
     public void Create(BO.Call boCall)
     {
+        // we need add 
+        boCall.Latitude = Tools.GetLatitudeAsync(boCall.FullAddress).Result;
+        boCall.Longitude = Tools.GetLongitudeAsync(boCall.FullAddress).Result;
+
+        //boCall.Status = CallManager.CalculateCallStatus();
+        //boCall.CallAssignments = null; // for first time not have CallAssignments
+
         CallManager.IsValideCall(boCall);
         CallManager.IsLogicCall(boCall);
         
-        var doCall = CallManager.BOConvertDO_Call(boCall.Id);
+        //var doCall = CallManager.BOConvertDO_Call(boCall.Id);
 
         try
         {
+            DO.Call doCall = new DO.Call(
+       boCall.Latitude,            // Latitude
+       boCall.Longitude,           // Longitude
+       (DO.Calltype)boCall.Calltype,            // Calltype
+       boCall.Id,                  // Id
+       boCall.Description,         // VerbalDescription
+       boCall.FullAddress,         // ReadAddress
+       boCall.OpenTime,            // OpeningTime
+       boCall.MaxEndTime           // MaxEndTime
+   );
+
+
             _dal.Call.Create(doCall);
         }
         catch (DO.DalAlreadyExistsException ex)

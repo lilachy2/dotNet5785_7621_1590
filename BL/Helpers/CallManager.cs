@@ -108,7 +108,7 @@ internal static class CallManager
             MaxCompletionTime = doCall.MaxEndTime,
             EnterTime = doAssignment.time_entry_treatment,
             DistanceFromVolunteer = Air_distance_between_2_addresses(doCall.Latitude, doCall.Longitude, LatitudeVolunteer, LongitudeVolunteer),// Air distance between 2 addresses
-            Status = CallManager.CalculateCallStatus(doCall.Id)
+            Status = CallManager.CalculateCallStatus(doCall)
 
         };
     }
@@ -159,73 +159,126 @@ internal static class CallManager
     /// </summary>
     /// <param name="degrees">The angle in degrees</param>
     /// <returns>The angle in radians</returns>
-    public static CallStatus CalculateCallStatus(int callId)
+    
+
+    //public static CallStatus CalculateCallStatus(int callId)
+    //{
+    //    // Fetching the appropriate call from the DAL
+    //    var call = _dal.Call.ReadAll().FirstOrDefault(c => c.Id == callId);
+
+    //    if (call == null)
+    //    {
+    //        throw new ArgumentException($"Call with ID {callId} not found.");
+    //    }
+
+    //    // Maximum time for the call to end
+    //    DateTime? maxEndTime = call.MaxEndTime;
+
+    //    // Fetching all assignments related to the call
+    //    var assignments = _dal.Assignment.ReadAll()
+    //        .Where(a => a.CallId == callId)
+    //        .ToList();
+
+    //    if (!assignments.Any())
+    //    {
+    //        return CallStatus.Open; // Call with no assignments is considered open
+    //    }
+
+    //    // Using the current time
+    //    DateTime currentClock = ClockManager.Now;
+
+    //    // Call that has ended and was canceled
+    //    if (assignments.Any(a => a.EndOfTime == AssignmentCompletionType.AdminCancelled ||
+    //                             a.EndOfTime == AssignmentCompletionType.VolunteerCancelled))
+    //    {
+    //        return CallStatus.Closed;
+    //    }
+
+    //    // Call that has expired
+    //    if (maxEndTime.HasValue && maxEndTime <= currentClock)
+    //    {
+    //        return CallStatus.Expired;
+    //    }
+
+    //    // Call in progress and at risk
+    //    if (assignments.Any(a => a.time_entry_treatment != default &&
+    //                             a.time_end_treatment == null &&
+    //                             maxEndTime.HasValue &&
+    //                             maxEndTime <= currentClock))
+    //    {
+    //        return CallStatus.InProgressAtRisk;
+    //    }
+
+    //    // Call in progress
+    //    if (assignments.Any(a => a.time_end_treatment == null))
+    //    {
+    //        return CallStatus.InProgress;
+    //    }
+
+    //    // Open call at risk
+    //    if (assignments.All(a => a.time_end_treatment == null) &&
+    //        maxEndTime.HasValue &&
+    //        maxEndTime <= currentClock)
+    //    {
+    //        return CallStatus.OpenAtRisk;
+    //    }
+
+    //    // Open call
+    //    return CallStatus.Open;
+    //}
+
+    public static bool IsInRisk(DO.Call call) => call!.MaxEndTime - _dal.Config.Clock <= _dal.Config.RiskRange;
+   
+    ////internal static BO.CallStatus CalculateCallStatus(BO.Call boCall)
+    ////{
+    ////    var doCall = CallManager.BOConvertDO_Call(boCall.Id);
+
+    ////    if (doCall.MaxEndTime < _dal.Config.Clock)
+    ////        return BO.CallStatus.Expired;
+    ////    var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id).OrderByDescending(a => a.time_entry_treatment).FirstOrDefault();
+
+    ////    if (lastAssignment == null)
+    ////    {
+    ////        if (IsInRisk(doCall!))
+    ////            return BO.CallStatus.OpenAtRisk;
+    ////        else return BO.CallStatus.Open;
+    ////    }
+    ////    if (lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
+    ////    {
+    ////        return BO.CallStatus.Closed;
+    ////    }
+    ////    if (lastAssignment.time_entry_treatment == null)
+    ////    {
+    ////        if (IsInRisk(doCall!))
+    ////            return BO.CallStatus.InProgressAtRisk;
+    ////        else return BO.CallStatus.InProgress;
+    ////    }
+    ////    return BO.CallStatus.Closed;//default
+    ////}
+    internal static BO.CallStatus CalculateCallStatus(DO.Call doCall)
     {
-        // Fetching the appropriate call from the DAL
-        var call = _dal.Call.ReadAll().FirstOrDefault(c => c.Id == callId);
+        if (doCall.MaxEndTime < _dal.Config.Clock)
+            return BO.CallStatus.Expired;
+        var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id).OrderByDescending(a => a.time_entry_treatment).FirstOrDefault();
 
-        if (call == null)
+        if (lastAssignment == null)
         {
-            throw new ArgumentException($"Call with ID {callId} not found.");
+            if (IsInRisk(doCall!))
+                return BO.CallStatus.OpenAtRisk;
+            else return BO.CallStatus.Open;
         }
-
-        // Maximum time for the call to end
-        DateTime? maxEndTime = call.MaxEndTime;
-
-        // Fetching all assignments related to the call
-        var assignments = _dal.Assignment.ReadAll()
-            .Where(a => a.CallId == callId)
-            .ToList();
-
-        if (!assignments.Any())
+        if (lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
         {
-            return CallStatus.Open; // Call with no assignments is considered open
+            return BO.CallStatus.Closed;
         }
-
-        // Using the current time
-        DateTime currentClock = ClockManager.Now;
-
-        // Call that has ended and was canceled
-        if (assignments.Any(a => a.EndOfTime == AssignmentCompletionType.AdminCancelled ||
-                                 a.EndOfTime == AssignmentCompletionType.VolunteerCancelled))
+        if (lastAssignment.time_entry_treatment == null)
         {
-            return CallStatus.Closed;
+            if (IsInRisk(doCall!))
+                return BO.CallStatus.InProgressAtRisk;
+            else return BO.CallStatus.InProgress;
         }
-
-        // Call that has expired
-        if (maxEndTime.HasValue && maxEndTime <= currentClock)
-        {
-            return CallStatus.Expired;
-        }
-
-        // Call in progress and at risk
-        if (assignments.Any(a => a.time_entry_treatment != default &&
-                                 a.time_end_treatment == null &&
-                                 maxEndTime.HasValue &&
-                                 maxEndTime <= currentClock))
-        {
-            return CallStatus.InProgressAtRisk;
-        }
-
-        // Call in progress
-        if (assignments.Any(a => a.time_end_treatment == null))
-        {
-            return CallStatus.InProgress;
-        }
-
-        // Open call at risk
-        if (assignments.All(a => a.time_end_treatment == null) &&
-            maxEndTime.HasValue &&
-            maxEndTime <= currentClock)
-        {
-            return CallStatus.OpenAtRisk;
-        }
-
-        // Open call
-        return CallStatus.Open;
+        return BO.CallStatus.Closed;//default
     }
-
-
 
 
 
@@ -252,7 +305,7 @@ internal static class CallManager
             Longitude = (double)doCall.Longitude, // Longitude coordinate of the address
             OpenTime = doCall.OpeningTime, // Time when the call was opened
             MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
-            Status = CalculateCallStatus(doCall.Id), // Current status of the call
+            Status = CalculateCallStatus(doCall), // Current status of the call
             CallAssignments= CallManager.GetCallAssignmentsForCall(doCall.Id),    
 
         };
@@ -309,7 +362,7 @@ internal static class CallManager
             Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the address
             OpenTime = doCall.OpeningTime, // Time when the call was opened
             MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
-            Status = CalculateCallStatus(doCall.Id), // Current status of the call
+            Status = CalculateCallStatus(doCall), // Current status of the call
             CallAssignments = CallManager.GetCallAssignmentsForCall(doCall.Id),
 
         };
@@ -367,7 +420,7 @@ internal static class CallManager
             VolunteerName = GetLatestVolunteerNameForCall(doAssignment.VolunteerId), // The name of the volunteer assigned to the call
 
             CompletionTime = CalculateCompletionTime(doAssignment.Id), // Total time taken to complete the call
-            Status = CalculateCallStatus(doCall.Id), // Current status of the call
+            Status = CalculateCallStatus(doCall), // Current status of the call
             TotalAssignments = GetTotalAssignmentsForCall.Count(a=> a.CallId == doAssignment.CallId) // Total number of assignments for the call
 
         };
@@ -384,7 +437,6 @@ internal static class CallManager
         {
             throw new BO.Incompatible_ID($"Call with ID {Id} not found.");
         }
-
         // Convert DO.Call to BO.Call
         var DOCall = new DO.Call
         {

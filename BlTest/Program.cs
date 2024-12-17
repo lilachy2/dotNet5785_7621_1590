@@ -2,6 +2,7 @@
 {
     using BlApi;
     using DalApi;
+    using System.ComponentModel;
 
     public enum OPTION
     {
@@ -191,17 +192,17 @@ Call Menu:
                             break;
 
                         case IAdmin.RESET:
-                           
-                                s_bl.Admin.ResetDB();
-                                Console.WriteLine("Database reset successfully.");
-                            
+
+                            s_bl.Admin.ResetDB();
+                            Console.WriteLine("Database reset successfully.");
+
                             break;
 
                         case IAdmin.INITIALIZATION:
-                           
-                                s_bl.Admin.InitializeDB();
-                                Console.WriteLine("Database initialized successfully.");
-                            
+
+                            s_bl.Admin.InitializeDB();
+                            Console.WriteLine("Database initialized successfully.");
+
                             break;
 
                         default:
@@ -260,7 +261,7 @@ Call Menu:
 
 
                         case IVolunteer.READ: // 3
-                            
+
                             Console.WriteLine("Enter Volunteer ID: ");
                             int readId = int.Parse(Console.ReadLine());
                             var volunteer = s_bl.Volunteer.Read(readId);
@@ -309,68 +310,7 @@ Call Menu:
                             Console.WriteLine("Volunteer deleted successfully.");
                             break;
 
-                        //case IVolunteer.CREATE: // 6
-                        //                        // בקשת נתונים מהמשתמש
-                        //    Console.WriteLine("Enter new Volunteer ID: ");
-                        //    int newId = int.Parse(Console.ReadLine());
 
-                        //    Console.WriteLine("Enter new Volunteer Name: ");
-                        //    string newName = Console.ReadLine();
-
-                        //    Console.WriteLine("Enter new Volunteer Phone: ");
-                        //    string newPhone = Console.ReadLine();
-
-                        //    Console.WriteLine("Enter new Volunteer Email: ");
-                        //    string newEmail = Console.ReadLine();
-
-                        //    Console.WriteLine("Enter new Volunteer Address: ");
-                        //    string newAddress = Console.ReadLine();
-
-                        //    Console.WriteLine("Enter new Volunteer Password: ");
-                        //    string newPassword = Console.ReadLine();
-
-                        //    Console.WriteLine("Enter new Volunteer Role (e.g. Admin, Member): ");
-                        //    string newRoleString = Console.ReadLine();
-                        //    DO.Role newRole = Enum.TryParse(newRoleString, out DO.Role Role) ? Role : DO.Role.Volunteer; // Default to 'Member' if invalid
-
-                        //    Console.WriteLine("Enter new Volunteer Distance Type (Aerial_distance,\r\n    walking_distance,\r\n    driving_distance,\r\n    change_distance_type): ");
-                        //    string newDistanceTypeString = Console.ReadLine();
-                        //    DO.distance_type newDistanceType = Enum.TryParse(newDistanceTypeString, out DO.distance_type distanceType) ? distanceType : DO.distance_type.Aerial_distance; // Default to 'Aerial_distance' if invalid
-
-                        //    Console.WriteLine("Is the Volunteer active? (true/false): ");
-                        //    bool newActive = bool.Parse(Console.ReadLine());
-                        //    //Not OK
-                        //    Console.WriteLine("Enter new Volunteer Latitude: ");
-                        //    double newLatitude = double.Parse(Console.ReadLine());
-
-                        //    Console.WriteLine("Enter new Volunteer Longitude: ");
-                        //    double newLongitude = double.Parse(Console.ReadLine());
-
-                        //    Console.WriteLine("Enter new Volunteer Distance: ");
-                        //    double newDistance = double.Parse(Console.ReadLine());
-
-                        //    // יצירת אובייקט BO.Volunteer עם כל הנתונים
-                        //    BO.Volunteer newVolunteer = new BO.Volunteer
-                        //    {
-                        //        Id = newId,
-                        //        Name = newName,
-                        //        Number_phone = newPhone,
-                        //        Email = newEmail,
-                        //        FullCurrentAddress = newAddress,
-                        //        Password = newPassword,  // סיסמה
-                        //        Role = (BO.Role)newRole,  // תפקיד
-                        //        DistanceType = (BO.DistanceType)newDistanceType,  // סוג המרחק
-                        //        Active = newActive,
-
-                        //        Latitude = newLatitude,  // קו רוחב
-                        //        Longitude = newLongitude,  // קו אורך
-                        //        Distance = newDistance  // מרחק
-                        //    };
-
-                        //    // יצירת המתנדב במערכת
-                        //    s_bl.Volunteer.Create(newVolunteer);
-                        //    Console.WriteLine("New Volunteer created successfully.");
-                        //    break;
                         case IVolunteer.CREATE:
                             {
 
@@ -549,7 +489,6 @@ Call Menu:
             }
         }
 
-        // פונקציות לדוגמא שמטפלות בכל פעולה בתפריט
 
         private static void CountCalls()
         {
@@ -568,25 +507,49 @@ Call Menu:
             object? filterValue = null;
             BO.CallInListField? sortField = null;
 
+            //// בחירת שדה סינון
+            //Console.WriteLine("Enter filter field (Status, CallType, VolunteerName, or press Enter to skip):");
+            //string filterFieldInput = Console.ReadLine();
+            //if (!string.IsNullOrEmpty(filterFieldInput))
+            //{
+            //    Enum.TryParse(filterFieldInput, out filterField);
+            //}
+
             // בחירת שדה סינון
             Console.WriteLine("Enter filter field (Status, CallType, VolunteerName, or press Enter to skip):");
             string filterFieldInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(filterFieldInput))
             {
-                Enum.TryParse(filterFieldInput, out filterField);
+                if (Enum.TryParse<BO.CallInListField>(filterFieldInput, true, out var parsedFilterField))
+                {
+                    filterField = parsedFilterField;
+                }
             }
+
 
             // בחירת ערך סינון
             Console.WriteLine("Enter filter value (e.g., Status, CallType, VolunteerName or press Enter to skip):");
             filterValue = Console.ReadLine(); // כאן נוכל לשדרג לפי סוגים שונים של סינונים
+
+            //// בחירת שדה למיון
+            //Console.WriteLine("Enter sort field (CallId, OpenTime, Status, VolunteerName or press Enter to skip):");
+            //string sortFieldInput = Console.ReadLine();
+            //if (!string.IsNullOrEmpty(sortFieldInput))
+            //{
+            //    Enum.TryParse(sortFieldInput, out sortField);
+            //}
 
             // בחירת שדה למיון
             Console.WriteLine("Enter sort field (CallId, OpenTime, Status, VolunteerName or press Enter to skip):");
             string sortFieldInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(sortFieldInput))
             {
-                Enum.TryParse(sortFieldInput, out sortField);
+                if (Enum.TryParse<BO.CallInListField>(sortFieldInput, true, out var parsedSortField))
+                {
+                    sortField = parsedSortField;
+                }
             }
+
 
             // קריאה לפונקציה מתוך האובייקט המתאים
             try
@@ -641,6 +604,7 @@ Call Menu:
             Console.WriteLine("Call updated.");
         }
 
+
         private static void DeleteCall()
         {
             // קריאה ל-ICall למחיקת קריאה
@@ -652,11 +616,73 @@ Call Menu:
 
         private static void CreateCall()
         {
-            // קריאה ל-ICall ליצירת קריאה חדשה
-            var newCall = new BO.Call(); // יצירת אובייקט קריאה חדש (נחוץ למלא את המידע הנכון)
+            Console.WriteLine("Please enter call details:");
+
+            // Call ID
+            Console.WriteLine("Please enter the ID:");
+            string idInput = Console.ReadLine();
+            if (!int.TryParse(idInput, out int callId))
+            {
+                throw new BO.Incompatible_ID($"Invalid ID {idInput} format");
+            }
+
+            // Call Type
+
+            Console.WriteLine("Call Type (fainting, birth, resuscitation, allergy, heartattack, broken_bone, security_event, None):");
+            string callTypeInput = Console.ReadLine();
+            BO.Calltype callType;
+            if (!Enum.TryParse(callTypeInput, true, out callType))
+            {
+                // אם קלט לא תקני, נשתמש בברירת המחדל None
+                callType = BO.Calltype.None;
+                // במקרה של קלט לא תקני, נזרוק חריגה
+                throw new BO.Incompatible_ID("Invalid call type. Defaulting to 'None'.");
+
+            }
+
+            // Description
+            Console.WriteLine("Description:");
+            string description = Console.ReadLine();
+
+            // Full Address
+            Console.WriteLine("Full Address:");
+            string fullAddress = Console.ReadLine();
+
+            // Open Time
+            Console.WriteLine("Open Time (yyyy-MM-dd HH:mm:ss):");
+            DateTime openTime;
+            if (!DateTime.TryParse(Console.ReadLine(), out openTime))
+            {
+                throw new BO.Incompatible_ID("Invalid open time format.");
+            }
+
+            // Max End Time
+            Console.WriteLine("Max End Time (yyyy-MM-dd HH:mm:ss or press Enter for no value):");
+            string maxEndTimeInput = Console.ReadLine();
+            DateTime? maxEndTime = string.IsNullOrEmpty(maxEndTimeInput) ? (DateTime?)null : DateTime.Parse(maxEndTimeInput);
+
+
+            // Create the new Call object
+            BO.Call newCall = new BO.Call
+            {
+                Id = callId,
+                Calltype = callType,
+                Description = description,
+                FullAddress = fullAddress,
+                Latitude = 0,
+                Longitude = 0,
+                OpenTime = openTime,
+                MaxEndTime = maxEndTime
+            };
+            // status, Latitude, Longitude in creat 
+
+            // Call the Create method
             s_bl.Call.Create(newCall);
             Console.WriteLine("New call created.");
+
         }
+
+
 
         private static void GetClosedCalls()
         {
