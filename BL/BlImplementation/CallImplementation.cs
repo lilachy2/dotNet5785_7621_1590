@@ -45,10 +45,7 @@ internal class CallImplementation : BlApi.ICall
             throw new BlDoesNotExistException("Failed to retrieve call quantities by status.", ex);
         }
     }
-    public IEnumerable<BO.CallInList> GetCallsList(BO.CallInListField? filterField = null,  object? filterValue = null,BO.CallInListField? sortField = null)
-    // Enum value for filtering
-    // Filtering value
-    // Enum value for sorting
+    public IEnumerable<BO.CallInList> GetCallsList(BO.CallInListField? filterField = null, object? filterValue = null, BO.CallInListField? sortField = null)
     {
         try
         {
@@ -70,7 +67,7 @@ internal class CallImplementation : BlApi.ICall
                 return CallManager.GetCallInList(lastAssignment.VolunteerId);
             }).Where(call => call != null).ToList(); // Filter out null records
 
-            // Filter the list by a specific field if filtering parameters are provided
+            // If filterField is provided, filter the list by the specified field
             if (filterField.HasValue && filterValue != null)
             {
                 callInList = callInList.Where(call =>
@@ -78,18 +75,60 @@ internal class CallImplementation : BlApi.ICall
                     switch (filterField)
                     {
                         case BO.CallInListField.Status:
-                            return call.Status.Equals((BO.CallStatus)filterValue);
+                            // Ensure filterValue is of type BO.CallStatus
+                            if (filterValue is BO.CallStatus status)
+                            {
+                                return call.Status.Equals(status);
+                            }
+                            return false;
+
                         case BO.CallInListField.CallType:
-                            return call.CallType.Equals((BO.Calltype)filterValue);
+                            // Ensure filterValue is of type BO.Calltype
+                            if (filterValue is BO.Calltype callType)
+                            {
+                                return call.CallType.Equals(callType);
+                            }
+                            return false;
+
                         case BO.CallInListField.VolunteerName:
-                            return call.VolunteerName == (string)filterValue;
+                            // Ensure filterValue is of type string
+                            if (filterValue is string volunteerName)
+                            {
+                                return call.VolunteerName == volunteerName;
+                            }
+                            return false;
+
+                        case BO.CallInListField.TimeRemaining:
+                            // Ensure filterValue is of type int (for example)
+                            if (filterValue is TimeSpan timeRemaining)
+                            {
+                                return call.TimeRemaining.Equals(timeRemaining);
+                            }
+                            return false;
+
+                        case BO.CallInListField.CompletionTime:
+                            // Ensure filterValue is of type TimeSpan (for example)
+                            if (filterValue is TimeSpan completionTime)
+                            {
+                                return call.CompletionTime.Equals(completionTime);
+                            }
+                            return false;
+
+                        case BO.CallInListField.TotalAssignments:
+                            // Ensure filterValue is of type int
+                            if (filterValue is int totalAssignments)
+                            {
+                                return call.TotalAssignments.Equals(totalAssignments);
+                            }
+                            return false;
+
                         default:
                             return true; // No filtering if the field does not match
                     }
                 }).ToList();
             }
 
-            // Sort the list if a sorting parameter is provided
+            // If sortField is provided, sort the list by the specified field
             if (sortField.HasValue)
             {
                 callInList = callInList
@@ -100,14 +139,17 @@ internal class CallImplementation : BlApi.ICall
                             BO.CallInListField.OpenTime => (object)call.OpenTime,
                             BO.CallInListField.Status => (object)call.Status,
                             BO.CallInListField.VolunteerName => (object)call.VolunteerName,
-                            _ => (object)call.CallId // Default
+                            BO.CallInListField.TimeRemaining => (object)call.TimeRemaining,
+                            BO.CallInListField.CompletionTime => (object)call.CompletionTime,
+                            BO.CallInListField.TotalAssignments => (object)call.TotalAssignments,
+                            _ => (object)call.CallId // Default sorting by CallId
                         }
                     )
                     .ToList();
             }
             else
             {
-                // Default sorting by CallId
+                // Default sorting by CallId if no sortField is provided
                 callInList = callInList.OrderBy(call => call.CallId).ToList();
             }
 
@@ -115,9 +157,10 @@ internal class CallImplementation : BlApi.ICall
         }
         catch (Exception ex)
         {
-            throw new BO.BlDoesNotExistException("Failed to retrieve calls list.", ex); // לבחור חריגה 
+            throw new BO.BlDoesNotExistException("Failed to retrieve calls list.", ex);
         }
     }
+
     public BO.Call Read(int callId)
     {
         try

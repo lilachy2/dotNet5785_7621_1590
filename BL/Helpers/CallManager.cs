@@ -405,7 +405,7 @@ internal static class CallManager
         //DO.Volunteer? doVolunteer = _dal.Volunteer.Read(Id) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == Id && a.EndOfTime == null).FirstOrDefault();// לבדוק
+        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == Id /*&& a.EndOfTime == null*/).FirstOrDefault();// לבדוק
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
         var GetTotalAssignmentsForCall = _dal.Assignment.ReadAll().Where(a => a.Id == Id);
 

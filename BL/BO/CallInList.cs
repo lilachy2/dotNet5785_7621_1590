@@ -22,4 +22,16 @@ public class CallInList
     public TimeSpan? CompletionTime { get; init; }
     public CallStatus Status { get; init; }
     public int TotalAssignments { get; init; }
+
+    public override string ToString()
+    {
+        return $"Call ID: {CallId}, " +
+               $"Call Type: {CallType}, " +
+               $"Opened: {OpenTime:yyyy-MM-dd HH:mm:ss}, " +
+               $"Volunteer: {VolunteerName ?? ""}, " +
+               $"Status: {Status}, " +
+               $"Time Remaining: {(TimeRemaining.HasValue ? TimeRemaining.Value.ToString(@"hh\:mm\:ss") : "")}, " +
+               $"Completion Time: {(CompletionTime.HasValue ? CompletionTime.Value.ToString(@"hh\:mm\:ss") : "")}, " +
+               $"Total Assignments: {TotalAssignments}";
+    }
 }

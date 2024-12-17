@@ -1,6 +1,7 @@
 ﻿namespace BlTest
 {
     using BlApi;
+    using BO;
     using DalApi;
     using System.ComponentModel;
     // test
@@ -504,19 +505,10 @@ Call Menu:
 
             // שדות עבור הסינון והמיון
             BO.CallInListField? filterField = null;
-            object? filterValue = null;
             BO.CallInListField? sortField = null;
 
-            //// בחירת שדה סינון
-            //Console.WriteLine("Enter filter field (Status, CallType, VolunteerName, or press Enter to skip):");
-            //string filterFieldInput = Console.ReadLine();
-            //if (!string.IsNullOrEmpty(filterFieldInput))
-            //{
-            //    Enum.TryParse(filterFieldInput, out filterField);
-            //}
-
             // בחירת שדה סינון
-            Console.WriteLine("Enter filter field (Status, CallType, VolunteerName, or press Enter to skip):");
+            Console.WriteLine("Enter filter field (Id, CallId, CallType, OpenTime, TimeRemaining, VolunteerName, CompletionTime, Status, TotalAssignments, or press Enter to skip):");
             string filterFieldInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(filterFieldInput))
             {
@@ -526,21 +518,41 @@ Call Menu:
                 }
             }
 
-
             // בחירת ערך סינון
-            Console.WriteLine("Enter filter value (e.g., Status, CallType, VolunteerName or press Enter to skip):");
-            filterValue = Console.ReadLine(); // כאן נוכל לשדרג לפי סוגים שונים של סינונים
+            Console.WriteLine("Enter filter value (Status, CallType, TimeRemaining, CompletionTime, or press Enter to skip):");
+            string filterValueInput = Console.ReadLine();
 
-            //// בחירת שדה למיון
-            //Console.WriteLine("Enter sort field (CallId, OpenTime, Status, VolunteerName or press Enter to skip):");
-            //string sortFieldInput = Console.ReadLine();
-            //if (!string.IsNullOrEmpty(sortFieldInput))
-            //{
-            //    Enum.TryParse(sortFieldInput, out sortField);
-            //}
+            object? filterValue = null;
+
+            if (!string.IsNullOrEmpty(filterValueInput))
+            {
+                // בדיקת אם המשתמש רוצה לסנן לפי CallStatus
+                if (Enum.TryParse<CallStatus>(filterValueInput, true, out var callStatusEnum))
+                {
+                    filterValue = callStatusEnum;
+                }
+                // בדיקת אם המשתמש רוצה לסנן לפי CallType
+                else if (Enum.TryParse<Calltype>(filterValueInput, true, out var callTypeEnum))
+                {
+                    filterValue = callTypeEnum;
+                }
+                // בדיקת אם המשתמש רוצה לסנן לפי TimeRemaining או CompletionTime
+                else if (int.TryParse(filterValueInput, out var intValue))
+                {
+                    filterValue = intValue; // for TimeRemaining or TotalAssignments
+                }
+                else if (TimeSpan.TryParse(filterValueInput, out var timeValue))
+                {
+                    filterValue = timeValue; // for CompletionTime
+                }
+                else
+                {
+                    Console.WriteLine("Invalid filter value. Please enter a valid CallStatus, CallType, TimeRemaining, or CompletionTime.");
+                }
+            }
 
             // בחירת שדה למיון
-            Console.WriteLine("Enter sort field (CallId, OpenTime, Status, VolunteerName or press Enter to skip):");
+            Console.WriteLine("Enter sort field (Id, CallId, CallType, OpenTime, TimeRemaining, VolunteerName, CompletionTime, Status, TotalAssignments, or press Enter to skip):");
             string sortFieldInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(sortFieldInput))
             {
@@ -549,7 +561,6 @@ Call Menu:
                     sortField = parsedSortField;
                 }
             }
-
 
             // קריאה לפונקציה מתוך האובייקט המתאים
             try
@@ -575,6 +586,7 @@ Call Menu:
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
 
 
 
