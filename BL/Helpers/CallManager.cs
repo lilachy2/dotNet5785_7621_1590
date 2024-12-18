@@ -229,32 +229,6 @@ internal static class CallManager
 
     public static bool IsInRisk(DO.Call call) => call!.MaxEndTime - _dal.Config.Clock <= _dal.Config.RiskRange;
    
-    ////internal static BO.CallStatus CalculateCallStatus(BO.Call boCall)
-    ////{
-    ////    var doCall = CallManager.BOConvertDO_Call(boCall.Id);
-
-    ////    if (doCall.MaxEndTime < _dal.Config.Clock)
-    ////        return BO.CallStatus.Expired;
-    ////    var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id).OrderByDescending(a => a.time_entry_treatment).FirstOrDefault();
-
-    ////    if (lastAssignment == null)
-    ////    {
-    ////        if (IsInRisk(doCall!))
-    ////            return BO.CallStatus.OpenAtRisk;
-    ////        else return BO.CallStatus.Open;
-    ////    }
-    ////    if (lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
-    ////    {
-    ////        return BO.CallStatus.Closed;
-    ////    }
-    ////    if (lastAssignment.time_entry_treatment == null)
-    ////    {
-    ////        if (IsInRisk(doCall!))
-    ////            return BO.CallStatus.InProgressAtRisk;
-    ////        else return BO.CallStatus.InProgress;
-    ////    }
-    ////    return BO.CallStatus.Closed;//default
-    ////}
     internal static BO.CallStatus CalculateCallStatus(DO.Call doCall)
     {
         if (doCall.MaxEndTime < _dal.Config.Clock)
@@ -285,13 +259,14 @@ internal static class CallManager
 
     // CALL - function for viewing, function that checks for correctness (add and update) + helper method
     // helper method- 1- GetCallAssignmentsForCall 2- CalculateCallStatus
-    public static BO.Call GetViewingCall(int VolunteerId)
+    public static BO.Call GetViewingCall(int CallId)
     {
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+       // DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-        var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+       // var doAssignment = _dal.Assignment.ReadAll().Where(a => a.CallId == CallId /*&& a.EndOfTime == null*/).FirstOrDefault();
+        var doAssignment = _dal.Assignment.ReadAll(a => a.CallId == CallId).FirstOrDefault();
+        var doCall = _dal.Call.ReadAll().Where(c => c.Id ==/* doAssignment!.*/CallId).FirstOrDefault();
 
         // Create the object
         return new BO.Call
@@ -402,7 +377,7 @@ internal static class CallManager
     // GetCallInList
     public static BO.CallInList GetCallInList(int Id)
     {
-        //DO.Volunteer? doVolunteer = _dal.Volunteer.Read(Id) ?? throw new BlDoesNotExistException("eroor id");// ז
+        //DO.Volunteer doVolunteer = _dal.Volunteer.Read(Id)/* ?? throw new BlDoesNotExistException("eroor id")*/;// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == Id /*&& a.EndOfTime == null*/).FirstOrDefault();// לבדוק
@@ -417,7 +392,7 @@ internal static class CallManager
             OpenTime = doCall.OpeningTime, // The time when the call was opened
 
             TimeRemaining = CalculateTimeRemaining(doCall.MaxEndTime), // Time remaining until the maximum completion time
-            VolunteerName = GetLatestVolunteerNameForCall(doAssignment.VolunteerId), // The name of the volunteer assigned to the call
+            VolunteerName = GetLatestVolunteerNameForCall(doCall.Id), // The name of the volunteer assigned to the call
 
             CompletionTime = CalculateCompletionTime(doAssignment.Id), // Total time taken to complete the call
             Status = CalculateCallStatus(doCall), // Current status of the call
