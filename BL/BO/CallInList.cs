@@ -1,4 +1,6 @@
 ﻿
+using Helpers;
+
 namespace BO;
 
 /// <param name="Id"> // The unique identifier for the assignment entity (not visible in the UI)
@@ -23,15 +25,18 @@ public class CallInList
     public CallStatus Status { get; init; }
     public int TotalAssignments { get; init; }
 
-    public override string ToString()
-    {
-        return $"Call ID: {CallId}, " +
-               $"Call Type: {CallType}, " +
-               $"Opened: {OpenTime:yyyy-MM-dd HH:mm:ss}, " +
-               $"Volunteer: {VolunteerName ?? ""}, " +
-               $"Status: {Status}, " +
-               $"Time Remaining: {(TimeRemaining.HasValue ? TimeRemaining.Value.ToString(@"hh\:mm\:ss") : "")}, " +
-               $"Completion Time: {(CompletionTime.HasValue ? CompletionTime.Value.ToString(@"hh\:mm\:ss") : "")}, " +
-               $"Total Assignments: {TotalAssignments}";
-    }
+    public override string ToString() => this.ToStringProperty();
+
+    //public override string ToString()
+    //{
+    //    return $"Call ID: {CallId}\n" +
+    //           $"Call Type: {CallType}\n" +
+    //           $"Opened: {OpenTime:yyyy-MM-dd HH:mm:ss}\n" +
+    //           $"Volunteer: {VolunteerName ?? ""}\n" +
+    //           $"Status: {Status}\n" +
+    //           $"Time Remaining: {(TimeRemaining.HasValue ? TimeRemaining.Value.ToString(@"hh\:mm\:ss") : "")}\n" +
+    //           $"Completion Time: {(CompletionTime.HasValue ? CompletionTime.Value.ToString(@"hh\:mm\:ss") : "")}\n" +
+    //           $"Total Assignments: {TotalAssignments}";
+    //}
+
 }

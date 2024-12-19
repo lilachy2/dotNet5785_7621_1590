@@ -58,6 +58,17 @@ public static class Initialization
         "A security event involving a threat or emergency requiring a quick response." // security_event
     };
 
+    static readonly Calltype[] CalltypeArray =
+{
+    Calltype.fainting,
+    Calltype.birth,
+    Calltype.resuscitation,
+    Calltype.allergy,
+    Calltype.heartattack,
+    Calltype.broken_bone,
+    Calltype.security_event,
+    Calltype.None
+};
 
     public static void CreateVolunteers()
     {
@@ -161,6 +172,9 @@ public static class Initialization
             
             string? address = Addresses[index1];
             Calltype calltype = (Calltype)index2;
+
+
+            calltype = CalltypeArray[index2];
 
             string? VerbalDescription = Descriptions[index2];
             bool active = true;

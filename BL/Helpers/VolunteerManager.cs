@@ -217,6 +217,34 @@ internal static class VolunteerManager
     }
 
     // GetVolunteerInList and helper methods for each field
+    //public static BO.VolunteerInList GetVolunteerInList(int VolunteerId)
+    //{
+
+
+    //    DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+
+    //    Find the appropriate CALL  and Assignmentn by volunteer ID
+    //    var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
+    //    var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+
+
+
+    //    return new BO.VolunteerInList
+    //    {
+    //        Id = doVolunteer.Id,
+    //        FullName = doVolunteer.Name,
+    //        IsActive = doVolunteer.Active,
+    //        TotalCallsHandled = Tools.TotalHandledCalls(VolunteerId),
+    //        TotalCallsCancelled = Tools.TotalCallsCancelledhelp(VolunteerId),
+    //        TotalCallsExpired = Tools.TotalCallsExpiredelo(VolunteerId),
+    //        CurrentCallId = Tools.CurrentCallIdhelp(VolunteerId),
+    //        CurrentCallType = Tools.CurrentCallType(VolunteerId)
+
+
+    //    };
+    //}
+
+
     public static BO.VolunteerInList GetVolunteerInList(int VolunteerId)
     {
 
@@ -225,7 +253,16 @@ internal static class VolunteerManager
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-       // var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+        // var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+
+        var calls = _dal.Assignment.ReadAll(ass => ass.VolunteerId == VolunteerId);
+
+        //int totalCallsHandled = calls.Count(ass => ass.TypeEndTreat == DO.TypeEnd.Treated);
+        //int totalCallsCanceled = calls.Count(ass => ass.TypeEndTreat == DO.TypeEnd.SelfCancel);
+        //int totalCallsExpired = calls.Count(ass => ass.TypeEndTreat == DO.TypeEnd.ExpiredCancel);
+        int? currentCallId = calls.FirstOrDefault(ass => ass.EndOfTime == null)?.Id;
+
+
         return new BO.VolunteerInList
         {
             Id = doVolunteer.Id,
@@ -234,12 +271,13 @@ internal static class VolunteerManager
             TotalCallsHandled = Tools.TotalHandledCalls(VolunteerId),
             TotalCallsCancelled = Tools.TotalCallsCancelledhelp(VolunteerId),
             TotalCallsExpired = Tools.TotalCallsExpiredelo(VolunteerId),
-            CurrentCallId = Tools.CurrentCallIdhelp(VolunteerId),
+            CurrentCallId = currentCallId,/*Tools.CurrentCallIdhelp(VolunteerId),*/
             CurrentCallType = Tools.CurrentCallType(VolunteerId)
 
 
         };
     }
+
 
     // GetClosedCallInList 
     public static BO.ClosedCallInList GetClosedCallInList(int VolunteerId)

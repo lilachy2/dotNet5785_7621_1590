@@ -19,4 +19,14 @@ public class ClosedCallInList
     public DateTime EnterTime { get; init; }
     public DateTime? EndTime { get; init; }
     public /*CompletionType?*/  CallAssignmentEnum? CompletionStatus { get; init; }
+    public override string ToString()
+    {
+        return $"Id: {Id}\n" +
+               $"CallType: {CallType}\n" +
+               $"FullAddress: {FullAddress}\n" +
+               $"OpenTime: {OpenTime}\n" +
+               $"EnterTime: {EnterTime}\n" +
+               $"EndTime: {EndTime}\n" +
+               $"CompletionStatus: {CompletionStatus}\n";
+    }
 }

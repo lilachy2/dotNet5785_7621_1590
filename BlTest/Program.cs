@@ -253,10 +253,17 @@ Call Menu:
                             var volunteers = s_bl.Volunteer.ReadAll(active, sortBy);
                             foreach (var v in volunteers)
                             {
-                                Console.WriteLine($"ID: {v.Id}, Full Name: {v.FullName}, Active: {v.IsActive}, " +
-                                                  $"Total Calls Handled: {v.TotalCallsHandled}, Total Calls Cancelled: {v.TotalCallsCancelled}, " +
-                                                  $"Total Calls Expired: {v.TotalCallsExpired}, Current Call ID: {v.CurrentCallId}, " +
-                                                  $"Current Call Type: {v.CurrentCallType}");
+                                Console.WriteLine(
+     $"ID: {v.Id}\n" +
+     $"Full Name: {v.FullName}\n" +
+     $"Active: {v.IsActive}\n" +
+     $"Total Calls Handled: {v.TotalCallsHandled}\n" +
+     $"Total Calls Cancelled: {v.TotalCallsCancelled}\n" +
+     $"Total Calls Expired: {v.TotalCallsExpired}\n" +
+     $"Current Call ID: {v.CurrentCallId}\n" +
+     $"Current Call Type: {v.CurrentCallType}"
+ );
+
                             }
                             break;
 
@@ -495,7 +502,8 @@ Call Menu:
         {
             // קריאה ל-ICall לספירת קריאות
             var counts = s_bl.Call.GetCallStatusesCounts();
-            Console.WriteLine($"Total calls: {counts[0]}, Closed calls: {counts[1]}");
+            Console.WriteLine($" Open calls: {counts[0]}  Closed calls: {counts[1]}  InProgress calls: {counts[2]}  Expired calls: {counts[3]}  InProgressAtRisk calls: {counts[4]}  OpenAtRisk calls: {counts[5]} Total calls: {counts[6]} ");
+    
         }
 
         private static void GetCallsList()
@@ -573,7 +581,8 @@ Call Menu:
                     Console.WriteLine("Calls List:");
                     foreach (var call in callsList)
                     {
-                        Console.WriteLine(call.ToString());
+                        Console.WriteLine(call.ToString() + "\n");
+
                     }
                 }
                 else
@@ -611,7 +620,57 @@ Call Menu:
             // קריאה ל-ICall לעדכון קריאה
             Console.Write("Enter the call ID to update: ");
             int callId = int.Parse(Console.ReadLine());
-            var updatedCall = new BO.Call(); // יצירת אובייקט קריאה חדש (נחוץ למלא את המידע הנכון)
+            //var updatedCall = new BO.Call(); // יצירת אובייקט קריאה חדש (נחוץ למלא את המידע הנכון)
+
+
+            Console.WriteLine("Call Type (fainting, birth, resuscitation, allergy, heartattack, broken_bone, security_event, None):");
+            string callTypeInput = Console.ReadLine();
+            BO.Calltype callType;
+            if (!Enum.TryParse(callTypeInput, true, out callType))
+            {
+                // אם קלט לא תקני, נשתמש בברירת המחדל None
+                callType = BO.Calltype.None;
+                // במקרה של קלט לא תקני, נזרוק חריגה
+                throw new BO.Incompatible_ID("Invalid call type. Defaulting to 'None'.");
+
+            }
+
+            // Description
+            Console.WriteLine("Description:");
+            string description = Console.ReadLine();
+
+            // Full Address
+            Console.WriteLine("Full Address:");
+            string fullAddress = Console.ReadLine();
+
+            // Open Time
+            Console.WriteLine("Open Time (yyyy-MM-dd HH:mm:ss):");
+            DateTime openTime;
+            if (!DateTime.TryParse(Console.ReadLine(), out openTime))
+            {
+                throw new BO.Incompatible_ID("Invalid open time format.");
+            }
+
+            // Max End Time
+            Console.WriteLine("Max End Time (yyyy-MM-dd HH:mm:ss or press Enter for no value):");
+            string maxEndTimeInput = Console.ReadLine();
+            DateTime? maxEndTime = string.IsNullOrEmpty(maxEndTimeInput) ? (DateTime?)null : DateTime.Parse(maxEndTimeInput);
+
+
+            // Create the new Call object
+            BO.Call updatedCall = new BO.Call
+            {
+                Id = callId,
+                Calltype = callType,
+                Description = description,
+                FullAddress = fullAddress,
+                Latitude = 0,
+                Longitude = 0,
+                OpenTime = openTime,
+                MaxEndTime = maxEndTime
+            };
+
+
             s_bl.Call.Update(updatedCall);
             Console.WriteLine("Call updated.");
         }
@@ -677,7 +736,7 @@ Call Menu:
             // Create the new Call object
             BO.Call newCall = new BO.Call
             {
-                Id = callId,
+                Id =callId,
                 Calltype = callType,
                 Description = description,
                 FullAddress = fullAddress,
@@ -698,7 +757,6 @@ Call Menu:
 
         private static void GetClosedCalls()
         {
-            // קריאה ל-ICall לקבלת קריאות סגורות
             Console.Write("Enter volunteer ID: ");
             int volunteerId = int.Parse(Console.ReadLine());
             var closedCalls = s_bl.Call.GetCloseCall(volunteerId, null, null);

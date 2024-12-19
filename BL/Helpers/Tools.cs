@@ -10,15 +10,43 @@ namespace Helpers;
 // for help fun
 internal static class Tools
 {
-    private static readonly DalApi.IDal _dal = DalApi.Factory.Get;
-
-    public static string ToStringProperty<T>(this T t)
+    private static readonly DalApi.IDal _dal = DalApi.Factory.Get; 
+   public static string ToStringProperty<T>(this T t)
     {
+        if (t == null)
+            return string.Empty; // Return an empty string if the object is null.
+
         string str = "";
+
+        // Iterate through each property of the object
         foreach (PropertyInfo item in t.GetType().GetProperties())
-            str += "\n" + item.Name + ": " + item.GetValue(t, null);
+        {
+            var value = item.GetValue(t, null);
+
+            // If the property value is null, print the property name with an empty value
+            if (value == null)
+            {
+                str += $"\n{item.Name}: "; // Empty value for null properties
+                continue;
+            }
+
+            // Check if the value is a collection (IEnumerable), but not a string
+            if (value is System.Collections.IEnumerable enumerable && value.GetType() != typeof(string))
+            {
+                // Format collections by joining their items with a comma
+                var items = string.Join(", ", enumerable.Cast<object>());
+                str += $"\n{item.Name}: [{items}]"; // Display the items of the collection
+            }
+            else
+            {
+                // For other values, print the value directly
+                str += $"\n{item.Name}: {value}";
+            }
+        }
         return str;
     }
+
+
 
     public static string ToStringPropertyArray<T>(this T[] t)
     {

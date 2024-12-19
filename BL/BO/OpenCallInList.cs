@@ -18,5 +18,14 @@ public class OpenCallInList
     public DateTime OpenTime { get; init; }
     public DateTime? MaxEndTime { get; init; }
     public double DistanceFromVolunteer { get; init; }
+    public override string ToString()
+    {
+        return $"Id: {Id}\n" +
+               $"CallType: {CallType}\n" +
+               $"FullAddress: {FullAddress}\n" +
+               $"OpenTime: {OpenTime}\n" +
+               $"MaxEndTime: {MaxEndTime}\n" +
+               $"DistanceFromVolunteer: {DistanceFromVolunteer}\n";
+    }
 }
 
