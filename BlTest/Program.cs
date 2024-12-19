@@ -773,17 +773,21 @@ Call Menu:
 
         private static void CloseTreatment()
         {
+            Console.Write("Enter volunteer ID: ");
+            int volunteerId = int.Parse(Console.ReadLine());
             Console.Write("Enter the call ID to close treatment: ");
             int callId = int.Parse(Console.ReadLine());
-            s_bl.Call.UpdateEndTreatment(callId, callId);
+            s_bl.Call.UpdateEndTreatment(volunteerId, callId);
             Console.WriteLine("Treatment closed.");
         }
 
         private static void CancelTreatment()
         {
+            Console.Write("Enter volunteer ID: ");
+            int volunteerId = int.Parse(Console.ReadLine());
             Console.Write("Enter the call ID to cancel treatment: ");
             int callId = int.Parse(Console.ReadLine());
-            s_bl.Call.UpdateCancelTreatment(callId, callId);
+            s_bl.Call.UpdateCancelTreatment(volunteerId, callId);
             Console.WriteLine("Treatment canceled.");
         }
 
