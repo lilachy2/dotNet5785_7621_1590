@@ -16,7 +16,6 @@ namespace BO;
 
 public class Call
 {
-    // רשימת קריאות
     public int Id { get; init; }
     public Calltype Calltype { get; set; }  
     public string? Description { get; set; } 

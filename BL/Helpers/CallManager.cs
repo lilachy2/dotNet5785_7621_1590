@@ -72,7 +72,6 @@ internal static class CallManager
         }
     }
 
-
     // CreateCallInProgress and 3 helper methods
     public static BO.CallInProgress GetCallInProgress(int VolunteerId)
     {
@@ -82,7 +81,7 @@ internal static class CallManager
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId /*&& a.EndOfTime == null*/).FirstOrDefault();
         if (doAssignment == null)
-        { 
+        {
             return null;
         }
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
@@ -150,16 +149,17 @@ internal static class CallManager
         // Calculate the distance
         return EarthRadiusKm * c;
     }
-    private static double DegreesToRadians(double degrees)
-    {
-        return degrees * (Math.PI / 180);
-    }
+
     /// <summary>
     /// Converts degrees to radians.
     /// </summary>
     /// <param name="degrees">The angle in degrees</param>
     /// <returns>The angle in radians</returns>
-    
+    private static double DegreesToRadians(double degrees)
+    {
+        return degrees * (Math.PI / 180);
+    }
+
 
     //public static CallStatus CalculateCallStatus(int callId)
     //{
@@ -228,8 +228,6 @@ internal static class CallManager
     //}
 
     public static bool IsInRisk(DO.Call call) => call!.MaxEndTime - _dal.Config.Clock <= _dal.Config.RiskRange;
- 
-
     internal static BO.CallStatus CalculateCallStatus(DO.Call doCall)
     {
         // 1. Check if the call's maximum allowed time has expired
@@ -269,16 +267,14 @@ internal static class CallManager
         return BO.CallStatus.Open;
     }
 
-
-
     // CALL - function for viewing, function that checks for correctness (add and update) + helper method
     // helper method- 1- GetCallAssignmentsForCall 2- CalculateCallStatus
     public static BO.Call GetViewingCall(int CallId)
     {
-       // DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+        // DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-       // var doAssignment = _dal.Assignment.ReadAll().Where(a => a.CallId == CallId /*&& a.EndOfTime == null*/).FirstOrDefault();
+        // var doAssignment = _dal.Assignment.ReadAll().Where(a => a.CallId == CallId /*&& a.EndOfTime == null*/).FirstOrDefault();
         var doAssignment = _dal.Assignment.ReadAll(a => a.CallId == CallId).FirstOrDefault();
         var doCall = _dal.Call.ReadAll().Where(c => c.Id ==/* doAssignment!.*/CallId).FirstOrDefault();
 
@@ -296,7 +292,7 @@ internal static class CallManager
             OpenTime = doCall.OpeningTime, // Time when the call was opened
             MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
             Status = CalculateCallStatus(doCall), // Current status of the call
-            CallAssignments= CallManager.GetCallAssignmentsForCall(doCall.Id),    
+            CallAssignments = CallManager.GetCallAssignmentsForCall(doCall.Id),
 
         };
     }
@@ -309,7 +305,7 @@ internal static class CallManager
         var doAssignments = _dal.Assignment.ReadAll().Where(a => a.CallId == callId).ToList();
 
         // If no assignments are found, return null
-        if (/*!doAssignments.Any()*/doAssignments==null)
+        if (/*!doAssignments.Any()*/doAssignments == null)
         {
             return null; // No assignments found
         }
@@ -366,7 +362,6 @@ internal static class CallManager
         }
     }
 
-
     // GetCallAssignInList
     public static BO.CallAssignInList GetCallAssignInList(int Id)
     {
@@ -395,45 +390,6 @@ internal static class CallManager
 
 
     }
-
-    // GetCallInList
-    //public static BO.CallInList GetCallInList(int Id)
-    //{
-    //    //DO.Volunteer doVolunteer = _dal.Volunteer.Read(Id)/* ?? throw new BlDoesNotExistException("eroor id")*/;// ז
-
-    //    //Find the appropriate CALL  and  Assignmentn by volunteer ID
-    //    var doAssignment1 = _dal.Assignment.ReadAll().Where(a => a.Id/*VolunteerId*/ == Id /*&& a.EndOfTime == null*/).FirstOrDefault();// לבדוק
-    //    var doAssignment2 = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == Id /*&& a.EndOfTime == null*/).FirstOrDefault();// לבדוק
-    //    var doAssignment = doAssignment1;
-    //    if ((doAssignment1 == null))
-    //    {
-    //        doAssignment = doAssignment2;
-    //    }
-    //    else
-    //    {
-    //        doAssignment = doAssignment1;
-    //    }
-
-    //    var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
-    //    var GetTotalAssignmentsForCall = _dal.Assignment.ReadAll().Where(a => a.Id == Id);
-
-    //    return new BO.CallInList
-    //    {
-    //        Id = (doAssignment == null) ? null : doAssignment.Id,
-    //        CallId = doAssignment.CallId,
-    //        CallType = (BO.Calltype)doCall.Calltype, // Enum conversion
-    //        OpenTime = doCall.OpeningTime, // The time when the call was opened
-
-    //        TimeRemaining = CalculateTimeRemaining(doCall.MaxEndTime), // Time remaining until the maximum completion time
-    //        VolunteerName = GetLatestVolunteerNameForCall(doCall.Id), // The name of the volunteer assigned to the call
-
-    //        CompletionTime = CalculateCompletionTime(doAssignment.Id), // Total time taken to complete the call
-    //        Status = CalculateCallStatus(doCall), // Current status of the call
-    //        TotalAssignments = GetTotalAssignmentsForCall.Count(a=> a.CallId == doAssignment.CallId) // Total number of assignments for the call
-
-    //    };
-
-    //}
 
     public static BO.CallInList GetCallInList(DO.Call doCall)
     {
@@ -477,8 +433,6 @@ internal static class CallManager
 
         return DOCall;
     }
-
-
     public static TimeSpan? CalculateTimeRemaining(DateTime? maxEndTime)
     {
         if (maxEndTime == null)
@@ -510,7 +464,7 @@ internal static class CallManager
     {
 
         // Retrieve all assignments related to the call
-        var assignments = _dal.Assignment.ReadAll().Where(a => a.CallId == callId ); 
+        var assignments = _dal.Assignment.ReadAll().Where(a => a.CallId == callId);
 
         // Check if the call has been completed
         var completedAssignment = assignments
@@ -524,15 +478,12 @@ internal static class CallManager
         // Calculate the time taken to complete the call
         return completedAssignment.time_end_treatment - completedAssignment.time_entry_treatment;
     }
-
     public static void UpdateCallsToExpired(DateTime oldClock, DateTime newClock)
     {
-        // שליפת כל ההקצאות שעדיין פתוחות וזמן הסיום שלהן עבר
         var assignmentsToUpdate = _dal.Assignment.ReadAll()
             .Where(a => a.EndOfTime == null && a.time_entry_treatment <= newClock && a.CallId != 0)
             .ToList();
 
-        // עדכון ההקצאות וזמן הסיום שלהן
         var updatedAssignments = assignmentsToUpdate
             .Select(a => new DO.Assignment
             {
@@ -544,10 +495,8 @@ internal static class CallManager
                 EndOfTime = DO.AssignmentCompletionType.Expired // סטטוס "פג תוקף"
             }).ToList();
 
-        // עדכון כל ההקצאות ב-DAL
         updatedAssignments.ForEach(a => _dal.Assignment.Update(a));
 
-        // עדכון הקריאות עצמן - באמצעות שימוש ישיר ב-CallId של ההקצאות
         var callIdsToUpdate = updatedAssignments.Select(a => a.CallId).Distinct().ToList();
 
         var callsToUpdate = _dal.Call.ReadAll()
@@ -556,8 +505,6 @@ internal static class CallManager
 
         callsToUpdate.ForEach(call => _dal.Call.Update(call));
     }
-
-
 
 }
 

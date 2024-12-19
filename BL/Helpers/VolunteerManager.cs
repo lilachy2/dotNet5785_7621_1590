@@ -25,7 +25,6 @@ internal static class VolunteerManager
 
     }
 
-
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
         // Validate ID
@@ -97,7 +96,6 @@ internal static class VolunteerManager
 
         // Add additional checks if there are any other restricted fields
     }
-
 
     public static bool IsValidIsraeliID(int id)
     {
@@ -216,35 +214,6 @@ internal static class VolunteerManager
 
     }
 
-    // GetVolunteerInList and helper methods for each field
-    //public static BO.VolunteerInList GetVolunteerInList(int VolunteerId)
-    //{
-
-
-    //    DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
-
-    //    Find the appropriate CALL  and Assignmentn by volunteer ID
-    //    var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-    //    var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
-
-
-
-    //    return new BO.VolunteerInList
-    //    {
-    //        Id = doVolunteer.Id,
-    //        FullName = doVolunteer.Name,
-    //        IsActive = doVolunteer.Active,
-    //        TotalCallsHandled = Tools.TotalHandledCalls(VolunteerId),
-    //        TotalCallsCancelled = Tools.TotalCallsCancelledhelp(VolunteerId),
-    //        TotalCallsExpired = Tools.TotalCallsExpiredelo(VolunteerId),
-    //        CurrentCallId = Tools.CurrentCallIdhelp(VolunteerId),
-    //        CurrentCallType = Tools.CurrentCallType(VolunteerId)
-
-
-    //    };
-    //}
-
-
     public static BO.VolunteerInList GetVolunteerInList(int VolunteerId)
     {
 
@@ -278,7 +247,6 @@ internal static class VolunteerManager
         };
     }
 
-
     // GetClosedCallInList 
     public static BO.ClosedCallInList GetClosedCallInList(int VolunteerId)
     {
@@ -304,37 +272,45 @@ internal static class VolunteerManager
     }
 
     //GetOpenCallInList
-    public static BO.OpenCallInList GetOpenCallInList(int VolunteerId)
+    public static BO.OpenCallInList GetOpenCallInList(int callId, int volunteerId)
     {
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(volunteerId) ?? throw new BlDoesNotExistException("error id");
 
-        //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-        var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
-
-        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result */== false)// לא כתובת אמיתית 
+        // Find the appropriate assignment by volunteer ID and call ID
+        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == volunteerId && a.CallId == callId).FirstOrDefault();
+        if (doAssignment == null)
         {
-            throw new BlInvalidaddress("Invalid address of Volunteer");// 
+            throw new BlDoesNotExistException("Assignment not found for the given call and volunteer.");
         }
-        double? LatitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        double? LongitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
 
-        // Create the object
+        var doCall = _dal.Call.ReadAll().Where(c => c.Id == callId).FirstOrDefault();
+        if (doCall == null)
+        {
+            throw new BlDoesNotExistException("Call not found.");
+        }
+
+        // Get latitude and longitude of the volunteer's address asynchronously
+        double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+
+        // Ensure latitude and longitude are valid before using them
+        if (!latitudeVolunteer.HasValue || !longitudeVolunteer.HasValue)
+        {
+            throw new BlGeneralException("Could not retrieve valid coordinates for the volunteer.");
+        }
+
+        // Create and return the OpenCallInList object
         return new BO.OpenCallInList
         {
-            Id = doAssignment.Id, // Call identifier
+            Id = doAssignment.Id, // Assignment identifier
             CallType = (BO.Calltype)doCall.Calltype, // Enum conversion
             FullAddress = doCall.ReadAddress, // Full address of the call
             OpenTime = doCall.OpeningTime, // Time when the call was opened
-            MaxEndTime = doCall.MaxEndTime,
-            DistanceFromVolunteer = CallManager.Air_distance_between_2_addresses(doCall.Latitude, doCall.Longitude, LatitudeVolunteer, LongitudeVolunteer),// Air distance between 2 addresses
-
+            MaxEndTime = doCall.MaxEndTime, // Maximum end time for the call
+            DistanceFromVolunteer = CallManager.Air_distance_between_2_addresses(
+                doCall.Latitude, doCall.Longitude, latitudeVolunteer, longitudeVolunteer
+            ) // Air distance between 2 addresses (call and volunteer)
         };
-
     }
-
-
-
-
 
 }

@@ -47,18 +47,11 @@ internal static class ClockManager //stage 4
     }
     #endregion Stage 4
 
-
-
-
-
-
-
     #region Stage 5
 
     internal static event Action? ClockUpdatedObservers; //prepared for stage 5 - for clock update observers
 
     #endregion Stage 5
-
 
     #region Stage 7 base
     internal static readonly object blMutex = new();

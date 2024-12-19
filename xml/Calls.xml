@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>33.214215886809185</Latitude>
-    <Longitude>34.44219452011385</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.221964531515404</Latitude>
+    <Longitude>35.583787219766776</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.612978825474677</Latitude>
-    <Longitude>35.81520479422153</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.259971737304085</Latitude>
+    <Longitude>35.16238264096838</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.83054056203629</Latitude>
-    <Longitude>34.43303849378248</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.460400988159442</Latitude>
+    <Longitude>35.790194895286824</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.665281607009536</Latitude>
-    <Longitude>34.94219011155</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.222996945662764</Latitude>
+    <Longitude>35.287557360345005</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.213867209728015</Latitude>
-    <Longitude>35.01654746277885</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.530819963771773</Latitude>
+    <Longitude>35.47945339791751</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.286849314529636</Latitude>
-    <Longitude>35.515835837515006</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.122241413094798</Latitude>
+    <Longitude>35.30696977785591</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.671597430381215</Latitude>
-    <Longitude>35.58116714611213</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>29.906889215803442</Latitude>
+    <Longitude>35.24059823854012</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.47181161998974</Latitude>
-    <Longitude>35.61840040833194</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.751930904558517</Latitude>
+    <Longitude>34.78232633461211</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.226152933822508</Latitude>
-    <Longitude>34.80981318198105</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.653834491494255</Latitude>
+    <Longitude>34.94925662599976</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.28083611439238</Latitude>
-    <Longitude>35.26508163210377</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>29.81450487174743</Latitude>
+    <Longitude>34.552173386699764</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.444572055728294</Latitude>
-    <Longitude>35.50066296246244</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.06018280161123</Latitude>
+    <Longitude>34.925811908896776</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.69670739425533</Latitude>
-    <Longitude>35.5076682269184</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.082080431303716</Latitude>
+    <Longitude>35.215096080300825</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.574776053716654</Latitude>
-    <Longitude>35.12461411364741</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.95408004277332</Latitude>
+    <Longitude>34.52467185854009</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.482289062596166</Latitude>
-    <Longitude>35.67423439272407</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.265416084215815</Latitude>
+    <Longitude>34.89244354241135</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.758457212791544</Latitude>
-    <Longitude>35.175245812456524</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.95693793149477</Latitude>
+    <Longitude>35.02772180060324</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.32506751884617</Latitude>
-    <Longitude>35.32850356793215</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.17545725582871</Latitude>
+    <Longitude>34.35665045798397</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.068351959520136</Latitude>
-    <Longitude>34.67156018144823</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.54454759091483</Latitude>
+    <Longitude>35.0729585221047</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.30273666224868</Latitude>
-    <Longitude>34.8963251498635</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.521019800974063</Latitude>
+    <Longitude>35.89562952408043</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.958216109916833</Latitude>
-    <Longitude>35.857515523768875</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.651640498384335</Latitude>
+    <Longitude>34.73909302836214</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.147130997076275</Latitude>
-    <Longitude>35.36114267104262</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.77076957120187</Latitude>
+    <Longitude>34.50606706988617</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.700114723355956</Latitude>
-    <Longitude>35.328541991720435</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.84922864849587</Latitude>
+    <Longitude>34.88449292204928</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.14984992049521</Latitude>
-    <Longitude>34.85248646017219</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.15552524969125</Latitude>
+    <Longitude>34.80309504535688</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.9196564688624</Latitude>
-    <Longitude>34.473578347327646</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.62556973751939</Latitude>
+    <Longitude>35.58019682494922</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.74396393225895</Latitude>
-    <Longitude>35.08707359536137</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.460182095345083</Latitude>
+    <Longitude>35.479390809247505</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.607199291173746</Latitude>
-    <Longitude>35.85651572129735</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.952683798576412</Latitude>
+    <Longitude>35.88453833169785</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.7803373516586</Latitude>
-    <Longitude>34.740611834730366</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.05948930720496</Latitude>
+    <Longitude>35.37334525945553</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.48092031398584</Latitude>
-    <Longitude>34.94726941639648</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.672958536679207</Latitude>
+    <Longitude>34.95249861311541</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.75242598975447</Latitude>
-    <Longitude>34.70713837902225</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>29.70942229059037</Latitude>
+    <Longitude>34.319430303090485</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.86923307579505</Latitude>
-    <Longitude>35.01404925090841</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.10433298282397</Latitude>
+    <Longitude>35.015205637982675</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.327195766201715</Latitude>
-    <Longitude>35.542394461570765</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.62198572848217</Latitude>
+    <Longitude>34.8670168251309</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.801510147007818</Latitude>
-    <Longitude>34.6373784837836</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.536468933128486</Latitude>
+    <Longitude>34.913725247380015</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.92492864946098</Latitude>
-    <Longitude>34.89611285135268</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.37107625096187</Latitude>
+    <Longitude>34.5318238026764</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.260454194873134</Latitude>
-    <Longitude>35.611482190320075</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.376378150847994</Latitude>
+    <Longitude>34.88669111163574</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.999893963316303</Latitude>
-    <Longitude>35.70402970377361</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>29.909861197736152</Latitude>
+    <Longitude>35.4268109469688</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.457215521654092</Latitude>
-    <Longitude>34.834706219039326</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.559113493663485</Latitude>
+    <Longitude>35.20515968051281</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.480287759828336</Latitude>
-    <Longitude>35.44567996006669</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.16273082700463</Latitude>
+    <Longitude>34.65395989645643</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.978668226704535</Latitude>
-    <Longitude>35.17236888294367</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.955796529626028</Latitude>
+    <Longitude>34.69586172041193</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.33329648962683</Latitude>
-    <Longitude>35.40914730245036</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.382870396103275</Latitude>
+    <Longitude>35.319070670033334</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.94728601609106</Latitude>
-    <Longitude>35.277647457134215</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.67722854039833</Latitude>
+    <Longitude>35.83027009281365</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.28685792074345</Latitude>
-    <Longitude>35.69733684311901</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.68989838251629</Latitude>
+    <Longitude>34.71644273719075</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.28593827238108</Latitude>
-    <Longitude>34.541577577644325</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.53280259247837</Latitude>
+    <Longitude>35.70686592160252</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.641366910592385</Latitude>
-    <Longitude>35.837919432944794</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.084327154373845</Latitude>
+    <Longitude>35.33562348564378</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.9009970180149</Latitude>
-    <Longitude>35.703791647823756</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.035320844391826</Latitude>
+    <Longitude>35.61628754756522</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.38344075679639</Latitude>
-    <Longitude>35.11473819154403</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>32.84742829873775</Latitude>
+    <Longitude>35.09058221078619</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.843866834815607</Latitude>
-    <Longitude>35.341645755131026</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>33.047943045926004</Latitude>
+    <Longitude>35.488599327686245</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.90043673419136</Latitude>
-    <Longitude>34.98011876871668</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.354049252795892</Latitude>
+    <Longitude>34.944293122149</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.991952149835512</Latitude>
-    <Longitude>35.213756356969306</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>29.500588524377722</Latitude>
+    <Longitude>35.22231229339077</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.03986814118854</Latitude>
-    <Longitude>34.6892314185133</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.8881364020657</Latitude>
+    <Longitude>34.76987801236225</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.504221758146755</Latitude>
-    <Longitude>35.25660667956967</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>31.397362110330466</Latitude>
+    <Longitude>34.918336489586885</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>45 Rothschild Blvd, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-18T15:29:28</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.554885601850323</Latitude>
-    <Longitude>34.687022990754684</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-18T14:51:13</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>birth</VerbalDescription>
+    <ReadAddress>Eiffel Tower, Paris, France</ReadAddress>
+    <OpeningTime>2024-06-01T09:00:00</OpeningTime>
+    <MaxEndTime>2024-12-15T14:30:00</MaxEndTime>
   </Call>
 </ArrayOfCall>

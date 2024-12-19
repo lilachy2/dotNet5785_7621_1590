@@ -30,10 +30,9 @@ internal class AdminImplementation : IAdmin
             case TimeUnit.Year:
                 newTime = ClockManager.Now.AddYears(1);
                 break;
-            default: 
+            default:
                 newTime = ClockManager.Now;
                 break;
-                //throw new ArgumentException("Invalid TimeUnit value");
 
         }
 

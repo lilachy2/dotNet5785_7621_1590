@@ -500,7 +500,6 @@ Call Menu:
 
         private static void CountCalls()
         {
-            // קריאה ל-ICall לספירת קריאות
             var counts = s_bl.Call.GetCallStatusesCounts();
             Console.WriteLine($" Open calls: {counts[0]}  Closed calls: {counts[1]}  InProgress calls: {counts[2]}  Expired calls: {counts[3]}  InProgressAtRisk calls: {counts[4]}  OpenAtRisk calls: {counts[5]} Total calls: {counts[6]} ");
     
@@ -508,14 +507,11 @@ Call Menu:
 
         private static void GetCallsList()
         {
-            // הצגת תפריט המשתמש
             Console.WriteLine("Testing GetCallsList()...");
 
-            // שדות עבור הסינון והמיון
             BO.CallInListField? filterField = null;
             BO.CallInListField? sortField = null;
 
-            // בחירת שדה סינון
             Console.WriteLine("Enter filter field (Id, CallId, CallType, OpenTime, TimeRemaining, VolunteerName, CompletionTime, Status, TotalAssignments, or press Enter to skip):");
             string filterFieldInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(filterFieldInput))
@@ -526,7 +522,6 @@ Call Menu:
                 }
             }
 
-            // בחירת ערך סינון
             Console.WriteLine("Enter filter value (Status, CallType, TimeRemaining, CompletionTime, or press Enter to skip):");
             string filterValueInput = Console.ReadLine();
 
@@ -534,17 +529,14 @@ Call Menu:
 
             if (!string.IsNullOrEmpty(filterValueInput))
             {
-                // בדיקת אם המשתמש רוצה לסנן לפי CallStatus
                 if (Enum.TryParse<CallStatus>(filterValueInput, true, out var callStatusEnum))
                 {
                     filterValue = callStatusEnum;
                 }
-                // בדיקת אם המשתמש רוצה לסנן לפי CallType
                 else if (Enum.TryParse<Calltype>(filterValueInput, true, out var callTypeEnum))
                 {
                     filterValue = callTypeEnum;
                 }
-                // בדיקת אם המשתמש רוצה לסנן לפי TimeRemaining או CompletionTime
                 else if (int.TryParse(filterValueInput, out var intValue))
                 {
                     filterValue = intValue; // for TimeRemaining or TotalAssignments
@@ -559,7 +551,6 @@ Call Menu:
                 }
             }
 
-            // בחירת שדה למיון
             Console.WriteLine("Enter sort field (Id, CallId, CallType, OpenTime, TimeRemaining, VolunteerName, CompletionTime, Status, TotalAssignments, or press Enter to skip):");
             string sortFieldInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(sortFieldInput))
@@ -570,12 +561,10 @@ Call Menu:
                 }
             }
 
-            // קריאה לפונקציה מתוך האובייקט המתאים
             try
             {
                 var callsList = s_bl.Call.GetCallsList(filterField, filterValue, sortField);
 
-                // הדפסת הקריאות המתקבלות
                 if (callsList != null && callsList.Any())
                 {
                     Console.WriteLine("Calls List:");
@@ -596,12 +585,8 @@ Call Menu:
             }
         }
 
-
-
-
         private static void ReadCall()
         {
-            // קריאה ל-ICall להציג פרטי קריאה לפי ID
             Console.Write("Enter the call ID to read: ");
             int callId = int.Parse(Console.ReadLine());
             var call = s_bl.Call.Read(callId);
@@ -617,10 +602,8 @@ Call Menu:
 
         private static void UpdateCall()
         {
-            // קריאה ל-ICall לעדכון קריאה
             Console.Write("Enter the call ID to update: ");
             int callId = int.Parse(Console.ReadLine());
-            //var updatedCall = new BO.Call(); // יצירת אובייקט קריאה חדש (נחוץ למלא את המידע הנכון)
 
 
             Console.WriteLine("Call Type (fainting, birth, resuscitation, allergy, heartattack, broken_bone, security_event, None):");
@@ -628,9 +611,7 @@ Call Menu:
             BO.Calltype callType;
             if (!Enum.TryParse(callTypeInput, true, out callType))
             {
-                // אם קלט לא תקני, נשתמש בברירת המחדל None
                 callType = BO.Calltype.None;
-                // במקרה של קלט לא תקני, נזרוק חריגה
                 throw new BO.Incompatible_ID("Invalid call type. Defaulting to 'None'.");
 
             }
@@ -678,7 +659,6 @@ Call Menu:
 
         private static void DeleteCall()
         {
-            // קריאה ל-ICall למחיקת קריאה
             Console.Write("Enter the call ID to delete: ");
             int callId = int.Parse(Console.ReadLine());
             s_bl.Call.Delete(callId);
@@ -704,9 +684,7 @@ Call Menu:
             BO.Calltype callType;
             if (!Enum.TryParse(callTypeInput, true, out callType))
             {
-                // אם קלט לא תקני, נשתמש בברירת המחדל None
                 callType = BO.Calltype.None;
-                // במקרה של קלט לא תקני, נזרוק חריגה
                 throw new BO.Incompatible_ID("Invalid call type. Defaulting to 'None'.");
 
             }
@@ -768,19 +746,33 @@ Call Menu:
 
         private static void GetOpenCalls()
         {
-            // קריאה ל-ICall לקבלת קריאות פתוחות
+            // בקשת ת.ז של המתנדב
             Console.Write("Enter volunteer ID: ");
             int volunteerId = int.Parse(Console.ReadLine());
-            var openCalls = s_bl.Call.GetOpenCall(volunteerId, null, null);
+
+            // בקשת סוג הקריאה (אם יש)
+            Console.Write("Enter call type (or press Enter for all types): ");
+            string callTypeInput = Console.ReadLine();
+            BO.Calltype? callType = string.IsNullOrEmpty(callTypeInput) ? (BO.Calltype?)null : (BO.Calltype)Enum.Parse(typeof(BO.Calltype), callTypeInput);
+
+            // בקשת שדה למיון (אם יש)
+            Console.Write("Enter field to sort by (or press Enter for sorting by call ID): ");
+            string sortByInput = Console.ReadLine();
+            BO.OpenCallInListEnum? sortBy = string.IsNullOrEmpty(sortByInput) ? (BO.OpenCallInListEnum?)null : (BO.OpenCallInListEnum)Enum.Parse(typeof(BO.OpenCallInListEnum), sortByInput);
+
+            // קריאה לפונקציה שמחזירה את הקריאות הפתוחות
+            var openCalls = s_bl.Call.GetOpenCall(volunteerId, callType, sortBy);
+
+            // הצגת התוצאות
             foreach (var openCall in openCalls)
             {
                 Console.WriteLine(openCall.ToString());
             }
         }
 
+
         private static void CloseTreatment()
         {
-            // קריאה ל-ICall לסגור טיפול
             Console.Write("Enter the call ID to close treatment: ");
             int callId = int.Parse(Console.ReadLine());
             s_bl.Call.UpdateEndTreatment(callId, callId);
@@ -789,7 +781,6 @@ Call Menu:
 
         private static void CancelTreatment()
         {
-            // קריאה ל-ICall לבטל טיפול
             Console.Write("Enter the call ID to cancel treatment: ");
             int callId = int.Parse(Console.ReadLine());
             s_bl.Call.UpdateCancelTreatment(callId, callId);
@@ -798,7 +789,6 @@ Call Menu:
 
         private static void ChooseForTreatment()
         {
-            // קריאה ל-ICall לבחור טיפול
             Console.Write("Enter volunteer ID: ");
             int volunteerId = int.Parse(Console.ReadLine());
             Console.Write("Enter the call ID to choose: ");

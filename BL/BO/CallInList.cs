@@ -27,16 +27,4 @@ public class CallInList
 
     public override string ToString() => this.ToStringProperty();
 
-    //public override string ToString()
-    //{
-    //    return $"Call ID: {CallId}\n" +
-    //           $"Call Type: {CallType}\n" +
-    //           $"Opened: {OpenTime:yyyy-MM-dd HH:mm:ss}\n" +
-    //           $"Volunteer: {VolunteerName ?? ""}\n" +
-    //           $"Status: {Status}\n" +
-    //           $"Time Remaining: {(TimeRemaining.HasValue ? TimeRemaining.Value.ToString(@"hh\:mm\:ss") : "")}\n" +
-    //           $"Completion Time: {(CompletionTime.HasValue ? CompletionTime.Value.ToString(@"hh\:mm\:ss") : "")}\n" +
-    //           $"Total Assignments: {TotalAssignments}";
-    //}
-
 }

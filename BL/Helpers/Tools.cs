@@ -7,7 +7,6 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace Helpers;
-// for help fun
 internal static class Tools
 {
     private static readonly DalApi.IDal _dal = DalApi.Factory.Get; 
@@ -46,8 +45,6 @@ internal static class Tools
         return str;
     }
 
-
-
     public static string ToStringPropertyArray<T>(this T[] t)
     {
         string str = "";
@@ -58,6 +55,13 @@ internal static class Tools
         }
         return str;
     }
+
+
+    /// <summary>
+    /// Checks if an address is valid using the Geocode API.
+    /// </summary>
+    /// <param name="address">The address to validate.</param>
+    /// <returns>True if the address is valid, otherwise false.</returns>
 
     internal static async Task ValidateVolunteerData(BO.Volunteer boVolunteer)
     {
@@ -100,100 +104,8 @@ internal static class Tools
         }
     }
 
-
-    //private const string BaseUrl = "https://geocode.maps.co/search"; // For lines of longitude and latitude 
-
-    /// <summary>
-    /// Checks if an address is valid using the Geocode API.
-    /// </summary>
-    /// <param name="address">The address to validate.</param>
-    /// <returns>True if the address is valid, otherwise false.</returns>
-    //public static async Task<bool> IsAddressValid(string address)
-    //{
-    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
-
-    //    using (HttpClient client = new HttpClient())
-    //    {
-    //        try
-    //        {
-    //            HttpResponseMessage response = await client.GetAsync(query);
-    //            if (response.IsSuccessStatusCode)
-    //            {
-    //                string result = await response.Content.ReadAsStringAsync();
-    //                return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\":") && result.Contains("\"lon\":");
-    //            }
-    //            return false;
-    //        }
-    //        catch
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //}
-
-
     private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
-    //private const string BaseUrl = "https://eu1.locationiq.com/v1/search.php";
     private const string BaseUrl = "https://geocode.maps.co/search";
-
-    //public static async Task<bool> IsAddressValid(string address)
-    //{
-    //    if (string.IsNullOrWhiteSpace(address))
-    //        throw new ArgumentException("Address cannot be null or empty.");
-
-    //    string query = $"{BaseUrl}?key={ApiKey}&q={Uri.EscapeDataString(address)}&format=json";
-
-    //    using (HttpClient client = new HttpClient())
-    //    {
-    //        try
-    //        {
-    //            HttpResponseMessage response = await client.GetAsync(query);
-
-    //            Console.WriteLine($"Response Status Code: {response.StatusCode}");
-    //            string result = await response.Content.ReadAsStringAsync();
-    //            Console.WriteLine($"Response Content: {result}");
-
-    //            if (response.IsSuccessStatusCode)
-    //            {
-    //                return !string.IsNullOrWhiteSpace(result) && result.Contains("\"lat\"") && result.Contains("\"lon\"");
-    //            }
-
-    //            return false;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Console.WriteLine($"Error: {ex.Message}");
-    //            return false;
-    //        }
-    //    }
-    //}
-
-    //public static async Task<bool> IsAddressValid(string address)
-    //{
-    //    if (string.IsNullOrWhiteSpace(address))
-    //        throw new ArgumentException("Address cannot be null or empty.");
-
-    //    // בניית ה-URL לבקשה
-    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-    //    using (HttpClient client = new HttpClient())
-    //    {
-    //        try
-    //        {
-    //            HttpResponseMessage response = await client.GetAsync(query); // שליחת הבקשה
-
-    //            Console.WriteLine($"Response Status Code: {response.StatusCode}");
-
-    //            // בדיקת סטטוס הבקשה בלבד
-    //            return response.IsSuccessStatusCode; // מחזיר TRUE אם סטטוס HTTP הוא 200
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Console.WriteLine($"Error: {ex.Message}");
-    //            return false;
-    //        }
-    //    }
-    //}
 
     public static bool IsAddressValid(string address)
     {
@@ -226,7 +138,6 @@ internal static class Tools
 
         return isValid; // החזרת התוצאה
     }
-
 
     /// <summary>
     /// Gets the latitude of a given address.
@@ -287,8 +198,6 @@ internal static class Tools
             }
         }
     }
-
-
     internal static void CheckId(int id)
     {
         // Convert the integer ID to a string to process individual digits
@@ -330,10 +239,6 @@ internal static class Tools
             throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
         }
     }
-
-    
-
-   
     public static int TotalHandledCalls(int Id)
     {
         // Count how many were treated on time
@@ -383,9 +288,6 @@ internal static class Tools
         return (BO.Calltype)call;
 
     }
-
- 
-
 
 }
 

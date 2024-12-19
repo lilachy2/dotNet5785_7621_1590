@@ -9,48 +9,15 @@ using System.Collections.Generic;
 internal class VolunteerImplementation : BlApi.IVolunteer
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
-    //public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
-    //{
-    //    var volunteers = _dal.Volunteer.ReadAll();
-
-
-    //    if (Active.HasValue)
-    //    {
-    //        volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
-    //    }
-
-    //    volunteers = sortBy switch
-    //    {
-    //        BO.VolInList.Name => volunteers.OrderBy(volunteer => volunteer.Name), // Sort by volunteer's full name
-    //        BO.VolInList.Role => volunteers.OrderBy(volunteer => volunteer.Role),     // Sort by volunteer's job (role)
-    //        BO.VolInList.IsActive => volunteers.OrderBy(volunteer => volunteer.Active), // Sort by activity status (active/inactive)
-    //        _ => volunteers.OrderBy(volunteer => volunteer.Id) // Default: sort by volunteer ID
-    //    };
-
-    //    return volunteers
-    //.Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
-    ////.Where(v => v != null) // סינון אם יש מתנדבים שלא נמצאו
-    //.ToList();
-
-    //    //return volunteers.Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)).ToList();
-    //    //{
-    //    //    Id = volunteer.Id,
-    //    //    FullName = volunteer.Name,
-    //    //    IsActive = volunteer.Active
-    //    //});
-    //}
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
-        // קוראים לכל המתנדבים
         var volunteers = _dal.Volunteer.ReadAll();
 
-        // אם יש ערך ב-Active, מסננים את המתנדבים לפי הסטטוס של פעילותם
         if (Active.HasValue)
         {
             volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
         }
 
-        // מיון המתנדבים לפי קריטריון שנבחר
         switch (sortBy)
         {
             case BO.VolInList.Name:
@@ -67,7 +34,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
                 break;
         }
 
-        // מחזירים את הרשימה לאחר מיון וסינון
         return volunteers
             .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)) // ממירים לכל מתנדב ברשימה לפי המזהה
             .ToList();
@@ -96,9 +62,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     {
         try
         {
-        return (VolunteerManager.GetVolunteer(id));
+            return (VolunteerManager.GetVolunteer(id));
 
-        } 
+        }
         catch (Exception ex)
         {
             // Log the exception (optional, for debugging purposes)
@@ -109,12 +75,10 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
     }
 
-   
-   
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
 
-        var DOVolunteer= VolunteerManager.BOconvertDO(boVolunteer); //convert 
+        var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); //convert 
 
         try
         {
@@ -127,14 +91,14 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
 
             // check format
-           //Tools.ValidateVolunteerData(boVolunteer);
+            //Tools.ValidateVolunteerData(boVolunteer);
             VolunteerManager.CheckFormat(boVolunteer);
             // check logic
             //If the address format is correct, enter the latitude and longitude.
-            if ( Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
+            if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
             {
-                boVolunteer.Latitude= Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result; 
-                boVolunteer.Longitude= Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result; 
+                boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
+                boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
             }
 
 
@@ -153,8 +117,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             throw new BO.BlGeneralException("Failed to update volunteer details.", ex);
         }
     }
-
-    
 
     public void Delete(int volunteerId)
     {
@@ -180,7 +142,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             throw new BlDoesNotExistException($"The volunteer with ID {volunteerId} was not found in the system.", ex);
         }
     }
-
 
     public void Create(BO.Volunteer boVolunteer)
     {
@@ -216,7 +177,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             // we need add 
             boVolunteer.Latitude = Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress).Result;
             boVolunteer.Longitude = Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress).Result;
-          
+
             // 5. Add the volunteer to the data layer
             _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
         }
