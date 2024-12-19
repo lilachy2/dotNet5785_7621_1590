@@ -847,7 +847,6 @@ internal class CallImplementation : BlApi.ICall
     {
         try
         {
-            // Step 1: Retrieve the assignment details from the DAL
             var assignment = _dal.Assignment.Read(assignmentId);
             var volunteer = _dal.Volunteer.Read(volunteerId);
             //var call = _dal.Call.Read(assignment.CallId)
@@ -859,7 +858,6 @@ internal class CallImplementation : BlApi.ICall
                 throw new BO.Bl_Volunteer_Cant_UpdateCancelTreatmentException("The volunteer is not authorized to cancel this treatment.");
             }
 
-            // Step 3: Check if the treatment is already completed or expired
 
             if (assignment.time_end_treatment != null /*&& assignment.EndOfTime == DO.AssignmentCompletionType.TreatedOnTime*/)
             {
@@ -872,7 +870,6 @@ internal class CallImplementation : BlApi.ICall
             }
 
 
-            // Step 5: Create the updated assignment with the cancellation time and reason
             var updatedAssignment = new DO.Assignment(
                 Id: assignment.Id,  // Keep the existing assignment ID
                 CallId: assignment.CallId,  // Use the existing call ID
@@ -884,7 +881,6 @@ internal class CallImplementation : BlApi.ICall
                            : DO.AssignmentCompletionType.AdminCancelled  // If an admin requested the cancel, set the "Cancelled by Admin" status
             );
 
-            // Step 6: Update the assignment in the DAL
             _dal.Assignment.Update(updatedAssignment);
         }
         catch (DO.DalDoesNotExistException ex)
