@@ -262,6 +262,11 @@ internal static class CallManager
             else
                 return BO.CallStatus.InProgress; // In progress but not in risk
         }
+        
+        //if (lastAssignment.EndOfTime== AssignmentCompletionType.VolunteerCancelled || lastAssignment.EndOfTime == AssignmentCompletionType.AdminCancelled)
+        //{
+        //    return BO.CallStatus.;
+        //}   
 
         // 6. Default status - Open
         return BO.CallStatus.Open;

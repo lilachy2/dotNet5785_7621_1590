@@ -22,7 +22,8 @@ public interface ICall
     void Delete(int id);
     void Create(BO.Call boCall); 
     List<BO.ClosedCallInList> GetCloseCall(int id, BO.Calltype? callType, BO.ClosedCallInListEnum?  closedCallInListEnum);
-    List<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? callType, BO.OpenCallInListEnum?  openedCallInListEnum);
+    /*List*/
+    IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? callType, BO.OpenCallInListEnum?  openedCallInListEnum);
     void UpdateEndTreatment(int id, int callid);
     void UpdateCancelTreatment(int id, int callid);
     void ChooseCall(int id, int callid);
