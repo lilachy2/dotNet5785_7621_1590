@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfAssignment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Assignment>
-    <Id>1001</Id>
-    <CallId>1001</CallId>
-    <VolunteerId>324291590</VolunteerId>
-    <time_entry_treatment>2024-12-20T14:11:31</time_entry_treatment>
-    <time_end_treatment>2024-12-20T14:11:31</time_end_treatment>
-    <EndOfTime>TreatedOnTime</EndOfTime>
-  </Assignment>
-  <Assignment>
-    <Id>1000</Id>
-    <CallId>1000</CallId>
-    <VolunteerId>324291590</VolunteerId>
-    <time_entry_treatment>2024-12-20T14:11:31</time_entry_treatment>
-    <time_end_treatment>2024-12-20T14:11:31</time_end_treatment>
-    <EndOfTime>VolunteerCancelled</EndOfTime>
-  </Assignment>
-</ArrayOfAssignment>
+<ArrayOfAssignment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />

@@ -1,23 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Call>
-    <Latitude>48.8582599</Latitude>
-    <Longitude>2.2945006358633115</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1000</Id>
-    <VerbalDescription>vhhh</VerbalDescription>
-    <ReadAddress>Eiffel Tower, Paris, France</ReadAddress>
-    <OpeningTime>2024-12-10T09:00:00</OpeningTime>
-    <MaxEndTime>2025-12-10T12:00:00</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>48.8582599</Latitude>
-    <Longitude>2.2945006358633115</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1001</Id>
-    <VerbalDescription>asdfgjk;</VerbalDescription>
-    <ReadAddress>Eiffel Tower, Paris, France</ReadAddress>
-    <OpeningTime>2024-12-10T09:00:00</OpeningTime>
-    <MaxEndTime>2025-12-10T12:00:00</MaxEndTime>
-  </Call>
-</ArrayOfCall>
+<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
