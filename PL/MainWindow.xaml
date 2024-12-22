@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
+    <!-- Main Grid -->
     <Grid>
+        <!-- Define rows and columns -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <!-- System clock area -->
+            <RowDefinition Height="2*"/>
+            <!-- Configuration variables area -->
+            <RowDefinition Height="1*"/>
+            <!-- Navigation buttons -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <!-- Main column -->
+        </Grid.ColumnDefinitions>
 
+        <!-- System clock area -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Clock -->
+                <RowDefinition Height="*"/>
+                <!-- Buttons -->
+            </Grid.RowDefinitions>
+            <!-- Label to display the system clock value -->
+            <Label Content="System Clock: 12:00 PM" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <!-- Buttons to advance the clock -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Advance 1 Minute" Margin="5" Padding="10"/>
+                <Button Content="Advance 1 Hour" Margin="5" Padding="10"/>
+                <Button Content="Advance 1 Day" Margin="5" Padding="10"/>
+                <Button Content="Advance 1 Year" Margin="5" Padding="10"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Configuration variables area -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Configuration variable -->
+                <RowDefinition Height="Auto"/>
+                <!-- Update variable button -->
+            </Grid.RowDefinitions>
+            <!-- TextBox for editing the configuration variable -->
+            <Label Content="Configuration Variable:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+            <TextBox HorizontalAlignment="Stretch" Margin="10,5"/>
+            <!-- Button to update the configuration variable value -->
+            <Button Content="Update Configuration" HorizontalAlignment="Center" Margin="10"/>
+        </Grid>
+
+        <!-- Navigation and initialization buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Open List View" Margin="5" Padding="10"/>
+            <Button Content="Initialize Database" Margin="5" Padding="10"/>
+            <Button Content="Reset Database" Margin="5" Padding="10"/>
+        </StackPanel>
     </Grid>
 </Window>
