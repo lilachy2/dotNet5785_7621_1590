@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
+    
     <!-- Main Grid -->
     <Grid>
         <!-- Define rows and columns -->
@@ -31,13 +32,13 @@
                 <!-- Buttons -->
             </Grid.RowDefinitions>
             <!-- Label to display the system clock value -->
-            <Label Content="System Clock: 12:00 PM" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <Label Content="{Binding CurrentTime}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <!-- Buttons to advance the clock -->
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Advance 1 Minute" Margin="5" Padding="10"/>
-                <Button Content="Advance 1 Hour" Margin="5" Padding="10"/>
-                <Button Content="Advance 1 Day" Margin="5" Padding="10"/>
-                <Button Content="Advance 1 Year" Margin="5" Padding="10"/>
+                <Button Content="Advance 1 Minute" Margin="5" Padding="5" Height="60"/>
+                <Button Content="Advance 1 Hour" Margin="5" Padding="5"  Height="60"/>
+                <Button Content="Advance 1 Day" Margin="5" Padding="5" Height="60"/>
+                <Button Content="Advance 1 Year" Margin="5" Padding="5" Height="60"/>
             </StackPanel>
         </Grid>
 
@@ -58,9 +59,12 @@
 
         <!-- Navigation and initialization buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Open List View" Margin="5" Padding="10"/>
+            <Button Content="Open List View" Margin="5" Padding="10" />
             <Button Content="Initialize Database" Margin="5" Padding="10"/>
             <Button Content="Reset Database" Margin="5" Padding="10"/>
         </StackPanel>
     </Grid>
+    
+    
+    
 </Window>
