@@ -10,6 +10,7 @@ namespace Helpers;
 internal static class VolunteerManager
 {
     private static IDal _dal = Factory.Get; //stage 4
+    internal static ObserverManager Observers = new(); //stage 5 
     internal static void CheckFormat(BO.Volunteer boVolunteer)
     {
         try
@@ -142,8 +143,9 @@ internal static class VolunteerManager
 
     public static BO.Volunteer GetVolunteer(int id)
     {
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");// ז
+        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");
         if (CallManager.GetCallInProgress(doVolunteer.Id) == null)
+        {
             return new BO.Volunteer
             {
                 Id = doVolunteer.Id,
@@ -162,12 +164,12 @@ internal static class VolunteerManager
                 TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
                     (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
                 TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
-                CurrentCall =null
-              
-
+                CurrentCall = null
 
             };
+        }
         else
+        
             return new BO.Volunteer
             {
                 Id = doVolunteer.Id,

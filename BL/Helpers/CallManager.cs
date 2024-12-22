@@ -12,6 +12,7 @@ namespace Helpers;
 internal static class CallManager
 {
     private static IDal _dal = DalApi.Factory.Get; //stage 4
+    internal static ObserverManager Observers = new(); //stage 5 
     internal static void IsLogicCall(BO.Call boCall)
     {
         // Ensure MaxEndTime is greater than OpenTime.
@@ -500,7 +501,7 @@ internal static class CallManager
                 EndOfTime = DO.AssignmentCompletionType.Expired // סטטוס "פג תוקף"
             }).ToList();
 
-        updatedAssignments.ForEach(a => _dal.Assignment.Update(a));
+        updatedAssignments.ForEach(a => _dal.Assignment.Update(a) );
 
         var callIdsToUpdate = updatedAssignments.Select(a => a.CallId).Distinct().ToList();
 
@@ -508,7 +509,13 @@ internal static class CallManager
             .Where(c => callIdsToUpdate.Contains(c.Id))
             .ToList();
 
-        callsToUpdate.ForEach(call => _dal.Call.Update(call));
+        callsToUpdate.ForEach(call =>
+        {
+            _dal.Call.Update(call); // Update the call in the data layer
+            Observers.NotifyItemUpdated(call.Id); // Notify that a single item was updated
+        });
+        Observers.NotifyListUpdated(); // Notify that the list has been updated
+
     }
 
 }

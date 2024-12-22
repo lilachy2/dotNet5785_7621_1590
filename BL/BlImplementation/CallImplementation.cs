@@ -12,6 +12,17 @@ internal class CallImplementation : BlApi.ICall
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
 
+    #region Stage 5
+    public void AddObserver(Action listObserver) =>
+    CallManager.Observers.AddListObserver(listObserver); //stage 5
+    public void AddObserver(int id, Action observer) =>
+     CallManager.Observers.AddObserver(id, observer); //stage 5
+    public void RemoveObserver(Action listObserver) =>
+      CallManager.Observers.RemoveListObserver(listObserver); //stage 5
+    public void RemoveObserver(int id, Action observer) =>
+      CallManager.Observers.RemoveObserver(id, observer); //stage 5
+    #endregion Stage 5
+
     public int[] GetCallStatusesCounts()
     {
         try
@@ -181,6 +192,8 @@ internal class CallImplementation : BlApi.ICall
 
 
             _dal.Call.Create(doCall);
+            CallManager.Observers.NotifyListUpdated(); //stage 5   
+
         }
         catch (DO.DalAlreadyExistsException ex)
         {
@@ -213,6 +226,8 @@ internal class CallImplementation : BlApi.ICall
 
 
             _dal.Call.Update(doCall);
+            CallManager.Observers.NotifyListUpdated(); //stage 5   
+            CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
         }
         catch (Exception ex)
         {
@@ -242,6 +257,8 @@ internal class CallImplementation : BlApi.ICall
 
             // Attempt to delete the call from the data layer
             _dal.Call.Delete(callId);
+            CallManager.Observers.NotifyListUpdated(); //stage 5   
+
         }
         catch (DO.Incompatible_ID ex) // Exception thrown by the data layer
         {
@@ -306,126 +323,6 @@ internal class CallImplementation : BlApi.ICall
             throw new BlGetCloseCallException($"Error retrieving closed calls: {ex.Message}");
         }
     }
-
-    //public List<BO.OpenCallInList> GetOpenCall1(int volunteerId, BO.Calltype? callType, OpenCallInListEnum? openCallInListEnum)
-    //{
-    //    try
-    //    {
-    //        var allCalls = _dal.Call.ReadAll().ToList();
-
-    //        DO.Volunteer volunteer = _dal.Volunteer.Read(volunteerId);
-
-    //        var boCalls = allCalls
-    //       .Where(c => _dal.Assignment.ReadAll()
-    //        .Any(a => a.CallId == c.Id && a.time_end_treatment == null)).Select(c =>
-    //            {
-    //                var boCall = CallManager.GetCallInList(c/*.Id*/); // Conversion function provided
-    //                return boCall;
-    //            })
-    //            .ToList();
-
-
-
-
-    //        var filteredCalls = boCalls
-    //            .Where(c => c.Status == BO.CallStatus.Open || c.Status == BO.CallStatus.OpenAtRisk)
-    //            .ToList();
-
-
-    //        var boOpenCalls = filteredCalls
-    //            .Select(c =>
-    //            {
-    //                var boCall = VolunteerManager.GetOpenCallInList(volunteerId); // Conversion function provided
-    //                return boCall;
-    //            })
-    //            .ToList();
-
-    //        if (callType.HasValue)
-    //        {
-    //            boOpenCalls = boOpenCalls.Where(c => c.CallType == callType.Value).ToList();
-    //        }
-
-    //        if (openCallInListEnum.HasValue)
-    //        {
-    //            boOpenCalls = openCallInListEnum switch
-    //            {
-    //                OpenCallInListEnum.Id => boOpenCalls.OrderBy(c => c.Id).ToList(),
-    //                OpenCallInListEnum.DistanceFromVolunteer => boOpenCalls.OrderBy(c => c.DistanceFromVolunteer).ToList(),
-    //                OpenCallInListEnum.OpenTime => boOpenCalls.OrderBy(c => c.OpenTime).ToList(),
-    //                _ => boOpenCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
-    //            };
-    //        }
-    //        else
-    //        {
-    //            boOpenCalls = boOpenCalls.OrderBy(c => c.Id).ToList();
-    //        }
-
-    //        return boOpenCalls;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new BlGetOpenCallException($"Error retrieving open calls: {ex.Message}");
-    //    }
-    //}
-
-    //public List<BO.OpenCallInList> GetOpenCall1(int volunteerId, BO.Calltype? callType, OpenCallInListEnum? openCallInListEnum)
-    //{
-    //    try
-    //    {
-    //        // שלב 1: קריאת כל הקריאות מהמאגר והמרתן ל-BO.CallInList
-    //        var allCalls = _dal.Call.ReadAll().ToList();
-    //        var boCalls = allCalls
-    //            .Select(c =>
-    //            {
-    //                var boCall = CallManager.GetCallInList(c); // המרה ל-CallInList
-    //                return boCall;
-    //            })
-    //            .ToList();
-
-    //        // שלב 2: סינון הקריאות הפתוחות
-    //        var filteredCalls = boCalls
-    //            .Where(c => c.Status == BO.CallStatus.Open || c.Status == BO.CallStatus.OpenAtRisk)
-    //            .ToList();
-
-    //        var boOpenCalls = filteredCalls
-    // .Select(c =>
-    // {
-    //     var boCall = VolunteerManager.GetOpenCallInList(c.Id.GetValueOrDefault(), volunteerId);
-    //     return boCall;
-    // })
-    // .ToList();
-
-
-    //        // שלב 4: סינון לפי סוג הקריאה, אם הועבר
-    //        if (callType.HasValue)
-    //        {
-    //            boOpenCalls = boOpenCalls.Where(c => c.CallType == callType.Value).ToList();
-    //        }
-
-    //        // שלב 5: מיון לפי הפרמטר שהועבר, אם קיים
-    //        if (openCallInListEnum.HasValue)
-    //        {
-    //            boOpenCalls = openCallInListEnum switch
-    //            {
-    //                OpenCallInListEnum.Id => boOpenCalls.OrderBy(c => c.Id).ToList(),
-    //                OpenCallInListEnum.DistanceFromVolunteer => boOpenCalls.OrderBy(c => c.DistanceFromVolunteer).ToList(),
-    //                OpenCallInListEnum.OpenTime => boOpenCalls.OrderBy(c => c.OpenTime).ToList(),
-    //                _ => boOpenCalls.OrderBy(c => c.Id).ToList() // ברירת מחדל: מיון לפי Id
-    //            };
-    //        }
-    //        else
-    //        {
-    //            boOpenCalls = boOpenCalls.OrderBy(c => c.Id).ToList();
-    //        }
-
-    //        return boOpenCalls;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new BlGetOpenCallException($"Error retrieving open calls: {ex.Message}");
-    //    }
-    //}
-
 
     public IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
     {
@@ -514,106 +411,6 @@ internal class CallImplementation : BlApi.ICall
         return filteredCalls;
     }
 
-    //public void UpdateCancelTreatment1(int volunteerId, int assignmentId)
-    //{
-    //    try
-    //    {
-    //        var assignment = _dal.Assignment.Read(assignmentId);
-    //        var volunteer = _dal.Volunteer.Read(volunteerId);
-    //        //var call = _dal.Call.Read(assignment.CallId)
-    //        //  ?? throw new BO.Incompatible_ID($"Call with ID {assignment.CallId} was not found.");
-    //        var call = CallManager.GetAdd_update_Call(volunteerId);
-    //        // Step 2: Check permission to cancel the treatment - Is the volunteer either the one assigned to the call or an admin?
-    //        if (assignment.VolunteerId != volunteerId && volunteer.Role != DO.Role.Manager)
-    //        {
-    //            throw new BO.Bl_Volunteer_Cant_UpdateCancelTreatmentException("The volunteer is not authorized to cancel this treatment.");
-    //        }
-
-
-    //        if (assignment.time_end_treatment != null /*&& assignment.EndOfTime == DO.AssignmentCompletionType.TreatedOnTime*/)
-    //        {
-    //            throw new BO.BlMaximum_time_to_finish_readingException("The treatment has already been completed and cannot be canceled.");
-    //        }
-    //        if (call.Status == BO.CallStatus.Expired || call.Status == BO.CallStatus.InProgress)
-    //        {
-    //            throw new BO.BlCallStatusNotOKException("The call is already closed, expired, or in progress and cannot be updated.");
-
-    //        }
-
-
-    //        var updatedAssignment = new DO.Assignment(
-    //            Id: assignment.Id,  // Keep the existing assignment ID
-    //            CallId: assignment.CallId,  // Use the existing call ID
-    //            VolunteerId: assignment.VolunteerId,  // Keep the original volunteer ID
-    //            time_entry_treatment: assignment.time_entry_treatment,  // Keep the original entry time
-    //            time_end_treatment: ClockManager.Now,  // Set the current time as the cancellation time
-    //            EndOfTime: (assignment.VolunteerId == volunteerId)
-    //                       ? DO.AssignmentCompletionType.VolunteerCancelled  // If the volunteer requested the cancel, set the "Cancelled by Volunteer" status
-    //                       : DO.AssignmentCompletionType.AdminCancelled  // If an admin requested the cancel, set the "Cancelled by Admin" status
-    //        );
-
-    //        _dal.Assignment.Update(updatedAssignment);
-    //    }
-    //    catch (DO.DalDoesNotExistException ex)
-    //    {
-    //        // Exception thrown if the assignment with the specified ID was not found in the DAL
-    //        throw new BO.BlDoesNotExistException($"Assignment with ID {assignmentId} was not found.", ex);
-    //    }
-    //    catch (BO.BlPermissionException ex)
-    //    {
-    //        // Exception thrown if the volunteer does not have permission to cancel the treatment
-    //        throw new BO.BlPermissionException($"Permission denied: {ex.Message}", ex);
-    //    }
-    //    catch (BO.BlMaximum_time_to_finish_readingException ex)
-    //    {
-    //        // Exception thrown if the treatment has already been completed and can't be canceled
-    //        throw new BO.BlMaximum_time_to_finish_readingException($"Treatment already completed: {ex.Message}", ex);
-    //    }
-    //    catch (BO.BlCallStatusNotOKException ex)
-    //    {
-    //        // Exception thrown if the assignment is no longer open and cannot be canceled
-    //        throw new BO.BlCallStatusNotOKException($"Assignment cannot be canceled: {ex.Message}", ex);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // Catch any other unexpected exceptions
-    //        throw new BO.BlGeneralException($"An error occurred while canceling the assignment treatment: {ex.Message}", ex);
-    //    }
-    //}
-
-    //public void CancelTreat(int idVol, int idAssig)
-    //{
-
-    //    DO.Assignment assigmnetToCancel = _dal.Assignment.Read(idAssig) ?? throw new BO.BlDeleteNotPossibleException("there is no assigment with this ID");
-    //    bool ismanager = false;
-    //    if (assigmnetToCancel.VolunteerId != idVol)
-    //    {
-    //        if (_dal.Volunteer.Read(idVol).Job == DO.Role.Boss)
-    //            ismanager = true;
-    //        else throw new BO.BlDeleteNotPossibleException("the volunteer is not manager or not in this call");
-    //    }
-    //    if (assigmnetToCancel.TypeEndTreat != null || (_dal.Call.Read(assigmnetToCancel.CallId).MaxTimeToClose > ClockManager.Now) | assigmnetToCancel.TimeEnd != null)
-    //        throw new BO.BlDeleteNotPossibleException("The assigmnet not open or exspaired");
-
-    //    DO.Assignment assigmnetToUP = new DO.Assignment
-    //    {
-    //        Id = assigmnetToCancel.Id,
-    //        CallId = assigmnetToCancel.CallId,
-    //        VolunteerId = assigmnetToCancel.VolunteerId,
-    //        TimeStart = assigmnetToCancel.TimeStart,
-    //        TimeEnd = ClockManager.Now,
-    //        TypeEndTreat = ismanager ? DO.TypeEnd.ManagerCancel : DO.TypeEnd.SelfCancel,
-    //    };
-    //    try
-    //    {
-    //        _dal.Assignment.Update(assigmnetToUP);
-    //    }
-    //    catch (DO.DalExsitException ex)
-    //    {
-    //        throw new BO.BlDeleteNotPossibleException("canot delete in DO");
-    //    }
-
-    //}
 
     public void UpdateCancelTreatment(int idVol, int idAssig)
     {
@@ -649,110 +446,6 @@ internal class CallImplementation : BlApi.ICall
 
     }
 
-
-
-    public void UpdateEndTreatment1(int volunteerId, int assignmentId)
-
-    {
-        try
-        {
-            // Step 1: Retrieve the assignment details from the DAL
-            var assignment = _dal.Assignment.Read(assignmentId);//read trow ex.
-
-            // Step 2: Check permission - Is the volunteer the one assigned to this call?
-            if (assignment.VolunteerId != volunteerId)
-            {
-                throw new BO.BlPermissionException("The volunteer is not authorized to update this assignment.");
-            }
-
-            // Step 3: Retrieve the call associated with the assignment
-            var call = CallManager.GetViewingCall(volunteerId);
-
-            // If the call doesn't exist, throw an exception
-            if (call == null)
-            {
-                throw new BO.BlDoesNotExistException($"Call with ID {assignment.CallId} was not found.");
-            }
-
-            // Step 4: Check if the call is open (not closed, expired, or in progress)
-            if (call.Status == BO.CallStatus.Closed || call.Status == BO.CallStatus.Expired || call.Status == BO.CallStatus.InProgress)
-            {
-                throw new BO.BlCallStatusNotOKException("The call is already closed, expired, or in progress and cannot be updated.");
-            }
-
-            // Step 5: Check if the treatment end time is already set (i.e., treatment has been completed)
-            if (assignment.time_end_treatment != null)
-            {
-                throw new BO.BlMaximum_time_to_finish_readingException("The treatment has already been completed.");
-            }
-
-            // Step 6: Create an updated assignment object with the new values
-            var updatedAssignment = new DO.Assignment(
-                Id: assignment.Id,  // Use the existing assignment ID
-                CallId: assignment.CallId,  // Use the existing call ID
-                VolunteerId: assignment.VolunteerId,  // Use the existing volunteer ID
-                time_entry_treatment: assignment.time_entry_treatment,  // Keep the original entry time
-                time_end_treatment: DateTime.Now,  // Set the current time as the treatment end time
-                EndOfTime: DO.AssignmentCompletionType.TreatedOnTime  // Set the completion status to "Treated On Time"
-            );
-
-            // Step 7: Update the assignment in the DAL
-            _dal.Assignment.Update(updatedAssignment);
-        }
-        catch (DO.DalDoesNotExistException ex)
-        {
-            // Exception thrown if assignment or call with the specified ID was not found in the DAL
-            throw new BO.BlDoesNotExistException($"Assignment or Call with specified ID was not found.", ex);
-        }
-        catch (BO.BlPermissionException ex)
-        {
-            // Exception thrown if the volunteer is not authorized to update the assignment
-            throw new BO.BlPermissionException($"Permission denied: {ex.Message}", ex);
-        }
-        catch (BO.BlCallStatusNotOKException ex)
-        {
-            // Exception thrown if the call status does not allow treatment completion
-            throw new BO.BlCallStatusNotOKException($"Call status issue: {ex.Message}", ex);
-        }
-        catch (BO.BlMaximum_time_to_finish_readingException ex)
-        {
-            // Exception thrown if treatment completion has already been reported
-            throw new BO.BlMaximum_time_to_finish_readingException($"Treatment already completed: {ex.Message}", ex);
-        }
-        catch (Exception ex)
-        {
-            // Catch any other unexpected exceptions
-            throw new BO.BlGeneralException($"An error occurred while updating the assignment treatment end: {ex.Message}", ex);
-        }
-    }
-
-    public void UpdateEndTreatment2(int idVol, int idCall)
-    {
-        DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"there is no volunterr with this ID {idVol}");
-        BO.Call bocall = Read(idCall) ?? throw new BO.BlNullPropertyException($"there is no call with this ID {idCall}");
-        if (bocall.Status != BO.CallStatus.Open || bocall.Status == BO.CallStatus.OpenAtRisk)
-
-            throw new BO.BlAlreadyExistsException($"the call is open or expired Idcall is={idCall}");
-
-
-        DO.Assignment assigmnetToCreat = new DO.Assignment
-        {
-            Id = 0,
-            CallId = idCall,
-            VolunteerId = idVol,
-            time_entry_treatment = ClockManager.Now,
-            time_end_treatment = null,
-            EndOfTime = null
-        };
-        try
-        {
-            _dal.Assignment.Create(assigmnetToCreat);
-        }
-        catch (Exception)
-        { throw new BO.BlAlreadyExistsException("impossible to creat"); }
-
-    }
-
     public void UpdateEndTreatment(int idVol, int idCall)
     {
         DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"there is no volunterr with this ID {idVol}");
@@ -779,7 +472,6 @@ internal class CallImplementation : BlApi.ICall
         { throw new BO.BlAlreadyExistsException("impossible to creat"); }
 
     }
-
 
     public void ChooseCall(int VolunteerId, int CallId)
     {

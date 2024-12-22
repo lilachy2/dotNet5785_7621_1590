@@ -21,7 +21,7 @@ namespace BlApi;
 ///
 /// <param name="void Create(BO.Volunteer boVolunteer)"> 
 /// // Adds a new volunteer; validates data; throws if already exists
-public interface IVolunteer
+public interface IVolunteer : IObservable //stage 5
 {
     IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy);
 

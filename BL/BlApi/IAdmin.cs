@@ -10,6 +10,13 @@
 /// // The interface defines management methods for system administration tasks under the BlApi library.
 public interface IAdmin
 {
+    #region Stage 5
+    void AddConfigObserver(Action configObserver);
+    void RemoveConfigObserver(Action configObserver);
+    void AddClockObserver(Action clockObserver);
+    void RemoveClockObserver(Action clockObserver);
+    #endregion Stage 5
+
     DateTime GetClock();
     void UpdateClock(BO.TimeUnit unit);
     TimeSpan GetMaxRange();

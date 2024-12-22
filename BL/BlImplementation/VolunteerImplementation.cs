@@ -9,6 +9,18 @@ using System.Collections.Generic;
 internal class VolunteerImplementation : BlApi.IVolunteer
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
+
+    #region Stage 5
+    public void AddObserver(Action listObserver) =>
+    VolunteerManager.Observers.AddListObserver(listObserver); //stage 5
+    public void AddObserver(int id, Action observer) =>
+    VolunteerManager.Observers.AddObserver(id, observer); //stage 5
+    public void RemoveObserver(Action listObserver) =>
+    VolunteerManager.Observers.RemoveListObserver(listObserver); //stage 5
+    public void RemoveObserver(int id, Action observer) =>
+    VolunteerManager.Observers.RemoveObserver(id, observer); //stage 5
+    #endregion Stage 5
+
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
         var volunteers = _dal.Volunteer.ReadAll();
@@ -102,11 +114,12 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             }
 
 
-            // מימוש של
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
             _dal.Volunteer.Update(DOVolunteer);
+            VolunteerManager.Observers.NotifyItemUpdated(DOVolunteer.Id);  //stage 5
+            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
         }
         catch (DO.DalDoesNotExistException ex)
         {
@@ -136,6 +149,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         try
         {
             _dal.Volunteer.Delete(volunteerId);
+            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+
         }
         catch (DalDoesNotExistException ex) // If the volunteer does not exist in the system
         {
@@ -180,6 +195,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
             // 5. Add the volunteer to the data layer
             _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
+            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
         }
         catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
         {

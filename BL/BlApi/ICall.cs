@@ -12,7 +12,7 @@ namespace BlApi;
 /// <param name="UpdateEndTreatment">Method to update the completion of treatment for a call</param>
 /// <param name="UpdateCancelTreatment">Method to update the cancellation of treatment for a call</param>
 /// <param name="ChooseCall">Method for a volunteer to choose a call</param>
-public interface ICall
+public interface ICall : IObservable //stage 5
 {
     int[] GetCallStatusesCounts();
     public IEnumerable<BO.CallInList> GetCallsList(BO.CallInListField? filterField = null,object? filterValue = null,BO.CallInListField? sortField = null);

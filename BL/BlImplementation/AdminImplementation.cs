@@ -9,63 +9,77 @@ using System;
 internal class AdminImplementation : IAdmin
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
+    #region Stage 5
+    public void AddClockObserver(Action clockObserver) =>
+    AdminManager.ClockUpdatedObservers += clockObserver;
+    public void RemoveClockObserver(Action clockObserver) =>
+    AdminManager.ClockUpdatedObservers -= clockObserver;
+    public void AddConfigObserver(Action configObserver) =>
+   AdminManager.ConfigUpdatedObservers += configObserver;
+    public void RemoveConfigObserver(Action configObserver) =>
+    AdminManager.ConfigUpdatedObservers -= configObserver;
+    #endregion Stage 5
+
+
     public void UpdateClock(TimeUnit unit)
     {
-        DateTime newTime = ClockManager.Now;
+        DateTime newTime = AdminManager.Now;
 
         switch (unit)
         {
             case TimeUnit.Minute:
-                newTime = ClockManager.Now.AddMinutes(1);
+                newTime = AdminManager.Now.AddMinutes(1);
                 break;
             case TimeUnit.Hour:
-                newTime = ClockManager.Now.AddHours(1);
+                newTime = AdminManager.Now.AddHours(1);
                 break;
             case TimeUnit.Day:
-                newTime = ClockManager.Now.AddDays(1);
+                newTime = AdminManager.Now.AddDays(1);
                 break;
             case TimeUnit.Month:
-                newTime = ClockManager.Now.AddMonths(1);
+                newTime = AdminManager.Now.AddMonths(1);
                 break;
             case TimeUnit.Year:
-                newTime = ClockManager.Now.AddYears(1);
+                newTime = AdminManager.Now.AddYears(1);
                 break;
             default:
-                newTime = ClockManager.Now;
+                newTime = AdminManager.Now;
                 break;
 
         }
 
-        ClockManager.UpdateClock(newTime);
+        AdminManager.UpdateClock(newTime);
     }
 
 
     public DateTime GetClock()
     {
-        return ClockManager.Now;
+        return AdminManager.Now;
     }
 
-    public TimeSpan GetMaxRange()
-    {
-        return _dal.Config.RiskRange;
-    }
+    
 
 
     public void InitializeDB()
     {
+        //DalTest.Initialization.Do();
+        //ClockManager.UpdateClock(ClockManager.Now);
+
         DalTest.Initialization.Do();
-        ClockManager.UpdateClock(ClockManager.Now);
+        AdminManager.UpdateClock(AdminManager.Now);
+        AdminManager.MaxRange = AdminManager.MaxRange;
     }
 
     public void ResetDB()
     {
         _dal.ResetDB();
-
+        AdminManager.UpdateClock(AdminManager.Now);
+        AdminManager.MaxRange = AdminManager.MaxRange;
     }
 
-    public void SetMaxRange(TimeSpan maxRange)
-    {
-        _dal.Config.RiskRange = maxRange;
-    }
+
+    public TimeSpan GetMaxRange() => AdminManager.MaxRange;
+    public void SetMaxRange(TimeSpan maxRange) => AdminManager.MaxRange = maxRange;
+
 }
 
