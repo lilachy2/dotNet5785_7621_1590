@@ -18,7 +18,7 @@ public interface IAdmin
     #endregion Stage 5
 
     DateTime GetClock();
-    void UpdateClock(BO.TimeUnit unit);
+    void ForwardClock(BO.TimeUnit unit);
     TimeSpan GetMaxRange();
     void ResetDB();
     void InitializeDB();

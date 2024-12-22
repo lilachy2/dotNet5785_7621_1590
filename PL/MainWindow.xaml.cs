@@ -27,9 +27,32 @@ namespace PL
             DependencyProperty.Register("CurrentTime", typeof(DateTime), typeof(MainWindow));
 
 
+
+        private void btnAddOneMinute_Click(object sender, RoutedEventArgs e)
+        {
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Minute);
+        }
+
+        private void btnAddOneHour_Click(object sender, RoutedEventArgs e)
+        {
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Hour);
+        }
+        private void btnAddOneDay_Click(object sender, RoutedEventArgs e)
+        {
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Day);
+        }
+        private void btnAddOneMonth_Click(object sender, RoutedEventArgs e)
+        {
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Month);
+        }
+        private void btnAddOneYear_Click(object sender, RoutedEventArgs e)
+        {
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Year);
+        }
         public MainWindow()
         {
             InitializeComponent();
+           // DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

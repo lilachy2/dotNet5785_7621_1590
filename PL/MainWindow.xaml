@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
-    
+        Title="MainWindow" Height="600" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+
     <!-- Main Grid -->
     <Grid>
         <!-- Define rows and columns -->
@@ -35,10 +36,11 @@
             <Label Content="{Binding CurrentTime}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <!-- Buttons to advance the clock -->
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Advance 1 Minute" Margin="5" Padding="5" Height="60"/>
-                <Button Content="Advance 1 Hour" Margin="5" Padding="5"  Height="60"/>
-                <Button Content="Advance 1 Day" Margin="5" Padding="5" Height="60"/>
-                <Button Content="Advance 1 Year" Margin="5" Padding="5" Height="60"/>
+                <Button Content="Add One Minute"  Click="btnAddOneMinute_Click" Margin="5" Padding="5" Height="60"/>
+                <Button Content="Add One Hour" Click="btnAddOneHour_Click" Margin="5" Padding="5"  Height="60"/>
+                <Button Content="Add One Month"  Click="btnAddOneMonth_Click" Margin="5" Padding="5" Height="60"/>
+                <Button Content="Add One Day" Click="btnAddOneDay_Click" Margin="5" Padding="5" Height="60"/>
+                <Button Content="Add One Year" Click="btnAddOneYear_Click" Margin="5" Padding="5" Height="60"/>
             </StackPanel>
         </Grid>
 
@@ -51,7 +53,7 @@
                 <!-- Update variable button -->
             </Grid.RowDefinitions>
             <!-- TextBox for editing the configuration variable -->
-            <Label Content="Configuration Variable:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+            <Label Content="Configuration Variable:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,0,0,0" Width="107" Height="40"/>
             <TextBox HorizontalAlignment="Stretch" Margin="10,5"/>
             <!-- Button to update the configuration variable value -->
             <Button Content="Update Configuration" HorizontalAlignment="Center" Margin="10"/>
@@ -64,7 +66,7 @@
             <Button Content="Reset Database" Margin="5" Padding="10"/>
         </StackPanel>
     </Grid>
-    
-    
-    
+
+
+
 </Window>

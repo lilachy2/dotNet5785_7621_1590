@@ -21,7 +21,7 @@ internal class AdminImplementation : IAdmin
     #endregion Stage 5
 
 
-    public void UpdateClock(TimeUnit unit)
+    public void ForwardClock(TimeUnit unit)
     {
         DateTime newTime = AdminManager.Now;
 
