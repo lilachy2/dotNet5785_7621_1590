@@ -362,7 +362,7 @@ internal static class CallManager
 
     public static void MaxEndTimeCheck(DateTime? MaxEndTime, DateTime OpeningTime)
     {
-        if (MaxEndTime < OpeningTime || MaxEndTime < ClockManager.Now)
+        if (MaxEndTime < OpeningTime || MaxEndTime < AdminManager.Now)
         {
             throw new BlMaximum_time_to_finish_readingException("The time entered according to the current time or opening time");
         }
@@ -444,7 +444,7 @@ internal static class CallManager
         if (maxEndTime == null)
             return null;
 
-        return maxEndTime - ClockManager.Now;
+        return maxEndTime - AdminManager.Now;
     }
     public static string? GetLatestVolunteerNameForCall(int callId)
     {

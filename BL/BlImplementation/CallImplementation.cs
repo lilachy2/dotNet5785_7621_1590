@@ -432,7 +432,7 @@ internal class CallImplementation : BlApi.ICall
             CallId = assigmnetToCancel.CallId,
             VolunteerId = assigmnetToCancel.VolunteerId,
             time_entry_treatment = assigmnetToCancel.time_entry_treatment,
-            time_end_treatment = ClockManager.Now,
+            time_end_treatment = AdminManager.Now,
             EndOfTime = ismanager ? DO.AssignmentCompletionType.AdminCancelled : DO.AssignmentCompletionType.VolunteerCancelled,
         };
         try
@@ -460,8 +460,8 @@ internal class CallImplementation : BlApi.ICall
             Id = 0,
             CallId = idCall,
             VolunteerId = idVol,
-            time_entry_treatment = ClockManager.Now,
-            time_end_treatment = /*null*/ ClockManager.Now,
+            time_entry_treatment = AdminManager.Now,
+            time_end_treatment = /*null*/ AdminManager.Now,
             EndOfTime = /*null*/  AssignmentCompletionType.TreatedOnTime
         };
         try
@@ -501,7 +501,7 @@ internal class CallImplementation : BlApi.ICall
             {
                 CallId = CallId, // Call identifier
                 VolunteerId = VolunteerId, // Volunteer identifier
-                time_entry_treatment = ClockManager.Now, // Time of entry into treatment
+                time_entry_treatment = AdminManager.Now, // Time of entry into treatment
                 time_end_treatment = null, // Time of actual treatment completion
                 EndOfTime = null // End of treatment type
             };

@@ -20,7 +20,6 @@ internal class AdminImplementation : IAdmin
     AdminManager.ConfigUpdatedObservers -= configObserver;
     #endregion Stage 5
 
-
     public void ForwardClock(TimeUnit unit)
     {
         DateTime newTime = AdminManager.Now;
@@ -50,8 +49,6 @@ internal class AdminImplementation : IAdmin
 
         AdminManager.UpdateClock(newTime);
     }
-
-
     public DateTime GetClock()
     {
         return AdminManager.Now;

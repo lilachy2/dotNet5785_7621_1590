@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
-        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+         Closed="Window_Closed"
+           Loaded="MainWindow_Loaded" 
+        >
+    
 
     <!-- Main Grid -->
     <Grid>
@@ -36,12 +40,27 @@
             <Label Content="{Binding CurrentTime}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <!-- Buttons to advance the clock -->
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Add One Minute"  Click="btnAddOneMinute_Click" Margin="5" Padding="5" Height="60"/>
-                <Button Content="Add One Hour" Click="btnAddOneHour_Click" Margin="5" Padding="5"  Height="60"/>
-                <Button Content="Add One Month"  Click="btnAddOneMonth_Click" Margin="5" Padding="5" Height="60"/>
-                <Button Content="Add One Day" Click="btnAddOneDay_Click" Margin="5" Padding="5" Height="60"/>
-                <Button Content="Add One Year" Click="btnAddOneYear_Click" Margin="5" Padding="5" Height="60"/>
+                <!-- TextBox and button to advance by one minute -->
+                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
+                <Button Content="Add One Minute" Click="AddOneMinute_Click" Padding="5" />
+
+                <!-- TextBox and button to advance by one hour -->
+                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
+                <Button Content="Add One Hour" Click="AddOneHour_Click" Padding="5" />
+
+                <!-- TextBox and button to advance by one day -->
+                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
+                <Button Content="Add One Day" Click="AddOneDay_Click" Padding="5" />
+
+                <!-- TextBox and button to advance by one month -->
+                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
+                <Button Content="Add One Month" Click="AddOneMonth_Click" Padding="5" />
+
+                <!-- TextBox and button to advance by one year -->
+                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
+                <Button Content="Add One Year" Click="AddOneYear_Click" Padding="5" />
             </StackPanel>
+
         </Grid>
 
         <!-- Configuration variables area -->
@@ -56,7 +75,7 @@
             <Label Content="Configuration Variable:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,0,0,0" Width="107" Height="40"/>
             <TextBox HorizontalAlignment="Stretch" Margin="10,5"/>
             <!-- Button to update the configuration variable value -->
-            <Button Content="Update Configuration" HorizontalAlignment="Center" Margin="10"/>
+            <Button Content="Update RiskRange" HorizontalAlignment="Center" Margin="10" Click="UpdateRiskRange_Click"/>
         </Grid>
 
         <!-- Navigation and initialization buttons -->
@@ -66,7 +85,4 @@
             <Button Content="Reset Database" Margin="5" Padding="10"/>
         </StackPanel>
     </Grid>
-
-
-
 </Window>
