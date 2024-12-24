@@ -41,23 +41,18 @@
             <!-- Buttons to advance the clock -->
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <!-- TextBox and button to advance by one minute -->
-                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
                 <Button Content="Add One Minute" Click="AddOneMinute_Click" Padding="5" />
 
                 <!-- TextBox and button to advance by one hour -->
-                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
                 <Button Content="Add One Hour" Click="AddOneHour_Click" Padding="5" />
 
                 <!-- TextBox and button to advance by one day -->
-                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
                 <Button Content="Add One Day" Click="AddOneDay_Click" Padding="5" />
 
                 <!-- TextBox and button to advance by one month -->
-                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
                 <Button Content="Add One Month" Click="AddOneMonth_Click" Padding="5" />
 
                 <!-- TextBox and button to advance by one year -->
-                <TextBox Text="{Binding CurrentTime, UpdateSourceTrigger=PropertyChanged}" Padding="5" Width="120" />
                 <Button Content="Add One Year" Click="AddOneYear_Click" Padding="5" />
             </StackPanel>
 
