@@ -1,25 +1,19 @@
-﻿using System.Text;
+﻿using PL.Volunteer;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PL
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-
-
     public partial class MainWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get(); // stage 5
 
+        // Dependency Property for the Current Time
         public DateTime CurrentTime
         {
             get { return (DateTime)GetValue(CurrentTimeProperty); }
@@ -28,7 +22,7 @@ namespace PL
         public static readonly DependencyProperty CurrentTimeProperty =
             DependencyProperty.Register("CurrentTime", typeof(DateTime), typeof(MainWindow));
 
-        // תכונת תלות עבור RiskRange
+        // Dependency Property for Risk Range (TimeSpan)
         public TimeSpan RiskRange
         {
             get { return (TimeSpan)GetValue(RiskRangeProperty); }
@@ -38,91 +32,123 @@ namespace PL
             DependencyProperty.Register("RiskRange", typeof(TimeSpan), typeof(MainWindow),
                 new PropertyMetadata(TimeSpan.FromHours(1), OnRiskRangeChanged));
 
+        // Event handler when the RiskRange property changes
         private static void OnRiskRangeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is MainWindow window && e.NewValue is TimeSpan newRange)
             {
-                s_bl.Admin.SetMaxRange(newRange); // עדכון הסיכון דרך הלוגיקה העסקית
+                s_bl.Admin.SetMaxRange(newRange); // Update Risk Range via business logic
             }
         }
 
+        // Constructor
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this; // קביעת ה-DataContext עבור Binding
-            this.Loaded += MainWindow_Loaded;
-
+            DataContext = this; // Set DataContext for Binding
+            this.Loaded += MainWindow_Loaded; // Register Loaded event
         }
 
+        // Button click handlers to manipulate the system clock
         private void AddOneMinute_Click(object sender, RoutedEventArgs e)
         {
-            s_bl.Admin.ForwardClock(BO.TimeUnit.Minute);
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Minute); // Add one minute
         }
 
         private void AddOneHour_Click(object sender, RoutedEventArgs e)
         {
-            s_bl.Admin.ForwardClock(BO.TimeUnit.Hour);
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Hour); // Add one hour
         }
+
         private void AddOneDay_Click(object sender, RoutedEventArgs e)
         {
-            s_bl.Admin.ForwardClock(BO.TimeUnit.Day);
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Day); // Add one day
         }
+
         private void AddOneMonth_Click(object sender, RoutedEventArgs e)
         {
-            s_bl.Admin.ForwardClock(BO.TimeUnit.Month);
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Month); // Add one month
         }
+
         private void AddOneYear_Click(object sender, RoutedEventArgs e)
         {
-            s_bl.Admin.ForwardClock(BO.TimeUnit.Year);
+            s_bl.Admin.ForwardClock(BO.TimeUnit.Year); // Add one year
         }
 
+        // Update RiskRange when the "Update Risk Range" button is clicked
         private void UpdateRiskRange_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"Risk Range updated to: {RiskRange}");
-            s_bl.Admin.SetMaxRange(RiskRange);
-
+            MessageBox.Show($"Risk Range updated to: {RiskRange}"); // Show confirmation message
+            s_bl.Admin.SetMaxRange(RiskRange); // Update the Risk Range in business logic
         }
-       
+
+
+        private void InitializeDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Initializing Database...");
+            s_bl.Admin.InitializeDB();
+        }
+
+        private void ResetDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Resetting Database...");
+            s_bl.Admin.ResetDB();   
+        }
+
+        private void HandleCalls_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic to manage calls, implement as needed
+            MessageBox.Show("Handling Calls...");
+        }
+
+        private void HandleVolunteers_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic to manage volunteers, implement as needed
+            MessageBox.Show("Handling Volunteers...");
+            new VolunteerListWindow().Show();
+        }
+
+        private void StartSimulator_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic to start the simulator, implement as needed
+            MessageBox.Show("Starting Simulator...");
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // פעולה נוספת לפי הצורך
+            // Additional actions if needed (not defined yet)
         }
 
+        // Observer method to update CurrentTime when it changes
         private void clockObserver()
         {
-            // עדכון CurrentTime כאשר השעון משתנה
-            CurrentTime = s_bl.Admin.GetClock();
+            CurrentTime = s_bl.Admin.GetClock(); // Update the CurrentTime property
         }
 
+        // Observer method to update RiskRange when it changes
         private void configObserver()
         {
-            // עדכון RiskRange כאשר טווח הסיכון משתנה
-            RiskRange = s_bl.Admin.GetMaxRange();
+            RiskRange = s_bl.Admin.GetMaxRange(); // Update the RiskRange property
         }
 
+        // MainWindow Loaded event handler
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // השמה של הערך הנוכחי של שעון המערכת לתכונת התלות CurrentTime
-            CurrentTime = s_bl.Admin.GetClock();
+            // Initialize the CurrentTime and RiskRange properties when the window is loaded
+            CurrentTime = s_bl.Admin.GetClock(); // Get initial system time
+            RiskRange = s_bl.Admin.GetMaxRange(); // Get initial Risk Range
 
-            // השמה של ערך משתנה התצורה RiskRange לתכונת התלות RiskRange
-            RiskRange = s_bl.Admin.GetMaxRange();
-
-            // רישום המשקיפים
+            // Register observers for clock and configuration changes
             s_bl.Admin.AddClockObserver(clockObserver);
             s_bl.Admin.AddConfigObserver(configObserver);
         }
+
+        // Window Closed event handler to clean up observers
         private void Window_Closed(object sender, EventArgs e)
         {
-            // הסרת המשקיפים
+            // Remove observers when the window is closed
             s_bl.Admin.RemoveClockObserver(clockObserver);
             s_bl.Admin.RemoveConfigObserver(configObserver);
         }
-
     }
-
-
-    
-
 }

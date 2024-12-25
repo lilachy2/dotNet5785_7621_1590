@@ -25,21 +25,21 @@ namespace PL.Volunteer
             InitializeComponent();
             DataContext = this; // קביעת הקשר נתונים למסך
                                 // טוען את רשימת המתנדבים
-            VolInList = BlApi.Factory.Get().Volunteer.ReadAll(null, null).Cast<BO.VolInList>();
+            VolInList = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
 
 
         }
-        // תכונת תלות מסוג IEnumerable<BO.VolInList>
-        public IEnumerable<BO.VolInList> VolInList
+        // תכונת תלות מסוג IEnumerable<BO.VolunteerInList>
+        public IEnumerable<BO.VolunteerInList> VolInList
         {
-            get { return (IEnumerable<BO.VolInList>)GetValue(VolInListProperty); }
+            get { return (IEnumerable<BO.VolunteerInList>)GetValue(VolInListProperty); }
             set { SetValue(VolInListProperty, value); }
         }
 
         public static readonly DependencyProperty VolInListProperty =
             DependencyProperty.Register(
                 "VolInList",
-                typeof(IEnumerable<BO.VolInList>),
+                typeof(IEnumerable<BO.VolunteerInList>),
                 typeof(VolunteerListWindow),
                 new PropertyMetadata(null));
     }

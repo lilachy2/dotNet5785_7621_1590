@@ -8,7 +8,7 @@
         Title="MainWindow" Height="600" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
          Closed="Window_Closed"
-           Loaded="MainWindow_Loaded" 
+         Loaded="MainWindow_Loaded" 
         >
     
 
@@ -41,9 +41,9 @@
 <Label Content="{Binding CurrentTime, StringFormat='{}{0:HH:mm:ss}'}" 
        HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <!-- Buttons to advance the clock -->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="40">
                 <!-- TextBox and button to advance by one minute -->
-                <Button Content="Add One Minute" Click="AddOneMinute_Click" Padding="5" />
+                <Button Content="Add One Minute" Click="AddOneMinute_Click" Padding="3" />
 
                 <!-- TextBox and button to advance by one hour -->
                 <Button Content="Add One Hour" Click="AddOneHour_Click" Padding="5" />
@@ -60,7 +60,6 @@
 
         </Grid>
 
-        <!-- Configuration variables area -->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -68,19 +67,34 @@
                 <RowDefinition Height="Auto"/>
                 <!-- Update variable button -->
             </Grid.RowDefinitions>
+
             <!-- TextBox for editing the configuration variable -->
             <Label Content="Configuration Variable:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,0,0,0" Width="107" Height="40"/>
             <TextBox HorizontalAlignment="Stretch" Margin="10,5"/>
-            <!-- Button to update the configuration variable value -->
 
-            <Button Content="Update RiskRange" HorizontalAlignment="Center" Margin="10" Click="UpdateRiskRange_Click"/>
+            <!-- Risk Range Configuration -->
+            <Label Content="Risk Range:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,0,0,0" Width="107" Height="40"/>
+
+            <!-- TextBox for Risk Range with Binding to Dependency Property -->
+            <TextBox x:Name="RiskRangeTextBox" 
+             Text="{Binding Path=RiskRange, Mode=TwoWay}" 
+             HorizontalAlignment="Stretch" Margin="10,5"/>
+
+            <!-- Button to update Risk Range -->
+            <Button Content="Update Risk Range" 
+            HorizontalAlignment="Center" 
+            Margin="8" 
+            Click="UpdateRiskRange_Click"/>
         </Grid>
 
-        <!-- Navigation and initialization buttons -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Open List View" Margin="5" Padding="10" />
-            <Button Content="Initialize Database" Margin="5" Padding="10"/>
-            <Button Content="Reset Database" Margin="5" Padding="10"/>
+
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+            <Button Content="Initialize Database" Margin="15" Padding="10" Click="InitializeDatabase_Click"/>
+            <Button Content="Reset Database" Margin="15" Padding="10" Click="ResetDatabase_Click"/>
+            <Button Content="Handle Calls" Margin="15" Padding="10" Click="HandleCalls_Click"/>
+            <Button Content="Handle Volunteers" Margin="15" Padding="10" Click="HandleVolunteers_Click"/>
+            <Button Content="Simulator" Margin="15" Padding="10" Click="StartSimulator_Click"/>
         </StackPanel>
 
     </Grid>
