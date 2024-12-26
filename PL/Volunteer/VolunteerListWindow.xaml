@@ -10,14 +10,32 @@
 
     <Grid>
 
-        <ListView Margin="5" Grid.Row="0" ItemsSource="{Binding CourseList}">
+        <ListView Margin="5" Grid.Row="0" ItemsSource="{Binding VolInList}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Phone Number" DisplayMemberBinding="{Binding Number_phone}" />
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Password}" />
+                    <GridViewColumn Header="Role" DisplayMemberBinding="{Binding Role}" />
+                    <GridViewColumn Header="Distance Type" DisplayMemberBinding="{Binding Distance_Type}" />
+                    <GridViewColumn Header="Active" DisplayMemberBinding="{Binding Active}" />
+                    <GridViewColumn Header="Full Address" DisplayMemberBinding="{Binding FullCurrentAddress}" />
+                    <GridViewColumn Header="Latitude" DisplayMemberBinding="{Binding Latitude}" />
+                    <GridViewColumn Header="Longitude" DisplayMemberBinding="{Binding Longitude}" />
+                    <GridViewColumn Header="Distance" DisplayMemberBinding="{Binding distance}" />
                     <!-- הוסף עמודות בהתאם לשדות במודל הנתונים -->
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <ComboBox ItemsSource="{Binding Source={StaticResource Calltype}}" 
+                  Grid.Column="1" 
+                  Width="150"  
+            HorizontalAlignment="Right" 
+                  VerticalAlignment="Top" 
+                  Margin="10" />
+
     </Grid>
 </Window>

@@ -54,15 +54,3 @@ namespace PL.Volunteer
 
 
 }
-
-    
-
-    //public IEnumerable<BO.VolInList> VolInList
-    //{
-    //    get { return (IEnumerable<BO.VolInList>)GetValue(VolInListProperty); }
-    //    set { SetValue(VolInListProperty, value); }
-    //}
-
-    //public static readonly DependencyProperty VolInListListProperty =
-    //    DependencyProperty.Register("CourseList", typeof(IEnumerable<BO.VolInList>), typeof(VolunteerListWindow), new PropertyMetadata(null));
-

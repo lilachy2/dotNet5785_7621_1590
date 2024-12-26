@@ -1,2 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Call>
+    <Latitude>29.851715659989843</Latitude>
+    <Longitude>35.48220361926406</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1000</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.447553461612465</Latitude>
+    <Longitude>35.11284371707058</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1001</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.80977917203315</Latitude>
+    <Longitude>34.447873298571736</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1002</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.8304901661746</Latitude>
+    <Longitude>35.78159682423393</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1003</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.61316777044218</Latitude>
+    <Longitude>35.84497830383157</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1004</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.296598936138505</Latitude>
+    <Longitude>35.33587738476127</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1005</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.531507096772255</Latitude>
+    <Longitude>34.311558435662505</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1006</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.274772294414223</Latitude>
+    <Longitude>34.379225489530185</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1007</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.836645067137546</Latitude>
+    <Longitude>35.19874216364773</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1008</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.296665738356836</Latitude>
+    <Longitude>35.622044483100574</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1009</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.59124489187761</Latitude>
+    <Longitude>35.42327458315962</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1010</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.82016418768805</Latitude>
+    <Longitude>34.91002279207633</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1011</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.101222721240177</Latitude>
+    <Longitude>34.8454373126376</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1012</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.124343227487223</Latitude>
+    <Longitude>35.12165946497056</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1013</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.39910066966214</Latitude>
+    <Longitude>35.10257481021878</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1014</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.242119470071735</Latitude>
+    <Longitude>34.65818620817766</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1015</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.029202500217142</Latitude>
+    <Longitude>34.36561658645944</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1016</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.07703355760211</Latitude>
+    <Longitude>35.736933640445315</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1017</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.614279110277657</Latitude>
+    <Longitude>34.85542496614971</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1018</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.884093290510876</Latitude>
+    <Longitude>34.39441699912256</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1019</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.759287680508372</Latitude>
+    <Longitude>35.251966185618855</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1020</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.086263554637824</Latitude>
+    <Longitude>35.19940773201037</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1021</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.69916878766532</Latitude>
+    <Longitude>35.66981593560653</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1022</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.996053575473574</Latitude>
+    <Longitude>34.8391458614273</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1023</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.29943477003249</Latitude>
+    <Longitude>35.87298901221945</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1024</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.508990762694456</Latitude>
+    <Longitude>35.69409510140679</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1025</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.176846640564346</Latitude>
+    <Longitude>34.329103327031135</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1026</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.22510779820986</Latitude>
+    <Longitude>34.3276959639525</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1027</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.241495666029472</Latitude>
+    <Longitude>34.42396251287233</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1028</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.557709942376686</Latitude>
+    <Longitude>35.87170236666314</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1029</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.46720762636946</Latitude>
+    <Longitude>34.45749663021696</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1030</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.045179174682865</Latitude>
+    <Longitude>34.56505113872608</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1031</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.151880666197314</Latitude>
+    <Longitude>35.85102330411676</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1032</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.591827246007163</Latitude>
+    <Longitude>34.75412748654477</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1033</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.73034543591094</Latitude>
+    <Longitude>34.929380577604405</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1034</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.33640342645632</Latitude>
+    <Longitude>35.783507424928615</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1035</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.342950396780044</Latitude>
+    <Longitude>35.55925881325552</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1036</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.441566829234926</Latitude>
+    <Longitude>35.512744391023375</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1037</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.699685276359695</Latitude>
+    <Longitude>35.59170510962166</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1038</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.51670212896746</Latitude>
+    <Longitude>34.799938789328884</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1039</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.1869451070226</Latitude>
+    <Longitude>35.20716827039832</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1040</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.53920956709346</Latitude>
+    <Longitude>35.7258870298253</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1041</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.763643766490453</Latitude>
+    <Longitude>35.08700351678769</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1042</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.768553174856418</Latitude>
+    <Longitude>34.52102855847408</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1043</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.49689267042048</Latitude>
+    <Longitude>35.52268543593814</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1044</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.450730303772634</Latitude>
+    <Longitude>35.21982925505263</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1045</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.9407636065108</Latitude>
+    <Longitude>35.55080021340415</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1046</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.61127229691136</Latitude>
+    <Longitude>34.73392507560109</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1047</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.390561498611536</Latitude>
+    <Longitude>34.97210056129453</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1048</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.819633680705174</Latitude>
+    <Longitude>35.616020325382294</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1049</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 Hillel St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2024-12-25T10:19:11</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+</ArrayOfCall>

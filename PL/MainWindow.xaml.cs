@@ -83,16 +83,76 @@ namespace PL
         }
 
 
+
         private void InitializeDatabase_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Initializing Database...");
-            s_bl.Admin.InitializeDB();
+            // Message to the user about starting the initialization
+            var result = MessageBox.Show("Are you sure you want to initialize the database?",
+                                          "Database Initialization",
+                                          MessageBoxButton.YesNo,
+                                          MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Change the mouse cursor to an hourglass
+                Mouse.OverrideCursor = Cursors.AppStarting;
+
+                try
+                {
+                    // Close all open windows except for the main window
+                    var openWindows = Application.Current.Windows.OfType<Window>().Where(w => w != this).ToList();
+                    foreach (var window in openWindows)
+                    {
+                        window.Close();
+                    }
+
+                    // Call the method to initialize the database
+                    s_bl.Admin.InitializeDB();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    // Restore the mouse cursor to normal after completing the action
+                    Mouse.OverrideCursor = Cursors.Arrow;
+                }
+            }
         }
 
-        private void ResetDatabase_Click(object sender, RoutedEventArgs e)
+        private async void ResetDatabase_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Resetting Database...");
-            s_bl.Admin.ResetDB();   
+            // Message to the user asking if they are sure they want to reset the database
+            var result = MessageBox.Show("Are you sure you want to reset the database?",
+                                          "Confirm Reset",
+                                          MessageBoxButton.YesNo,
+                                          MessageBoxImage.Question);
+
+            // If the user clicks "Yes", proceed with the action
+            if (result == MessageBoxResult.Yes)
+            {
+                // Change the cursor to a waiting hourglass
+                Mouse.OverrideCursor = Cursors.Wait;
+
+                // Close all open windows except for the main window
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window != this) // Don't close the main window
+                    {
+                        window.Close();
+                    }
+                }
+
+                // Call the function to reset the database
+                await Task.Run(() => s_bl.Admin.ResetDB());
+
+                // End the action, restore the normal cursor
+                Mouse.OverrideCursor = Cursors.Arrow;
+
+                // Message to the user indicating the reset was successful
+                MessageBox.Show("Database has been reset successfully!");
+            }
         }
 
         private void HandleCalls_Click(object sender, RoutedEventArgs e)
