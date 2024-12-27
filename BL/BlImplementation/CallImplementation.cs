@@ -411,7 +411,6 @@ internal class CallImplementation : BlApi.ICall
         return filteredCalls;
     }
 
-
     public void UpdateCancelTreatment(int idVol, int idAssig)
     {
 
@@ -521,15 +520,4 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"Call with ID {CallId} was not found.");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
     }

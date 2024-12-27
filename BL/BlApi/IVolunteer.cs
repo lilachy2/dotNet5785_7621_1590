@@ -23,7 +23,7 @@ namespace BlApi;
 /// // Adds a new volunteer; validates data; throws if already exists
 public interface IVolunteer : IObservable //stage 5
 {
-    IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy);
+    IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy, BO.Calltype? callType = null);
 
     DO.Role PasswordEntered(int Id, string password);
 

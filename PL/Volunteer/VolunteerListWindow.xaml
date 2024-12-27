@@ -6,36 +6,62 @@
         xmlns:local="clr-namespace:PL.Volunteer"
         mc:Ignorable="d"
         Title="VolunteerListWindow" Height="450" Width="800"
-            DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
 
     <Grid>
-
         <ListView Margin="5" Grid.Row="0" ItemsSource="{Binding VolInList}">
             <ListView.View>
                 <GridView>
+                    <!-- ID Column -->
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Phone Number" DisplayMemberBinding="{Binding Number_phone}" />
-                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Password}" />
-                    <GridViewColumn Header="Role" DisplayMemberBinding="{Binding Role}" />
-                    <GridViewColumn Header="Distance Type" DisplayMemberBinding="{Binding Distance_Type}" />
-                    <GridViewColumn Header="Active" DisplayMemberBinding="{Binding Active}" />
-                    <GridViewColumn Header="Full Address" DisplayMemberBinding="{Binding FullCurrentAddress}" />
-                    <GridViewColumn Header="Latitude" DisplayMemberBinding="{Binding Latitude}" />
-                    <GridViewColumn Header="Longitude" DisplayMemberBinding="{Binding Longitude}" />
-                    <GridViewColumn Header="Distance" DisplayMemberBinding="{Binding distance}" />
-                    <!-- הוסף עמודות בהתאם לשדות במודל הנתונים -->
+
+                    <!-- Name Column -->
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding FullName}" />
+
+                    <!-- Active Column with CheckBox -->
+                    <GridViewColumn Header="Active">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding IsActive}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <!-- Total Calls Handled Column -->
+                    <GridViewColumn Header="Total Calls Handled" DisplayMemberBinding="{Binding TotalCallsHandled}" />
+
+                    <!-- Total Calls Cancelled Column -->
+                    <GridViewColumn Header="Total Calls Cancelled" DisplayMemberBinding="{Binding TotalCallsCancelled}" />
+
+                    <!-- Total Calls Expired Column -->
+                    <GridViewColumn Header="Total Calls Expired" DisplayMemberBinding="{Binding TotalCallsExpired}" />
+
+                    <!-- Call Id Column -->
+                    <GridViewColumn Header="Call Id" DisplayMemberBinding="{Binding CurrentCallId}" />
+
+                    <!-- Call Type Column -->
+                    <GridViewColumn Header="Call Type" DisplayMemberBinding="{Binding CurrentCallType}" />
+
+                    <!-- Custom Column for Name with colored Text -->
+                    <GridViewColumn Header="Colored Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullName}" Foreground="Red"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <ComboBox ItemsSource="{Binding Source={StaticResource Calltype}}" 
-                  Grid.Column="1" 
-                  Width="150"  
-            HorizontalAlignment="Right" 
-                  VerticalAlignment="Top" 
-                  Margin="10" />
-
+        <!-- ComboBox for Filtering Volunteers by Call Type -->
+        <ComboBox Grid.Column="1" SelectedValue="{Binding Calltype, Mode=TwoWay}"
+                  ItemsSource="{Binding Source={StaticResource Calltype}}"
+                  Width="150"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Top"
+                  Margin="10"
+                  SelectionChanged="FilterVolunteerlistByCalltype" />
     </Grid>
 </Window>

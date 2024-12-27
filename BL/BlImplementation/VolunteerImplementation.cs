@@ -21,35 +21,75 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     VolunteerManager.Observers.RemoveObserver(id, observer); //stage 5
     #endregion Stage 5
 
-    public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
+    //public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
+    //{
+    //    var volunteers = _dal.Volunteer.ReadAll();
+
+    //    if (Active.HasValue)
+    //    {
+    //        volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
+    //    }
+
+    //    switch (sortBy)
+    //    {
+    //        case BO.VolInList.Name:
+    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // מיין לפי שם
+    //            break;
+    //        case BO.VolInList.Role:
+    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Role); // מיין לפי תפקיד
+    //            break;
+    //        case BO.VolInList.IsActive:
+    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // מיין לפי מצב פעילות (פעיל/לא פעיל)
+    //            break;
+    //        default:
+    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // מיון ברירת מחדל לפי מזהה
+    //            break;
+    //    }
+
+    //    return volunteers
+    //        .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)) // ממירים לכל מתנדב ברשימה לפי המזהה
+    //        .ToList();
+    //}
+
+    public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy, BO.Calltype? callType = null)
     {
         var volunteers = _dal.Volunteer.ReadAll();
 
+        // Filter by activity status
         if (Active.HasValue)
         {
             volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
         }
-
+        // Sort by the selected parameter
         switch (sortBy)
         {
             case BO.VolInList.Name:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // מיין לפי שם
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // Sort by name
                 break;
             case BO.VolInList.Role:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Role); // מיין לפי תפקיד
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Role); // Sort by role
                 break;
             case BO.VolInList.IsActive:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // מיין לפי מצב פעילות (פעיל/לא פעיל)
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // Sort by activity status (active/inactive)
                 break;
             default:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // מיון ברירת מחדל לפי מזהה
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // Default sorting by ID
                 break;
         }
-
-        return volunteers
-            .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)) // ממירים לכל מתנדב ברשימה לפי המזהה
+        // Convert the list to a list of volunteers by their ID
+        var volunteerList = volunteers
+            .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
             .ToList();
+
+        // Filter by call type after the conversion
+        if (callType.HasValue)
+        {
+            volunteerList = volunteerList.Where(volunteer => volunteer.CurrentCallType == callType.Value).ToList();
+        }
+
+        return volunteerList;
     }
+
 
     public DO.Role PasswordEntered(int Id, string password)
     {

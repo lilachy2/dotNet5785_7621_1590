@@ -25,10 +25,11 @@ public static class Initialization
     private static IDal? s_dal; //stage 2
 
 
-
     private static readonly Random s_rand = new Random();
     private static int MIN_ID = 10000000;
     private static int MAX_ID = 99999999;
+    static int indexcalltype1 = s_rand.Next(0, 6);
+
 
     static string[] Names =
     {
@@ -69,6 +70,7 @@ public static class Initialization
     Calltype.security_event,
     Calltype.None
 };
+
 
     public static void CreateVolunteers()
     {
@@ -161,6 +163,7 @@ public static class Initialization
     {
         int index1 = s_rand.Next(0, 15);
         int index2 = s_rand.Next(0, 6);
+
         // Latitude and longitude range in Israel
         double minLatitude = 29.5;
         double maxLatitude = 33.5;
