@@ -82,11 +82,8 @@ namespace PL
             s_bl.Admin.SetMaxRange(RiskRange); // Update the Risk Range in business logic
         }
 
-
-
-        private void InitializeDatabase_Click(object sender, RoutedEventArgs e)
+        private async void InitializeDatabase_Click(object sender, RoutedEventArgs e)
         {
-            // Message to the user about starting the initialization
             var result = MessageBox.Show("Are you sure you want to initialize the database?",
                                           "Database Initialization",
                                           MessageBoxButton.YesNo,
@@ -94,20 +91,22 @@ namespace PL
 
             if (result == MessageBoxResult.Yes)
             {
-                // Change the mouse cursor to an hourglass
-                Mouse.OverrideCursor = Cursors.AppStarting;
+                Mouse.OverrideCursor = Cursors.AppStarting;  // Change the cursor to hourglass
 
                 try
                 {
-                    // Close all open windows except for the main window
                     var openWindows = Application.Current.Windows.OfType<Window>().Where(w => w != this).ToList();
                     foreach (var window in openWindows)
                     {
-                        window.Close();
+                        window.Close(); // Close all other windows
                     }
 
-                    // Call the method to initialize the database
-                    s_bl.Admin.InitializeDB();
+                    await Task.Run(() =>
+                    {
+                        s_bl.Admin.InitializeDB(); // Initialize the database
+                    });
+
+                    MessageBox.Show("The database has been successfully initialized.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
@@ -115,43 +114,44 @@ namespace PL
                 }
                 finally
                 {
-                    // Restore the mouse cursor to normal after completing the action
-                    Mouse.OverrideCursor = Cursors.Arrow;
+                    Mouse.OverrideCursor = Cursors.Arrow;  // Restore the cursor to normal
                 }
             }
         }
 
         private async void ResetDatabase_Click(object sender, RoutedEventArgs e)
         {
-            // Message to the user asking if they are sure they want to reset the database
             var result = MessageBox.Show("Are you sure you want to reset the database?",
                                           "Confirm Reset",
                                           MessageBoxButton.YesNo,
                                           MessageBoxImage.Question);
 
-            // If the user clicks "Yes", proceed with the action
             if (result == MessageBoxResult.Yes)
             {
-                // Change the cursor to a waiting hourglass
-                Mouse.OverrideCursor = Cursors.Wait;
+                Mouse.OverrideCursor = Cursors.Wait;  // Change the cursor to wait
 
-                // Close all open windows except for the main window
                 foreach (Window window in Application.Current.Windows)
                 {
-                    if (window != this) // Don't close the main window
+                    if (window != this)
                     {
-                        window.Close();
+                        window.Close(); // Close all other windows
                     }
                 }
 
-                // Call the function to reset the database
-                await Task.Run(() => s_bl.Admin.ResetDB());
+                try
+                {
+                    await Task.Run(() => s_bl.Admin.ResetDB()); // Reset the database
 
-                // End the action, restore the normal cursor
-                Mouse.OverrideCursor = Cursors.Arrow;
-
-                // Message to the user indicating the reset was successful
-                MessageBox.Show("Database has been reset successfully!");
+                    MessageBox.Show("The database has been successfully reset.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    Mouse.OverrideCursor = Cursors.Arrow;  // Restore the cursor to normal
+                }
             }
         }
 
@@ -180,15 +180,20 @@ namespace PL
         }
 
         // Observer method to update CurrentTime when it changes
+     
+        // Observer method to update CurrentTime when it changes
         private void clockObserver()
         {
-            CurrentTime = s_bl.Admin.GetClock(); // Update the CurrentTime property
+            // Update the CurrentTime property on the UI thread
+            Dispatcher.Invoke(() => CurrentTime = s_bl.Admin.GetClock()); // Ensure it's on the UI thread
         }
+
 
         // Observer method to update RiskRange when it changes
         private void configObserver()
         {
-            RiskRange = s_bl.Admin.GetMaxRange(); // Update the RiskRange property
+            // Update the RiskRange property on the UI thread
+            Dispatcher.Invoke(() => RiskRange = s_bl.Admin.GetMaxRange()); // Ensure it's on the UI thread
         }
 
         // MainWindow Loaded event handler

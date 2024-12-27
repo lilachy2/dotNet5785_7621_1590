@@ -244,8 +244,6 @@ internal static class VolunteerManager
             TotalCallsExpired = Tools.TotalCallsExpiredelo(VolunteerId),
             CurrentCallId = currentCallId,/*Tools.CurrentCallIdhelp(VolunteerId),*/
             CurrentCallType = Tools.CurrentCallType(VolunteerId)
-
-
         };
     }
 

@@ -51,7 +51,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     //        .ToList();
     //}
 
-    public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy, BO.Calltype? callType = null)
+    public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
         var volunteers = _dal.Volunteer.ReadAll();
 
@@ -66,9 +66,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             case BO.VolInList.Name:
                 volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // Sort by name
                 break;
-            case BO.VolInList.Role:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Role); // Sort by role
-                break;
+           
             case BO.VolInList.IsActive:
                 volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // Sort by activity status (active/inactive)
                 break;
@@ -82,10 +80,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             .ToList();
 
         // Filter by call type after the conversion
-        if (callType.HasValue)
-        {
-            volunteerList = volunteerList.Where(volunteer => volunteer.CurrentCallType == callType.Value).ToList();
-        }
 
         return volunteerList;
     }

@@ -65,7 +65,7 @@ public enum VolInList
     Id,                // Volunteer ID
     Name,              // Full name
     IsActive,
-    Role
+    None,
 }
 
 public enum ClosedCallInListEnum

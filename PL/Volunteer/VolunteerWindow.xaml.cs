@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using PL.Volunteer; // שים לב שזו התייחסות לשכבת PL, יש להוסיף את השם המתאים למרחב שמכיל את הישויות שלך
-using System.Collections.ObjectModel;
 
 
 namespace PL.Volunteer

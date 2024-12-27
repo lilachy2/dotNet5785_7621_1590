@@ -2,35 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PL.Volunteer
 {
-    /// <summary>
-    /// Interaction logic for VolunteerListWindow.xaml
-    /// </summary>
     public partial class VolunteerListWindow : Window
     {
-        public BO.Calltype Calltype { get; set; } = BO.Calltype.None; // 8 b
-        public VolunteerListWindow()
-        {
-            InitializeComponent();
-            DataContext = this; // קביעת הקשר נתונים למסך
-                                // טוען את רשימת המתנדבים
-            VolInList = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
+        // Declare the SelectedFilter property at the class level
+        public VolInList SelectedFilter { get; set; } = VolInList.None; // Default to "None" for no filter
 
-
-        }
-        public IEnumerable<BO.VolunteerInList> VolInList
+        public IEnumerable<BO.VolunteerInList> VolunteerInList
         {
             get { return (IEnumerable<BO.VolunteerInList>)GetValue(VolInListProperty); }
             set { SetValue(VolInListProperty, value); }
@@ -38,47 +20,79 @@ namespace PL.Volunteer
 
         public static readonly DependencyProperty VolInListProperty =
             DependencyProperty.Register(
-                "VolInList",
+                "VolunteerInList",
                 typeof(IEnumerable<BO.VolunteerInList>),
                 typeof(VolunteerListWindow),
                 new PropertyMetadata(null));
 
-
-        private void FilterVolunteerlistByCalltype(object sender, SelectionChangedEventArgs e)
+        public VolunteerListWindow()
         {
-            ///אפשר להוסיף בCOMBOBOX סינון גם לפי שם , ID וכו 
-            // סינון הרשימה לפי הערך הנבחר ב-ComboBox
-            VolInList = (Calltype == BO.Calltype.None)
-                ? BlApi.Factory.Get().Volunteer.ReadAll(null, null)
-                : BlApi.Factory.Get().Volunteer.ReadAll(true, null,Calltype);
+            InitializeComponent();
+            DataContext = this; // Set the DataContext to the window itself to bind properties
+
+            // Initialize the ComboBox with Enum values
+            FilterComboBox.ItemsSource = Enum.GetValues(typeof(VolInList));
+
+            // Initially load the volunteer list (without filter)
+            VolunteerInList = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
         }
 
+        // Method to handle ComboBox selection change for filtering
+        private void FilterVolunteerlistByCriteria(object sender, SelectionChangedEventArgs e)
+        {
+            // Get the selected value from ComboBox and update SelectedFilter accordingly
+            var selectedItem = FilterComboBox.SelectedItem as VolInList?;
+            if (selectedItem.HasValue)
+            {
+                SelectedFilter = selectedItem.Value;
+                UpdateVolunteerList();
+            }
+        }
 
-        // מתודת השקפה שתשמור את הרשימה מעודכנת
+        // Update the volunteer list based on the selected filter criteria
         private void UpdateVolunteerList()
         {
-            // אם יש שדות סינון (כמו Calltype), נעביר את זה לפונקציה
-            VolInList = (Calltype == BO.Calltype.None)
-                ? BlApi.Factory.Get().Volunteer.ReadAll(null, null)
-                : BlApi.Factory.Get().Volunteer.ReadAll(true, null, Calltype);
+            IEnumerable<BO.VolunteerInList> volunteers;
+
+            // Apply filtering based on the selected filter
+            switch (SelectedFilter)
+            {
+                case VolInList.Id:
+                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, VolInList.Id).OrderBy(v => v.Id);
+                    break;
+                case VolInList.Name:
+                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, VolInList.Name).OrderBy(v => v.FullName);
+                    break;
+                case VolInList.IsActive:
+                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(true, VolInList.IsActive).Where(v => v.IsActive);
+                    break;
+                case VolInList.None:  // No filter (default, show all)
+                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
+                    break;
+                default:
+                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
+                    break;
+            }
+
+            // Update the VolunteerInList with the filtered volunteers
+            VolunteerInList = volunteers;
         }
-        // נרשמים לאירוע של טעינת המסך
+
+        // Handle Window loaded event to register the observer for updates
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // נרשמים לעדכון הרשימה כשיש שינוי ב-BL
+            // Register the observer to update the volunteer list when changes occur in the BL
             BlApi.Factory.Get().Volunteer.AddObserver(UpdateVolunteerList);
 
-            // טוענים את רשימת המתנדבים בהתחלה
+            // Load the volunteer list initially (without filter)
             UpdateVolunteerList();
         }
 
-        // מסירים את המשקיף כשסוגרים את החלון
+        // Handle Window closed event to remove the observer
         private void Window_Closed(object sender, EventArgs e)
         {
-            // מסירים את המשקיף מהעדכונים
+            // Unregister the observer when the window is closed
             BlApi.Factory.Get().Volunteer.RemoveObserver(UpdateVolunteerList);
         }
-
     }
-
 }
