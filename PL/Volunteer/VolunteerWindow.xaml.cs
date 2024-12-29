@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
-using PL.Volunteer; // שים לב שזו התייחסות לשכבת PL, יש להוסיף את השם המתאים למרחב שמכיל את הישויות שלך
-
+using System.Linq;
+using PL.Volunteer; // Make sure this is the correct namespace for your business logic
 
 namespace PL.Volunteer
 {
@@ -11,55 +11,63 @@ namespace PL.Volunteer
     /// </summary>
     public partial class VolunteerWindow : Window
     {
-        public string ButtonText { get; set; } // תכונת תלות עבור טקסט הכפתור
-        public int Id { get; set; } // מזהה הישות
+        // Dependency Property for button text (Add/Update)
+        public string ButtonText { get; set; }
 
-        static readonly BlApi.IBl s_bl = BlApi.Factory.Get(); // stage 5
+        // The ID of the entity, which determines whether the screen is for adding or updating
+        public int Id { get; set; }
 
-      
+        static readonly BlApi.IBl s_bl = BlApi.Factory.Get(); // Reference to the BL layer
+
+        // Dependency Property to bind to Volunteer data
         public BO.Volunteer? Volunteer
         {
-            get { return (BO.Volunteer?)GetValue(CurrentCourseProperty); }
-            set { SetValue(CurrentCourseProperty, value); }
+            get { return (BO.Volunteer?)GetValue(CurrentVolunteerProperty); }
+            set { SetValue(CurrentVolunteerProperty, value); }
         }
 
-        public static readonly DependencyProperty CurrentCourseProperty =
+        // The DependencyProperty that will hold the Volunteer data (to be used in XAML bindings)
+        public static readonly DependencyProperty CurrentVolunteerProperty =
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow), new PropertyMetadata(null));
+
+        // ObservableCollection for Roles (enum values for Role)
+        public ObservableCollection<BO.Role> Roles { get; set; } = new ObservableCollection<BO.Role>();
 
         public VolunteerWindow(int id = 0)
         {
-            Id = id; // Storing the value received in the id parameter to the Id variable
-            ButtonText = Id == 0 ? "Add" : "Update"; // Setting the button text based on the status
+            Id = id;
+            ButtonText = Id == 0 ? "Add" : "Update"; // Set button text based on whether we are adding or updating
 
-            InitializeComponent(); // Initializing the XAML components
+            InitializeComponent(); // Initialize the XAML components
+            DataContext = this; // Bind the window's DataContext to this object
 
-            DataContext = this; // Binding the window's DataContext to the current data
-
-            // Creating or retrieving the object from the BL based on the Id
             try
             {
-                // If Id is not 0, retrieve the data from the BL
+                // If Id is 0, create a new Volunteer; otherwise, retrieve an existing one from the BL
                 Volunteer = (Id != 0)
-                    ? s_bl.Volunteer.Read(Id) // Calling the BL
-                    : new BO.Volunteer() // Creating a new object with default values
+                    ? s_bl.Volunteer.Read(Id) // Retrieve Volunteer data from the BL
+                    : new BO.Volunteer() // Create a new Volunteer object with default values
                     {
                         Id = 0,
-                        Name = string.Empty, // Default full name
-                        Number_phone = string.Empty, // Default phone number
-                        Email = string.Empty, // Default email address
-                        FullCurrentAddress = null, // Full address (null initially)
-                        Password = null, // Password (null initially)
-                        Latitude = null, // Geographic coordinates (null initially)
+                        Name = string.Empty,
+                        Number_phone = string.Empty,
+                        Email = string.Empty,
+                        FullCurrentAddress = null,
+                        Password = null,
+                        Latitude = null,
                         Longitude = null,
-                        Role = BO.Role.Volunteer, // Default role (volunteer)
-                        Active = false, // Is the volunteer active (false initially)
-                        Distance = null, // Distance (null initially)
-                        DistanceType = BO.DistanceType.Aerial_distance, // Distance type (default: aerial)
-                        TotalHandledCalls = 0, // Number of handled calls (0 initially)
-                        TotalCancelledCalls = 0, // Number of cancelled calls (0 initially)
-                        TotalExpiredCalls = 0, // Number of expired calls (0 initially)
-                        CurrentCall = null // Current call (null initially)
+                        Role = BO.Role.Volunteer,
+                        Active = false,
+                        Distance = null,
+                        DistanceType = BO.DistanceType.Aerial_distance,
+                        TotalHandledCalls = 0,
+                        TotalCancelledCalls = 0,
+                        TotalExpiredCalls = 0,
+                        CurrentCall = null
                     };
+
+                // Initialize the Roles collection from the enum values
+                Roles = new ObservableCollection<BO.Role>(Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>());
             }
             catch (Exception ex)
             {
@@ -67,44 +75,31 @@ namespace PL.Volunteer
             }
         }
 
-
-
-
+        // Button click handler for adding or updating the volunteer
         private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (Id == 0)
             {
-                // הוספה
+                // Add new Volunteer
                 AddVolunteer();
             }
             else
             {
-                // עדכון
+                // Update existing Volunteer
                 UpdateVolunteer();
             }
         }
 
+        // Method for adding a new Volunteer
         private void AddVolunteer()
         {
-
-            MessageBox.Show("Volunteer added!- להוסיף מימוש");
+            MessageBox.Show("Volunteer added! - To implement");
         }
 
+        // Method for updating an existing Volunteer
         private void UpdateVolunteer()
         {
-            MessageBox.Show("Volunteer updated!- להוסיף מימוש");
+            MessageBox.Show("Volunteer updated! - To implement");
         }
-
-// בתוך מחלקת VolunteerWindow
-private ObservableCollection<BO.Role> _roles;
-    public ObservableCollection<BO.Role> Roles
-    {
-        get => _roles;
-        set => _roles = value;
     }
-
-
-
-
-}
 }

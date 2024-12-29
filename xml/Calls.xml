@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>30.205547582914093</Latitude>
-    <Longitude>35.81504491680383</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>29.732953568857845</Latitude>
+    <Longitude>35.708662532346445</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.32057475977463</Latitude>
-    <Longitude>34.84082003852886</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>29.7527472457815</Latitude>
+    <Longitude>34.427347464169024</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.38336344508001</Latitude>
-    <Longitude>34.352323706996536</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.523051596426864</Latitude>
+    <Longitude>34.845994313859975</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.842033818949865</Latitude>
-    <Longitude>35.444803423541465</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.15532523362076</Latitude>
+    <Longitude>34.68009622961212</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.225821834942426</Latitude>
-    <Longitude>34.70023733514601</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.21506793346602</Latitude>
+    <Longitude>35.3057243774312</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.54632001638982</Latitude>
-    <Longitude>35.88216115592809</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.613486720877173</Latitude>
+    <Longitude>35.129817977075625</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.723169624957208</Latitude>
-    <Longitude>35.606240270730865</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>29.928801583343404</Latitude>
+    <Longitude>34.31932604359401</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.229481545599672</Latitude>
-    <Longitude>34.60179332774233</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.62789218927524</Latitude>
+    <Longitude>35.46498796653476</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.66080856289407</Latitude>
-    <Longitude>35.19936728100427</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.7890803293386</Latitude>
+    <Longitude>34.98621563231793</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.764943602483406</Latitude>
-    <Longitude>34.85442085908939</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.321457080048948</Latitude>
+    <Longitude>35.09002250712147</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.504622386664856</Latitude>
-    <Longitude>35.29882932559602</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.070630751412317</Latitude>
+    <Longitude>34.82236160869973</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.69134110587837</Latitude>
-    <Longitude>34.94783258209762</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.24029449025417</Latitude>
+    <Longitude>34.93782885818651</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.00231780383137</Latitude>
-    <Longitude>35.279012146486906</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.294505451105948</Latitude>
+    <Longitude>35.224646736262294</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.67885419414187</Latitude>
-    <Longitude>34.45548738283585</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.353066119982007</Latitude>
+    <Longitude>35.52890970490504</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.860441464278466</Latitude>
-    <Longitude>35.59479010682484</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.32228896598999</Latitude>
+    <Longitude>34.43734253909728</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.05603489168893</Latitude>
-    <Longitude>34.63872388970015</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.558183648288093</Latitude>
+    <Longitude>34.59395384997298</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.04158752766608</Latitude>
-    <Longitude>34.59137740185726</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.198726758127915</Latitude>
+    <Longitude>35.47480560088942</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.98772013576814</Latitude>
-    <Longitude>35.06384460897361</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.18994724529378</Latitude>
+    <Longitude>35.05385366308555</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.31343795626161</Latitude>
-    <Longitude>35.247560689319805</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.11507746358322</Latitude>
+    <Longitude>34.87466628826054</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.99996453503495</Latitude>
-    <Longitude>35.36592764640484</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.291478438067927</Latitude>
+    <Longitude>35.70305348674544</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.14667317336692</Latitude>
-    <Longitude>34.58898015112254</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.54864011121788</Latitude>
+    <Longitude>34.32064624783816</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.210704568628028</Latitude>
-    <Longitude>34.94245672400765</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>29.82805828419669</Latitude>
+    <Longitude>34.49500968730817</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.62203550465756</Latitude>
-    <Longitude>35.835037087429285</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.94387740034186</Latitude>
+    <Longitude>35.31158380306495</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.591583584934437</Latitude>
-    <Longitude>35.20979219523357</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.573485349390893</Latitude>
+    <Longitude>35.77593028327393</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.817282047898743</Latitude>
-    <Longitude>34.531616534747776</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.530227876305826</Latitude>
+    <Longitude>35.44145433519684</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.22508911466053</Latitude>
-    <Longitude>34.92675926469097</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.987472926802976</Latitude>
+    <Longitude>35.35353598464778</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.158535656301915</Latitude>
-    <Longitude>34.824155900981324</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.330634075197967</Latitude>
+    <Longitude>35.387322436779456</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.842281578341154</Latitude>
-    <Longitude>35.45049705540654</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.141912595582127</Latitude>
+    <Longitude>35.792666960041224</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.85689442299473</Latitude>
-    <Longitude>35.62139701033029</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.0691654568359</Latitude>
+    <Longitude>35.752678909217494</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.96918096356452</Latitude>
-    <Longitude>35.73376139854768</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.59105573100176</Latitude>
+    <Longitude>34.58604885288843</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.560825476558392</Latitude>
-    <Longitude>34.90551341644944</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.52701004097878</Latitude>
+    <Longitude>35.2568490991405</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.62052057852961</Latitude>
-    <Longitude>35.37086594780145</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.114587251358028</Latitude>
+    <Longitude>35.551331737329136</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.178986701748055</Latitude>
-    <Longitude>34.660548423910406</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>33.44173980757904</Latitude>
+    <Longitude>35.394927535443145</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.41077824988583</Latitude>
-    <Longitude>34.915397554572266</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.298815267501116</Latitude>
+    <Longitude>34.904738652056594</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.256859158573157</Latitude>
-    <Longitude>34.54450371456853</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.559825289211496</Latitude>
+    <Longitude>35.36015211774584</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.356070847136074</Latitude>
-    <Longitude>35.61503146200387</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>29.645564979626748</Latitude>
+    <Longitude>34.87302368242607</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.441883426589218</Latitude>
-    <Longitude>35.24601124414581</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.86108521300321</Latitude>
+    <Longitude>34.41199181435409</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.58697020580462</Latitude>
-    <Longitude>35.49096098535664</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.515256588226</Latitude>
+    <Longitude>35.125688714018615</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.13409996418605</Latitude>
-    <Longitude>35.85487208379324</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>33.35137901391553</Latitude>
+    <Longitude>35.302030871974935</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.6113449268499</Latitude>
-    <Longitude>35.21021557735035</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.228936228775726</Latitude>
+    <Longitude>35.289283849471516</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.62731890230566</Latitude>
-    <Longitude>35.13375803776945</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.04462487256633</Latitude>
+    <Longitude>35.51721316199565</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.984476861363262</Latitude>
-    <Longitude>34.636211777789974</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.91722395162242</Latitude>
+    <Longitude>35.81744827511792</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.80368062513175</Latitude>
-    <Longitude>35.17745593701574</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.904330190473242</Latitude>
+    <Longitude>34.7439167134414</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.50285345741033</Latitude>
-    <Longitude>34.43507330173252</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>33.228124400963594</Latitude>
+    <Longitude>35.27684941688367</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.85887758922296</Latitude>
-    <Longitude>34.71778365957593</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>30.955710630175165</Latitude>
+    <Longitude>35.18582447762004</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.0835968356636</Latitude>
-    <Longitude>34.34250023373432</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.79686849802844</Latitude>
+    <Longitude>35.106914425689524</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.00957516126288</Latitude>
-    <Longitude>35.037593987236356</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.33972626408191</Latitude>
+    <Longitude>34.856037842020626</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.42214809545074</Latitude>
-    <Longitude>34.93347948067942</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.321879976446432</Latitude>
+    <Longitude>35.38422972382763</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.181114463883482</Latitude>
-    <Longitude>35.14029281434677</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>31.236320194624586</Latitude>
+    <Longitude>34.794790850941446</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.563756212264575</Latitude>
-    <Longitude>34.65644452396875</Longitude>
-    <Calltype>fainting</Calltype>
+    <Latitude>32.765909620554424</Latitude>
+    <Longitude>35.47631101981777</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>7 Presidents St, Petah Tikva, Israel</ReadAddress>
-    <OpeningTime>2024-12-26T15:11:43</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>5 Ben Yehuda St, Haifa, Israel</ReadAddress>
+    <OpeningTime>2024-12-28T11:49:38</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

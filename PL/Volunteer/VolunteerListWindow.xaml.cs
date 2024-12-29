@@ -3,21 +3,38 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.ComponentModel;
 using System.Windows.Controls;
 
 namespace PL.Volunteer
 {
-    public partial class VolunteerListWindow : Window
+    public partial class VolunteerListWindow : Window, INotifyPropertyChanged
     {
-        // Declare the SelectedFilter property at the class level
-        public VolInList SelectedFilter { get; set; } = VolInList.None; // Default to "None" for no filter
+        private VolInList _selectedFilter = VolInList.None;  // Default to None (no filter)
 
+        // Declare the SelectedFilter property with PropertyChanged notifications
+        public VolInList SelectedFilter
+        {
+            get { return _selectedFilter; }
+            set
+            {
+                if (_selectedFilter != value)
+                {
+                    _selectedFilter = value;
+                    OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
+                    UpdateVolunteerList();  // Update the list when the filter changes
+                }
+            }
+        }
+
+        // Declare the VolunteerInList property with DependencyProperty
         public IEnumerable<BO.VolunteerInList> VolunteerInList
         {
             get { return (IEnumerable<BO.VolunteerInList>)GetValue(VolInListProperty); }
             set { SetValue(VolInListProperty, value); }
         }
 
+        // Register the DependencyProperty for VolunteerInList
         public static readonly DependencyProperty VolInListProperty =
             DependencyProperty.Register(
                 "VolunteerInList",
@@ -25,36 +42,50 @@ namespace PL.Volunteer
                 typeof(VolunteerListWindow),
                 new PropertyMetadata(null));
 
+        // Constructor
         public VolunteerListWindow()
         {
             InitializeComponent();
-            DataContext = this; // Set the DataContext to the window itself to bind properties
+            DataContext = this;  // Set the DataContext to the window itself for binding
 
-            // Initialize the ComboBox with Enum values
+            // Initialize ComboBox with Enum values for filtering
             FilterComboBox.ItemsSource = Enum.GetValues(typeof(VolInList));
 
-            // Initially load the volunteer list (without filter)
-            VolunteerInList = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
+            // Load the volunteer list without any filter initially
+            UpdateVolunteerList();
         }
 
-        // Method to handle ComboBox selection change for filtering
+        // Handle ComboBox selection change event to update the filter
         private void FilterVolunteerlistByCriteria(object sender, SelectionChangedEventArgs e)
         {
-            // Get the selected value from ComboBox and update SelectedFilter accordingly
+            // Get the selected filter from ComboBox and update the SelectedFilter property
             var selectedItem = FilterComboBox.SelectedItem as VolInList?;
             if (selectedItem.HasValue)
             {
                 SelectedFilter = selectedItem.Value;
-                UpdateVolunteerList();
             }
         }
 
-        // Update the volunteer list based on the selected filter criteria
+        // Update the volunteer list based on the selected filter
         private void UpdateVolunteerList()
+        {
+            try
+            {
+                IEnumerable<BO.VolunteerInList> volunteers = queryVolunteerList();
+                VolunteerInList = volunteers;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading the volunteer list: {ex.Message}",
+                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // This method contains the filtering logic
+        private IEnumerable<BO.VolunteerInList> queryVolunteerList()
         {
             IEnumerable<BO.VolunteerInList> volunteers;
 
-            // Apply filtering based on the selected filter
             switch (SelectedFilter)
             {
                 case VolInList.Id:
@@ -74,25 +105,36 @@ namespace PL.Volunteer
                     break;
             }
 
-            // Update the VolunteerInList with the filtered volunteers
-            VolunteerInList = volunteers;
+            return volunteers;
         }
 
         // Handle Window loaded event to register the observer for updates
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Register the observer to update the volunteer list when changes occur in the BL
-            BlApi.Factory.Get().Volunteer.AddObserver(UpdateVolunteerList);
-
-            // Load the volunteer list initially (without filter)
-            UpdateVolunteerList();
+            BlApi.Factory.Get().Volunteer.AddObserver(volunteerListObserver);
+            UpdateVolunteerList();  // Load the list initially (no filter)
         }
 
         // Handle Window closed event to remove the observer
         private void Window_Closed(object sender, EventArgs e)
         {
             // Unregister the observer when the window is closed
-            BlApi.Factory.Get().Volunteer.RemoveObserver(UpdateVolunteerList);
+            BlApi.Factory.Get().Volunteer.RemoveObserver(volunteerListObserver);
+        }
+
+        // Observer method to refresh the volunteer list after any change
+        private void volunteerListObserver()
+        {
+            UpdateVolunteerList();  // Refresh the list after a change occurs
+        }
+
+        // INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

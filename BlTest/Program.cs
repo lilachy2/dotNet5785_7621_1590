@@ -179,7 +179,7 @@ Call Menu:
                             Console.WriteLine("Enter time unit to forward the clock (Minute, Hour, Day, Month, Year): ");
                             if (Enum.TryParse(Console.ReadLine(), true, out BO.TimeUnit unit))
                             {
-                                s_bl.Admin.UpdateClock(unit);
+                                s_bl.Admin.ForwardClock(unit);
                                 Console.WriteLine("Clock forwarded successfully.");
                             }
                             else
