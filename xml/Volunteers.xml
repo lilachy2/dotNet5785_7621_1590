@@ -210,4 +210,18 @@
     <Active>true</Active>
     <distance>13</distance>
   </Volunteer>
+  <Volunteer>
+    <Id>324291590</Id>
+    <Name>ya</Name>
+    <Number_phone>0528050630</Number_phone>
+    <Email>ya@gmail.com</Email>
+    <Password />
+    <Role>Manager</Role>
+    <Distance_Type>Aerial_distance</Distance_Type>
+    <FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress>
+    <Latitude />
+    <Longitude />
+    <Active>true</Active>
+    <distance>10</distance>
+  </Volunteer>
 </ArrayOfVolunteer>

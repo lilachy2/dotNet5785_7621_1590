@@ -5,11 +5,13 @@
         Title="Volunteer Details"
         Height="450" Width="400"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    
 
     <Window.Resources>
         <!-- הוספת ה-Converter לקובץ ה-XAML -->
         <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
+        <local:EnumToStringConverter x:Key="EnumConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -47,27 +49,11 @@
         <CheckBox IsChecked="{Binding Volunteer.Active}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Left" />
 
         <!-- Role -->
-        <!-- 
         <Label Content="Role:" Grid.Row="5" HorizontalAlignment="Left" />
         <ComboBox ItemsSource="{Binding Roles}" 
-          SelectedItem="{Binding Volunteer.Role}" 
-          Grid.Row="5" Margin="100,0" 
-          HorizontalAlignment="Stretch" 
-          DisplayMemberPath="ToString()" /> -->
-        <Label Content="Role:" Grid.Row="5" HorizontalAlignment="Left" />
-        <ComboBox ItemsSource="{Binding Roles}" 
-          SelectedItem="{Binding Volunteer.Role}" 
-          Grid.Row="5" Margin="100,0" 
-          HorizontalAlignment="Stretch">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Converter={StaticResource EnumToStringConverter}}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <!-- אם אתה לא משתמש ב-ToString(), תשתמש בפרופרטי ראוי -->
-
+          SelectedItem="{Binding Volunteer.Role, Mode=TwoWay}"
+          SelectionChanged="cbRoles_SelectionChanged"
+         Grid.Row="5" Margin="100,0"  />
 
         <!-- Full Current Address -->
         <Label Content="Full Current Address:" Grid.Row="6" HorizontalAlignment="Left" />
@@ -78,11 +64,21 @@
         <TextBox Text="{Binding Volunteer.Distance}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch" />
 
         <!-- Distance Type -->
-        <Label Content="Distance Type:" Grid.Row="8" HorizontalAlignment="Left" />
+        <!--<Label Content="Distance Type:" Grid.Row="8" HorizontalAlignment="Left" />
+<ComboBox ItemsSource="{Binding DistanceTypes}" 
+          SelectedItem="{Binding Volunteer.DistanceType}" 
+          Grid.Row="8" Margin="100,0,100,227" 
+          DisplayMemberPath="ToString()" />-->
+        
+
+        <!-- Distance Type -->
         <ComboBox ItemsSource="{Binding DistanceTypes}" 
-                  SelectedItem="{Binding Volunteer.DistanceType}" 
-                  Grid.Row="8" Margin="100,0,100,227" 
-                  DisplayMemberPath="ToString()" />
+          SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay}"
+          SelectionChanged="cbDistanceType_SelectionChanged"
+          Grid.Row="8" 
+          Margin="100,0,100,227" />
+
+
 
         <!-- Button (Add/Update) -->
         <Button Content="{Binding ButtonText}" 

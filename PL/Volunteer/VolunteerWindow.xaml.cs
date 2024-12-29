@@ -3,6 +3,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Linq;
 using PL.Volunteer; // Make sure this is the correct namespace for your business logic
+using System.Windows.Controls;
+using BO;
+using System.Numerics;
+using System.Windows.Documents;
+using System.Windows.Media.Animation;
 
 namespace PL.Volunteer
 {
@@ -28,16 +33,26 @@ namespace PL.Volunteer
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow), new PropertyMetadata(null, OnVolunteerChanged));
 
         // ObservableCollection for Roles (enum values for Role)
-        public ObservableCollection<BO.Role> Roles { get; set; } = new ObservableCollection<BO.Role>();
+        //public ObservableCollection<BO.Role> Roles { get; set; } = new ObservableCollection<BO.Role>();
 
         // ObservableCollection for Distance Types (enum values for DistanceType)
-        public ObservableCollection<BO.DistanceType> DistanceTypes { get; set; } = new ObservableCollection<BO.DistanceType>();
+        //public ObservableCollection<BO.DistanceType> DistanceTypes { get; set; } = new ObservableCollection<BO.DistanceType>();
+
+        public IEnumerable<BO.DistanceType> DistanceTypes
+        {
+            get { return Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>(); }
+        }
+        public IEnumerable<BO.Role> Roles
+        {
+            get { return Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>(); }
+        }
+
 
         public VolunteerWindow(int id = 0)
         {
             Id = id;
             ButtonText = Id == 0 ? "Add" : "Update"; // Set button text based on whether we are adding or updating
-            this.DataContext = this;
+            DataContext = this;
 
             InitializeComponent(); // Initialize the XAML components
             // DataContext is already set in XAML via {Binding RelativeSource={RelativeSource Self}}
@@ -68,11 +83,11 @@ namespace PL.Volunteer
                     };
 
                 // Initialize the Roles collection from the enum values
-                Roles = new ObservableCollection<BO.Role>(Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>());
+                //Roles = new ObservableCollection<BO.Role>(Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>());
 
                 // Initialize the DistanceTypes collection from the enum values
-                DistanceTypes = new ObservableCollection<BO.DistanceType>(Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>());
-                Console.WriteLine($"DistanceTypes: {string.Join(", ", DistanceTypes)}");
+                //DistanceTypes = new ObservableCollection<BO.DistanceType>(Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>());
+                //Console.WriteLine($"DistanceTypes: {string.Join(", ", DistanceTypes)}");
 
                 // Register observer if volunteer data exists and has an ID
                 if (Volunteer != null && Volunteer.Id != 0)
@@ -141,23 +156,48 @@ namespace PL.Volunteer
         }
 
         // Method for adding a new Volunteer
-        private void AddVolunteer()
+        //private void AddVolunteer()
+        //{
+        //    try
+        //    {
+        //        // Call to BL for adding the volunteer
+        //        s_bl.Volunteer.Create(Volunteer); // Assuming Create method exists in the BL
+
+        //        // Show success message and close the window
+        //        MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        //        this.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Handle any errors that occurred during the operation
+        //        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
+
+        private async void AddVolunteer()
         {
             try
             {
-                // Call to BL for adding the volunteer
-                s_bl.Volunteer.Create(Volunteer); // Assuming Create method exists in the BL
+                // ביצוע הלוגיקה העסקית
+                var volunteer = Volunteer;
+                await Task.Run(() => s_bl.Volunteer.Create(volunteer));
 
-                // Show success message and close the window
-                MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                // חזרה ל-UI thread באופן מפורש
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                });
             }
             catch (Exception ex)
             {
-                // Handle any errors that occurred during the operation
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
             }
         }
+
 
         // Method for updating an existing Volunteer
         private void UpdateVolunteer()
@@ -191,5 +231,30 @@ namespace PL.Volunteer
                 s_bl.Volunteer.RemoveObserver(Volunteer.Id, HandleVolunteerUpdate);
             }
         }
+
+        // for the  ENUM comboboxes
+        private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.DistanceType selectedDistanceType)
+            {
+                Console.WriteLine($"Selected DistanceType: {selectedDistanceType}");
+            }
+        }
+        private void cbRoles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Role selectedDistanceType)
+            {
+                Console.WriteLine($"Selected DistanceType: {selectedDistanceType}");
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
 }
