@@ -136,5 +136,16 @@ namespace PL.Volunteer
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private void AddVolunteerButton_Click(object sender, RoutedEventArgs e)
+        {
+            // יצירת אובייקט של חלון VolunteerListWindow
+            VolunteerWindow volunteerWindow = new VolunteerWindow();
+
+            // פתיחת החלון
+            volunteerWindow.Show();
+        }
+
+
     }
 }
