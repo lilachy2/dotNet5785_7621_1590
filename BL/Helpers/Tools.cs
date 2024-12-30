@@ -97,7 +97,7 @@ internal static class Tools
         }
 
         // Validate the address
-        var isAddressValid = /*await*/ Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+        var isAddressValid = /*/await/ */Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
         if (!isAddressValid)
         {
             throw new ArgumentException("The address provided is invalid.");
@@ -166,39 +166,7 @@ internal static class Tools
     /// </summary>
     /// <param name="address">The address to process.</param>
     /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
-    //private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
-    //{
-    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
-
-    //    using (HttpClient client = new HttpClient())
-    //    {
-    //        try
-    //        {
-    //            HttpResponseMessage response = await client.GetAsync(query);
-    //            if (response.IsSuccessStatusCode)
-    //            {
-    //                string result = await response.Content.ReadAsStringAsync();
-
-    //                JsonDocument jsonDocument = JsonDocument.Parse(result);
-    //                JsonElement results = jsonDocument.RootElement;
-
-    //                if (results.GetArrayLength() > 0)
-    //                {
-    //                    JsonElement firstResult = results[0];
-    //                    double latitude = double.Parse(firstResult.GetProperty("lat").GetString());
-    //                    double longitude = double.Parse(firstResult.GetProperty("lon").GetString());
-    //                    return (latitude, longitude);
-    //                }
-    //            }
-    //            return null;
-    //        }
-    //        catch
-    //        {
-    //            return null;
-    //        }
-    //    }
-    //}
-
+  
     private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
     {
         string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
@@ -246,10 +214,90 @@ internal static class Tools
     }
 
 
+    //internal static void CheckId(int id)
+    //{
+    //    // Convert the integer ID to a string to process individual digits
+    //    string idString = id.ToString();
+
+    //    // Ensure the ID is exactly 9 digits long
+    //    if (idString.Length != 9)
+    //    {
+    //        throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
+    //    }
+
+    //    int sum = 0;
+
+    //    // Iterate through each digit in the ID
+    //    for (int i = 0; i < 9; i++)
+    //    {
+    //        // Convert the character to its numeric value
+    //        int digit = idString[i] - '0';
+
+    //        // Determine the multiplier: 1 for odd positions, 2 for even positions
+    //        int multiplier = (i % 2) + 1;
+
+    //        // Multiply the digit by the multiplier
+    //        int product = digit * multiplier;
+
+    //        // If the result is two digits, sum the digits (e.g., 14 -> 1 + 4)
+    //        if (product > 9)
+    //        {
+    //            product = product / 10 + product % 10;
+    //        }
+
+    //        // Add the processed digit to the total sum
+    //        sum += product;
+    //    }
+
+    //    // תעודת זהות תקינה אם סכום ספרות הביקורת מתחלק ב-10
+    //    if (sum % 10 != 0)
+    //    {
+    //        throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
+    //    }
+    //}
+
     internal static void CheckId(int id)
     {
-      VolunteerManager.IsValidIsraeliID(id);
+        // Convert the integer ID to a string to process individual digits
+        string idString = id.ToString();
+
+        // Ensure the ID is exactly 9 digits long
+        if (idString.Length != 9)
+        {
+            throw new BO.BlWrongItemtException($"This ID {id} is not valid (must be 9 digits long).");
+        }
+
+        int sum = 0;
+
+        // Iterate through each digit in the ID
+        for (int i = 0; i < 9; i++)
+        {
+            // Convert the character to its numeric value
+            int digit = idString[i] - '0';
+
+            // Determine the multiplier: 1 for odd positions (1, 3, 5, 7, 9), 2 for even positions (2, 4, 6, 8)
+            int multiplier = (i % 2 == 0) ? 1 : 2; // Multiplier is 1 for odd positions (index 0, 2, 4...) and 2 for even
+
+            // Multiply the digit by the multiplier
+            int product = digit * multiplier;
+
+            // If the result is two digits, sum the digits (e.g., 14 -> 1 + 4)
+            if (product > 9)
+            {
+                product = product / 10 + product % 10; // Sum of digits if the result is two digits
+            }
+
+            // Add the processed digit to the total sum
+            sum += product;
+        }
+
+        // A valid ID has a checksum that is divisible by 10
+        if (sum % 10 != 0)
+        {
+            throw new BO.BlWrongItemtException($"This ID {id} is not valid.");
+        }
     }
+
     public static int TotalHandledCalls(int Id)
     {
         // Count how many were treated on time
@@ -301,4 +349,3 @@ internal static class Tools
     }
 
 }
-

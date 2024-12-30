@@ -28,7 +28,7 @@ namespace PL.Volunteer
             }
         }
 
-        // תכונה רגילה (לא DependencyProperty) לפריט הנבחר
+        // Regular property for the selected volunteer (not DependencyProperty)
         public BO.VolunteerInList? SelectedVolunteer { get; set; }
 
         // Declare the VolunteerInList property with DependencyProperty
@@ -140,7 +140,6 @@ namespace PL.Volunteer
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         private void AddVolunteerButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -164,8 +163,50 @@ namespace PL.Volunteer
         {
             if (SelectedVolunteer != null)
             {
-                // Create a new window with the selected volunteer's ID and show it in dialog mode
-                new VolunteerWindow(SelectedVolunteer.Id).ShowDialog();
+                try
+                {
+                    // Send the ID of the selected volunteer to the new window
+                    VolunteerWindow volunteerWindow = new VolunteerWindow(SelectedVolunteer.Id);
+                    volunteerWindow.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while opening volunteer details: {ex.Message}",
+                                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        // Delete button click handler
+        private void DeleteVolunteerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedVolunteer != null)
+            {
+                // Confirm deletion with the user
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this volunteer?",
+                                                          "Confirm Deletion",
+                                                          MessageBoxButton.YesNo,
+                                                          MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        // Call the Delete method in the BL to delete the selected volunteer
+                        BlApi.Factory.Get().Volunteer.Delete(SelectedVolunteer.Id);
+
+                        // Refresh the list after deletion (thanks to observer)
+                        MessageBox.Show("Volunteer deleted successfully.",
+                                        "Success",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while deleting the volunteer: {ex.Message}",
+                                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
         }
     }

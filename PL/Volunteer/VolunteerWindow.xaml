@@ -5,7 +5,6 @@
         Title="Volunteer Details"
         Height="450" Width="400"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    
 
     <Window.Resources>
         <!-- הוספת ה-Converter לקובץ ה-XAML -->
@@ -34,15 +33,15 @@
 
         <!-- Name -->
         <Label Content="Name:" Grid.Row="1" HorizontalAlignment="Left" />
-        <TextBox Text="{Binding Volunteer.Name}" Grid.Row="1" Margin="100,0" HorizontalAlignment="Stretch" />
+        <TextBox Text="{Binding Volunteer.Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="100,0" HorizontalAlignment="Stretch" />
 
         <!-- Phone Number -->
         <Label Content="Phone Number:" Grid.Row="2" HorizontalAlignment="Left" />
-        <TextBox Text="{Binding Volunteer.Number_phone}" Grid.Row="2" Margin="100,0" HorizontalAlignment="Stretch" />
+        <TextBox Text="{Binding Volunteer.Number_phone, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Margin="100,0" HorizontalAlignment="Stretch" />
 
         <!-- Email -->
         <Label Content="Email:" Grid.Row="3" HorizontalAlignment="Left" />
-        <TextBox Text="{Binding Volunteer.Email}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch" />
+        <TextBox Text="{Binding Volunteer.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch" />
 
         <!-- Active Status -->
         <Label Content="Active:" Grid.Row="4" HorizontalAlignment="Left" />
@@ -51,34 +50,24 @@
         <!-- Role -->
         <Label Content="Role:" Grid.Row="5" HorizontalAlignment="Left" />
         <ComboBox ItemsSource="{Binding Roles}" 
-          SelectedItem="{Binding Volunteer.Role, Mode=TwoWay}"
-          SelectionChanged="cbRoles_SelectionChanged"
-         Grid.Row="5" Margin="100,0"  />
+                  SelectedItem="{Binding Volunteer.Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectionChanged="cbRoles_SelectionChanged"
+                  Grid.Row="5" Margin="100,0" />
 
         <!-- Full Current Address -->
         <Label Content="Full Current Address:" Grid.Row="6" HorizontalAlignment="Left" />
-        <TextBox Text="{Binding Volunteer.FullCurrentAddress}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch" />
+        <TextBox Text="{Binding Volunteer.FullCurrentAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch" />
 
         <!-- Distance -->
         <Label Content="Distance:" Grid.Row="7" HorizontalAlignment="Left" />
-        <TextBox Text="{Binding Volunteer.Distance}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch" />
-
-        <!-- Distance Type -->
-        <!--<Label Content="Distance Type:" Grid.Row="8" HorizontalAlignment="Left" />
-<ComboBox ItemsSource="{Binding DistanceTypes}" 
-          SelectedItem="{Binding Volunteer.DistanceType}" 
-          Grid.Row="8" Margin="100,0,100,227" 
-          DisplayMemberPath="ToString()" />-->
-        
+        <TextBox Text="{Binding Volunteer.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch" />
 
         <!-- Distance Type -->
         <ComboBox ItemsSource="{Binding DistanceTypes}" 
-          SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay}"
-          SelectionChanged="cbDistanceType_SelectionChanged"
-          Grid.Row="8" 
-          Margin="100,0,100,227" />
-
-
+                  SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectionChanged="cbDistanceType_SelectionChanged"
+                  Grid.Row="8" 
+                  Margin="100,0,100,227" />
 
         <!-- Button (Add/Update) -->
         <Button Content="{Binding ButtonText}" 

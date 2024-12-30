@@ -54,12 +54,20 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
+                    <!-- Delete Button Column -->
+                    <GridViewColumn Header="Delete">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="DeleteVolunteerButton_Click" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
 
         <!-- ComboBox for Filtering Volunteers by different criteria (Id, Name, Active) -->
-        <!--not good-->
         <ComboBox Name="FilterComboBox" 
                   SelectedValue="{Binding SelectedFilter, Mode=TwoWay}"
                   Width="80"
@@ -70,9 +78,8 @@
                   SelectionChanged="FilterVolunteerlistByCriteria">
         </ComboBox>
 
-
         <Grid>
-            <!-- כפתור שמופיע בממשק -->
+            <!-- Button to add a new volunteer -->
             <Button Content="ADD Volunteer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="40" Click="AddVolunteerButton_Click" Margin="325,369,0,0"/>
         </Grid>
     </Grid>

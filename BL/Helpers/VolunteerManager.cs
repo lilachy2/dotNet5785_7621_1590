@@ -29,11 +29,11 @@ internal static class VolunteerManager
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
         // Validate ID
-        if (!IsValidIsraeliID(boVolunteer.Id))
-        {
-            throw new BO.Incompatible_ID("Invalid ID: The ID does not pass validation.");
-        }
-
+        //if (!Tools.CheckId(boVolunteer.Id))
+        //{
+        //    throw new BO.Incompatible_ID("Invalid ID: The ID does not pass validation.");
+        //}
+        Tools.CheckId(boVolunteer.Id);
         if (existingVolunteer != null)
         {
             // Check if the role was changed
