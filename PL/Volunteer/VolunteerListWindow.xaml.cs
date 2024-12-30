@@ -143,19 +143,28 @@ namespace PL.Volunteer
 
         private void AddVolunteerButton_Click(object sender, RoutedEventArgs e)
         {
-            // יצירת אובייקט של חלון VolunteerListWindow
-            VolunteerWindow volunteerWindow = new VolunteerWindow();
+            try
+            {
+                // Create and open the volunteer window to add a new volunteer
+                VolunteerWindow volunteerWindow = new VolunteerWindow();
+                volunteerWindow.ShowDialog();
 
-            // פתיחת החלון
-            volunteerWindow.Show();
+                // After adding a volunteer, refresh the list automatically
+                UpdateVolunteerList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while adding the volunteer: {ex.Message}",
+                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        // אירוע לחיצה כפולה לפתיחת מסך תצוגת פריט בודד
+        // Double-click event to view a single volunteer's details
         private void VolunteerList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (SelectedVolunteer != null)
             {
-                // יצירת מסך חדש עם Id הפריט הנבחר ופתיחתו במצב ShowDialog
+                // Create a new window with the selected volunteer's ID and show it in dialog mode
                 new VolunteerWindow(SelectedVolunteer.Id).ShowDialog();
             }
         }

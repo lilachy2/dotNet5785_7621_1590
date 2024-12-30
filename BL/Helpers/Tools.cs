@@ -248,44 +248,7 @@ internal static class Tools
 
     internal static void CheckId(int id)
     {
-        // Convert the integer ID to a string to process individual digits
-        string idString = id.ToString();
-
-        // Ensure the ID is exactly 9 digits long
-        if (idString.Length != 9)
-        {
-            throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
-        }
-
-        int sum = 0;
-
-        // Iterate through each digit in the ID
-        for (int i = 0; i < 9; i++)
-        {
-            // Convert the character to its numeric value
-            int digit = idString[i] - '0';
-
-            // Determine the multiplier: 1 for odd positions, 2 for even positions
-            int multiplier = (i % 2) + 1;
-
-            // Multiply the digit by the multiplier
-            int product = digit * multiplier;
-
-            // If the result is two digits, sum the digits (e.g., 14 -> 1 + 4)
-            if (product > 9)
-            {
-                product = product / 10 + product % 10;
-            }
-
-            // Add the processed digit to the total sum
-            sum += product;
-        }
-
-        // תעודת זהות תקינה אם סכום ספרות הביקורת מתחלק ב-10
-        if (sum % 10 != 0)
-        {
-            throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
-        }
+      VolunteerManager.IsValidIsraeliID(id);
     }
     public static int TotalHandledCalls(int Id)
     {

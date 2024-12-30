@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using BO;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using PL.Volunteer; // Make sure this is the correct namespace for your business logic
+using System.Windows;
+using System.ComponentModel;
 using System.Windows.Controls;
-using BO;
-using System.Numerics;
-using System.Windows.Documents;
-using System.Windows.Media.Animation;
+using System.Windows.Input;
+using System.Threading.Tasks;
 
 namespace PL.Volunteer
 {
-    public partial class VolunteerWindow : Window
+    public partial class VolunteerWindow : Window, INotifyPropertyChanged
     {
         // Dependency Property for button text (Add/Update)
         public string ButtonText { get; set; }
@@ -25,7 +24,11 @@ namespace PL.Volunteer
         public BO.Volunteer Volunteer
         {
             get { return (BO.Volunteer)GetValue(CurrentVolunteerProperty); }
-            set { SetValue(CurrentVolunteerProperty, value); }
+            set
+            {
+                SetValue(CurrentVolunteerProperty, value);
+                OnPropertyChanged(nameof(Volunteer));  // Notify of property change
+            }
         }
 
         // The DependencyProperty that will hold the Volunteer data (to be used in XAML bindings)
@@ -41,7 +44,6 @@ namespace PL.Volunteer
             get { return Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>(); }
         }
 
-
         public VolunteerWindow(int id = 0)
         {
             Id = id;
@@ -49,7 +51,6 @@ namespace PL.Volunteer
             DataContext = this;
 
             InitializeComponent(); // Initialize the XAML components
-            // DataContext is already set in XAML via {Binding RelativeSource={RelativeSource Self}}
 
             try
             {
@@ -76,19 +77,11 @@ namespace PL.Volunteer
                         CurrentCall = null
                     };
 
-                // Initialize the Roles collection from the enum values
-                //Roles = new ObservableCollection<BO.Role>(Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>());
-
-                // Initialize the DistanceTypes collection from the enum values
-                //DistanceTypes = new ObservableCollection<BO.DistanceType>(Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>());
-                //Console.WriteLine($"DistanceTypes: {string.Join(", ", DistanceTypes)}");
-
                 // Register observer if volunteer data exists and has an ID
                 if (Volunteer != null && Volunteer.Id != 0)
                 {
                     SubscribeToVolunteerUpdates(Volunteer.Id);
                 }
-
             }
             catch (Exception ex)
             {
@@ -124,7 +117,6 @@ namespace PL.Volunteer
                 // Retrieve the updated volunteer data
                 Volunteer = s_bl.Volunteer.Read(Volunteer.Id);
                 // Optional: You can add UI-related updates here
-                //this.DataContext = Volunteer;
                 MessageBox.Show("Volunteer data updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
@@ -135,7 +127,7 @@ namespace PL.Volunteer
         }
 
         // Button click handler for adding or updating the volunteer
-        private  void btnAddUpdate_Click(object sender, RoutedEventArgs e)
+        private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (Id == 0)
             {
@@ -148,7 +140,6 @@ namespace PL.Volunteer
                 UpdateVolunteer();
             }
         }
-
 
         private async void AddVolunteer()
         {
@@ -199,10 +190,6 @@ namespace PL.Volunteer
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            // Implement selection change logic if needed
-        }
         // Method to remove the observer when the window is closed
         private void Window_Closed(object sender, EventArgs e)
         {
@@ -213,7 +200,14 @@ namespace PL.Volunteer
             }
         }
 
-        // for the  ENUM comboboxes
+        // INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.DistanceType selectedDistanceType)
@@ -228,14 +222,5 @@ namespace PL.Volunteer
                 Console.WriteLine($"Selected DistanceType: {selectedDistanceType}");
             }
         }
-
-
-
-
-
-
-
-
-
     }
 }
