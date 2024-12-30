@@ -166,38 +166,86 @@ internal static class Tools
     /// </summary>
     /// <param name="address">The address to process.</param>
     /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
+    //private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
+    //{
+    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
+
+    //    using (HttpClient client = new HttpClient())
+    //    {
+    //        try
+    //        {
+    //            HttpResponseMessage response = await client.GetAsync(query);
+    //            if (response.IsSuccessStatusCode)
+    //            {
+    //                string result = await response.Content.ReadAsStringAsync();
+
+    //                JsonDocument jsonDocument = JsonDocument.Parse(result);
+    //                JsonElement results = jsonDocument.RootElement;
+
+    //                if (results.GetArrayLength() > 0)
+    //                {
+    //                    JsonElement firstResult = results[0];
+    //                    double latitude = double.Parse(firstResult.GetProperty("lat").GetString());
+    //                    double longitude = double.Parse(firstResult.GetProperty("lon").GetString());
+    //                    return (latitude, longitude);
+    //                }
+    //            }
+    //            return null;
+    //        }
+    //        catch
+    //        {
+    //            return null;
+    //        }
+    //    }
+    //}
+
     private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
     {
         string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
 
-        using (HttpClient client = new HttpClient())
+        using (HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) })
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(query);
+                HttpResponseMessage response = await client.GetAsync(query).ConfigureAwait(false);
+
                 if (response.IsSuccessStatusCode)
                 {
-                    string result = await response.Content.ReadAsStringAsync();
+                    string result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                     JsonDocument jsonDocument = JsonDocument.Parse(result);
                     JsonElement results = jsonDocument.RootElement;
 
-                    if (results.GetArrayLength() > 0)
+                    if (results.ValueKind == JsonValueKind.Array && results.GetArrayLength() > 0)
                     {
                         JsonElement firstResult = results[0];
-                        double latitude = double.Parse(firstResult.GetProperty("lat").GetString());
-                        double longitude = double.Parse(firstResult.GetProperty("lon").GetString());
-                        return (latitude, longitude);
+
+                        if (firstResult.TryGetProperty("lat", out JsonElement latElement) &&
+                            firstResult.TryGetProperty("lon", out JsonElement lonElement) &&
+                            double.TryParse(latElement.GetString(), out double latitude) &&
+                            double.TryParse(lonElement.GetString(), out double longitude))
+                        {
+                            return (latitude, longitude);
+                        }
                     }
                 }
+
                 return null;
             }
-            catch
+            catch (TaskCanceledException)
             {
+                Console.WriteLine("Request was canceled or timed out.");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
                 return null;
             }
         }
     }
+
+
     internal static void CheckId(int id)
     {
         // Convert the integer ID to a string to process individual digits

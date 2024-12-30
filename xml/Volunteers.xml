@@ -209,19 +209,4 @@
     <Longitude>35.55199674285398</Longitude>
     <Active>true</Active>
     <distance>13</distance>
-  </Volunteer>
-  <Volunteer>
-    <Id>324291590</Id>
-    <Name>ya</Name>
-    <Number_phone>0528050630</Number_phone>
-    <Email>ya@gmail.com</Email>
-    <Password />
-    <Role>Manager</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress>
-    <Latitude />
-    <Longitude />
-    <Active>true</Active>
-    <distance>10</distance>
-  </Volunteer>
-</ArrayOfVolunteer>
+  </Volunteer>VolunteerVolunteerVolunteer<Volunteer><Id>324291590</Id><Name>yalIN</Name><Number_phone>0528050630</Number_phone><Email>ya@gmail.com</Email><Password></Password><Role>Volunteer</Role><Distance_Type>walking_distance</Distance_Type><FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress><Latitude /><Longitude /><Active>true</Active><distance>10</distance></Volunteer>VolunteerVolunteerVolunteerVolunteerVolunteer<Volunteer><Id>326017621</Id><Name>lilach2</Name><Number_phone>0528050630</Number_phone><Email>lilach@gmail.com</Email><Password></Password><Role>Manager</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress><Latitude>48.8582599</Latitude><Longitude>2.2945006358633115</Longitude><Active>true</Active><distance>12</distance></Volunteer></ArrayOfVolunteer>

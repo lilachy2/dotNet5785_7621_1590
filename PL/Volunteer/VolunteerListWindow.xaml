@@ -10,7 +10,9 @@
 
     <Grid>
         <!-- ListView for displaying volunteers -->
-        <ListView Margin="5" ItemsSource="{Binding VolunteerInList}">
+        <ListView Margin="5" ItemsSource="{Binding VolunteerInList}" 
+                  SelectedItem="{Binding SelectedVolunteer}" 
+                  MouseDoubleClick="VolunteerList_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <!-- ID Column -->
@@ -57,6 +59,7 @@
         </ListView>
 
         <!-- ComboBox for Filtering Volunteers by different criteria (Id, Name, Active) -->
+        <!--not good-->
         <ComboBox Name="FilterComboBox" 
                   SelectedValue="{Binding SelectedFilter, Mode=TwoWay}"
                   Width="80"
@@ -72,8 +75,5 @@
             <!-- כפתור שמופיע בממשק -->
             <Button Content="ADD Volunteer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="40" Click="AddVolunteerButton_Click" Margin="325,369,0,0"/>
         </Grid>
-
-
-
     </Grid>
 </Window>

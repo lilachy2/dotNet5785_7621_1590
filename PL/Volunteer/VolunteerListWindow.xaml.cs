@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PL.Volunteer
 {
@@ -26,6 +27,9 @@ namespace PL.Volunteer
                 }
             }
         }
+
+        // תכונה רגילה (לא DependencyProperty) לפריט הנבחר
+        public BO.VolunteerInList? SelectedVolunteer { get; set; }
 
         // Declare the VolunteerInList property with DependencyProperty
         public IEnumerable<BO.VolunteerInList> VolunteerInList
@@ -146,6 +150,14 @@ namespace PL.Volunteer
             volunteerWindow.Show();
         }
 
-
+        // אירוע לחיצה כפולה לפתיחת מסך תצוגת פריט בודד
+        private void VolunteerList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (SelectedVolunteer != null)
+            {
+                // יצירת מסך חדש עם Id הפריט הנבחר ופתיחתו במצב ShowDialog
+                new VolunteerWindow(SelectedVolunteer.Id).ShowDialog();
+            }
+        }
     }
 }

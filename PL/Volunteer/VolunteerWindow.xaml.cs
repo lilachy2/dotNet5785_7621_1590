@@ -32,12 +32,6 @@ namespace PL.Volunteer
         public static readonly DependencyProperty CurrentVolunteerProperty =
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow), new PropertyMetadata(null, OnVolunteerChanged));
 
-        // ObservableCollection for Roles (enum values for Role)
-        //public ObservableCollection<BO.Role> Roles { get; set; } = new ObservableCollection<BO.Role>();
-
-        // ObservableCollection for Distance Types (enum values for DistanceType)
-        //public ObservableCollection<BO.DistanceType> DistanceTypes { get; set; } = new ObservableCollection<BO.DistanceType>();
-
         public IEnumerable<BO.DistanceType> DistanceTypes
         {
             get { return Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>(); }
@@ -130,7 +124,7 @@ namespace PL.Volunteer
                 // Retrieve the updated volunteer data
                 Volunteer = s_bl.Volunteer.Read(Volunteer.Id);
                 // Optional: You can add UI-related updates here
-                this.DataContext = Volunteer;
+                //this.DataContext = Volunteer;
                 MessageBox.Show("Volunteer data updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
@@ -141,7 +135,7 @@ namespace PL.Volunteer
         }
 
         // Button click handler for adding or updating the volunteer
-        private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
+        private  void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (Id == 0)
             {
@@ -155,24 +149,6 @@ namespace PL.Volunteer
             }
         }
 
-        // Method for adding a new Volunteer
-        //private void AddVolunteer()
-        //{
-        //    try
-        //    {
-        //        // Call to BL for adding the volunteer
-        //        s_bl.Volunteer.Create(Volunteer); // Assuming Create method exists in the BL
-
-        //        // Show success message and close the window
-        //        MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-        //        this.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle any errors that occurred during the operation
-        //        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
 
         private async void AddVolunteer()
         {
@@ -198,23 +174,28 @@ namespace PL.Volunteer
             }
         }
 
-
-        // Method for updating an existing Volunteer
-        private void UpdateVolunteer()
+        private async void UpdateVolunteer()
         {
             try
             {
-                // Call to BL for updating the volunteer
-                s_bl.Volunteer.Update(Volunteer, Volunteer.Id); // Assuming Update method exists in the BL
+                // ביצוע העדכון בלוגיקה העסקית
+                var volunteer = Volunteer;
+                await Task.Run(() => s_bl.Volunteer.Update(volunteer, volunteer.Id));
 
-                // Show success message and close the window
-                MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                // חזרה ל-UI thread והצגת הודעת הצלחה
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                });
             }
             catch (Exception ex)
             {
-                // Handle any errors that occurred during the operation
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // טיפול בשגיאות על ה-UI thread
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
             }
         }
 
