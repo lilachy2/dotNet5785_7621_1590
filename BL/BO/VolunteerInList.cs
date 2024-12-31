@@ -12,7 +12,7 @@ public class VolunteerInList
     /// <param name="CallType CurrentCallType"> // The type of the call currently being handled by the volunteer
     /// <param name="CallType enum"> // Types of calls (None, Emergency, Regular, Other)
 
-    public int Id { get; init; }
+        public int Id { get; init; }
         public string FullName { get; init; }
         public bool IsActive { get; init; }
         public int TotalCallsHandled { get; init; }

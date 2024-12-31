@@ -7,7 +7,6 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Window.Resources>
-        <!-- הוספת ה-Converter לקובץ ה-XAML -->
         <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
         <local:EnumToStringConverter x:Key="EnumConverter"/>

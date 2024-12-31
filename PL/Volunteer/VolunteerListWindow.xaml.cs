@@ -130,7 +130,8 @@ namespace PL.Volunteer
         // Observer method to refresh the volunteer list after any change
         private void volunteerListObserver()
         {
-            UpdateVolunteerList();  // Refresh the list after a change occurs
+            // Update the volunteer list to reflect changes
+            UpdateVolunteerList();
         }
 
         // INotifyPropertyChanged implementation
@@ -140,13 +141,14 @@ namespace PL.Volunteer
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         private void AddVolunteerButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // Create and open the volunteer window to add a new volunteer
                 VolunteerWindow volunteerWindow = new VolunteerWindow();
-                volunteerWindow.ShowDialog();
+                volunteerWindow.Show();
 
                 // After adding a volunteer, refresh the list automatically
                 UpdateVolunteerList();
@@ -167,7 +169,7 @@ namespace PL.Volunteer
                 {
                     // Send the ID of the selected volunteer to the new window
                     VolunteerWindow volunteerWindow = new VolunteerWindow(SelectedVolunteer.Id);
-                    volunteerWindow.ShowDialog();
+                    volunteerWindow.Show();
                 }
                 catch (Exception ex)
                 {
