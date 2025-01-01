@@ -26,8 +26,8 @@ public static class Initialization
 
 
     private static readonly Random s_rand = new Random();
-    private static int MIN_ID = 10000000;
-    private static int MAX_ID = 99999999;
+    private static int MIN_ID = 100000000;
+    private static int MAX_ID = 999999999;
     static int indexcalltype1 = s_rand.Next(0, 6);
 
 
@@ -40,12 +40,14 @@ public static class Initialization
 
     static string[] Addresses =  // <param name="Addresses">List of possible addresses.</param>
     {
-        "7 Presidents St, Petah Tikva, Israel", "Lev Academic Center, Jerusalem, Israel", "45 Rothschild Blvd, Tel Aviv, Israel",
-        "12 Herzl St, Haifa, Israel", "20 King David St, Jerusalem, Israel", "3 HaNasi Blvd, Be'er Sheva, Israel",
-        "14 Jabotinsky St, Rishon LeZion, Israel", "10 Arlozorov St, Tel Aviv, Israel",
-        "22 Hillel St, Jerusalem, Israel", "8 Dizengoff St, Tel Aviv, Israel", "5 Ben Yehuda St, Haifa, Israel",
-        "16 Weizmann St, Rehovot, Israel", "9 Begin Ave, Ashdod, Israel",  "11 Allenby St, Tel Aviv, Israel",
-        "4 Hanegev St, Eilat, Israel"
+         "7 Presidents St, Petah Tikva, Israel","Lev Academic Center, Jerusalem, Israel",
+    "45 Rothschild Blvd, Tel Aviv, Israel", "12 Herzl St, Haifa, Israel",
+    "20 King David St, Jerusalem, Israel","3 HaNasi Blvd, Be'er Sheva, Israel",
+    "14 Jabotinsky St, Rishon LeZion, Israel","10 Arlozorov St, Tel Aviv, Israel",
+    "22 Hillel St, Jerusalem, Israel","8 Dizengoff St, Tel Aviv, Israel",
+    "5 Ben Yehuda St, Haifa, Israel", "16 Weizmann St, Rehovot, Israel",
+    "9 Begin Ave, Ashdod, Israel", "11 Allenby St, Tel Aviv, Israel",
+    "4 Hanegev St, Eilat, Israel"
     };
 
     static readonly string[] Descriptions =  // <param name="Descriptions">List of event descriptions.</param>
@@ -162,7 +164,7 @@ public static class Initialization
     public static void CreateCalls()
     {
         int index1 = s_rand.Next(0, 15);
-        int index2 = s_rand.Next(0, 6);
+        int index2 = s_rand.Next(0, 7);
 
         // Latitude and longitude range in Israel
         double minLatitude = 29.5;

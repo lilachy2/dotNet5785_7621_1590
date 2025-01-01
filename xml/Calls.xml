@@ -1,2 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Call>
+    <Latitude>30.48404020788022</Latitude>
+    <Longitude>34.899253474455655</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1000</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.44431663130468</Latitude>
+    <Longitude>35.79133932714014</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1001</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.26641624368884</Latitude>
+    <Longitude>35.428301247116416</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1002</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.38117415869694</Latitude>
+    <Longitude>35.19596928763021</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1003</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.408095021762264</Latitude>
+    <Longitude>34.36226728385077</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1004</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.194000309002394</Latitude>
+    <Longitude>35.86819804378578</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1005</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.743606481969092</Latitude>
+    <Longitude>35.254622837870045</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1006</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.05001311206879</Latitude>
+    <Longitude>35.793285776221026</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1007</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.33750419440602</Latitude>
+    <Longitude>35.85185754822281</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1008</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.02309685203107</Latitude>
+    <Longitude>35.17079216491383</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1009</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.535732867946333</Latitude>
+    <Longitude>34.7460431609139</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1010</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.354394942951956</Latitude>
+    <Longitude>35.62166213614586</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1011</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.95782133452084</Latitude>
+    <Longitude>34.637355995667406</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1012</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.8516606574564</Latitude>
+    <Longitude>34.52095461808845</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1013</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.007159127088684</Latitude>
+    <Longitude>34.52941974003754</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1014</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.36378537750942</Latitude>
+    <Longitude>35.148380781606285</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1015</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.99382982197846</Latitude>
+    <Longitude>35.728818973587224</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1016</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.68330990554407</Latitude>
+    <Longitude>35.781031637429614</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1017</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.19135076051075</Latitude>
+    <Longitude>35.64400728431654</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1018</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.11759918920252</Latitude>
+    <Longitude>35.329937044857985</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1019</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.82204758064634</Latitude>
+    <Longitude>35.29229314892048</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1020</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.86365812110221</Latitude>
+    <Longitude>35.49690125023957</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1021</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.43652545047541</Latitude>
+    <Longitude>35.26965156331404</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1022</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.97643242748959</Latitude>
+    <Longitude>35.18330304652268</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1023</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.167852036949654</Latitude>
+    <Longitude>34.654893388229375</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1024</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.223451611825148</Latitude>
+    <Longitude>34.55487616873557</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1025</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.603676613538255</Latitude>
+    <Longitude>35.523570842502785</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1026</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.08138480859476</Latitude>
+    <Longitude>34.39888035420996</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1027</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.036710274681944</Latitude>
+    <Longitude>35.54780742838272</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1028</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.901888929429255</Latitude>
+    <Longitude>35.47796951732669</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1029</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.68557445637298</Latitude>
+    <Longitude>35.68501079589644</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1030</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.568231518881312</Latitude>
+    <Longitude>34.57335778971094</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1031</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.212224239143342</Latitude>
+    <Longitude>35.786657509111556</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1032</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.745225729348572</Latitude>
+    <Longitude>34.81558932564241</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1033</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.52750850832617</Latitude>
+    <Longitude>35.26378612992726</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1034</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.704642163216764</Latitude>
+    <Longitude>35.32624898873257</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1035</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.24711856030749</Latitude>
+    <Longitude>34.776352679685104</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1036</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.92391178503607</Latitude>
+    <Longitude>34.92994789652394</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1037</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.32131407883271</Latitude>
+    <Longitude>35.56579414715768</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1038</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.883278394557436</Latitude>
+    <Longitude>35.200048092037406</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1039</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.103810345323193</Latitude>
+    <Longitude>35.5405172105712</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1040</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.811653193668526</Latitude>
+    <Longitude>34.76396652410947</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1041</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.31070876355834</Latitude>
+    <Longitude>35.80613382636678</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1042</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.098017690722358</Latitude>
+    <Longitude>34.327519348472784</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1043</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.968230356146986</Latitude>
+    <Longitude>34.81987282720454</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1044</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.97663445057572</Latitude>
+    <Longitude>35.29387576382961</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1045</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.66132499244731</Latitude>
+    <Longitude>35.88950082715887</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1046</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.069890870017485</Latitude>
+    <Longitude>35.87259897727772</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1047</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.898850257847716</Latitude>
+    <Longitude>35.2528226913523</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1048</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.208609654847663</Latitude>
+    <Longitude>34.62297696384424</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1049</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+</ArrayOfCall>
