@@ -50,7 +50,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     //        .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)) // ממירים לכל מתנדב ברשימה לפי המזהה
     //        .ToList();
     //}
-
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
         var volunteers = _dal.Volunteer.ReadAll();
@@ -108,7 +107,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     {
         try
         {
-            return (VolunteerManager.GetVolunteer(id));
+            var fordebug = VolunteerManager.GetVolunteer(id);
+            return (/*VolunteerManager.GetVolunteer(id)*/ fordebug);
 
         }
         catch (Exception ex)
@@ -123,37 +123,39 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
-
-        var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); //convert 
-
         try
         {
             var requester = _dal.Volunteer.Read(requesterId);
 
-            if (boVolunteer.Id != requesterId && DOVolunteer.Role != DO.Role.Manager)
-            {
-                throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
-            }
-
-
-            // check format
-            //Tools.ValidateVolunteerData(boVolunteer);
-            VolunteerManager.CheckFormat(boVolunteer);
-            // check logic
-            //If the address format is correct, enter the latitude and longitude.
             if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
             {
                 boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
                 boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
             }
 
+            var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); //convert 
+
+
+            if (boVolunteer.Id != requesterId && DOVolunteer.Role != DO.Role.Manager)
+            {
+                throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
+            }
+
+            // check format
+            //Tools.ValidateVolunteerData(boVolunteer);
+            VolunteerManager.CheckFormat(boVolunteer);
+            // check logic
+            //If the address format is correct, enter the latitude and longitude.
+           
+
 
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
             _dal.Volunteer.Update(DOVolunteer);
+            VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  //stage 5
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-           VolunteerManager.Observers.NotifyItemUpdated(DOVolunteer.Id);  //stage 5
+           
             
 
         }
@@ -185,7 +187,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         try
         {
             _dal.Volunteer.Delete(volunteerId);
+            //VolunteerManager.Observers.NotifyItemUpdated(volunteerId);
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+
 
         }
         catch (DalDoesNotExistException ex) // If the volunteer does not exist in the system
@@ -250,6 +254,26 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             throw new BO.BlGeneralException("Failed to add volunteer.", ex); // Re-throw the general exception with a message indicating the failure
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

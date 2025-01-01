@@ -12,51 +12,56 @@ namespace PL.Volunteer
 {
     public partial class VolunteerWindow : Window, INotifyPropertyChanged
     {
-        // Dependency with BL (Business Logic)
+        // תלות עם BL
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-
-        // Text for the button (Add/Update)
+        // טקסט הכפתור (הוספה/עדכון)
         public string ButtonText { get; set; }
 
-        // Volunteer ID
+        // מזהה מתנדב
         public int Id { get; set; }
 
-        // Current volunteer data (used for binding to UI)
+        // הנתונים הנוכחיים
         public BO.Volunteer Volunteer
         {
-            get { return (BO.Volunteer)GetValue(CurrentVolunteerProperty); }
+            //get { return (BO.Volunteer)GetValue(CurrentVolunteerProperty); }
+            get
+            {
+                if (Application.Current.Dispatcher.CheckAccess())
+                {
+                    // אם אנחנו כבר ב-UI thread, ניתן לגשת ישירות
+                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
+                }
+                else
+                {
+                    // אם אנחנו לא ב-UI thread, נעשה קריאה ל-UI thread דרך ה-Dispatcher
+                    return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
+                }
+            }
+
             set
             {
                 SetValue(CurrentVolunteerProperty, value);
-                OnPropertyChanged(nameof(Volunteer)); // Notify when volunteer data changes
+                OnPropertyChanged(nameof(Volunteer));
             }
         }
 
-        // Dependency Property for Volunteer to support data binding
         public static readonly DependencyProperty CurrentVolunteerProperty =
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow),
                 new PropertyMetadata(null, OnVolunteerChanged));
 
-        // Enum for available distance types
         public IEnumerable<BO.DistanceType> DistanceTypes =>
             Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>();
 
-        // Enum for available roles
         public IEnumerable<BO.Role> Roles =>
             Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>();
 
-        // Constructor for VolunteerWindow, takes an optional volunteer ID
         public VolunteerWindow(int id = 0)
         {
             Id = id;
-            ButtonText = Id == 0 ? "Add" : "Update"; // Set button text based on ID
-            DataContext = this; // Set DataContext to this object for data binding
-
-            InitializeComponent();
-
+            ButtonText = Id == 0 ? "Add" : "Update";
+            DataContext = this;
             try
             {
-                // Initialize the volunteer object if the ID is not 0
                 Volunteer = (Id != 0)
                     ? s_bl.Volunteer.Read(Id)
                     : new BO.Volunteer()
@@ -79,7 +84,7 @@ namespace PL.Volunteer
                         CurrentCall = null
                     };
 
-                // Subscribe to updates for the volunteer if an ID exists
+                // הרשמה למשקיפים אם קיים ID
                 if (Volunteer != null && Volunteer.Id != 0)
                 {
                     SubscribeToVolunteerUpdates(Volunteer.Id);
@@ -87,12 +92,12 @@ namespace PL.Volunteer
             }
             catch (Exception ex)
             {
-                // Display error message if there's an issue
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            InitializeComponent();
+
         }
 
-        // Called when the volunteer data changes (for example, when the dependency property is updated)
         private static void OnVolunteerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var window = (VolunteerWindow)d;
@@ -100,29 +105,25 @@ namespace PL.Volunteer
 
             if (newVolunteer != null && newVolunteer.Id != 0)
             {
-                // Subscribe to updates for the new volunteer
                 window.SubscribeToVolunteerUpdates(newVolunteer.Id);
             }
         }
 
-        // Method to subscribe to volunteer updates from the BL
         private void SubscribeToVolunteerUpdates(int volunteerId)
         {
             s_bl.Volunteer.AddObserver(volunteerId, HandleVolunteerUpdate);
         }
-
-        // Method to handle updates to the volunteer data (called by the observer)
         private void HandleVolunteerUpdate()
         {
             try
             {
-                // Reload data on the UI thread to ensure thread safety
+                // טעינה מחדש של הנתונים על ה-UI thread
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    // Fetch updated volunteer data
+                    // קריאת המתנדב המעודכן
                     var updatedVolunteer = s_bl.Volunteer.Read(Volunteer.Id);
-
-                    // Update volunteer properties
+                    Volunteer = updatedVolunteer;
+                    // עדכון הנתונים ב-Volunteer
                     Volunteer.Name = updatedVolunteer.Name;
                     Volunteer.Number_phone = updatedVolunteer.Number_phone;
                     Volunteer.Email = updatedVolunteer.Email;
@@ -134,7 +135,7 @@ namespace PL.Volunteer
             }
             catch (Exception ex)
             {
-                // Handle error when updating the volunteer
+                // טיפול בשגיאה ב-UI thread
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     MessageBox.Show($"Error updating volunteer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -142,7 +143,7 @@ namespace PL.Volunteer
             }
         }
 
-        // Called when the window is closed to remove the observer and prevent further updates
+
         private void Window_Closed(object sender, EventArgs e)
         {
             if (Volunteer != null && Volunteer.Id != 0)
@@ -151,20 +152,48 @@ namespace PL.Volunteer
             }
         }
 
-        // Button click event handler for adding or updating a volunteer
-        private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
+        
+
+
+        private async void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (Id == 0)
-            {
-                AddVolunteer();
+            try
+            { if (Id == 0)
+                {
+                    //AddVolunteer();
+                    var volunteer = Volunteer;
+                    await Task.Run(() => s_bl.Volunteer.Create(volunteer));
+
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    });
+
+                }
+                else
+                {
+
+                    //UpdateVolunteer();
+                    await Task.Run(() => s_bl.Volunteer.Update(Volunteer, Volunteer.Id));
+
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        MessageBox.Show("Volunteer Update successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    });
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                UpdateVolunteer();
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
             }
         }
 
-        // Method to add a new volunteer (asynchronous)
         private async void AddVolunteer()
         {
             try
@@ -172,7 +201,6 @@ namespace PL.Volunteer
                 var volunteer = Volunteer;
                 await Task.Run(() => s_bl.Volunteer.Create(volunteer));
 
-                // Show success message and close the window
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -181,7 +209,94 @@ namespace PL.Volunteer
             }
             catch (Exception ex)
             {
-                // Display error message in case of failure
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
+            }
+
+        }
+
+        //private async void UpdateVolunteer()
+        //{
+        //    try
+        //    {
+        //        var volunteer = Volunteer;
+        //        await Task.Run(() => s_bl.Volunteer.Update(volunteer, volunteer.Id));
+
+        //        await Application.Current.Dispatcher.InvokeAsync(() =>
+        //        {
+        //            MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        //            this.Close();
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await Application.Current.Dispatcher.InvokeAsync(() =>
+        //        {
+        //            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        });
+        //    }
+        //}
+
+        private async void UpdateVolunteer1()
+        {
+            try
+            {
+                var volunteer = Volunteer;
+
+                // עדכון המתנדב ב-BL בצורה אסינכרונית
+                await Task.Run(() =>
+                {
+                    s_bl.Volunteer.Update(volunteer, volunteer.Id);
+                    //s_bl.Volunteer.Read(volunteer.Id);
+
+                });
+
+
+                // הצגת הודעת הצלחה ב-UI thread אחרי סיום העדכון
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                // טיפול בשגיאה ב-UI thread
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
+            }
+        }
+        private async void UpdateVolunteer2()
+        {
+            try
+            {
+                var volunteer = Volunteer;
+
+                // עדכון המתנדב ב-BL בצורה אסינכרונית
+                await Task.Run(() =>
+                {
+                    s_bl.Volunteer.Update(volunteer, volunteer.Id);
+                });
+
+                // הצגת הודעת הצלחה ב-UI thread אחרי סיום העדכון
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    refresh();
+
+                    MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // כאן אתה יכול לעדכן את ה-Volunteer על ה-UI
+                    //Volunteer = s_bl.Volunteer.Read(volunteer.Id); // טעינה מחדש של המתנדב
+                    this.Close();
+                });
+            }
+            catch (Exception ex)
+            {
+                // טיפול בשגיאה ב-UI thread
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -189,64 +304,43 @@ namespace PL.Volunteer
             }
         }
 
-        // Method to update an existing volunteer (asynchronous)
-    private async void UpdateVolunteer()
-{
-    try
-    {
-        var volunteer = Volunteer;
-        
-        // קבלת המתנדב הנוכחי מה-BL
-        var currentVolunteer = s_bl.Volunteer.Read(volunteer.Id);
 
-        // השוואה בין הנתונים הנוכחיים לנתונים החדשים
-        var updatedVolunteer = new BO.Volunteer
+        private async void UpdateVolunteer()
         {
-            Id = volunteer.Id,
-            Name = volunteer.Name != currentVolunteer.Name ? volunteer.Name : currentVolunteer.Name,
-            Number_phone = volunteer.Number_phone != currentVolunteer.Number_phone ? volunteer.Number_phone : currentVolunteer.Number_phone,
-            Email = volunteer.Email != currentVolunteer.Email ? volunteer.Email : currentVolunteer.Email,
-            Active = volunteer.Active != currentVolunteer.Active ? volunteer.Active : currentVolunteer.Active,
-            Distance = volunteer.Distance != currentVolunteer.Distance ? volunteer.Distance : currentVolunteer.Distance,
-            DistanceType = volunteer.DistanceType != currentVolunteer.DistanceType ? volunteer.DistanceType : currentVolunteer.DistanceType,
-            Role = volunteer.Role != currentVolunteer.Role ? volunteer.Role : currentVolunteer.Role,
-            FullCurrentAddress = volunteer.FullCurrentAddress != currentVolunteer.FullCurrentAddress ? volunteer.FullCurrentAddress : currentVolunteer.FullCurrentAddress
-        };
+            try
+            {
+                var volunteer = Volunteer;
+                await Task.Run(() => s_bl.Volunteer.Update(volunteer, volunteer.Id));
 
-        // עדכון המתנדב ב-BL בצורה אסינכרונית
-        await Task.Run(() =>
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show("Volunteer Update successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
+            }
+
+        }
+
+        void refresh()
         {
-            s_bl.Volunteer.Update(updatedVolunteer, volunteer.Id);
-        });
+            s_bl.Volunteer.ReadAll(null, null);
 
-        // הצגת הודעת הצלחה ב-UI thread אחרי סיום העדכון
-        await Application.Current.Dispatcher.InvokeAsync(() =>
-        {
-            MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
-        });
-    }
-    catch (Exception ex)
-    {
-        // טיפול בשגיאה ב-UI thread
-        await Application.Current.Dispatcher.InvokeAsync(() =>
-        {
-            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        });
-    }
-}
+        }
 
-
-        // PropertyChanged event to notify when a property changes
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        // Helper method to notify property change for data binding
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Event handler for DistanceType ComboBox selection change
         private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.DistanceType selectedDistanceType)
@@ -255,7 +349,6 @@ namespace PL.Volunteer
             }
         }
 
-        // Event handler for Role ComboBox selection change
         private void cbRoles_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Role selectedRole)
@@ -264,4 +357,24 @@ namespace PL.Volunteer
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
