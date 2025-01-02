@@ -7,60 +7,50 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-         Closed="Window_Closed"
-         Loaded="MainWindow_Loaded" 
-        >
-    
+        Closed="Window_Closed"
+        Loaded="MainWindow_Loaded"
+        FontFamily="Courier New">
 
-    <!-- Main Grid -->
-    <Grid>
+    <!-- Main Grid with pastel color -->
+    <Grid RenderTransformOrigin="0.53,0.545" Background="#F0F8FF">
+        <!-- Light pastel blue background -->
         <!-- Define rows and columns -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <!-- System clock area -->
-            <RowDefinition Height="2*"/>
-            <!-- Configuration variables area -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row for time display -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row for clock advancing buttons -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row for configuration buttons -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row for handle calls and handle volunteers -->
             <RowDefinition Height="1*"/>
-            <!-- Navigation buttons -->
+            <!-- Row for remaining content -->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <!-- Main column -->
+            <!-- Single column for simplicity -->
         </Grid.ColumnDefinitions>
 
-        <!-- System clock area -->
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <!-- Clock -->
-                <RowDefinition Height="*"/>
-                <!-- Buttons -->
-            </Grid.RowDefinitions>
-            <!-- Label to display the system clock value -->
-            <!---->
-<Label Content="{Binding CurrentTime, StringFormat='{}{0:HH:mm:ss}'}" 
-       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <!-- Buttons to advance the clock -->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="40">
-                <!-- TextBox and button to advance by one minute -->
-                <Button Content="Add One Minute" Click="AddOneMinute_Click" Padding="3" />
+        <!-- Label for the system clock (hour and minutes) with pastel background -->
+        <Label Content="{Binding CurrentTime, StringFormat='{}{0:HH:mm:ss}'}" 
+               HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Grid.Row="0"
+               Background="#E6E6FA" Padding="10"/>
+        <!-- Light lavender pastel background -->
 
-                <!-- TextBox and button to advance by one hour -->
-                <Button Content="Add One Hour" Click="AddOneHour_Click" Padding="5" />
+        <!-- StackPanel for buttons to advance the clock -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="40" Background="#FFFAF0">
+            <!-- Ivory pastel background -->
+            <Button Content="Add One Minute" Click="AddOneMinute_Click" Padding="3" Margin="5" Background="#B0E0E6"/>
+            <!-- Powder Blue -->
+            <Button Content="Add One Hour" Click="AddOneHour_Click" Padding="5" Margin="5" Background="#B0E0E6"/>
+            <Button Content="Add One Day" Click="AddOneDay_Click" Padding="5" Margin="5" Background="#B0E0E6"/>
+            <Button Content="Add One Month" Click="AddOneMonth_Click" Padding="5" Margin="5" Background="#B0E0E6"/>
+            <Button Content="Add One Year" Click="AddOneYear_Click" Padding="5" Margin="5" Background="#B0E0E6"/>
+        </StackPanel>
 
-                <!-- TextBox and button to advance by one day -->
-                <Button Content="Add One Day" Click="AddOneDay_Click" Padding="5" />
-
-                <!-- TextBox and button to advance by one month -->
-                <Button Content="Add One Month" Click="AddOneMonth_Click" Padding="5" />
-
-                <!-- TextBox and button to advance by one year -->
-                <Button Content="Add One Year" Click="AddOneYear_Click" Padding="5" />
-            </StackPanel>
-
-        </Grid>
-
-        <Grid Grid.Row="1">
+        <!-- Configuration Variables Area (Row 2) -->
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <!-- Configuration variable -->
@@ -68,33 +58,34 @@
                 <!-- Update variable button -->
             </Grid.RowDefinitions>
 
-            <!-- TextBox for editing the configuration variable -->
-            <Label Content="Configuration Variable:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,0,0,0" Width="107" Height="40"/>
-            <TextBox HorizontalAlignment="Stretch" Margin="10,5"/>
-
             <!-- Risk Range Configuration -->
-            <Label Content="Risk Range:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,0,0,0" Width="107" Height="40"/>
+            <Label Content="Risk Range:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="106" Height="24" Background="#FFE4E1"/>
+            <!-- Misty Rose pastel -->
 
             <!-- TextBox for Risk Range with Binding to Dependency Property -->
             <TextBox x:Name="RiskRangeTextBox" 
-             Text="{Binding Path=RiskRange, Mode=TwoWay}" 
-             HorizontalAlignment="Stretch" Margin="10,5"/>
+                     Text="{Binding Path=RiskRange, Mode=TwoWay}" Margin="458,0,247,0" TextChanged="RiskRangeTextBox_TextChanged"
+                     Background="#F5FFFA" Height="16" VerticalAlignment="Center"/>
+            <!-- Mint Cream pastel -->
 
             <!-- Button to update Risk Range -->
             <Button Content="Update Risk Range" 
-            HorizontalAlignment="Center" 
-            Margin="8" 
-            Click="UpdateRiskRange_Click"/>
+                    HorizontalAlignment="Left" 
+                    Margin="370,17,0,-35" 
+                    Click="UpdateRiskRange_Click" Grid.Row="1" Background="#B0E0E6"/>
         </Grid>
 
+        <!-- StackPanel for Navigation buttons (Row 3) -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,62,0,213" Width="486" Background="#FFFAF0">
+            <Button Content="Initialize Database" Margin="15" Padding="10" Click="InitializeDatabase_Click" Background="#B0E0E6"/>
+            <Button Content="Reset Database" Margin="15" Padding="10" Click="ResetDatabase_Click" Background="#B0E0E6"/>
+            <Button Content="Simulator" Margin="15" Padding="12" Click="StartSimulator_Click" Background="#B0E0E6"/>
+        </StackPanel>
 
-
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-            <Button Content="Initialize Database" Margin="15" Padding="10" Click="InitializeDatabase_Click"/>
-            <Button Content="Reset Database" Margin="15" Padding="10" Click="ResetDatabase_Click"/>
-            <Button Content="Handle Calls" Margin="15" Padding="10" Click="HandleCalls_Click"/>
-            <Button Content="Handle Volunteers" Margin="15" Padding="10" Click="HandleVolunteers_Click"/>
-            <Button Content="Simulator" Margin="15" Padding="10" Click="StartSimulator_Click"/>
+        <!-- StackPanel for Handle Calls and Handle Volunteers buttons (Row 4) -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="262,172,0,0" Height="108" VerticalAlignment="Top" Width="322" Background="#FFFAF0">
+            <Button Content="Handle Calls" Margin="15" Padding="10" Click="HandleCalls_Click" Background="#B0E0E6"/>
+            <Button Content="Handle Volunteers" Margin="15" Padding="10" Click="HandleVolunteers_Click" Background="#B0E0E6"/>
         </StackPanel>
 
     </Grid>

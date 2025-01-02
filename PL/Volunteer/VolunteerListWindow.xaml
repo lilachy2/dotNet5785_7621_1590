@@ -10,20 +10,18 @@
         Closed="Window_Closed"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
 
-    <Grid>
+    <Grid Background="#F0F8FF">
+        <!-- Light pastel blue background -->
+
         <!-- ListView for displaying volunteers -->
-        <ListView Margin="5" ItemsSource="{Binding VolunteerInList}" 
+        <ListView Margin="5,5,5,57" ItemsSource="{Binding VolunteerInList}" 
                   SelectedItem="{Binding SelectedVolunteer}" 
                   MouseDoubleClick="VolunteerList_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <!-- ID Column -->
+                    <!-- Columns for volunteer details (ID, Name, Active, etc.) -->
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
-
-                    <!-- Name Column -->
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding FullName}" />
-
-                    <!-- Active Column with CheckBox -->
                     <GridViewColumn Header="Active">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -31,23 +29,11 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
-                    <!-- Total Calls Handled Column -->
                     <GridViewColumn Header="Total Calls Handled" DisplayMemberBinding="{Binding TotalCallsHandled}" />
-
-                    <!-- Total Calls Cancelled Column -->
                     <GridViewColumn Header="Total Calls Cancelled" DisplayMemberBinding="{Binding TotalCallsCancelled}" />
-
-                    <!-- Total Calls Expired Column -->
                     <GridViewColumn Header="Total Calls Expired" DisplayMemberBinding="{Binding TotalCallsExpired}" />
-
-                    <!-- Call Id Column -->
                     <GridViewColumn Header="Call Id" DisplayMemberBinding="{Binding CurrentCallId}" />
-
-                    <!-- Call Type Column -->
                     <GridViewColumn Header="Call Type" DisplayMemberBinding="{Binding CurrentCallType}" />
-
-                    <!-- Custom Column for Name with colored Text -->
                     <GridViewColumn Header="Colored Name">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -55,19 +41,14 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
-                    <!-- Delete Button Column -->
                     <GridViewColumn Header="Delete">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Delete" 
-                    Click="DeleteVolunteerButton_Click"
-                    CommandParameter="{Binding}" />
+                                <Button Content="Delete" Background="#FF6347" Foreground="White"
+                                        Click="DeleteVolunteerButton_Click" CommandParameter="{Binding}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
-
                 </GridView>
             </ListView.View>
         </ListView>
@@ -75,17 +56,24 @@
         <!-- ComboBox for Filtering Volunteers by different criteria (Id, Name, Active) -->
         <ComboBox Name="FilterComboBox" 
                   SelectedValue="{Binding SelectedFilter, Mode=TwoWay}"
-                  Width="80"
+                  Width="120"
                   HorizontalAlignment="Right"
                   VerticalAlignment="Top"
                   Margin="5"
                   ItemsSource="{Binding Source={StaticResource VolunteerFilterCollectionKey}}"
-                  SelectionChanged="FilterVolunteerlistByCriteria">
-        </ComboBox>
+                  SelectionChanged="FilterVolunteerlistByCriteria"
+                  Background="#FFFAF0" 
+                  Foreground="#6A5ACD"/>
 
-        <Grid>
-            <!-- Button to add a new volunteer -->
-            <Button Content="ADD Volunteer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="40" Click="AddVolunteerButton_Click" Margin="325,369,0,0"/>
-        </Grid>
+        <!-- Place the "ADD Volunteer" button outside the ListView -->
+        <Button Content="ADD Volunteer" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="98" Height="31" 
+                Click="AddVolunteerButton_Click" 
+                Margin="0,357,0,0" 
+            Background="#B0E0E6" 
+                Foreground="White" 
+                FontWeight="Bold"/>
     </Grid>
 </Window>

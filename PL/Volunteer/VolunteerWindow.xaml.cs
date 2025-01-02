@@ -152,29 +152,31 @@ namespace PL.Volunteer
             }
         }
 
-        
+
 
 
         private async void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
-            { if (Id == 0)
+            {
+                if (Id == 0)
                 {
-                    //AddVolunteer();
+                    // במידה ומדובר במתנדב חדש, נקרא ל- Create ב- BL.
                     var volunteer = Volunteer;
+
+                    // קריאה לפונקציה Create ב- BL שתקרא לפונקציה Create ב- DAL
                     await Task.Run(() => s_bl.Volunteer.Create(volunteer));
 
+                    // הצגת הודעת הצלחה
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
                         MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();
                     });
-
                 }
                 else
                 {
-
-                    //UpdateVolunteer();
+                    // במקרה של עדכון מתנדב קיים
                     await Task.Run(() => s_bl.Volunteer.Update(Volunteer, Volunteer.Id));
 
                     await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -182,11 +184,11 @@ namespace PL.Volunteer
                         MessageBox.Show("Volunteer Update successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();
                     });
-
                 }
             }
             catch (Exception ex)
             {
+                // טיפול בשגיאות
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

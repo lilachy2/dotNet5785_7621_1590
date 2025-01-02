@@ -224,13 +224,9 @@ internal static class VolunteerManager
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
-        // var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
         var calls = _dal.Assignment.ReadAll(ass => ass.VolunteerId == VolunteerId);
 
-        //int totalCallsHandled = calls.Count(ass => ass.TypeEndTreat == DO.TypeEnd.Treated);
-        //int totalCallsCanceled = calls.Count(ass => ass.TypeEndTreat == DO.TypeEnd.SelfCancel);
-        //int totalCallsExpired = calls.Count(ass => ass.TypeEndTreat == DO.TypeEnd.ExpiredCancel);
         int? currentCallId = calls.FirstOrDefault(ass => ass.EndOfTime == null)?.Id;
 
 
