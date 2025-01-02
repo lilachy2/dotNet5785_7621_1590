@@ -29,7 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlTest", "BlTest\BlTest.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{403F9615-3450-47DE-8B33-399CB4BA9E27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{0D71DFB6-885F-4351-A720-6FC97126F78F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{0D71DFB6-885F-4351-A720-6FC97126F78F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CA2CE40-7A02-4B98-B790-D449C8BE5AD1} = {5CA2CE40-7A02-4B98-B790-D449C8BE5AD1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -236,6 +236,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             // 5. Add the volunteer to the data layer
             _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+
         }
         catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
         {

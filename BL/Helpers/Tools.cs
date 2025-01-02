@@ -2,9 +2,11 @@
 using BO;
 using DalApi;
 using DO;
+using System.Net;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+
 
 namespace Helpers;
 internal static class Tools
@@ -166,95 +168,69 @@ internal static class Tools
     /// </summary>
     /// <param name="address">The address to process.</param>
     /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
-  
+
+    
     private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
     {
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}";
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be empty or null.", nameof(address));
 
-        using (HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) })
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&format=json&api_key={ApiKey}";
+
+        try
         {
-            try
+            using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) }) // 5 second timeout
             {
-                HttpResponseMessage response = await client.GetAsync(query).ConfigureAwait(false);
-
-                if (response.IsSuccessStatusCode)
+                // Add "User-Agent" header (required in most APIs)
+                client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
+                HttpResponseMessage response = await client.GetAsync(query);
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    string result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-                    JsonDocument jsonDocument = JsonDocument.Parse(result);
-                    JsonElement results = jsonDocument.RootElement;
-
-                    if (results.ValueKind == JsonValueKind.Array && results.GetArrayLength() > 0)
+                    throw new Exception($"Error in request: {response.StatusCode}");
+                }
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse);
+                JsonElement results = jsonDocument.RootElement;
+                if (results.ValueKind == JsonValueKind.Array && results.GetArrayLength() > 0)
+                {
+                    JsonElement firstResult = results[0];
+                    if (firstResult.TryGetProperty("lat", out JsonElement latElement) &&
+                        firstResult.TryGetProperty("lon", out JsonElement lonElement))
                     {
-                        JsonElement firstResult = results[0];
-
-                        if (firstResult.TryGetProperty("lat", out JsonElement latElement) &&
-                            firstResult.TryGetProperty("lon", out JsonElement lonElement) &&
-                            double.TryParse(latElement.GetString(), out double latitude) &&
-                            double.TryParse(lonElement.GetString(), out double longitude))
+                        if (double.TryParse(latElement.GetString(),
+                            System.Globalization.NumberStyles.Any,
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            out double latitude) &&
+                            double.TryParse(lonElement.GetString(),
+                            System.Globalization.NumberStyles.Any,
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            out double longitude))
                         {
                             return (latitude, longitude);
                         }
                     }
                 }
-
-                return null;
+                throw new Exception("No coordinates found for the given address.");
             }
-            catch (TaskCanceledException)
-            {
-                Console.WriteLine("Request was canceled or timed out.");
-                return null;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                return null;
-            }
+        }
+        catch (TimeoutException)
+        {
+            throw new Exception("The request timed out.");
+        }
+        catch (HttpRequestException ex)
+        {
+            throw new Exception($"Request error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"General error: {ex.Message}");
         }
     }
 
 
-    //internal static void CheckId(int id)
-    //{
-    //    // Convert the integer ID to a string to process individual digits
-    //    string idString = id.ToString();
 
-    //    // Ensure the ID is exactly 9 digits long
-    //    if (idString.Length != 9)
-    //    {
-    //        throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
-    //    }
 
-    //    int sum = 0;
-
-    //    // Iterate through each digit in the ID
-    //    for (int i = 0; i < 9; i++)
-    //    {
-    //        // Convert the character to its numeric value
-    //        int digit = idString[i] - '0';
-
-    //        // Determine the multiplier: 1 for odd positions, 2 for even positions
-    //        int multiplier = (i % 2) + 1;
-
-    //        // Multiply the digit by the multiplier
-    //        int product = digit * multiplier;
-
-    //        // If the result is two digits, sum the digits (e.g., 14 -> 1 + 4)
-    //        if (product > 9)
-    //        {
-    //            product = product / 10 + product % 10;
-    //        }
-
-    //        // Add the processed digit to the total sum
-    //        sum += product;
-    //    }
-
-    //    // תעודת זהות תקינה אם סכום ספרות הביקורת מתחלק ב-10
-    //    if (sum % 10 != 0)
-    //    {
-    //        throw new BO.BlWrongItemtException($"this ID {id} does not posssible");
-    //    }
-    //}
 
     internal static void CheckId(int id)
     {

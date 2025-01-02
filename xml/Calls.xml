@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>30.48404020788022</Latitude>
-    <Longitude>34.899253474455655</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.93591247638025</Latitude>
+    <Longitude>35.76401281393649</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.44431663130468</Latitude>
-    <Longitude>35.79133932714014</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.135203609881394</Latitude>
+    <Longitude>35.37852473697226</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.26641624368884</Latitude>
-    <Longitude>35.428301247116416</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.08381948780327</Latitude>
+    <Longitude>35.038724099587405</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.38117415869694</Latitude>
-    <Longitude>35.19596928763021</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.960387672971457</Latitude>
+    <Longitude>34.354814189074155</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.408095021762264</Latitude>
-    <Longitude>34.36226728385077</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.02104738178213</Latitude>
+    <Longitude>34.585296577785655</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.194000309002394</Latitude>
-    <Longitude>35.86819804378578</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.611926336685748</Latitude>
+    <Longitude>34.65798573720973</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.743606481969092</Latitude>
-    <Longitude>35.254622837870045</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.223205039838625</Latitude>
+    <Longitude>35.59480168350129</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.05001311206879</Latitude>
-    <Longitude>35.793285776221026</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.18269299541043</Latitude>
+    <Longitude>34.91960753792337</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.33750419440602</Latitude>
-    <Longitude>35.85185754822281</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.335377427424998</Latitude>
+    <Longitude>35.04866227016332</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.02309685203107</Latitude>
-    <Longitude>35.17079216491383</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.947882806350947</Latitude>
+    <Longitude>35.22859260675688</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.535732867946333</Latitude>
-    <Longitude>34.7460431609139</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.47946449423697</Latitude>
+    <Longitude>34.92766567221012</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.354394942951956</Latitude>
-    <Longitude>35.62166213614586</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.873851254530727</Latitude>
+    <Longitude>35.32140956010238</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.95782133452084</Latitude>
-    <Longitude>34.637355995667406</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.15183683035892</Latitude>
+    <Longitude>35.375570955942194</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.8516606574564</Latitude>
-    <Longitude>34.52095461808845</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.14236108143608</Latitude>
+    <Longitude>34.35104287563291</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.007159127088684</Latitude>
-    <Longitude>34.52941974003754</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.069911613424757</Latitude>
+    <Longitude>35.84484719896345</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.36378537750942</Latitude>
-    <Longitude>35.148380781606285</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.571620970477905</Latitude>
+    <Longitude>35.36631691013815</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.99382982197846</Latitude>
-    <Longitude>35.728818973587224</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.912872538214412</Latitude>
+    <Longitude>35.3942698806478</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.68330990554407</Latitude>
-    <Longitude>35.781031637429614</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.111297035567528</Latitude>
+    <Longitude>34.82246251684282</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.19135076051075</Latitude>
-    <Longitude>35.64400728431654</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.980709158309132</Latitude>
+    <Longitude>35.527799699611016</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.11759918920252</Latitude>
-    <Longitude>35.329937044857985</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.310904723404974</Latitude>
+    <Longitude>35.13118062117606</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.82204758064634</Latitude>
-    <Longitude>35.29229314892048</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.7585312990645</Latitude>
+    <Longitude>35.7854507116958</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.86365812110221</Latitude>
-    <Longitude>35.49690125023957</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.06683640411537</Latitude>
+    <Longitude>35.888821617368606</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.43652545047541</Latitude>
-    <Longitude>35.26965156331404</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.250301160315416</Latitude>
+    <Longitude>35.77425393099342</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.97643242748959</Latitude>
-    <Longitude>35.18330304652268</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.729326324771154</Latitude>
+    <Longitude>35.62573197559378</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.167852036949654</Latitude>
-    <Longitude>34.654893388229375</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.956875671762525</Latitude>
+    <Longitude>35.893842181899544</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.223451611825148</Latitude>
-    <Longitude>34.55487616873557</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.16849488474174</Latitude>
+    <Longitude>34.47450563980942</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.603676613538255</Latitude>
-    <Longitude>35.523570842502785</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.66946767235374</Latitude>
+    <Longitude>35.896522087795034</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.08138480859476</Latitude>
-    <Longitude>34.39888035420996</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.42615024577271</Latitude>
+    <Longitude>34.766398073444975</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.036710274681944</Latitude>
-    <Longitude>35.54780742838272</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.967017074046964</Latitude>
+    <Longitude>34.63806039571644</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.901888929429255</Latitude>
-    <Longitude>35.47796951732669</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.0909549193278</Latitude>
+    <Longitude>34.768177368505384</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.68557445637298</Latitude>
-    <Longitude>35.68501079589644</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.439002286266994</Latitude>
+    <Longitude>35.723662939660336</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.568231518881312</Latitude>
-    <Longitude>34.57335778971094</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.73415685286388</Latitude>
+    <Longitude>34.62777228124348</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.212224239143342</Latitude>
-    <Longitude>35.786657509111556</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.553247246859787</Latitude>
+    <Longitude>34.34126782607968</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.745225729348572</Latitude>
-    <Longitude>34.81558932564241</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.60399598337274</Latitude>
+    <Longitude>35.70116391011164</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.52750850832617</Latitude>
-    <Longitude>35.26378612992726</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.847330448485604</Latitude>
+    <Longitude>35.246042025035756</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.704642163216764</Latitude>
-    <Longitude>35.32624898873257</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.856973005575675</Latitude>
+    <Longitude>35.86873529909401</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.24711856030749</Latitude>
-    <Longitude>34.776352679685104</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.623982599523366</Latitude>
+    <Longitude>34.96658140314299</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.92391178503607</Latitude>
-    <Longitude>34.92994789652394</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.32341428383986</Latitude>
+    <Longitude>34.81276625001398</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.32131407883271</Latitude>
-    <Longitude>35.56579414715768</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.610211478404768</Latitude>
+    <Longitude>35.288339699917124</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.883278394557436</Latitude>
-    <Longitude>35.200048092037406</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.389734964972465</Latitude>
+    <Longitude>34.98784033116248</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.103810345323193</Latitude>
-    <Longitude>35.5405172105712</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.581965653686595</Latitude>
+    <Longitude>34.93792926252226</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.811653193668526</Latitude>
-    <Longitude>34.76396652410947</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.970915745308325</Latitude>
+    <Longitude>35.74197135034559</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.31070876355834</Latitude>
-    <Longitude>35.80613382636678</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.21968196765878</Latitude>
+    <Longitude>34.910106470085374</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.098017690722358</Latitude>
-    <Longitude>34.327519348472784</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.98734401801089</Latitude>
+    <Longitude>35.818233122618395</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.968230356146986</Latitude>
-    <Longitude>34.81987282720454</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.26158199651087</Latitude>
+    <Longitude>34.78784132149318</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.97663445057572</Latitude>
-    <Longitude>35.29387576382961</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.963680352775</Latitude>
+    <Longitude>35.3121424557009</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.66132499244731</Latitude>
-    <Longitude>35.88950082715887</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.870071559110592</Latitude>
+    <Longitude>34.36772656939861</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.069890870017485</Latitude>
-    <Longitude>35.87259897727772</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.15103803786198</Latitude>
+    <Longitude>34.49750159072254</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.898850257847716</Latitude>
-    <Longitude>35.2528226913523</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.348946728656166</Latitude>
+    <Longitude>34.326411178559</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.208609654847663</Latitude>
-    <Longitude>34.62297696384424</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.280928351136836</Latitude>
+    <Longitude>34.96743563289959</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>11 Allenby St, Tel Aviv, Israel</ReadAddress>
-    <OpeningTime>2024-12-31T22:10:08</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Arlozorov St, Tel Aviv, Israel</ReadAddress>
+    <OpeningTime>2025-01-01T16:56:21</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

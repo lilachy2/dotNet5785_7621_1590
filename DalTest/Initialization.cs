@@ -50,6 +50,153 @@ public static class Initialization
     "4 Hanegev St, Eilat, Israel"
     };
 
+    // Israeli Addresses
+    static string[] israeliAddresses = new string[]
+    {
+    "1 Rothschild Blvd, Tel Aviv",
+    "2 Jabotinsky St, Ramat Gan",
+    "3 Herzl St, Haifa",
+    "4 Ben Yehuda St, Jerusalem",
+    "5 Weizmann St, Rehovot",
+    "6 Dizengoff St, Tel Aviv",
+    "7 Haneviim St, Jerusalem",
+    "8 Hahistadrut Blvd, Haifa",
+    "9 Begin Blvd, Beersheba",
+    "10 Hahagana St, Ashdod",
+    "11 Hahistadrut St, Netanya",
+    "12 Hahistadrut St, Holon",
+    "13 Hahistadrut St, Bat Yam",
+    "14 Hahistadrut St, Rishon LeZion",
+    "15 Hahistadrut St, Petah Tikva",
+    "16 Hahistadrut St, Bnei Brak",
+    "17 Hahistadrut St, Ashkelon",
+    "18 Hahistadrut St, Herzliya",
+    "19 Hahistadrut St, Kfar Saba",
+    "20 Hahistadrut St, Hadera",
+    "21 Hahistadrut St, Modiin",
+    "22 Hahistadrut St, Nazareth",
+    "23 Hahistadrut St, Ramat Gan",
+    "24 Hahistadrut St, Raanana",
+    "25 Hahistadrut St, Givatayim",
+    "26 Hahistadrut St, Acre (Akko)",
+    "27 Hahistadrut St, Eilat",
+    "28 Hahistadrut St, Kiryat Gat",
+    "29 Hahistadrut St, Kiryat Motzkin",
+    "30 Hahistadrut St, Kiryat Yam",
+    "31 Hahistadrut St, Kiryat Bialik",
+    "32 Hahistadrut St, Kiryat Ata",
+    "33 Hahistadrut St, Nahariya",
+    "34 Hahistadrut St, Tiberias",
+    "35 Hahistadrut St, Rosh HaAyin",
+    "36 Hahistadrut St, Yavne",
+    "37 Hahistadrut St, Or Yehuda",
+    "38 Hahistadrut St, Lod",
+    "39 Hahistadrut St, Ramla",
+    "40 Hahistadrut St, Kfar Yona",
+    "41 Hahistadrut St, Sderot",
+    "42 Hahistadrut St, Dimona",
+    "43 Hahistadrut St, Arad",
+    "44 Hahistadrut St, Ma'alot-Tarshiha",
+    "45 Hahistadrut St, Migdal HaEmek",
+    "46 Hahistadrut St, Karmiel",
+    "47 Hahistadrut St, Sakhnin",
+    "48 Hahistadrut St, Tamra",
+    "49 Hahistadrut St, Umm al-Fahm",
+    "50 Hahistadrut St, Qalansawe"
+    };
+
+    // International Addresses
+    static string[] internationalAddresses = new string[]
+    {
+    // ארצות הברית
+    "123 5th Avenue, New York, NY, USA",
+    "456 Michigan Avenue, Chicago, IL, USA",
+    "789 Market Street, San Francisco, CA, USA",
+    "321 Boylston Street, Boston, MA, USA",
+    "654 Broadway, Nashville, TN, USA",
+    
+    // בריטניה
+    "10 Downing Street, London, UK",
+    "45 Oxford Street, London, UK",
+    "78 Prince Street, Edinburgh, Scotland, UK",
+    "23 Castle Street, Cardiff, Wales, UK",
+    "56 Victoria Square, Birmingham, UK",
+    
+    // צרפת
+    "12 Rue de Rivoli, Paris, France",
+    "34 Avenue des Champs-Élysées, Paris, France",
+    "67 Rue Paradis, Marseille, France",
+    "89 Rue de la République, Lyon, France",
+    "23 Place Bellecour, Lyon, France",
+    
+    // גרמניה
+    "45 Kurfürstendamm, Berlin, Germany",
+    "78 Maximilianstrasse, Munich, Germany",
+    "90 Zeil, Frankfurt, Germany",
+    "12 Neuer Wall, Hamburg, Germany",
+    "34 Königsallee, Düsseldorf, Germany",
+    
+    // איטליה
+    "56 Via del Corso, Rome, Italy",
+    "78 Via Monte Napoleone, Milan, Italy",
+    "90 Via Roma, Florence, Italy",
+    "23 Via Toledo, Naples, Italy",
+    "45 Via Garibaldi, Venice, Italy",
+    
+    // ספרד
+    "67 Gran Via, Madrid, Spain",
+    "89 Las Ramblas, Barcelona, Spain",
+    "12 Calle Sierpes, Seville, Spain",
+    "34 Plaza Mayor, Valencia, Spain",
+    "56 Plaza del Pilar, Zaragoza, Spain",
+    
+    // קנדה
+    "78 Yonge Street, Toronto, ON, Canada",
+    "90 Rue Sainte-Catherine, Montreal, QC, Canada",
+    "23 Robson Street, Vancouver, BC, Canada",
+    "45 Stephen Avenue, Calgary, AB, Canada",
+    "67 Spring Garden Road, Halifax, NS, Canada",
+    
+    // אוסטרליה
+    "89 George Street, Sydney, NSW, Australia",
+    "12 Collins Street, Melbourne, VIC, Australia",
+    "34 Queen Street, Brisbane, QLD, Australia",
+    "56 Rundle Mall, Adelaide, SA, Australia",
+    "78 Murray Street, Perth, WA, Australia",
+    
+    // יפן
+    "90 Ginza Street, Chuo City, Tokyo, Japan",
+    "23 Shijo Dori, Kyoto, Japan",
+    "45 Midosuji, Osaka, Japan",
+    "67 Tenjin, Fukuoka, Japan",
+    "89 Motomachi, Yokohama, Japan",
+    
+    // נורבגיה
+    "12 Karl Johans Gate, Oslo, Norway",
+    "34 Torgallmenningen, Bergen, Norway",
+    "56 Olav Tryggvasons Gate, Trondheim, Norway",
+    "78 Strandgata, Tromsø, Norway",
+    "90 Kirkegata, Stavanger, Norway"
+    };
+    static string[] addresses =
+ {
+"King George St 20, Jerusalem, Israel",
+"bit hadfus 7  ,Jerusalem, Israel",
+"Agripas St 10, Jerusalem, Israel",
+"Hapalmach St 25, Jerusalem, Israel",
+"Emek Refaim St 43, Jerusalem, Israel",
+"Hapisga St 18, Jerusalem, Israel",
+"Hillel St 7, Jerusalem, Israel",
+"Derech Hebron 105, Jerusalem, Israel",
+"Bezalel St 12, Jerusalem, Israel",
+"HaNeviim St 29, Jerusalem, Israel",
+"Shivtei Israel St 15, Jerusalem, Israel",
+"Azza St 50, Jerusalem, Israel",
+"Kriyat Hayuvel St 5, Jerusalem, Israel",
+"Prophets St 23, Jerusalem, Israel",
+"Ben Yehuda St 1, Jerusalem, Israel"
+};
+
     static readonly string[] Descriptions =  // <param name="Descriptions">List of event descriptions.</param>
     {
         "A situation where someone has fainted and needs assistance.",            // fainting
@@ -114,7 +261,8 @@ public static class Initialization
             //int p1 = int.Parse(phone); // To perform conversion for the constructor
             string email = name.Replace(" ", ".").ToLower() + "@volunteer.org";
             string? password = "Hey1234@"; // Initial password or null until the volunteer updates it
-            string? address = Addresses[i];
+            string? address = /*Addresses*/internationalAddresses[i];
+            //string? address = "Eiffel Tower, Paris, France";
             Role role;
             if (isFirst)
             {
@@ -137,10 +285,47 @@ public static class Initialization
             s_dal!.Volunteer.Create(new Volunteer(id, name, phone, email, password, role, distanceType, active, address, randomLatitude, randomLongitude, maxDistance)); //stage2
             i = i + 1;
         }
-
-
-
     }
+
+
+    
+    private static (double latitude, double longitude) GetHardcodedCoordinates(string address)
+    {
+        double minLatitude = 29.5;
+        double maxLatitude = 33.5;
+        double minLongitude = 34.3;
+        double maxLongitude = 35.9;
+        // מיפוי כתובות לקואורדינטות קבועות
+        Dictionary<string, (double lat, double lon)> addressMap = new()
+    {
+        {"7 Presidents St, Petah Tikva, Israel", (32.0898, 34.8867)},
+        {"Lev Academic Center, Jerusalem, Israel", (31.7650, 35.1897)},
+        {"45 Rothschild Blvd, Tel Aviv, Israel", (32.0634, 34.7750)},
+        {"12 Herzl St, Haifa, Israel", (32.8191, 34.9983)},
+        {"20 King David St, Jerusalem, Israel", (31.7767, 35.2234)},
+        {"3 HaNasi Blvd, Be'er Sheva, Israel", (31.2516, 34.7915)},
+        {"14 Jabotinsky St, Rishon LeZion, Israel", (31.9644, 34.8044)},
+        {"10 Arlozorov St, Tel Aviv, Israel", (32.0873, 34.7817)},
+        {"22 Hillel St, Jerusalem, Israel", (31.7800, 35.2200)},
+        {"8 Dizengoff St, Tel Aviv, Israel", (32.0753, 34.7737)},
+        {"5 Ben Yehuda St, Haifa, Israel", (32.8184, 34.9885)},
+        {"16 Weizmann St, Rehovot, Israel", (31.8928, 34.8113)},
+        {"9 Begin Ave, Ashdod, Israel", (31.7892, 34.6400)},
+        {"11 Allenby St, Tel Aviv, Israel", (32.0664, 34.7703)},
+        {"4 Hanegev St, Eilat, Israel", (29.5581, 34.9482)}
+    };
+
+        if (addressMap.TryGetValue(address, out var coordinates))
+        {
+            return coordinates;
+        }
+
+        // אם הכתובת לא נמצאה, נחזיר קואורדינטות רנדומליות כגיבוי
+        return ((s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude), (s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude)
+        );
+    }
+
+  
 
     /// <param name="index1"> // Random index for address selection </param>
     /// <param name="index2"> // Random index for call type selection </param>
@@ -253,9 +438,6 @@ public static class Initialization
 
                 }
             }
-          
-                
-             
 
                 s_dal.Assignment?.Create(new Assignment(
                 0,

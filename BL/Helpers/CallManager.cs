@@ -73,7 +73,7 @@ internal static class CallManager
         }
     }
 
-    // CreateCallInProgress and 3 helper methods
+    //CreateCallInProgress and 3 helper methods
     public static BO.CallInProgress GetCallInProgress(int VolunteerId)
     {
 
@@ -88,12 +88,23 @@ internal static class CallManager
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
         // בודק האם הכתובת אמיתית ומחזיר קווי אורך ורוחב עבור הכתובת 
 
-        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == false)// לא כתובת אמיתית 
+        double? LatitudeVolunteer = null;
+        double? LongitudeVolunteer = null;
+        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == true)//  כתובת אמיתית 
         {
-            throw new BlInvalidaddress("Invalid address of Volunteer");// 
+            LongitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+            LatitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
         }
-        double? LatitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        double? LongitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        else
+            throw new BlInvalidaddress("Invalid address of Volunteer");
+        // Ensure latitude and longitude are valid
+        //double volunteerLatitude = doVolunteer.Latitude ?? Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        //double volunteerLongitude = doVolunteer.Longitude ?? Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+
+        //double? LatitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        //double? LongitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        //double? LatitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+        //double? LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
 
 
         return new BO.CallInProgress
@@ -112,6 +123,10 @@ internal static class CallManager
 
         };
     }
+
+
+
+
 
     private const double EarthRadiusKm = 6371.0; // Earth's radius in kilometers
 
