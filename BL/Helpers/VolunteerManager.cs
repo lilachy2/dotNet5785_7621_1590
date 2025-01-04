@@ -18,12 +18,28 @@ internal static class VolunteerManager
             CheckPhonnumber(boVolunteer.Number_phone);
             CheckEmail(boVolunteer.Email);
             Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+            IsStrongPassword(boVolunteer.Password);
         }
         catch (BO.BlWrongItemtException ex)
         {
             throw new BO.BlWrongItemtException($"the item have logic problem", ex);
         }
 
+    }
+
+    public static void IsStrongPassword(string password)
+    {
+        if (password.Length < 8)
+            throw new BlIncorrectPasswordException("Password must be at least 8 characters long.");
+
+        if (!Regex.IsMatch(password, @"[A-Z]"))
+            throw new BlIncorrectPasswordException("Password must contain at least one uppercase letter.");
+
+        if (!Regex.IsMatch(password, @"[a-z]"))
+            throw new BlIncorrectPasswordException("Password must contain at least one lowercase letter.");
+
+        if (!Regex.IsMatch(password, @"\d"))
+            throw new BlIncorrectPasswordException("Password must contain at least one number.");
     }
 
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
@@ -128,7 +144,7 @@ internal static class VolunteerManager
     {
         if (string.IsNullOrWhiteSpace(Number_phone) || !Regex.IsMatch(Number_phone, @"^0\d{9}$"))
         {
-            throw new ArgumentException("PhoneNumber must be a 10-digit number starting with 0.");
+            throw new BlCheckPhonnumberException("PhoneNumber must be a 10-digit number starting with 0.");
         }
     }
     

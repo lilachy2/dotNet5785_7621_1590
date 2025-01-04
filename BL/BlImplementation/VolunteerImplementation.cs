@@ -121,6 +121,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
     }
 
+   
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
         try
@@ -133,8 +134,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
                 boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
             }
 
-            var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); //convert 
-
+            var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
 
             if (boVolunteer.Id != requesterId && DOVolunteer.Role != DO.Role.Manager)
             {
@@ -146,28 +146,42 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             VolunteerManager.CheckFormat(boVolunteer);
             // check logic
             //If the address format is correct, enter the latitude and longitude.
-           
-
 
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
             _dal.Volunteer.Update(DOVolunteer);
-            VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  //stage 5
-            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-           
-            
+            VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  // stage 5
+            VolunteerManager.Observers.NotifyListUpdated(); // stage 5   
 
         }
         catch (DO.DalDoesNotExistException ex)
         {
+            Console.WriteLine($"Error: Volunteer with ID={boVolunteer.Id} does not exist. Exception: {ex.Message}");
             throw new BO.BlDoesNotExistException($"Volunteer with ID={boVolunteer.Id} does not exist.", ex);
+        }
+        catch (BO.Incompatible_ID ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        }
+        catch (BlCheckPhonnumberException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        }
+        catch (BlIncorrectPasswordException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"Error: Failed to update volunteer details. Exception: {ex.Message}");
             throw new BO.BlGeneralException("Failed to update volunteer details.", ex);
         }
     }
+
 
     public void Delete(int volunteerId)
     {

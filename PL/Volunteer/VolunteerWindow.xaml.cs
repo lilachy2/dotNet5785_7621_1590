@@ -219,28 +219,7 @@ namespace PL.Volunteer
 
         }
 
-        //private async void UpdateVolunteer()
-        //{
-        //    try
-        //    {
-        //        var volunteer = Volunteer;
-        //        await Task.Run(() => s_bl.Volunteer.Update(volunteer, volunteer.Id));
-
-        //        await Application.Current.Dispatcher.InvokeAsync(() =>
-        //        {
-        //            MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-        //            this.Close();
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await Application.Current.Dispatcher.InvokeAsync(() =>
-        //        {
-        //            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        });
-        //    }
-        //}
-
+        
         private async void UpdateVolunteer1()
         {
             try

@@ -224,4 +224,17 @@
     <Active>false</Active>
     <distance>10</distance>
   </Volunteer>
-</ArrayOfVolunteer>
+  <Volunteer>
+    <Id>324291608</Id>
+    <Name>maoz</Name>
+    <Number_phone>0528050840</Number_phone>
+    <Email>m@gmail.com</Email>
+    <Password />
+    <Role>Manager</Role>
+    <Distance_Type>driving_distance</Distance_Type>
+    <FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress>
+    <Latitude />
+    <Longitude />
+    <Active>true</Active>
+    <distance>65</distance>
+  </Volunteer>VolunteerVolunteerVolunteer<Volunteer><Id>324291590</Id><Name>yalin</Name><Number_phone>0528050630</Number_phone><Email>y@gmail.com</Email><Password>Ya3242915906</Password><Role>Manager</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress><Latitude>48.8582599</Latitude><Longitude>2.2945006358633115</Longitude><Active>true</Active><distance>12</distance></Volunteer></ArrayOfVolunteer>

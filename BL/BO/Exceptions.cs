@@ -105,5 +105,11 @@ public class Bl_Volunteer_Cant_UpdateCancelTreatmentException : Exception
     public Bl_Volunteer_Cant_UpdateCancelTreatmentException(string message, Exception innerException)
               : base(message, innerException) { }
 }
+public class BlCheckPhonnumberException : Exception
+{
+    public BlCheckPhonnumberException(string? message) : base(message) { }
+    public BlCheckPhonnumberException(string message, Exception innerException)
+              : base(message, innerException) { }
+}
 
 
