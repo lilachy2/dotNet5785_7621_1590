@@ -1,240 +1,213 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVolunteer>
   <Volunteer>
-    <Id>404744904</Id>
+    <Id>237962366</Id>
     <Name>Avi Cohen</Name>
-    <Number_phone>0554408259</Number_phone>
+    <Number_phone>0544090686</Number_phone>
     <Email>avi.cohen@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>123 5th Avenue, New York, NY, USA</FullCurrentAddress>
-    <Latitude>31.173089668736115</Latitude>
-    <Longitude>35.03454870371489</Longitude>
+    <Latitude>30.685371779205667</Latitude>
+    <Longitude>34.358756523322796</Longitude>
     <Active>true</Active>
-    <distance>14</distance>
+    <distance>19</distance>
   </Volunteer>
   <Volunteer>
-    <Id>923029198</Id>
+    <Id>497606108</Id>
     <Name>Sara Levi</Name>
-    <Number_phone>0559762227</Number_phone>
+    <Number_phone>0509098235</Number_phone>
     <Email>sara.levi@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>456 Michigan Avenue, Chicago, IL, USA</FullCurrentAddress>
-    <Latitude>31.655274215722706</Latitude>
-    <Longitude>34.58203340710654</Longitude>
+    <Latitude>32.154015329505675</Latitude>
+    <Longitude>35.25762643836394</Longitude>
     <Active>true</Active>
-    <distance>17</distance>
+    <distance>12</distance>
   </Volunteer>
   <Volunteer>
-    <Id>315191069</Id>
+    <Id>517891019</Id>
     <Name>Yael Ben David</Name>
-    <Number_phone>0518887954</Number_phone>
+    <Number_phone>0504570103</Number_phone>
     <Email>yael.ben.david@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>789 Market Street, San Francisco, CA, USA</FullCurrentAddress>
-    <Latitude>33.39230277727441</Latitude>
-    <Longitude>34.68541272063566</Longitude>
+    <Latitude>30.839301662614165</Latitude>
+    <Longitude>34.78313215919509</Longitude>
     <Active>true</Active>
-    <distance>18</distance>
+    <distance>9</distance>
   </Volunteer>
   <Volunteer>
-    <Id>562094620</Id>
+    <Id>672645101</Id>
     <Name>Nir Azulay</Name>
-    <Number_phone>0514800549</Number_phone>
+    <Number_phone>0526937281</Number_phone>
     <Email>nir.azulay@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>321 Boylston Street, Boston, MA, USA</FullCurrentAddress>
-    <Latitude>30.895132938478284</Latitude>
-    <Longitude>35.41313507940801</Longitude>
+    <Latitude>33.36609655317241</Latitude>
+    <Longitude>34.75750144178536</Longitude>
     <Active>true</Active>
-    <distance>10</distance>
+    <distance>12</distance>
   </Volunteer>
   <Volunteer>
-    <Id>199356698</Id>
+    <Id>615827281</Id>
     <Name>Tamar Gilad</Name>
-    <Number_phone>0558112280</Number_phone>
+    <Number_phone>0539925385</Number_phone>
     <Email>tamar.gilad@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>654 Broadway, Nashville, TN, USA</FullCurrentAddress>
-    <Latitude>31.78618639976643</Latitude>
-    <Longitude>34.41112744880526</Longitude>
+    <Latitude>29.870633148669167</Latitude>
+    <Longitude>34.5095845159578</Longitude>
     <Active>true</Active>
-    <distance>11</distance>
+    <distance>12</distance>
   </Volunteer>
   <Volunteer>
-    <Id>829321249</Id>
+    <Id>155315681</Id>
     <Name>Roni Shaked</Name>
-    <Number_phone>0515609290</Number_phone>
+    <Number_phone>0529252028</Number_phone>
     <Email>roni.shaked@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>10 Downing Street, London, UK</FullCurrentAddress>
-    <Latitude>32.27437469044142</Latitude>
-    <Longitude>34.84652510584822</Longitude>
+    <Latitude>30.727734435831376</Latitude>
+    <Longitude>34.79673304859268</Longitude>
     <Active>true</Active>
-    <distance>18</distance>
+    <distance>17</distance>
   </Volunteer>
   <Volunteer>
-    <Id>478799916</Id>
+    <Id>346815036</Id>
     <Name>Lior Peretz</Name>
-    <Number_phone>0564665473</Number_phone>
+    <Number_phone>0577840234</Number_phone>
     <Email>lior.peretz@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>45 Oxford Street, London, UK</FullCurrentAddress>
-    <Latitude>30.62809719168615</Latitude>
-    <Longitude>35.13467086548531</Longitude>
+    <Latitude>30.2728489018755</Latitude>
+    <Longitude>35.65336973019519</Longitude>
     <Active>true</Active>
-    <distance>13</distance>
+    <distance>17</distance>
   </Volunteer>
   <Volunteer>
-    <Id>464174768</Id>
+    <Id>689398092</Id>
     <Name>Meir Shechter</Name>
-    <Number_phone>0502221482</Number_phone>
+    <Number_phone>0576218404</Number_phone>
     <Email>meir.shechter@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>78 Prince Street, Edinburgh, Scotland, UK</FullCurrentAddress>
-    <Latitude>30.32536507948534</Latitude>
-    <Longitude>35.01845869879371</Longitude>
+    <Latitude>33.476447758467046</Latitude>
+    <Longitude>34.75509341326245</Longitude>
     <Active>true</Active>
-    <distance>13</distance>
+    <distance>16</distance>
   </Volunteer>
   <Volunteer>
-    <Id>138723779</Id>
+    <Id>340948950</Id>
     <Name>Efrat Halevi</Name>
-    <Number_phone>0578467977</Number_phone>
+    <Number_phone>0562088220</Number_phone>
     <Email>efrat.halevi@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>23 Castle Street, Cardiff, Wales, UK</FullCurrentAddress>
-    <Latitude>29.96164368745591</Latitude>
-    <Longitude>34.95681895213375</Longitude>
+    <Latitude>30.129279203342186</Latitude>
+    <Longitude>35.30917339067415</Longitude>
     <Active>true</Active>
-    <distance>11</distance>
+    <distance>5</distance>
   </Volunteer>
   <Volunteer>
-    <Id>908181388</Id>
+    <Id>530778091</Id>
     <Name>Ofir Bar</Name>
-    <Number_phone>0513924406</Number_phone>
+    <Number_phone>0577585381</Number_phone>
     <Email>ofir.bar@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>56 Victoria Square, Birmingham, UK</FullCurrentAddress>
-    <Latitude>30.699656365900523</Latitude>
-    <Longitude>34.907434951208415</Longitude>
+    <Latitude>30.16475683877038</Latitude>
+    <Longitude>35.25020505177929</Longitude>
     <Active>true</Active>
-    <distance>8</distance>
+    <distance>18</distance>
   </Volunteer>
   <Volunteer>
-    <Id>725161243</Id>
+    <Id>945609498</Id>
     <Name>Maya Tzur</Name>
-    <Number_phone>0516133581</Number_phone>
+    <Number_phone>0542382762</Number_phone>
     <Email>maya.tzur@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>12 Rue de Rivoli, Paris, France</FullCurrentAddress>
-    <Latitude>31.774609885683244</Latitude>
-    <Longitude>34.85939646184222</Longitude>
+    <Latitude>31.786543313406085</Latitude>
+    <Longitude>35.609838735675034</Longitude>
     <Active>true</Active>
-    <distance>14</distance>
+    <distance>19</distance>
   </Volunteer>
   <Volunteer>
-    <Id>389440537</Id>
+    <Id>125404845</Id>
     <Name>Noa Mizrahi</Name>
-    <Number_phone>0542541836</Number_phone>
+    <Number_phone>0514933382</Number_phone>
     <Email>noa.mizrahi@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>34 Avenue des Champs-Élysées, Paris, France</FullCurrentAddress>
-    <Latitude>32.78688773428583</Latitude>
-    <Longitude>34.65851545872592</Longitude>
+    <Latitude>31.014262491979284</Latitude>
+    <Longitude>35.35174273496201</Longitude>
     <Active>true</Active>
-    <distance>14</distance>
+    <distance>9</distance>
   </Volunteer>
   <Volunteer>
-    <Id>369422740</Id>
+    <Id>408302670</Id>
     <Name>David Erez</Name>
-    <Number_phone>0522498103</Number_phone>
+    <Number_phone>0514613802</Number_phone>
     <Email>david.erez@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>67 Rue Paradis, Marseille, France</FullCurrentAddress>
-    <Latitude>30.382253916167922</Latitude>
-    <Longitude>35.52640498424524</Longitude>
+    <Latitude>32.24269571790995</Latitude>
+    <Longitude>35.84513773471565</Longitude>
     <Active>true</Active>
-    <distance>11</distance>
+    <distance>10</distance>
   </Volunteer>
   <Volunteer>
-    <Id>768090721</Id>
+    <Id>562592232</Id>
     <Name>Tal Koren</Name>
-    <Number_phone>0512575864</Number_phone>
+    <Number_phone>0517543306</Number_phone>
     <Email>tal.koren@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>89 Rue de la République, Lyon, France</FullCurrentAddress>
-    <Latitude>33.440648623088066</Latitude>
-    <Longitude>35.355596749559275</Longitude>
+    <Latitude>29.680316162932257</Latitude>
+    <Longitude>34.782662027921596</Longitude>
     <Active>true</Active>
-    <distance>10</distance>
+    <distance>18</distance>
   </Volunteer>
   <Volunteer>
-    <Id>692463409</Id>
+    <Id>909954349</Id>
     <Name>Hila Malka</Name>
-    <Number_phone>0547644701</Number_phone>
+    <Number_phone>0573081610</Number_phone>
     <Email>hila.malka@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>23 Place Bellecour, Lyon, France</FullCurrentAddress>
-    <Latitude>33.2369510127414</Latitude>
-    <Longitude>34.677254605131516</Longitude>
+    <Latitude>30.031210486077093</Latitude>
+    <Longitude>34.33389576667717</Longitude>
     <Active>true</Active>
-    <distance>5</distance>
+    <distance>15</distance>
   </Volunteer>
-  <Volunteer>
-    <Id>326017621</Id>
-    <Name>lilach</Name>
-    <Number_phone>0524031048</Number_phone>
-    <Email>lilach2015@gmail.com</Email>
-    <Password />
-    <Role>Manager</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress>
-    <Latitude />
-    <Longitude />
-    <Active>false</Active>
-    <distance>10</distance>
-  </Volunteer>
-  <Volunteer>
-    <Id>324291608</Id>
-    <Name>maoz</Name>
-    <Number_phone>0528050840</Number_phone>
-    <Email>m@gmail.com</Email>
-    <Password />
-    <Role>Manager</Role>
-    <Distance_Type>driving_distance</Distance_Type>
-    <FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress>
-    <Latitude />
-    <Longitude />
-    <Active>true</Active>
-    <distance>65</distance>
-  </Volunteer>VolunteerVolunteerVolunteer<Volunteer><Id>324291590</Id><Name>yalin</Name><Number_phone>0528050630</Number_phone><Email>y@gmail.com</Email><Password>Ya3242915906</Password><Role>Manager</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress><Latitude>48.8582599</Latitude><Longitude>2.2945006358633115</Longitude><Active>true</Active><distance>12</distance></Volunteer></ArrayOfVolunteer>
+</ArrayOfVolunteer>

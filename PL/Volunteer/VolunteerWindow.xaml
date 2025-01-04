@@ -10,6 +10,7 @@
         <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
         <local:EnumToStringConverter x:Key="EnumConverter"/>
+        <local:EnumToBackgroundConverter x:Key="EnumToBackgroundConverter"/>
     </Window.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -30,51 +31,58 @@
             <!-- ID -->
             <Label Content="ID:" Grid.Row="0" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Volunteer.Id}" Grid.Row="0" Margin="100,0" HorizontalAlignment="Stretch" 
-                     IsReadOnly="{Binding Volunteer.Id, Converter={StaticResource ConvertUpdateToTrueKey}}" />
+                     IsReadOnly="{Binding Volunteer.Id, Converter={StaticResource ConvertUpdateToTrueKey}}"/>
 
             <!-- Name -->
             <Label Content="Name:" Grid.Row="1" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Volunteer.Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="100,0" HorizontalAlignment="Stretch" />
+            <TextBox Text="{Binding Volunteer.Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Phone Number -->
             <Label Content="Phone Number:" Grid.Row="2" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Volunteer.Number_phone, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Margin="100,0" HorizontalAlignment="Stretch" />
+            <TextBox Text="{Binding Volunteer.Number_phone, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Email -->
             <Label Content="Email:" Grid.Row="3" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Volunteer.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch" />
+            <TextBox Text="{Binding Volunteer.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Active Status -->
             <Label Content="Active:" Grid.Row="4" HorizontalAlignment="Left" />
-            <CheckBox IsChecked="{Binding Volunteer.Active}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Left" />
+            <CheckBox IsChecked="{Binding Volunteer.Active}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Left"/>
 
-            <!-- Role -->
+            <!-- Role (ComboBox with Background Converter) -->
             <Label Content="Role:" Grid.Row="5" HorizontalAlignment="Left" />
             <ComboBox ItemsSource="{Binding Roles}" 
                       SelectedItem="{Binding Volunteer.Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       SelectionChanged="cbRoles_SelectionChanged"
-                      Grid.Row="5" Margin="100,0" />
+                      Grid.Row="5" Margin="100,0"
+                      Background="{Binding Volunteer.Role, Converter={StaticResource EnumToBackgroundConverter}, ConverterParameter='Enums.Role'}"/>
 
             <!-- Full Current Address -->
             <Label Content="Full Current Address:" Grid.Row="6" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Volunteer.FullCurrentAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch" />
+            <TextBox Text="{Binding Volunteer.FullCurrentAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Distance -->
             <Label Content="Distance:" Grid.Row="7" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Volunteer.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch" />
+            <TextBox Text="{Binding Volunteer.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch"/>
 
-            <!-- Distance Type -->
+            <!-- Distance Type (ComboBox with Background Converter) -->
             <Label Content="Distance Types:" Grid.Row="8" HorizontalAlignment="Left" />
             <ComboBox ItemsSource="{Binding DistanceTypes}" 
                       SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       SelectionChanged="cbDistanceType_SelectionChanged"
-                      Grid.Row="8" Margin="100,0,100,0" />
+                      Grid.Row="8" Margin="100,0,100,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{Binding ., Converter={StaticResource EnumToBackgroundConverter}}">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <!-- Password -->
             <Label Content="Password:" Grid.Row="9" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Volunteer.Password, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Margin="100,0,100,107" />
-
-
+            <TextBox Text="{Binding Volunteer.Password, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Margin="100,0,100,107"/>
 
             <!-- Button (Add/Update) -->
             <Button Content="{Binding ButtonText}" 

@@ -152,9 +152,6 @@ namespace PL.Volunteer
             }
         }
 
-
-
-
         private async void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -195,120 +192,7 @@ namespace PL.Volunteer
                 });
             }
         }
-
-        private async void AddVolunteer()
-        {
-            try
-            {
-                var volunteer = Volunteer;
-                await Task.Run(() => s_bl.Volunteer.Create(volunteer));
-
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-                });
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                });
-            }
-
-        }
-
-        
-        private async void UpdateVolunteer1()
-        {
-            try
-            {
-                var volunteer = Volunteer;
-
-                // עדכון המתנדב ב-BL בצורה אסינכרונית
-                await Task.Run(() =>
-                {
-                    s_bl.Volunteer.Update(volunteer, volunteer.Id);
-                    //s_bl.Volunteer.Read(volunteer.Id);
-
-                });
-
-
-                // הצגת הודעת הצלחה ב-UI thread אחרי סיום העדכון
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-
-                });
-            }
-            catch (Exception ex)
-            {
-                // טיפול בשגיאה ב-UI thread
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                });
-            }
-        }
-        private async void UpdateVolunteer2()
-        {
-            try
-            {
-                var volunteer = Volunteer;
-
-                // עדכון המתנדב ב-BL בצורה אסינכרונית
-                await Task.Run(() =>
-                {
-                    s_bl.Volunteer.Update(volunteer, volunteer.Id);
-                });
-
-                // הצגת הודעת הצלחה ב-UI thread אחרי סיום העדכון
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    refresh();
-
-                    MessageBox.Show("Volunteer updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    // כאן אתה יכול לעדכן את ה-Volunteer על ה-UI
-                    //Volunteer = s_bl.Volunteer.Read(volunteer.Id); // טעינה מחדש של המתנדב
-                    this.Close();
-                });
-            }
-            catch (Exception ex)
-            {
-                // טיפול בשגיאה ב-UI thread
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                });
-            }
-        }
-
-
-        private async void UpdateVolunteer()
-        {
-            try
-            {
-                var volunteer = Volunteer;
-                await Task.Run(() => s_bl.Volunteer.Update(volunteer, volunteer.Id));
-
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show("Volunteer Update successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-                });
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                });
-            }
-
-        }
-
+       
         void refresh()
         {
             s_bl.Volunteer.ReadAll(null, null);
@@ -337,6 +221,7 @@ namespace PL.Volunteer
                 Console.WriteLine($"Selected Role: {selectedRole}");
             }
         }
+
     }
 
 

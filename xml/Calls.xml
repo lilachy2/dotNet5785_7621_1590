@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>30.757021901804812</Latitude>
-    <Longitude>34.85951436480593</Longitude>
+    <Latitude>31.983845462397223</Latitude>
+    <Longitude>34.57622616788883</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1000</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.477714381568475</Latitude>
-    <Longitude>34.304533967680506</Longitude>
+    <Latitude>33.16441291732028</Latitude>
+    <Longitude>35.28376180078391</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1001</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.90147375578876</Latitude>
-    <Longitude>35.48033691418433</Longitude>
+    <Latitude>29.59294280733564</Latitude>
+    <Longitude>34.30282588741558</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1002</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.00577538236313</Latitude>
-    <Longitude>34.60032243476823</Longitude>
+    <Latitude>30.372494246425727</Latitude>
+    <Longitude>34.620159256432494</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1003</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.13888443910049</Latitude>
-    <Longitude>34.977147596587</Longitude>
+    <Latitude>31.105978646579118</Latitude>
+    <Longitude>35.38360818987212</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1004</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.306319175264886</Latitude>
-    <Longitude>35.842319290463735</Longitude>
+    <Latitude>32.21728365717156</Latitude>
+    <Longitude>34.49529100198614</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1005</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.43397563907423</Latitude>
-    <Longitude>35.66466729087825</Longitude>
+    <Latitude>32.441254264633</Latitude>
+    <Longitude>35.26260490582778</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1006</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.76419976465997</Latitude>
-    <Longitude>35.31676972703672</Longitude>
+    <Latitude>31.931894236392516</Latitude>
+    <Longitude>34.760012451322815</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1007</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.931679546214227</Latitude>
-    <Longitude>35.62560778826665</Longitude>
+    <Latitude>32.36973830187497</Latitude>
+    <Longitude>35.82280750075715</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1008</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.75109952793076</Latitude>
-    <Longitude>34.740072022611336</Longitude>
+    <Latitude>31.04083149392322</Latitude>
+    <Longitude>35.061218928612014</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1009</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.314478503059235</Latitude>
-    <Longitude>34.58829619188775</Longitude>
+    <Latitude>30.698563853350315</Latitude>
+    <Longitude>34.4890895326717</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1010</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.17190178163447</Latitude>
-    <Longitude>35.88968564871226</Longitude>
+    <Latitude>30.22428260591857</Latitude>
+    <Longitude>34.458489392685934</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1011</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.580840618077655</Latitude>
-    <Longitude>34.837416982123464</Longitude>
+    <Latitude>30.53785706154071</Latitude>
+    <Longitude>34.748988984479745</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1012</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.669940031565883</Latitude>
-    <Longitude>34.91385740793412</Longitude>
+    <Latitude>30.68486862132353</Latitude>
+    <Longitude>35.66120403484956</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1013</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.872689429996832</Latitude>
-    <Longitude>34.83436988522476</Longitude>
+    <Latitude>29.57477254712478</Latitude>
+    <Longitude>35.16126716924973</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1014</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.971442734309996</Latitude>
-    <Longitude>34.55724091968355</Longitude>
+    <Latitude>30.657742184903366</Latitude>
+    <Longitude>34.40658705513164</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1015</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.173254300152855</Latitude>
-    <Longitude>34.87484508216458</Longitude>
+    <Latitude>32.69236278065003</Latitude>
+    <Longitude>34.49087488306358</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1016</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.72663135531259</Latitude>
-    <Longitude>35.00659967119289</Longitude>
+    <Latitude>30.27626441989197</Latitude>
+    <Longitude>35.352685075966924</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1017</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.818729919260377</Latitude>
-    <Longitude>34.750975844040006</Longitude>
+    <Latitude>32.67750958108449</Latitude>
+    <Longitude>35.26393640518534</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1018</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.78470611196415</Latitude>
-    <Longitude>34.665784753167245</Longitude>
+    <Latitude>31.960921772244262</Latitude>
+    <Longitude>35.80336731753781</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1019</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.867935417971132</Latitude>
-    <Longitude>35.38105898787561</Longitude>
+    <Latitude>29.615813738237808</Latitude>
+    <Longitude>34.76310477116594</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1020</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.192883735685122</Latitude>
-    <Longitude>34.393116347126636</Longitude>
+    <Latitude>29.971448342268264</Latitude>
+    <Longitude>35.797111454258825</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1021</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.15649252651505</Latitude>
-    <Longitude>35.70257182264952</Longitude>
+    <Latitude>32.94168344414008</Latitude>
+    <Longitude>34.421728439556624</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1022</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.276203365260113</Latitude>
-    <Longitude>34.85928582372946</Longitude>
+    <Latitude>32.71386952266796</Latitude>
+    <Longitude>35.18316463929388</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1023</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.254410562116515</Latitude>
-    <Longitude>34.74409593729015</Longitude>
+    <Latitude>30.858468228519698</Latitude>
+    <Longitude>35.770037339995675</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1024</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.775534639961617</Latitude>
-    <Longitude>35.119701336898466</Longitude>
+    <Latitude>32.780606576608335</Latitude>
+    <Longitude>35.71766881965945</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1025</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.051891187158148</Latitude>
-    <Longitude>35.65117389213014</Longitude>
+    <Latitude>32.577379301233435</Latitude>
+    <Longitude>34.93033591043827</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1026</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.053117818653384</Latitude>
-    <Longitude>35.803575777971574</Longitude>
+    <Latitude>31.258203460639777</Latitude>
+    <Longitude>35.431926299512256</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1027</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.887656298179156</Latitude>
-    <Longitude>35.697402753580974</Longitude>
+    <Latitude>32.38735765061913</Latitude>
+    <Longitude>35.49401051720158</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1028</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.71308675056983</Latitude>
-    <Longitude>34.86358835022681</Longitude>
+    <Latitude>33.23049719911517</Latitude>
+    <Longitude>34.88863308383382</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1029</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.39850117436596</Latitude>
-    <Longitude>35.382078408115234</Longitude>
+    <Latitude>29.607238936854632</Latitude>
+    <Longitude>35.71791681169867</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1030</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.226740648140105</Latitude>
-    <Longitude>34.664029305672585</Longitude>
+    <Latitude>32.42327724632831</Latitude>
+    <Longitude>35.895578406625354</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1031</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.274935143246616</Latitude>
-    <Longitude>35.14617268016408</Longitude>
+    <Latitude>30.894414779399284</Latitude>
+    <Longitude>35.89630637101832</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1032</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.340982432820727</Latitude>
-    <Longitude>34.793588566385914</Longitude>
+    <Latitude>32.48440726101028</Latitude>
+    <Longitude>34.874048505100035</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1033</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.39638145848958</Latitude>
-    <Longitude>34.66331600589126</Longitude>
+    <Latitude>32.83546569119753</Latitude>
+    <Longitude>34.60634232072662</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1034</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.894443952209663</Latitude>
-    <Longitude>35.70357464306779</Longitude>
+    <Latitude>31.899487296757293</Latitude>
+    <Longitude>35.76665586954331</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1035</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.985733427197157</Latitude>
-    <Longitude>34.49573660959783</Longitude>
+    <Latitude>33.212778829614486</Latitude>
+    <Longitude>35.55451790745339</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1036</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.337178184482163</Latitude>
-    <Longitude>34.925139310753025</Longitude>
+    <Latitude>31.11087190350278</Latitude>
+    <Longitude>35.120848933991795</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1037</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.557734118512265</Latitude>
-    <Longitude>34.51761642017388</Longitude>
+    <Latitude>32.653054657069866</Latitude>
+    <Longitude>35.84043086611882</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1038</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.986348986409006</Latitude>
-    <Longitude>34.81361066767817</Longitude>
+    <Latitude>30.285013036474</Latitude>
+    <Longitude>35.44663340576377</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1039</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.88636263162114</Latitude>
-    <Longitude>34.49971409389091</Longitude>
+    <Latitude>29.597898082078416</Latitude>
+    <Longitude>35.306399953787654</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1040</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.67999610978465</Latitude>
-    <Longitude>35.17856903335981</Longitude>
+    <Latitude>31.476158475269486</Latitude>
+    <Longitude>34.4851769773374</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1041</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.882389245006703</Latitude>
-    <Longitude>34.33933786741359</Longitude>
+    <Latitude>33.30869221499708</Latitude>
+    <Longitude>35.24285243315618</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1042</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.22997623303009</Latitude>
-    <Longitude>34.971262532819715</Longitude>
+    <Latitude>31.39326834750231</Latitude>
+    <Longitude>34.46382010820975</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1043</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.19651143733283</Latitude>
-    <Longitude>34.77283970846737</Longitude>
+    <Latitude>32.05590916479944</Latitude>
+    <Longitude>35.32973596532597</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1044</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.364343104461557</Latitude>
-    <Longitude>35.86125762295038</Longitude>
+    <Latitude>31.09184954836713</Latitude>
+    <Longitude>34.64639878000187</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1045</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.039764618628357</Latitude>
-    <Longitude>35.80648281974356</Longitude>
+    <Latitude>31.95967560747934</Latitude>
+    <Longitude>35.301095743266785</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1046</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.51279407935081</Latitude>
-    <Longitude>34.30359267475983</Longitude>
+    <Latitude>29.798788367948106</Latitude>
+    <Longitude>35.719365322286386</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1047</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.590432332808028</Latitude>
-    <Longitude>34.50142483887358</Longitude>
+    <Latitude>32.585887646244856</Latitude>
+    <Longitude>34.84134238698586</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1048</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.057704836947963</Latitude>
-    <Longitude>35.264574420780704</Longitude>
+    <Latitude>32.01427707291247</Latitude>
+    <Longitude>35.24865482370234</Longitude>
     <Calltype>heartattack</Calltype>
     <Id>1049</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-01T18:22:41</OpeningTime>
+    <ReadAddress>4 Hanegev St, Eilat, Israel</ReadAddress>
+    <OpeningTime>2025-01-03T20:08:03</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>
