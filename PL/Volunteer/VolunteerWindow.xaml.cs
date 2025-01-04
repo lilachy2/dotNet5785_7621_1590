@@ -23,17 +23,14 @@ namespace PL.Volunteer
         // הנתונים הנוכחיים
         public BO.Volunteer Volunteer
         {
-            //get { return (BO.Volunteer)GetValue(CurrentVolunteerProperty); }
             get
             {
                 if (Application.Current.Dispatcher.CheckAccess())
                 {
-                    // אם אנחנו כבר ב-UI thread, ניתן לגשת ישירות
                     return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
                 }
                 else
                 {
-                    // אם אנחנו לא ב-UI thread, נעשה קריאה ל-UI thread דרך ה-Dispatcher
                     return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
                 }
             }
@@ -49,12 +46,7 @@ namespace PL.Volunteer
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow),
                 new PropertyMetadata(null, OnVolunteerChanged));
 
-        public IEnumerable<BO.DistanceType> DistanceTypes =>
-            Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>();
-
-        public IEnumerable<BO.Role> Roles =>
-            Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>();
-
+       
         public VolunteerWindow(int id = 0)
         {
             Id = id;
@@ -143,7 +135,6 @@ namespace PL.Volunteer
             }
         }
 
-
         private void Window_Closed(object sender, EventArgs e)
         {
             if (Volunteer != null && Volunteer.Id != 0)
@@ -192,11 +183,10 @@ namespace PL.Volunteer
                 });
             }
         }
-       
+
         void refresh()
         {
             s_bl.Volunteer.ReadAll(null, null);
-
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -221,26 +211,5 @@ namespace PL.Volunteer
                 Console.WriteLine($"Selected Role: {selectedRole}");
             }
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -62,8 +62,9 @@
                   Margin="5"
                   ItemsSource="{Binding Source={StaticResource VolunteerFilterCollectionKey}}"
                   SelectionChanged="FilterVolunteerlistByCriteria"
-                  Background="#FFFAF0" 
-                  Foreground="#6A5ACD"/>
+                                    Foreground="#FFFAF0" 
+
+                  Background="#6A5ACD"/>
 
         <!-- Place the "ADD Volunteer" button outside the ListView -->
         <Button Content="ADD Volunteer" 

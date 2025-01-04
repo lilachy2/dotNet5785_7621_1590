@@ -11,6 +11,8 @@
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
         <local:EnumToStringConverter x:Key="EnumConverter"/>
         <local:EnumToBackgroundConverter x:Key="EnumToBackgroundConverter"/>
+        <local:DistanceTypes x:Key="DistanceTypesKey" />
+        <local:Roles x:Key="RolesKey" />
     </Window.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -51,11 +53,20 @@
 
             <!-- Role (ComboBox with Background Converter) -->
             <Label Content="Role:" Grid.Row="5" HorizontalAlignment="Left" />
-            <ComboBox ItemsSource="{Binding Roles}" 
-                      SelectedItem="{Binding Volunteer.Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      SelectionChanged="cbRoles_SelectionChanged"
-                      Grid.Row="5" Margin="100,0"
-                      Background="{Binding Volunteer.Role, Converter={StaticResource EnumToBackgroundConverter}, ConverterParameter='Enums.Role'}"/>
+            <ComboBox ItemsSource="{Binding Source={StaticResource RolesKey}}" 
+          SelectedItem="{Binding Volunteer.Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+          SelectionChanged="cbRoles_SelectionChanged"
+          Grid.Row="5" Margin="100,0"
+          Background="{Binding Volunteer.Role, Converter={StaticResource EnumToBackgroundConverter}, ConverterParameter='Role'}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Grid with Background set by EnumToBackgroundConverter -->
+                        <Grid Background="{Binding Converter={StaticResource EnumToBackgroundConverter}, ConverterParameter='Role'}">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <!-- Full Current Address -->
             <Label Content="Full Current Address:" Grid.Row="6" HorizontalAlignment="Left" />
@@ -65,20 +76,21 @@
             <Label Content="Distance:" Grid.Row="7" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Volunteer.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch"/>
 
-            <!-- Distance Type (ComboBox with Background Converter) -->
             <Label Content="Distance Types:" Grid.Row="8" HorizontalAlignment="Left" />
-            <ComboBox ItemsSource="{Binding DistanceTypes}" 
-                      SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      SelectionChanged="cbDistanceType_SelectionChanged"
-                      Grid.Row="8" Margin="100,0,100,0">
+            <ComboBox ItemsSource="{Binding Source={StaticResource DistanceTypesKey}}"
+          SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+          SelectionChanged="cbDistanceType_SelectionChanged"
+          Grid.Row="8" Margin="100,0,100,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Background="{Binding ., Converter={StaticResource EnumToBackgroundConverter}}">
+                        <Grid Background="{Binding Converter={StaticResource EnumToBackgroundConverter}, ConverterParameter='DistanceType'}">
                             <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
                         </Grid>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+
+
 
             <!-- Password -->
             <Label Content="Password:" Grid.Row="9" HorizontalAlignment="Left" />
