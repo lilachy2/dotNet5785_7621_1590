@@ -6,6 +6,12 @@
     <Application.Resources>
         <local:Roles x:Key="RolesKey" />
         <local:DistanceTypes x:Key="DistanceTypesKey" />
-        <local:VolunteerFilterCollection x:Key="VolunteerFilterCollectionKey" />
+        <local:VolunteerFilterCollection x:Key="VolunteerFilterCollectionKey"/>
+        <local:VolInListEnumToBackgroundConverter x:Key="VolInListEnumToBackgroundConverterKey" />
+        <local:RoleEnumToBackgroundConverter x:Key="RoleEnumToBackgroundConverterKey" />
+        <local:DistanceTypeEnumToBackgroundConverter x:Key="DistanceTypeEnumToBackgroundConverterKey" />
+        <local:RoleEnumToStringConverter x:Key="RoleEnumToStringConverterKey"/>
+
+
     </Application.Resources>
 </Application>

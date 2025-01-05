@@ -166,8 +166,8 @@ internal class CallImplementation : BlApi.ICall
     public void Create(BO.Call boCall)
     {
         // we need add 
-        boCall.Latitude = Tools.GetLatitudeAsync(boCall.FullAddress).Result;
-        boCall.Longitude = Tools.GetLongitudeAsync(boCall.FullAddress).Result;
+        boCall.Latitude = Tools.GetLatitude(boCall.FullAddress);
+        boCall.Longitude = Tools.GetLongitude(boCall.FullAddress);
 
         //boCall.Status = CallManager.CalculateCallStatus();
         //boCall.CallAssignments = null; // for first time not have CallAssignments
@@ -208,8 +208,10 @@ internal class CallImplementation : BlApi.ICall
             CallManager.IsValideCall(BOCall);
             CallManager.IsLogicCall(BOCall);
             Tools.IsAddressValid(BOCall.FullAddress);
-            BOCall.Latitude = Tools.GetLatitudeAsync(BOCall.FullAddress).Result;
-            BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
+            //BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress).Result;
+            //BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;  
+            BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress);
+            BOCall.Longitude = Tools.GetLongitude(BOCall.FullAddress);
             //var doCall= CallManager.BOConvertDO_Call(BOCall.Id);
 
             var doCall = new DO.Call
@@ -343,8 +345,10 @@ internal class CallImplementation : BlApi.ICall
             Email = doVolunteer.Email,
             FullCurrentAddress = doVolunteer.FullCurrentAddress,
             Password = doVolunteer.Password,
-            Latitude = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result,
-            Longitude = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result,
+            //Latitude = Tools.GetLatitude(doVolunteer.FullCurrentAddress).Result,
+            //Longitude = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result,
+            Latitude = Tools.GetLatitude(doVolunteer.FullCurrentAddress),
+            Longitude = Tools.GetLongitude(doVolunteer.FullCurrentAddress),
             Role = (BO.Role)doVolunteer.Role, // המרה ישירה בין ה-Enums
             Active = doVolunteer.Active,
             Distance = doVolunteer.distance,

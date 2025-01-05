@@ -92,8 +92,9 @@ internal static class CallManager
         double? LongitudeVolunteer = null;
         if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == true)//  כתובת אמיתית 
         {
-            LongitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
-            LatitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+            LongitudeVolunteer =  Tools.GetLatitude(doVolunteer.FullCurrentAddress);
+            //LongitudeVolunteer = Task.Run(() => Tools.GetLatitude(doVolunteer.FullCurrentAddress));
+            LatitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
         }
         else
             throw new BlInvalidaddress("Invalid address of Volunteer");
@@ -365,8 +366,11 @@ internal static class CallManager
             Calltype = (BO.Calltype)doCall.Calltype, // Enum conversion
             Description = doCall.VerbalDescription,
             FullAddress = doCall.ReadAddress, // Full address that chack above 
-            Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
-            Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the address
+                                              //Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
+                                              //Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the addres
+
+            Latitude = Tools.GetLatitude(doCall.ReadAddress), // Latitude coordinate of the address
+            Longitude = Tools.GetLongitude(doCall.ReadAddress), // Longitude coordinate of the addres
             OpenTime = doCall.OpeningTime, // Time when the call was opened
             MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
             Status = CalculateCallStatus(doCall), // Current status of the call

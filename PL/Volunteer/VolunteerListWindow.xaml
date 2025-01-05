@@ -10,13 +10,18 @@
         Closed="Window_Closed"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
 
+
     <Grid Background="#F0F8FF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="671*"/>
+            <ColumnDefinition Width="130*"/>
+        </Grid.ColumnDefinitions>
         <!-- Light pastel blue background -->
 
         <!-- ListView for displaying volunteers -->
         <ListView Margin="5,5,5,57" ItemsSource="{Binding VolunteerInList}" 
                   SelectedItem="{Binding SelectedVolunteer}" 
-                  MouseDoubleClick="VolunteerList_MouseDoubleClick">
+                  MouseDoubleClick="VolunteerList_MouseDoubleClick" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <!-- Columns for volunteer details (ID, Name, Active, etc.) -->
@@ -54,25 +59,36 @@
         </ListView>
 
         <!-- ComboBox for Filtering Volunteers by different criteria (Id, Name, Active) -->
-        <ComboBox Name="FilterComboBox" 
-                  SelectedValue="{Binding SelectedFilter, Mode=TwoWay}"
-                  Width="120"
-                  HorizontalAlignment="Right"
-                  VerticalAlignment="Top"
-                  Margin="5"
-                  ItemsSource="{Binding Source={StaticResource VolunteerFilterCollectionKey}}"
-                  SelectionChanged="FilterVolunteerlistByCriteria"
-                                    Foreground="#FFFAF0" 
 
-                  Background="#6A5ACD"/>
+        <ComboBox 
+          Width="103"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Top"
+            ItemsSource="{Binding Source={StaticResource VolunteerFilterCollectionKey}}" 
+           SelectedItem="{Binding Volunteer.VolunteerInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+             SelectionChanged="FilterVolunteerlistByCriteria" Margin="17,10,0,0" Height="21" Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- Grid with Background set by RoleEnumToBackgroundConverter -->
+                    <Grid Background="{Binding Converter={StaticResource VolInListEnumToBackgroundConverterKey}}">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+
+
 
         <!-- Place the "ADD Volunteer" button outside the ListView -->
         <Button Content="ADD Volunteer" 
-                HorizontalAlignment="Center" 
+                HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
                 Width="98" Height="31" 
                 Click="AddVolunteerButton_Click" 
-                Margin="0,357,0,0" 
+                Margin="351,357,0,0" 
             Background="#B0E0E6" 
                 Foreground="White" 
                 FontWeight="Bold"/>

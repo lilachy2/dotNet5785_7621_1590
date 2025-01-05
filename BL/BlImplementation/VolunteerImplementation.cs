@@ -130,8 +130,10 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
             if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
             {
-                boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
-                boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
+                //boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
+                //boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
+                boVolunteer.Latitude = Tools.GetLatitude(requester.FullCurrentAddress);
+                boVolunteer.Longitude = Tools.GetLongitude(requester.FullCurrentAddress);
             }
 
             var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
@@ -244,8 +246,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             }
 
             // we need add 
-            boVolunteer.Latitude = Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress).Result;
-            boVolunteer.Longitude = Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress).Result;
+            boVolunteer.Latitude = Tools.GetLatitude(boVolunteer.FullCurrentAddress);
+            boVolunteer.Longitude = Tools.GetLongitude(boVolunteer.FullCurrentAddress);
 
             // 5. Add the volunteer to the data layer
             _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)

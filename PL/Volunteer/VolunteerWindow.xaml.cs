@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Controls;
-using System.Threading.Tasks;
 using DO;
 
 namespace PL.Volunteer
@@ -46,7 +45,7 @@ namespace PL.Volunteer
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow),
                 new PropertyMetadata(null, OnVolunteerChanged));
 
-       
+
         public VolunteerWindow(int id = 0)
         {
             Id = id;
@@ -143,7 +142,7 @@ namespace PL.Volunteer
             }
         }
 
-        private async void btnAddUpdate_Click(object sender, RoutedEventArgs e)
+        private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -153,10 +152,10 @@ namespace PL.Volunteer
                     var volunteer = Volunteer;
 
                     // קריאה לפונקציה Create ב- BL שתקרא לפונקציה Create ב- DAL
-                    await Task.Run(() => s_bl.Volunteer.Create(volunteer));
+                    s_bl.Volunteer.Create(volunteer);
 
                     // הצגת הודעת הצלחה
-                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
                         MessageBox.Show("Volunteer added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();
@@ -165,9 +164,9 @@ namespace PL.Volunteer
                 else
                 {
                     // במקרה של עדכון מתנדב קיים
-                    await Task.Run(() => s_bl.Volunteer.Update(Volunteer, Volunteer.Id));
+                    s_bl.Volunteer.Update(Volunteer, Volunteer.Id);
 
-                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
                         MessageBox.Show("Volunteer Update successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();
@@ -177,7 +176,7 @@ namespace PL.Volunteer
             catch (Exception ex)
             {
                 // טיפול בשגיאות
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                Application.Current.Dispatcher.Invoke(() =>
                 {
                     MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 });

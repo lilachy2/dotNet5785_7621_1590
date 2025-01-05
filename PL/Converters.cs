@@ -35,7 +35,7 @@ namespace PL
     }
 
     // Converter שממיר Enum למחרוזת ידידותית
-    public class EnumToStringConverter : IValueConverter
+    public class RoleEnumToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -57,36 +57,82 @@ namespace PL
         }
     }
 
-    public class EnumToBackgroundConverter : IValueConverter
+    public class RoleEnumToBackgroundConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Enum enumValue)
+            
+            BO.Role role = (BO.Role)value;
+
+            // התאמה ל-Enums שונים על פי השדה המועבר כ-parameter
+            switch (role)
             {
-                var fieldName = parameter as string;
-
-                // התאמה ל-Enums שונים על פי השדה המועבר כ-parameter
-                switch (fieldName)
-                {
-                    case "Role.Manager":
-                        return System.Windows.Media.Brushes.LightGoldenrodYellow; // צבע למנהל
-                    case "Role.Volunteer":
-                        return System.Windows.Media.Brushes.LightSkyBlue; // צבע לוולונטר
-
-                    case "DistanceType.Aerial_distance":
-                        return System.Windows.Media.Brushes.LightYellow;
-                    case "DistanceType.walking_distance":
-                        return System.Windows.Media.Brushes.LightCoral;
-                    case "DistanceType.driving_distance":
-                        return System.Windows.Media.Brushes.LightSteelBlue;
-                    case "DistanceType.change_distance_type":
-                        return System.Windows.Media.Brushes.LightPink;
-
-                    default:
-                        return System.Windows.Media.Brushes.Transparent; // ברירת מחדל
-                }
+                case BO.Role.Manager:
+                    return System.Windows.Media.Brushes.LightGoldenrodYellow; // צבע למנהל
+                case BO.Role.Volunteer:
+                    return System.Windows.Media.Brushes.LightSkyBlue; // צבע לוולונטר
+                default:
+                    return System.Windows.Media.Brushes.Transparent;
             }
-            return System.Windows.Media.Brushes.Transparent; // ברירת מחדל אם אין תוצאה
+           
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value; // המרת חזרה לא נדרשת במקרה זה
+        }
+    }public class VolInListEnumToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            
+            BO.VolInList vol = (BO.VolInList)value;
+
+            // התאמה ל-Enums שונים על פי השדה המועבר כ-parameter
+            switch (vol)
+            {
+                case BO.VolInList.Id:
+                    return System.Windows.Media.Brushes.LightGoldenrodYellow; 
+                case BO.VolInList.Name:
+                    return System.Windows.Media.Brushes.LightSkyBlue; 
+                case BO.VolInList.IsActive:
+                    return System.Windows.Media.Brushes.LightPink; 
+                default:
+                    return System.Windows.Media.Brushes.Transparent;
+            }
+           
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value; // המרת חזרה לא נדרשת במקרה זה
+        }
+    }
+    public class DistanceTypeEnumToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            
+               
+            BO.DistanceType distance_type = (BO.DistanceType)value;
+
+            // התאמה ל-Enums שונים על פי השדה המועבר כ-parameter
+            switch (distance_type)
+            {
+                case BO.DistanceType.Aerial_distance:
+                    return System.Windows.Media.Brushes.LightYellow;
+                case BO.DistanceType.walking_distance:
+                    return System.Windows.Media.Brushes.LightCoral;
+                case BO.DistanceType.driving_distance:
+                    return System.Windows.Media.Brushes.LightSteelBlue;
+                case BO.DistanceType.change_distance_type:
+                    return System.Windows.Media.Brushes.LightPink;
+
+                default:
+                    return System.Windows.Media.Brushes.Transparent; // ברירת מחדל
+            }
+
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

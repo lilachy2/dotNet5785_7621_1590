@@ -58,30 +58,33 @@ namespace PL.Volunteer
             DataContext = this;  // Set the DataContext to the window itself for binding
 
             // Initialize ComboBox with Enum values for filtering
-            FilterComboBox.ItemsSource = Enum.GetValues(typeof(VolInList));
+            //FilterComboBox.ItemsSource = Enum.GetValues(typeof(VolInList));
 
             // Load the volunteer list without any filter initially
             UpdateVolunteerList();
         }
 
         // Handle ComboBox selection change event to update the filter
-        private void FilterVolunteerlistByCriteria(object sender, SelectionChangedEventArgs e)
+        private void FilterVolunteerlistByCriteria(object _, SelectionChangedEventArgs e)
         {
-            // Get the selected filter from ComboBox and update the SelectedFilter property
-            var selectedItem = FilterComboBox.SelectedItem as VolInList?;
-            if (selectedItem.HasValue)
+            // Access the selected item directly from e
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is VolInList selectedItem)
             {
-                SelectedFilter = selectedItem.Value;
+                // Update the SelectedFilter property based on the selected item
+                SelectedFilter = selectedItem;
             }
         }
 
+
         // Update the volunteer list based on the selected filter
- 
         private void UpdateVolunteerList()
         {
             try
             {
+                // Query and retrieve the list of volunteers filtered by the selected filter
                 IEnumerable<BO.VolunteerInList> volunteers = queryVolunteerList();
+
+                // Use the dispatcher to update the UI thread with the new volunteer list
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     VolunteerInList = volunteers;
@@ -89,6 +92,7 @@ namespace PL.Volunteer
             }
             catch (Exception ex)
             {
+                // Handle any exceptions that might occur during the volunteer list update
                 MessageBox.Show($"An error occurred while loading the volunteer list: {ex.Message}",
                                 "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -149,6 +153,8 @@ namespace PL.Volunteer
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
         private void AddVolunteerButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -189,40 +195,7 @@ namespace PL.Volunteer
             }
         }
 
-        // Delete button click handler
-        //private void DeleteVolunteerButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (SelectedVolunteer != null)
-        //    {
-        //        // Confirm deletion with the user
-        //        MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this volunteer?",
-        //                                                  "Confirm Deletion",
-        //                                                  MessageBoxButton.YesNo,
-        //                                                  MessageBoxImage.Warning);
-
-        //        if (result == MessageBoxResult.Yes)
-        //        {
-        //            try
-        //            {
-        //                // Call the Delete method in the BL to delete the selected volunteer
-        //                BlApi.Factory.Get().Volunteer.Delete(SelectedVolunteer.Id);
-
-        //                // Refresh the list after deletion (thanks to observer)
-        //                MessageBox.Show("Volunteer deleted successfully.",
-        //                                "Success",
-        //                                MessageBoxButton.OK,
-        //                                MessageBoxImage.Information);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show($"An error occurred while deleting the volunteer: {ex.Message}",
-        //                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //            }
-        //        }
-        //    }
-        //}
-
-        // Handle Delete button click event to delete a volunteer
+       
         private async void DeleteVolunteerButton_Click(object sender, RoutedEventArgs e)
         {
             // Retrieves the Button that was clicked (sender refers to the object that triggered the event).

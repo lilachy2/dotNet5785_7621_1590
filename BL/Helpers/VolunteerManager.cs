@@ -302,8 +302,10 @@ internal static class VolunteerManager
         }
 
         // Get latitude and longitude of the volunteer's address asynchronously
-        double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        //double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        //double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+        double? latitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
+        double? longitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
 
         // Ensure latitude and longitude are valid before using them
         if (!latitudeVolunteer.HasValue || !longitudeVolunteer.HasValue)
