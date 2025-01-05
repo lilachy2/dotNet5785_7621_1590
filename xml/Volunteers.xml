@@ -155,20 +155,6 @@
     <distance>6</distance>
   </Volunteer>
   <Volunteer>
-    <Id>335149961</Id>
-    <Name>Noa Mizrahi</Name>
-    <Number_phone>0564253620</Number_phone>
-    <Email>noa.mizrahi@volunteer.org</Email>
-    <Password>Hey1234@</Password>
-    <Role>Volunteer</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>34 Avenue des Champs-Élysées, Paris, France</FullCurrentAddress>
-    <Latitude>31.499922731987784</Latitude>
-    <Longitude>35.30977358866259</Longitude>
-    <Active>true</Active>
-    <distance>6</distance>
-  </Volunteer>
-  <Volunteer>
     <Id>393100421</Id>
     <Name>David Erez</Name>
     <Number_phone>0557023850</Number_phone>
@@ -209,19 +195,4 @@
     <Longitude>35.54016671252768</Longitude>
     <Active>true</Active>
     <distance>10</distance>
-  </Volunteer>
-  <Volunteer>
-    <Id>324291590</Id>
-    <Name>yalin</Name>
-    <Number_phone>0528050630</Number_phone>
-    <Email>y@gmail.com</Email>
-    <Password>Td3456789</Password>
-    <Role>Manager</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress>
-    <Latitude />
-    <Longitude />
-    <Active>true</Active>
-    <distance>12</distance>
-  </Volunteer>
-</ArrayOfVolunteer>
+  </Volunteer>Volunteer<Volunteer><Id>324291590</Id><Name>yalin</Name><Number_phone>0528050630</Number_phone><Email>y@gmail.com</Email><Password>Td3456789</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>Eiffel Tower, Paris, France</FullCurrentAddress><Latitude>48.8582599</Latitude><Longitude>2.2945006358633115</Longitude><Active>true</Active><distance>12</distance></Volunteer>Volunteer<Volunteer><Id>335149961</Id><Name>Noa Mizrahi</Name><Number_phone>0564253620</Number_phone><Email>noa.mizrahi@volunteer.org</Email><Password>Hey1234@</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>34 Avenue des Champs-Élysées, Paris, France</FullCurrentAddress><Latitude>48.869883</Latitude><Longitude>2.3080982</Longitude><Active>true</Active><distance>9</distance></Volunteer></ArrayOfVolunteer>

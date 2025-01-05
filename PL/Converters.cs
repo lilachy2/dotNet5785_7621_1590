@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Security;
+using System.Windows;
 using System.Windows.Data;
 
 namespace PL
@@ -138,6 +140,60 @@ namespace PL
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return value; // המרת חזרה לא נדרשת במקרה זה
+        }
+    }
+
+    //public class StringToVisibilityConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        return string.IsNullOrEmpty(value?.ToString()) ? Visibility.Visible : Visibility.Collapsed;
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        return null;
+    //    }
+    //}
+
+    public class PasswordConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            // אם הערך לא null, ממיר את ה-SecureString ל-string
+            if (value is SecureString secureString)
+            {
+                IntPtr ptr = IntPtr.Zero;
+                try
+                {
+                    ptr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(secureString);
+                    return System.Runtime.InteropServices.Marshal.PtrToStringBSTR(ptr);
+                }
+                finally
+                {
+                    if (ptr != IntPtr.Zero)
+                    {
+                        System.Runtime.InteropServices.Marshal.FreeBSTR(ptr);
+                    }
+                }
+            }
+            return string.Empty;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            // אם הערך לא null, ממיר את ה-string ל-SecureString
+            if (value is string str)
+            {
+                SecureString secureString = new SecureString();
+                foreach (char c in str)
+                {
+                    secureString.AppendChar(c);
+                }
+                secureString.MakeReadOnly();
+                return secureString;
+            }
+            return null;
         }
     }
 

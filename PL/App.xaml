@@ -11,6 +11,8 @@
         <local:RoleEnumToBackgroundConverter x:Key="RoleEnumToBackgroundConverterKey" />
         <local:DistanceTypeEnumToBackgroundConverter x:Key="DistanceTypeEnumToBackgroundConverterKey" />
         <local:RoleEnumToStringConverter x:Key="RoleEnumToStringConverterKey"/>
+        <local:PasswordConverter x:Key="PasswordConverterKey" />
+
 
 
     </Application.Resources>

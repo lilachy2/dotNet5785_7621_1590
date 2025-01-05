@@ -11,7 +11,6 @@ namespace PL.Volunteer
 {
     public partial class VolunteerWindow : Window, INotifyPropertyChanged
     {
-        // תלות עם BL
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         // טקסט הכפתור (הוספה/עדכון)
         public string ButtonText { get; set; }
