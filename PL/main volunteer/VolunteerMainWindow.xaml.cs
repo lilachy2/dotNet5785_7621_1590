@@ -113,7 +113,25 @@ namespace PL.main_volunteer
             try
             {
                 // עדכון סיום קריאה
-                s_bl.Call.UpdateEndTreatment(Volunteer.Id, Volunteer.CurrentCall.Id);
+                s_bl.Call.UpdateEndTreatment(Volunteer.Id, Volunteer.CurrentCall.CallId);
+                MessageBox.Show("The call has been marked as completed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // עדכון הקריאה הפעילה
+                Volunteer.CurrentCall = null;
+                CurrentCallVisibility = Visibility.Visible;
+                CurrentCallVisibilityEnd = Visibility.Hidden;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error ending call: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+         private void CancelCallButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // עדכון סיום קריאה
+                s_bl.Call.UpdateCancelTreatment(Volunteer.Id, Volunteer.CurrentCall.Id);
                 MessageBox.Show("The call has been marked as completed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 // עדכון הקריאה הפעילה

@@ -426,7 +426,7 @@ internal class CallImplementation : BlApi.ICall
                 ismanager = true;
             else throw new BO.BlDeletionImpossibleException("the volunteer is not manager or not in this call");
         }
-        if (assigmnetToCancel.time_end_treatment != null || /*(_dal.Call.Read(assigmnetToCancel.CallId).MaxEndTime > ClockManager.Now)*/  assigmnetToCancel.EndOfTime != null)
+        if (assigmnetToCancel.time_end_treatment != null )//// לבדוק
             throw new BO.BlDeletionImpossibleException("The assigmnet not open or exspaired");
 
         DO.Assignment assigmnetToUP = new DO.Assignment
@@ -459,7 +459,7 @@ internal class CallImplementation : BlApi.ICall
         BO.Call bocall = Read(idCall) ?? throw new BO.BlNullPropertyException($"There is no call with ID {idCall}");
 
         // בדוק אם הקריאה פתוחה או אם היא פג תוקף
-        if (bocall.Status != BO.CallStatus.Open || bocall.Status == BO.CallStatus.Expired || bocall.Status != BO.CallStatus.OpenAtRisk)
+        if (( (bocall.Status != BO.CallStatus.Open) && (bocall.Status != BO.CallStatus.OpenAtRisk)) || bocall.Status == BO.CallStatus.Expired )
         {
             throw new BO.BlAlreadyExistsException($"The call with ID {idCall} is not open or has expired/cancelled.");
         }

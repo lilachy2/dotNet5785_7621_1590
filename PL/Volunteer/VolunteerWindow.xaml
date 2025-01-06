@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:PL"
         Title="Volunteer Details"
-        Height="450" Width="400"
+        Height="600" Width="450"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-   
     <Window.Resources>
         <!-- Converters -->
         <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
-       
+
         <local:DistanceTypes x:Key="DistanceTypesKey" />
         <local:Roles x:Key="RolesKey" />
     </Window.Resources>
@@ -29,8 +28,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <!-- Row for Current Call -->
             </Grid.RowDefinitions>
 
+            <!-- Existing Fields -->
             <!-- ID -->
             <Label Content="ID:" Grid.Row="0" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Volunteer.Id}" Grid.Row="0" Margin="100,0" HorizontalAlignment="Stretch" 
@@ -52,7 +54,7 @@
             <Label Content="Active:" Grid.Row="4" HorizontalAlignment="Left" />
             <CheckBox IsChecked="{Binding Volunteer.Active}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Left"/>
 
-            <!-- Role (ComboBox with Background Converter) -->
+            <!-- Role -->
             <Label Content="Role:" Grid.Row="5" HorizontalAlignment="Left" />
             <ComboBox ItemsSource="{Binding Source={StaticResource RolesKey}}" 
                       SelectedItem="{Binding Volunteer.Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -60,7 +62,6 @@
                       Grid.Row="5" Margin="100,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <!-- Grid with Background set by RoleEnumToBackgroundConverter -->
                         <Grid Background="{Binding Converter={StaticResource RoleEnumToBackgroundConverterKey}}">
                             <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
                         </Grid>
@@ -76,7 +77,7 @@
             <Label Content="Distance:" Grid.Row="7" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Volunteer.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch"/>
 
-            <!-- Distance Type (ComboBox with Background Converter) -->
+            <!-- Distance Type -->
             <Label Content="Distance Types:" Grid.Row="8" HorizontalAlignment="Left" />
             <ComboBox ItemsSource="{Binding Source={StaticResource DistanceTypesKey}}"
                       SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -104,6 +105,48 @@
                     Height="39" 
                     Width="118" 
                     Margin="0,95,0,0" />
+
+            <!-- Current Call Section -->
+            <GroupBox Header="Current Call" Grid.Row="10" Margin="10,20,10,10">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Description:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.Description}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Call ID:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.CallId}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Call Type:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.CallType}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Full Address:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.FullAddress}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Open Time:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.OpenTime, StringFormat=G}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Max Completion Time:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.MaxCompletionTime, StringFormat=G}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Enter Time:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.EnterTime, StringFormat=G}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Distance from Volunteer:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.DistanceFromVolunteer}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Status:" FontWeight="Bold" Width="120"/>
+                        <TextBlock Text="{Binding Volunteer.CurrentCall.Status}" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
         </Grid>
     </ScrollViewer>
 </Window>

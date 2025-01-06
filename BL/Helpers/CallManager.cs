@@ -92,7 +92,7 @@ internal static class CallManager
         double? LongitudeVolunteer = null;
         if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == true)//  כתובת אמיתית 
         {
-            LongitudeVolunteer =  Tools.GetLatitude(doVolunteer.FullCurrentAddress);
+            LongitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
             //LongitudeVolunteer = Task.Run(() => Tools.GetLatitude(doVolunteer.FullCurrentAddress));
             LatitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
         }
@@ -107,7 +107,7 @@ internal static class CallManager
         //double? LatitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
         //double? LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
 
-
+        if (CalculateCallStatus(doCall) == CallStatus.Open|| CalculateCallStatus(doCall) ==CallStatus.OpenAtRisk)// status open
         return new BO.CallInProgress
 
         {
@@ -123,6 +123,9 @@ internal static class CallManager
             Status = CallManager.CalculateCallStatus(doCall)
 
         };
+        else
+            return null;// not found call open
+
     }
 
 
@@ -280,10 +283,7 @@ internal static class CallManager
                 return BO.CallStatus.InProgress; // In progress but not in risk
         }
         
-        //if (lastAssignment.EndOfTime== AssignmentCompletionType.VolunteerCancelled || lastAssignment.EndOfTime == AssignmentCompletionType.AdminCancelled)
-        //{
-        //    return BO.CallStatus.;
-        //}   
+       
 
         // 6. Default status - Open
         return BO.CallStatus.Open;
