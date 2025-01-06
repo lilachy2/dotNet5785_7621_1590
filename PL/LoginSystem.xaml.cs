@@ -14,8 +14,7 @@ namespace PL
         public LoginSystem()
         {
             InitializeComponent();
-            DataContext = this; 
-
+            DataContext = this;
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -42,20 +41,22 @@ namespace PL
                 }
                 else if (volunteer.Role == BO.Role.Manager)
                 {
-                    var result = MessageBox.Show("Select the screen you want to open:\n" +
-                                                  "1. Volunteer Window\n" +
-                                                  "2. Volunteer in List Window",
-                                                  "Manager Selection", MessageBoxButton.YesNo);
+                    // יצירת חלון מותאם אישית במקום MessageBox הרגיל
+                    ManagerSelectionWindow managerSelectionWindow = new ManagerSelectionWindow();
+                    bool? result = managerSelectionWindow.ShowDialog();
 
-                    if (result == MessageBoxResult.Yes)
+                    if (result == true)
                     {
-                        VolunteerWindow managerWindow = new VolunteerWindow(Id);
-                        managerWindow.Show();
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        VolunteerListWindow managerVolunteerListWindow = new VolunteerListWindow();
-                        managerVolunteerListWindow.Show();
+                        if (managerSelectionWindow.SelectedOption == 1)
+                        {
+                            VolunteerWindow managerWindow = new VolunteerWindow(Id);
+                            managerWindow.Show();
+                        }
+                        else if (managerSelectionWindow.SelectedOption == 2)
+                        {
+                            VolunteerListWindow managerVolunteerListWindow = new VolunteerListWindow();
+                            managerVolunteerListWindow.Show();
+                        }
                     }
                 }
             }
