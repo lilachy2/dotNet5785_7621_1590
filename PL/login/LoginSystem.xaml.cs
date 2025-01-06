@@ -1,9 +1,10 @@
 ﻿using PL.Volunteer;
+using PL.main_volunteer;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace PL
+namespace PL.login
 {
     public partial class LoginSystem : Window
     {
@@ -36,7 +37,8 @@ namespace PL
 
                 if (volunteer.Role == BO.Role.Volunteer)
                 {
-                    VolunteerWindow volunteerWindow = new VolunteerWindow(Id);
+                 
+                    VolunteerMainWindow volunteerWindow = new VolunteerMainWindow(Id);
                     volunteerWindow.ShowDialog();
                 }
                 else if (volunteer.Role == BO.Role.Manager)
@@ -49,13 +51,13 @@ namespace PL
                     {
                         if (managerSelectionWindow.SelectedOption == 1)
                         {
-                            VolunteerWindow managerWindow = new VolunteerWindow(Id);
+                            MainWindow managerWindow = new MainWindow();
                             managerWindow.Show();
                         }
                         else if (managerSelectionWindow.SelectedOption == 2)
                         {
-                            VolunteerListWindow managerVolunteerListWindow = new VolunteerListWindow();
-                            managerVolunteerListWindow.Show();
+                            VolunteerMainWindow managerVolunteerMainWindow = new VolunteerMainWindow(Id);
+                            managerVolunteerMainWindow.Show();
                         }
                     }
                 }

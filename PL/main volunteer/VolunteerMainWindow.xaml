@@ -1,0 +1,66 @@
+﻿<Window x:Class="PL.main_volunteer.VolunteerMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Volunteer Information" Height="600" Width="800">
+    <Grid>
+        <!-- Name -->
+        <TextBlock Text="Name:" FontSize="14" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.Name}" FontSize="14" Margin="10,30,0,0" VerticalAlignment="Top"/>
+
+        <!-- Phone -->
+        <TextBlock Text="Phone:" FontSize="14" Margin="10,70,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.Number_phone}" FontSize="14" Margin="10,90,0,0" VerticalAlignment="Top"/>
+
+        <!-- Email -->
+        <TextBlock Text="Email:" FontSize="14" Margin="10,130,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.Email}" FontSize="14" Margin="10,150,0,0" VerticalAlignment="Top"/>
+
+        <!-- Address -->
+        <TextBlock Text="Current Address:" FontSize="14" Margin="10,190,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.FullCurrentAddress}" FontSize="14" Margin="10,210,0,0" VerticalAlignment="Top"/>
+
+        <!-- Role -->
+        <TextBlock Text="Role:" FontSize="14" Margin="10,250,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.Role}" FontSize="14" Margin="10,270,0,0" VerticalAlignment="Top"/>
+
+        <!-- Active Status -->
+        <TextBlock Text="Active Status:" FontSize="14" Margin="10,310,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.Active}" FontSize="14" Margin="10,330,0,0" VerticalAlignment="Top"/>
+
+        <!-- Distance -->
+        <TextBlock Text="Distance:" FontSize="14" Margin="10,370,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.Distance}" FontSize="14" Margin="10,390,0,0" VerticalAlignment="Top"/>
+
+        <!-- Distance Type -->
+        <TextBlock Text="Distance Type:" FontSize="14" Margin="10,430,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.DistanceType}" FontSize="14" Margin="10,450,0,0" VerticalAlignment="Top"/>
+
+        <!-- Total Handled Calls -->
+        <TextBlock Text="Total Handled Calls:" FontSize="14" Margin="400,10,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.TotalHandledCalls}" FontSize="14" Margin="400,30,0,0" VerticalAlignment="Top"/>
+
+        <!-- Total Cancelled Calls -->
+        <TextBlock Text="Total Cancelled Calls:" FontSize="14" Margin="400,70,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.TotalCancelledCalls}" FontSize="14" Margin="400,90,0,0" VerticalAlignment="Top"/>
+
+        <!-- Total Expired Calls -->
+        <TextBlock Text="Total Expired Calls:" FontSize="14" Margin="400,130,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.TotalExpiredCalls}" FontSize="14" Margin="400,150,0,0" VerticalAlignment="Top"/>
+
+        <!-- Current Call -->
+        <TextBlock Text="Current Call:" FontSize="14" Margin="400,190,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Volunteer.CurrentCall.Description}" FontSize="14" Margin="400,210,0,0" VerticalAlignment="Top" />
+
+        <!-- Choose Call Button -->
+        <Button Content="Choose Call to Handle" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10, 50, 10, 10" Click="ChooseCallButton_Click" Visibility="{Binding CurrentCallVisibility}"/>
+
+        <!-- End Current Call Button -->
+        <Button Content="End Current Call" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10, 90, 10, 10" Click="EndCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}"/>
+
+        <!-- View Call History -->
+        <Button Content="View Call History" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10, 130, 10, 10" Click="ViewHistoryButton_Click"/>
+
+        <!-- View Volunteer Call History -->
+        <Button Content="View Volunteer Call History" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10, 170, 10, 10" Click="ViewVolunteerHistoryButton_Click"/>
+    </Grid>
+</Window>

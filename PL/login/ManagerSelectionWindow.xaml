@@ -1,0 +1,14 @@
+﻿<Window x:Class="PL.login.ManagerSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Manager Selection" Height="200" Width="300">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="8" FontFamily="Tahoma">
+            Welcome Manager! Please choose which screen you want to open:
+
+:
+        </TextBlock>
+        <Button Content="Executive Management (Main Window)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="213" Height="40" Click="Button1_Click" Margin="0,41,0,0" FontFamily="Georgia" Background="Lightblue" FontSize="10"/>
+        <Button Content="Volunteer Management (Volunteer Main Window)" HorizontalAlignment="Center" VerticalAlignment="Top" Width="213" Height="40" Click="Button2_Click" Margin="0,104,0,0" FontFamily="Georgia" Background="LightSteelBlue" FontSize="9"/>
+    </Grid>
+</Window>

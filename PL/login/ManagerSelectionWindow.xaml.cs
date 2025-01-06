@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PL
+namespace PL.login
 {
     public partial class ManagerSelectionWindow : Window
     {
