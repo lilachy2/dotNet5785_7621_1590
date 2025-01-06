@@ -451,30 +451,47 @@ internal class CallImplementation : BlApi.ICall
 
     public void UpdateEndTreatment(int idVol, int idCall)
     {
-        DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"there is no volunterr with this ID {idVol}");
-        BO.Call bocall = Read(idCall) ?? throw new BO.BlNullPropertyException($"there is no call with this ID {idCall}");
-        if (bocall.Status != BO.CallStatus.Open || bocall.Status == BO.CallStatus.OpenAtRisk)
+        // קורא את המתנדב לפי מזהה המתנדב
+        DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"There is no volunteer with ID {idVol}");
+        var assignment = _dal.Assignment.ReadAll()
+               .FirstOrDefault(a => a.CallId == idCall && a.VolunteerId == idVol);
+        // קורא את הקריאה לפי מזהה הקריאה
+        BO.Call bocall = Read(idCall) ?? throw new BO.BlNullPropertyException($"There is no call with ID {idCall}");
 
-            throw new BO.BlAlreadyExistsException($"the call is open or expired Idcall is={idCall}");
-
-
-        DO.Assignment assigmnetToCreat = new DO.Assignment
+        // בדוק אם הקריאה פתוחה או אם היא פג תוקף
+        if (bocall.Status != BO.CallStatus.Open || bocall.Status == BO.CallStatus.Expired || bocall.Status != BO.CallStatus.OpenAtRisk)
         {
-            Id = 0,
+            throw new BO.BlAlreadyExistsException($"The call with ID {idCall} is not open or has expired/cancelled.");
+        }
+
+        // בדוק שהמתנדב הוא זה שהוקצה לקריאה
+        //if (bocall.Assignment == null || bocall.Assignment.VolunteerId != idVol)
+        //{
+        //    throw new BO.BlPermissionException($"Volunteer with ID {idVol} is not assigned to this call.");
+        //}
+
+        // יצירת ישות Assignment לעדכון
+        DO.Assignment assignmentToUpdate = new DO.Assignment
+        {
+            Id = assignment.Id, // זהה את מזהה ההקצאה
             CallId = idCall,
             VolunteerId = idVol,
-            time_entry_treatment = AdminManager.Now,
-            time_end_treatment = /*null*/ AdminManager.Now,
-            EndOfTime = /*null*/  AssignmentCompletionType.TreatedOnTime
+            time_entry_treatment = assignment.time_entry_treatment, // שמור את זמן הכניסה לטיפול
+            time_end_treatment = AdminManager.Now, // עדכן את זמן סיום הטיפול בפועל
+            EndOfTime = AssignmentCompletionType.TreatedOnTime // עדכון סוג סיום הטיפול ל"טופלה"
         };
+
         try
         {
-            _dal.Assignment.Create(assigmnetToCreat);
+            // ניסיון לעדכן את ההקצאה בשכבת הנתונים
+            _dal.Assignment.Update(assignmentToUpdate);
         }
-        catch (Exception)
-        { throw new BO.BlAlreadyExistsException("impossible to creat"); }
-
+        catch (Exception ex)
+        {
+            throw new BO.BlDoesNotExistException("Failed to update assignment.", ex);
+        }
     }
+
 
     public void ChooseCall(int VolunteerId, int CallId)
     {

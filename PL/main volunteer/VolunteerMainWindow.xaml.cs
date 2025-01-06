@@ -1,27 +1,89 @@
 ﻿using BO;
+using PL.Volunteer;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace PL.main_volunteer
 {
-    public partial class VolunteerMainWindow : Window
+    public partial class VolunteerMainWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
-        // פרטי המתנדב
-        public BO.Volunteer Volunteer { get; set; }
+        //  DependencyProperty
+        public static readonly DependencyProperty CurrentVolunteerProperty =
+            DependencyProperty.Register(
+                "Volunteer",
+                typeof(BO.Volunteer),
+                typeof(VolunteerMainWindow),
+                new PropertyMetadata(null));
 
-        // שדה שמראה אם יש קריאה פעילה
-        public Visibility CurrentCallVisibility { get; set; }
-        public Visibility CurrentCallVisibilityEnd { get; set; }
+        //  Volunteer
+        public BO.Volunteer Volunteer
+        {
+            get
+            {
+                //  UI thread
+                if (Application.Current.Dispatcher.CheckAccess())
+                {
+                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
+                }
+                else
+                {
+                    // Dispatcher
+                    return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
+                }
+            }
+            set
+            {
+                SetValue(CurrentVolunteerProperty, value);
+                OnPropertyChanged(nameof(Volunteer));
+            }
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private Visibility currentCallVisibility;
+        private Visibility currentCallVisibilityEnd;
+
+        public Visibility CurrentCallVisibility
+        {
+            get { return currentCallVisibility; }
+            set
+            {
+                currentCallVisibility = value;
+                OnPropertyChanged(nameof(CurrentCallVisibility));
+            }
+        }
+
+        public Visibility CurrentCallVisibilityEnd
+        {
+            get { return currentCallVisibilityEnd; }
+            set
+            {
+                currentCallVisibilityEnd = value;
+                OnPropertyChanged(nameof(CurrentCallVisibilityEnd));
+            }
+        }
+
+        // בנאי של החלון
         public VolunteerMainWindow(int Id)
         {
             try
             {
-                if (Id != 0)
-                    Volunteer = s_bl.Volunteer.Read(Id);
+                Volunteer = s_bl.Volunteer.Read(Id);
+
+                // בדוק אם Volunteer לא שווה ל-null
+                if (Volunteer == null)
+                {
+                    MessageBox.Show("Volunteer not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
                 // הגדרת מצב של Visibility לפי קריאה פעילה
                 if (Volunteer.CurrentCall == null)
@@ -44,21 +106,14 @@ namespace PL.main_volunteer
             DataContext = this;
         }
 
-        // פונקציה לבחירת קריאה לטיפול
-        private void ChooseCallButton_Click(object sender, RoutedEventArgs e)
-        {
-            // מציג מסך לבחירת קריאה
-            var chooseCallWindow = new ChooseCallWindow(Volunteer.Id);
-            chooseCallWindow.ShowDialog();
-        }
-
+       
         // פונקציה לסיום קריאה
         private void EndCallButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // עדכון סיום קריאה
-                s_bl.Call.EndCall(Volunteer.CurrentCall.Id, Volunteer.Id);
+                s_bl.Call.UpdateEndTreatment(Volunteer.Id, Volunteer.CurrentCall.Id);
                 MessageBox.Show("The call has been marked as completed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 // עדכון הקריאה הפעילה
@@ -72,18 +127,7 @@ namespace PL.main_volunteer
             }
         }
 
-        // גישה להיסטוריית קריאות
-        private void ViewHistoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            var historyWindow = new CallHistoryWindow();
-            historyWindow.ShowDialog();
-        }
+       
 
-        // גישה להיסטוריית קריאות של המתנדב
-        private void ViewVolunteerHistoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            var volunteerHistoryWindow = new VolunteerHistoryWindow(Volunteer.Id);
-            volunteerHistoryWindow.ShowDialog();
-        }
     }
 }
