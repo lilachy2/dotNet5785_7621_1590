@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:PL"
         Title="Login System" Height="450" Width="800">
-  
 
     <Grid Background="#F0F0F0">
         <!-- Title -->
@@ -17,26 +16,36 @@
         <!-- Input Section -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <!-- ID TextBox -->
-            <TextBox 
-                Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" 
-                GotFocus="IdTextBox_GotFocus" 
-                LostFocus="IdTextBox_LostFocus" 
-                HorizontalAlignment="Stretch" 
-                Padding="10" 
-                FontSize="16" 
-                Foreground="Gray" />
+            <TextBox Text="{Binding Path= Id,  Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" 
+                     HorizontalAlignment="Stretch" 
+                     Padding="10" 
+                     FontSize="16">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Foreground" Value="Gray" />
+                        <Setter Property="Text" Value="Enter your ID" />
+                        <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="Text" Value="" />
+                            </Trigger>
+                            <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}}" Value="">
+                                <Setter Property="Foreground" Value="Gray" />
+                                <Setter Property="Text" Value="Enter your ID" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
 
             <!-- PasswordBox -->
-            <PasswordBox 
-                x:Name="PasswordBox"
-                Password="{Binding Password, Mode=TwoWay, Converter={StaticResource PasswordConverter}}"
-                PasswordChanged="PasswordBox_PasswordChanged"
-                GotFocus="PasswordBox_GotFocus" 
-                LostFocus="PasswordBox_LostFocus" 
-                HorizontalAlignment="Stretch" 
-                Padding="10" 
-                FontSize="16" 
-                Foreground="Gray" />
+            <PasswordBox PasswordChanged="PasswordBox_PasswordChanged"
+                         GotFocus="PasswordBox_GotFocus" 
+                         LostFocus="PasswordBox_LostFocus" 
+                         HorizontalAlignment="Stretch" 
+                         Padding="10" 
+                         FontSize="16" 
+                         Foreground="Gray" />
 
             <!-- Login Button -->
             <Button Content="Login" 
