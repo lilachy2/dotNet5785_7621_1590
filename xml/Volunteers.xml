@@ -15,20 +15,6 @@
     <distance>18</distance>
   </Volunteer>
   <Volunteer>
-    <Id>418548070</Id>
-    <Name>Sara Levi</Name>
-    <Number_phone>0556191804</Number_phone>
-    <Email>sara.levi@volunteer.org</Email>
-    <Password>Hey1234@</Password>
-    <Role>Volunteer</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>456 Michigan Avenue, Chicago, IL, USA</FullCurrentAddress>
-    <Latitude>31.171444622079125</Latitude>
-    <Longitude>34.410979085897694</Longitude>
-    <Active>true</Active>
-    <distance>9</distance>
-  </Volunteer>
-  <Volunteer>
     <Id>290530567</Id>
     <Name>Yael Ben David</Name>
     <Number_phone>0572962001</Number_phone>
@@ -209,5 +195,4 @@
     <Longitude>35.526942641207924</Longitude>
     <Active>true</Active>
     <distance>13</distance>
-  </Volunteer>
-</ArrayOfVolunteer>
+  </Volunteer>VolunteerVolunteerVolunteerVolunteer<Volunteer><Id>418548070</Id><Name>Sara </Name><Number_phone>0524031048</Number_phone><Email>sara.levi@volunteer.org</Email><Password>Hey1234@</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>33Michigan Avenue, Chicago, IL, USA</FullCurrentAddress><Latitude>41.4814957</Latitude><Longitude>-87.6128986</Longitude><Active>true</Active><distance>9</distance></Volunteer></ArrayOfVolunteer>

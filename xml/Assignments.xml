@@ -137,14 +137,6 @@
     <EndOfTime>TreatedOnTime</EndOfTime>
   </Assignment>
   <Assignment>
-    <Id>1017</Id>
-    <CallId>1025</CallId>
-    <VolunteerId>418548070</VolunteerId>
-    <time_entry_treatment>2025-01-06T22:29:06</time_entry_treatment>
-    <time_end_treatment>2025-01-06T22:29:30</time_end_treatment>
-    <EndOfTime>AdminCancelled</EndOfTime>
-  </Assignment>
-  <Assignment>
     <Id>1018</Id>
     <CallId>1030</CallId>
     <VolunteerId>418548070</VolunteerId>
@@ -279,14 +271,6 @@
     <time_entry_treatment>2025-01-06T22:29:06</time_entry_treatment>
     <time_end_treatment>2025-01-06T22:52:38</time_end_treatment>
     <EndOfTime>TreatedOnTime</EndOfTime>
-  </Assignment>
-  <Assignment>
-    <Id>1036</Id>
-    <CallId>1017</CallId>
-    <VolunteerId>447374952</VolunteerId>
-    <time_entry_treatment>2025-01-06T22:29:06</time_entry_treatment>
-    <time_end_treatment>2025-01-06T22:29:20</time_end_treatment>
-    <EndOfTime>AdminCancelled</EndOfTime>
   </Assignment>
   <Assignment>
     <Id>1037</Id>
@@ -476,6 +460,22 @@
     <Id>1031</Id>
     <CallId>1011</CallId>
     <VolunteerId>447374952</VolunteerId>
+    <time_entry_treatment>2025-01-06T22:29:06</time_entry_treatment>
+    <time_end_treatment>2025-01-06T22:29:06</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1036</Id>
+    <CallId>1017</CallId>
+    <VolunteerId>447374952</VolunteerId>
+    <time_entry_treatment>2025-01-06T22:29:06</time_entry_treatment>
+    <time_end_treatment>2025-01-06T22:29:06</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1017</Id>
+    <CallId>1025</CallId>
+    <VolunteerId>418548070</VolunteerId>
     <time_entry_treatment>2025-01-06T22:29:06</time_entry_treatment>
     <time_end_treatment>2025-01-06T22:29:06</time_end_treatment>
     <EndOfTime>TreatedOnTime</EndOfTime>

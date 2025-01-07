@@ -106,7 +106,34 @@ namespace PL.main_volunteer
             DataContext = this;
         }
 
-       
+        private void UpdateVolunteerButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Update the volunteer in the BL layer
+                s_bl.Volunteer.Update(Volunteer,Volunteer.Id);               
+
+                MessageBox.Show("Your details have been successfully updated.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating volunteer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // בדיקה אם הוספו פריטים לבחירה
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.DistanceType selectedDistanceType)
+            {
+                // הדפסת הערך שנבחר בקונסולה
+                Console.WriteLine($"Selected DistanceType: {selectedDistanceType}");
+
+                // אם אתה רוצה, אתה יכול גם לעדכן את מודל המתנדב כאן
+                // למשל, אם אתה מעדכן את ה- DistanceType של המתנדב:
+                Volunteer.DistanceType = selectedDistanceType;
+            }
+        }
+
         // פונקציה לסיום קריאה
         private void EndCallButton_Click(object sender, RoutedEventArgs e)
         {
@@ -145,7 +172,6 @@ namespace PL.main_volunteer
             }
         }
 
-       
-
+        
     }
 }
