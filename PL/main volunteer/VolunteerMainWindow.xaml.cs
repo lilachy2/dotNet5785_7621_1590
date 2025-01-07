@@ -111,7 +111,7 @@ namespace PL.main_volunteer
             try
             {
                 // Update the volunteer in the BL layer
-                s_bl.Volunteer.Update(Volunteer,Volunteer.Id);               
+                s_bl.Volunteer.Update(Volunteer, Volunteer.Id);
 
                 MessageBox.Show("Your details have been successfully updated.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -153,7 +153,7 @@ namespace PL.main_volunteer
                 MessageBox.Show($"Error ending call: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-         private void CancelCallButton_Click(object sender, RoutedEventArgs e)
+        private void CancelCallButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -172,6 +172,18 @@ namespace PL.main_volunteer
             }
         }
 
-        
+        private void ViewVolunteerHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            var volunteerHistoryWindow = new VolunteerHistoryWindow(Volunteer.Id);
+            volunteerHistoryWindow.ShowDialog();
+        }
+        // פונקציה לבחירת קריאה לטיפול
+        private void ChooseCallButton_Click(object sender, RoutedEventArgs e)
+        {
+            // מציג מסך לבחירת קריאה
+            var chooseCallWindow = new ChooseCallWindow(Volunteer.Id);
+            chooseCallWindow.ShowDialog();
+
+        }
     }
 }

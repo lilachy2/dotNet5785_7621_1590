@@ -133,5 +133,10 @@
         <!-- End Current Call Button -->
         <Button Content="End Current Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="548,323,0,0" Click="EndCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}" RenderTransformOrigin="0.613,0.665"/>
         <Button Content="Cancel Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,323,0,0" Click="CancelCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}" RenderTransformOrigin="0.613,0.665"/>
+        <!-- Choose Call Button -->
+        <Button Content="Choose Call to Handle" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,545,0,0" Click="ChooseCallButton_Click" Visibility="{Binding CurrentCallVisibility}"/>
+
+        <!-- View Volunteer Call History -->
+        <Button Content="View Volunteer Call History" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="93,0,0,16" Click="ViewVolunteerHistoryButton_Click"/>
     </Grid>
 </Window>
