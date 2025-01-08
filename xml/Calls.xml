@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>31.72382414409246</Latitude>
-    <Longitude>34.4163948999968</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.51295957732413</Latitude>
+    <Longitude>34.37960475488692</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.998418685579125</Latitude>
-    <Longitude>35.4732648263322</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.783705214011018</Latitude>
+    <Longitude>34.723351623177855</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.079530547362985</Latitude>
-    <Longitude>35.249285319316556</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.16694255474469</Latitude>
+    <Longitude>34.70531420275455</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.007121718636693</Latitude>
-    <Longitude>35.22389978846452</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.367428201793633</Latitude>
+    <Longitude>35.00545301476812</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.197805637436332</Latitude>
-    <Longitude>35.669851507140365</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.628825362677286</Latitude>
+    <Longitude>34.947227051690824</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.964281703579527</Latitude>
-    <Longitude>35.66697601235451</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.958595670205508</Latitude>
+    <Longitude>35.38419556067937</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.01007701347875</Latitude>
-    <Longitude>34.654774252221785</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.82592898406745</Latitude>
+    <Longitude>35.18654203102942</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.31336560440818</Latitude>
-    <Longitude>34.3058938530631</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.34843410571869</Latitude>
+    <Longitude>34.46196531376938</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.428871324641527</Latitude>
-    <Longitude>34.78770761671653</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.539552969631092</Latitude>
+    <Longitude>35.35014236585121</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.30803208695346</Latitude>
-    <Longitude>34.98015118581445</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.2951028545736</Latitude>
+    <Longitude>35.064221420897375</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.075960550747553</Latitude>
-    <Longitude>35.67894921624151</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.487780223293726</Latitude>
+    <Longitude>35.742937658428325</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.5993826223254</Latitude>
-    <Longitude>34.47145730148937</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.394838317115806</Latitude>
+    <Longitude>34.63604080867449</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.582506432080663</Latitude>
-    <Longitude>35.532102499996405</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.996092408770316</Latitude>
+    <Longitude>34.485142582435145</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.817541862620438</Latitude>
-    <Longitude>35.136740262937614</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.46425042858578</Latitude>
+    <Longitude>34.39150810972664</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.016035609821607</Latitude>
-    <Longitude>35.624510724440434</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.184831295142875</Latitude>
+    <Longitude>34.797652256937205</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.24097082076065</Latitude>
-    <Longitude>34.414359640710906</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.368851980409204</Latitude>
+    <Longitude>35.5948925665926</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.36576131232367</Latitude>
-    <Longitude>35.36085890551818</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.914253457374244</Latitude>
+    <Longitude>34.49054945344312</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.620855611654957</Latitude>
-    <Longitude>35.83025553610868</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.490776250258875</Latitude>
+    <Longitude>34.97491903464394</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.268252141067496</Latitude>
-    <Longitude>34.50555638271472</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.390698651398402</Latitude>
+    <Longitude>35.17146443903383</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.484707090777775</Latitude>
-    <Longitude>34.331949082031535</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.44720949824225</Latitude>
+    <Longitude>35.51098656748512</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.064839568630596</Latitude>
-    <Longitude>35.84264059252783</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.355515096829166</Latitude>
+    <Longitude>34.52951982140138</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.032135798455855</Latitude>
-    <Longitude>35.774013792719316</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.695807934734574</Latitude>
+    <Longitude>34.78799314114961</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.040114509717473</Latitude>
-    <Longitude>35.06292078389025</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.50893967182585</Latitude>
+    <Longitude>35.75742709211582</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.14823493348056</Latitude>
-    <Longitude>35.06011047445041</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.454804446708415</Latitude>
+    <Longitude>35.01245552044927</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.34654064696075</Latitude>
-    <Longitude>35.550811760079576</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.799166282143318</Latitude>
+    <Longitude>34.38324362545696</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.56995041986619</Latitude>
-    <Longitude>34.69162120230849</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.669326451574786</Latitude>
+    <Longitude>34.40388416235413</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.43711622033058</Latitude>
-    <Longitude>35.49018556226791</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.70116234977938</Latitude>
+    <Longitude>35.65822912862674</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.81265972922359</Latitude>
-    <Longitude>35.84340524401429</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.15550394582922</Latitude>
+    <Longitude>35.66151210714029</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.436609032158486</Latitude>
-    <Longitude>35.68930965194985</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.852750293434156</Latitude>
+    <Longitude>34.50247150931512</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.716227002485372</Latitude>
-    <Longitude>35.24379811206447</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.679880700986395</Latitude>
+    <Longitude>35.829829084274806</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.381370058724624</Latitude>
-    <Longitude>35.513189378533625</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.026392050077902</Latitude>
+    <Longitude>35.677489742276634</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.077881011460164</Latitude>
-    <Longitude>34.82429656846542</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.478569342250374</Latitude>
+    <Longitude>35.521980475032365</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.194412200348705</Latitude>
-    <Longitude>35.1957015430182</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.610110209306747</Latitude>
+    <Longitude>35.24284662996017</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.49105231658432</Latitude>
-    <Longitude>35.71473223664153</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.717786737851508</Latitude>
+    <Longitude>35.33255897423115</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.906008212823497</Latitude>
-    <Longitude>35.74834228216775</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.846355410411263</Latitude>
+    <Longitude>35.53523951072097</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.35047035483629</Latitude>
-    <Longitude>34.679805192084814</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.65717734734596</Latitude>
+    <Longitude>35.32420058502328</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.12202986325272</Latitude>
-    <Longitude>35.89708476548075</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.563520304004395</Latitude>
+    <Longitude>34.41135623662508</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.47052230896973</Latitude>
-    <Longitude>35.753051760704345</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.66231843286935</Latitude>
+    <Longitude>34.67954998646713</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.581979616313415</Latitude>
-    <Longitude>35.69673993276718</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.6306684062793</Latitude>
+    <Longitude>35.37537236463324</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.780341965391557</Latitude>
-    <Longitude>35.54373071840358</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.06667294993874</Latitude>
+    <Longitude>34.389351240140094</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.48441792665778</Latitude>
-    <Longitude>35.5733269848956</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.66305510483168</Latitude>
+    <Longitude>35.34409283507155</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.024341853816008</Latitude>
-    <Longitude>35.23356427212812</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>33.482740781337625</Latitude>
+    <Longitude>35.378237281038274</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.797778354859922</Latitude>
-    <Longitude>34.406747409180745</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.343688448843057</Latitude>
+    <Longitude>34.74903439246116</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.97866374133617</Latitude>
-    <Longitude>34.786101801205206</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>29.8660117885206</Latitude>
+    <Longitude>34.95436125753641</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.29630733834407</Latitude>
-    <Longitude>34.99791633620171</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.998267734638684</Latitude>
+    <Longitude>34.91145601638325</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.73296216658745</Latitude>
-    <Longitude>35.13325815853087</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.684967170521965</Latitude>
+    <Longitude>34.63094928486798</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.125672383738202</Latitude>
-    <Longitude>34.86643012927988</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>32.8278384981576</Latitude>
+    <Longitude>34.54411231755128</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.99080364496749</Latitude>
-    <Longitude>35.024446036800875</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.685217183698565</Latitude>
+    <Longitude>35.27526796527437</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.663674315912573</Latitude>
-    <Longitude>35.845568714241615</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>31.684421155850277</Latitude>
+    <Longitude>35.266181822921425</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.103570063253365</Latitude>
-    <Longitude>34.68445623536608</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.198458905519967</Latitude>
+    <Longitude>34.37700501450999</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>12 Herzl St, Haifa, Israel</ReadAddress>
-    <OpeningTime>2025-01-05T22:29:06</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
+    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

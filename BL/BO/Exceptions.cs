@@ -111,5 +111,11 @@ public class BlCheckPhonnumberException : Exception
     public BlCheckPhonnumberException(string message, Exception innerException)
               : base(message, innerException) { }
 }
+public class BlCan_chang_to_NotActivException : Exception
+{
+    public BlCan_chang_to_NotActivException(string? message) : base(message) { }
+    public BlCan_chang_to_NotActivException(string message, Exception innerException)
+              : base(message, innerException) { }
+}
 
 

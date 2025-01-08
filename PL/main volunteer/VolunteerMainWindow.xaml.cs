@@ -22,6 +22,7 @@ namespace PL.main_volunteer
         //  Volunteer
         public BO.Volunteer Volunteer
         {
+           
             get
             {
                 //  UI thread
@@ -106,20 +107,32 @@ namespace PL.main_volunteer
             DataContext = this;
         }
 
+        private bool _originalActiveStatus; // משתנה לשמירת הסטטוס המקורי
+
         private void UpdateVolunteerButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Update the volunteer in the BL layer
+                // שמור את הסטטוס המקורי לפני ניסיון העדכון
+                _originalActiveStatus = Volunteer.Active;
+
+                // ניסיון לעדכן את המתנדב
                 s_bl.Volunteer.Update(Volunteer, Volunteer.Id);
 
                 MessageBox.Show("Your details have been successfully updated.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch (BlCan_chang_to_NotActivException ex)
             {
+                // החזר את ה-CheckBox למצבו המקורי במקרה של חריגה
+                Volunteer.Active = _originalActiveStatus;
                 MessageBox.Show($"Error updating volunteer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
         private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // בדיקה אם הוספו פריטים לבחירה

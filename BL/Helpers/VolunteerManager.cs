@@ -73,6 +73,7 @@ internal static class VolunteerManager
             // Check if the active status was changed
             if (boVolunteer.Active != existingVolunteer.Active)
             {
+
                 if (!isManager)
                 {
                     throw new BO.BlGeneralException("Only a manager is authorized to change the active status.");
@@ -102,13 +103,18 @@ internal static class VolunteerManager
             }
         }
 
-        // Check if the active status has changed - only a manager can change the active status
-        if (boVolunteer.Active != existingVolunteer.Active)
+        // Check if the active status has changed - only a manager can change the active
+        if ((boVolunteer.Active != existingVolunteer.Active) && (boVolunteer.Role == BO.Role.Volunteer))
         {
-            if (requesterRole != DO.Role.Manager)
+            // mark himself as inactive - provided he is not handling the call at the moment
+            if (CallManager.GetCallInProgress(boVolunteer.Id)!=null)
             {
-                throw new BO.BlPermissionException("Only a manager is authorized to change the active status.");
+                throw new BO.BlCan_chang_to_NotActivException("The volunteer is currently handling a call and cannot be not Active.");
             }
+            //if (requesterRole != DO.Role.Manager)
+            //{
+            //    throw new BO.BlPermissionException("Only a manager is authorized to change the active status.");
+            //}
         }
 
         // Add additional checks if there are any other restricted fields
@@ -238,7 +244,7 @@ internal static class VolunteerManager
         DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
+        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId/* && a.EndOfTime == null*/).FirstOrDefault();
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
         // Create the object

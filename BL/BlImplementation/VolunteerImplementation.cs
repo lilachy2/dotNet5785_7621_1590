@@ -177,6 +177,11 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             Console.WriteLine($"Error: {ex.Message}");
             throw;
         }
+        catch (BlCan_chang_to_NotActivException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        }
         catch (Exception ex)
         {
             Console.WriteLine($"Error: Failed to update volunteer details. Exception: {ex.Message}");

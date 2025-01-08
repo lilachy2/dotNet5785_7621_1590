@@ -264,12 +264,13 @@ public static class Initialization
             string? address = /*Addresses*/internationalAddresses[i];
             //string? address = "Eiffel Tower, Paris, France";
             Role role;
+            role = Role.Volunteer;
+
             if (isFirst)
             {
                 role = Role.Manager; // One Manager
                 isFirst = false;
             }
-            role = Role.Volunteer;
             distance_type distanceType = distance_type.Aerial_distance;
 
             double? maxDistance = s_rand.Next(5, 20); // Default distance in kilometers

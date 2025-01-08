@@ -22,8 +22,8 @@
 /// <param name="Expired"> // Assignment completion: Expired
 public enum Role
 {
-    Volunteer,
-    Manager
+    Manager,
+    Volunteer
 }
 
 public enum distance_type

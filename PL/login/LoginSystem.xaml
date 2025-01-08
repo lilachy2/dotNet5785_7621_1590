@@ -15,37 +15,42 @@
 
         <!-- Input Section -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-            <!-- ID TextBox -->
-            <TextBox Text="{Binding Path= Id,  Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" 
-                     HorizontalAlignment="Stretch" 
-                     Padding="10" 
-                     FontSize="16">
-                <TextBox.Style>
-                    <Style TargetType="TextBox">
-                        <Setter Property="Foreground" Value="Gray" />
-                        <Setter Property="Text" Value="Enter your ID" />
-                        <Style.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="Text" Value="" />
-                            </Trigger>
-                            <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}}" Value="">
-                                <Setter Property="Foreground" Value="Gray" />
-                                <Setter Property="Text" Value="Enter your ID" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
+            <!-- ID Section -->
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <!-- PasswordBox -->
-            <PasswordBox PasswordChanged="PasswordBox_PasswordChanged"
-                         GotFocus="PasswordBox_GotFocus" 
-                         LostFocus="PasswordBox_LostFocus" 
-                         HorizontalAlignment="Stretch" 
+                <Label Content="ENTER ID" 
+                       VerticalAlignment="Top" 
+                       Margin="-104,4,114,0" />
+
+                <TextBox 
+                         Text="{Binding Path=Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          Padding="10" 
-                         FontSize="16" 
-                         Foreground="Gray" />
+                         FontSize="16" Grid.ColumnSpan="2" />
+            </Grid>
+
+            <!-- Password Section -->
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="ENTER Password" 
+                       VerticalAlignment="Center" 
+                       Margin="-105,0,114,0" />
+
+                <PasswordBox 
+                             PasswordChanged="PasswordBox_PasswordChanged"
+                             GotFocus="PasswordBox_GotFocus" 
+                             LostFocus="PasswordBox_LostFocus" 
+                             Padding="10" 
+                             FontSize="16" 
+                             Foreground="Gray" Grid.ColumnSpan="2" />
+            </Grid>
 
             <!-- Login Button -->
             <Button Content="Login" 
