@@ -80,8 +80,6 @@
 
 
 
-
-
         <!-- Place the "ADD Volunteer" button outside the ListView -->
         <Button Content="ADD Volunteer" 
                 HorizontalAlignment="Left" 

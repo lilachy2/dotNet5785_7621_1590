@@ -2,86 +2,109 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Volunteer Call History" Height="450" Width="800">
-    <Grid>
-        <!-- הגדרת שורות ועמודות -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!-- שורת הכותרת הראשית -->
-            <RowDefinition Height="Auto"/>
-            <!-- שורת הכותרות של השדות -->
-            <RowDefinition Height="*"/>
-            <!-- שורת הנתונים -->
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <!-- כותרת ראשית -->
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="Volunteer Call History"
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="Volunteer Call History"
                    FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
 
-        <!-- שורת כותרות השדות -->
-        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="ID" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="Call Type" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="Address" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="Open Time" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="4" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="End Time" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="Completion Status" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-        </Border>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <!-- Filter by ComboBox with SelectionChanged event -->
+            <TextBlock Text="Filter by:" VerticalAlignment="Center" Margin="5"/>
+            <ComboBox Width="150" 
+              SelectionChanged="FilterComboBox_SelectionChanged"
+              SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" 
+              ItemsSource="{Binding Source={StaticResource CalltypeKey}}"
+              Margin="5">
+                <!-- If you want to display the selected item on the ComboBox itself -->
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-        <!-- שורת הנתונים -->
-        <ListBox ItemsSource="{Binding}" Grid.Row="2" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+            <!-- Sort by ComboBox without SelectionChanged event -->
+            <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="5"/>
+            <ComboBox Width="150" SelectedItem="{Binding AnotherSelectedStatus, Mode=TwoWay}" 
+              ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
+               SelectionChanged="FilterComboBox_SelectionChanged_Sort"
 
-                        <!-- הצגת נתונים עם מסגרת סביב כל שדה -->
-                        <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
-                            <TextBlock Text="{Binding Id}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        </Border>
-                        <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1">
-                            <TextBlock Text="{Binding CallType}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        </Border>
-                        <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1">
-                            <TextBlock Text="{Binding FullAddress}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        </Border>
-                        <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="1">
-                            <TextBlock Text="{Binding OpenTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        </Border>
-                        <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="1">
-                            <TextBlock Text="{Binding EndTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        </Border>
-                        <Border Grid.Column="5" BorderBrush="Gray" BorderThickness="1">
-                            <TextBlock Text="{Binding CompletionStatus}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        </Border>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+              Margin="5"/>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Shared Column Definitions for both header and data -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="140"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Headers -->
+                <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="10,0,0,359" Grid.RowSpan="2">
+                    <TextBlock Text="ID" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Call Type" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border Grid.Column="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Address" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border Grid.Column="3" Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Open Time" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border Grid.Column="4" Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="End Time" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border Grid.Column="5" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="0,0,10,359" Grid.RowSpan="2">
+                    <TextBlock Text="Completion Status" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+
+                <!-- Data Grid -->
+                <ItemsControl Grid.Row="1" Grid.ColumnSpan="6" ItemsSource="{Binding}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="140"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock Text="{Binding Id}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock Text="{Binding CallType}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                                <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock Text="{Binding FullAddress}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                                <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock Text="{Binding OpenTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                                <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock Text="{Binding EndTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                                <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock Text="{Binding CompletionStatus}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
 </Window>

@@ -83,7 +83,8 @@ namespace PL
         {
             return value; // המרת חזרה לא נדרשת במקרה זה
         }
-    }public class VolInListEnumToBackgroundConverter : IValueConverter
+    }
+    public class VolInListEnumToBackgroundConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -143,18 +144,6 @@ namespace PL
         }
     }
 
-    //public class StringToVisibilityConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        return string.IsNullOrEmpty(value?.ToString()) ? Visibility.Visible : Visibility.Collapsed;
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        return null;
-    //    }
-    //}
 
     public class PasswordConverter : IValueConverter
     {

@@ -13,6 +13,8 @@
         <local:DistanceTypeEnumToBackgroundConverter x:Key="DistanceTypeEnumToBackgroundConverterKey" />
         <local:RoleEnumToStringConverter x:Key="RoleEnumToStringConverterKey"/>
         <local:PasswordConverter x:Key="PasswordConverterKey" />
+        <local:Calltype x:Key="CalltypeKey" />
+        <local:ClosedCallInListEnum x:Key="ClosedCallInListEnumKey" />
 
 
 

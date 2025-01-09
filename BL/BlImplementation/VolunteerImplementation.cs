@@ -21,35 +21,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     VolunteerManager.Observers.RemoveObserver(id, observer); //stage 5
     #endregion Stage 5
 
-    //public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
-    //{
-    //    var volunteers = _dal.Volunteer.ReadAll();
-
-    //    if (Active.HasValue)
-    //    {
-    //        volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
-    //    }
-
-    //    switch (sortBy)
-    //    {
-    //        case BO.VolInList.Name:
-    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // מיין לפי שם
-    //            break;
-    //        case BO.VolInList.Role:
-    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Role); // מיין לפי תפקיד
-    //            break;
-    //        case BO.VolInList.IsActive:
-    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // מיין לפי מצב פעילות (פעיל/לא פעיל)
-    //            break;
-    //        default:
-    //            volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // מיון ברירת מחדל לפי מזהה
-    //            break;
-    //    }
-
-    //    return volunteers
-    //        .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id)) // ממירים לכל מתנדב ברשימה לפי המזהה
-    //        .ToList();
-    //}
+    
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
         var volunteers = _dal.Volunteer.ReadAll();

@@ -267,27 +267,104 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"There is no call with the received ID = {callId}");
         }
     }
+
+    //public List<BO.ClosedCallInList> GetCloseCall1(int volunteerId, BO.Calltype? callType, ClosedCallInListEnum? closedCallInListEnum)
+    //{
+    //    try
+    //    {
+    //        // Step 1: Fetch and convert all calls
+    //        var allCalls = _dal.Call.ReadAll().ToList();
+    //        var boCalls = allCalls
+    //            .Select(c => CallManager.GetCallInList(c)) // Convert to CallInList
+    //            .ToList();
+
+    //        // Step 2: Filter only closed calls
+    //        var filteredCalls = boCalls
+    //            .Where(c => c.Status == BO.CallStatus.Closed) // Filter closed calls
+    //            .ToList();
+
+    //        // Step 3: Convert to ClosedCallInList
+    //        var boClosedCalls = filteredCalls
+    //            .Select(c => VolunteerManager.GetClosedCallInList(volunteerId)) // Convert to ClosedCallInList
+    //            .ToList();
+
+    //        // Step 4: Filter by call type if specified
+    //        if (callType.HasValue)
+    //        {
+    //            boClosedCalls = boClosedCalls
+    //                .Where(c => c.CallType == callType.Value)
+    //                .ToList();
+    //        }
+
+    //        // Step 5: Sort the list if needed
+    //        if (closedCallInListEnum.HasValue)
+    //        {
+    //            boClosedCalls = closedCallInListEnum switch
+    //            {
+    //                ClosedCallInListEnum.Id => boClosedCalls.OrderBy(c => c.Id).ToList(),
+    //                ClosedCallInListEnum.CallType => boClosedCalls.OrderBy(c => c.CallType).ToList(),
+    //                ClosedCallInListEnum.FullAddress => boClosedCalls.OrderBy(c => c.FullAddress).ToList(),
+    //                ClosedCallInListEnum.OpenTime => boClosedCalls.OrderBy(c => c.OpenTime).ToList(),
+    //                ClosedCallInListEnum.EnterTime => boClosedCalls.OrderBy(c => c.EnterTime).ToList(),
+    //                ClosedCallInListEnum.EndTime => boClosedCalls.OrderBy(c => c.EndTime).ToList(),
+    //                ClosedCallInListEnum.CompletionStatus => boClosedCalls.OrderBy(c => c.CompletionStatus).ToList(),
+    //                _ => boClosedCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
+    //            };
+    //        }
+    //        else
+    //        {
+    //            // If no sorting value is provided, default sorting is by Id
+    //            boClosedCalls = boClosedCalls.OrderBy(c => c.Id).ToList();
+    //        }
+
+    //        // Return the list of closed calls
+    //        return boClosedCalls;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // Throw a custom exception if an error occurs
+    //        throw new BlGetCloseCallException($"Error retrieving closed calls: {ex.Message}");
+    //    }
+    //}
+
     public List<BO.ClosedCallInList> GetCloseCall(int volunteerId, BO.Calltype? callType, ClosedCallInListEnum? closedCallInListEnum)
     {
         try
         {
-            // Step 1: Fetch and convert all calls
-            var allCalls = _dal.Call.ReadAll().ToList();
-            var boCalls = allCalls
-                .Select(c => CallManager.GetCallInList(c)) // Convert to CallInList
+            // Step 1: Get all assignments for the specific volunteer that have been completed (EndOfTime is not null)
+            var volunteerAssignments = _dal.Assignment.ReadAll()
+                .Where(a => a.VolunteerId == volunteerId && a.EndOfTime != null)
                 .ToList();
 
-            // Step 2: Filter only closed calls
-            var filteredCalls = boCalls
-                .Where(c => c.Status == BO.CallStatus.Closed) // Filter closed calls
+            // Step 2: Create list of ClosedCallInList objects using Select and LINQ
+            var boClosedCalls = volunteerAssignments
+                .Select(assignment =>
+                {
+                    try
+                    {
+                        var call = _dal.Call.Read(assignment.CallId);
+                        if (call == null) return null; // Skip if the call is not found
+
+                        return new BO.ClosedCallInList
+                        {
+                            Id = assignment.CallId,
+                            CallType = (BO.Calltype)call.Calltype,
+                            FullAddress = call.ReadAddress,
+                            OpenTime = call.OpeningTime,
+                            EnterTime = assignment.time_entry_treatment,
+                            EndTime = assignment.time_end_treatment,
+                            CompletionStatus = (BO.CallAssignmentEnum?)assignment.EndOfTime
+                        };
+                    }
+                    catch (Exception)
+                    {
+                        return null; // Return null if there's an error with a particular call
+                    }
+                })
+                .Where(closedCall => closedCall != null) // Filter out null values (calls that failed to process)
                 .ToList();
 
-            // Step 3: Convert to ClosedCallInList
-            var boClosedCalls = filteredCalls
-                .Select(c => VolunteerManager.GetClosedCallInList(volunteerId)) // Convert to ClosedCallInList
-                .ToList();
-
-            // Step 4: Filter by call type if specified
+            // Step 3: Filter by call type if specified
             if (callType.HasValue)
             {
                 boClosedCalls = boClosedCalls
@@ -295,36 +372,27 @@ internal class CallImplementation : BlApi.ICall
                     .ToList();
             }
 
-            // Step 5: Sort the list if needed
-            if (closedCallInListEnum.HasValue)
+            // Step 4: Sort based on the specified enum
+            boClosedCalls = closedCallInListEnum switch
             {
-                boClosedCalls = closedCallInListEnum switch
-                {
-                    ClosedCallInListEnum.Id => boClosedCalls.OrderBy(c => c.Id).ToList(),
-                    ClosedCallInListEnum.CallType => boClosedCalls.OrderBy(c => c.CallType).ToList(),
-                    ClosedCallInListEnum.FullAddress => boClosedCalls.OrderBy(c => c.FullAddress).ToList(),
-                    ClosedCallInListEnum.OpenTime => boClosedCalls.OrderBy(c => c.OpenTime).ToList(),
-                    ClosedCallInListEnum.EnterTime => boClosedCalls.OrderBy(c => c.EnterTime).ToList(),
-                    ClosedCallInListEnum.EndTime => boClosedCalls.OrderBy(c => c.EndTime).ToList(),
-                    ClosedCallInListEnum.CompletionStatus => boClosedCalls.OrderBy(c => c.CompletionStatus).ToList(),
-                    _ => boClosedCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
-                };
-            }
-            else
-            {
-                // If no sorting value is provided, default sorting is by Id
-                boClosedCalls = boClosedCalls.OrderBy(c => c.Id).ToList();
-            }
+                ClosedCallInListEnum.Id => boClosedCalls.OrderBy(c => c.Id).ToList(),
+                ClosedCallInListEnum.CallType => boClosedCalls.OrderBy(c => c.CallType).ToList(),
+                ClosedCallInListEnum.FullAddress => boClosedCalls.OrderBy(c => c.FullAddress).ToList(),
+                ClosedCallInListEnum.OpenTime => boClosedCalls.OrderBy(c => c.OpenTime).ToList(),
+                ClosedCallInListEnum.EnterTime => boClosedCalls.OrderBy(c => c.EnterTime).ToList(),
+                ClosedCallInListEnum.EndTime => boClosedCalls.OrderBy(c => c.EndTime).ToList(),
+                ClosedCallInListEnum.CompletionStatus => boClosedCalls.OrderBy(c => c.CompletionStatus).ToList(),
+                _ => boClosedCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
+            };
 
-            // Return the list of closed calls
             return boClosedCalls;
         }
         catch (Exception ex)
         {
-            // Throw a custom exception if an error occurs
-            throw new BlGetCloseCallException($"Error retrieving closed calls: {ex.Message}");
+            throw new BlGetCloseCallException($"Error retrieving closed calls: {ex.Message}", ex);
         }
     }
+
 
     public IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
     {
