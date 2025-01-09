@@ -42,39 +42,10 @@
         </StackPanel>
 
 
-
+        <!-- Distance Type - Read-only -->
         <StackPanel Orientation="Horizontal" Margin="10,220,0,0" VerticalAlignment="Top">
             <TextBlock Text="Distance Type:" FontSize="14" VerticalAlignment="Center"/>
-            <ComboBox ItemsSource="{Binding Source={StaticResource DistanceTypesKey}}"
-              SelectedItem="{Binding Volunteer.DistanceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-              SelectionChanged="cbDistanceType_SelectionChanged" Margin="10,0,0,0" VerticalAlignment="Center" Width="113">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Background="{Binding Converter={StaticResource DistanceTypeEnumToBackgroundConverterKey}, ConverterParameter='DistanceType'}">
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
-                        </Grid>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-        </StackPanel>
-
-
-        <!-- Total Handled Calls -->
-        <StackPanel Orientation="Horizontal" Margin="400,10,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Total Handled Calls:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Volunteer.TotalHandledCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
-        </StackPanel>
-
-        <!-- Total Cancelled Calls -->
-        <StackPanel Orientation="Horizontal" Margin="400,40,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Total Cancelled Calls:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Volunteer.TotalCancelledCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
-        </StackPanel>
-
-        <!-- Total Expired Calls -->
-        <StackPanel Orientation="Horizontal" Margin="400,70,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Total Expired Calls:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Volunteer.TotalExpiredCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Volunteer.DistanceType}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="113"/>
         </StackPanel>
 
         <!-- Current Call -->
@@ -83,22 +54,22 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Description:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
-                <TextBox Text="{Binding Volunteer.CurrentCall.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="11" Margin="10,0,0,0" VerticalAlignment="Center" Width="172" />
+                <TextBlock Text="{Binding Volunteer.CurrentCall.Description}" FontSize="11" Margin="10,0,0,0" VerticalAlignment="Center" Width="172"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Call ID:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
-                <TextBox Text="{Binding Volunteer.CurrentCall.CallId}" FontSize="14" IsReadOnly="True" Width="216" RenderTransformOrigin="0.591,0.47"/>
+                <TextBlock Text="{Binding Volunteer.CurrentCall.CallId}" FontSize="14" Width="216"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Call Type:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
-                <TextBox Text="{Binding Volunteer.CurrentCall.CallType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="189" />
+                <TextBlock Text="{Binding Volunteer.CurrentCall.CallType}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="189"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Full Address:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
-                <TextBox Text="{Binding Volunteer.CurrentCall.FullAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="167" />
+                <TextBlock Text="{Binding Volunteer.CurrentCall.FullAddress}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="167"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -123,8 +94,26 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Status:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
-                <TextBox Text="{Binding Volunteer.CurrentCall.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="341" />
+                <TextBlock Text="{Binding Volunteer.CurrentCall.Status}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="341"/>
             </StackPanel>
+        </StackPanel>
+
+        <!-- Total Handled Calls -->
+        <StackPanel Orientation="Horizontal" Margin="400,10,0,0" VerticalAlignment="Top">
+            <TextBlock Text="Total Handled Calls:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Volunteer.TotalHandledCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Total Cancelled Calls -->
+        <StackPanel Orientation="Horizontal" Margin="400,40,0,0" VerticalAlignment="Top">
+            <TextBlock Text="Total Cancelled Calls:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Volunteer.TotalCancelledCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Total Expired Calls -->
+        <StackPanel Orientation="Horizontal" Margin="400,70,0,0" VerticalAlignment="Top">
+            <TextBlock Text="Total Expired Calls:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Volunteer.TotalExpiredCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
 
         <!-- Update Details Button -->
@@ -133,10 +122,12 @@
         <!-- End Current Call Button -->
         <Button Content="End Current Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="548,323,0,0" Click="EndCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}" RenderTransformOrigin="0.613,0.665"/>
         <Button Content="Cancel Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,323,0,0" Click="CancelCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}" RenderTransformOrigin="0.613,0.665"/>
+
         <!-- Choose Call Button -->
-        <Button Content="Choose Call to Handle" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,460,0,0" Click="ChooseCallButton_Click" Visibility="{Binding CurrentCallVisibility}"/>
+        <Button Content="Choose Call to Handle" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,460,0,0" Click="ChooseCallButton_Click" Visibility="{Binding CurrentCallVisibility}"/>
 
         <!-- View Volunteer Call History -->
-        <Button Content="View Volunteer Call History" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="36,0,0,153" Click="ViewVolunteerHistoryButton_Click"/>
+        <Button Content="View Volunteer Call History" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,460,0,0" Click="ViewVolunteerHistoryButton_Click"/>
+
     </Grid>
 </Window>

@@ -17,18 +17,28 @@
                 <!-- If you want to display the selected item on the ComboBox itself -->
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}" />
+                        <Grid Background="{Binding Converter={StaticResource CalltypeToBackgroundConverterKey}}">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                        </Grid>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <!-- Sort by ComboBox without SelectionChanged event -->
             <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="5"/>
-            <ComboBox Width="150" SelectedItem="{Binding AnotherSelectedStatus, Mode=TwoWay}" 
-              ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
-               SelectionChanged="FilterComboBox_SelectionChanged_Sort"
+            <ComboBox Width="150" 
+          SelectedItem="{Binding AnotherSelectedStatus, Mode=TwoWay}"
+          ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
+          SelectionChanged="FilterComboBox_SelectionChanged_Sort"
+          Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{Binding Converter={StaticResource ClosedCallInListEnumToBackgroundConverterKey}}">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-              Margin="5"/>
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">

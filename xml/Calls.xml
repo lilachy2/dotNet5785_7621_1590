@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>31.51295957732413</Latitude>
-    <Longitude>34.37960475488692</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.43046340200123</Latitude>
+    <Longitude>34.37397431871344</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.783705214011018</Latitude>
-    <Longitude>34.723351623177855</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.117278188067264</Latitude>
+    <Longitude>35.026896823029716</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.16694255474469</Latitude>
-    <Longitude>34.70531420275455</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.847481771527967</Latitude>
+    <Longitude>34.51317498736824</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.367428201793633</Latitude>
-    <Longitude>35.00545301476812</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.56314271863604</Latitude>
+    <Longitude>35.705503610956775</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.628825362677286</Latitude>
-    <Longitude>34.947227051690824</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.328414787199527</Latitude>
+    <Longitude>34.31489961705457</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.958595670205508</Latitude>
-    <Longitude>35.38419556067937</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.346173806120454</Latitude>
+    <Longitude>34.77304271216005</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.82592898406745</Latitude>
-    <Longitude>35.18654203102942</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.73909697310152</Latitude>
+    <Longitude>35.44397808323007</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.34843410571869</Latitude>
-    <Longitude>34.46196531376938</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.377089660628922</Latitude>
+    <Longitude>34.47837944892601</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.539552969631092</Latitude>
-    <Longitude>35.35014236585121</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.501937845567745</Latitude>
+    <Longitude>34.82677412415932</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.2951028545736</Latitude>
-    <Longitude>35.064221420897375</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.42892785118085</Latitude>
+    <Longitude>35.00420522231229</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.487780223293726</Latitude>
-    <Longitude>35.742937658428325</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.97820911391119</Latitude>
+    <Longitude>35.70766688141168</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.394838317115806</Latitude>
-    <Longitude>34.63604080867449</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.11100573265173</Latitude>
+    <Longitude>34.55331081458107</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.996092408770316</Latitude>
-    <Longitude>34.485142582435145</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.27818276695957</Latitude>
+    <Longitude>35.152290142196165</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.46425042858578</Latitude>
-    <Longitude>34.39150810972664</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.136996007175654</Latitude>
+    <Longitude>35.535323251511066</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.184831295142875</Latitude>
-    <Longitude>34.797652256937205</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.45450341195905</Latitude>
+    <Longitude>35.3939226719617</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.368851980409204</Latitude>
-    <Longitude>35.5948925665926</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.355983270840017</Latitude>
+    <Longitude>35.77261603527474</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.914253457374244</Latitude>
-    <Longitude>34.49054945344312</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.320300942223007</Latitude>
+    <Longitude>34.6140048792179</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.490776250258875</Latitude>
-    <Longitude>34.97491903464394</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.579188866131823</Latitude>
+    <Longitude>34.78322917552377</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.390698651398402</Latitude>
-    <Longitude>35.17146443903383</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.085834136250156</Latitude>
+    <Longitude>34.91811482117037</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.44720949824225</Latitude>
-    <Longitude>35.51098656748512</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.26256129415238</Latitude>
+    <Longitude>34.66217141172218</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.355515096829166</Latitude>
-    <Longitude>34.52951982140138</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.2500420078374</Latitude>
+    <Longitude>35.43057473246599</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.695807934734574</Latitude>
-    <Longitude>34.78799314114961</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.59152899446238</Latitude>
+    <Longitude>35.056477909818526</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.50893967182585</Latitude>
-    <Longitude>35.75742709211582</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.46571260109946</Latitude>
+    <Longitude>34.6286647453051</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.454804446708415</Latitude>
-    <Longitude>35.01245552044927</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.56200246843322</Latitude>
+    <Longitude>34.879877695226966</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.799166282143318</Latitude>
-    <Longitude>34.38324362545696</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.03308871733329</Latitude>
+    <Longitude>34.34948651983208</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.669326451574786</Latitude>
-    <Longitude>34.40388416235413</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.03248408085338</Latitude>
+    <Longitude>35.04663136209715</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.70116234977938</Latitude>
-    <Longitude>35.65822912862674</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.729934093439798</Latitude>
+    <Longitude>35.804173267567975</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.15550394582922</Latitude>
-    <Longitude>35.66151210714029</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.061916566050833</Latitude>
+    <Longitude>34.707375997523904</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.852750293434156</Latitude>
-    <Longitude>34.50247150931512</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.685080423072705</Latitude>
+    <Longitude>35.830191688711324</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.679880700986395</Latitude>
-    <Longitude>35.829829084274806</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.211833662492218</Latitude>
+    <Longitude>34.64662116568726</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.026392050077902</Latitude>
-    <Longitude>35.677489742276634</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.555043051384473</Latitude>
+    <Longitude>34.97442538619209</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.478569342250374</Latitude>
-    <Longitude>35.521980475032365</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.56410952385825</Latitude>
+    <Longitude>35.37654010812463</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.610110209306747</Latitude>
-    <Longitude>35.24284662996017</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.82652008242581</Latitude>
+    <Longitude>34.60119283344633</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.717786737851508</Latitude>
-    <Longitude>35.33255897423115</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.425162816491987</Latitude>
+    <Longitude>34.455333311074185</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.846355410411263</Latitude>
-    <Longitude>35.53523951072097</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.34251439038144</Latitude>
+    <Longitude>34.74222832395022</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.65717734734596</Latitude>
-    <Longitude>35.32420058502328</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.2074812348991</Latitude>
+    <Longitude>35.34808590263688</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.563520304004395</Latitude>
-    <Longitude>34.41135623662508</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.596203634330315</Latitude>
+    <Longitude>35.786097444761815</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.66231843286935</Latitude>
-    <Longitude>34.67954998646713</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.764911955165708</Latitude>
+    <Longitude>35.220094051869225</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.6306684062793</Latitude>
-    <Longitude>35.37537236463324</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.591540952019137</Latitude>
+    <Longitude>35.694021285391884</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.06667294993874</Latitude>
-    <Longitude>34.389351240140094</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.004144052127245</Latitude>
+    <Longitude>35.432394190298936</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.66305510483168</Latitude>
-    <Longitude>35.34409283507155</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>33.05737838846605</Latitude>
+    <Longitude>35.471520196826816</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.482740781337625</Latitude>
-    <Longitude>35.378237281038274</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.60317165897622</Latitude>
+    <Longitude>35.88493299795565</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.343688448843057</Latitude>
-    <Longitude>34.74903439246116</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.806865665727756</Latitude>
+    <Longitude>35.68262022442264</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.8660117885206</Latitude>
-    <Longitude>34.95436125753641</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>29.60184522576504</Latitude>
+    <Longitude>35.025774861749106</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.998267734638684</Latitude>
-    <Longitude>34.91145601638325</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.928136048819646</Latitude>
+    <Longitude>35.45898483565132</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.684967170521965</Latitude>
-    <Longitude>34.63094928486798</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.26680456900468</Latitude>
+    <Longitude>35.76319713416043</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.8278384981576</Latitude>
-    <Longitude>34.54411231755128</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.850035718790682</Latitude>
+    <Longitude>34.87637643758054</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.685217183698565</Latitude>
-    <Longitude>35.27526796527437</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>31.677988385121612</Latitude>
+    <Longitude>35.14049805474259</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.684421155850277</Latitude>
-    <Longitude>35.266181822921425</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>32.87522432489038</Latitude>
+    <Longitude>35.32100647491021</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.198458905519967</Latitude>
-    <Longitude>34.37700501450999</Longitude>
-    <Calltype>birth</Calltype>
+    <Latitude>30.364704565455774</Latitude>
+    <Longitude>35.50189396205915</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>14 Jabotinsky St, Rishon LeZion, Israel</ReadAddress>
-    <OpeningTime>2025-01-07T22:23:36</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>20 King David St, Jerusalem, Israel</ReadAddress>
+    <OpeningTime>2025-01-08T15:38:37</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

@@ -205,7 +205,8 @@ public static class Initialization
         "An allergy attack, possibly involving severe reactions such as anaphylaxis.", // allergy
         "A heart attack event requiring urgent medical intervention.",             // heartattack
         "A call for a broken bone injury that needs stabilization and treatment.", // broken_bone
-        "A security event involving a threat or emergency requiring a quick response." // security_event
+        "A security event involving a threat or emergency requiring a quick response." ,// security_event
+            "there is not call yet"
     };
 
     static readonly Calltype[] CalltypeArray =
@@ -350,7 +351,7 @@ public static class Initialization
     public static void CreateCalls()
     {
         int index1 = s_rand.Next(0, 15);
-        int index2 = s_rand.Next(0, 7);
+        int index2 = s_rand.Next(0, 8);
 
         // Latitude and longitude range in Israel
         double minLatitude = 29.5;
@@ -426,13 +427,16 @@ public static class Initialization
                         break;
                     case 1:
                         finish = AssignmentCompletionType.VolunteerCancelled;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 30)); 
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 300)); 
 
                         break;
                     case 2:
                         finish = AssignmentCompletionType.AdminCancelled;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 30));
-
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 300));
+                        break;
+                    case 3:
+                        finish = AssignmentCompletionType.Open;
+                        finishTime = null;
                         break;
                    
                      

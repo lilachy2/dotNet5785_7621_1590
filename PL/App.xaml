@@ -15,6 +15,9 @@
         <local:PasswordConverter x:Key="PasswordConverterKey" />
         <local:Calltype x:Key="CalltypeKey" />
         <local:ClosedCallInListEnum x:Key="ClosedCallInListEnumKey" />
+        <local:ClosedCallInListEnumToBackgroundConverter x:Key="ClosedCallInListEnumToBackgroundConverterKey" />
+        <local:CalltypeToBackgroundConverter x:Key="CalltypeToBackgroundConverterKey" />
+
 
 
 

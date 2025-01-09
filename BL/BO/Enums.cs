@@ -35,10 +35,10 @@ public enum CompletionType
 
 public enum CallStatus
 {
+    Expired,         // Expired - Not selected for handling or did not complete in time
     Open,            // Open - Not currently being handled by any volunteer
     InProgress,      // In Progress - Currently being handled by a volunteer
     Closed,          // Closed - The volunteer has finished handling the call
-    Expired,         // Expired - Not selected for handling or did not complete in time
     OpenAtRisk,      // Open At Risk - The call is open and approaching its required completion time
     InProgressAtRisk // In Progress At Risk - The call is being handled but is approaching its required completion time
 }

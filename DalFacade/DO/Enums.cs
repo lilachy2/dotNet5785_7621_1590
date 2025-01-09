@@ -50,5 +50,6 @@ public enum AssignmentCompletionType
     TreatedOnTime, 
     VolunteerCancelled, // self cancellation
     AdminCancelled, // Canceling an administrator
-    Expired
+    Expired,
+        Open
 }

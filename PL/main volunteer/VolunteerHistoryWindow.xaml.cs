@@ -5,35 +5,18 @@ using System.Windows.Controls;
 
 namespace PL.main_volunteer
 {
-    public partial class VolunteerHistoryWindow : Window
+    public partial class VolunteerHistoryWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-         private int _volunteerId;
+        private int _volunteerId;
 
-        //  public static readonly DependencyProperty SelectedStatusProperty =
-        //DependencyProperty.Register("SelectedStatus", typeof(BO.Calltype?), typeof(VolunteerHistoryWindow), new PropertyMetadata(null, OnSelectedStatusChanged));
-
-        //  // הגדרת המאפיין
-        //  public BO.Calltype? SelectedStatus
-        //  {
-        //      get => (BO.Calltype?)GetValue(SelectedStatusProperty);
-        //      set => SetValue(SelectedStatusProperty, value);
-        //  }
-
-        //  private static void OnSelectedStatusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //  {
-        //      var window = d as VolunteerHistoryWindow;
-        //      if (window != null)
-        //      {
-        //          // כאן תוכל לטפל בשינוי שנעשה ולבצע פעולות אחרות אם צריך
-        //          var newValue = e.NewValue as BO.Calltype?;
-        //          // לדוגמה, לבצע עדכון של ה-UI או להפעיל פונקציה על בסיס הערך החדש
-        //      }
-        //  }
-
+        // Private field for SelectedStatus
         private BO.Calltype? _selectedStatus;
+
+        // Event for INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // Property for SelectedStatus with change notification
         public BO.Calltype? SelectedStatus
         {
             get => _selectedStatus;
@@ -47,53 +30,51 @@ namespace PL.main_volunteer
             }
         }
 
+        // Notify UI that the property has changed
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        // Constructor for initializing the window with volunteer ID
         public VolunteerHistoryWindow(int id)
         {
-
             InitializeComponent();
             _volunteerId = id;
 
-            SelectedStatus = BO.Calltype.None;
+            SelectedStatus = BO.Calltype.None;  // Set default value
 
-            // טוען את רשימת הקריאות של המתנדב
+            // Load the volunteer's call history
             var calls = s_bl.Call.GetCloseCall(id, null, null);
             this.DataContext = calls;
         }
 
-        // פונקציה שמופעלת כאשר המשתמש משנה את הבחירה ב-Filter ComboBox
-     
+        // Function to handle the Filter ComboBox selection change
         private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
-
             var comboBox = sender as ComboBox;
             var selectedCallType = comboBox.SelectedItem as BO.Calltype?;
 
             if (selectedCallType.HasValue)
             {
-                // שליחה לפונקציה כדי לעדכן את הקריאות לפי הסוג שנבחר
+                // Update the DataContext with filtered calls based on the selected call type
                 var calls = s_bl.Call.GetCloseCall(_volunteerId, selectedCallType.Value, null);
-                this.DataContext = calls;  // עדכון ה-DataContext עם הקריאות המעודכנות
+                this.DataContext = calls;
             }
         }
+
+        // Function to handle the Sort ComboBox selection change
         private void FilterComboBox_SelectionChanged_Sort(object sender, SelectionChangedEventArgs e)
         {
-           
-
             var comboBox = sender as ComboBox;
             var selectedClosedCallInListEnum = comboBox.SelectedItem as BO.ClosedCallInListEnum?;
 
             if (selectedClosedCallInListEnum.HasValue)
             {
-                // שליחה לפונקציה כדי לעדכן את הקריאות לפי הסוג שנבחר
+                // Update the DataContext with filtered calls based on the selected closed call enum
                 var calls = s_bl.Call.GetCloseCall(_volunteerId, null, selectedClosedCallInListEnum);
-                this.DataContext = calls;  // עדכון ה-DataContext עם הקריאות המעודכנות
+                this.DataContext = calls;
             }
         }
-
     }
 }

@@ -145,6 +145,68 @@ namespace PL
     }
 
 
+    public class ClosedCallInListEnumToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            BO.ClosedCallInListEnum callEnum = (BO.ClosedCallInListEnum)value;
+
+                switch (callEnum)
+                {
+                    case BO.ClosedCallInListEnum.Id:
+                        return System.Windows.Media.Brushes.LightGoldenrodYellow; // צבע עבור Id
+                    case BO.ClosedCallInListEnum.FullAddress:
+                        return System.Windows.Media.Brushes.LightSkyBlue; // צבע עבור Name
+                    case BO.ClosedCallInListEnum.CompletionStatus:
+                        return System.Windows.Media.Brushes.LightCoral; // צבע עבור IsActive
+                     case BO.ClosedCallInListEnum.EnterTime:
+                        return System.Windows.Media.Brushes.LightGreen; // צבע עבור IsActive
+                     case BO.ClosedCallInListEnum.OpenTime:
+                        return System.Windows.Media.Brushes.LightSalmon; // צבע עבור IsActive
+                   case BO.ClosedCallInListEnum.CallType:
+                        return System.Windows.Media.Brushes.LightSteelBlue; // צבע עבור IsActive
+                    default:
+                        return System.Windows.Media.Brushes.LightCyan; // ברירת מחדל
+                }
+            
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value; // המרת חזרה לא נדרשת במקרה זה
+        }
+    }
+
+    public class CalltypeToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            BO.Calltype callTypeEnum = (BO.Calltype)value;
+
+            switch (callTypeEnum)
+            {
+                case BO.Calltype.allergy:
+                    return System.Windows.Media.Brushes.LightGoldenrodYellow; // צבע עבור Id
+                case BO.Calltype.broken_bone:
+                    return System.Windows.Media.Brushes.LightSkyBlue; // צבע עבור Name
+                case BO.Calltype.birth:
+                    return System.Windows.Media.Brushes.LightCoral; // צבע עבור IsActive
+                case BO.Calltype.security_event:
+                    return System.Windows.Media.Brushes.LightGreen; // צבע עבור IsActive
+                case BO.Calltype.heartattack:
+                    return System.Windows.Media.Brushes.LightSalmon; // צבע עבור IsActive
+               default:
+                    return System.Windows.Media.Brushes.LightCyan; // ברירת מחדל
+            }
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value; // המרת חזרה לא נדרשת במקרה זה
+        }
+    }
+
     public class PasswordConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
