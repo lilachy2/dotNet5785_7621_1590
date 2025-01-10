@@ -19,7 +19,7 @@
             <TextBlock Text="Filter by Distance (km):" VerticalAlignment="Center" Margin="5"/>
             <TextBox Width="80" Margin="0,0,20,0" VerticalAlignment="Center"/>
 
-            <Button Content="Filter" Width="100" Click="FilterCalls" VerticalAlignment="Center"/>
+          
 
             <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="10"/>
             <ComboBox Width="150" Margin="0,0,10,0" VerticalAlignment="Center">
@@ -28,7 +28,6 @@
                 <ComboBoxItem Content="Opening Time"/>
             </ComboBox>
 
-            <Button Content="Sort" Width="100" Click="SortCalls" VerticalAlignment="Center"/>
         </StackPanel>
 
         <!-- Calls List -->
@@ -100,11 +99,7 @@
                                     <TextBlock Text="{Binding DistanceFromVolunteer}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                                 </Border>
 
-                                <!-- Select Button -->
-                                <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                                    <Button Content="Select" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SelectCallButton_Click"/>
-                                </Border>
-
+                          
                                 <!-- Description TextBlock -->
                                 <TextBlock Name="DescriptionTextBlock" Grid.Row="2" Grid.ColumnSpan="6" Text="{Binding Description}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Visibility="Collapsed"/>
                             </Grid>

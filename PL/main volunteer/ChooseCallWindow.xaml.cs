@@ -81,12 +81,12 @@ namespace PL.main_volunteer
         public List<BO.OpenCallInList> CallsList { get; set; }
 
         // Click handler for selecting a call
-        private void SelectCallButton_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedCall = (BO.OpenCallInList)((Button)sender).DataContext;
-            s_bl.Call.AssignCallToVolunteer(selectedCall.Id, _volunteerId);  // Assign call to the volunteer
-            LoadOpenCalls();  // Refresh the call list
-        }
+        //private void SelectCallButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var selectedCall = (BO.OpenCallInList)((Button)sender).DataContext;
+        //    s_bl.Call.AssignCallToVolunteer(selectedCall.Id, _volunteerId);  // Assign call to the volunteer
+        //    LoadOpenCalls();  // Refresh the call list
+        //}
 
         // DependencyProperty Change Notification (optional)
         private void OnPropertyChanged(string propertyName)
