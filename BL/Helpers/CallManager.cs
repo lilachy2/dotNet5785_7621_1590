@@ -282,11 +282,11 @@ internal static class CallManager
         DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
+        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId /*&& a.EndOfTime == null*/).FirstOrDefault();
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
         // logic chack
-        if (Tools.IsAddressValid(doCall.ReadAddress))
+        if (Tools.IsAddressValid(doCall.ReadAddress)==false)
             throw new BlInvalidaddress($"The address = {doCall.ReadAddress}provided is invalid.");
         MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime);// If not good throw an exception from within the method
 

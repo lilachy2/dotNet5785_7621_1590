@@ -394,101 +394,166 @@ internal class CallImplementation : BlApi.ICall
     }
 
 
+    //public IEnumerable<BO.OpenCallInList> GetOpenCall1(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
+    //{
+    //    DO.Volunteer doVolunteer = _dal.Volunteer.Read(id);
+    //    if (doVolunteer == null)
+    //        throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist");
+
+    //    // Retrieve all calls from the BO
+    //    var doallcall = _dal.Call.ReadAll();
+    //   // var allCalls = doallcall.Select(call => CallManager.GetCallInList(call)).ToList();
+    //    var allCalls = doallcall.Select(call => CallManager.GetAdd_update_Call(id)).ToList();
+
+    //    //BO.Volunteer BOvolunteer = VolunteerManager.GetVolunteer(id); //// לקרוא לולנטיר של עדכון שצריך ליצור
+    //    var BOvolunteer1 = new BO.Volunteer
+    //    {
+    //        Id = doVolunteer.Id,
+    //        Name = doVolunteer.Name,
+    //        Number_phone = doVolunteer.Number_phone,
+    //        Email = doVolunteer.Email,
+    //        FullCurrentAddress = doVolunteer.FullCurrentAddress,
+    //        Password = doVolunteer.Password,
+    //        //Latitude = Tools.GetLatitude(doVolunteer.FullCurrentAddress).Result,
+    //        //Longitude = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result,
+    //        Latitude = Tools.GetLatitude(doVolunteer.FullCurrentAddress),
+    //        Longitude = Tools.GetLongitude(doVolunteer.FullCurrentAddress),
+    //        Role = (BO.Role)doVolunteer.Role, // המרה ישירה בין ה-Enums
+    //        Active = doVolunteer.Active,
+    //        Distance = doVolunteer.distance,
+    //        DistanceType = (BO.DistanceType)doVolunteer.Distance_Type, // המרה ישירה בין ה-Enums
+    //        TotalHandledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.TreatedOnTime),
+    //        TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
+    //            (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
+    //        TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
+    //        CurrentCall = null
+
+
+
+    //    };
+
+    //    // Retrieve all assignments from the DAL
+    //    var allAssignments = _dal.Assignment.ReadAll();
+    //    double? lonVol = BOvolunteer1.Longitude;
+    //    double? latVol = BOvolunteer1.Latitude;
+
+    //    //// Filter for only "Open" or "Risk Open" status
+    //    //IEnumerable<BO.OpenCallInList> filteredCalls = from call in allCalls
+    //    //                                               join assignment in allAssignments on call.Id equals assignment.CallId into callAssignments
+    //    //                                               from assignment in callAssignments.DefaultIfEmpty()
+    //    //                                               where (call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk)
+    //    //                                               let boCall = Read(call.CallId)
+    //    //                                               select new BO.OpenCallInList
+    //    //                                               {
+    //    //                                                   Id = call.CallId,
+    //    //                                                   CallType = call.CallType,
+    //    //                                                   Description = boCall.Description,
+    //    //                                                   FullAddress = boCall.FullAddress,
+    //    //                                                   OpenTime = call.OpenTime,
+    //    //                                                   MaxEndTime = boCall.MaxEndTime,
+    //    //                                                   DistanceFromVolunteer = BOvolunteer1?.FullCurrentAddress != null ? CallManager.Air_distance_between_2_addresses
+    //    //                                                   (latVol, lonVol, boCall.Latitude, boCall.Longitude) : 0  // Calculate the distance between the volunteer and the call
+
+    //    //                                               };
+
+
+
+    //    IEnumerable<BO.OpenCallInList> filteredCalls = allCalls
+    //.Where(call => (call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk) &&
+    //               allAssignments.Any(a => a.CallId == call.Id)) // מסנן רק את הקריאות שיש להן משימות
+    //.Select(call =>
+    //{
+    //    var callAssignments = allAssignments.Where(a => a.CallId == call.Id).ToList(); // מוצא את המשימות המתאימות
+    //    BO.Call boCall = Read(call.Id);
+    //    double? distance = 0;
+
+    //    if (BOvolunteer1?.FullCurrentAddress != null)
+    //    {
+    //        var assignment = callAssignments.FirstOrDefault(); // מקבל את המשימה הראשונה
+    //        if (assignment != null)
+    //        {
+    //            distance = CallManager.Air_distance_between_2_addresses(
+    //                latVol, lonVol, boCall.Latitude, boCall.Longitude);
+    //        }
+    //    }
+
+    //    return new BO.OpenCallInList
+    //    {
+    //        Id = call.Id,
+    //        CallType = call.Calltype,
+    //        Description = boCall.Description,
+    //        FullAddress = boCall.FullAddress,
+    //        OpenTime = call.OpenTime,
+    //        MaxEndTime = boCall.MaxEndTime,
+    //        DistanceFromVolunteer = distance.Value
+    //    };
+    //});
+
+
+    //    // Filter by call type if provided
+    //    if (type.HasValue)
+    //    {
+    //        filteredCalls = filteredCalls.Where(c => c.CallType == type.Value);
+    //    }
+
+    //    // Sort by the requested field or by default (call ID)
+    //    if (sortBy.HasValue)
+    //    {
+    //        filteredCalls = sortBy.Value switch
+    //        {
+    //            BO.OpenCallInListEnum.Id => filteredCalls.OrderBy(c => c.Id),
+    //            BO.OpenCallInListEnum.CallType => filteredCalls.OrderBy(c => c.CallType),
+    //            BO.OpenCallInListEnum.Description => filteredCalls.OrderBy(c => c.Description),
+    //            BO.OpenCallInListEnum.FullAddress => filteredCalls.OrderBy(c => c.FullAddress),
+    //            BO.OpenCallInListEnum.OpenTime => filteredCalls.OrderBy(c => c.OpenTime),
+    //            BO.OpenCallInListEnum.MaxEndTime => filteredCalls.OrderBy(c => c.MaxEndTime),
+    //            BO.OpenCallInListEnum.DistanceFromVolunteer => filteredCalls.OrderBy(c => c.DistanceFromVolunteer),
+    //            _ => filteredCalls.OrderBy(c => c.Id)
+    //        };
+    //    }
+    //    else
+    //    {
+    //        filteredCalls = filteredCalls.OrderBy(c => c.Id);
+    //    }
+
+    //    return filteredCalls;
+    //}
+
     public IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
     {
-        DO.Volunteer doVolunteer = _dal.Volunteer.Read(id);
-        if (doVolunteer == null)
+        DO.Volunteer volunteer = _dal.Volunteer.Read(id);
+        if (volunteer == null)
             throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist");
 
         // Retrieve all calls from the BO
-        var doallcall = _dal.Call.ReadAll();
-        //var allCalls = doallcall.Select(call => CallManager.GetCallInList(call)).ToList();
-        var allCalls = doallcall.Select(call => CallManager.GetAdd_update_Call(id)).ToList();
-
-        BO.Volunteer BOvolunteer = VolunteerManager.GetVolunteer(id); //// לקרוא לולנטיר של עדכון שצריך ליצור
-        var BOvolunteer1 = new BO.Volunteer
-        {
-            Id = doVolunteer.Id,
-            Name = doVolunteer.Name,
-            Number_phone = doVolunteer.Number_phone,
-            Email = doVolunteer.Email,
-            FullCurrentAddress = doVolunteer.FullCurrentAddress,
-            Password = doVolunteer.Password,
-            //Latitude = Tools.GetLatitude(doVolunteer.FullCurrentAddress).Result,
-            //Longitude = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result,
-            Latitude = Tools.GetLatitude(doVolunteer.FullCurrentAddress),
-            Longitude = Tools.GetLongitude(doVolunteer.FullCurrentAddress),
-            Role = (BO.Role)doVolunteer.Role, // המרה ישירה בין ה-Enums
-            Active = doVolunteer.Active,
-            Distance = doVolunteer.distance,
-            DistanceType = (BO.DistanceType)doVolunteer.Distance_Type, // המרה ישירה בין ה-Enums
-            TotalHandledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.TreatedOnTime),
-            TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
-                (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
-            TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
-            CurrentCall = null
-
-
-
-        };
+        IEnumerable<BO.CallInList> allCalls = GetCallsList(null, null, null);
 
         // Retrieve all assignments from the DAL
         var allAssignments = _dal.Assignment.ReadAll();
-        double? lonVol = BOvolunteer1.Longitude;
-        double? latVol = BOvolunteer1.Latitude;
+        double? lonVol = Tools.GetLongitude(volunteer.FullCurrentAddress);
+        double? latVol = Tools.GetLatitude(volunteer.FullCurrentAddress);
 
-        //// Filter for only "Open" or "Risk Open" status
-        //IEnumerable<BO.OpenCallInList> filteredCalls = from call in allCalls
-        //                                               join assignment in allAssignments on call.Id equals assignment.CallId into callAssignments
-        //                                               from assignment in callAssignments.DefaultIfEmpty()
-        //                                               where (call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk)
-        //                                               let boCall = Read(call.CallId)
-        //                                               select new BO.OpenCallInList
-        //                                               {
-        //                                                   Id = call.CallId,
-        //                                                   CallType = call.CallType,
-        //                                                   Description = boCall.Description,
-        //                                                   FullAddress = boCall.FullAddress,
-        //                                                   OpenTime = call.OpenTime,
-        //                                                   MaxEndTime = boCall.MaxEndTime,
-        //                                                   DistanceFromVolunteer = BOvolunteer1?.FullCurrentAddress != null ? CallManager.Air_distance_between_2_addresses
-        //                                                   (latVol, lonVol, boCall.Latitude, boCall.Longitude) : 0  // Calculate the distance between the volunteer and the call
-
-        //                                               };
-
-
-
+        // Filter for only "Open" or "Risk Open" status
         IEnumerable<BO.OpenCallInList> filteredCalls = allCalls
-    .Where(call => (call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk) &&
-                   allAssignments.Any(a => a.CallId == call.Id)) // מסנן רק את הקריאות שיש להן משימות
-    .Select(call =>
-    {
-        var callAssignments = allAssignments.Where(a => a.CallId == call.Id).ToList(); // מוצא את המשימות המתאימות
-        BO.Call boCall = Read(call.Id);
-        double? distance = 0;
-
-        if (BOvolunteer1?.FullCurrentAddress != null)
-        {
-            var assignment = callAssignments.FirstOrDefault(); // מקבל את המשימה הראשונה
-            if (assignment != null)
+            .Where(call => call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk)  // Filter by Open or OpenAtRisk status
+            .Select(call =>
             {
-                distance = CallManager.Air_distance_between_2_addresses(
-                    latVol, lonVol, boCall.Latitude, boCall.Longitude);
-            }
-        }
+                var boCall = Read(call.CallId);  // Get full details of the call
+                var assignment = allAssignments.FirstOrDefault(a => a.CallId == call.Id);  // Find the assignment if any
 
-        return new BO.OpenCallInList
-        {
-            Id = call.Id,
-            CallType = call.Calltype,
-            Description = boCall.Description,
-            FullAddress = boCall.FullAddress,
-            OpenTime = call.OpenTime,
-            MaxEndTime = boCall.MaxEndTime,
-            DistanceFromVolunteer = distance.Value
-        };
-    });
-
+                return new BO.OpenCallInList
+                {
+                    Id = call.CallId,
+                    CallType = call.CallType,
+                    Description = boCall.Description,
+                    FullAddress = boCall.FullAddress,
+                    OpenTime = call.OpenTime,
+                    MaxEndTime = boCall.MaxEndTime,
+                    DistanceFromVolunteer = volunteer?.FullCurrentAddress != null
+                        ? CallManager.Air_distance_between_2_addresses(latVol, lonVol, boCall.Latitude, boCall.Longitude)
+                        : 0  // Calculate the distance between the volunteer and the call
+                };
+            });
 
         // Filter by call type if provided
         if (type.HasValue)
@@ -518,7 +583,6 @@ internal class CallImplementation : BlApi.ICall
 
         return filteredCalls;
     }
-
 
 
     public void UpdateCancelTreatment(int idVol, int idAssig)
@@ -633,6 +697,8 @@ internal class CallImplementation : BlApi.ICall
             };
 
             _dal.Assignment.Create(NewAssignment);
+            //CallManager.Observers.NotifyListUpdated(); //stage 5   
+
 
             // Optionally, make sure to check and keep the status open after assignment creation
             bocall = CallManager.GetViewingCall(CallId); // Fetch the updated call

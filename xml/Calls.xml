@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>29.513599109697388</Latitude>
-    <Longitude>34.772193854928986</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>29.76192692715752</Latitude>
+    <Longitude>34.886130597141175</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.018802522495715</Latitude>
-    <Longitude>34.73719740529221</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.64243365401741</Latitude>
+    <Longitude>35.57886774209292</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.193781572953938</Latitude>
-    <Longitude>34.52717017286257</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.88729003637689</Latitude>
+    <Longitude>35.575429671332934</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.012121339657675</Latitude>
-    <Longitude>34.33732859050951</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.487985139953174</Latitude>
+    <Longitude>34.83285420743233</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.15411206852651</Latitude>
-    <Longitude>34.441593664766515</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.548069368672014</Latitude>
+    <Longitude>34.98331343457232</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.699065749439615</Latitude>
-    <Longitude>35.27514008491498</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.593801864803275</Latitude>
+    <Longitude>35.227140332098976</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.50936722838018</Latitude>
-    <Longitude>34.679709511426275</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.434728473919286</Latitude>
+    <Longitude>34.535743963508246</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1006</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.630374528331604</Latitude>
-    <Longitude>35.63869774129119</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.535599968026503</Latitude>
+    <Longitude>35.25300864198796</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.21753622758079</Latitude>
-    <Longitude>34.4705460080328</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.44920878584694</Latitude>
+    <Longitude>35.2599555761524</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.09502521148983</Latitude>
-    <Longitude>35.854594528412065</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.739394812199684</Latitude>
+    <Longitude>35.104340751112304</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.81160323920725</Latitude>
-    <Longitude>34.61334352922047</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.567348665243536</Latitude>
+    <Longitude>34.469388817468335</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.954386745531043</Latitude>
-    <Longitude>34.53491350408661</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.05801968711031</Latitude>
+    <Longitude>34.34281389942303</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.22326495115574</Latitude>
-    <Longitude>34.714392144134415</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.328010695175195</Latitude>
+    <Longitude>34.48534447091656</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.52931784787293</Latitude>
-    <Longitude>34.79837881978</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.60943650589181</Latitude>
+    <Longitude>35.61436042089787</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.303188779892285</Latitude>
-    <Longitude>35.452375632761964</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.23639578921206</Latitude>
+    <Longitude>34.64899599770214</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1014</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.11647757720965</Latitude>
-    <Longitude>35.732183452570496</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.56631395457992</Latitude>
+    <Longitude>34.71595982136023</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.57565435293951</Latitude>
-    <Longitude>34.75387405858888</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.35471796796383</Latitude>
+    <Longitude>35.66710546104147</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1016</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.195959382420007</Latitude>
-    <Longitude>34.49221707781333</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.85704619091499</Latitude>
+    <Longitude>35.82924454186729</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.106921470713544</Latitude>
-    <Longitude>35.409226459970306</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.12514365309399</Latitude>
+    <Longitude>34.31498414160003</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.91869766342091</Latitude>
-    <Longitude>35.668381094488325</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.469085557866116</Latitude>
+    <Longitude>35.52898759192564</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.696486428165873</Latitude>
-    <Longitude>34.901048200160155</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.11835085889614</Latitude>
+    <Longitude>34.49819794281313</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.432440946760472</Latitude>
-    <Longitude>35.29347541050715</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.774913602417215</Latitude>
+    <Longitude>34.994779164762555</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.39258056327708</Latitude>
-    <Longitude>34.58888298908862</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.00675960567953</Latitude>
+    <Longitude>34.701146693273856</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.46221713411231</Latitude>
-    <Longitude>34.469521791984086</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.90444957397984</Latitude>
+    <Longitude>34.62332939950497</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.48178100150072</Latitude>
-    <Longitude>35.074539494617525</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.14891824153659</Latitude>
+    <Longitude>35.46741054881829</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.298249981115426</Latitude>
-    <Longitude>35.857735671263576</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>29.622622400228558</Latitude>
+    <Longitude>35.671865999595056</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.90518070507829</Latitude>
-    <Longitude>35.1556223117037</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.959512991499157</Latitude>
+    <Longitude>35.026629941881005</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.716066790750244</Latitude>
-    <Longitude>34.59683462861711</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.013467501208126</Latitude>
+    <Longitude>34.73083731318327</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.55411752190354</Latitude>
-    <Longitude>34.92242747205284</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.48312217585923</Latitude>
+    <Longitude>35.17590717586671</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.946795250326566</Latitude>
-    <Longitude>35.66110193404729</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.85341142639023</Latitude>
+    <Longitude>35.43070874165262</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.66114144740952</Latitude>
-    <Longitude>35.884516349029006</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.747026716652815</Latitude>
+    <Longitude>34.40948649398068</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.02358604540175</Latitude>
-    <Longitude>34.61624199695568</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.003914905826996</Latitude>
+    <Longitude>35.608570756120244</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.149173152176267</Latitude>
-    <Longitude>35.01008504714022</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.15276804915041</Latitude>
+    <Longitude>35.6443509234125</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.166915847837487</Latitude>
-    <Longitude>35.586653647684436</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.888798835696434</Latitude>
+    <Longitude>34.323747273495925</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.592175379465512</Latitude>
-    <Longitude>35.559563003284765</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>29.569796978446657</Latitude>
+    <Longitude>35.06765668350592</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.84044833686479</Latitude>
-    <Longitude>35.36798809436183</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.020918985940376</Latitude>
+    <Longitude>34.74659996531706</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.00940045192108</Latitude>
-    <Longitude>35.632247500618114</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.01299493714937</Latitude>
+    <Longitude>34.45871702926983</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1036</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.99473652455563</Latitude>
-    <Longitude>34.94595474224333</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.368698066171707</Latitude>
+    <Longitude>35.70472249557822</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.016051137052756</Latitude>
-    <Longitude>35.54742959335549</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.865864630079436</Latitude>
+    <Longitude>34.73401479376955</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.38548573643024</Latitude>
-    <Longitude>35.75679029999152</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>29.51358315151496</Latitude>
+    <Longitude>34.341506850756616</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.299634602430313</Latitude>
-    <Longitude>35.36353045201669</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.436066439207565</Latitude>
+    <Longitude>34.98363373322941</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1040</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.78410452307832</Latitude>
-    <Longitude>35.607111296975305</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>29.59747347189178</Latitude>
+    <Longitude>35.21265824337357</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.69668050510461</Latitude>
-    <Longitude>35.67760872190773</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>29.59313279068943</Latitude>
+    <Longitude>34.44566415343376</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.293384087853894</Latitude>
-    <Longitude>34.60474365740417</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.3669256235546</Latitude>
+    <Longitude>35.709572097435206</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.395239598421494</Latitude>
-    <Longitude>34.64810403283131</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.206883660799193</Latitude>
+    <Longitude>35.84985430026873</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.097426704934126</Latitude>
-    <Longitude>35.314844611256405</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.80354018730765</Latitude>
+    <Longitude>35.45472867487573</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.836691380470036</Latitude>
-    <Longitude>35.06752855912977</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>30.87937045567098</Latitude>
+    <Longitude>35.851653964033105</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.807398742017217</Latitude>
-    <Longitude>35.19164510303665</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>31.776180250840145</Latitude>
+    <Longitude>35.85016057040754</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.411321905808244</Latitude>
-    <Longitude>35.650442361096474</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>32.40462839235971</Latitude>
+    <Longitude>35.01863966763568</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1048</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.030188669754224</Latitude>
-    <Longitude>34.34647954038843</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>33.032608160901646</Latitude>
+    <Longitude>34.98599495151973</Longitude>
+    <Calltype>security_event</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>3 HaNasi Blvd, Be'er Sheva, Israel</ReadAddress>
-    <OpeningTime>2025-01-11T14:16:12</OpeningTime>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>54 Rue de la Liberté, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-11T16:28:14</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

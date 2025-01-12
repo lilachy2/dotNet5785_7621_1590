@@ -178,24 +178,79 @@ public static class Initialization
     "78 Strandgata, Tromsø, Norway",
     "90 Kirkegata, Stavanger, Norway"
     };
-    static string[] addresses =
- {
-"King George St 20, Jerusalem, Israel",
-"bit hadfus 7  ,Jerusalem, Israel",
-"Agripas St 10, Jerusalem, Israel",
-"Hapalmach St 25, Jerusalem, Israel",
-"Emek Refaim St 43, Jerusalem, Israel",
-"Hapisga St 18, Jerusalem, Israel",
-"Hillel St 7, Jerusalem, Israel",
-"Derech Hebron 105, Jerusalem, Israel",
-"Bezalel St 12, Jerusalem, Israel",
-"HaNeviim St 29, Jerusalem, Israel",
-"Shivtei Israel St 15, Jerusalem, Israel",
-"Azza St 50, Jerusalem, Israel",
-"Kriyat Hayuvel St 5, Jerusalem, Israel",
-"Prophets St 23, Jerusalem, Israel",
-"Ben Yehuda St 1, Jerusalem, Israel"
-};
+    static string[] internationalAddresses2 = new string[]
+  {
+    // ארצות הברית
+    "1200 Pennsylvania Avenue, Washington, DC, USA",
+    "1501 15th Street, Denver, CO, USA",
+    "800 N Michigan Avenue, Chicago, IL, USA",
+    "2000 Market Street, Philadelphia, PA, USA",
+    "1025 Connecticut Avenue, Washington, DC, USA",
+
+    // בריטניה
+    "1 Piccadilly Circus, London, UK",
+    "56 Regent Street, London, UK",
+    "88 Southwark Street, London, UK",
+    "10 Princes Street, Edinburgh, Scotland, UK",
+    "22 The Parade, Cardiff, Wales, UK",
+
+    // צרפת
+    "5 Rue de la Paix, Paris, France",
+    "22 Rue Saint-Antoine, Paris, France",
+    "33 Boulevard Saint-Germain, Paris, France",
+    "54 Rue de la Liberté, Marseille, France",
+    "91 Rue de la République, Lyon, France",
+
+    // גרמניה
+    "24 Unter den Linden, Berlin, Germany",
+    "34 Maximilianstrasse, Munich, Germany",
+    "55 Friedrichstrasse, Berlin, Germany",
+    "77 Königstrasse, Stuttgart, Germany",
+    "102 Mönckebergstraße, Hamburg, Germany",
+
+    // איטליה
+    "101 Via del Babuino, Rome, Italy",
+    "88 Via Spiga, Milan, Italy",
+    "44 Via San Gregorio, Milan, Italy",
+    "12 Piazza del Duomo, Florence, Italy",
+    "56 Via San Vitale, Bologna, Italy",
+
+    // ספרד
+    "34 Paseo de la Castellana, Madrid, Spain",
+    "12 Gran Via de les Corts Catalanes, Barcelona, Spain",
+    "8 Calle de Preciados, Madrid, Spain",
+    "45 Calle de Fuencarral, Madrid, Spain",
+    "67 Avenida Diagonal, Barcelona, Spain",
+
+    // קנדה
+    "120 Queen Street West, Toronto, ON, Canada",
+    "30 King Street West, Toronto, ON, Canada",
+    "88 Avenue du Parc, Montreal, QC, Canada",
+    "60 Granville Street, Vancouver, BC, Canada",
+    "70 Bay Street, Toronto, ON, Canada",
+
+    // אוסטרליה
+    "101 Pitt Street, Sydney, NSW, Australia",
+    "200 George Street, Sydney, NSW, Australia",
+    "100 Swanston Street, Melbourne, VIC, Australia",
+    "10 Collins Street, Melbourne, VIC, Australia",
+    "15 King Street, Brisbane, QLD, Australia",
+
+    // יפן
+    "45 Roppongi, Minato City, Tokyo, Japan",
+    "12 Omotesando, Shibuya, Tokyo, Japan",
+    "78 Shinjuku, Tokyo, Japan",
+    "56 Namba, Osaka, Japan",
+    "34 Sapporo, Hokkaido, Japan",
+
+    // נורבגיה
+    "18 Dronningens Gate, Oslo, Norway",
+    "12 Markens Gate, Kristiansand, Norway",
+    "22 Torggata, Oslo, Norway",
+    "33 Søndre Gate, Trondheim, Norway",
+    "67 Lillehammer, Norway"
+  };
+
 
     static readonly string[] Descriptions =  // <param name="Descriptions">List of event descriptions.</param>
     {
@@ -362,7 +417,7 @@ public static class Initialization
         for (int i = 0; i < 50; i++)
         {
             
-            string? address = Addresses[index1];
+            string? address = internationalAddresses2[index1];
             Calltype calltype = (Calltype)index2;
 
 
