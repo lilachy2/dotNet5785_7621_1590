@@ -11,17 +11,18 @@
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
 
 
-    <Grid Background="#F0F8FF">
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="671*"/>
-            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!-- Light pastel blue background -->
 
         <!-- ListView for displaying volunteers -->
-        <ListView Margin="5,5,5,57" ItemsSource="{Binding VolunteerInList}" 
+        <ListView Grid.Column="0" Margin="5,5,5,57" ItemsSource="{Binding VolunteerInList}" 
                   SelectedItem="{Binding SelectedVolunteer}" 
-                  MouseDoubleClick="VolunteerList_MouseDoubleClick" Grid.ColumnSpan="2">
+                  MouseDoubleClick="VolunteerList_MouseDoubleClick"
+                  SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <!-- Columns for volunteer details (ID, Name, Active, etc.) -->
@@ -39,14 +40,14 @@
                     <GridViewColumn Header="Total Calls Expired" DisplayMemberBinding="{Binding TotalCallsExpired}" />
                     <GridViewColumn Header="Call Id" DisplayMemberBinding="{Binding CurrentCallId}" />
                     <GridViewColumn Header="Call Type" DisplayMemberBinding="{Binding CurrentCallType}" />
-                    <GridViewColumn Header="Colored Name">
+                    <GridViewColumn Header="Name  ">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding FullName}" Foreground="Red"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Delete">
+                    <GridViewColumn Header="">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Delete" Background="#FF6347" Foreground="White"
@@ -59,26 +60,23 @@
         </ListView>
 
         <!-- ComboBox for Filtering Volunteers by different criteria (Id, Name, Active) -->
-
-        <ComboBox 
-          Width="103"
- HorizontalAlignment="Left"
- VerticalAlignment="Top"
+        <ComboBox
+            Width="74"
+            Margin="700,6,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             ItemsSource="{Binding Source={StaticResource VolunteerFilterCollectionKey}}" 
-           SelectedItem="{Binding Volunteer.VolunteerInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-             SelectionChanged="FilterVolunteerlistByCriteria" Margin="17,10,0,0" Height="21" Grid.Column="1">
+            SelectedItem="{Binding Volunteer.VolunteerInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectionChanged="FilterVolunteerlistByCriteria"
+            Height="21">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <!-- Grid with Background set by RoleEnumToBackgroundConverter -->
                     <Grid Background="{Binding Converter={StaticResource VolInListEnumToBackgroundConverterKey}}">
                         <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
-
                     </Grid>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-
-
 
         <!-- Place the "ADD Volunteer" button outside the ListView -->
         <Button Content="ADD Volunteer" 
@@ -87,7 +85,7 @@
                 Width="98" Height="31" 
                 Click="AddVolunteerButton_Click" 
                 Margin="351,357,0,0" 
-            Background="#B0E0E6" 
+                Background="#B0E0E6" 
                 Foreground="White" 
                 FontWeight="Bold"/>
     </Grid>

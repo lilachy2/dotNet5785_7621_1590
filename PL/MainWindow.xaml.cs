@@ -161,20 +161,20 @@ namespace PL
         private void HandleCalls_Click(object sender, RoutedEventArgs e)
         {
             // Logic to manage calls, implement as needed
-            MessageBox.Show("Handling Calls...");
+            //MessageBox.Show("Handling Calls...");
         }
 
         private void HandleVolunteers_Click(object sender, RoutedEventArgs e)
         {
             // Logic to manage volunteers, implement as needed
-            MessageBox.Show("Handling Volunteers...");
+            //MessageBox.Show("Handling Volunteers...");
             new VolunteerListWindow().Show();
         }
 
         private void StartSimulator_Click(object sender, RoutedEventArgs e)
         {
             // Logic to start the simulator, implement as needed
-            MessageBox.Show("Starting Simulator...");
+            //MessageBox.Show("Starting Simulator...");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,9 +45,25 @@ namespace PL.main_volunteer
 
             SelectedStatus = BO.Calltype.None;  // Set default value
 
-            // Load the volunteer's call history
-            var calls = s_bl.Call.GetCloseCall(id, null, null);
-            this.DataContext = calls;
+            // Load the volunteer's call history asynchronously
+            LoadVolunteerHistory();
+        }
+
+        // Synchronously load the volunteer's call history
+        private void LoadVolunteerHistory()
+        {
+            try
+            {
+                // Fetch the calls synchronously, but call this in a separate thread or task
+                var calls = s_bl.Call.GetCloseCall(_volunteerId, null, null);
+
+                // Set the DataContext after the calls are retrieved
+                this.DataContext = calls;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading volunteer history: {ex.Message}");
+            }
         }
 
         // Function to handle the Filter ComboBox selection change
@@ -57,7 +74,7 @@ namespace PL.main_volunteer
 
             if (selectedCallType.HasValue)
             {
-                // Update the DataContext with filtered calls based on the selected call type
+                // Fetch filtered calls synchronously
                 var calls = s_bl.Call.GetCloseCall(_volunteerId, selectedCallType.Value, null);
                 this.DataContext = calls;
             }
@@ -71,7 +88,7 @@ namespace PL.main_volunteer
 
             if (selectedClosedCallInListEnum.HasValue)
             {
-                // Update the DataContext with filtered calls based on the selected closed call enum
+                // Fetch sorted calls synchronously
                 var calls = s_bl.Call.GetCloseCall(_volunteerId, null, selectedClosedCallInListEnum);
                 this.DataContext = calls;
             }

@@ -59,7 +59,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Headers -->
-                <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="10,0,0,359" Grid.RowSpan="2">
+                <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,359" Grid.RowSpan="2">
                     <TextBlock Text="ID" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                 </Border>
                 <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="1">
@@ -74,7 +74,7 @@
                 <Border Grid.Column="4" Grid.Row="0" BorderBrush="Black" BorderThickness="1">
                     <TextBlock Text="End Time" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                 </Border>
-                <Border Grid.Column="5" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="0,0,10,359" Grid.RowSpan="2">
+                <Border Grid.Column="5" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,359" Grid.RowSpan="2">
                     <TextBlock Text="Completion Status" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                 </Border>
 

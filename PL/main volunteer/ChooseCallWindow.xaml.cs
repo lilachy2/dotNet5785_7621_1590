@@ -4,53 +4,54 @@ using System.Linq;
 using System.Windows;
 using BO;
 using BlApi;
-using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace PL.main_volunteer
 {
-    public partial class ChooseCallWindow : Window
+    public partial class ChooseCallWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         private int _volunteerId;
+        private BO.Volunteer _volunteer;
+        private List<BO.OpenCallInList> _callsList;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ChooseCallWindow(int volunteerId)
         {
             InitializeComponent();
             _volunteerId = volunteerId;
             LoadVolunteerData();
+            this.DataContext = this;  // קביעת DataContext לעבודה עם Binding
+
         }
 
-        // DependencyProperty for Volunteer
+        // תכונת Volunteer עם INotifyPropertyChanged
         public BO.Volunteer Volunteer
         {
-            get
-            {
-                if (Application.Current.Dispatcher.CheckAccess())
-                {
-                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
-                }
-                else
-                {
-                    return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
-                }
-            }
+            get => _volunteer;
             set
             {
-                SetValue(CurrentVolunteerProperty, value);
-                OnPropertyChanged(nameof(Volunteer));
+                if (_volunteer != value)
+                {
+                    _volunteer = value;
+                    OnPropertyChanged(nameof(Volunteer));  // להודיע על שינוי בתכונה
+                    LoadOpenCalls(); // טוען את הקריאות הפתוחות מחדש
+                }
             }
         }
 
-        public static readonly DependencyProperty CurrentVolunteerProperty =
-            DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(ChooseCallWindow),
-                new PropertyMetadata(null, OnVolunteerChanged));
-
-        private static void OnVolunteerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        // תכונת CallsList
+        public List<BO.OpenCallInList> CallsList
         {
-            var window = d as ChooseCallWindow;
-            if (window != null)
+            get => _callsList;
+            set
             {
-                window.LoadOpenCalls(); // Reload calls when volunteer data changes
+                if (_callsList != value)
+                {
+                    _callsList = value;
+                    OnPropertyChanged(nameof(CallsList));  // להודיע על שינוי בתכונה
+                }
             }
         }
 
@@ -77,21 +78,10 @@ namespace PL.main_volunteer
             }
         }
 
-        // Property to bind to the ItemsControl in XAML
-        public List<BO.OpenCallInList> CallsList { get; set; }
-
-        // Click handler for selecting a call
-        //private void SelectCallButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var selectedCall = (BO.OpenCallInList)((Button)sender).DataContext;
-        //    s_bl.Call.AssignCallToVolunteer(selectedCall.Id, _volunteerId);  // Assign call to the volunteer
-        //    LoadOpenCalls();  // Refresh the call list
-        //}
-
-        // DependencyProperty Change Notification (optional)
-        private void OnPropertyChanged(string propertyName)
+        // Method to notify property change
+        protected void OnPropertyChanged(string propertyName)
         {
-            // You can implement property change notification here if needed
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

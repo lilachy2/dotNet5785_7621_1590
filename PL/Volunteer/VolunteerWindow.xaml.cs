@@ -85,7 +85,6 @@ namespace PL.Volunteer
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             InitializeComponent();
-
         }
 
         private static void OnVolunteerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -103,6 +102,7 @@ namespace PL.Volunteer
         {
             s_bl.Volunteer.AddObserver(volunteerId, HandleVolunteerUpdate);
         }
+
         private void HandleVolunteerUpdate()
         {
             try

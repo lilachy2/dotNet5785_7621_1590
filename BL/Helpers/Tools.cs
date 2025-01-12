@@ -274,7 +274,7 @@ internal static class Tools
     private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
     private const string BaseUrl = "https://geocode.maps.co/search";
 
-    public static bool IsAddressValid(string address)
+    public static bool IsAddressValid1(string address)
     {
         if (string.IsNullOrWhiteSpace(address))
             throw new ArgumentException("Address cannot be null or empty.");
@@ -305,6 +305,70 @@ internal static class Tools
 
         return isValid; // החזרת התוצאה
     }
+    public static bool IsAddressValid2(string address)
+    {
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
+
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+
+        bool isValid = false;
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                // מבצע קריאה סינכרונית בלבד
+                HttpResponseMessage response = client.GetAsync(query).ConfigureAwait(false).GetAwaiter().GetResult();
+
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+
+                // בדיקה אם הסטטוס הצליח
+                isValid = response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                isValid = false;
+            }
+        }
+
+        return isValid; // החזרת התוצאה
+    }
+
+    public static bool IsAddressValid(string address)
+    {
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
+
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+
+        bool isValid = false;
+
+        try
+        {
+            // יצירת בקשה סינכרונית ישירה עם HttpWebRequest
+            var request = (HttpWebRequest)WebRequest.Create(query);
+            request.Method = "GET";
+            request.Timeout = 30000; // Timeout של 30 שניות
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                // בדיקה אם הסטטוס הצליח
+                isValid = response.StatusCode == HttpStatusCode.OK;
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            isValid = false;
+        }
+
+        return isValid; // החזרת התוצאה
+    }
+
+
 
     /// <summary>
     /// Gets the latitude of a given address.

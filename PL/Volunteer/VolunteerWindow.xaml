@@ -70,7 +70,7 @@
             </ComboBox>
 
             <!-- Full Current Address -->
-            <Label Content="Full Current Address:" Grid.Row="6" HorizontalAlignment="Left" />
+            <Label Content="Address:" Grid.Row="6" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Volunteer.FullCurrentAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Distance -->
