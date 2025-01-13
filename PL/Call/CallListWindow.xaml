@@ -32,13 +32,13 @@
                     <GridViewColumn Header="TimeRemaining" DisplayMemberBinding="{Binding TimeRemaining}" />
                     <GridViewColumn Header="TotalAssignments" DisplayMemberBinding="{Binding TotalAssignments}" />
                     <GridViewColumn Header="Current Volunteer" DisplayMemberBinding="{Binding CurrentVolunteerName}" />
-                    <GridViewColumn Header="Handled">
+                    <!--<GridViewColumn Header="Handled">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsEnabled="False" IsChecked="{Binding IsHandled}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>-->
                     <GridViewColumn Header="">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -47,6 +47,15 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Cancel" Background="#4682B4" Foreground="White"
+                    Click="CancelCallButton_Click" CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
@@ -76,9 +85,41 @@
                 VerticalAlignment="Top" 
                 Width="98" Height="31" 
                 Click="AddCallButton_Click" 
-                Margin="0,382,0,0" 
+                Margin="0,572,0,0" 
                 Background="#B0E0E6" 
                 Foreground="White" 
                 FontWeight="Bold"/>
+
+        <ComboBox
+        Width="74"
+        Margin="477,577,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        ItemsSource="{Binding Source={StaticResource CallInListFieldEnumKey}}" 
+        SelectedItem="{Binding Call.CallInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        SelectionChanged="FilterCallListByCriteria"
+        Height="22" RenderTransformOrigin="0.345,2.911">
+            <!--<ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="{Binding Converter={StaticResource VolInListEnumToBackgroundConverterKey}}">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>-->
+        </ComboBox>
+
+        <ComboBox
+    Width="85"
+    Margin="594,577,0,0"
+    HorizontalAlignment="Left"
+    VerticalAlignment="Top"
+    ItemsSource="{Binding SortOrderOptions}" 
+    SelectedItem="{Binding SelectedSortOrder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+    SelectionChanged="FilterCallListByCriteria"
+    Height="22">
+        </ComboBox>
+
+
+
     </Grid>
 </Window>

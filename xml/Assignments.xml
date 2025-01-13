@@ -616,4 +616,12 @@
     <time_end_treatment xsi:nil="true" />
     <EndOfTime xsi:nil="true" />
   </Assignment>
+  <Assignment>
+    <Id>1077</Id>
+    <CallId>1001</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-01-12T23:49:21</time_entry_treatment>
+    <time_end_treatment xsi:nil="true" />
+    <EndOfTime xsi:nil="true" />
+  </Assignment>
 </ArrayOfAssignment>

@@ -58,61 +58,154 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
+    //public IEnumerable<BO.CallInList> GetCallsList(BO.CallInListField? filter, object? obj, BO.CallInListField? sortBy)
+    //{
+    //    IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are not calls int database");
+
+
+    //    IEnumerable<BO.CallInList> boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call));
+    //    if (filter != null && obj != null)
+    //    {
+    //        switch (filter)
+    //        {
+    //            case BO.CallInListField.Id:
+    //                boCallsInList.Where(item => item.Id == (int)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.CallId:
+    //                boCallsInList.Where(item => item.CallId == (int)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.CallType:
+    //                boCallsInList.Where(item => item.CallType == (BO.Calltype)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.OpenTime:
+    //                boCallsInList.Where(item => item.OpenTime == (DateTime)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.TimeRemaining:
+    //                boCallsInList.Where(item => item.TimeRemaining == (TimeSpan)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.VolunteerName:
+    //                boCallsInList.Where(item => item.VolunteerName == (string)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.CompletionTime:
+    //                boCallsInList.Where(item => item.CompletionTime == (TimeSpan)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.Status:
+    //                boCallsInList.Where(item => item.Status == (BO.CallStatus)obj).Select(item => item);
+    //                break;
+
+    //            case BO.CallInListField.TotalAssignments:
+    //                boCallsInList.Where(item => item.TotalAssignments == (int)obj).Select(item => item);
+    //                break;
+    //        }
+    //    }
+    //    if (sortBy == null)
+    //        sortBy = BO.CallInListField.CallId;
+    //    switch (sortBy)
+    //    {
+    //        case BO.CallInListField.Id:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.Id.HasValue ? 0 : 1)
+    //.ThenBy(item => item.Id)
+    //.ToList();
+    //            break;
+
+    //        case BO.CallInListField.CallId:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.CallId).ToList();
+    //            break;
+
+    //        case BO.CallInListField.CallType:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.CallType).ToList();
+    //            break;
+
+    //        case BO.CallInListField.OpenTime:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.OpenTime).ToList();
+    //            break;
+
+    //        case BO.CallInListField.TimeRemaining:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.TimeRemaining).ToList();
+    //            break;
+
+    //        case BO.CallInListField.VolunteerName:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.VolunteerName).ToList();
+    //            break;
+
+    //        case BO.CallInListField.CompletionTime:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.CompletionTime).ToList();
+    //            break;
+
+    //        case BO.CallInListField.Status:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.Status).ToList();
+    //            break;
+
+    //        case BO.CallInListField.TotalAssignments:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.TotalAssignments).ToList();
+    //            break;
+    //    }
+    //    return boCallsInList;
+    //}
     public IEnumerable<BO.CallInList> GetCallsList(BO.CallInListField? filter, object? obj, BO.CallInListField? sortBy)
     {
-        IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are not calls int database");
+        IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
 
+        IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
 
-        IEnumerable<BO.CallInList> boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call));
         if (filter != null && obj != null)
         {
             switch (filter)
             {
                 case BO.CallInListField.Id:
-                    boCallsInList.Where(item => item.Id == (int)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.Id == (int)obj);
                     break;
 
                 case BO.CallInListField.CallId:
-                    boCallsInList.Where(item => item.CallId == (int)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.CallId == (int)obj);
                     break;
 
                 case BO.CallInListField.CallType:
-                    boCallsInList.Where(item => item.CallType == (BO.Calltype)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
                     break;
 
                 case BO.CallInListField.OpenTime:
-                    boCallsInList.Where(item => item.OpenTime == (DateTime)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.OpenTime == (DateTime)obj);
                     break;
 
                 case BO.CallInListField.TimeRemaining:
-                    boCallsInList.Where(item => item.TimeRemaining == (TimeSpan)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.TimeRemaining == (TimeSpan)obj);
                     break;
 
                 case BO.CallInListField.VolunteerName:
-                    boCallsInList.Where(item => item.VolunteerName == (string)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.VolunteerName == (string)obj);
                     break;
 
                 case BO.CallInListField.CompletionTime:
-                    boCallsInList.Where(item => item.CompletionTime == (TimeSpan)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.CompletionTime == (TimeSpan)obj);
                     break;
 
                 case BO.CallInListField.Status:
-                    boCallsInList.Where(item => item.Status == (BO.CallStatus)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.Status == (BO.CallStatus)obj);
                     break;
 
                 case BO.CallInListField.TotalAssignments:
-                    boCallsInList.Where(item => item.TotalAssignments == (int)obj).Select(item => item);
+                    boCallsInList = boCallsInList.Where(item => item.TotalAssignments == (int)obj);
                     break;
             }
         }
+
         if (sortBy == null)
             sortBy = BO.CallInListField.CallId;
+
         switch (sortBy)
         {
             case BO.CallInListField.Id:
                 boCallsInList = boCallsInList.OrderBy(item => item.Id.HasValue ? 0 : 1)
-    .ThenBy(item => item.Id)
-    .ToList();
+                                             .ThenBy(item => item.Id)
+                                             .ToList();
                 break;
 
             case BO.CallInListField.CallId:
@@ -147,6 +240,7 @@ internal class CallImplementation : BlApi.ICall
                 boCallsInList = boCallsInList.OrderBy(item => item.TotalAssignments).ToList();
                 break;
         }
+
         return boCallsInList;
     }
 

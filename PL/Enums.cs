@@ -45,4 +45,11 @@ namespace PL
 
         public IEnumerator GetEnumerator() => ClosedCallInListEnums.GetEnumerator();
     }
+    internal class CallInListFieldEnum : IEnumerable
+    {
+        static readonly IEnumerable<BO.CallInListField> ClosedCallInListEnums =
+            Enum.GetValues(typeof(BO.CallInListField)).Cast<BO.CallInListField>();
+
+        public IEnumerator GetEnumerator() => ClosedCallInListEnums.GetEnumerator();
+    }
 }
