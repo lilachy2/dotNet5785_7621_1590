@@ -113,7 +113,7 @@
     Margin="594,577,0,0"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-    ItemsSource="{Binding SortOrderOptions}" 
+        ItemsSource="{Binding Source={StaticResource CallInListFieldEnumKey}}" 
     SelectedItem="{Binding SelectedSortOrder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     SelectionChanged="FilterCallListByCriteria"
     Height="22">

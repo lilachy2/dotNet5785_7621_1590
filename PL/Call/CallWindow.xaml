@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL.Call"
         mc:Ignorable="d"
         Title="CallWindow" Height="640" Width="800">
-    
+
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -19,12 +19,14 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <!-- שורה חדשה לכפתור -->
             </Grid.RowDefinitions>
 
             <!-- ID -->
             <Label Content="ID:" Grid.Row="0" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Call.Id}" Grid.Row="0" Margin="100,0" HorizontalAlignment="Stretch" 
-                     IsReadOnly="{Binding Call.Id, Converter={StaticResource ConvertUpdateToTrueKey}}"/>
+                     IsReadOnly="{Binding Call.Id}"/>
 
             <!-- Description -->
             <Label Content="Description:" Grid.Row="1" HorizontalAlignment="Left" />
@@ -60,10 +62,14 @@
             <Label Content="Distance:" Grid.Row="6" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Call.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>
 
+            <!-- Address -->
+            <Label Content="Address:" Grid.Row="7" HorizontalAlignment="Left" />
+            <TextBox Text="{Binding Call.FullAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch"/>
+
             <!-- Button (Add/Update) -->
             <Button Content="{Binding ButtonText}" 
                     Click="btnAddUpdate_Click" 
-                    Grid.Row="7" 
+                    Grid.Row="8" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Top" 
                     Height="39" 
