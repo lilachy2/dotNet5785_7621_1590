@@ -14,10 +14,12 @@ namespace PL.Call
 {
     public partial class CallListWindow : Window, INotifyPropertyChanged
     {
-        private CallStatus _selectedFilter = CallStatus.Open;  // Default to None (no filter)
+        static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+
+        private CallInListField _selectedFilter = CallInListField.None;  // Default to None (no filter)
         
         // Declare the SelectedFilter property with PropertyChanged notifications
-        public CallStatus SelectedFilter
+        public CallInListField SelectedFilter
         {
             get { return _selectedFilter; }
             set
@@ -43,32 +45,22 @@ namespace PL.Call
 
         // Register the DependencyProperty for CallInList
         public static readonly DependencyProperty CallListProperty =
-            DependencyProperty.Register(
-                "CallInList",
-                typeof(IEnumerable<BO.CallInList>),
-                typeof(CallListWindow),
-                new PropertyMetadata(null));
+            DependencyProperty.Register( "CallInList", typeof(IEnumerable<BO.CallInList>),
+                typeof(CallListWindow),new PropertyMetadata(null));
 
         // Constructor
         public CallListWindow()
         {
             InitializeComponent();
-            DataContext = this;  // Set the DataContext to the window itself for binding
-
-            // Initialize ComboBox with Enum values for filtering
-            //FilterComboBox.ItemsSource = Enum.GetValues(typeof(CallInList));
-
-            // Load the call list without any filter initially
+            DataContext = this; 
             UpdateCallList();
         }
 
         // Handle ComboBox selection change event to update the filter
         private void FilterCallListByCriteria(object _, SelectionChangedEventArgs e)
         {
-            // Access the selected item directly from e
-            if (e.AddedItems.Count > 0 && e.AddedItems[0] is CallStatus selectedItem)
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is CallInListField selectedItem)
             {
-                // Update the SelectedFilter property based on the selected item
                 SelectedFilter = selectedItem;
             }
         }
@@ -79,64 +71,24 @@ namespace PL.Call
         {
             try
             {
-                //// Query and retrieve the list of calls filtered by the selected filter
-                //IEnumerable<BO.CallInList> calls = queryCallList();
-
-                //// Use the dispatcher to update the UI thread with the new call list
-                //Application.Current.Dispatcher.Invoke(() =>
-                //{
-                //    CallInList = calls;
-                //});
+               
                 CallInList = null;  
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that might occur during the call list update
                 MessageBox.Show($"An error occurred while loading the call list: {ex.Message}",
                                 "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-
-
-        // This method contains the filtering logic
-        //private IEnumerable<BO.CallInList> queryCallList()
-        //{
-        //    IEnumerable<BO.CallInList> calls;
-
-        //    switch (SelectedFilter)
-        //    {
-        //        case CallInList.Id:
-        //            calls = BlApi.Factory.Get().Call.ReadAll(null, CallInList.Id).OrderBy(c => c.Id);
-        //            break;
-        //        case CallInList.CallType:
-        //            calls = BlApi.Factory.Get().Call.ReadAll(null, CallInList.CallType).OrderBy(c => c.CallType);
-        //            break;
-        //        case CallInList.Status:
-        //            calls = BlApi.Factory.Get().Call.ReadAll(CallStatus.Open, CallInList.Status).Where(c => c.Status == CallStatus.Open);
-        //            break;
-        //        case CallInList.None:  // No filter (default, show all)
-        //            calls = BlApi.Factory.Get().Call.ReadAll(null, null);
-        //            break;
-        //        default:
-        //            calls = BlApi.Factory.Get().Call.ReadAll(null, null);
-        //            break;
-        //    }
-
-        //    return calls;
-        //}
-
-        //Handle Window loaded event to register the observer for updates
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Register the observer to update the call list when changes occur in the BL
             BlApi.Factory.Get().Call.AddObserver(callListObserver);
         }
 
         //Handle Window closed event to remove the observer
         private void Window_Closed(object sender, EventArgs e)
         {
-            // Unregister the observer when the window is closed
             BlApi.Factory.Get().Call.RemoveObserver(callListObserver);
 
         }
@@ -161,9 +113,7 @@ namespace PL.Call
                 // Create and open the call window to add a new call
                 CallWindow callWindow = new CallWindow();
                 callWindow.ShowDialog();
-
-                // After adding a call, refresh the list automatically
-                UpdateCallList();
+                UpdateCallList(); // After adding a call, refresh the list automatically
             }
             catch (Exception ex)
             {
@@ -172,15 +122,14 @@ namespace PL.Call
             }
         }
 
-        // Double-click event to view a single call's details
 
+        // Double-click event to view a single call's details
         private void CallList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (SelectedCall != null)
             {
                 try
                 {
-                    // Send the ID of the selected call to the new window
                     CallWindow callWindow = new CallWindow(SelectedCall.Id);
                     callWindow.ShowDialog();
                 }
@@ -198,9 +147,7 @@ namespace PL.Call
             // Retrieves the Button that was clicked (sender refers to the object that triggered the event).
             var button = sender as Button;
 
-            // Safely extracts the CommandParameter from the Button, which represents the call to be deleted.
-            // The CommandParameter is expected to be of type BO.CallInList. The '?' operator ensures that if the value is null, it doesn't throw an exception.
-            var callToDelete = button?.CommandParameter as BO.CallInList;
+             var callToDelete = button?.CommandParameter as BO.CallInList;
 
             if (callToDelete != null)
             {
@@ -239,5 +186,32 @@ namespace PL.Call
         {
 
         }
+
+        private IEnumerable<BO.CallInList> queryCallList()
+        {
+            IEnumerable<BO.CallInList> calls;
+
+            switch (SelectedFilter)
+            {
+                case CallInListField.Id:
+                    calls = s_bl.Call.GetCallsList(CallInListField.Id, null,null).OrderBy(c => c.Id);
+                    break;
+                case CallInListField.CallType:
+                    calls = s_bl.Call.GetCallsList( CallInListField.CallType, null,null).OrderBy(c => c.CallType);
+                    break;
+                case CallInListField.Status:
+                    calls = s_bl.Call.GetCallsList(CallInListField.Status,null,null).OrderBy(c => c.Status);
+                    break;
+                case CallInListField.None:  // No filter (default, show all)
+                    calls = s_bl.Call.GetCallsList(null, null,null);
+                    break;
+                default:
+                    calls = s_bl.Call.GetCallsList(null, null);
+                    break;
+            }
+
+            return calls;
+        }
+
     }
 }

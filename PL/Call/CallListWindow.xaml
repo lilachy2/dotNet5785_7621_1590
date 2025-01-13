@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Call List" Height="450" Width="800"
+        Title="Call List" Height="640" Width="800" 
         Loaded="Window_Loaded"
         Closed="Window_Closed"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
@@ -27,7 +27,10 @@
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding CallType}" />
                     <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" />
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="OpenTime" DisplayMemberBinding="{Binding OpenTime}" />
+                    <GridViewColumn Header="Completion Time" DisplayMemberBinding="{Binding CompletionTime}" />
+                    <GridViewColumn Header="TimeRemaining" DisplayMemberBinding="{Binding TimeRemaining}" />
+                    <GridViewColumn Header="TotalAssignments" DisplayMemberBinding="{Binding TotalAssignments}" />
                     <GridViewColumn Header="Current Volunteer" DisplayMemberBinding="{Binding CurrentVolunteerName}" />
                     <GridViewColumn Header="Handled">
                         <GridViewColumn.CellTemplate>
@@ -69,11 +72,11 @@
 
         <!-- Place the "ADD Call" button outside the ListView -->
         <Button Content="ADD Call" 
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Center" 
                 VerticalAlignment="Top" 
                 Width="98" Height="31" 
                 Click="AddCallButton_Click" 
-                Margin="351,357,0,0" 
+                Margin="0,382,0,0" 
                 Background="#B0E0E6" 
                 Foreground="White" 
                 FontWeight="Bold"/>

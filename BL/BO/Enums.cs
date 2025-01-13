@@ -107,6 +107,8 @@ public enum CallInListField
     VolunteerName,      // The name of the volunteer assigned to the call
     CompletionTime,     // The total time taken to complete the call
     Status,             // The current status of the call
-    TotalAssignments    // The total number of assignments for the call
+    TotalAssignments,    // The total number of assignments for the call
+    None
+
 }
 
