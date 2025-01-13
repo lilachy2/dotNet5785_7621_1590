@@ -3,10 +3,79 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PL.Call"
+        xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="VolunteerListWindow" Height="450" Width="800">
+        Title="Call List" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ListView for displaying calls -->
+        <ListView Grid.Column="0" Margin="5,5,5,57" ItemsSource="{Binding CallInList}" 
+                  SelectedItem="{Binding SelectedCall}" 
+                  MouseDoubleClick="CallList_MouseDoubleClick"
+                  SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <!-- Columns for call details (ID, Type, Status, etc.) -->
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding CallType}" />
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Current Volunteer" DisplayMemberBinding="{Binding CurrentVolunteerName}" />
+                    <GridViewColumn Header="Handled">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding IsHandled}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Background="#FF6347" Foreground="White"
+                                        Click="DeleteCallButton_Click" CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- ComboBox for Filtering Calls by different criteria -->
+        <!--<ComboBox
+            Width="120"
+            Margin="700,6,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding Source={StaticResource CallFilterCollectionKey}}" 
+            SelectedItem="{Binding SelectedFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectionChanged="FilterCallListByCriteria"
+            Height="21">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="{Binding Converter={StaticResource CallInListEnumToBackgroundConverterKey}}">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>-->
+
+        <!-- Place the "ADD Call" button outside the ListView -->
+        <Button Content="ADD Call" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="98" Height="31" 
+                Click="AddCallButton_Click" 
+                Margin="351,357,0,0" 
+                Background="#B0E0E6" 
+                Foreground="White" 
+                FontWeight="Bold"/>
     </Grid>
 </Window>
