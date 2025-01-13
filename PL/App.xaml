@@ -17,6 +17,7 @@
         <local:ClosedCallInListEnum x:Key="ClosedCallInListEnumKey" />
         <local:ClosedCallInListEnumToBackgroundConverter x:Key="ClosedCallInListEnumToBackgroundConverterKey" />
         <local:CalltypeToBackgroundConverter x:Key="CalltypeToBackgroundConverterKey" />
+        <!--<local:ConvertUpdateToTrue x:Key="ConvertUpdateToTrueKey" />-->
 
 
 

@@ -5,6 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using PL.Call;
 
 namespace PL
 {
@@ -162,6 +163,8 @@ namespace PL
         {
             // Logic to manage calls, implement as needed
             //MessageBox.Show("Handling Calls...");
+            new CallListWindow().Show();
+
         }
 
         private void HandleVolunteers_Click(object sender, RoutedEventArgs e)

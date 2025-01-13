@@ -28,7 +28,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Column Definitions -->
+                <!-- Column Definitions for both Headers and Data -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="150"/>
@@ -38,7 +38,7 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Column Headers with Borders -->
+                <!-- Column Headers with Borders (Part of the Same Grid) -->
                 <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1">
                     <TextBlock Text="ID" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                 </Border>
@@ -58,11 +58,12 @@
                     <TextBlock Text="Select" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                 </Border>
 
-                <!-- Calls Data with Borders -->
+                <!-- Calls Data with Borders (Data part within the same Grid) -->
                 <ListBox Grid.Row="1" Grid.ColumnSpan="6" ItemsSource="{Binding OpenCallList}" SelectedItem="{Binding SelectedCall}" SelectionChanged="ListBox_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
+                                <!-- Column Definitions matching the header widths -->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="150"/>

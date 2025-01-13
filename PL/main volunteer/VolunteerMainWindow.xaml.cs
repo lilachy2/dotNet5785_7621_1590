@@ -78,7 +78,8 @@ namespace PL.main_volunteer
         {
             try
             {
-                Volunteer = s_bl.Volunteer.Read(Id);
+                var fordebug = s_bl.Volunteer.Read(Id);
+                Volunteer = fordebug;
 
                 // בדוק אם Volunteer לא שווה ל-null
                 if (Volunteer == null)

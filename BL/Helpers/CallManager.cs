@@ -107,7 +107,8 @@ internal static class CallManager
         //double? LatitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
         //double? LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
 
-        if (CalculateCallStatus(doCall) == CallStatus.Open|| CalculateCallStatus(doCall) ==CallStatus.OpenAtRisk)// status open
+        //if (CalculateCallStatus(doCall) == CallStatus.Open|| CalculateCallStatus(doCall) ==CallStatus.OpenAtRisk)// status open
+        if (CalculateCallStatus(doCall) == CallStatus.InProgressAtRisk|| CalculateCallStatus(doCall) ==CallStatus.InProgress)// status open
         return new BO.CallInProgress
 
         {
@@ -349,24 +350,54 @@ internal static class CallManager
 
     }
 
+    //public static BO.CallInList GetCallInList(DO.Call doCall)
+    //{
+    //    //var assignmentsForCall = _dal.Assignment.ReadAll(a => a.CallId == doCall.Id);
+    //    var assignmentsForCall = _dal.Assignment.ReadAll(a => a.CallId == doCall.Id) ?? Enumerable.Empty<DO.Assignment>();
+
+    //    var lastAssignmentsForCall = assignmentsForCall.OrderByDescending(item => item.time_entry_treatment).FirstOrDefault();
+
+    //    var callinlist= new CallInList()
+    //    {
+    //        Id = (lastAssignmentsForCall == null) ? null : lastAssignmentsForCall.Id,
+    //        CallId = doCall.Id,
+    //        CallType = (BO.Calltype)doCall.Calltype,
+    //        OpenTime = doCall.OpeningTime,
+    //        TimeRemaining = doCall.MaxEndTime != null ? doCall.MaxEndTime - _dal.Config.Clock : null,
+    //        VolunteerName = (lastAssignmentsForCall != null) ? _dal.Volunteer.Read(lastAssignmentsForCall.VolunteerId)!.Name : null,
+    //        CompletionTime = (lastAssignmentsForCall != null && lastAssignmentsForCall.EndOfTime != null) ? lastAssignmentsForCall.time_end_treatment - lastAssignmentsForCall.time_entry_treatment : null,
+    //        Status = CallManager.CalculateCallStatus(doCall),
+    //        TotalAssignments = (assignmentsForCall == null) ? 0 : assignmentsForCall.Count()
+    //    };
+    //    return callinlist;
+    //}
+
     public static BO.CallInList GetCallInList(DO.Call doCall)
     {
-        var assignmentsForCall = _dal.Assignment.ReadAll(a => a.CallId == doCall.Id);
+        var assignmentsForCall = _dal.Assignment.ReadAll(a => a.CallId == doCall.Id) ?? Enumerable.Empty<DO.Assignment>();
         var lastAssignmentsForCall = assignmentsForCall.OrderByDescending(item => item.time_entry_treatment).FirstOrDefault();
 
-        return new()
+        // בדיקה אם הקריאה ל-Read מחזירה null
+        var volunteer = (lastAssignmentsForCall != null) ? _dal.Volunteer.Read(lastAssignmentsForCall.VolunteerId) : null;
+
+        var callinlist = new CallInList()
         {
             Id = (lastAssignmentsForCall == null) ? null : lastAssignmentsForCall.Id,
             CallId = doCall.Id,
             CallType = (BO.Calltype)doCall.Calltype,
             OpenTime = doCall.OpeningTime,
             TimeRemaining = doCall.MaxEndTime != null ? doCall.MaxEndTime - _dal.Config.Clock : null,
-            VolunteerName = (lastAssignmentsForCall != null) ? _dal.Volunteer.Read(lastAssignmentsForCall.VolunteerId)!.Name : null,
-            CompletionTime = (lastAssignmentsForCall != null && lastAssignmentsForCall.EndOfTime != null) ? lastAssignmentsForCall.time_end_treatment - lastAssignmentsForCall.time_entry_treatment : null,
+            VolunteerName = (volunteer != null) ? volunteer.Name : null,
+            CompletionTime = (lastAssignmentsForCall != null && lastAssignmentsForCall.time_end_treatment != null && lastAssignmentsForCall.time_entry_treatment != null)
+                             ? lastAssignmentsForCall.time_end_treatment - lastAssignmentsForCall.time_entry_treatment
+                             : null,
             Status = CallManager.CalculateCallStatus(doCall),
-            TotalAssignments = (assignmentsForCall == null) ? 0 : assignmentsForCall.Count()
+            TotalAssignments = assignmentsForCall.Count()
         };
+
+        return callinlist;
     }
+
     // Convert 
     public static DO.Call BOConvertDO_Call(int Id)
     {

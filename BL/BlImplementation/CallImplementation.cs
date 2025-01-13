@@ -663,7 +663,7 @@ internal class CallImplementation : BlApi.ICall
     }
 
 
-    public void ChooseCall(int VolunteerId, int CallId)
+    public void ChooseCall1(int VolunteerId, int CallId)
     {
         try
         {
@@ -713,4 +713,36 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"Call with ID {CallId} was not found.");
         }
     }
+    public void ChooseCall(int idVol, int idCall)
+    {
+        // Retrieve volunteer and call; throw exception if not found.
+        DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"There is no volunteer with this ID {idVol}");
+        BO.Call boCall = Read(idCall) ?? throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
+
+        // Check if the call is open; throw exception if not.
+        if (boCall.Status != BO.CallStatus.Open || boCall.Status == BO.CallStatus.OpenAtRisk)
+            throw new BO.BlAlreadyExistsException($"The call is open or expired. IdCall is = {idCall}");
+
+        // Create a new assignment for the volunteer and the call.
+        DO.Assignment assigmnetToCreat = new DO.Assignment
+        {
+            Id = 0, // ID will be generated automatically
+            CallId = idCall,
+            VolunteerId = idVol,
+            time_entry_treatment = AdminManager.Now,
+            time_end_treatment = null,
+            EndOfTime = null
+        };
+
+        try
+        {
+            // Try to create the assignment in the database.
+            _dal.Assignment.Create(assigmnetToCreat);
+        }
+        catch (Exception e)
+        {
+            // Handle error if creation fails.
+            throw new BO.BlAlreadyExistsException("Impossible to create the assignment.");
+        }
     }
+}
