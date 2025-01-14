@@ -4,6 +4,8 @@ using System.Security;
 using System.Windows;
 using System.Windows.Data;
 
+using System.Windows.Media;
+
 namespace PL
 {
     // Converter שממיר את ערך ה-Id למצב IsReadOnly

@@ -344,8 +344,6 @@ public static class Initialization
         }
     }
 
-
-    
     private static (double latitude, double longitude) GetHardcodedCoordinates(string address)
     {
         double minLatitude = 29.5;
@@ -382,7 +380,7 @@ public static class Initialization
         );
     }
 
-  
+
 
     /// <param name="index1"> // Random index for address selection </param>
     /// <param name="index2"> // Random index for call type selection </param>
@@ -403,11 +401,55 @@ public static class Initialization
     /// <param name="extraHours"> // Random extra hours added to the max end time </param>
     /// <param name="extraMinutes"> // Random extra minutes added to the max end time </param>
 
+    //public static void CreateCalls()
+    //{
+    //    int index1 = s_rand.Next(0, 15);
+    //    int index2 = s_rand.Next(0, 8);
+
+    //    // Latitude and longitude range in Israel
+    //    double minLatitude = 29.5;
+    //    double maxLatitude = 33.5;
+    //    double minLongitude = 34.3;
+    //    double maxLongitude = 35.9;
+
+    //    for (int i = 0; i < 50; i++)
+    //    {
+
+    //        string? address = internationalAddresses2[index1];
+    //        Calltype calltype = (Calltype)index2;
+
+
+    //        calltype = CalltypeArray[index2];
+
+    //        string? VerbalDescription = Descriptions[index2];
+    //        bool active = true;
+
+    //        double randomLatitude = s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude;
+    //        double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
+
+    //        // run num
+    //        ///DateTime currentTime = s_dal!.Config.Clock;//stage2  
+    //        //DateTime currentTime = s_dalConfig.Clock;//stage1
+    //        DateTime currentTime = new DateTime(s_dal!.Config.Clock.Year, s_dal!.Config.Clock.Month, s_dal!.Config.Clock.Hour);//stage2  
+
+    //        DateTime openTime = s_dal!.Config.Clock.AddDays(-1);
+
+    //        // Calculate the number of minutes since the start time until now
+    //        int totalMinutesInLastDay = (int)(s_dal!.Config.Clock - openTime).TotalMinutes;
+    //        // Random opening time within the last 24 hours
+    //        DateTime RndomStart = openTime.AddMinutes(s_rand.Next(0, totalMinutesInLastDay));
+    //        DateTime? maxEndTime = null;
+
+
+
+    //        //s_dalCall.Create(new Call(randomLatitude, randomLongitude, calltype, tempID, VerbalDescription, address, openTime, maxEndTime)); //stage1
+    //        s_dal!.Call.Create(new Call(randomLatitude, randomLongitude, calltype, default, VerbalDescription, address, openTime, maxEndTime)); //stage
+    //    }
+    //}
+
+
     public static void CreateCalls()
     {
-        int index1 = s_rand.Next(0, 15);
-        int index2 = s_rand.Next(0, 8);
-
         // Latitude and longitude range in Israel
         double minLatitude = 29.5;
         double maxLatitude = 33.5;
@@ -416,38 +458,65 @@ public static class Initialization
 
         for (int i = 0; i < 50; i++)
         {
-            
+            // יצירת אינדקסים רנדומליים בכל איטרציה
+            int index1 = s_rand.Next(0, internationalAddresses2.Length);
+            int index2 = s_rand.Next(0, CalltypeArray.Length);
+
             string? address = internationalAddresses2[index1];
-            Calltype calltype = (Calltype)index2;
-
-
-            calltype = CalltypeArray[index2];
-
+            Calltype calltype = CalltypeArray[index2];
             string? VerbalDescription = Descriptions[index2];
-            bool active = true;
 
             double randomLatitude = s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude;
             double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
 
-            // run num
-            ///DateTime currentTime = s_dal!.Config.Clock;//stage2  
-            //DateTime currentTime = s_dalConfig.Clock;//stage1
-            DateTime currentTime = new DateTime(s_dal!.Config.Clock.Year, s_dal!.Config.Clock.Month, s_dal!.Config.Clock.Hour);//stage2  
+            // יצירת זמן פתיחה רנדומלי ב-48 השעות האחרונות
+            DateTime openTime = s_dal!.Config.Clock.AddMinutes(-s_rand.Next(0, 2880));
 
-            DateTime openTime = s_dal!.Config.Clock.AddDays(-1);
+            // יצירת זמן סיום רנדומלי בהתאם לטווח זמנים שונים ליצירת כל הסטטוסים
+            DateTime? maxEndTime;
 
-            // Calculate the number of minutes since the start time until now
-            int totalMinutesInLastDay = (int)(s_dal!.Config.Clock - openTime).TotalMinutes;
-            // Random opening time within the last 24 hours
-            DateTime RndomStart = openTime.AddMinutes(s_rand.Next(0, totalMinutesInLastDay));
-            DateTime? maxEndTime = null;
+            int randomStatus = s_rand.Next(0, 6); // בחירה רנדומלית של סטטוס
 
+            switch (randomStatus)
+            {
+                case 0: // Open
+                    maxEndTime = null;
+                    break;
 
+                case 1: // OpenAtRisk
+                    maxEndTime = null;
+                    openTime = s_dal.Config.Clock.AddMinutes(-s_rand.Next(0, 30)); // זמן פתיחה קרוב מאוד לזמן הנוכחי
+                    break;
 
-            //s_dalCall.Create(new Call(randomLatitude, randomLongitude, calltype, tempID, VerbalDescription, address, openTime, maxEndTime)); //stage1
-            s_dal!.Call.Create(new Call(randomLatitude, randomLongitude, calltype, default, VerbalDescription, address, openTime, maxEndTime)); //stage
+                case 2: // InProgress
+                    maxEndTime = null;
+                    openTime = s_dal.Config.Clock.AddMinutes(-s_rand.Next(30, 1440)); // פתיחה בטווח של עד 24 שעות
+                    break;
+
+                case 3: // InProgressAtRisk
+                    maxEndTime = null;
+                    openTime = s_dal.Config.Clock.AddMinutes(-s_rand.Next(1440, 2880)); // פתיחה רחוקה מאוד
+                    break;
+
+                case 4: // Closed
+                    maxEndTime = openTime.AddMinutes(s_rand.Next(10, 60)); // זמן סיום תקין אחרי זמן הפתיחה
+                    break;
+
+                case 5: // Expired
+                    maxEndTime = openTime.AddMinutes(-s_rand.Next(10, 60)); // זמן סיום שפג לפני זמן ה-Clock
+                    break;
+
+                default:
+                    maxEndTime = null;
+                    break;
+            }
+
+            // יצירת קריאה חדשה והוספתה ל-DAL
+            s_dal.Call.Create(new Call(randomLatitude, randomLongitude, calltype, default, VerbalDescription, address, openTime, maxEndTime));
         }
     }
+
+
     private static void CreateAssignment()
     {
         for (int i = 0; i < 60; i++)

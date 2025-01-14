@@ -1,513 +1,513 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>32.35297066644132</Latitude>
-    <Longitude>34.546429540690156</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.43251102594533</Latitude>
+    <Longitude>35.187450361972964</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1000</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>10 Princes Street, Edinburgh, Scotland, UK</ReadAddress>
+    <OpeningTime>2025-01-13T10:41:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.78988649311959</Latitude>
-    <Longitude>35.4151776250902</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.00153109426459</Latitude>
+    <Longitude>34.4410634988341</Longitude>
+    <Calltype>fainting</Calltype>
     <Id>1001</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>800 N Michigan Avenue, Chicago, IL, USA</ReadAddress>
+    <OpeningTime>2025-01-14T10:09:40</OpeningTime>
+    <MaxEndTime>2025-01-14T11:04:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>33.223097682828296</Latitude>
-    <Longitude>34.84621618723685</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.83219278140809</Latitude>
+    <Longitude>35.77726565843439</Longitude>
+    <Calltype>None</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>22 Torggata, Oslo, Norway</ReadAddress>
+    <OpeningTime>2025-01-14T14:36:40</OpeningTime>
+    <MaxEndTime>2025-01-14T15:17:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.484034846666273</Latitude>
-    <Longitude>34.687177352253116</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.13534626488302</Latitude>
+    <Longitude>35.8388864054852</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1003</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>33 Søndre Gate, Trondheim, Norway</ReadAddress>
+    <OpeningTime>2025-01-13T22:31:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.01619162657692</Latitude>
-    <Longitude>34.434453500835126</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.0362769975664</Latitude>
+    <Longitude>35.531383233941554</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1004</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>12 Markens Gate, Kristiansand, Norway</ReadAddress>
+    <OpeningTime>2025-01-13T22:07:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.421509425177675</Latitude>
-    <Longitude>34.8623443652899</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.91533948726354</Latitude>
+    <Longitude>35.667113537112776</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1005</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>1200 Pennsylvania Avenue, Washington, DC, USA</ReadAddress>
+    <OpeningTime>2025-01-14T21:28:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.753780250327782</Latitude>
-    <Longitude>35.88537744454044</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.17724447872751</Latitude>
+    <Longitude>35.3937124360906</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1006</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
+    <OpeningTime>2025-01-13T18:07:40</OpeningTime>
+    <MaxEndTime>2025-01-13T18:54:40</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>30.881949532087873</Latitude>
+    <Longitude>35.34025599559784</Longitude>
+    <Calltype>None</Calltype>
     <Id>1007</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>200 George Street, Sydney, NSW, Australia</ReadAddress>
+    <OpeningTime>2025-01-14T01:36:40</OpeningTime>
+    <MaxEndTime>2025-01-14T02:14:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>31.30746259974839</Latitude>
-    <Longitude>35.59940664008485</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.091373946105318</Latitude>
+    <Longitude>35.62329439534138</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1008</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>77 Königstrasse, Stuttgart, Germany</ReadAddress>
+    <OpeningTime>2025-01-14T15:45:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.91408589469841</Latitude>
-    <Longitude>35.38723457035546</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.557041792140787</Latitude>
+    <Longitude>34.61634601398407</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1009</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>10 Collins Street, Melbourne, VIC, Australia</ReadAddress>
+    <OpeningTime>2025-01-14T21:42:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.52450168559598</Latitude>
-    <Longitude>35.06366536137372</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.44748579349625</Latitude>
+    <Longitude>34.4991720518009</Longitude>
+    <Calltype>None</Calltype>
     <Id>1010</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
+    <OpeningTime>2025-01-14T08:04:40</OpeningTime>
+    <MaxEndTime>2025-01-14T08:24:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>31.698125352515437</Latitude>
-    <Longitude>35.234444955668145</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.263612059188965</Latitude>
+    <Longitude>35.8691545289632</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1011</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>67 Lillehammer, Norway</ReadAddress>
+    <OpeningTime>2025-01-13T07:03:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.605781012044034</Latitude>
-    <Longitude>35.89240410644924</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.460303347316522</Latitude>
+    <Longitude>35.02578591345154</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1012</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>101 Pitt Street, Sydney, NSW, Australia</ReadAddress>
+    <OpeningTime>2025-01-13T20:05:40</OpeningTime>
+    <MaxEndTime>2025-01-13T20:42:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.152784786910985</Latitude>
-    <Longitude>35.450150691230235</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.019821457657546</Latitude>
+    <Longitude>35.737136208486724</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1013</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>1200 Pennsylvania Avenue, Washington, DC, USA</ReadAddress>
+    <OpeningTime>2025-01-14T21:20:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.151948444910474</Latitude>
-    <Longitude>35.60819009219979</Longitude>
+    <Latitude>30.701797237490183</Latitude>
+    <Longitude>35.75120190564447</Longitude>
     <Calltype>security_event</Calltype>
     <Id>1014</Id>
     <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <ReadAddress>1200 Pennsylvania Avenue, Washington, DC, USA</ReadAddress>
+    <OpeningTime>2025-01-14T15:01:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.931088832590216</Latitude>
-    <Longitude>34.356513966016834</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.481835424510344</Latitude>
+    <Longitude>35.606219502643036</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1015</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>8 Calle de Preciados, Madrid, Spain</ReadAddress>
+    <OpeningTime>2025-01-14T21:20:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.7866343552827</Latitude>
-    <Longitude>34.99920828049629</Longitude>
+    <Latitude>30.982918001711546</Latitude>
+    <Longitude>34.50517954126341</Longitude>
     <Calltype>security_event</Calltype>
     <Id>1016</Id>
     <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <ReadAddress>34 Maximilianstrasse, Munich, Germany</ReadAddress>
+    <OpeningTime>2025-01-12T22:42:40</OpeningTime>
+    <MaxEndTime>2025-01-12T22:00:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>29.61581789593281</Latitude>
-    <Longitude>35.8057112670348</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.163205928099856</Latitude>
+    <Longitude>34.93782462109286</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1017</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>33 Søndre Gate, Trondheim, Norway</ReadAddress>
+    <OpeningTime>2025-01-14T18:42:40</OpeningTime>
+    <MaxEndTime>2025-01-14T19:18:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>33.25268683232296</Latitude>
-    <Longitude>34.97862926726993</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.81484821962559</Latitude>
+    <Longitude>35.33159650559842</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1018</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
     <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <OpeningTime>2025-01-14T08:21:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.21629053681429</Latitude>
-    <Longitude>34.65741861199396</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.152572994149864</Latitude>
+    <Longitude>34.44610822265239</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1019</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>78 Shinjuku, Tokyo, Japan</ReadAddress>
+    <OpeningTime>2025-01-14T05:19:40</OpeningTime>
+    <MaxEndTime>2025-01-14T05:57:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.30972679560559</Latitude>
-    <Longitude>35.33966102332372</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>29.853684952046766</Latitude>
+    <Longitude>35.41468845686396</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1020</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>10 Collins Street, Melbourne, VIC, Australia</ReadAddress>
+    <OpeningTime>2025-01-13T19:36:40</OpeningTime>
+    <MaxEndTime>2025-01-13T20:10:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.410336058985493</Latitude>
-    <Longitude>34.41317293882831</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.99467748398432</Latitude>
+    <Longitude>35.63733517944106</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1021</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>200 George Street, Sydney, NSW, Australia</ReadAddress>
+    <OpeningTime>2025-01-13T11:59:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.917349223476567</Latitude>
-    <Longitude>35.780891610207796</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.738718258130508</Latitude>
+    <Longitude>35.62924232754966</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1022</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>70 Bay Street, Toronto, ON, Canada</ReadAddress>
+    <OpeningTime>2025-01-13T14:44:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.962599671142044</Latitude>
-    <Longitude>34.91753281821642</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.180937672863447</Latitude>
+    <Longitude>34.60039939525183</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1023</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>8 Calle de Preciados, Madrid, Spain</ReadAddress>
+    <OpeningTime>2025-01-14T20:56:40</OpeningTime>
+    <MaxEndTime>2025-01-14T20:20:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>33.4274010638309</Latitude>
-    <Longitude>35.01524022504565</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.418780894728428</Latitude>
+    <Longitude>34.3502665558455</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1024</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>15 King Street, Brisbane, QLD, Australia</ReadAddress>
+    <OpeningTime>2025-01-13T04:26:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.83861296325893</Latitude>
-    <Longitude>34.47820835488277</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.185180954694445</Latitude>
+    <Longitude>35.128809562151844</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1025</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>91 Rue de la République, Lyon, France</ReadAddress>
+    <OpeningTime>2025-01-14T21:22:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.32644198407777</Latitude>
-    <Longitude>35.0822501212044</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.95408045381617</Latitude>
+    <Longitude>35.21522593376118</Longitude>
+    <Calltype>fainting</Calltype>
     <Id>1026</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>12 Omotesando, Shibuya, Tokyo, Japan</ReadAddress>
+    <OpeningTime>2025-01-14T10:02:40</OpeningTime>
+    <MaxEndTime>2025-01-14T09:19:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>31.392570837634345</Latitude>
-    <Longitude>35.149308990280765</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.602517942360105</Latitude>
+    <Longitude>34.83559361152056</Longitude>
+    <Calltype>resuscitation</Calltype>
     <Id>1027</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>22 The Parade, Cardiff, Wales, UK</ReadAddress>
+    <OpeningTime>2025-01-13T01:46:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.675970087737785</Latitude>
-    <Longitude>35.876501860504696</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.417533796765678</Latitude>
+    <Longitude>34.71531189491141</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1028</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>22 The Parade, Cardiff, Wales, UK</ReadAddress>
+    <OpeningTime>2025-01-13T13:38:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.724716833491204</Latitude>
-    <Longitude>34.39618922801383</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.460255219503246</Latitude>
+    <Longitude>35.80899415516051</Longitude>
+    <Calltype>None</Calltype>
     <Id>1029</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>45 Calle de Fuencarral, Madrid, Spain</ReadAddress>
+    <OpeningTime>2025-01-13T22:14:40</OpeningTime>
+    <MaxEndTime>2025-01-13T21:32:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.47291844341753</Latitude>
-    <Longitude>35.11756877113287</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.982633204141095</Latitude>
+    <Longitude>35.118402115445704</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1030</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>33 Boulevard Saint-Germain, Paris, France</ReadAddress>
+    <OpeningTime>2025-01-13T20:18:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.6564905666205</Latitude>
-    <Longitude>34.5983269712905</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.48161227631364</Latitude>
+    <Longitude>35.68851238177903</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1031</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
+    <OpeningTime>2025-01-14T12:53:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.4431992286</Latitude>
-    <Longitude>35.18843356273333</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.34338076945616</Latitude>
+    <Longitude>34.8337283890724</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1032</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>56 Via San Vitale, Bologna, Italy</ReadAddress>
+    <OpeningTime>2025-01-14T14:25:40</OpeningTime>
+    <MaxEndTime>2025-01-14T13:48:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.902570361928134</Latitude>
-    <Longitude>34.759579990305916</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>29.856093934626298</Latitude>
+    <Longitude>35.056786873644235</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1033</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>88 Via Spiga, Milan, Italy</ReadAddress>
+    <OpeningTime>2025-01-14T21:47:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.50680722617505</Latitude>
-    <Longitude>34.703457899301</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.32297345185263</Latitude>
+    <Longitude>34.318006471380116</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1034</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>34 Maximilianstrasse, Munich, Germany</ReadAddress>
+    <OpeningTime>2025-01-14T17:53:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.263155255900045</Latitude>
-    <Longitude>35.49944115347469</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.23106030380247</Latitude>
+    <Longitude>35.54337246758298</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1035</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
+    <OpeningTime>2025-01-14T21:41:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.250158094707665</Latitude>
-    <Longitude>34.92392884386662</Longitude>
+    <Latitude>31.32242703312227</Latitude>
+    <Longitude>35.17336392421498</Longitude>
     <Calltype>security_event</Calltype>
     <Id>1036</Id>
     <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <ReadAddress>8 Calle de Preciados, Madrid, Spain</ReadAddress>
+    <OpeningTime>2025-01-14T21:35:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.560819150307466</Latitude>
-    <Longitude>35.25692487529115</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.202386912187254</Latitude>
+    <Longitude>34.497867639212615</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1037</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>56 Via San Vitale, Bologna, Italy</ReadAddress>
+    <OpeningTime>2025-01-12T23:55:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.488775500091677</Latitude>
-    <Longitude>35.889195944283635</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.16339068667436</Latitude>
+    <Longitude>35.25196075161714</Longitude>
+    <Calltype>fainting</Calltype>
     <Id>1038</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>44 Via San Gregorio, Milan, Italy</ReadAddress>
+    <OpeningTime>2025-01-14T14:23:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.47109679142463</Latitude>
-    <Longitude>34.935830921950796</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.41437902684805</Latitude>
+    <Longitude>35.3562471150893</Longitude>
+    <Calltype>fainting</Calltype>
     <Id>1039</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
+    <OpeningTime>2025-01-13T07:44:40</OpeningTime>
+    <MaxEndTime>2025-01-13T07:04:40</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>29.53625722643356</Latitude>
+    <Longitude>35.36890836426547</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1040</Id>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>77 Königstrasse, Stuttgart, Germany</ReadAddress>
+    <OpeningTime>2025-01-14T21:42:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.8112707728859</Latitude>
-    <Longitude>35.63831810997039</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>33.1835852727639</Latitude>
+    <Longitude>34.56991304229603</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1041</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>88 Southwark Street, London, UK</ReadAddress>
+    <OpeningTime>2025-01-13T11:02:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>33.32196589074734</Latitude>
-    <Longitude>35.743405477828624</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.33511301274546</Latitude>
+    <Longitude>34.39328401291579</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1042</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>33 Boulevard Saint-Germain, Paris, France</ReadAddress>
+    <OpeningTime>2025-01-14T21:21:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.76943359779672</Latitude>
-    <Longitude>35.876214226070424</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.386407914085467</Latitude>
+    <Longitude>34.96126394334982</Longitude>
+    <Calltype>fainting</Calltype>
     <Id>1043</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>56 Namba, Osaka, Japan</ReadAddress>
+    <OpeningTime>2025-01-13T00:26:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.23499811392378</Latitude>
-    <Longitude>34.87944383611529</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.00136568723307</Latitude>
+    <Longitude>34.906298023676754</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1044</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>67 Avenida Diagonal, Barcelona, Spain</ReadAddress>
+    <OpeningTime>2025-01-13T00:51:40</OpeningTime>
+    <MaxEndTime>2025-01-13T01:25:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.92496817566613</Latitude>
-    <Longitude>35.21827114408382</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>32.837233372962125</Latitude>
+    <Longitude>34.39876961310885</Longitude>
+    <Calltype>allergy</Calltype>
     <Id>1045</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>44 Via San Gregorio, Milan, Italy</ReadAddress>
+    <OpeningTime>2025-01-13T01:36:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.413017485390505</Latitude>
-    <Longitude>34.600140600265405</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>31.495122003563317</Latitude>
+    <Longitude>35.62378514306159</Longitude>
+    <Calltype>None</Calltype>
     <Id>1046</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>88 Via Spiga, Milan, Italy</ReadAddress>
+    <OpeningTime>2025-01-14T21:20:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.67987722993785</Latitude>
-    <Longitude>34.767691923736564</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.863186039180285</Latitude>
+    <Longitude>35.23545574192835</Longitude>
+    <Calltype>birth</Calltype>
     <Id>1047</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>1 Piccadilly Circus, London, UK</ReadAddress>
+    <OpeningTime>2025-01-14T17:10:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.619416510825765</Latitude>
-    <Longitude>34.47016683461914</Longitude>
+    <Latitude>33.37999000380444</Latitude>
+    <Longitude>34.811664650836704</Longitude>
     <Calltype>security_event</Calltype>
     <Id>1048</Id>
     <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <ReadAddress>1501 15th Street, Denver, CO, USA</ReadAddress>
+    <OpeningTime>2025-01-12T22:42:40</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.02569097714342</Latitude>
-    <Longitude>34.66028846168344</Longitude>
-    <Calltype>security_event</Calltype>
+    <Latitude>30.864289328736724</Latitude>
+    <Longitude>35.71415023231034</Longitude>
+    <Calltype>fainting</Calltype>
     <Id>1049</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>88 Via Spiga, Milan, Italy</ReadAddress>
+    <OpeningTime>2025-01-13T03:14:40</OpeningTime>
+    <MaxEndTime>2025-01-13T03:53:40</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>48.8537154</Latitude>
-    <Longitude>2.3661267</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1040</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T22:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>48.8537154</Latitude>
-    <Longitude>2.3661267</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1006</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>48.8582599</Latitude>
-    <Longitude>2.2945006358633115</Longitude>
-    <Calltype>allergy</Calltype>
+    <Latitude>43.6597555</Latitude>
+    <Longitude>-79.3853931</Longitude>
+    <Calltype>None</Calltype>
     <Id>1050</Id>
-    <VerbalDescription>helloo1</VerbalDescription>
-    <ReadAddress>Eiffel Tower, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-13T23:24:15.5624143+02:00</OpeningTime>
-    <MaxEndTime>2025-02-13T12:24:15</MaxEndTime>
+    <VerbalDescription>היי</VerbalDescription>
+    <ReadAddress>70 Bay Street, Toronto, ON, Canada</ReadAddress>
+    <OpeningTime>2025-01-14T21:48:37.8252243+02:00</OpeningTime>
+    <MaxEndTime>2026-01-14T21:48:37</MaxEndTime>
   </Call>
 </ArrayOfCall>

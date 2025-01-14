@@ -42,5 +42,24 @@ internal static class Config
     {
         return RiskRange;
     }
+    //internal static int NextCallId
+    //{
+    //    get
+    //    {
+    //        int idToReturn = nextCallId;  // קבלת המזהה הנוכחי
+    //        nextCallId++;  // הגדלת המזהה
+    //        return idToReturn;  // החזרת המזהה הנוכחי
+    //    }
+    //}
+
+    //internal static int NextAssignmentId
+    //{
+    //    get
+    //    {
+    //        int idToReturn = nextAssignmentId;  // קבלת המזהה הנוכחי
+    //        nextAssignmentId++;  // הגדלת המזהה
+    //        return idToReturn;  // החזרת המזהה הנוכחי
+    //    }
+    //}
 
 }

@@ -57,7 +57,7 @@
                      IsReadOnly="{Binding IsReadOnlyFields}"/>
 
             <!-- Max Completion Time -->
-            <Label Content="Completion Time:" Grid.Row="5" HorizontalAlignment="Left" />
+            <Label Content="Max End Time:" Grid.Row="5" HorizontalAlignment="Left" />
             <TextBox Text="{Binding Call.MaxEndTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="5" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Distance --><!--

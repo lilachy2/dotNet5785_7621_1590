@@ -158,7 +158,7 @@ namespace PL.Call
             {
                 try
                 {
-                    CallWindow callWindow = new CallWindow(SelectedCall.Id);
+                    CallWindow callWindow = new CallWindow(SelectedCall.CallId);
                     callWindow.ShowDialog();
                 }
                 catch (Exception ex)

@@ -13,12 +13,31 @@ using System.Linq;
 
 internal class CallImplementation : ICall
 {
+    //public void Create(Call item)
+    //{
+    //    int newId = Config.NextCallId;
+    //    Call newItem = item with { Id = newId };
+    //    DataSource.Calls.Add(newItem);
+    //}
+
     public void Create(Call item)
     {
         int newId = Config.NextCallId;
-        Call newItem = item with { Id = newId };
+
+        Call newItem = new Call(
+            Latitude: item.Latitude,          // Latitude
+            Longitude: item.Longitude,        // Longitude
+            Calltype: item.Calltype,          // Calltype
+            Id: newId,                        // ה-ID החדש
+            VerbalDescription: item.VerbalDescription, // VerbalDescription
+            ReadAddress: item.ReadAddress,    // ReadAddress
+            OpeningTime: item.OpeningTime,    // OpeningTime
+            MaxEndTime: item.MaxEndTime      // MaxEndTime
+        );
+
         DataSource.Calls.Add(newItem);
     }
+
 
     /// <param name="item">// Searches for the Assignment by ID
     /// <param name="Remove">/ Removes the found Assignment from the DataSource

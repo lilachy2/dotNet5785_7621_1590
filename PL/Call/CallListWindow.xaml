@@ -24,14 +24,14 @@
             <ListView.View>
                 <GridView>
                     <!-- Columns for call details (ID, Type, Status, etc.) -->
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CallId}" />
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding CallType}" />
                     <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" />
                     <GridViewColumn Header="OpenTime" DisplayMemberBinding="{Binding OpenTime}" />
                     <GridViewColumn Header="Completion Time" DisplayMemberBinding="{Binding CompletionTime}" />
                     <GridViewColumn Header="TimeRemaining" DisplayMemberBinding="{Binding TimeRemaining}" />
                     <GridViewColumn Header="TotalAssignments" DisplayMemberBinding="{Binding TotalAssignments}" />
-                    <GridViewColumn Header="Current Volunteer" DisplayMemberBinding="{Binding CurrentVolunteerName}" />
+                    <GridViewColumn Header="Current Volunteer" DisplayMemberBinding="{Binding VolunteerName}" />
                     <!--<GridViewColumn Header="Handled">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -95,7 +95,7 @@
         Margin="477,577,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top"
-        ItemsSource="{Binding Source={StaticResource CallInListFieldEnumKey}}" 
+        ItemsSource="{Binding Source={StaticResource CallInListFieldKey}}" 
         SelectedItem="{Binding Call.CallInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
         SelectionChanged="FilterCallListByCriteria"
         Height="22" RenderTransformOrigin="0.345,2.911">
@@ -113,7 +113,7 @@
     Margin="594,577,0,0"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-        ItemsSource="{Binding Source={StaticResource CallInListFieldEnumKey}}" 
+        ItemsSource="{Binding Source={StaticResource CallInListFieldKey}}" 
     SelectedItem="{Binding SelectedSortOrder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     SelectionChanged="FilterCallListByCriteria"
     Height="22">
