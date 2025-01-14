@@ -325,6 +325,11 @@ internal class CallImplementation : BlApi.ICall
             CallManager.Observers.NotifyListUpdated(); //stage 5   
             CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
         }
+        catch (BlIsLogicCallException ex)
+        {
+            throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
+        }
+
         catch (Exception ex)
         {
             throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");

@@ -117,5 +117,11 @@ public class BlCan_chang_to_NotActivException : Exception
     public BlCan_chang_to_NotActivException(string message, Exception innerException)
               : base(message, innerException) { }
 }
+public class BlIsLogicCallException : Exception
+{
+    public BlIsLogicCallException(string? message) : base(message) { }
+    public BlIsLogicCallException(string message, Exception innerException)
+              : base(message, innerException) { }
+}
 
 

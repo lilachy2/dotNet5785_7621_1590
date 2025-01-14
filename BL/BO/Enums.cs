@@ -14,6 +14,17 @@ public enum TimeUnit
     Year
 }
 
+//public enum Calltype
+//{
+//    fainting,
+//    birth,
+//    resuscitation,
+//    allergy,
+//    heartattack,
+//    broken_bone,
+//    security_event,
+//    None
+//}
 public enum Calltype
 {
     fainting,
@@ -24,6 +35,7 @@ public enum Calltype
     broken_bone,
     security_event,
     None
+
 }
 
 public enum CompletionType

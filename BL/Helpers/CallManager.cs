@@ -18,19 +18,19 @@ internal static class CallManager
         // Ensure MaxEndTime is greater than OpenTime.
         if (boCall.MaxEndTime.HasValue && boCall.MaxEndTime.Value <= boCall.OpenTime)
         {
-            throw new ArgumentException("MaxEndTime must be greater than OpenTime.");
+            throw new BlIsLogicCallException("MaxEndTime must be greater than OpenTime.");
         }
 
         // Check that CallType is valid (assuming enums start at 0).
         if (!Enum.IsDefined(typeof(BO.Calltype), boCall.Calltype))
         {
-            throw new ArgumentException("Invalid call type.");
+            throw new BlIsLogicCallException("Invalid call type.");
         }
 
         // Validate the status (assuming statuses start at 0).
         if (!Enum.IsDefined(typeof(BO.CallStatus), boCall.Status))
         {
-            throw new ArgumentException("Invalid call status.");
+            throw new BlIsLogicCallException("Invalid call status.");
         }
 
     }

@@ -53,6 +53,8 @@ namespace PL.Call
        DependencyProperty.Register("Call", typeof(BO.Call), typeof(CallWindow),
            new PropertyMetadata(null, OnCallChanged));
 
+        public bool IsReadOnlyFields => Id != 0; // true אם זה עדכון, false אם זה הוספה
+
 
         public CallWindow(int? id = 0)
         {
@@ -111,23 +113,25 @@ namespace PL.Call
             try
             {
                 // טעינה מחדש של הנתונים על ה-UI thread
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    // קריאת הקריאה המעודכנת
-                    var updatedCall = s_bl.Call.Read(call.Id);
-                    call = updatedCall;
+                //Application.Current.Dispatcher.Invoke(() =>
+                //{
+                //    // קריאת הקריאה המעודכנת
+                //    var updatedCall = s_bl.Call.Read(call.Id);
+                //    call = updatedCall;
 
-                    // עדכון הנתונים בשדות המתאימים
-                    call.Calltype = updatedCall.Calltype;
-                    call.Description = updatedCall.Description;
-                    call.FullAddress = updatedCall.FullAddress;
-                    call.Latitude = updatedCall.Latitude;
-                    call.Longitude = updatedCall.Longitude;
-                    call.OpenTime = updatedCall.OpenTime;
-                    call.MaxEndTime = updatedCall.MaxEndTime;
-                    call.Status = updatedCall.Status;
-                    call.CallAssignments = updatedCall.CallAssignments;
-                });
+                //    // עדכון הנתונים בשדות המתאימים
+                //    call.Calltype = updatedCall.Calltype;
+                //    call.Description = updatedCall.Description;
+                //    call.FullAddress = updatedCall.FullAddress;
+                //    call.Latitude = updatedCall.Latitude;
+                //    call.Longitude = updatedCall.Longitude;
+                //    call.OpenTime = updatedCall.OpenTime;
+                //    call.MaxEndTime = updatedCall.MaxEndTime;
+                //    call.Status = updatedCall.Status;
+                //    call.CallAssignments = updatedCall.CallAssignments;
+                //});
+                OnPropertyChanged(nameof(call));
+
             }
             catch (Exception ex)
             {

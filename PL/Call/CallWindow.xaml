@@ -34,8 +34,8 @@
 
             <!-- Call Type -->
             <Label Content="Call Type:" Grid.Row="2" HorizontalAlignment="Left" />
-            <ComboBox ItemsSource="{Binding Source={StaticResource RolesKey}}" 
-                      SelectedItem="{Binding Call.CallType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            <ComboBox ItemsSource="{Binding Source={StaticResource CalltypeKey}}" 
+                      SelectedItem="{Binding Call.Calltype, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       Grid.Row="2" Margin="100,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -47,24 +47,26 @@
             </ComboBox>
 
             <!-- Status -->
-            <Label Content="Status:" Grid.Row="3" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.Status, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <!--<Label Content="Status:" Grid.Row="3" HorizontalAlignment="Left" />
+            <TextBox Text="{Binding Call.Status, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch"
+                     IsReadOnly="{Binding IsReadOnlyFields}"/>-->
 
             <!-- Open Time -->
             <Label Content="Open Time:" Grid.Row="4" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.OpenTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <TextBox Text="{Binding Call.OpenTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Stretch"
+                     IsReadOnly="{Binding IsReadOnlyFields}"/>
 
             <!-- Max Completion Time -->
-            <Label Content="Max Completion Time:" Grid.Row="5" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.MaxCompletionTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="5" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <Label Content="Completion Time:" Grid.Row="5" HorizontalAlignment="Left" />
+            <TextBox Text="{Binding Call.MaxEndTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="5" Margin="100,0" HorizontalAlignment="Stretch"/>
 
-            <!-- Distance -->
+            <!-- Distance --><!--
             <Label Content="Distance:" Grid.Row="6" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <TextBox Text="{Binding Call.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>-->
 
             <!-- Address -->
-            <Label Content="Address:" Grid.Row="7" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.FullAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <Label Content="Address:" Grid.Row="6" HorizontalAlignment="Left" />
+            <TextBox Text="{Binding Call.FullAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>
 
             <!-- Button (Add/Update) -->
             <Button Content="{Binding ButtonText}" 

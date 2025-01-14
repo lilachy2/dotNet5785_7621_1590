@@ -61,16 +61,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.714350376395526</Latitude>
-    <Longitude>35.258563780268126</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1006</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
-    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>31.753780250327782</Latitude>
     <Longitude>35.88537744454044</Longitude>
     <Calltype>security_event</Calltype>
@@ -501,13 +491,23 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
+    <Latitude>48.8537154</Latitude>
+    <Longitude>2.3661267</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1006</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>22 Rue Saint-Antoine, Paris, France</ReadAddress>
+    <OpeningTime>2025-01-11T23:49:21</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
     <Latitude>48.8582599</Latitude>
     <Longitude>2.2945006358633115</Longitude>
-    <Calltype>None</Calltype>
+    <Calltype>allergy</Calltype>
     <Id>1050</Id>
-    <VerbalDescription>dfghj</VerbalDescription>
+    <VerbalDescription>helloo1</VerbalDescription>
     <ReadAddress>Eiffel Tower, Paris, France</ReadAddress>
     <OpeningTime>2025-01-13T23:24:15.5624143+02:00</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <MaxEndTime>2025-02-13T12:24:15</MaxEndTime>
   </Call>
 </ArrayOfCall>
