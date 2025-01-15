@@ -51,7 +51,7 @@ namespace PL.login
                     {
                         if (managerSelectionWindow.SelectedOption == 1)
                         {
-                            MainWindow managerWindow = new MainWindow();
+                            MainWindow managerWindow = new MainWindow(Id);
                             managerWindow.Show();
                         }
                         else if (managerSelectionWindow.SelectedOption == 2)

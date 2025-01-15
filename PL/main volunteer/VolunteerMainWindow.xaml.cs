@@ -191,10 +191,8 @@ namespace PL.main_volunteer
             var volunteerHistoryWindow = new VolunteerHistoryWindow(Volunteer.Id);
             volunteerHistoryWindow.ShowDialog();
         }
-        // פונקציה לבחירת קריאה לטיפול
         private void ChooseCallButton_Click(object sender, RoutedEventArgs e)
         {
-            // מציג מסך לבחירת קריאה
             var chooseCallWindow = new ChooseCallWindow(Volunteer.Id);
             chooseCallWindow.ShowDialog();
 

@@ -45,12 +45,17 @@ namespace PL
             }
         }
 
+        private int? volId; // to get volunterrID to oter Window
+
+
         // Constructor
-        public MainWindow()
+        public MainWindow(int? volId1)
         {
             InitializeComponent();
             DataContext = this; // Set DataContext for Binding
             this.Loaded += MainWindow_Loaded; // Register Loaded event
+            this.volId = volId1;// to get volunterrID to oter Window
+
         }
 
         // Button click handlers to manipulate the system clock
@@ -163,7 +168,7 @@ namespace PL
         {
             // Logic to manage calls, implement as needed
             //MessageBox.Show("Handling Calls...");
-            new CallListWindow().Show();
+            new CallListWindow(volId).Show();
 
         }
 

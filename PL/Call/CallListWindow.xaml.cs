@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using System.Threading.Tasks;
 using BlApi;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PL.Call
 {
@@ -17,6 +18,9 @@ namespace PL.Call
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         private BO.Calltype _selectedFilter = BO.Calltype.None;  // Default to None (no filter)
         private CallInListField _selectedSortField = CallInListField.None; // Default to None (no sorting)
+
+        private int? volId; // to get volunterrID to oter Window
+
 
         // Declare the SelectedFilter property with PropertyChanged notifications
         public BO.Calltype SelectedFilter
@@ -64,11 +68,13 @@ namespace PL.Call
                 typeof(CallListWindow), new PropertyMetadata(null));
 
         // Constructor
-        public CallListWindow()
+        public CallListWindow(int? volId1)
         {
             InitializeComponent();
             DataContext = this;
             UpdateCallList();
+            this.volId = volId1;// to get volunterrID to oter Window
+
         }
 
         // Handle ComboBox selection change event to update the filter
@@ -187,7 +193,8 @@ namespace PL.Call
                 {
                     try
                     {
-                        BlApi.Factory.Get().Call.UpdateCancelTreatment(callToCancel.Id ?? 0, callToCancel.CallId);
+                        //BlApi.Factory.Get().Call.UpdateCancelTreatment(callToCancel.Id ?? 0, callToCancel.CallId);
+                        BlApi.Factory.Get().Call.UpdateCancelTreatment(volId ?? 0, callToCancel.CallId);
 
                         await Application.Current.Dispatcher.InvokeAsync(() =>
                         {

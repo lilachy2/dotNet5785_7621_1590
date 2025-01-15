@@ -80,7 +80,15 @@ internal static class CallManager
         DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId /*&& a.EndOfTime == null*/).FirstOrDefault();
+        //var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId /*&& a.EndOfTime == null*/).FirstOrDefault();
+
+        //var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId /*&& a.EndOfTime == null*/).FirstOrDefault();
+        var doAssignment = _dal.Assignment.ReadAll()
+                    .Where(a => a.VolunteerId == VolunteerId)
+                    .OrderByDescending(a => a.Id)
+                    .FirstOrDefault();
+
+
         if (doAssignment == null)
         {
             return null;
@@ -101,14 +109,14 @@ internal static class CallManager
         // Ensure latitude and longitude are valid
         //double volunteerLatitude = doVolunteer.Latitude ?? Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
         //double volunteerLongitude = doVolunteer.Longitude ?? Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
-
         //double? LatitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
         //double? LongitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
         //double? LatitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
         //double? LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
 
         //if (CalculateCallStatus(doCall) == CallStatus.Open|| CalculateCallStatus(doCall) ==CallStatus.OpenAtRisk)// status open
-        if (CalculateCallStatus(doCall) == CallStatus.InProgressAtRisk|| CalculateCallStatus(doCall) ==CallStatus.InProgress)// status open
+        var callStatus = CalculateCallStatus(doCall);   
+        if ((callStatus == CallStatus.InProgressAtRisk)|| (callStatus == CallStatus.InProgress))// status open
         return new BO.CallInProgress
 
         {
@@ -121,7 +129,7 @@ internal static class CallManager
             MaxCompletionTime = doCall.MaxEndTime,
             EnterTime = doAssignment.time_entry_treatment,
             DistanceFromVolunteer = Air_distance_between_2_addresses(doCall.Latitude, doCall.Longitude, LatitudeVolunteer, LongitudeVolunteer),// Air distance between 2 addresses
-            Status = CallManager.CalculateCallStatus(doCall)
+            Status = callStatus
 
         };
         else
@@ -188,10 +196,14 @@ internal static class CallManager
         if (doCall.MaxEndTime < _dal.Config.Clock)
             return BO.CallStatus.Expired;
 
-        // 2. Retrieve the latest assignment related to the call
-        var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id)
-                                             .OrderByDescending(a => a.time_entry_treatment)
-                                             .FirstOrDefault();
+        //// 2. Retrieve the latest assignment related to the call
+        //var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id)
+        //                                     .OrderByDescending(a => a.time_entry_treatment)
+        //                                     .FirstOrDefault();
+
+        var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id && ass.time_end_treatment == null)
+                                     .OrderByDescending(a => a.time_entry_treatment)
+                                     .FirstOrDefault();
 
         // 3. If no assignments exist
         if (lastAssignment == null)

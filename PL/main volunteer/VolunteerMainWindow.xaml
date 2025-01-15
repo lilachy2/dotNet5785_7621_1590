@@ -11,20 +11,29 @@
             <TextBox Text="{Binding Volunteer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244"/>
         </StackPanel>
 
-        <!-- Phone -->
+        <!-- Id -->
         <StackPanel Orientation="Horizontal" Margin="10,40,0,0" VerticalAlignment="Top">
+            <TextBlock Text="ID:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Volunteer.Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+             FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244" 
+             IsReadOnly="True"/>
+        </StackPanel>
+
+
+        <!-- Phone -->
+        <StackPanel Orientation="Horizontal" Margin="10,70,0,0" VerticalAlignment="Top">
             <TextBlock Text="Phone:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Number_phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="241"/>
         </StackPanel>
 
         <!-- Email -->
-        <StackPanel Orientation="Horizontal" Margin="10,70,0,0" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" Margin="10,100,0,0" VerticalAlignment="Top">
             <TextBlock Text="Email:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Volunteer.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="246"/>
+            <TextBox Text="{Binding Volunteer.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="247"/>
         </StackPanel>
 
         <!-- Address -->
-        <StackPanel Orientation="Vertical" Margin="10,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <StackPanel Orientation="Vertical" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock Text="Current Address:" FontSize="14" RenderTransformOrigin="0.472,0.593" Height="31"/>
             <TextBox Text="{Binding Volunteer.FullCurrentAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
              FontSize="14" Width="296" TextChanged="TextBox_TextChanged" Height="26"/>
@@ -32,21 +41,21 @@
 
 
 
-        <StackPanel Orientation="Horizontal" Margin="10,160,0,0" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" Margin="10,190,0,0" VerticalAlignment="Top">
             <TextBlock Text="Active :" FontSize="14" VerticalAlignment="Center"/>
             <CheckBox IsChecked="{Binding Volunteer.Active, Mode=TwoWay}" VerticalAlignment="Center"/>
         </StackPanel>
 
 
         <!-- Distance -->
-        <StackPanel Orientation="Horizontal" Margin="10,190,0,0" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" Margin="10,220,0,0" VerticalAlignment="Top">
             <TextBlock Text="Distance:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="226"/>
         </StackPanel>
 
 
         <!-- Distance Type - Read-only -->
-        <StackPanel Orientation="Horizontal" Margin="10,220,0,0" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" Margin="10,240,0,0" VerticalAlignment="Top">
             <TextBlock Text="Distance Type:" FontSize="14" VerticalAlignment="Center"/>
             <TextBlock Text="{Binding Volunteer.DistanceType}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="113"/>
         </StackPanel>
@@ -120,7 +129,7 @@
         </StackPanel>
 
         <!-- Update Details Button -->
-        <Button Content="Update Details" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,244,0,0" Click="UpdateVolunteerButton_Click"
+        <Button Content="Update Details" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,269,0,0" Click="UpdateVolunteerButton_Click"
                  Background="#4DA1A9" 
  Foreground="White" />
 

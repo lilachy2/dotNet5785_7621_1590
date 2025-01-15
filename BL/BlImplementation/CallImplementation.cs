@@ -12,6 +12,7 @@ internal class CallImplementation : BlApi.ICall
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
 
+
     #region Stage 5
     public void AddObserver(Action listObserver) =>
     CallManager.Observers.AddListObserver(listObserver); //stage 5
@@ -708,15 +709,62 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"Call with ID {CallId} was not found.");
         }
     }
+    //public void ChooseCall(int idVol, int idCall)
+    //{
+    //    // Retrieve volunteer and call; throw exception if not found.
+    //    DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"There is no volunteer with this ID {idVol}");
+    //    BO.Call boCall = Read(idCall) ?? throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
+
+    //    // Check if the call is open; throw exception if not.
+    //    if (boCall.Status != BO.CallStatus.Open || boCall.Status == BO.CallStatus.OpenAtRisk)
+    //        throw new BO.BlAlreadyExistsException($"The call is open or expired. IdCall is = {idCall}");
+
+    //    // Create a new assignment for the volunteer and the call.
+    //    DO.Assignment assigmnetToCreat = new DO.Assignment
+    //    {
+    //        Id = 0, // ID will be generated automatically
+    //        CallId = idCall,
+    //        VolunteerId = idVol,
+    //        time_entry_treatment = AdminManager.Now,
+    //        time_end_treatment = null,
+    //        EndOfTime = null
+    //    };
+
+    //    try
+    //    {
+    //        // Try to create the assignment in the database.
+    //        _dal.Assignment.Create(assigmnetToCreat);
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        // Handle error if creation fails.
+    //        throw new BO.BlAlreadyExistsException("Impossible to create the assignment.");
+    //    }
+    //}
+
     public void ChooseCall(int idVol, int idCall)
     {
         // Retrieve volunteer and call; throw exception if not found.
-        DO.Volunteer vol = _dal.Volunteer.Read(idVol) ?? throw new BO.BlNullPropertyException($"There is no volunteer with this ID {idVol}");
-        BO.Call boCall = Read(idCall) ?? throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
+        DO.Volunteer vol = _dal.Volunteer.Read(idVol) ??
+                           throw new BO.BlNullPropertyException($"There is no volunteer with this ID {idVol}");
+        BO.Call boCall = Read(idCall) ??
+                         throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
 
-        // Check if the call is open; throw exception if not.
-        if (boCall.Status != BO.CallStatus.Open || boCall.Status == BO.CallStatus.OpenAtRisk)
-            throw new BO.BlAlreadyExistsException($"The call is open or expired. IdCall is = {idCall}");
+        // Check if the call is open.
+        if (boCall.Status != BO.CallStatus.Open)
+            throw new BO.BlAlreadyExistsException($"The call is not open or is already being handled. IdCall = {idCall}");
+
+        // Check if the call already has an open assignment.
+        var existingAssignments = _dal.Assignment.ReadAll()
+                                .Where(a => a.CallId == idCall && a.time_end_treatment == null)
+                                .ToList();
+
+        if (existingAssignments.Any())
+            throw new BO.BlAlreadyExistsException($"The call is already assigned to another volunteer. IdCall = {idCall}");
+
+        //// Check if the call has expired.
+        //if (boCall. < AdminManager.Now)
+        //    throw new BO.BlAlreadyExistsException($"The call has expired. IdCall = {idCall}");
 
         // Create a new assignment for the volunteer and the call.
         DO.Assignment assigmnetToCreat = new DO.Assignment
@@ -733,6 +781,9 @@ internal class CallImplementation : BlApi.ICall
         {
             // Try to create the assignment in the database.
             _dal.Assignment.Create(assigmnetToCreat);
+            CallManager.Observers.NotifyItemUpdated(assigmnetToCreat.Id);  //stage 5
+            CallManager.Observers.NotifyListUpdated();  //stage 5
+
         }
         catch (Exception e)
         {
@@ -740,4 +791,6 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.BlAlreadyExistsException("Impossible to create the assignment.");
         }
     }
+
+
 }
