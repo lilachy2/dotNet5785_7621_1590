@@ -513,14 +513,6 @@
     <EndOfTime>VolunteerCancelled</EndOfTime>
   </Assignment>
   <Assignment>
-    <Id>1066</Id>
-    <CallId>1002</CallId>
-    <VolunteerId>704071080</VolunteerId>
-    <time_entry_treatment>2025-01-15T21:58:23</time_entry_treatment>
-    <time_end_treatment xsi:nil="true" />
-    <EndOfTime xsi:nil="true" />
-  </Assignment>
-  <Assignment>
     <Id>1067</Id>
     <CallId>1012</CallId>
     <VolunteerId>766705900</VolunteerId>
@@ -543,5 +535,13 @@
     <time_entry_treatment>2025-01-15T21:58:23</time_entry_treatment>
     <time_end_treatment>2025-01-15T21:58:23</time_end_treatment>
     <EndOfTime>AdminCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1066</Id>
+    <CallId>1002</CallId>
+    <VolunteerId>704071080</VolunteerId>
+    <time_entry_treatment>2025-01-15T21:58:23</time_entry_treatment>
+    <time_end_treatment>2025-01-15T21:58:23</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
   </Assignment>
 </ArrayOfAssignment>

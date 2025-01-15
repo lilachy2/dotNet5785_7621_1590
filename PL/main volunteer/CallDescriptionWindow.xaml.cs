@@ -1,29 +1,25 @@
 ﻿using BO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PL.main_volunteer
 {
-    /// <summary>
-    /// Interaction logic for CallDescriptionWindow.xaml
-    /// </summary>
     public partial class CallDescriptionWindow : Window
     {
+
         public CallDescriptionWindow(OpenCallInList selectedCall)
         {
             InitializeComponent();
-            this.DataContext = selectedCall;
+
+            string address = selectedCall.FullAddress;
+
+            // יצירת ה-URL של המפה
+            string mapUrl = $"https://www.google.com/maps?q={Uri.EscapeDataString(address)}";
+
+            // גישה לפקד WebBrowser שנמצא ב-DockPanel
+            var webBrowser = (this.Content as DockPanel).Children[2] as WebBrowser; // מניחים שהוא הפקד השלישי
+            webBrowser?.Navigate(mapUrl);
         }
     }
 }

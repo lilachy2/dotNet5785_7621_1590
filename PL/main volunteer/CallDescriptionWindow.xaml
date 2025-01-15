@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Call Description" Height="400" Width="600">
     <DockPanel>
+        <!-- כותרת החלון -->
         <TextBlock DockPanel.Dock="Top" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" Text="Call Description"/>
 
-        <!-- Description TextBlock to show the detailed description of the selected call -->
+        <!-- תיאור השיחה -->
         <TextBlock DockPanel.Dock="Top" Text="{Binding Description}" FontSize="16" Margin="10" TextWrapping="Wrap"/>
+
+        <!-- פקד WebBrowser להצגת המפה -->
+        <WebBrowser DockPanel.Dock="Top" Height="300"/>
     </DockPanel>
 </Window>
