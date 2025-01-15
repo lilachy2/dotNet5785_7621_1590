@@ -15,12 +15,11 @@ namespace PL.Call
     public partial class CallListWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-
-        private CallInListField _selectedFilter = CallInListField.None;  // Default to None (no filter)
+        private BO.Calltype _selectedFilter = BO.Calltype.None;  // Default to None (no filter)
         private CallInListField _selectedSortField = CallInListField.None; // Default to None (no sorting)
 
         // Declare the SelectedFilter property with PropertyChanged notifications
-        public CallInListField SelectedFilter
+        public BO.Calltype SelectedFilter
         {
             get { return _selectedFilter; }
             set
@@ -75,7 +74,7 @@ namespace PL.Call
         // Handle ComboBox selection change event to update the filter
         private void FilterCallListByCriteria(object _, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0] is CallInListField selectedItem)
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Calltype selectedItem)
             {
                 SelectedFilter = selectedItem;
                 queryCallList();
@@ -250,8 +249,7 @@ namespace PL.Call
         {
             IEnumerable<BO.CallInList> calls;
 
-                    calls = s_bl.Call.GetCallsList(SelectedFilter, null, SelectedSortField);
-                    //calls = s_bl.Call.GetCallsList(null, null, SelectedSortField);
+                    calls = s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField);
              
             return calls;
         }

@@ -11,7 +11,7 @@
             <TextBlock Text="Filter by:" VerticalAlignment="Center" Margin="5"/>
             <ComboBox Width="150" 
               SelectionChanged="FilterComboBox_SelectionChanged"
-              SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" 
+              SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}" 
               ItemsSource="{Binding Source={StaticResource CalltypeKey}}"
               Margin="5">
                 <!-- If you want to display the selected item on the ComboBox itself -->
@@ -26,7 +26,7 @@
 
             <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="5"/>
             <ComboBox Width="150" 
-          SelectedItem="{Binding AnotherSelectedStatus, Mode=TwoWay}"
+          SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}"
           ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
           SelectionChanged="FilterComboBox_SelectionChanged_Sort"
           Margin="5">

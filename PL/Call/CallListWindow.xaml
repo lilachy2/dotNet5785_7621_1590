@@ -81,42 +81,63 @@
 
         <!-- Place the "ADD Call" button outside the ListView -->
         <Button Content="ADD Call" 
-                HorizontalAlignment="Center" 
+                HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
                 Width="98" Height="31" 
                 Click="AddCallButton_Click" 
-                Margin="0,572,0,0" 
+                Margin="467,575,0,0" 
                 Background="#B0E0E6" 
                 Foreground="White" 
                 FontWeight="Bold"/>
 
+        <!-- "Filter By" Label -->
+        <TextBlock Text="Filter By:" 
+               Margin="96,580,0,0" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               FontWeight="Bold" RenderTransformOrigin="0.141,0.535" />
         <ComboBox
         Width="74"
-        Margin="477,577,0,0"
+        Margin="172,577,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top"
-        ItemsSource="{Binding Source={StaticResource CallInListEnumKey}}" 
+        ItemsSource="{Binding Source={StaticResource CalltypeKey}}" 
         SelectedItem="{Binding Call.CallInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
         SelectionChanged="FilterCallListByCriteria"
         Height="22" RenderTransformOrigin="0.345,2.911">
-            <!--<ComboBox.ItemTemplate>
+            <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="{Binding Converter={StaticResource VolInListEnumToBackgroundConverterKey}}">
+                    <Grid Background="{Binding Converter={StaticResource CalltypeToBackgroundConverterKey}}">
                         <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
                     </Grid>
                 </DataTemplate>
-            </ComboBox.ItemTemplate>-->
+            </ComboBox.ItemTemplate>
         </ComboBox>
+        
+        <!-- "Sort By" Label -->
+
+        <TextBlock Text="Sort By:" 
+               Margin="278,580,0,0" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               FontWeight="Bold" />
 
         <ComboBox
     Width="85"
-    Margin="594,577,0,0"
+    Margin="342,577,0,0"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-        ItemsSource="{Binding Source={StaticResource CallInListEnumKey}}" 
+    ItemsSource="{Binding Source={StaticResource CallInListEnumKey}}" 
     SelectedItem="{Binding Call.CallInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     SelectionChanged="SortCallListByCriteria"
     Height="22">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="{Binding Converter={StaticResource CallInListEnumToBackgroundConverterKey}}">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
 

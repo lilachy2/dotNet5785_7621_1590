@@ -178,6 +178,41 @@ namespace PL
             return value; // המרת חזרה לא נדרשת במקרה זה
         }
     }
+    public class CallInListEnumToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            BO.CallInListField callEnum = (BO.CallInListField)value;
+
+                switch (callEnum)
+                {
+                    case BO.CallInListField.Id:
+                        return System.Windows.Media.Brushes.LightGoldenrodYellow; // צבע עבור Id
+                    case BO.CallInListField.CompletionTime:
+                        return System.Windows.Media.Brushes.LightSkyBlue; // צבע עבור Name
+                    case BO.CallInListField.VolunteerName:
+                        return System.Windows.Media.Brushes.LightCoral; // צבע עבור IsActive
+                     case BO.CallInListField.Status:
+                        return System.Windows.Media.Brushes.LightGreen; // צבע עבור IsActive
+                     case BO.CallInListField.OpenTime:
+                        return System.Windows.Media.Brushes.LightSalmon; // צבע עבור IsActive
+                   case BO.CallInListField.CallType:
+                        return System.Windows.Media.Brushes.LightSteelBlue; // צבע עבור IsActive
+                   case BO.CallInListField.TimeRemaining:
+                        return System.Windows.Media.Brushes.Violet; // צבע עבור IsActive
+                   case BO.CallInListField.TotalAssignments:
+                        return System.Windows.Media.Brushes.Tomato; // צבע עבור IsActive
+                    default:
+                        return System.Windows.Media.Brushes.LightCyan; // ברירת מחדל
+                }
+            
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value; // המרת חזרה לא נדרשת במקרה זה
+        }
+    }
 
     public class CalltypeToBackgroundConverter : IValueConverter
     {
@@ -197,6 +232,11 @@ namespace PL
                     return System.Windows.Media.Brushes.LightGreen; // צבע עבור IsActive
                 case BO.Calltype.heartattack:
                     return System.Windows.Media.Brushes.LightSalmon; // צבע עבור IsActive
+                case BO.Calltype.resuscitation:
+                    return System.Windows.Media.Brushes.Lavender; // צבע עבור IsActive
+                case BO.Calltype.fainting:
+                    return System.Windows.Media.Brushes.Violet; // צבע עבור IsActive
+
                default:
                     return System.Windows.Media.Brushes.LightCyan; // ברירת מחדל
             }

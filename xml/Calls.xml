@@ -161,16 +161,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.982918001711546</Latitude>
-    <Longitude>34.50517954126341</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1016</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>34 Maximilianstrasse, Munich, Germany</ReadAddress>
-    <OpeningTime>2025-01-12T22:42:40</OpeningTime>
-    <MaxEndTime>2025-01-12T22:00:40</MaxEndTime>
-  </Call>
-  <Call>
     <Latitude>33.163205928099856</Latitude>
     <Longitude>34.93782462109286</Longitude>
     <Calltype>birth</Calltype>
@@ -509,5 +499,15 @@
     <ReadAddress>70 Bay Street, Toronto, ON, Canada</ReadAddress>
     <OpeningTime>2025-01-14T21:48:37.8252243+02:00</OpeningTime>
     <MaxEndTime>2026-01-14T21:48:37</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>48.1380705</Latitude>
+    <Longitude>11.5837024</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1016</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>34 Maximilianstrasse, Munich, Germany</ReadAddress>
+    <OpeningTime>2025-01-12T22:42:40</OpeningTime>
+    <MaxEndTime>2025-01-12T22:55:40</MaxEndTime>
   </Call>
 </ArrayOfCall>
