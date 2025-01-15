@@ -95,7 +95,7 @@
         Margin="477,577,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top"
-        ItemsSource="{Binding Source={StaticResource CallInListFieldKey}}" 
+        ItemsSource="{Binding Source={StaticResource CallInListEnumKey}}" 
         SelectedItem="{Binding Call.CallInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
         SelectionChanged="FilterCallListByCriteria"
         Height="22" RenderTransformOrigin="0.345,2.911">
@@ -113,9 +113,9 @@
     Margin="594,577,0,0"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-        ItemsSource="{Binding Source={StaticResource CallInListFieldKey}}" 
-    SelectedItem="{Binding SelectedSortOrder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-    SelectionChanged="FilterCallListByCriteria"
+        ItemsSource="{Binding Source={StaticResource CallInListEnumKey}}" 
+    SelectedItem="{Binding Call.CallInList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+    SelectionChanged="SortCallListByCriteria"
     Height="22">
         </ComboBox>
 

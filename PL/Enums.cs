@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PL
 {
-    internal class VolunteerFilterCollection : IEnumerable
+    public class VolunteerFilterCollection : IEnumerable
     {
         static readonly IEnumerable<BO.VolInList> s_enums =
             Enum.GetValues(typeof(BO.VolInList)).Cast<BO.VolInList>();
@@ -15,7 +15,7 @@ namespace PL
         public IEnumerator GetEnumerator() => s_enums.GetEnumerator();
     }
 
-    internal class DistanceTypes : IEnumerable
+    public class DistanceTypes : IEnumerable
     {
         static readonly IEnumerable<BO.DistanceType> distanceTypes =
             Enum.GetValues(typeof(BO.DistanceType)).Cast<BO.DistanceType>();
@@ -23,7 +23,7 @@ namespace PL
         public IEnumerator GetEnumerator() => distanceTypes.GetEnumerator();
     }
 
-    internal class Roles : IEnumerable
+    public class Roles : IEnumerable
     {
         static readonly IEnumerable<BO.Role> roles =
             Enum.GetValues(typeof(BO.Role)).Cast<BO.Role>();
@@ -31,18 +31,26 @@ namespace PL
         public IEnumerator GetEnumerator() => roles.GetEnumerator();
     }
 
-    internal class Calltype : IEnumerable
+    public class Calltype : IEnumerable
     {
         static readonly IEnumerable<BO.Calltype> callTypes =
             Enum.GetValues(typeof(BO.Calltype)).Cast<BO.Calltype>();
 
         public IEnumerator GetEnumerator() => callTypes.GetEnumerator();
     }
-    internal class ClosedCallInListEnum : IEnumerable
+
+    public class ClosedCallInListEnum : IEnumerable
     {
         static readonly IEnumerable<BO.ClosedCallInListEnum> ClosedCallInListEnums =
             Enum.GetValues(typeof(BO.ClosedCallInListEnum)).Cast<BO.ClosedCallInListEnum>();
 
         public IEnumerator GetEnumerator() => ClosedCallInListEnums.GetEnumerator();
+    }
+    public class CallInListEnum : IEnumerable
+    {
+        static readonly IEnumerable<BO.CallInListField> CallInListEnums =
+            Enum.GetValues(typeof(BO.CallInListField)).Cast<BO.CallInListField>();
+
+        public IEnumerator GetEnumerator() => CallInListEnums.GetEnumerator();
     }
 }

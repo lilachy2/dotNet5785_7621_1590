@@ -78,6 +78,8 @@ namespace PL.Call
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is CallInListField selectedItem)
             {
                 SelectedFilter = selectedItem;
+                queryCallList();
+
             }
         }
 
@@ -87,6 +89,7 @@ namespace PL.Call
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is CallInListField selectedItem)
             {
                 SelectedSortField = selectedItem;
+                queryCallList();
             }
         }
 
@@ -247,41 +250,9 @@ namespace PL.Call
         {
             IEnumerable<BO.CallInList> calls;
 
-            switch (SelectedFilter)
-            {
-                case CallInListField.Id:
-                    calls = s_bl.Call.GetCallsList(CallInListField.Id, null, null);
-                    break;
-                case CallInListField.CallType:
-                    calls = s_bl.Call.GetCallsList(CallInListField.CallType, null, null);
-                    break;
-                case CallInListField.Status:
-                    calls = s_bl.Call.GetCallsList(CallInListField.Status, null, null);
-                    break;
-                case CallInListField.None:  // No filter (default, show all)
-                    calls = s_bl.Call.GetCallsList(null, null, null);
-                    break;
-                default:
-                    calls = s_bl.Call.GetCallsList(null, null, null);
-                    break;
-            }
-
-            // Apply sorting based on the selected sort field
-            switch (SelectedSortField)
-            {
-                case CallInListField.Id:
-                    calls = calls.OrderBy(c => c.Id);
-                    break;
-                case CallInListField.CallType:
-                    calls = calls.OrderBy(c => c.CallType);
-                    break;
-                case CallInListField.Status:
-                    calls = calls.OrderBy(c => c.Status);
-                    break;
-                case CallInListField.None:  // No sorting (default)
-                    break;
-            }
-
+                    calls = s_bl.Call.GetCallsList(SelectedFilter, null, SelectedSortField);
+                    //calls = s_bl.Call.GetCallsList(null, null, SelectedSortField);
+             
             return calls;
         }
     }

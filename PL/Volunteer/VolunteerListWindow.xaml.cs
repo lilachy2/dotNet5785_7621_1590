@@ -17,7 +17,9 @@ namespace PL.Volunteer
     public partial class VolunteerListWindow : Window, INotifyPropertyChanged
     {
         private VolInList _selectedFilter = VolInList.None;  // Default to None (no filter)
-        
+
+        static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+
         // Declare the SelectedFilter property with PropertyChanged notifications
         public VolInList SelectedFilter
         {
@@ -105,24 +107,8 @@ namespace PL.Volunteer
         {
             IEnumerable<BO.VolunteerInList> volunteers;
 
-            switch (SelectedFilter)
-            {
-                case VolInList.Id:
-                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, VolInList.Id).OrderBy(v => v.Id);
-                    break;
-                case VolInList.Name:
-                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, VolInList.Name).OrderBy(v => v.FullName);
-                    break;
-                case VolInList.IsActive:
-                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(true, VolInList.IsActive).Where(v => v.IsActive);
-                    break;
-                case VolInList.None:  // No filter (default, show all)
-                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
-                    break;
-                default:
-                    volunteers = BlApi.Factory.Get().Volunteer.ReadAll(null, null);
-                    break;
-            }
+            volunteers = s_bl.Volunteer.ReadAll(null, SelectedFilter);
+              
 
             return volunteers;
         }
