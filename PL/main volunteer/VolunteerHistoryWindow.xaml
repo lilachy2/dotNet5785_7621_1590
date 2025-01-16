@@ -79,7 +79,7 @@
                 </Border>
 
                 <!-- Data Grid -->
-                <ItemsControl Grid.Row="1" Grid.ColumnSpan="6" ItemsSource="{Binding}">
+                <ItemsControl Grid.Row="1" Grid.ColumnSpan="6" ItemsSource="{Binding ClosedCallInList}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>

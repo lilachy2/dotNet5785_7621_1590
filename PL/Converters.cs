@@ -177,6 +177,39 @@ namespace PL
         {
             return value; // המרת חזרה לא נדרשת במקרה זה
         }
+    } 
+    public class OpenCallInListEnumToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            BO.OpenCallInListEnum callEnum = (BO.OpenCallInListEnum)value;
+
+                switch (callEnum)
+                {
+                    case BO.OpenCallInListEnum.Id:
+                        return System.Windows.Media.Brushes.LightGoldenrodYellow; // צבע עבור Id
+                    case BO.OpenCallInListEnum.FullAddress:
+                        return System.Windows.Media.Brushes.LightSkyBlue; // צבע עבור Name
+                    case BO.OpenCallInListEnum.DistanceFromVolunteer:
+                        return System.Windows.Media.Brushes.LightCoral; // צבע עבור IsActive
+                     case BO.OpenCallInListEnum.MaxEndTime:
+                        return System.Windows.Media.Brushes.LightGreen; // צבע עבור IsActive
+                     case BO.OpenCallInListEnum.OpenTime:
+                        return System.Windows.Media.Brushes.LightSalmon; // צבע עבור IsActive
+                   case BO.OpenCallInListEnum.CallType:
+                        return System.Windows.Media.Brushes.LightSteelBlue; // צבע עבור IsActive
+                   case BO.OpenCallInListEnum.Description:
+                        return System.Windows.Media.Brushes.LightSteelBlue; // צבע עבור IsActive
+                    default:
+                        return System.Windows.Media.Brushes.LightCyan; // ברירת מחדל
+                }
+            
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value; // המרת חזרה לא נדרשת במקרה זה
+        }
     }
     public class CallInListEnumToBackgroundConverter : IValueConverter
     {

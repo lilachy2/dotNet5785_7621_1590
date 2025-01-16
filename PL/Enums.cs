@@ -45,6 +45,13 @@ namespace PL
             Enum.GetValues(typeof(BO.ClosedCallInListEnum)).Cast<BO.ClosedCallInListEnum>();
 
         public IEnumerator GetEnumerator() => ClosedCallInListEnums.GetEnumerator();
+    }  
+    public class OpenCallInListEnum : IEnumerable
+    {
+        static readonly IEnumerable<BO.OpenCallInListEnum> OpenCallInListEnums =
+            Enum.GetValues(typeof(BO.OpenCallInListEnum)).Cast<BO.OpenCallInListEnum>();
+
+        public IEnumerator GetEnumerator() => OpenCallInListEnums.GetEnumerator();
     }
     public class CallInListEnum : IEnumerable
     {

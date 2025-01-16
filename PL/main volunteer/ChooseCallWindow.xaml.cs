@@ -16,6 +16,8 @@ namespace PL.main_volunteer
         private BO.Volunteer _volunteer;
         private IEnumerable<BO.OpenCallInList> _openCallList;
         private BO.OpenCallInList _selectedCall;  // This will hold the selected call
+        private BO.Calltype _selectedFilter = BO.Calltype.None;  // Default to None (no filter)
+        private BO.OpenCallInListEnum _selectedSort = BO.OpenCallInListEnum.None; // Default to None (no sorting)
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -45,7 +47,32 @@ namespace PL.main_volunteer
                 }
             }
         }
-
+        public BO.Calltype SelectedFilter
+        {
+            get { return _selectedFilter; }
+            set
+            {
+                if (_selectedFilter != value)
+                {
+                    _selectedFilter = value;
+                    OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
+                    LoadOpenCalls();  // Update the list when the filter changes
+                }
+            }
+        } 
+        public BO.OpenCallInListEnum SelectedSort
+        {
+            get { return _selectedSort; }
+            set
+            {
+                if (_selectedSort != value)
+                {
+                    _selectedSort = value;
+                    OnPropertyChanged(nameof(_selectedSort));  // Notify the UI of the property change
+                    LoadOpenCalls();  // Update the list when the filter changes
+                }
+            }
+        }
         public ChooseCallWindow(int volunteerId)
         {
             InitializeComponent();
@@ -87,7 +114,7 @@ namespace PL.main_volunteer
         {
             if (Volunteer != null)
             {
-                var calls = s_bl.Call.GetOpenCall(_volunteerId, null, null);  // Get open calls
+                var calls = s_bl.Call.GetOpenCall(_volunteerId, SelectedFilter, SelectedSort);  // Get open calls
                 OpenCallList = calls.ToList();  // Bind the list to the OpenCallList DependencyProperty
             }
         }
@@ -121,6 +148,23 @@ namespace PL.main_volunteer
             }
         }
 
+        private void FilterCallListByCriteria(object _, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Calltype selectedItem)
+            {
+                SelectedFilter = selectedItem;
+                LoadOpenCalls();
+
+            }
+        }
+        private void SortCallListByCriteria(object _, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.OpenCallInListEnum selectedItem)
+            {
+                SelectedSort = selectedItem;
+                LoadOpenCalls();
+            }
+        }
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {

@@ -442,7 +442,7 @@ internal class CallImplementation : BlApi.ICall
                 .ToList();
 
             // Step 3: Filter by call type if specified
-            if (callType.HasValue)
+            if (callType!=BO.Calltype.None)
             {
                 boClosedCalls = boClosedCalls
                     .Where(c => c.CallType == callType.Value)

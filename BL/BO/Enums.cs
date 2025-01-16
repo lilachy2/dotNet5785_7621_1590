@@ -78,7 +78,8 @@ public enum ClosedCallInListEnum
     OpenTime,        // The time when the call was opened
     EnterTime,       // The time when the call was assigned
     EndTime,         // The actual completion time of the call
-    CompletionStatus // The type of completion status of the call
+    CompletionStatus, // The type of completion status of the call
+        None
 }
 
 public enum OpenCallInListEnum
@@ -89,7 +90,8 @@ public enum OpenCallInListEnum
     FullAddress,
     OpenTime,
     MaxEndTime,
-    DistanceFromVolunteer
+    DistanceFromVolunteer,
+    None
 }
 public enum DistanceType
 {
