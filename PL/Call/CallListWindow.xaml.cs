@@ -259,7 +259,8 @@ namespace PL.Call
                 {
                     try
                     {
-                        BlApi.Factory.Get().Call.Delete(callToDelete.Id ?? 0);
+                        //BlApi.Factory.Get().Call.Delete(callToDelete.Id ?? 0);
+                        BlApi.Factory.Get().Call.Delete(callToDelete.CallId);
 
                         await Application.Current.Dispatcher.InvokeAsync(() =>
                         {

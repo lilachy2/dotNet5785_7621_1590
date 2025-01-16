@@ -215,7 +215,11 @@ internal static class CallManager
         }
 
         // 4. If the call was treated successfully and on time
-        if (lastAssignment.EndOfTime != null && lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
+        //if (lastAssignment.EndOfTime != null && lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
+        //{
+        //    return BO.CallStatus.Closed; // Closed successfully
+        //} 
+        if (lastAssignment.time_end_treatment != null && lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
         {
             return BO.CallStatus.Closed; // Closed successfully
         }
