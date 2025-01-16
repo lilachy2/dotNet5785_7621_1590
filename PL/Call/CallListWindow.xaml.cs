@@ -19,10 +19,24 @@ namespace PL.Call
         private BO.Calltype _selectedFilter = BO.Calltype.None;  // Default to None (no filter)
         private CallInListField _selectedSortField = CallInListField.None; // Default to None (no sorting)
 
+        private BO.CallStatus _selectedFilterStatus = BO.CallStatus.NoneToFilter;  // Default to None (no filter)
+
         private int? volId; // to get volunterrID to oter Window
 
 
-        // Declare the SelectedFilter property with PropertyChanged notifications
+        public BO.CallStatus SelectedFilterStatus
+        {
+            get { return _selectedFilterStatus; }
+            set
+            {
+                if (_selectedFilterStatus != value)
+                {
+                    _selectedFilterStatus = value;
+                    OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
+                    UpdateCallList();  // Update the list when the filter changes
+                }
+            }
+        }
         public BO.Calltype SelectedFilter
         {
             get { return _selectedFilter; }
@@ -67,15 +81,31 @@ namespace PL.Call
             DependencyProperty.Register("CallInList", typeof(IEnumerable<BO.CallInList>),
                 typeof(CallListWindow), new PropertyMetadata(null));
 
+        
+        //public CallListWindow(int? volId1)
+        //{
+        //    InitializeComponent();
+        //    DataContext = this;
+        //    UpdateCallList();
+        //    this.volId = volId1;// to get volunterrID to oter Window
+
+        //}
         // Constructor
-        public CallListWindow(int? volId1)
+        public CallListWindow(int? volId1, BO.CallStatus? initialStatusFilter = null)
         {
             InitializeComponent();
             DataContext = this;
-            UpdateCallList();
-            this.volId = volId1;// to get volunterrID to oter Window
+            this.volId = volId1; // to get volunterrID to other Window
 
+            if (initialStatusFilter.HasValue)
+            {
+                // Set the initial filter and update the call list based on it
+                SelectedFilterStatus = initialStatusFilter.Value;
+            }
+
+            UpdateCallList();
         }
+
 
         // Handle ComboBox selection change event to update the filter
         private void FilterCallListByCriteria(object _, SelectionChangedEventArgs e)
@@ -256,7 +286,7 @@ namespace PL.Call
         {
             IEnumerable<BO.CallInList> calls;
 
-                    calls = s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField);
+                    calls = s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField, SelectedFilterStatus);
              
             return calls;
         }

@@ -6,6 +6,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PL.Call;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace PL
 {
@@ -20,6 +23,7 @@ namespace PL
         // Dependency Property for the Current Time
         public DateTime CurrentTime
         {
+
             get { return (DateTime)GetValue(CurrentTimeProperty); }
             set { SetValue(CurrentTimeProperty, value); }
         }
@@ -47,6 +51,13 @@ namespace PL
 
         private int? volId; // to get volunterrID to oter Window
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
 
         // Constructor
         public MainWindow(int? volId1)
@@ -55,6 +66,9 @@ namespace PL
             DataContext = this; // Set DataContext for Binding
             this.Loaded += MainWindow_Loaded; // Register Loaded event
             this.volId = volId1;// to get volunterrID to oter Window
+
+            CallStatusesCounts = new ObservableCollection<KeyValuePair<string, int>>();
+
 
         }
 
@@ -185,13 +199,6 @@ namespace PL
             //MessageBox.Show("Starting Simulator...");
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // Additional actions if needed (not defined yet)
-        }
-
-        // Observer method to update CurrentTime when it changes
-     
         // Observer method to update CurrentTime when it changes
         private void clockObserver()
         {
@@ -208,16 +215,65 @@ namespace PL
         }
 
         // MainWindow Loaded event handler
+        public ObservableCollection<KeyValuePair<string, int>> CallStatusesCounts { get; set; }
+        //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    // Initialize the CurrentTime and RiskRange properties when the window is loaded
+        //    CurrentTime = s_bl.Admin.GetClock(); // Get initial system time
+        //    RiskRange = s_bl.Admin.GetMaxRange(); // Get initial Risk Range
+
+        //    var counts = s_bl.Call.GetCallStatusesCounts();
+        //    CallStatusesCounts.Clear();
+
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("Open", counts[0]));
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("Closed", counts[1]));
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("InProgress", counts[2]));
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("Expired", counts[3]));
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("InProgressAtRisk", counts[4]));
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("OpenAtRisk", counts[5]));
+        //    CallStatusesCounts.Add(new KeyValuePair<string, int>("Total", counts[6]));
+
+        //    // Register observers for clock and configuration changes
+        //    s_bl.Admin.AddClockObserver(clockObserver);
+        //    s_bl.Admin.AddConfigObserver(configObserver);
+        //}
+
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // Initialize the CurrentTime and RiskRange properties when the window is loaded
-            CurrentTime = s_bl.Admin.GetClock(); // Get initial system time
-            RiskRange = s_bl.Admin.GetMaxRange(); // Get initial Risk Range
+            try
+            {
+                CurrentTime = s_bl.Admin.GetClock();
+                RiskRange = s_bl.Admin.GetMaxRange();
 
-            // Register observers for clock and configuration changes
-            s_bl.Admin.AddClockObserver(clockObserver);
-            s_bl.Admin.AddConfigObserver(configObserver);
+                var counts = s_bl.Call.GetCallStatusesCounts();
+                System.Diagnostics.Debug.WriteLine($"Loading counts: {counts?.Length ?? 0} items");
+
+                CallStatusesCounts.Clear();
+                if (counts != null)
+                {
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("Open", counts[0]));
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("Closed", counts[1]));
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("InProgress", counts[2]));
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("Expired", counts[3]));
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("InProgressAtRisk", counts[4]));
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("OpenAtRisk", counts[5]));
+                    CallStatusesCounts.Add(new KeyValuePair<string, int>("Total", counts[6]));
+
+                    System.Diagnostics.Debug.WriteLine($"Added {CallStatusesCounts.Count} items to collection");
+                }
+
+                s_bl.Admin.AddClockObserver(clockObserver);
+                s_bl.Admin.AddConfigObserver(configObserver);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading window: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error: {ex}");
+            }
         }
+
+
 
         // Window Closed event handler to clean up observers
         private void Window_Closed(object sender, EventArgs e)
@@ -236,5 +292,27 @@ namespace PL
         {
 
         }
+
+
+        private void CallList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListView listView && listView.SelectedItem is KeyValuePair<string, int> selectedItem)
+            {
+                // המרת המפתח לסוג הסטטוס (בהנחה שהמפתח מתאים ל-BO.Calltype)
+                if (Enum.TryParse(typeof(BO.CallStatus), selectedItem.Key, out var status))
+                {
+                    var statusFilter = (BO.CallStatus)status;
+
+                    // פתיחת חלון חדש עם הסינון
+                    var callListWindow = new CallListWindow(null, statusFilter);
+                    callListWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid status type selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
     }
 }

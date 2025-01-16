@@ -500,4 +500,14 @@
     <OpeningTime>2025-01-13T22:24:23</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
+  <Call>
+    <Latitude>48.8582599</Latitude>
+    <Longitude>2.2945006358633115</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1050</Id>
+    <VerbalDescription>fgj</VerbalDescription>
+    <ReadAddress>Eiffel Tower, Paris, France</ReadAddress>
+    <OpeningTime>2025-01-16T14:51:50.8204917+02:00</OpeningTime>
+    <MaxEndTime>2026-01-16T14:51:50</MaxEndTime>
+  </Call>
 </ArrayOfCall>

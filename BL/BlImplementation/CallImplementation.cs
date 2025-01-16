@@ -59,25 +59,108 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
-    public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy)
+    //public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy)
+    //{
+    //    IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
+
+    //    IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
+
+    //    if (filter != null && obj != null)
+    //    {
+    //        switch (filter)
+    //        {
+    //            case BO.Calltype.allergy:
+    //                boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+    //                break;  
+    //            case BO.Calltype.birth:
+    //                boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+    //                break;       
+    //            case BO.Calltype.broken_bone:
+    //                boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+    //                break;           
+    //            case BO.Calltype.heartattack:
+    //                boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+    //                break;
+    //            case BO.Calltype.resuscitation:
+    //                boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+    //                break;
+    //            case BO.Calltype.security_event:
+    //                boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+    //                break; 
+    //            case BO.Calltype.None:
+
+    //                break;
+
+    //        }
+    //    }
+
+    //    if (sortBy == null)
+    //        sortBy = BO.CallInListField.CallId;
+
+    //    switch (sortBy)
+    //    {
+    //        case BO.CallInListField.Id:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.Id.HasValue ? 0 : 1)
+    //                                         .ThenBy(item => item.Id)
+    //                                         .ToList();
+    //            break;
+
+    //        case BO.CallInListField.CallId:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.CallId).ToList();
+    //            break;
+
+    //        case BO.CallInListField.CallType:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.CallType).ToList();
+    //            break;
+
+    //        case BO.CallInListField.OpenTime:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.OpenTime).ToList();
+    //            break;
+
+    //        case BO.CallInListField.TimeRemaining:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.TimeRemaining).ToList();
+    //            break;
+
+    //        case BO.CallInListField.VolunteerName:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.VolunteerName).ToList();
+    //            break;
+
+    //        case BO.CallInListField.CompletionTime:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.CompletionTime).ToList();
+    //            break;
+
+    //        case BO.CallInListField.Status:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.Status).ToList();
+    //            break;
+
+    //        case BO.CallInListField.TotalAssignments:
+    //            boCallsInList = boCallsInList.OrderBy(item => item.TotalAssignments).ToList();
+    //            break;
+    //    }
+
+    //    return boCallsInList;
+    //}
+
+    public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy, BO.CallStatus? statusFilter = null)
     {
         IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
 
         IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
 
+        // סינון לפי Calltype
         if (filter != null && obj != null)
         {
             switch (filter)
             {
                 case BO.Calltype.allergy:
                     boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
-                    break;  
+                    break;
                 case BO.Calltype.birth:
                     boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
-                    break;       
+                    break;
                 case BO.Calltype.broken_bone:
                     boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
-                    break;           
+                    break;
                 case BO.Calltype.heartattack:
                     boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
                     break;
@@ -86,17 +169,23 @@ internal class CallImplementation : BlApi.ICall
                     break;
                 case BO.Calltype.security_event:
                     boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
-                    break; 
-                case BO.Calltype.None:
-                   
                     break;
-
+                case BO.Calltype.None:
+                    break;
             }
         }
 
+        // סינון לפי CallStatus, אם מתקבל NoneToFilter לא מבצעים סינון
+        if (statusFilter != BO.CallStatus.NoneToFilter && statusFilter != null)
+        {
+            boCallsInList = boCallsInList.Where(item => item.Status == statusFilter);
+        }
+
+        // אם לא הוגדר סינון לפי שדה, יש לסנן לפי CallId כברירת מחדל
         if (sortBy == null)
             sortBy = BO.CallInListField.CallId;
 
+        // סינון לפי שדות
         switch (sortBy)
         {
             case BO.CallInListField.Id:
@@ -104,35 +193,27 @@ internal class CallImplementation : BlApi.ICall
                                              .ThenBy(item => item.Id)
                                              .ToList();
                 break;
-
             case BO.CallInListField.CallId:
                 boCallsInList = boCallsInList.OrderBy(item => item.CallId).ToList();
                 break;
-
             case BO.CallInListField.CallType:
                 boCallsInList = boCallsInList.OrderBy(item => item.CallType).ToList();
                 break;
-
             case BO.CallInListField.OpenTime:
                 boCallsInList = boCallsInList.OrderBy(item => item.OpenTime).ToList();
                 break;
-
             case BO.CallInListField.TimeRemaining:
                 boCallsInList = boCallsInList.OrderBy(item => item.TimeRemaining).ToList();
                 break;
-
             case BO.CallInListField.VolunteerName:
                 boCallsInList = boCallsInList.OrderBy(item => item.VolunteerName).ToList();
                 break;
-
             case BO.CallInListField.CompletionTime:
                 boCallsInList = boCallsInList.OrderBy(item => item.CompletionTime).ToList();
                 break;
-
             case BO.CallInListField.Status:
                 boCallsInList = boCallsInList.OrderBy(item => item.Status).ToList();
                 break;
-
             case BO.CallInListField.TotalAssignments:
                 boCallsInList = boCallsInList.OrderBy(item => item.TotalAssignments).ToList();
                 break;

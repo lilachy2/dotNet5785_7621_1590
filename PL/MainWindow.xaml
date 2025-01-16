@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
-        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
         Closed="Window_Closed"
         Loaded="MainWindow_Loaded"
         FontFamily="Courier New">
@@ -83,10 +82,25 @@
         </StackPanel>
 
         <!-- StackPanel for Handle Calls and Handle Volunteers buttons (Row 4) -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="262,172,0,0" Height="108" VerticalAlignment="Top" Width="322" Background="#FFFAF0">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="444,199,0,0" Height="108" VerticalAlignment="Top" Width="322" Background="#FFFAF0">
             <Button Content="Handle Calls" Margin="15" Padding="10" Click="HandleCalls_Click" Background="#B0E0E6"/>
             <Button Content="Handle Volunteers" Margin="15" Padding="10" Click="HandleVolunteers_Click" Background="#B0E0E6"/>
         </StackPanel>
+
+        <!-- ListView for displaying Call Statuses and Counts -->
+        <ListView Grid.Row="3" 
+          ItemsSource="{Binding CallStatusesCounts, UpdateSourceTrigger=PropertyChanged}" 
+          Margin="10,242,515,41"
+          MouseDoubleClick="CallList_MouseDoubleClick">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Key}" />
+                    <GridViewColumn Header="Count" Width="100" DisplayMemberBinding="{Binding Value}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
 
     </Grid>
 </Window>

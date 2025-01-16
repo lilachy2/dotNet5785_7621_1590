@@ -25,7 +25,6 @@ public enum Calltype
     broken_bone,
     security_event,
     None
-
 }
 
 public enum CompletionType
@@ -42,7 +41,8 @@ public enum CallStatus
     InProgress,      // In Progress - Currently being handled by a volunteer
     Closed,          // Closed - The volunteer has finished handling the call
     OpenAtRisk,      // Open At Risk - The call is open and approaching its required completion time
-    InProgressAtRisk // In Progress At Risk - The call is being handled but is approaching its required completion time
+    InProgressAtRisk, // In Progress At Risk - The call is being handled but is approaching its required completion time
+    NoneToFilter
 }
 
 
