@@ -145,7 +145,10 @@ internal class CallImplementation : BlApi.ICall
     {
         IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
 
-        IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
+        
+        //IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
+        IEnumerable<BO.CallInList> boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call)).ToList();
+
 
         // סינון לפי Calltype
         if (filter != null && obj != null)
@@ -442,7 +445,7 @@ internal class CallImplementation : BlApi.ICall
                 .ToList();
 
             // Step 3: Filter by call type if specified
-            if (callType!=BO.Calltype.None)
+            if (callType != BO.Calltype.None)
             {
                 boClosedCalls = boClosedCalls
                     .Where(c => c.CallType == callType.Value)
@@ -633,7 +636,7 @@ internal class CallImplementation : BlApi.ICall
             });
 
         // Filter by call type if provided
-        if (type.HasValue&& type!= BO.Calltype.None)
+        if (type.HasValue && type != BO.Calltype.None)
         {
             filteredCalls = filteredCalls.Where(c => c.CallType == type.Value);
         }
@@ -673,7 +676,7 @@ internal class CallImplementation : BlApi.ICall
                 ismanager = true;
             else throw new BO.BlDeletionImpossibleException("the volunteer is not manager or not in this call");
         }
-        if (assigmnetToCancel.time_end_treatment != null )//// לבדוק
+        if (assigmnetToCancel.time_end_treatment != null)//// לבדוק
             throw new BO.BlDeletionImpossibleException("The assigmnet not open or exspaired");
 
         DO.Assignment assigmnetToUP = new DO.Assignment
@@ -888,7 +891,7 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.BlAlreadyExistsException($"The call is already assigned to another volunteer. IdCall = {idCall}");
 
         // Check if the call has expired.
-        if (boCall.Status ==( BO.CallStatus.Expired))
+        if (boCall.Status == (BO.CallStatus.Expired))
             throw new BO.BlAlreadyExistsException($"The call has expired. IdCall = {idCall}");
 
         // Create a new assignment for the volunteer and the call.
@@ -909,6 +912,10 @@ internal class CallImplementation : BlApi.ICall
             //CallManager.Observers.NotifyItemUpdated(assigmnetToCreat.Id);  //stage 5
             CallManager.Observers.NotifyItemUpdated(idCall);  //stage 5
             CallManager.Observers.NotifyListUpdated();  //stage 5
+
+            VolunteerManager.Observers.NotifyItemUpdated(idVol);  //stage 5
+            CallManager.Observers.NotifyListUpdated();  //stage 5
+
 
         }
         catch (Exception e)
