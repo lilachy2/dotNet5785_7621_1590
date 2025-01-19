@@ -914,7 +914,7 @@ internal class CallImplementation : BlApi.ICall
             CallManager.Observers.NotifyListUpdated();  //stage 5
 
             VolunteerManager.Observers.NotifyItemUpdated(idVol);  //stage 5
-            CallManager.Observers.NotifyListUpdated();  //stage 5
+            VolunteerManager.Observers.NotifyListUpdated();  //stage 5
 
 
         }

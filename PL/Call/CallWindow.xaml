@@ -5,11 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.Call"
         mc:Ignorable="d"
-        Title="CallWindow" Height="640" Width="800">
+        Title="Call Management" Height="640" Width="800"
+        Background="#F5F5F5">
 
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="5,10,5,5"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="BorderBrush" Value="#40E0D0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#40E0D0"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#40E0D0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0,15"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2C3E50"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid>
+        <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -20,62 +56,74 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <!-- שורה חדשה לכפתור -->
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <!-- ID -->
-            <Label Content="ID:" Grid.Row="0" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.Id}" Grid.Row="0" Margin="100,0" HorizontalAlignment="Stretch" 
-                     IsReadOnly="{Binding Call.Id}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <!-- Description -->
-            <Label Content="Description:" Grid.Row="1" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.Description, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <!-- שדות הטופס -->
+            <Label Content="ID:" Grid.Row="0" Grid.Column="0"/>
+            <TextBox Text="{Binding Call.Id}" Grid.Row="0" Grid.Column="1" IsReadOnly="{Binding Call.Id}" />
 
-            <!-- Call Type -->
-            <Label Content="Call Type:" Grid.Row="2" HorizontalAlignment="Left" />
+            <Label Content="Description:" Grid.Row="1" Grid.Column="0"/>
+            <TextBox Text="{Binding Call.Description, UpdateSourceTrigger=PropertyChanged}" 
+                     Grid.Row="1" Grid.Column="1" />
+
+            <Label Content="Call Type:" Grid.Row="2" Grid.Column="0"/>
             <ComboBox ItemsSource="{Binding Source={StaticResource CalltypeKey}}" 
                       SelectedItem="{Binding Call.Calltype, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      Grid.Row="2" Margin="100,0">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
-                        </Grid>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+                      Grid.Row="2" Grid.Column="1"/>
 
-            <!-- Status -->
-            <!--<Label Content="Status:" Grid.Row="3" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.Status, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="100,0" HorizontalAlignment="Stretch"
-                     IsReadOnly="{Binding IsReadOnlyFields}"/>-->
+            <Label Content="Open Time:" Grid.Row="3" Grid.Column="0"/>
+            <TextBox Text="{Binding Call.OpenTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" 
+                     Grid.Row="3" Grid.Column="1" IsReadOnly="{Binding IsReadOnlyFields}" />
 
-            <!-- Open Time -->
-            <Label Content="Open Time:" Grid.Row="4" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.OpenTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="4" Margin="100,0" HorizontalAlignment="Stretch"
-                     IsReadOnly="{Binding IsReadOnlyFields}"/>
+            <Label Content="Max End Time:" Grid.Row="4" Grid.Column="0"/>
+            <TextBox Text="{Binding Call.MaxEndTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" 
+                     Grid.Row="4" Grid.Column="1"/>
 
-            <!-- Max Completion Time -->
-            <Label Content="Max End Time:" Grid.Row="5" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.MaxEndTime, UpdateSourceTrigger=PropertyChanged, StringFormat=G}" Grid.Row="5" Margin="100,0" HorizontalAlignment="Stretch"/>
+            <Label Content="Address:" Grid.Row="5" Grid.Column="0"/>
+            <TextBox Text="{Binding Call.FullAddress, UpdateSourceTrigger=PropertyChanged}" 
+                     Grid.Row="5" Grid.Column="1"/>
 
-            <!-- Distance --><!--
-            <Label Content="Distance:" Grid.Row="6" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.Distance, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>-->
-
-            <!-- Address -->
-            <Label Content="Address:" Grid.Row="6" HorizontalAlignment="Left" />
-            <TextBox Text="{Binding Call.FullAddress, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="100,0" HorizontalAlignment="Stretch"/>
-
-            <!-- Button (Add/Update) -->
             <Button Content="{Binding ButtonText}" 
                     Click="btnAddUpdate_Click" 
-                    Grid.Row="8" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Top" 
-                    Height="39" 
-                    Width="118" />
+                    Grid.Row="6" 
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"/>
+
+            <Label Content="Assignments:" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <DataGrid ItemsSource="{Binding Call.CallAssignments}" 
+                      Grid.Row="8" 
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      Margin="0,5,0,0"
+                      AutoGenerateColumns="False" 
+                      CanUserAddRows="False" 
+                      IsReadOnly="True"
+                      MaxHeight="200"
+                      Background="White"
+                      BorderBrush="#40E0D0"
+                      BorderThickness="1">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#40E0D0"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="10,5"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Volunteer ID" Binding="{Binding VolunteerId}" Width="Auto"/>
+                    <DataGridTextColumn Header="Volunteer Name" Binding="{Binding VolunteerName}" Width="*"/>
+                    <DataGridTextColumn Header="Assigned Time" Binding="{Binding EnterTime, StringFormat=G}" Width="Auto"/>
+                    <DataGridTextColumn Header="Completion Time" Binding="{Binding CompletionTime, StringFormat=G}" Width="Auto"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding CompletionStatus}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </ScrollViewer>
 </Window>

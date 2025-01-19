@@ -73,7 +73,6 @@ namespace PL.main_volunteer
             }
         }
 
-        // בנאי של החלון
         public VolunteerMainWindow(int Id)
         {
             try

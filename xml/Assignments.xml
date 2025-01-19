@@ -328,4 +328,28 @@
     <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
     <EndOfTime>TreatedOnTime</EndOfTime>
   </Assignment>
+  <Assignment>
+    <Id>1042</Id>
+    <CallId>1011</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1043</Id>
+    <CallId>1013</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1044</Id>
+    <CallId>1013</CallId>
+    <VolunteerId>711665195</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment xsi:nil="true" />
+    <EndOfTime xsi:nil="true" />
+  </Assignment>
 </ArrayOfAssignment>

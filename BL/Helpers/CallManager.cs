@@ -203,10 +203,11 @@ internal static class CallManager
         //                                     .FirstOrDefault();
 
        // עושה בעיות עם סיום טיפול
-        var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id && ass.time_end_treatment == null)
-                                     .OrderByDescending(a => a.time_entry_treatment)
-                                     .FirstOrDefault();
+        //var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id && ass.time_end_treatment == null)
+        //                             .OrderByDescending(a => a.time_entry_treatment)
+        //                             .FirstOrDefault();
 
+        var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id).OrderByDescending(a => a.Id).FirstOrDefault();
 
         // 3. If no assignments exist
         if (lastAssignment == null)
@@ -222,6 +223,7 @@ internal static class CallManager
         //{
         //    return BO.CallStatus.Closed; // Closed successfully
         //} 
+
         if ((lastAssignment.time_end_treatment != null) && (lastAssignment.EndOfTime== DO.AssignmentCompletionType.TreatedOnTime))
         {
             return BO.CallStatus.Closed; // Closed successfully

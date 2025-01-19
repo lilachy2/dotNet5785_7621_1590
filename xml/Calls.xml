@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>30.11623171549119</Latitude>
-    <Longitude>35.15522673663954</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1002</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
-    <OpeningTime>2025-01-16T13:48:00</OpeningTime>
-    <MaxEndTime>2025-01-16T14:02:00</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.510797751291758</Latitude>
-    <Longitude>34.798562702714776</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1003</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>70 Bay Street, Toronto, ON, Canada</ReadAddress>
-    <OpeningTime>2025-01-16T16:24:00</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.90766617767258</Latitude>
     <Longitude>34.69774684913624</Longitude>
     <Calltype>birth</Calltype>
@@ -68,16 +48,6 @@
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
     <ReadAddress>12 Markens Gate, Kristiansand, Norway</ReadAddress>
     <OpeningTime>2025-01-16T18:29:00</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>33.058647008529356</Latitude>
-    <Longitude>34.69006838505121</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1012</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>800 N Michigan Avenue, Chicago, IL, USA</ReadAddress>
-    <OpeningTime>2025-01-16T18:25:00</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
@@ -439,5 +409,45 @@
     <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
     <OpeningTime>2025-01-15T15:50:00</OpeningTime>
     <MaxEndTime>2025-01-15T16:48:00</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>59.909796</Latitude>
+    <Longitude>10.745907</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1002</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
+    <OpeningTime>2025-01-16T13:48:00</OpeningTime>
+    <MaxEndTime>2025-01-16T14:02:00</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>43.6597555</Latitude>
+    <Longitude>-79.3853931</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1003</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>70 Bay Street, Toronto, ON, Canada</ReadAddress>
+    <OpeningTime>2025-01-16T16:24:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>41.897026600000004</Latitude>
+    <Longitude>-87.62531246302326</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1012</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>800 N Michigan Avenue, Chicago, IL, USA</ReadAddress>
+    <OpeningTime>2025-01-16T18:25:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>59.909796</Latitude>
+    <Longitude>10.745907</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1050</Id>
+    <VerbalDescription>:)שלום</VerbalDescription>
+    <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
+    <OpeningTime>2025-01-19T21:10:22.4291925+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

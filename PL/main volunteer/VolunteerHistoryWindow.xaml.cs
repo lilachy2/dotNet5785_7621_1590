@@ -57,8 +57,7 @@ namespace PL.main_volunteer
             }
         }
 
-       
-
+      
         // Constructor for initializing the window with volunteer ID
         public VolunteerHistoryWindow(int id)
         {
