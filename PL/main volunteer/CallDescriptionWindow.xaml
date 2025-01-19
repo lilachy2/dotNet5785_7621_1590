@@ -10,6 +10,6 @@
         <TextBlock DockPanel.Dock="Top" Text="{Binding Description}" FontSize="16" Margin="10" TextWrapping="Wrap"/>
 
         <!-- פקד WebBrowser להצגת המפה -->
-        <WebBrowser DockPanel.Dock="Top" Height="300"/>
+        <!--<WebBrowser DockPanel.Dock="Top" Height="300"/>-->
     </DockPanel>
 </Window>

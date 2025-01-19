@@ -86,7 +86,7 @@ namespace PL.Volunteer
                 // Query and retrieve the list of volunteers filtered by the selected filter
                 IEnumerable<BO.VolunteerInList> volunteers = queryVolunteerList();
 
-                // Use the dispatcher to update the UI thread with the new volunteer list
+                // Use the dispatcher to update the UI thread with the new volunteer listdoubl
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     VolunteerInList = volunteers;

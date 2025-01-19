@@ -17,14 +17,6 @@
     <EndOfTime>VolunteerCancelled</EndOfTime>
   </Assignment>
   <Assignment>
-    <Id>1002</Id>
-    <CallId>1002</CallId>
-    <VolunteerId>986519693</VolunteerId>
-    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
-    <time_end_treatment xsi:nil="true" />
-    <EndOfTime>Expired</EndOfTime>
-  </Assignment>
-  <Assignment>
     <Id>1003</Id>
     <CallId>1008</CallId>
     <VolunteerId>890943887</VolunteerId>
@@ -105,14 +97,6 @@
     <EndOfTime>AdminCancelled</EndOfTime>
   </Assignment>
   <Assignment>
-    <Id>1013</Id>
-    <CallId>1036</CallId>
-    <VolunteerId>518957639</VolunteerId>
-    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
-    <time_end_treatment xsi:nil="true" />
-    <EndOfTime>Expired</EndOfTime>
-  </Assignment>
-  <Assignment>
     <Id>1014</Id>
     <CallId>1003</CallId>
     <VolunteerId>991874034</VolunteerId>
@@ -135,5 +119,85 @@
     <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
     <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
     <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1018</Id>
+    <CallId>1019</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1002</Id>
+    <CallId>1002</CallId>
+    <VolunteerId>986519693</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>AdminCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1019</Id>
+    <CallId>1013</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1013</Id>
+    <CallId>1036</CallId>
+    <VolunteerId>518957639</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>AdminCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1020</Id>
+    <CallId>1003</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1021</Id>
+    <CallId>1003</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1022</Id>
+    <CallId>1003</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1023</Id>
+    <CallId>1003</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1024</Id>
+    <CallId>1010</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment>2025-01-16T18:32:00</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1025</Id>
+    <CallId>1017</CallId>
+    <VolunteerId>32429190</VolunteerId>
+    <time_entry_treatment>2025-01-16T18:32:00</time_entry_treatment>
+    <time_end_treatment xsi:nil="true" />
+    <EndOfTime xsi:nil="true" />
   </Assignment>
 </ArrayOfAssignment>

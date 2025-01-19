@@ -75,14 +75,14 @@
         </Grid>
 
         <!-- StackPanel for Navigation buttons (Row 3) -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,62,0,213" Width="486" Background="#FFFAF0">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="211,62,0,238" Width="465" Background="#FFFAF0">
             <Button Content="Initialize Database" Margin="15" Padding="10" Click="InitializeDatabase_Click" Background="#B0E0E6"/>
             <Button Content="Reset Database" Margin="15" Padding="10" Click="ResetDatabase_Click" Background="#B0E0E6"/>
             <Button Content="Simulator" Margin="15" Padding="12" Click="StartSimulator_Click" Background="#B0E0E6"/>
         </StackPanel>
 
         <!-- StackPanel for Handle Calls and Handle Volunteers buttons (Row 4) -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="444,199,0,0" Height="108" VerticalAlignment="Top" Width="322" Background="#FFFAF0">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="456,199,0,0" Height="93" VerticalAlignment="Top" Width="310" Background="#FFFAF0">
             <Button Content="Handle Calls" Margin="15" Padding="10" Click="HandleCalls_Click" Background="#B0E0E6"/>
             <Button Content="Handle Volunteers" Margin="15" Padding="10" Click="HandleVolunteers_Click" Background="#B0E0E6"/>
         </StackPanel>
@@ -90,7 +90,7 @@
         <!-- ListView for displaying Call Statuses and Counts -->
         <ListView Grid.Row="3" 
           ItemsSource="{Binding CallStatusesCounts, UpdateSourceTrigger=PropertyChanged}" 
-          Margin="10,242,515,41"
+          Margin="30,184,495,99"
           MouseDoubleClick="CallList_MouseDoubleClick">
 
             <ListView.View>

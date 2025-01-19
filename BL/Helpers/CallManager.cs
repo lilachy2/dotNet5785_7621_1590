@@ -101,6 +101,7 @@ internal static class CallManager
         if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == true)//  כתובת אמיתית 
         {
             LongitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
+            Thread.Sleep(3000);
             //LongitudeVolunteer = Task.Run(() => Tools.GetLatitude(doVolunteer.FullCurrentAddress));
             LatitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
         }
@@ -219,7 +220,7 @@ internal static class CallManager
         //{
         //    return BO.CallStatus.Closed; // Closed successfully
         //} 
-        if (lastAssignment.time_end_treatment != null && lastAssignment.EndOfTime.ToString() == "TreatedOnTime")
+        if (lastAssignment.time_end_treatment != null && lastAssignment.EndOfTime== DO.AssignmentCompletionType.TreatedOnTime)
         {
             return BO.CallStatus.Closed; // Closed successfully
         }

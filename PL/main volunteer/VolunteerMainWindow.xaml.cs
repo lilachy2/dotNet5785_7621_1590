@@ -154,7 +154,7 @@ namespace PL.main_volunteer
             try
             {
                 // עדכון סיום קריאה
-                s_bl.Call.UpdateEndTreatment(Volunteer.Id, Volunteer.CurrentCall.CallId);
+                s_bl.Call.UpdateEndTreatment(Volunteer.Id, Volunteer.CurrentCall.Id);
                 MessageBox.Show("The call has been marked as completed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 // עדכון הקריאה הפעילה

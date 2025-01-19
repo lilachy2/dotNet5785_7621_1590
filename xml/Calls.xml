@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>30.257099322945976</Latitude>
-    <Longitude>35.29632521068514</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1000</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>12 Piazza del Duomo, Florence, Italy</ReadAddress>
-    <OpeningTime>2025-01-16T18:13:00</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.11623171549119</Latitude>
     <Longitude>35.15522673663954</Longitude>
     <Calltype>None</Calltype>
@@ -39,16 +29,6 @@
     <ReadAddress>10 Collins Street, Melbourne, VIC, Australia</ReadAddress>
     <OpeningTime>2025-01-15T01:15:00</OpeningTime>
     <MaxEndTime>2025-01-15T01:59:00</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.530721137260855</Latitude>
-    <Longitude>34.335936862775526</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1005</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
-    <OpeningTime>2025-01-15T15:50:00</OpeningTime>
-    <MaxEndTime>2025-01-15T16:48:00</MaxEndTime>
   </Call>
   <Call>
     <Latitude>32.67869541288365</Latitude>
@@ -351,16 +331,6 @@
     <MaxEndTime>2025-01-15T17:27:00</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.747845914360255</Latitude>
-    <Longitude>35.479512266861164</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1038</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>45 Roppongi, Minato City, Tokyo, Japan</ReadAddress>
-    <OpeningTime>2025-01-16T02:36:00</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>33.201429237074045</Latitude>
     <Longitude>34.878768475974915</Longitude>
     <Calltype>security_event</Calltype>
@@ -459,5 +429,15 @@
     <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
     <OpeningTime>2025-01-15T20:22:00</OpeningTime>
     <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>45.5257282</Latitude>
+    <Longitude>-73.6103723</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1005</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
+    <OpeningTime>2025-01-15T15:50:00</OpeningTime>
+    <MaxEndTime>2025-01-15T16:48:00</MaxEndTime>
   </Call>
 </ArrayOfCall>

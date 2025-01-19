@@ -125,7 +125,6 @@ namespace PL.main_volunteer
             // Set the SelectedCall to the clicked call
             SelectedCall = selectedCall;
 
-            // Optionally: Do something else with the selected call (e.g., navigate to another window or perform an action)
         }
 
         // Method to notify property change
@@ -179,9 +178,6 @@ namespace PL.main_volunteer
             {
                 try
                 {
-                    // Replace with actual volunteer ID (for example, a static ID or a value from the current session)
-                      // Replace with actual VolunteerId (e.g., from session or user context)
-
                     // Call the ChooseCall method
                     s_bl.Call.ChooseCall(Volunteer.Id, selectedCall.Id);
 
