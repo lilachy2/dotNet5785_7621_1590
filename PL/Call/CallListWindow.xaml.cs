@@ -22,8 +22,6 @@ namespace PL.Call
         private BO.CallStatus _selectedFilterStatus = BO.CallStatus.NoneToFilter;  // Default to None (no filter)
 
         private int? volId; // to get volunterrID to oter Window
-
-
         public BO.CallStatus SelectedFilterStatus
         {
             get { return _selectedFilterStatus; }
@@ -66,6 +64,21 @@ namespace PL.Call
             }
         }
 
+        private bool _isBalloonVisible;
+        public bool IsBalloonVisible
+        {
+            get => _isBalloonVisible;
+            set
+            {
+                if (_isBalloonVisible != value)
+                {
+                    _isBalloonVisible = value;
+                    OnPropertyChanged(nameof(IsBalloonVisible));
+                }
+            }
+        }
+
+
         // Regular property for the selected call (not DependencyProperty)
         public BO.CallInList? SelectedCall { get; set; }
 
@@ -81,20 +94,12 @@ namespace PL.Call
             DependencyProperty.Register("CallInList", typeof(IEnumerable<BO.CallInList>),
                 typeof(CallListWindow), new PropertyMetadata(null));
 
-        
-        //public CallListWindow(int? volId1)
-        //{
-        //    InitializeComponent();
-        //    DataContext = this;
-        //    UpdateCallList();
-        //    this.volId = volId1;// to get volunterrID to oter Window
-
-        //}
-        // Constructor
+       
         public CallListWindow(int? volId1, BO.CallStatus? initialStatusFilter = null)
         {
             InitializeComponent();
             DataContext = this;
+            IsBalloonVisible = false;   
             this.volId = volId1; // to get volunterrID to other Window
 
             if (initialStatusFilter.HasValue)
@@ -173,14 +178,50 @@ namespace PL.Call
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void AddCallButton_Click(object sender, RoutedEventArgs e)
+        //private void AddCallButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        IsBalloonVisible = true;
+
+        //        // Create and open the call window to add a new call
+        //        CallWindow callWindow = new CallWindow();
+        //        callWindow.ShowDialog();
+
+        //        // Refresh the call list directly after adding the call
+        //        var calls = queryCallList(); // Query the updated call list
+        //        CallInList = calls; // Directly assign the updated list
+        //        UpdateCallList(); // Ensure UI updates
+
+        //        var timer = new System.Windows.Threading.DispatcherTimer();
+        //        timer.Interval = TimeSpan.FromSeconds(5);
+        //        timer.Tick += (s, args) =>
+        //        {
+        //            IsBalloonVisible = false;
+        //            timer.Stop(); // Stop the timer after the animation ends
+        //        };
+        //        timer.Start();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"An error occurred while adding the call: {ex.Message}",
+        //                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
+
+        private async void AddCallButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Create and open the call window to add a new call
                 CallWindow callWindow = new CallWindow();
                 callWindow.ShowDialog();
-                UpdateCallList(); // After adding a call, refresh the list automatically
+                UpdateCallList();
+
+                IsBalloonVisible = true;
+
+
+                await Task.Delay(5000); // המתנה של 5 שניות
+                IsBalloonVisible = false;
             }
             catch (Exception ex)
             {
@@ -291,5 +332,7 @@ namespace PL.Call
              
             return calls;
         }
+
+
     }
 }

@@ -3,18 +3,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Volunteer Call History" Height="450" Width="800">
     <DockPanel>
-        <TextBlock DockPanel.Dock="Top" Text="Volunteer Call History"
-                   FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+        
+        <!-- כותרת עם טריגר למעבר עכבר -->
+        <TextBlock DockPanel.Dock="Top" 
+                  Text="Volunteer Call History"
+                  FontSize="20" 
+                  FontWeight="Bold" 
+                  HorizontalAlignment="Center" 
+                  Margin="10">
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                To="#4DA1A9" 
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                To="Black" 
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
 
+        
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <!-- Filter by ComboBox with SelectionChanged event -->
             <TextBlock Text="Filter by:" VerticalAlignment="Center" Margin="5"/>
             <ComboBox Width="150" 
-              SelectionChanged="FilterComboBox_SelectionChanged"
-              SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}" 
-              ItemsSource="{Binding Source={StaticResource CalltypeKey}}"
-              Margin="5">
-                <!-- If you want to display the selected item on the ComboBox itself -->
+                      SelectionChanged="FilterComboBox_SelectionChanged"
+                      SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}" 
+                      ItemsSource="{Binding Source={StaticResource CalltypeKey}}"
+                      Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{Binding Converter={StaticResource CalltypeToBackgroundConverterKey}}">
@@ -26,10 +54,10 @@
 
             <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="5"/>
             <ComboBox Width="150" 
-          SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}"
-          ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
-          SelectionChanged="FilterComboBox_SelectionChanged_Sort"
-          Margin="5">
+                      SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}"
+                      ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
+                      SelectionChanged="FilterComboBox_SelectionChanged_Sort"
+                      Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{Binding Converter={StaticResource ClosedCallInListEnumToBackgroundConverterKey}}">
@@ -38,7 +66,6 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -48,7 +75,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Shared Column Definitions for both header and data -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="100"/>

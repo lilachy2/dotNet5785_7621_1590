@@ -3,151 +3,224 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Volunteer Information" Height="600" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-    FontWeight="Bold">
+        FontWeight="Bold">
     <Grid>
         <!-- Name -->
         <StackPanel Orientation="Horizontal" Margin="10,10,0,0" VerticalAlignment="Top">
             <TextBlock Text="Name:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Volunteer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244"/>
+            <TextBox Text="{Binding Volunteer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244"/>
         </StackPanel>
 
         <!-- Id -->
         <StackPanel Orientation="Horizontal" Margin="10,40,0,0" VerticalAlignment="Top">
             <TextBlock Text="ID:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-             FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244" 
-             IsReadOnly="True"/>
+                     FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244" 
+                     IsReadOnly="True"/>
         </StackPanel>
-
 
         <!-- Phone -->
         <StackPanel Orientation="Horizontal" Margin="10,70,0,0" VerticalAlignment="Top">
             <TextBlock Text="Phone:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Volunteer.Number_phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="241"/>
+            <TextBox Text="{Binding Volunteer.Number_phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="241"/>
         </StackPanel>
 
         <!-- Email -->
         <StackPanel Orientation="Horizontal" Margin="10,100,0,0" VerticalAlignment="Top">
             <TextBlock Text="Email:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Volunteer.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="247"/>
+            <TextBox Text="{Binding Volunteer.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="247"/>
         </StackPanel>
 
         <!-- Address -->
         <StackPanel Orientation="Vertical" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock Text="Current Address:" FontSize="14" RenderTransformOrigin="0.472,0.593" Height="31"/>
-            <!--<TextBox Text="{Binding Volunteer.FullCurrentAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-             FontSize="14" Width="296" TextChanged="TextBox_TextChanged" Height="26"/>-->
             <TextBox Text="{Binding Volunteer.FullCurrentAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-             FontSize="14" Width="296"  Height="26"/>
+                     FontSize="14" Width="296" Height="26"/>
         </StackPanel>
 
-
-
+        <!-- Active Status with Color Trigger -->
         <StackPanel Orientation="Horizontal" Margin="10,190,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Active :" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Text="Active :" FontSize="14" VerticalAlignment="Center">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Volunteer.Active}" Value="True">
+                                <Setter Property="Foreground" Value="Green"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Volunteer.Active}" Value="False">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
             <CheckBox IsChecked="{Binding Volunteer.Active, Mode=TwoWay}" VerticalAlignment="Center"/>
         </StackPanel>
-
 
         <!-- Distance -->
         <StackPanel Orientation="Horizontal" Margin="10,220,0,0" VerticalAlignment="Top">
             <TextBlock Text="Distance:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Volunteer.Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="226"/>
+            <TextBox Text="{Binding Volunteer.Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="226"/>
         </StackPanel>
 
-
-        <!-- Distance Type - Read-only -->
+        <!-- Distance Type -->
         <StackPanel Orientation="Horizontal" Margin="10,240,0,0" VerticalAlignment="Top">
             <TextBlock Text="Distance Type:" FontSize="14" VerticalAlignment="Center"/>
             <TextBlock Text="{Binding Volunteer.DistanceType}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="113"/>
         </StackPanel>
 
-        <!-- Current Call -->
+        <!-- Current Call Section -->
         <StackPanel Orientation="Vertical" Margin="400,100,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Current Call:" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" />
+            <TextBlock Text="Current Call:" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Description:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Description:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.Description}" FontSize="11" Margin="10,0,0,0" VerticalAlignment="Center" Width="172"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Call ID:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Call ID:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.CallId}" FontSize="14" Width="216"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Call Type:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Call Type:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.CallType}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="189"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Full Address:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Status:" FontSize="14" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Volunteer.CurrentCall.Status}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="341">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Volunteer.CurrentCall.Status}" Value="InProgress">
+                                    <Setter Property="Foreground" Value="DarkOrange"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Volunteer.CurrentCall.Status}" Value="Completed">
+                                    <Setter Property="Foreground" Value="Green"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Volunteer.CurrentCall.Status}" Value="Expired">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+
+            <!-- המשך התצוגה של Current Call -->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Full Address:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.FullAddress}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="167"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Open Time:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Open Time:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.OpenTime, StringFormat=G}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Max Completion Time:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Max Completion Time:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.MaxCompletionTime, StringFormat=G}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Enter Time:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Enter Time:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.EnterTime, StringFormat=G}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Distance from Volunteer:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Text="Distance from Volunteer:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Volunteer.CurrentCall.DistanceFromVolunteer}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Status:" FontSize="14" FontWeight="Bold" />
-                <TextBlock Text="{Binding Volunteer.CurrentCall.Status}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="341"/>
             </StackPanel>
         </StackPanel>
 
-        <!-- Total Handled Calls -->
+        <!-- Statistics Section -->
         <StackPanel Orientation="Horizontal" Margin="400,10,0,0" VerticalAlignment="Top">
             <TextBlock Text="Total Handled Calls:" FontSize="14" VerticalAlignment="Center"/>
             <TextBlock Text="{Binding Volunteer.TotalHandledCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
 
-        <!-- Total Cancelled Calls -->
         <StackPanel Orientation="Horizontal" Margin="400,40,0,0" VerticalAlignment="Top">
             <TextBlock Text="Total Cancelled Calls:" FontSize="14" VerticalAlignment="Center"/>
             <TextBlock Text="{Binding Volunteer.TotalCancelledCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
 
-        <!-- Total Expired Calls -->
         <StackPanel Orientation="Horizontal" Margin="400,70,0,0" VerticalAlignment="Top">
             <TextBlock Text="Total Expired Calls:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Volunteer.TotalExpiredCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Volunteer.TotalExpiredCalls}" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Volunteer.TotalExpiredCalls}" Value="0">
+                                <Setter Property="Foreground" Value="Green"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Volunteer.TotalExpiredCalls}" Value="1">
+                                <Setter Property="Foreground" Value="Orange"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Volunteer.TotalExpiredCalls}" Value="2">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         </StackPanel>
 
-        <!-- Update Details Button -->
-        <Button Content="Update Details" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,269,0,0" Click="UpdateVolunteerButton_Click"
-                 Background="#4DA1A9" 
- Foreground="White" />
+        <!-- Buttons -->
+        <Button Content="Update Details" 
+                FontSize="14" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="10,269,0,0" 
+                Click="UpdateVolunteerButton_Click"
+                Background="#4DA1A9" 
+                Foreground="White"/>
 
-        <!-- End Current Call Button -->
-        <Button Content="End Current Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,363,0,0" Click="EndCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}" RenderTransformOrigin="0.467,0.576"  Background="DeepSkyBlue" 
- Foreground="White" />
-        <Button Content="Cancel Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,323,0,0" Click="CancelCallButton_Click" Visibility="{Binding CurrentCallVisibilityEnd}" RenderTransformOrigin="0.613,0.665"  Background="RoyalBlue" 
- Foreground="White" />
+        <Button Content="End Current Call" 
+                FontSize="14" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="400,363,0,0" 
+                Click="EndCallButton_Click" 
+                Visibility="{Binding CurrentCallVisibilityEnd}" 
+                RenderTransformOrigin="0.467,0.576"  
+                Background="DeepSkyBlue" 
+                Foreground="White"/>
 
-        <!-- Choose Call Button -->
-        <Button Content="Choose Call" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="142,519,0,0" Click="ChooseCallButton_Click" Visibility="{Binding CurrentCallVisibility}"  Background="LightSkyBlue" 
- Foreground="White" />
+        <Button Content="Cancel Call" 
+                FontSize="14" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="400,323,0,0" 
+                Click="CancelCallButton_Click" 
+                Visibility="{Binding CurrentCallVisibilityEnd}" 
+                RenderTransformOrigin="0.613,0.665"  
+                Background="RoyalBlue" 
+                Foreground="White"/>
 
-        <!-- View Volunteer Call History -->
-        <Button Content="Call History" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,519,0,0" Click="ViewVolunteerHistoryButton_Click"  Background="DodgerBlue" 
- Foreground="White" />
+        <Button Content="Choose Call" 
+                FontSize="14" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="142,519,0,0" 
+                Click="ChooseCallButton_Click" 
+                Visibility="{Binding CurrentCallVisibility}"  
+                Background="LightSkyBlue" 
+                Foreground="White"/>
 
+        <Button Content="Call History" 
+                FontSize="14" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="30,519,0,0" 
+                Click="ViewVolunteerHistoryButton_Click"  
+                Background="DodgerBlue" 
+                Foreground="White"/>
     </Grid>
 </Window>

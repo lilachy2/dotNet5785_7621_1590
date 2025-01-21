@@ -80,7 +80,7 @@
         </ComboBox>-->
 
         <!-- Place the "ADD Call" button outside the ListView -->
-        <Button Content="ADD Call" 
+        <!--<Button Content="ADD Call" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
                 Width="98" Height="31" 
@@ -88,8 +88,80 @@
                 Margin="467,575,0,0" 
                 Background="#B0E0E6" 
                 Foreground="White" 
-                FontWeight="Bold"/>
+                FontWeight="Bold"/>-->
 
+        <Button Content="ADD Call"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Width="98"
+        Height="31"
+        Margin="467,575,0,0"
+        Background="#B0E0E6"
+        Foreground="White"
+        FontWeight="Bold"
+        Click="AddCallButton_Click"/>
+
+        <!-- Canvas עבור הבלון והחוט -->
+        <Canvas Width="800" Height="640" Panel.ZIndex="999">
+            <!-- הבלון קודם -->
+            <Ellipse Width="20" Height="30" Fill="Red" Canvas.Left="506" Canvas.Top="500">
+                <Ellipse.Style>
+                    <Style TargetType="Ellipse">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsBalloonVisible}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                        Storyboard.TargetProperty="(Canvas.Top)"
+                                        From="500" To="0"
+                                        Duration="0:0:5"/>
+                                            <DoubleAnimation 
+                                        Storyboard.TargetProperty="Opacity"
+                                        From="1" To="0"
+                                        Duration="0:0:3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Ellipse.Style>
+            </Ellipse>
+
+            <!-- החוט מתחת לבלון -->
+            <Path Fill="Black" Canvas.Left="516" Canvas.Top="530">
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Data" Value="M 0,0 C 2,10 -2,10 0,20"/>
+                        <Setter Property="StrokeThickness" Value="1"/>
+                        <Setter Property="Stroke" Value="Black"/>
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsBalloonVisible}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                        Storyboard.TargetProperty="(Canvas.Top)"
+                                        From="530" To="30"
+                                        Duration="0:0:5"/>
+                                            <DoubleAnimation 
+                                        Storyboard.TargetProperty="Opacity"
+                                        From="1" To="0"
+                                        Duration="0:0:3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+        </Canvas>
         <!-- "Filter By" Label -->
         <TextBlock Text="Filter By:" 
                Margin="96,580,0,0" 

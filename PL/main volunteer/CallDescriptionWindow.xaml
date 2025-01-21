@@ -1,15 +1,22 @@
 ﻿<Window x:Class="PL.main_volunteer.CallDescriptionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Call Description" Height="400" Width="600">
+        Title="Call Description" Height="400" Width="600"
+        Loaded="Window_Loaded">
     <DockPanel>
-        <!-- כותרת החלון -->
-        <TextBlock DockPanel.Dock="Top" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" Text="Call Description"/>
-
-        <!-- תיאור השיחה -->
-        <TextBlock DockPanel.Dock="Top" Text="{Binding Description}" FontSize="16" Margin="10" TextWrapping="Wrap"/>
-
-        <!-- פקד WebBrowser להצגת המפה -->
-        <!--<WebBrowser DockPanel.Dock="Top" Height="300"/>-->
+        <TextBlock DockPanel.Dock="Top" 
+                  FontSize="20" 
+                  FontWeight="Bold" 
+                  HorizontalAlignment="Center" 
+                  Margin="10" 
+                  Text="Call Description"/>
+        <TextBlock DockPanel.Dock="Top" 
+                  Text="{Binding Description}" 
+                  FontSize="16" 
+                  Margin="10" 
+                  TextWrapping="Wrap"/>
+        <WebBrowser DockPanel.Dock="Top" 
+                    Name="MapBrowser"
+                    Height="300"/>
     </DockPanel>
 </Window>
