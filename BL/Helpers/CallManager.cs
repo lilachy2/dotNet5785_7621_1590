@@ -417,7 +417,13 @@ internal static class CallManager
             CallId = doCall.Id,
             CallType = (BO.Calltype)doCall.Calltype,
             OpenTime = doCall.OpeningTime,
-            TimeRemaining = doCall.MaxEndTime != null ? doCall.MaxEndTime - _dal.Config.Clock : null,
+            //TimeRemaining = doCall.MaxEndTime != null ? doCall.MaxEndTime - _dal.Config.Clock : null,
+            TimeRemaining = doCall.MaxEndTime != null
+    ? (doCall.MaxEndTime - _dal.Config.Clock).HasValue && (doCall.MaxEndTime - _dal.Config.Clock).Value.TotalMilliseconds >= 0
+        ? doCall.MaxEndTime - _dal.Config.Clock
+        : null
+    : null,
+
             VolunteerName = (volunteer != null) ? volunteer.Name : null,
             //CompletionTime = (lastAssignmentsForCall != null && lastAssignmentsForCall.time_end_treatment != null && lastAssignmentsForCall.time_entry_treatment != null)
             //                 ? lastAssignmentsForCall.time_end_treatment - lastAssignmentsForCall.time_entry_treatment

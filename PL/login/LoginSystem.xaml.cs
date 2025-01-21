@@ -12,6 +12,9 @@ namespace PL.login
         public int Id { get; set; }
         public string Password { get; set; }
 
+        // משתנה סטטי שבודק אם יש מנהל פעיל
+        private static bool isManagerLoggedIn = false;
+
         public LoginSystem()
         {
             InitializeComponent();
@@ -43,6 +46,18 @@ namespace PL.login
                 }
                 else if (volunteer.Role == BO.Role.Manager)
                 {
+                    if (isManagerLoggedIn)
+                    {
+                        MessageBox.Show("Error: Another manager is already logged in. You cannot log in until they log out.",
+                                        "Login Error",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
+                        return;
+                    }
+
+                    // סימון שמנהל מחובר
+                    isManagerLoggedIn = true;
+
                     // יצירת חלון מותאם אישית במקום MessageBox הרגיל
                     ManagerSelectionWindow managerSelectionWindow = new ManagerSelectionWindow();
                     bool? result = managerSelectionWindow.ShowDialog();
@@ -104,5 +119,11 @@ namespace PL.login
                 Id = 0;
             }
         }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            // שחרור הנעילה - עדכון המשתנה הבוליאני
+            LoginSystem.isManagerLoggedIn = false;
+        }
+
     }
 }

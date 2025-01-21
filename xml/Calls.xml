@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>31.08730974554581</Latitude>
-    <Longitude>34.48566894408477</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1000</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>34 Paseo de la Castellana, Madrid, Spain</ReadAddress>
-    <OpeningTime>2025-01-20T03:28:47</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>32.134224015829616</Latitude>
     <Longitude>35.53710964510343</Longitude>
     <Calltype>fainting</Calltype>
@@ -441,16 +431,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.67655346305837</Latitude>
-    <Longitude>34.30826510278024</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1044</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
-    <OpeningTime>2025-01-19T12:17:47</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>31.004548744987527</Latitude>
     <Longitude>34.99571960154753</Longitude>
     <Calltype>fainting</Calltype>
@@ -499,5 +479,25 @@
     <ReadAddress>10 Princes Street, Edinburgh, Scotland, UK</ReadAddress>
     <OpeningTime>2025-01-19T17:51:47</OpeningTime>
     <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>40.4322832</Latitude>
+    <Longitude>-3.6880266</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1000</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>34 Paseo de la Castellana, Madrid, Spain</ReadAddress>
+    <OpeningTime>2025-01-20T03:28:47</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>53.5505781</Latitude>
+    <Longitude>9.995332</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1050</Id>
+    <VerbalDescription>היי</VerbalDescription>
+    <ReadAddress>102 Mönckebergstraße, Hamburg, Germany</ReadAddress>
+    <OpeningTime>2025-01-21T21:15:49.673143+02:00</OpeningTime>
+    <MaxEndTime>2026-01-20T01:49:47</MaxEndTime>
   </Call>
 </ArrayOfCall>
