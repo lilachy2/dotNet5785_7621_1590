@@ -401,51 +401,7 @@ public static class Initialization
     /// <param name="extraHours"> // Random extra hours added to the max end time </param>
     /// <param name="extraMinutes"> // Random extra minutes added to the max end time </param>
 
-    //public static void CreateCalls()
-    //{
-    //    int index1 = s_rand.Next(0, 15);
-    //    int index2 = s_rand.Next(0, 8);
-
-    //    // Latitude and longitude range in Israel
-    //    double minLatitude = 29.5;
-    //    double maxLatitude = 33.5;
-    //    double minLongitude = 34.3;
-    //    double maxLongitude = 35.9;
-
-    //    for (int i = 0; i < 50; i++)
-    //    {
-
-    //        string? address = internationalAddresses2[index1];
-    //        Calltype calltype = (Calltype)index2;
-
-
-    //        calltype = CalltypeArray[index2];
-
-    //        string? VerbalDescription = Descriptions[index2];
-    //        bool active = true;
-
-    //        double randomLatitude = s_rand.NextDouble() * (maxLatitude - minLatitude) + minLatitude;
-    //        double randomLongitude = s_rand.NextDouble() * (maxLongitude - minLongitude) + minLongitude;
-
-    //        // run num
-    //        ///DateTime currentTime = s_dal!.Config.Clock;//stage2  
-    //        //DateTime currentTime = s_dalConfig.Clock;//stage1
-    //        DateTime currentTime = new DateTime(s_dal!.Config.Clock.Year, s_dal!.Config.Clock.Month, s_dal!.Config.Clock.Hour);//stage2  
-
-    //        DateTime openTime = s_dal!.Config.Clock.AddDays(-1);
-
-    //        // Calculate the number of minutes since the start time until now
-    //        int totalMinutesInLastDay = (int)(s_dal!.Config.Clock - openTime).TotalMinutes;
-    //        // Random opening time within the last 24 hours
-    //        DateTime RndomStart = openTime.AddMinutes(s_rand.Next(0, totalMinutesInLastDay));
-    //        DateTime? maxEndTime = null;
-
-
-
-    //        //s_dalCall.Create(new Call(randomLatitude, randomLongitude, calltype, tempID, VerbalDescription, address, openTime, maxEndTime)); //stage1
-    //        s_dal!.Call.Create(new Call(randomLatitude, randomLongitude, calltype, default, VerbalDescription, address, openTime, maxEndTime)); //stage
-    //    }
-    //}
+    
 
 
     public static void CreateCalls()

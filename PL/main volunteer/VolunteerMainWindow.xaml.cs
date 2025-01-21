@@ -80,6 +80,20 @@ namespace PL.main_volunteer
                 var fordebug = s_bl.Volunteer.Read(Id);
                 Volunteer = fordebug;
 
+                //////////////////////////////////
+                // הגדרת Observer למתנדב
+                if (Volunteer != null)
+                {
+                    s_bl.Volunteer.AddObserver(Volunteer.Id, VolunteerObserver);
+                }
+
+                // הגדרת Observer לקריאה
+                if (Volunteer?.CurrentCall != null)
+                {
+                    s_bl.Call.AddObserver(Volunteer.CurrentCall.Id, CallObserver);
+                }
+                ////////////////////////////////////////////////
+
                 // בדוק אם Volunteer לא שווה ל-null
                 if (Volunteer == null)
                 {
@@ -197,9 +211,41 @@ namespace PL.main_volunteer
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        
 
+
+
+
+        // הוספת Observer למתנדב
+        private void VolunteerObserver()
+        {
+            // עדכון פרטי המתנדב
+            UpdateVolunteerDetails();
         }
+
+        // הוספת Observer לקריאה
+        private void CallObserver()
+        {
+            // עדכון סטטוס הקריאה
+            UpdateCallStatus();
+        }
+
+        // פונקציות לעדכון פרטי המתנדב והקריאה
+        private void UpdateVolunteerDetails()
+        {
+            // אם נדרש, אתה יכול כאן לקרוא שוב את המתנדב מה-BL ולבצע שינויים.
+            Volunteer = s_bl.Volunteer.Read(Volunteer.Id);
+        }
+        private void UpdateCallStatus()
+        {
+            // עדכון סטטוס הקריאה
+            if (Volunteer.CurrentCall != null)
+            {
+                // בצע עדכון לפי הקריאה
+                s_bl.Volunteer.Read(Volunteer.Id);
+
+            }
+        }
+
     }
 }

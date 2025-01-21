@@ -35,8 +35,10 @@
         <!-- Address -->
         <StackPanel Orientation="Vertical" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock Text="Current Address:" FontSize="14" RenderTransformOrigin="0.472,0.593" Height="31"/>
+            <!--<TextBox Text="{Binding Volunteer.FullCurrentAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+             FontSize="14" Width="296" TextChanged="TextBox_TextChanged" Height="26"/>-->
             <TextBox Text="{Binding Volunteer.FullCurrentAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-             FontSize="14" Width="296" TextChanged="TextBox_TextChanged" Height="26"/>
+             FontSize="14" Width="296"  Height="26"/>
         </StackPanel>
 
 
