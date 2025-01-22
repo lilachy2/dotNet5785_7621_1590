@@ -116,6 +116,7 @@ namespace PL.main_volunteer
             {
                 var calls = s_bl.Call.GetOpenCall(_volunteerId, SelectedFilter, SelectedSort);  // Get open calls
                 OpenCallList = calls.ToList();  // Bind the list to the OpenCallList DependencyProperty
+
             }
         }
 
@@ -180,10 +181,10 @@ namespace PL.main_volunteer
                 {
                     // Call the ChooseCall method
                     s_bl.Call.ChooseCall(Volunteer.Id, selectedCall.Id);
-
+                    queryCall();
                     // Notify the user that the call was successfully selected
                     MessageBox.Show($"Successfully selected call with ID: {selectedCall.Id} for treatment.");
-                    this.Close();
+                  //  this.Close();//observers need to cheak
 
                 }
                 catch (BO.BlCallStatusNotOKException ex)
@@ -204,7 +205,25 @@ namespace PL.main_volunteer
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Register the observer to update the volunteer list when changes occur in the BL
+            s_bl.Call.AddObserver(queryCall);
+        }
 
+        //Handle Window closed event to remove the observer
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            // Unregister the observer when the window is closed
+            s_bl.Call.RemoveObserver(queryCall);
+
+        }
+        public void queryCall()
+        {
+            OpenCallList = (_selectedFilter == BO.Calltype.None) ?
+                s_bl?.Call.GetOpenCall(_volunteerId, null, null)! :
+                s_bl?.Call.GetOpenCall(_volunteerId, _selectedFilter, _selectedSort)!;
+        }
 
     }
 }

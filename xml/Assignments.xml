@@ -485,6 +485,46 @@
     <CallId>1000</CallId>
     <VolunteerId>378668774</VolunteerId>
     <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1061</Id>
+    <CallId>1001</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1062</Id>
+    <CallId>1005</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1063</Id>
+    <CallId>1002</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1064</Id>
+    <CallId>1005</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1065</Id>
+    <CallId>1010</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
     <time_end_treatment xsi:nil="true" />
     <EndOfTime xsi:nil="true" />
   </Assignment>

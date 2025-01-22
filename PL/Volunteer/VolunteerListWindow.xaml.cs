@@ -81,13 +81,14 @@ namespace PL.Volunteer
             try
             {
                 // Query and retrieve the list of volunteers filtered by the selected filter
-                IEnumerable<BO.VolunteerInList> volunteers = queryVolunteerList();
+                //IEnumerable<BO.VolunteerInList> volunteers = queryVolunteerList();
 
-                // Use the dispatcher to update the UI thread with the new volunteer listdoubl
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    VolunteerInList = volunteers;
-                });
+                //// Use the dispatcher to update the UI thread with the new volunteer listdoubl
+                //Application.Current.Dispatcher.Invoke(() =>
+                //{
+                //    VolunteerInList = volunteers;
+                //});
+                QueryVolunteerList();
             }
             catch (Exception ex)
             {
@@ -100,16 +101,16 @@ namespace PL.Volunteer
 
 
         // This method contains the filtering logic
-        private IEnumerable<BO.VolunteerInList> queryVolunteerList()
-        {
-            IEnumerable<BO.VolunteerInList> volunteers;
+        //private IEnumerable<BO.VolunteerInList> queryVolunteerList()
+        //{
+        //    IEnumerable<BO.VolunteerInList> volunteers;
 
-            volunteers = s_bl.Volunteer.ReadAll(null, SelectedFilter);
+        //    volunteers = s_bl.Volunteer.ReadAll(null, SelectedFilter);
 
 
-            return volunteers;
-        }
-        private void QueryVolunteerList()
+        //    return volunteers;
+        //}
+        public void QueryVolunteerList()
         {
             VolunteerInList = (SelectedFilter == BO.VolInList.None) ?
                 s_bl?.Volunteer.ReadAll(null, null)! :
