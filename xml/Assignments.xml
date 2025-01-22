@@ -520,4 +520,20 @@
     <time_end_treatment>2025-01-21T09:12:47</time_end_treatment>
     <EndOfTime>VolunteerCancelled</EndOfTime>
   </Assignment>
+  <Assignment>
+    <Id>1065</Id>
+    <CallId>1010</CallId>
+    <VolunteerId>907352887</VolunteerId>
+    <time_entry_treatment>2025-01-21T09:12:47</time_entry_treatment>
+    <time_end_treatment>2025-01-21T09:12:47</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1066</Id>
+    <CallId>1010</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-01-21T09:12:47</time_entry_treatment>
+    <time_end_treatment xsi:nil="true" />
+    <EndOfTime xsi:nil="true" />
+  </Assignment>
 </ArrayOfAssignment>

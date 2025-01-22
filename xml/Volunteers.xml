@@ -15,20 +15,6 @@
     <distance>8</distance>
   </Volunteer>
   <Volunteer>
-    <Id>926231105</Id>
-    <Name>Sara Levi</Name>
-    <Number_phone>0547270246</Number_phone>
-    <Email>sara.levi@volunteer.org</Email>
-    <Password>Hey1234@</Password>
-    <Role>Volunteer</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>456 Michigan Avenue, Chicago, IL, USA</FullCurrentAddress>
-    <Latitude>30.602192245194125</Latitude>
-    <Longitude>35.813371901084736</Longitude>
-    <Active>true</Active>
-    <distance>9</distance>
-  </Volunteer>
-  <Volunteer>
     <Id>277738028</Id>
     <Name>Yael Ben David</Name>
     <Number_phone>0504904664</Number_phone>
@@ -195,19 +181,4 @@
     <Longitude>34.59944218336391</Longitude>
     <Active>true</Active>
     <distance>7</distance>
-  </Volunteer>
-  <Volunteer>
-    <Id>450389490</Id>
-    <Name>Hila Malka</Name>
-    <Number_phone>0538095037</Number_phone>
-    <Email>hila.malka@volunteer.org</Email>
-    <Password>Hey1234@</Password>
-    <Role>Volunteer</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>23 Place Bellecour, Lyon, France</FullCurrentAddress>
-    <Latitude>31.873596420587003</Latitude>
-    <Longitude>34.79779026558721</Longitude>
-    <Active>true</Active>
-    <distance>7</distance>
-  </Volunteer>
-</ArrayOfVolunteer>
+  </Volunteer>Volunteer<Volunteer><Id>324291590</Id><Name>yalin</Name><Number_phone>0528050630</Number_phone><Email>y@gmail.com</Email><Password>Hey1234@</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>102 Mönckebergstraße, Hamburg, Germnay</FullCurrentAddress><Latitude>53.5505781</Latitude><Longitude>9.995332</Longitude><Active>true</Active><distance>24</distance></Volunteer>VolunteerVolunteer<Volunteer><Id>450389490</Id><Name>Hila Malka</Name><Number_phone>0538095037</Number_phone><Email>hila.malka@volunteer.org</Email><Password>Hey1234@</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>23 Place Bellecour, Lyon, Franc-bh</FullCurrentAddress><Latitude>45.7565234</Latitude><Longitude>4.832553</Longitude><Active>true</Active><distance>7</distance></Volunteer>VolunteerVolunteer<Volunteer><Id>926231105</Id><Name>Sara Levi7</Name><Number_phone>0547270246</Number_phone><Email>sara.levi@volunteer.org</Email><Password>Hey1234@</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>456 Michigan Avenue, Chicago, IL, USA</FullCurrentAddress><Latitude>41.4814957</Latitude><Longitude>-87.6128986</Longitude><Active>true</Active><distance>-9</distance></Volunteer></ArrayOfVolunteer>

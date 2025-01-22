@@ -265,7 +265,8 @@ namespace PL.Call
                     try
                     {
                         //BlApi.Factory.Get().Call.UpdateCancelTreatment(callToCancel.Id ?? 0, callToCancel.CallId);
-                        BlApi.Factory.Get().Call.UpdateCancelTreatment(volId ?? 0, callToCancel.CallId);
+                        BlApi.Factory.Get().Call.UpdateCancelTreatment(volId ?? 0, callToCancel.Id??0);
+
 
                         await Application.Current.Dispatcher.InvokeAsync(() =>
                         {

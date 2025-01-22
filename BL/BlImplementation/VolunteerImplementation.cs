@@ -100,13 +100,22 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         {
             var requester = _dal.Volunteer.Read(requesterId);
 
-            if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
+            //if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
+            //{
+            //    //boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
+            //    //boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
+            //    boVolunteer.Latitude = Tools.GetLatitude(requester.FullCurrentAddress);
+            //    boVolunteer.Longitude = Tools.GetLongitude(requester.FullCurrentAddress);
+            //}
+              if (Tools.IsAddressValid(boVolunteer.FullCurrentAddress)/*.Result*/== true)
             {
                 //boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
                 //boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
-                boVolunteer.Latitude = Tools.GetLatitude(requester.FullCurrentAddress);
-                boVolunteer.Longitude = Tools.GetLongitude(requester.FullCurrentAddress);
+                boVolunteer.Latitude = Tools.GetLatitude(boVolunteer.FullCurrentAddress);
+                boVolunteer.Longitude = Tools.GetLongitude(boVolunteer.FullCurrentAddress);
             }
+              else 
+                throw new BlInvalidaddress("The address is not valid");   
 
             var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
 
@@ -150,6 +159,10 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             throw;
         }
         catch (BlCan_chang_to_NotActivException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        } catch (BlInvalidaddress ex)
         {
             Console.WriteLine($"Error: {ex.Message}");
             throw;

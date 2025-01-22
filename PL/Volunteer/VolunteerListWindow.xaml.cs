@@ -105,13 +105,19 @@ namespace PL.Volunteer
             IEnumerable<BO.VolunteerInList> volunteers;
 
             volunteers = s_bl.Volunteer.ReadAll(null, SelectedFilter);
-              
+
 
             return volunteers;
         }
+        private void QueryVolunteerList()
+        {
+            VolunteerInList = (SelectedFilter == BO.VolInList.None) ?
+                s_bl?.Volunteer.ReadAll(null, null)! :
+                s_bl?.Volunteer.ReadAll(null, SelectedFilter)!;
+        }
 
-        //Handle Window loaded event to register the observer for updates
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+            //Handle Window loaded event to register the observer for updates
+            private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Register the observer to update the volunteer list when changes occur in the BL
             BlApi.Factory.Get().Volunteer.AddObserver(volunteerListObserver);
