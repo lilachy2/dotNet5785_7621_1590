@@ -116,6 +116,11 @@ internal static class VolunteerManager
             //    throw new BO.BlPermissionException("Only a manager is authorized to change the active status.");
             //}
         }
+        if(boVolunteer.Distance<0)
+        {
+            throw  new BO.BlIsLogicCallException("only positive number");
+
+        }
 
         // Add additional checks if there are any other restricted fields
     }

@@ -46,14 +46,14 @@ namespace PL.login
                 }
                 else if (volunteer.Role == BO.Role.Manager)
                 {
-                    if (isManagerLoggedIn)
-                    {
-                        MessageBox.Show("Error: Another manager is already logged in. You cannot log in until they log out.",
-                                        "Login Error",
-                                        MessageBoxButton.OK,
-                                        MessageBoxImage.Error);
-                        return;
-                    }
+                    //if (isManagerLoggedIn)
+                    //{
+                    //    MessageBox.Show("Error: Another manager is already logged in. You cannot log in until they log out.",
+                    //                    "Login Error",
+                    //                    MessageBoxButton.OK,
+                    //                    MessageBoxImage.Error);
+                    //    return;
+                    //}
 
                     // סימון שמנהל מחובר
                     isManagerLoggedIn = true;

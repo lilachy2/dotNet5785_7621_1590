@@ -107,15 +107,15 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             //    boVolunteer.Latitude = Tools.GetLatitude(requester.FullCurrentAddress);
             //    boVolunteer.Longitude = Tools.GetLongitude(requester.FullCurrentAddress);
             //}
-              if (Tools.IsAddressValid(boVolunteer.FullCurrentAddress)/*.Result*/== true)
+            if (Tools.IsAddressValid(boVolunteer.FullCurrentAddress)/*.Result*/== true)
             {
                 //boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
                 //boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
                 boVolunteer.Latitude = Tools.GetLatitude(boVolunteer.FullCurrentAddress);
                 boVolunteer.Longitude = Tools.GetLongitude(boVolunteer.FullCurrentAddress);
             }
-              else 
-                throw new BlInvalidaddress("The address is not valid");   
+            else
+                throw new BlInvalidaddress("The address is not valid");
 
             var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
 
@@ -145,33 +145,34 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         }
         catch (BO.Incompatible_ID ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
-            throw;
+            throw new BO.Incompatible_ID($"Volunteer with ID {boVolunteer.Id} has an incompatible ID.", ex);
         }
         catch (BlCheckPhonnumberException ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
-            throw;
+            throw new BlCheckPhonnumberException($"Phone number validation failed for volunteer with ID {boVolunteer.Id}.", ex);
         }
         catch (BlIncorrectPasswordException ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
-            throw;
+            throw new BlIncorrectPasswordException($"Incorrect password provided for volunteer with ID {boVolunteer.Id}.", ex);
         }
         catch (BlCan_chang_to_NotActivException ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
-            throw;
-        } catch (BlInvalidaddress ex)
+            throw new BlCan_chang_to_NotActivException($"Cannot change volunteer with ID {boVolunteer.Id} to Not Active.", ex);
+        }
+        catch (BlInvalidaddress ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
-            throw;
+            throw new BlInvalidaddress($"Invalid address provided for volunteer with ID {boVolunteer.Id}.", ex);
+        } 
+        catch (BlIsLogicCallException ex)
+        {
+            throw new BlIsLogicCallException($"update volunteer with id  {boVolunteer.Id}.only positive number", ex);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error: Failed to update volunteer details. Exception: {ex.Message}");
-            throw new BO.BlGeneralException("Failed to update volunteer details.", ex);
+            throw new BO.BlGeneralException("An unexpected error occurred while updating volunteer details.", ex);
         }
+
+
     }
 
 

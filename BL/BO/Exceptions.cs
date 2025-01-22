@@ -19,18 +19,26 @@ public class BlNullPropertyException : Exception
 {
     public BlNullPropertyException(string? message) : base(message) { }
 }
+
 public class Incompatible_ID : Exception
 {
     public Incompatible_ID(string? message) : base(message) { }
+    public Incompatible_ID(string message, Exception innerException)
+              : base(message, innerException) { }
 }
-public class BlInvalidaddress : Exception // Invalid address
+public class BlInvalidaddress : Exception
 {
     public BlInvalidaddress(string? message) : base(message) { }
+    public BlInvalidaddress(string message, Exception innerException)
+              : base(message, innerException) { }
 }
 public class BlIncorrectPasswordException : Exception
 {
     public BlIncorrectPasswordException(string? message) : base(message) { }
+    public BlIncorrectPasswordException(string message, Exception innerException)
+              : base(message, innerException) { }
 }
+
 
 
 public class BlDeletionImpossibleException : Exception
