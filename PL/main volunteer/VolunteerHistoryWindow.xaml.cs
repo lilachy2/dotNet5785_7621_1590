@@ -59,10 +59,11 @@ namespace PL.main_volunteer
 
       
         // Constructor for initializing the window with volunteer ID
-        public VolunteerHistoryWindow(int id)
+        public VolunteerHistoryWindow(int id, Window previousWindow=null)
         {
             InitializeComponent();
             _volunteerId = id;
+            _previousWindow = previousWindow;
             // Load the volunteer's call history asynchronously
             LoadVolunteerHistory();
             this.DataContext = this;  // Set the DataContext to this window for binding
@@ -107,6 +108,23 @@ namespace PL.main_volunteer
                 LoadVolunteerHistory();
 
             }
+        }
+
+        private Window _previousWindow; // Variable to store a reference to the previous window
+
+        // for bottom bake
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_previousWindow != null)
+            {
+                _previousWindow.Show(); // Show the previous window
+                this.Hide(); // Close the current window
+            }
+            else
+            {
+                MessageBox.Show("Previous window is null!");
+            }
+
         }
     }
 }

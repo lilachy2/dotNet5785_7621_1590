@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Volunteer Call History" Height="450" Width="800">
     <DockPanel>
-        
+
+
         <!-- כותרת עם טריגר למעבר עכבר -->
         <TextBlock DockPanel.Dock="Top" 
                   Text="Volunteer Call History"
@@ -35,14 +36,22 @@
             </TextBlock.Triggers>
         </TextBlock>
 
-        
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10" Width="470">
+            <Button Style="{StaticResource BackButtonStyle}" 
+            Content="Back" 
+            Margin="10,10,20,0"
+                VerticalAlignment="Top" 
+            Click="Button_Click" 
+            Height="33" 
+            Width="54" />
+
             <TextBlock Text="Filter by:" VerticalAlignment="Center" Margin="5"/>
-            <ComboBox Width="150" 
-                      SelectionChanged="FilterComboBox_SelectionChanged"
-                      SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}" 
-                      ItemsSource="{Binding Source={StaticResource CalltypeKey}}"
-                      Margin="5">
+            <ComboBox Width="111" 
+              SelectionChanged="FilterComboBox_SelectionChanged"
+              SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}" 
+              ItemsSource="{Binding Source={StaticResource CalltypeKey}}"
+              Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{Binding Converter={StaticResource CalltypeToBackgroundConverterKey}}">
@@ -52,12 +61,13 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="5"/>
-            <ComboBox Width="150" 
-                      SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}"
-                      ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
-                      SelectionChanged="FilterComboBox_SelectionChanged_Sort"
-                      Margin="5">
+            <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="20,0,5,0"/>
+            <!-- רווח משמאל -->
+            <ComboBox Width="116" 
+              SelectedItem="{Binding Call.ClosedCallInList, Mode=TwoWay}"
+              ItemsSource="{Binding Source={StaticResource ClosedCallInListEnumKey}}"
+              SelectionChanged="FilterComboBox_SelectionChanged_Sort"
+              Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="{Binding Converter={StaticResource ClosedCallInListEnumToBackgroundConverterKey}}">
@@ -142,5 +152,6 @@
                 </ItemsControl>
             </Grid>
         </ScrollViewer>
+
     </DockPanel>
 </Window>

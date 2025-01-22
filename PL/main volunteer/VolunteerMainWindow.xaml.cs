@@ -201,7 +201,7 @@ namespace PL.main_volunteer
 
         private void ViewVolunteerHistoryButton_Click(object sender, RoutedEventArgs e)
         {
-            var volunteerHistoryWindow = new VolunteerHistoryWindow(Volunteer.Id);
+            var volunteerHistoryWindow = new VolunteerHistoryWindow(Volunteer.Id, this);
             volunteerHistoryWindow.ShowDialog();
         }
         private void ChooseCallButton_Click(object sender, RoutedEventArgs e)

@@ -54,15 +54,12 @@ namespace PL.Volunteer
                 new PropertyMetadata(null));
 
         // Constructor
-        public VolunteerListWindow()
+        public VolunteerListWindow(Window previousWindow = null)
         {
+            _previousWindow = previousWindow;
             InitializeComponent();
             DataContext = this;  // Set the DataContext to the window itself for binding
 
-            // Initialize ComboBox with Enum values for filtering
-            //FilterComboBox.ItemsSource = Enum.GetValues(typeof(VolInList));
-
-            // Load the volunteer list without any filter initially
             UpdateVolunteerList();
         }
 
@@ -228,5 +225,23 @@ namespace PL.Volunteer
         {
 
         }
+
+        // for bottom bake
+
+        private Window _previousWindow; // Variable to store a reference to the previous window
+        private void Button_back_Click(object sender, RoutedEventArgs e)
+        {
+            if (_previousWindow != null)
+            {
+                _previousWindow.Show(); // Show the previous window
+                this.Hide(); // Close the current window
+            }
+            else
+            {
+                MessageBox.Show("Previous window is null!");
+            }
+
+        }
     }
 }
+

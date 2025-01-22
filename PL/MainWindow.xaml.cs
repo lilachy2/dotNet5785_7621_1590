@@ -190,7 +190,7 @@ namespace PL
         {
             // Logic to manage volunteers, implement as needed
             //MessageBox.Show("Handling Volunteers...");
-            new VolunteerListWindow().Show();
+            new VolunteerListWindow(this).Show();
         }
 
         private void StartSimulator_Click(object sender, RoutedEventArgs e)

@@ -88,5 +88,20 @@
                 Background="#B0E0E6" 
                 Foreground="White" 
                 FontWeight="Bold"/>
+
+        <Button Style="{StaticResource BackButtonStyle}" 
+            Content="Back" 
+            Margin="20,367,0,0" 
+            Click="Button_back_Click" RenderTransformOrigin="0.5,0.5" Height="46" Width="76" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.179"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
     </Grid>
 </Window>

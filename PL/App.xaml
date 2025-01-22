@@ -22,6 +22,31 @@
         <local:CalltypeToBackgroundConverter x:Key="CalltypeToBackgroundConverterKey" />
         <local:CallInListEnum x:Key="CallInListEnumKey" />
         <!--<local:ConvertUpdateToTrue x:Key="ConvertUpdateToTrueKey" />-->
+        
+        <!-- Define the Back Button Style for bake click-->
+        <Style x:Key="BackButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="103"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="22,197,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Arrow Shape -->
+                            <Path Data="M10,20 L30,10 L30,15 L50,15 L50,25 L30,25 L30,30 Z"
+                            Fill="Black" Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-4,3,0,0"/>
+                            <!-- Text -->
+                            <TextBlock Text="Back" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               Foreground ="White" FontWeight="Bold" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
 
 
