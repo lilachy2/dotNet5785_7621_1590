@@ -909,8 +909,8 @@ internal class CallImplementation : BlApi.ICall
         {
             // Try to create the assignment in the database.
             _dal.Assignment.Create(assigmnetToCreat);
-            CallManager.Observers.NotifyItemUpdated(assigmnetToCreat.Id);  //stage 5
-            CallManager.Observers.NotifyListUpdated();  //stage 5
+            //CallManager.Observers.NotifyItemUpdated(assigmnetToCreat.Id);  //stage 5
+           // CallManager.Observers.NotifyListUpdated();  //stage 5
             CallManager.Observers.NotifyItemUpdated(idCall);  //stage 5
             CallManager.Observers.NotifyListUpdated();  //stage 5
 

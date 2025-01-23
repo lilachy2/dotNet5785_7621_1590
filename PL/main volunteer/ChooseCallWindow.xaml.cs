@@ -184,7 +184,7 @@ namespace PL.main_volunteer
                     queryCall();
                     // Notify the user that the call was successfully selected
                     MessageBox.Show($"Successfully selected call with ID: {selectedCall.Id} for treatment.");
-                  //  this.Close();//observers need to cheak
+                  this.Close();//observers need to cheak
 
                 }
                 catch (BO.BlCallStatusNotOKException ex)
