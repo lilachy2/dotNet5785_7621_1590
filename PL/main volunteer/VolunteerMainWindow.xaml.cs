@@ -208,6 +208,16 @@ namespace PL.main_volunteer
         {
             var chooseCallWindow = new ChooseCallWindow(Volunteer.Id);
             chooseCallWindow.ShowDialog();
+            if (Volunteer.CurrentCall == null)
+            {
+                CurrentCallVisibility = Visibility.Visible; // מתנדב יכול לבחור קריאה חדשה
+                CurrentCallVisibilityEnd = Visibility.Hidden; // אין צורך בכפתור סיום קריאה
+            }
+            else
+            {
+                CurrentCallVisibility = Visibility.Hidden; // אין צורך לבחור קריאה חדשה
+                CurrentCallVisibilityEnd = Visibility.Visible; // כפתור לסיים קריאה פעילה
+            }
 
         }
 

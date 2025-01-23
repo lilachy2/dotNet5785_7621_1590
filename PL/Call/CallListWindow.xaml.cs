@@ -139,13 +139,13 @@ namespace PL.Call
             try
             {
                 // Query and retrieve the list of calls filtered and sorted by the selected criteria
-                IEnumerable<BO.CallInList> callInLists = queryCallList();
+                queryCallList();
 
                 // Use the dispatcher to update the UI thread with the new call list
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    CallInList = callInLists;
-                });
+                //Application.Current.Dispatcher.Invoke(() =>
+                //{
+                //    CallInList = callInLists;
+                //});
             }
             catch (Exception ex)
             {
@@ -178,36 +178,7 @@ namespace PL.Call
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        //private void AddCallButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        IsBalloonVisible = true;
-
-        //        // Create and open the call window to add a new call
-        //        CallWindow callWindow = new CallWindow();
-        //        callWindow.ShowDialog();
-
-        //        // Refresh the call list directly after adding the call
-        //        var calls = queryCallList(); // Query the updated call list
-        //        CallInList = calls; // Directly assign the updated list
-        //        UpdateCallList(); // Ensure UI updates
-
-        //        var timer = new System.Windows.Threading.DispatcherTimer();
-        //        timer.Interval = TimeSpan.FromSeconds(5);
-        //        timer.Tick += (s, args) =>
-        //        {
-        //            IsBalloonVisible = false;
-        //            timer.Stop(); // Stop the timer after the animation ends
-        //        };
-        //        timer.Start();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"An error occurred while adding the call: {ex.Message}",
-        //                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
+        
 
         private async void AddCallButton_Click(object sender, RoutedEventArgs e)
         {
@@ -265,7 +236,7 @@ namespace PL.Call
                     try
                     {
                         //BlApi.Factory.Get().Call.UpdateCancelTreatment(callToCancel.Id ?? 0, callToCancel.CallId);
-                        BlApi.Factory.Get().Call.UpdateCancelTreatment(volId ?? 0, callToCancel.Id??0);
+                       s_bl.Call.UpdateCancelTreatment(volId ?? 0, callToCancel.Id??0);
 
 
                         await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -325,15 +296,13 @@ namespace PL.Call
         {
         }
 
-        private IEnumerable<BO.CallInList> queryCallList()
+       
+        public void queryCallList()
         {
-            IEnumerable<BO.CallInList> calls;
-
-                    calls = s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField, SelectedFilterStatus);
-             
-            return calls;
+            CallInList = (_selectedFilter == BO.Calltype.None) ?
+                s_bl?.Call.GetCallsList(null, null, null)! :
+               s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField, SelectedFilterStatus)!;
         }
-
 
     }
 }

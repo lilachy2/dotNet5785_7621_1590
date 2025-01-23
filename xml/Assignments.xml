@@ -557,6 +557,54 @@
     <CallId>1000</CallId>
     <VolunteerId>378668774</VolunteerId>
     <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1070</Id>
+    <CallId>1000</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1071</Id>
+    <CallId>1000</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1072</Id>
+    <CallId>1000</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1073</Id>
+    <CallId>1000</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1074</Id>
+    <CallId>1000</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
+    <time_end_treatment>2025-01-22T21:49:26</time_end_treatment>
+    <EndOfTime>TreatedOnTime</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1075</Id>
+    <CallId>1012</CallId>
+    <VolunteerId>378668774</VolunteerId>
+    <time_entry_treatment>2025-01-22T21:49:26</time_entry_treatment>
     <time_end_treatment xsi:nil="true" />
     <EndOfTime xsi:nil="true" />
   </Assignment>
