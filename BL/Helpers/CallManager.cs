@@ -405,7 +405,13 @@ internal static class CallManager
     public static BO.CallInList GetCallInList(DO.Call doCall)
     {
         var assignmentsForCall = _dal.Assignment.ReadAll(a => a.CallId == doCall.Id) ?? Enumerable.Empty<DO.Assignment>();
-        var lastAssignmentsForCall = assignmentsForCall.OrderByDescending(item => item.time_entry_treatment).FirstOrDefault();
+        //var lastAssignmentsForCall = assignmentsForCall.OrderByDescending(item => item.time_entry_treatment).FirstOrDefault();
+
+        ////??
+        var lastAssignmentsForCall = assignmentsForCall
+     .OrderByDescending(item => item.time_end_treatment)  // מיון לפי time_entry_treatment בסדר יורד
+     .LastOrDefault();  // לוקחים את האחרון אחרי המיון
+
 
         // בדיקה אם הקריאה ל-Read מחזירה null
         var volunteer = (lastAssignmentsForCall != null) ? _dal.Volunteer.Read(lastAssignmentsForCall.VolunteerId) : null;

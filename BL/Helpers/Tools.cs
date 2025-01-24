@@ -350,7 +350,7 @@ internal static class Tools
             // יצירת בקשה סינכרונית ישירה עם HttpWebRequest
             var request = (HttpWebRequest)WebRequest.Create(query);
             request.Method = "GET";
-            request.Timeout = 30000; // Timeout של 30 שניות
+           // request.Timeout = 30000; // Timeout של 30 שניות
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
