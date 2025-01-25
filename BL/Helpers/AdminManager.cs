@@ -148,12 +148,12 @@ internal static class AdminManager //stage 4
     /// Property for providing/setting current configuration variable value for any BL class that may need it
     /// </summary>
     /// 
-    internal static int MaxRange
+    internal static TimeSpan MaxRange
     {
-        get => s_dal.Config.MaxRange;
+        get => s_dal.Config.RiskRange;
         set
         {
-            s_dal.Config.MaxRange = value;
+            s_dal.Config.RiskRange = value;
             ConfigUpdatedObservers?.Invoke(); // stage 5
         }
     }
@@ -203,6 +203,8 @@ internal static class AdminManager //stage 4
 
         //StudentManager.PeriodicStudentsUpdates(oldClock, newClock); //stage 4
         if (_periodicTask is null || _periodicTask.IsCompleted) //stage 7
+            _periodicTask = Task.Run(() => CallManager.UpdateCallsToExpired(oldClock, newClock)); //stage 4
+
             //_periodicTask = Task.Run(() => StudentManager.PeriodicStudentsUpdates(oldClock, newClock));
             _periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
         //etc ...
@@ -276,7 +278,7 @@ internal static class AdminManager //stage 4
             //Add calls here to any logic simulation that was required in stage 7
             //for example: course registration simulation
             if (_simulateTask is null || _simulateTask.IsCompleted)//stage 7
-                _simulateTask = Task.Run(() => AdminManager.SimulateCourseRegistrationAndGrade());
+               _simulateTask = Task.Run(() => VolunteerManager.SimulationVolunteerActivity());//stage 7 methods
 
             //etc...
 

@@ -6,7 +6,8 @@ using System.Net;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Helpers;
 internal static class Tools
@@ -263,13 +264,20 @@ internal static class Tools
             throw new ArgumentException("Longitude must be between -180 and 180.");
         }
 
-        // Validate the address
-        var isAddressValid = Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+        //Validate the address
+       var isAddressValid = Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
         if (!isAddressValid)
         {
             throw new ArgumentException("The address provided is invalid.");
         }
+        //var isAddressValid = await Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+        //if (!isAddressValid)
+        //{
+        //    throw new ArgumentException("The address provided is invalid.");
+        //}
+
     }
+ 
 
     private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
     private const string BaseUrl = "https://geocode.maps.co/search";
@@ -288,7 +296,7 @@ internal static class Tools
             // יצירת בקשה סינכרונית ישירה עם HttpWebRequest
             var request = (HttpWebRequest)WebRequest.Create(query);
             request.Method = "GET";
-           // request.Timeout = 30000; // Timeout של 30 שניות
+            // request.Timeout = 30000; // Timeout של 30 שניות
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
@@ -306,7 +314,33 @@ internal static class Tools
         return isValid; // החזרת התוצאה
     }
 
+    public static async Task<bool> IsAddressValidAsync(string address)
+    {
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
 
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+
+        try
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // שליחת בקשה אסינכרונית
+                HttpResponseMessage response = await client.GetAsync(query);
+
+                // בדיקה אם הסטטוס הצליח
+                bool isValid = response.IsSuccessStatusCode;
+
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+                return isValid;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            return false; // במקרה של שגיאה, מחזירים false
+        }
+    }
 
     /// <summary>
     /// Gets the latitude of a given address.

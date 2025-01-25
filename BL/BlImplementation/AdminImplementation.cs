@@ -23,6 +23,7 @@ internal class AdminImplementation : IAdmin
 
     public void ForwardClock(TimeUnit unit)
     {
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
         DateTime newTime = AdminManager.Now;
 
         switch (unit)

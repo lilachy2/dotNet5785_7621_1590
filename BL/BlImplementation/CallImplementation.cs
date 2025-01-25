@@ -500,7 +500,8 @@ internal class CallImplementation : BlApi.ICall
 
         lock (AdminManager.BlMutex) //stage 7
 
-       {     DO.Assignment assigmnetToCancel = _dal.Assignment.Read(idAssig) ?? throw new BO.BlDeletionImpossibleException("there is no assigment with this ID");
+      { 
+        DO.Assignment assigmnetToCancel = _dal.Assignment.Read(idAssig) ?? throw new BO.BlDeletionImpossibleException("there is no assigment with this ID");
         bool ismanager = false;
 
         if (assigmnetToCancel.VolunteerId != idVol)
@@ -531,7 +532,7 @@ internal class CallImplementation : BlApi.ICall
             {
                 throw new BO.BlDeletionImpossibleException("canot delete in DO");
             }
-        }
+       }
 
 
         VolunteerManager.Observers.NotifyListUpdated();
@@ -549,7 +550,7 @@ internal class CallImplementation : BlApi.ICall
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
         lock (AdminManager.BlMutex) //stage 7
-{
+      {
             // Retrieve the assignment by its ID; throw an exception if not found.
             DO.Assignment assignmentToClose = _dal.Assignment.Read(idAssig) ?? throw new BO.BlNullPropertyException("There is no assignment with this ID");
 
@@ -585,7 +586,7 @@ internal class CallImplementation : BlApi.ICall
                 // Handle error if updating the assignment fails.
                 throw new DO.Incompatible_ID("Cannot update in DO");
             }
-        }
+       }
 
         VolunteerManager.Observers.NotifyListUpdated();
         VolunteerManager.Observers.NotifyItemUpdated(idVol);

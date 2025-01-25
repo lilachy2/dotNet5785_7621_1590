@@ -228,7 +228,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             // 1. Format checks
             VolunteerManager.CheckFormat(boVolunteer); // Validate the format of the volunteer's data (phone number, email, address)
 
-            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+            //VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
 
             // 2. Check if the volunteer already exists in the data layer
             var existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists

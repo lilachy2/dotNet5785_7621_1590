@@ -317,5 +317,86 @@ internal static class VolunteerManager
             };
         }
     }
+    internal static void SimulationVolunteerActivity()
+    {
+        Task.Run(() =>
+        {
+            try
+            {
+                // Retrieve all active volunteers and convert to concrete list
+                List<DO.Volunteer> activeVolunteers;
+                lock (AdminManager.BlMutex)
+                {
+                    activeVolunteers = _dal.Volunteer.ReadAll()
+                        .Where(v => v.IsActive)
+                        .ToList();
+                }
+
+                foreach (var volunteer in activeVolunteers)
+                {
+                    // Check if volunteer has an active assignment
+                    DO.Assignment activeAssignment;
+                    lock (AdminManager.BlMutex)
+                    {
+                        activeAssignment = _dal.Assignment.ReadAll()
+                            .FirstOrDefault(a => a.VolunteerId == volunteer.Id && a.time_end_treatment == null);
+                    }
+
+                    if (activeAssignment == null)
+                    {
+                        // Volunteer has no active assignment
+                        // Randomly decide whether to assign a call
+                        if (new Random().NextDouble() <= 0.2) // 20% probability
+                        {
+                            List<BO.Call> availableCalls;
+                            lock (AdminManager.BlMutex)
+                            {
+                                availableCalls = _dal.Call.ReadAll()
+                                    .Where(c => c.Status == BO.CallStatus.Open && c.CoordinatesCalculated)//get open calls
+                                    .Select(c => new BO.Call { Id = c.Id, Status = c.Status }) // Simplified BO.Call conversion
+                                    .ToList();
+                            }
+
+                            if (availableCalls.Any())
+                            {
+                                var randomCall = availableCalls[new Random().Next(availableCalls.Count)];
+                                _dal.Call.ChooseCall(volunteer.Id, randomCall.Id);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Volunteer has an active assignment
+                        var timeSinceStart = (AdminManager.Now - activeAssignment.time_entry_treatment).TotalMinutes;
+                        double estimatedTime = CalculateEstimatedTime(volunteer, activeAssignment.CallId);
+
+                        if (timeSinceStart >= estimatedTime)
+                        {
+                            // Close the call as treated
+                            _dal.Call.UpdateEndTreatment(volunteer.Id, activeAssignment.Id);
+                        }
+                        else if (new Random().NextDouble() <= 0.1) // 10% probability
+                        {
+                            // Cancel the treatment
+                            _dal.Call.UpdateCancelTreatment(volunteer.Id, activeAssignment.Id);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log exception or handle errors as needed
+                Console.WriteLine($"Error in SimulationVolunteerActivity: {ex.Message}");
+            }
+        });
+    }
+
+    private static double CalculateEstimatedTime(DO.Volunteer volunteer, int callId)
+    {
+        // Placeholder for distance-based time calculation logic
+        // You can replace it with a proper distance calculation and time estimation logic
+        Random random = new Random();
+        return random.Next(5, 15); // Random time between 5 and 15 minutes
+    }
 
 }
