@@ -26,7 +26,48 @@ internal static class VolunteerManager
         }
 
     }
+    internal static void CheckEmail(string Email)
+    {
+        if (!Regex.IsMatch(Email, @"^(?("")(""[^""]+?""@)|(([0-9a-zA-Z](([\.\-]?)(?![\.\-])))*[0-9a-zA-Z]@))([0-9a-zA-Z][\-0-9a-zA-Z]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,}$"))
+        {
+            throw new ArgumentException("Invalid Email format.");
+        }
 
+    }
+
+    public static bool IsValidIsraeliID(int id)
+    {
+        // Convert the integer to a string to validate length
+        string idStr = id.ToString();
+
+        // Ensure the ID is exactly 9 digits
+        if (idStr.Length != 9)
+            return false;
+
+        int sum = 0;
+        for (int i = 0; i < 9; i++)
+        {
+            // Extract each digit
+            int digit = idStr[i] - '0'; // Convert character to integer
+
+            // Multiply alternately by 1 or 2
+            int multiplied = digit * (i % 2 + 1);
+
+            // If the result is greater than 9, sum its digits (e.g., 18 -> 1 + 8)
+            sum += (multiplied > 9) ? multiplied - 9 : multiplied;
+        }
+
+        // The ID is valid if the total sum is divisible by 10
+        return sum % 10 == 0;
+    }
+
+    internal static void CheckPhonnumber(string Number_phone)
+    {
+        if (string.IsNullOrWhiteSpace(Number_phone) || !Regex.IsMatch(Number_phone, @"^0\d{9}$"))
+        {
+            throw new BlCheckPhonnumberException("PhoneNumber must be a 10-digit number starting with 0.");
+        }
+    }
     public static void IsStrongPassword(string password)
     {
         if (password.Length < 8)
@@ -42,13 +83,10 @@ internal static class VolunteerManager
             throw new BlIncorrectPasswordException("Password must contain at least one number.");
     }
 
+
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
-        // Validate ID
-        //if (!Tools.CheckId(boVolunteer.Id))
-        //{
-        //    throw new BO.Incompatible_ID("Invalid ID: The ID does not pass validation.");
-        //}
+    
         Tools.CheckId(boVolunteer.Id);
         if (existingVolunteer != null)
         {
@@ -106,8 +144,9 @@ internal static class VolunteerManager
         // Check if the active status has changed - only a manager can change the active
         if ((boVolunteer.Active != existingVolunteer.Active) && (boVolunteer.Role == BO.Role.Volunteer))
         {
-            // mark himself as inactive - provided he is not handling the call at the moment
-            if (CallManager.GetCallInProgress(boVolunteer.Id)!=null)
+            lock (AdminManager.BlMutex) //stage 7
+                // mark himself as inactive - provided he is not handling the call at the moment
+                if (CallManager.GetCallInProgress(boVolunteer.Id)!=null)
             {
                 throw new BO.BlCan_chang_to_NotActivException("The volunteer is currently handling a call and cannot be not Active.");
             }
@@ -125,52 +164,12 @@ internal static class VolunteerManager
         // Add additional checks if there are any other restricted fields
     }
 
-    public static bool IsValidIsraeliID(int id)
-    {
-        // Convert the integer to a string to validate length
-        string idStr = id.ToString();
-
-        // Ensure the ID is exactly 9 digits
-        if (idStr.Length != 9)
-            return false;
-
-        int sum = 0;
-        for (int i = 0; i < 9; i++)
-        {
-            // Extract each digit
-            int digit = idStr[i] - '0'; // Convert character to integer
-
-            // Multiply alternately by 1 or 2
-            int multiplied = digit * (i % 2 + 1);
-
-            // If the result is greater than 9, sum its digits (e.g., 18 -> 1 + 8)
-            sum += (multiplied > 9) ? multiplied - 9 : multiplied;
-        }
-
-        // The ID is valid if the total sum is divisible by 10
-        return sum % 10 == 0;
-    }
-
-    internal static void CheckPhonnumber(string Number_phone)
-    {
-        if (string.IsNullOrWhiteSpace(Number_phone) || !Regex.IsMatch(Number_phone, @"^0\d{9}$"))
-        {
-            throw new BlCheckPhonnumberException("PhoneNumber must be a 10-digit number starting with 0.");
-        }
-    }
-    
-    internal static void CheckEmail(string Email)
-    {
-        if (!Regex.IsMatch(Email, @"^(?("")(""[^""]+?""@)|(([0-9a-zA-Z](([\.\-]?)(?![\.\-])))*[0-9a-zA-Z]@))([0-9a-zA-Z][\-0-9a-zA-Z]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,}$"))
-        {
-            throw new ArgumentException("Invalid Email format.");
-        }
-
-    }
-
+ 
     public static BO.Volunteer GetVolunteer(int id)
     {
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");
+        lock (AdminManager.BlMutex) //stage 7
+
+     {       DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");
 
             return new BO.Volunteer
             {
@@ -192,6 +191,7 @@ internal static class VolunteerManager
                 TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
                 CurrentCall = CallManager.GetCallInProgress(doVolunteer.Id), //CallAssignInProgress  בפונקצית עזר של 
             };
+        }
     }
 
     public static DO.Volunteer BOconvertDO(BO.Volunteer Volunteer)
@@ -218,8 +218,9 @@ internal static class VolunteerManager
     public static BO.VolunteerInList GetVolunteerInList(int VolunteerId)
     {
 
+        lock (AdminManager.BlMutex) //stage 7
 
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+         {   DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
@@ -229,40 +230,43 @@ internal static class VolunteerManager
         int? currentCallId = calls.FirstOrDefault(ass => ass.EndOfTime == null)?.Id;
 
 
-        return new BO.VolunteerInList
-        {
-            Id = doVolunteer.Id,
-            FullName = doVolunteer.Name,
-            IsActive = doVolunteer.Active,
-            TotalCallsHandled = Tools.TotalHandledCalls(VolunteerId),
-            TotalCallsCancelled = Tools.TotalCallsCancelledhelp(VolunteerId),
-            TotalCallsExpired = Tools.TotalCallsExpiredelo(VolunteerId),
-            CurrentCallId = currentCallId,/*Tools.CurrentCallIdhelp(VolunteerId),*/
-            CurrentCallType = Tools.CurrentCallType(VolunteerId)
-        };
+            return new BO.VolunteerInList
+            {
+                Id = doVolunteer.Id,
+                FullName = doVolunteer.Name,
+                IsActive = doVolunteer.Active,
+                TotalCallsHandled = Tools.TotalHandledCalls(VolunteerId),
+                TotalCallsCancelled = Tools.TotalCallsCancelledhelp(VolunteerId),
+                TotalCallsExpired = Tools.TotalCallsExpiredelo(VolunteerId),
+                CurrentCallId = currentCallId,/*Tools.CurrentCallIdhelp(VolunteerId),*/
+                CurrentCallType = Tools.CurrentCallType(VolunteerId)
+            };
+        }
     }
 
     // GetClosedCallInList 
     public static BO.ClosedCallInList GetClosedCallInList(int VolunteerId)
     {
+        lock (AdminManager.BlMutex) //stage 7
 
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+  {          DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId/* && a.EndOfTime == null*/).FirstOrDefault();
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
-        // Create the object
-        return new BO.ClosedCallInList
-        {
-            Id = doAssignment.Id, // Call identifier
-            CallType = (BO.Calltype)doCall.Calltype, // Enum conversion
-            FullAddress = doCall.ReadAddress, // Full address of the call
-            OpenTime = doCall.OpeningTime, // Time when the call was opened
-            EnterTime = doAssignment.time_entry_treatment, // Time when the treatment began
-            EndTime = doAssignment.time_end_treatment, // Time when the treatment ended
-            CompletionStatus = (BO.CallAssignmentEnum?)doAssignment.EndOfTime // Completion status of the treatment
-        };
+            // Create the object
+            return new BO.ClosedCallInList
+            {
+                Id = doAssignment.Id, // Call identifier
+                CallType = (BO.Calltype)doCall.Calltype, // Enum conversion
+                FullAddress = doCall.ReadAddress, // Full address of the call
+                OpenTime = doCall.OpeningTime, // Time when the call was opened
+                EnterTime = doAssignment.time_entry_treatment, // Time when the treatment began
+                EndTime = doAssignment.time_end_treatment, // Time when the treatment ended
+                CompletionStatus = (BO.CallAssignmentEnum?)doAssignment.EndOfTime // Completion status of the treatment
+            };
+        }
 
     }
 
@@ -270,7 +274,9 @@ internal static class VolunteerManager
     //GetOpenCallInList
     public static BO.OpenCallInList GetOpenCallInList(int callId, int volunteerId)
     {
-        DO.Volunteer? doVolunteer = _dal.Volunteer.Read(volunteerId) ?? throw new BlDoesNotExistException("error id");
+        lock (AdminManager.BlMutex) //stage 7
+
+            {DO.Volunteer? doVolunteer = _dal.Volunteer.Read(volunteerId) ?? throw new BlDoesNotExistException("error id");
 
         // Find the appropriate assignment by volunteer ID and call ID
         var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == volunteerId && a.CallId == callId).FirstOrDefault();
@@ -297,18 +303,19 @@ internal static class VolunteerManager
             throw new BlGeneralException("Could not retrieve valid coordinates for the volunteer.");
         }
 
-        // Create and return the OpenCallInList object
-        return new BO.OpenCallInList
-        {
-            Id = doAssignment.Id, // Assignment identifier
-            CallType = (BO.Calltype)doCall.Calltype, // Enum conversion
-            FullAddress = doCall.ReadAddress, // Full address of the call
-            OpenTime = doCall.OpeningTime, // Time when the call was opened
-            MaxEndTime = doCall.MaxEndTime, // Maximum end time for the call
-            DistanceFromVolunteer = CallManager.Air_distance_between_2_addresses(
-                doCall.Latitude, doCall.Longitude, latitudeVolunteer, longitudeVolunteer
-            ) // Air distance between 2 addresses (call and volunteer)
-        };
+            // Create and return the OpenCallInList object
+            return new BO.OpenCallInList
+            {
+                Id = doAssignment.Id, // Assignment identifier
+                CallType = (BO.Calltype)doCall.Calltype, // Enum conversion
+                FullAddress = doCall.ReadAddress, // Full address of the call
+                OpenTime = doCall.OpeningTime, // Time when the call was opened
+                MaxEndTime = doCall.MaxEndTime, // Maximum end time for the call
+                DistanceFromVolunteer = CallManager.Air_distance_between_2_addresses(
+                    doCall.Latitude, doCall.Longitude, latitudeVolunteer, longitudeVolunteer
+                ) // Air distance between 2 addresses (call and volunteer)
+            };
+        }
     }
 
 }

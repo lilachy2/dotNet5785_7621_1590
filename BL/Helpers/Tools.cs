@@ -274,68 +274,6 @@ internal static class Tools
     private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
     private const string BaseUrl = "https://geocode.maps.co/search";
 
-    public static bool IsAddressValid1(string address)
-    {
-        if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
-
-        // בניית ה-URL לבקשה
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-        bool isValid = false; // משתנה בוליאני
-
-        using (HttpClient client = new HttpClient())
-        {
-            try
-            {
-                // שליחת הבקשה באופן סינכרוני
-                HttpResponseMessage response = client.GetAsync(query).Result;
-
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
-
-                // בדיקה אם הסטטוס הצליח
-                isValid = response.IsSuccessStatusCode;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                isValid = false;
-            }
-        }
-
-        return isValid; // החזרת התוצאה
-    }
-    public static bool IsAddressValid2(string address)
-    {
-        if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
-
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-        bool isValid = false;
-
-        using (HttpClient client = new HttpClient())
-        {
-            try
-            {
-                // מבצע קריאה סינכרונית בלבד
-                HttpResponseMessage response = client.GetAsync(query).ConfigureAwait(false).GetAwaiter().GetResult();
-
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
-
-                // בדיקה אם הסטטוס הצליח
-                isValid = response.IsSuccessStatusCode;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                isValid = false;
-            }
-        }
-
-        return isValid; // החזרת התוצאה
-    }
-
     public static bool IsAddressValid(string address)
     {
         if (string.IsNullOrWhiteSpace(address))
@@ -501,41 +439,50 @@ internal static class Tools
 
     public static int TotalHandledCalls(int Id)
     {
-        // Count how many were treated on time
-        return _dal.Assignment.ReadAll()
+        lock (AdminManager.BlMutex) //stage 7
+            // Count how many were treated on time
+            return _dal.Assignment.ReadAll()
             .Count(a => a.VolunteerId == Id &&
                         a.EndOfTime == AssignmentCompletionType.TreatedOnTime);
 
     }
     public static int TotalCallsCancelledhelp(int Id)
     {
-        // Count how many were canceled
-        return _dal.Assignment.ReadAll()
+        lock (AdminManager.BlMutex) //stage 7
+
+            // Count how many were canceled
+            return _dal.Assignment.ReadAll()
             .Count(a => a.VolunteerId == Id &&
                         (a.EndOfTime == AssignmentCompletionType.VolunteerCancelled || a.EndOfTime == AssignmentCompletionType.AdminCancelled));
 
     }
     public static int TotalCallsExpiredelo(int Id)
     {
-        // Count how many were Expired
-        return _dal.Assignment.ReadAll()
+        lock (AdminManager.BlMutex) //stage 7
+
+            // Count how many were Expired
+            return _dal.Assignment.ReadAll()
             .Count(a => a.VolunteerId == Id &&
                         a.EndOfTime == AssignmentCompletionType.Expired);
 
     }
     public static int? CurrentCallIdhelp(int Id)
     {
+
         // check CurrentCallId
-        var assignment = _dal.Assignment.ReadAll()
+        lock (AdminManager.BlMutex) //stage 7
+         {   var assignment = _dal.Assignment.ReadAll()
                 .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
-        return assignment?.CallId;
+            return assignment?.CallId;
+        }
 
     }
     public static BO.Calltype CurrentCallType(int Id)
     {
+        lock (AdminManager.BlMutex) //stage 7
 
-        // בדיקת האם יש קריאה בטיפול
-        var assignment = _dal.Assignment.ReadAll()
+     {       // בדיקת האם יש קריאה בטיפול
+            var assignment = _dal.Assignment.ReadAll()
             .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
 
         // אם לא קיימת קריאה בטיפולו, מחזיר None
@@ -545,8 +492,8 @@ internal static class Tools
         }
         var call = _dal.Call.ReadAll()
            .FirstOrDefault(c => c.Id == assignment.CallId).Calltype;
-        return (BO.Calltype)call;
-
+            return (BO.Calltype)call;
+}
     }
 
 }

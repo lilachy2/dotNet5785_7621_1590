@@ -24,7 +24,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
-        var volunteers = _dal.Volunteer.ReadAll();
+        lock (AdminManager.BlMutex) //stage 7
+        { 
+            var volunteers = _dal.Volunteer.ReadAll();
 
         // Filter by activity status
         if (Active.HasValue)
@@ -52,10 +54,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
         // Filter by call type after the conversion
 
-        return volunteerList;
+        return volunteerList;}
     }
-
-
     public DO.Role PasswordEntered(int Id, string password)
     {
         /// <summary>
@@ -63,7 +63,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         /// Throws exceptions if the user does not exist or the password is incorrect.
         /// </summary>
 
-        var volunteer = _dal.Volunteer.Read(Id);
+        lock (AdminManager.BlMutex) //stage 7
+
+       {     var volunteer = _dal.Volunteer.Read(Id);
         if (volunteer == null)
 
             throw new BO.BlDoesNotExistException("The user does not exist");
@@ -72,13 +74,15 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
             throw new BO.BlIncorrectPasswordException("The password is incorrect");
 
-        return volunteer.Role;
+        return volunteer.Role;}
     }
 
     public BO.Volunteer Read(int id)
     {
-        try
-        {
+        lock (AdminManager.BlMutex) //stage 7
+
+            try
+            {
             var fordebug = VolunteerManager.GetVolunteer(id);
             return (/*VolunteerManager.GetVolunteer(id)*/ fordebug);
 
@@ -88,16 +92,18 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             // Log the exception (optional, for debugging purposes)
             Console.WriteLine($"Error while reading volunteer with ID {id}: {ex.Message}");
             return null;
-        }
+        } 
 
 
     }
-
-   
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
-        try
-        {
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+
+        lock (AdminManager.BlMutex) //stage 7
+
+            try
+            {
             var requester = _dal.Volunteer.Read(requesterId);
 
             //if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
@@ -134,8 +140,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
             _dal.Volunteer.Update(DOVolunteer);
-            VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  // stage 5
-            VolunteerManager.Observers.NotifyListUpdated(); // stage 5   
+         
 
         }
         catch (DO.DalDoesNotExistException ex)
@@ -172,14 +177,20 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             throw new BO.BlGeneralException("An unexpected error occurred while updating volunteer details.", ex);
         }
 
+        VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  // stage 5
+        VolunteerManager.Observers.NotifyListUpdated(); // stage 5   
 
     }
 
 
     public void Delete(int volunteerId)
     {
-        // Retrieve all assignments associated with the volunteer
-        var assignments = _dal.Assignment.ReadAll()
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+
+        lock (AdminManager.BlMutex) //stage 7
+
+         {   // Retrieve all assignments associated with the volunteer
+            var assignments = _dal.Assignment.ReadAll()
             .Where(a => a.VolunteerId == volunteerId)
             .ToList();
 
@@ -190,27 +201,34 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             throw new BlDeletionImpossibleException($"Cannot delete the volunteer with ID {volunteerId}. The volunteer is currently handling or has handled a call in the past.");
         }
 
-        // Attempt to delete the volunteer from the data layer
-        try
-        {
-            _dal.Volunteer.Delete(volunteerId);
-            //VolunteerManager.Observers.NotifyItemUpdated(volunteerId);
+            // Attempt to delete the volunteer from the data layer
+            try
+            {
+                _dal.Volunteer.Delete(volunteerId);
+                //VolunteerManager.Observers.NotifyItemUpdated(volunteerId);
+
+
+            }
+            catch (DalDoesNotExistException ex) // If the volunteer does not exist in the system
+            {
+                throw new BlDoesNotExistException($"The volunteer with ID {volunteerId} was not found in the system.", ex);
+            }
+        }
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-
-
-        }
-        catch (DalDoesNotExistException ex) // If the volunteer does not exist in the system
-        {
-            throw new BlDoesNotExistException($"The volunteer with ID {volunteerId} was not found in the system.", ex);
-        }
     }
 
     public void Create(BO.Volunteer boVolunteer)
     {
-        try
-        {
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+
+        lock (AdminManager.BlMutex) //stage 7
+
+            try
+            {
             // 1. Format checks
             VolunteerManager.CheckFormat(boVolunteer); // Validate the format of the volunteer's data (phone number, email, address)
+
+            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
 
             // 2. Check if the volunteer already exists in the data layer
             var existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
@@ -242,7 +260,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
             // 5. Add the volunteer to the data layer
             _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
-            VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
 
         }
         catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
@@ -261,31 +278,11 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         {
             throw new BO.BlGeneralException("Failed to add volunteer.", ex); // Re-throw the general exception with a message indicating the failure
         }
+
+
+        VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

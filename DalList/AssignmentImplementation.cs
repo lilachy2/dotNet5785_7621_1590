@@ -2,6 +2,7 @@
 using DalApi;
 using DO;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 /// <param name="Create">// create/add method
 /// <param name="Delete">Delete method of an existing object
@@ -17,6 +18,8 @@ using System.Collections.Generic;
 
 internal class AssignmentImplementation : IAssignment
 {
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public void Create(Assignment item)
     {
         int newId1 = Config.NextAssignmentId;
@@ -27,6 +30,8 @@ internal class AssignmentImplementation : IAssignment
 
     /// <param name="item">// Searches for the Assignment by ID
     /// <param name="Remove">/ Removes the found Assignment from the DataSource
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public void Delete(int id)
     {
         var item = DataSource.Assignments.Find(x => x?.Id == id);
@@ -41,6 +46,7 @@ internal class AssignmentImplementation : IAssignment
     }
 
     /// <param name="item">  // Retrieves the list of all Assignments
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public void DeleteAll()
     {
@@ -49,6 +55,8 @@ internal class AssignmentImplementation : IAssignment
     }
 
     /// <param name="item">// Searches for the Assignment by ID
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public Assignment? Read(int id)  // // stage1
     {
 
@@ -62,12 +70,14 @@ internal class AssignmentImplementation : IAssignment
         else
             return item;
     }
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public Assignment? Read(Func<Assignment, bool> filter)  //stage 2
     {
         return DataSource.Assignments.FirstOrDefault(filter);
     }
 
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public IEnumerable<Assignment> ReadAll(Func<Assignment, bool>? filter = null)
      => filter == null
@@ -75,6 +85,7 @@ internal class AssignmentImplementation : IAssignment
          : DataSource.Assignments.Where(filter);
 
     /// <param name="old">// Searches for the old Assignment
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public void Update(Assignment item)
     {

@@ -3,6 +3,7 @@ using DalApi;
 using DO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 /// <param name="Create">// create/add method
 /// <param name="Delete">Delete method of an existing object
@@ -13,6 +14,8 @@ using System.Linq;
 /// 
 internal class VolunteerImplementation : IVolunteer
 {
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public void Create(Volunteer item)
     {
         //if (Read(item.id)!=null)//stage1
@@ -31,6 +34,8 @@ internal class VolunteerImplementation : IVolunteer
 
     /// <param name="item">// Searches for the Assignment by ID
     /// <param name="Remove">/ Removes the found Assignment from the DataSource
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public void Delete(int id)
     {
 
@@ -46,6 +51,8 @@ internal class VolunteerImplementation : IVolunteer
     }
 
     /// <param name="item">  // Retrieves the list of all Assignments
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public void DeleteAll()
     {
         var item = DataSource.Volunteers;
@@ -54,6 +61,7 @@ internal class VolunteerImplementation : IVolunteer
     }
 
     /// <param name="item">// Searches for the Assignment by ID
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public Volunteer? Read(int id)//stage1
     {
@@ -67,6 +75,7 @@ internal class VolunteerImplementation : IVolunteer
             return item;
     }
 
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public Volunteer? Read(Func<Volunteer, bool> filter)  //stage 2
     {
@@ -75,6 +84,7 @@ internal class VolunteerImplementation : IVolunteer
 
 
 
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null) //stage 2
     => filter == null
@@ -83,6 +93,7 @@ internal class VolunteerImplementation : IVolunteer
 
 
     /// <param name="old">// Searches for the old Assignment
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public void Update(Volunteer item)
     {

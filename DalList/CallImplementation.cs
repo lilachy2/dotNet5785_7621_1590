@@ -3,6 +3,7 @@ using DalApi;
 using DO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 /// <param name="Create">// create/add method
 /// <param name="Delete">Delete method of an existing object
@@ -20,6 +21,7 @@ internal class CallImplementation : ICall
     //    DataSource.Calls.Add(newItem);
     //}
 
+    [MethodImpl(MethodImplOptions.Synchronized)]
     public void Create(Call item)
     {
         int newId = Config.NextCallId;
@@ -41,6 +43,7 @@ internal class CallImplementation : ICall
 
     /// <param name="item">// Searches for the Assignment by ID
     /// <param name="Remove">/ Removes the found Assignment from the DataSource
+    [MethodImpl(MethodImplOptions.Synchronized)] 
     public void Delete(int id)
     {
         var item = DataSource.Calls.Find(x => x?.Id == id);
@@ -55,6 +58,7 @@ internal class CallImplementation : ICall
     }
 
     /// <param name="item">  // Retrieves the list of all Assignments
+    [MethodImpl(MethodImplOptions.Synchronized)]
     public void DeleteAll()
     {
         var item = DataSource.Calls;
@@ -62,6 +66,7 @@ internal class CallImplementation : ICall
     }
 
     /// <param name="item">// Searches for the Assignment by ID
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public Call? Read(int id)//stage1
     {
@@ -75,12 +80,14 @@ internal class CallImplementation : ICall
         else
             return item;
     }
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public Call? Read(Func<Call, bool> filter)  //stage 2
     {
         return DataSource.Calls.FirstOrDefault(filter);
 
     }
+    [MethodImpl(MethodImplOptions.Synchronized)]
 
     public IEnumerable<Call> ReadAll(Func<Call, bool>? filter = null) //stage 2
     => filter == null
@@ -90,6 +97,8 @@ internal class CallImplementation : ICall
 
 
     /// <param name="old">// Searches for the old Assignment
+    [MethodImpl(MethodImplOptions.Synchronized)]
+
     public void Update(Call item)
     {
         Call? old = DataSource.Calls.Find(x => x?.Id == item.Id);

@@ -1,6 +1,7 @@
 ﻿namespace Dal;
 using DalApi;
 using System;
+using System.Runtime.CompilerServices;
 
 /// <param name="NextCallId"> // Property to get the starting Call ID from Config </param>
 /// <param name="NextAssignmentId"> // Property to get the starting Assignment ID from Config </param>
@@ -12,29 +13,35 @@ internal class ConfigImplementation : IConfig
 {
      public int NextCallId
         {
-            get => Config.startCallId;
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        get => Config.startCallId;
         }
 
         public int NextAssignmentId
         {
-            get => Config.startAssignmentId;
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        get => Config.startAssignmentId;
         }
          public TimeSpan RiskRange
          {
+        [MethodImpl(MethodImplOptions.Synchronized)]
         get => Config.RiskRange;
+        [MethodImpl(MethodImplOptions.Synchronized)]
         set => Config.RiskRange = value;
          }
 
 
     public DateTime Clock
         {
-            get => Config.Clock;
-            set => Config.Clock = value;
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        get => Config.Clock;
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        set => Config.Clock = value;
         }
 
-       
 
-        public void Reset()
+    [MethodImpl(MethodImplOptions.Synchronized)]
+    public void Reset()
         {
             Config.Reset();
         }

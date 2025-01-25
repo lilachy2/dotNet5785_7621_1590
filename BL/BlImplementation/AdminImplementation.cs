@@ -49,6 +49,8 @@ internal class AdminImplementation : IAdmin
         }
 
         AdminManager.UpdateClock(newTime);
+
+
     }
     public DateTime GetClock()
     {
@@ -63,21 +65,37 @@ internal class AdminImplementation : IAdmin
         //DalTest.Initialization.Do();
         //ClockManager.UpdateClock(ClockManager.Now);
 
-        DalTest.Initialization.Do();
-        AdminManager.UpdateClock(AdminManager.Now);
-        AdminManager.MaxRange = AdminManager.MaxRange;
+        //DalTest.Initialization.Do();
+        //AdminManager.UpdateClock(AdminManager.Now);
+        //AdminManager.MaxRange = AdminManager.MaxRange;
+
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+        AdminManager.InitializeDB(); //stage 7
+
     }
 
     public void ResetDB()
     {
-        _dal.ResetDB();
-        AdminManager.UpdateClock(AdminManager.Now);
-        AdminManager.MaxRange = AdminManager.MaxRange;
+        //_dal.ResetDB();
+        //AdminManager.UpdateClock(AdminManager.Now);
+        //AdminManager.MaxRange = AdminManager.MaxRange;
+
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+        AdminManager.ResetDB(); //stage 7
+
     }
 
 
     public TimeSpan GetMaxRange() => AdminManager.MaxRange;
     public void SetMaxRange(TimeSpan maxRange) => AdminManager.MaxRange = maxRange;
 
+
+    public void StartSimulator(int interval)  //stage 7
+    {
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+        AdminManager.Start(interval); //stage 7
+    }
+public void StopSimulator()
+    => AdminManager.Stop(); //stage 7
 }
 
