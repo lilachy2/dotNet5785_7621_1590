@@ -68,288 +68,16 @@ internal static class Tools
 
 
     // saync - dont remove- for 7 stage
-    //internal static async Task ValidateVolunteerData(BO.Volunteer boVolunteer)
-    //{
-    //    // Validate the ID of the volunteer.
-    //    if (boVolunteer.Id <= 0 || boVolunteer.Id.ToString().Length < 8 || boVolunteer.Id.ToString().Length > 9)
-    //    {
-    //        throw new ArgumentException("Invalid ID. It must be 8-9 digits.");
-    //    }
 
-    //    // Validate the FullName field.
-    //    if (string.IsNullOrWhiteSpace(boVolunteer.Name))
-    //    {
-    //        throw new ArgumentException("Name cannot be null or empty.");
-    //    }
-
-    //    // Validate the PhoneNumber field.
-    //    VolunteerManager.CheckPhonnumber(boVolunteer.Number_phone);
-
-
-    //    // Validate the Email field.
-    //    VolunteerManager.CheckEmail(boVolunteer.Email);
-
-    //    // Validate the Latitude field.
-    //    if (boVolunteer.Latitude.HasValue && (boVolunteer.Latitude.Value < -90 || boVolunteer.Latitude.Value > 90))
-    //    {
-    //        throw new ArgumentException("Latitude must be between -90 and 90.");
-    //    }
-
-    //    // Validate the Longitude field.
-    //    if (boVolunteer.Longitude.HasValue && (boVolunteer.Longitude.Value < -180 || boVolunteer.Longitude.Value > 180))
-    //    {
-    //        throw new ArgumentException("Longitude must be between -180 and 180.");
-    //    }
-
-    //    // Validate the address
-    //    var isAddressValid = /*/await/ */Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
-    //    if (!isAddressValid)
-    //    {
-    //        throw new ArgumentException("The address provided is invalid.");
-    //    }
-    //}
-
-    //private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
-    //private const string BaseUrl = "https://geocode.maps.co/search";
-
-    //public static bool IsAddressValid(string address)
-    //{
-    //    if (string.IsNullOrWhiteSpace(address))
-    //        throw new ArgumentException("Address cannot be null or empty.");
-
-    //    // בניית ה-URL לבקשה
-    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-    //    bool isValid = false; // משתנה בוליאני
-
-    //    using (HttpClient client = new HttpClient())
-    //    {
-    //        try
-    //        {
-    //            // שליחת הבקשה באופן סינכרוני
-    //            HttpResponseMessage response = client.GetAsync(query).Result;
-
-    //            Console.WriteLine($"Response Status Code: {response.StatusCode}");
-
-    //            // בדיקה אם הסטטוס הצליח
-    //            isValid = response.IsSuccessStatusCode;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Console.WriteLine($"Error: {ex.Message}");
-    //            isValid = false;
-    //        }
-    //    }
-
-    //    return isValid; // החזרת התוצאה
-    //}
-
-    ///// <summary>
-    ///// Gets the latitude of a given address.
-    ///// </summary>
-    ///// <param name="address">The address to process.</param>
-    ///// <returns>The latitude, or null if the address is invalid or not found.</returns>
-    //public static async Task<double> GetLatitudeAsync(string address)
-    //{
-    //    var coordinates = await GetCoordinatesAsync(address);
-    //    return coordinates?.Latitude?? 0;
-    //}
-
-    ///// <summary>
-    ///// Gets the longitude of a given address.
-    ///// </summary>
-    ///// <param name="address">The address to process.</param>
-    ///// <returns>The longitude, or null if the address is invalid or not found.</returns>
-    //public static async Task<double> GetLongitudeAsync(string address)
-    //{
-    //    var coordinates = await GetCoordinatesAsync(address);
-    //    return coordinates?.Longitude ?? 0 ;
-    //}
-
-    ///// <summary>
-    ///// Computes the latitude and longitude of a given address using the Geocode API.
-    ///// </summary>
-    ///// <param name="address">The address to process.</param>
-    ///// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
-
-
-    //private static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
-    //{
-    //    if (string.IsNullOrWhiteSpace(address))
-    //        throw new ArgumentException("Address cannot be empty or null.", nameof(address));
-
-    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&format=json&api_key={ApiKey}";
-
-    //    try
-    //    {
-    //        using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) }) // 5 second timeout
-    //        {
-    //            // Add "User-Agent" header (required in most APIs)
-    //            client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
-    //            HttpResponseMessage response = await client.GetAsync(query);
-    //            if (response.StatusCode != HttpStatusCode.OK)
-    //            {
-    //                throw new Exception($"Error in request: {response.StatusCode}");
-    //            }
-    //            string jsonResponse = await response.Content.ReadAsStringAsync();
-    //            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-    //            JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse);
-    //            JsonElement results = jsonDocument.RootElement;
-    //            if (results.ValueKind == JsonValueKind.Array && results.GetArrayLength() > 0)
-    //            {
-    //                JsonElement firstResult = results[0];
-    //                if (firstResult.TryGetProperty("lat", out JsonElement latElement) &&
-    //                    firstResult.TryGetProperty("lon", out JsonElement lonElement))
-    //                {
-    //                    if (double.TryParse(latElement.GetString(),
-    //                        System.Globalization.NumberStyles.Any,
-    //                        System.Globalization.CultureInfo.InvariantCulture,
-    //                        out double latitude) &&
-    //                        double.TryParse(lonElement.GetString(),
-    //                        System.Globalization.NumberStyles.Any,
-    //                        System.Globalization.CultureInfo.InvariantCulture,
-    //                        out double longitude))
-    //                    {
-    //                        return (latitude, longitude);
-    //                    }
-    //                }
-    //            }
-    //            throw new Exception("No coordinates found for the given address.");
-    //        }
-    //    }
-    //    catch (TimeoutException)
-    //    {
-    //        throw new Exception("The request timed out.");
-    //    }
-    //    catch (HttpRequestException ex)
-    //    {
-    //        throw new Exception($"Request error: {ex.Message}");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new Exception($"General error: {ex.Message}");
-    //    }
-    //}
-
-
-    internal static void ValidateVolunteerData(BO.Volunteer boVolunteer)
-    {
-        // Validate the ID of the volunteer.
-        if (boVolunteer.Id <= 0 || boVolunteer.Id.ToString().Length < 8 || boVolunteer.Id.ToString().Length > 9)
-        {
-            throw new ArgumentException("Invalid ID. It must be 8-9 digits.");
-        }
-
-        // Validate the FullName field.
-        if (string.IsNullOrWhiteSpace(boVolunteer.Name))
-        {
-            throw new ArgumentException("Name cannot be null or empty.");
-        }
-
-        // Validate the PhoneNumber field.
-        VolunteerManager.CheckPhonnumber(boVolunteer.Number_phone);
-
-        // Validate the Email field.
-        VolunteerManager.CheckEmail(boVolunteer.Email);
-
-        // Validate the Latitude field.
-        if (boVolunteer.Latitude.HasValue && (boVolunteer.Latitude.Value < -90 || boVolunteer.Latitude.Value > 90))
-        {
-            throw new ArgumentException("Latitude must be between -90 and 90.");
-        }
-
-        // Validate the Longitude field.
-        if (boVolunteer.Longitude.HasValue && (boVolunteer.Longitude.Value < -180 || boVolunteer.Longitude.Value > 180))
-        {
-            throw new ArgumentException("Longitude must be between -180 and 180.");
-        }
-
-        //Validate the address
-       var isAddressValid = Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
-        if (!isAddressValid)
-        {
-            throw new ArgumentException("The address provided is invalid.");
-        }
-        //var isAddressValid = await Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
-        //if (!isAddressValid)
-        //{
-        //    throw new ArgumentException("The address provided is invalid.");
-        //}
-
-    }
- 
-
-    private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
-    private const string BaseUrl = "https://geocode.maps.co/search";
-
-    public static bool IsAddressValid(string address)
-    {
-        if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
-
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-        bool isValid = false;
-
-        try
-        {
-            // יצירת בקשה סינכרונית ישירה עם HttpWebRequest
-            var request = (HttpWebRequest)WebRequest.Create(query);
-            request.Method = "GET";
-            // request.Timeout = 30000; // Timeout של 30 שניות
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                // בדיקה אם הסטטוס הצליח
-                isValid = response.StatusCode == HttpStatusCode.OK;
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-            isValid = false;
-        }
-
-        return isValid; // החזרת התוצאה
-    }
-
-    public static async Task<bool> IsAddressValidAsync(string address)
-    {
-        if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
-
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-        try
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                // שליחת בקשה אסינכרונית
-                HttpResponseMessage response = await client.GetAsync(query);
-
-                // בדיקה אם הסטטוס הצליח
-                bool isValid = response.IsSuccessStatusCode;
-
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
-                return isValid;
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-            return false; // במקרה של שגיאה, מחזירים false
-        }
-    }
 
     /// <summary>
     /// Gets the latitude of a given address.
     /// </summary>
     /// <param name="address">The address to process.</param>
     /// <returns>The latitude, or null if the address is invalid or not found.</returns>
-    public static double GetLatitude(string address)
+    public static async Task<double> GetLatitudeAsync(string address)
     {
-        var coordinates = GetCoordinates(address);
+        var coordinates = await GetCoordinatesAsync(address);
         return coordinates?.Latitude ?? 0;
     }
 
@@ -358,9 +86,9 @@ internal static class Tools
     /// </summary>
     /// <param name="address">The address to process.</param>
     /// <returns>The longitude, or null if the address is invalid or not found.</returns>
-    public static double GetLongitude(string address)
+    public static async Task<double> GetLongitudeAsync(string address)
     {
-        var coordinates = GetCoordinates(address);
+        var coordinates = await GetCoordinatesAsync(address);
         return coordinates?.Longitude ?? 0;
     }
 
@@ -369,7 +97,9 @@ internal static class Tools
     /// </summary>
     /// <param name="address">The address to process.</param>
     /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
-    private static (double Latitude, double Longitude)? GetCoordinates(string address)
+
+
+    public static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
     {
         if (string.IsNullOrWhiteSpace(address))
             throw new ArgumentException("Address cannot be empty or null.", nameof(address));
@@ -382,12 +112,12 @@ internal static class Tools
             {
                 // Add "User-Agent" header (required in most APIs)
                 client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
-                HttpResponseMessage response = client.GetAsync(query).Result;
+                HttpResponseMessage response = await client.GetAsync(query);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     throw new Exception($"Error in request: {response.StatusCode}");
                 }
-                string jsonResponse = response.Content.ReadAsStringAsync().Result;
+                string jsonResponse = await response.Content.ReadAsStringAsync();
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse);
                 JsonElement results = jsonDocument.RootElement;
@@ -426,6 +156,204 @@ internal static class Tools
             throw new Exception($"General error: {ex.Message}");
         }
     }
+
+    internal static async Task ValidateVolunteerData(BO.Volunteer boVolunteer)
+    {
+        // Validate the ID of the volunteer.
+        if (boVolunteer.Id <= 0 || boVolunteer.Id.ToString().Length < 8 || boVolunteer.Id.ToString().Length > 9)
+        {
+            throw new ArgumentException("Invalid ID. It must be 8-9 digits.");
+        }
+
+        // Validate the FullName field.
+        if (string.IsNullOrWhiteSpace(boVolunteer.Name))
+        {
+            throw new ArgumentException("Name cannot be null or empty.");
+        }
+
+        // Validate the PhoneNumber field.
+        VolunteerManager.CheckPhonnumber(boVolunteer.Number_phone);
+
+        // Validate the Email field.
+        VolunteerManager.CheckEmail(boVolunteer.Email);
+
+        // Validate the Latitude field.
+        if (boVolunteer.Latitude.HasValue && (boVolunteer.Latitude.Value < -90 || boVolunteer.Latitude.Value > 90))
+        {
+            throw new ArgumentException("Latitude must be between -90 and 90.");
+        }
+
+        // Validate the Longitude field.
+        if (boVolunteer.Longitude.HasValue && (boVolunteer.Longitude.Value < -180 || boVolunteer.Longitude.Value > 180))
+        {
+            throw new ArgumentException("Longitude must be between -180 and 180.");
+        }
+
+        //Validate the address
+        //var isAddressValid = Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+        // if (!isAddressValid)
+        // {
+        //     throw new ArgumentException("The address provided is invalid.");
+        // }
+
+        //var isAddressValid
+        var isAddressValid = Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress);
+
+        if (!isAddressValid.Result)
+        {
+            throw new ArgumentException("The address provided is invalid.");
+        }
+
+    }
+ 
+
+    private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
+    private const string BaseUrl = "https://geocode.maps.co/search";
+
+   
+    public static async Task<bool> IsAddressValidAsync1(string address)
+    {
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
+
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+
+        try
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // שליחת בקשה אסינכרונית
+                HttpResponseMessage response = await client.GetAsync(query);
+
+                // בדיקה אם הסטטוס הצליח
+                bool isValid = response.IsSuccessStatusCode;
+
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+                return isValid;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            return false; // במקרה של שגיאה, מחזירים false
+        }
+    }
+
+    private static readonly HttpClient client = new HttpClient()
+    {
+        Timeout = TimeSpan.FromSeconds(3) // הגדרת זמן timeout (10 שניות)
+    };
+
+    public static async Task<bool> IsAddressValidAsync(string address)
+    {
+        if (string.IsNullOrWhiteSpace(address))
+            throw new ArgumentException("Address cannot be null or empty.");
+
+        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+
+        try
+        {
+            // ביצוע בקשה אסינכרונית עם ConfigureAwait(false) כדי למנוע בעיות עם UI thread
+            HttpResponseMessage response = await client.GetAsync(query).ConfigureAwait(false);
+
+            // החזרת True אם הסטטוס הצליח (2xx)
+            bool isValid = response.IsSuccessStatusCode;
+
+            Console.WriteLine($"Response Status Code: {response.StatusCode}");
+            return isValid;
+        }
+        catch (Exception ex)
+        {
+            // הדפסת השגיאה אם יש חריגה
+            Console.WriteLine($"Error: {ex.Message}");
+            return false; // במקרה של שגיאה מחזירים false
+        }
+    }
+
+
+    /// <summary>
+    /// Gets the latitude of a given address.
+    /// </summary>
+    /// <param name="address">The address to process.</param>
+    /// <returns>The latitude, or null if the address is invalid or not found.</returns>
+    //public static double GetLatitude(string address)
+    //{
+    //    var coordinates = GetCoordinates(address);
+    //    return coordinates?.Latitude ?? 0;
+    //}
+
+    ///// <summary>
+    ///// Gets the longitude of a given address.
+    ///// </summary>
+    ///// <param name="address">The address to process.</param>
+    ///// <returns>The longitude, or null if the address is invalid or not found.</returns>
+    //public static double GetLongitude(string address)
+    //{
+    //    var coordinates = GetCoordinates(address);
+    //    return coordinates?.Longitude ?? 0;
+    //}
+    /// <summary>
+    /// Computes the latitude and longitude of a given address using the Geocode API.
+    /// </summary>
+    /// <param name="address">The address to process.</param>
+    /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
+    //private static (double Latitude, double Longitude)? GetCoordinates(string address)
+    //{
+    //    if (string.IsNullOrWhiteSpace(address))
+    //        throw new ArgumentException("Address cannot be empty or null.", nameof(address));
+
+    //    string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&format=json&api_key={ApiKey}";
+
+    //    try
+    //    {
+    //        using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) }) // 5 second timeout
+    //        {
+    //            // Add "User-Agent" header (required in most APIs)
+    //            client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
+    //            HttpResponseMessage response = client.GetAsync(query).Result;
+    //            if (response.StatusCode != HttpStatusCode.OK)
+    //            {
+    //                throw new Exception($"Error in request: {response.StatusCode}");
+    //            }
+    //            string jsonResponse = response.Content.ReadAsStringAsync().Result;
+    //            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+    //            JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse);
+    //            JsonElement results = jsonDocument.RootElement;
+    //            if (results.ValueKind == JsonValueKind.Array && results.GetArrayLength() > 0)
+    //            {
+    //                JsonElement firstResult = results[0];
+    //                if (firstResult.TryGetProperty("lat", out JsonElement latElement) &&
+    //                    firstResult.TryGetProperty("lon", out JsonElement lonElement))
+    //                {
+    //                    if (double.TryParse(latElement.GetString(),
+    //                        System.Globalization.NumberStyles.Any,
+    //                        System.Globalization.CultureInfo.InvariantCulture,
+    //                        out double latitude) &&
+    //                        double.TryParse(lonElement.GetString(),
+    //                        System.Globalization.NumberStyles.Any,
+    //                        System.Globalization.CultureInfo.InvariantCulture,
+    //                        out double longitude))
+    //                    {
+    //                        return (latitude, longitude);
+    //                    }
+    //                }
+    //            }
+    //            throw new Exception("No coordinates found for the given address.");
+    //        }
+    //    }
+    //    catch (TimeoutException)
+    //    {
+    //        throw new Exception("The request timed out.");
+    //    }
+    //    catch (HttpRequestException ex)
+    //    {
+    //        throw new Exception($"Request error: {ex.Message}");
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw new Exception($"General error: {ex.Message}");
+    //    }
+    //}
 
 
 
