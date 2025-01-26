@@ -88,7 +88,7 @@ internal static class VolunteerManager
 
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
-    
+
         Tools.CheckId(boVolunteer.Id);
         if (existingVolunteer != null)
         {
@@ -148,30 +148,31 @@ internal static class VolunteerManager
         {
             lock (AdminManager.BlMutex) //stage 7
                 // mark himself as inactive - provided he is not handling the call at the moment
-                if (CallManager.GetCallInProgress(boVolunteer.Id)!=null)
-            {
-                throw new BO.BlCan_chang_to_NotActivException("The volunteer is currently handling a call and cannot be not Active.");
-            }
+                if (CallManager.GetCallInProgress(boVolunteer.Id) != null)
+                {
+                    throw new BO.BlCan_chang_to_NotActivException("The volunteer is currently handling a call and cannot be not Active.");
+                }
             //if (requesterRole != DO.Role.Manager)
             //{
             //    throw new BO.BlPermissionException("Only a manager is authorized to change the active status.");
             //}
         }
-        if(boVolunteer.Distance<0)
+        if (boVolunteer.Distance < 0)
         {
-            throw  new BO.BlIsLogicCallException("only positive number");
+            throw new BO.BlIsLogicCallException("only positive number");
 
         }
 
         // Add additional checks if there are any other restricted fields
     }
 
- 
+
     public static BO.Volunteer GetVolunteer(int id)
     {
         lock (AdminManager.BlMutex) //stage 7
 
-     {       DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");
+        {
+            DO.Volunteer? doVolunteer = _dal.Volunteer.Read(id) ?? throw new BlDoesNotExistException("eroor id");
 
             return new BO.Volunteer
             {
@@ -222,14 +223,15 @@ internal static class VolunteerManager
 
         lock (AdminManager.BlMutex) //stage 7
 
-         {   DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+        {
+            DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
-        //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
+            //Find the appropriate CALL  and  Assignmentn by volunteer ID
+            var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId && a.EndOfTime == null).FirstOrDefault();
 
-        var calls = _dal.Assignment.ReadAll(ass => ass.VolunteerId == VolunteerId);
+            var calls = _dal.Assignment.ReadAll(ass => ass.VolunteerId == VolunteerId);
 
-        int? currentCallId = calls.FirstOrDefault(ass => ass.EndOfTime == null)?.Id;
+            int? currentCallId = calls.FirstOrDefault(ass => ass.EndOfTime == null)?.Id;
 
 
             return new BO.VolunteerInList
@@ -251,11 +253,12 @@ internal static class VolunteerManager
     {
         lock (AdminManager.BlMutex) //stage 7
 
-  {          DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
+        {
+            DO.Volunteer? doVolunteer = _dal.Volunteer.Read(VolunteerId) ?? throw new BlDoesNotExistException("eroor id");// ז
 
-        //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId/* && a.EndOfTime == null*/).FirstOrDefault();
-        var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+            //Find the appropriate CALL  and  Assignmentn by volunteer ID
+            var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == VolunteerId/* && a.EndOfTime == null*/).FirstOrDefault();
+            var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
             // Create the object
             return new BO.ClosedCallInList
@@ -278,32 +281,33 @@ internal static class VolunteerManager
     {
         lock (AdminManager.BlMutex) //stage 7
 
-            {DO.Volunteer? doVolunteer = _dal.Volunteer.Read(volunteerId) ?? throw new BlDoesNotExistException("error id");
-
-        // Find the appropriate assignment by volunteer ID and call ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == volunteerId && a.CallId == callId).FirstOrDefault();
-        if (doAssignment == null)
         {
-            throw new BlDoesNotExistException("Assignment not found for the given call and volunteer.");
-        }
+            DO.Volunteer? doVolunteer = _dal.Volunteer.Read(volunteerId) ?? throw new BlDoesNotExistException("error id");
 
-        var doCall = _dal.Call.ReadAll().Where(c => c.Id == callId).FirstOrDefault();
-        if (doCall == null)
-        {
-            throw new BlDoesNotExistException("Call not found.");
-        }
+            // Find the appropriate assignment by volunteer ID and call ID
+            var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == volunteerId && a.CallId == callId).FirstOrDefault();
+            if (doAssignment == null)
+            {
+                throw new BlDoesNotExistException("Assignment not found for the given call and volunteer.");
+            }
 
-        // Get latitude and longitude of the volunteer's address asynchronously
-        //double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        //double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        double? latitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
-        double? longitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
+            var doCall = _dal.Call.ReadAll().Where(c => c.Id == callId).FirstOrDefault();
+            if (doCall == null)
+            {
+                throw new BlDoesNotExistException("Call not found.");
+            }
 
-        // Ensure latitude and longitude are valid before using them
-        if (!latitudeVolunteer.HasValue || !longitudeVolunteer.HasValue)
-        {
-            throw new BlGeneralException("Could not retrieve valid coordinates for the volunteer.");
-        }
+            // Get latitude and longitude of the volunteer's address asynchronously
+            //double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            //double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            double? latitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
+            double? longitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
+
+            // Ensure latitude and longitude are valid before using them
+            if (!latitudeVolunteer.HasValue || !longitudeVolunteer.HasValue)
+            {
+                throw new BlGeneralException("Could not retrieve valid coordinates for the volunteer.");
+            }
 
             // Create and return the OpenCallInList object
             return new BO.OpenCallInList
@@ -340,8 +344,8 @@ internal static class VolunteerManager
                     bool hasUpdated = false;
 
                     // בדיקה אם למתנדב יש קריאה בטיפולו
-   // var calls = s_bl.Call.GetOpenCall(_volunteerId, SelectedFilter, SelectedSort);  // Get open calls
-   //volunteer.CurrentCall==null???
+                    // var calls = s_bl.Call.GetOpenCall(_volunteerId, SelectedFilter, SelectedSort);  // Get open calls
+                    //volunteer.CurrentCall==null???
                     DO.Assignment activeAssignment;
                     lock (AdminManager.BlMutex)
                     {

@@ -21,12 +21,12 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     VolunteerManager.Observers.RemoveObserver(id, observer); //stage 5
     #endregion Stage 5
 
-    
+
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
+        IEnumerable<DO.Volunteer> volunteers = null;
         lock (AdminManager.BlMutex) //stage 7
-        { 
-            var volunteers = _dal.Volunteer.ReadAll();
+            volunteers = _dal.Volunteer.ReadAll();
 
         // Filter by activity status
         if (Active.HasValue)
@@ -39,7 +39,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             case BO.VolInList.Name:
                 volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // Sort by name
                 break;
-           
+
             case BO.VolInList.IsActive:
                 volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // Sort by activity status (active/inactive)
                 break;
@@ -47,6 +47,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
                 volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // Default sorting by ID
                 break;
         }
+    
         // Convert the list to a list of volunteers by their ID
         var volunteerList = volunteers
             .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
@@ -54,18 +55,22 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
         // Filter by call type after the conversion
 
-        return volunteerList;}
+        return volunteerList;
+    
     }
+
     public DO.Role PasswordEntered(int Id, string password)
     {
         /// <summary>
         /// Verifies the user's credentials and returns their role if valid.
         /// Throws exceptions if the user does not exist or the password is incorrect.
         /// </summary>
+        /// 
 
+         DO.Volunteer volunteer = null;
         lock (AdminManager.BlMutex) //stage 7
 
-       {     var volunteer = _dal.Volunteer.Read(Id);
+            volunteer = _dal.Volunteer.Read(Id);
         if (volunteer == null)
 
             throw new BO.BlDoesNotExistException("The user does not exist");
@@ -74,8 +79,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
             throw new BO.BlIncorrectPasswordException("The password is incorrect");
 
-        return volunteer.Role;}
+        return volunteer.Role;
     }
+    
 
     public BO.Volunteer Read(int id)
     {
@@ -100,11 +106,12 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        lock (AdminManager.BlMutex) //stage 7
+        DO.Volunteer requester = null;
 
             try
             {
-            var requester = _dal.Volunteer.Read(requesterId);
+            lock (AdminManager.BlMutex) //stage 7
+                requester = _dal.Volunteer.Read(requesterId);
 
             //if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
             //{
@@ -139,7 +146,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
-            _dal.Volunteer.Update(DOVolunteer);
+            lock (AdminManager.BlMutex) //stage 7
+                _dal.Volunteer.Update(DOVolunteer);
          
 
         }
@@ -186,11 +194,12 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     public void Delete(int volunteerId)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+      IEnumerable < DO.Assignment> assignments = null;
 
         lock (AdminManager.BlMutex) //stage 7
 
-         {   // Retrieve all assignments associated with the volunteer
-            var assignments = _dal.Assignment.ReadAll()
+         // Retrieve all assignments associated with the volunteer
+             assignments = _dal.Assignment.ReadAll()
             .Where(a => a.VolunteerId == volunteerId)
             .ToList();
 
@@ -204,6 +213,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             // Attempt to delete the volunteer from the data layer
             try
             {
+            lock (AdminManager.BlMutex) //stage 7
                 _dal.Volunteer.Delete(volunteerId);
                 //VolunteerManager.Observers.NotifyItemUpdated(volunteerId);
 
@@ -213,17 +223,16 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             {
                 throw new BlDoesNotExistException($"The volunteer with ID {volunteerId} was not found in the system.", ex);
             }
-        }
+        
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
     }
 
     public void Create(BO.Volunteer boVolunteer)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+        DO.Volunteer existingVolunteer = null;  
 
-        lock (AdminManager.BlMutex) //stage 7
-
-            try
+        try
             {
             // 1. Format checks
             VolunteerManager.CheckFormat(boVolunteer); // Validate the format of the volunteer's data (phone number, email, address)
@@ -231,7 +240,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             //VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
 
             // 2. Check if the volunteer already exists in the data layer
-            var existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
+            lock (AdminManager.BlMutex) //stage 7
+                 existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
             if (existingVolunteer != null)
             {
                 throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists."); // If exists, throw an exception
@@ -259,7 +269,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             boVolunteer.Longitude = Tools.GetLongitude(boVolunteer.FullCurrentAddress);
 
             // 5. Add the volunteer to the data layer
-            _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
+            lock (AdminManager.BlMutex) //stage 7
+                _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
 
         }
         catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception

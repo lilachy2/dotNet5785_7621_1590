@@ -28,10 +28,10 @@ internal class CallImplementation : BlApi.ICall
     {
         try
         {
+            IEnumerable<DO.Call> doCalls = null;
             lock (AdminManager.BlMutex) //stage 7
-
-            {    // Fetching calls from the data layer
-                var doCalls = _dal.Call.ReadAll();
+                // Fetching calls from the data layer
+                 doCalls = _dal.Call.ReadAll();
 
                 // Converting the calls from DO to BO using your function
                 var boCalls = doCalls.Select(doCall => CallManager.GetViewingCall(doCall.Id)).ToList();
@@ -54,7 +54,7 @@ internal class CallImplementation : BlApi.ICall
                 quantities[6] = quantities.Take(6).Sum();
 
                 return quantities;
-            }
+            
         }
         catch (Exception ex)
         {
@@ -66,15 +66,15 @@ internal class CallImplementation : BlApi.ICall
 
     public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy, BO.CallStatus? statusFilter = null)
     {
+        IEnumerable<DO.Call> calls = null;
+        IEnumerable<BO.CallInList> boCallsInList = null;
         lock (AdminManager.BlMutex) //stage 7
 
         {
-            IEnumerable<DO.Call> calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
-
-
+           calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
             //IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
-            IEnumerable<BO.CallInList> boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call)).ToList();
-
+            boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call)).ToList();
+}
 
             // סינון לפי Calltype
             if (filter != null && obj != null)
@@ -149,7 +149,7 @@ internal class CallImplementation : BlApi.ICall
             }
 
             return boCallsInList;
-        }
+        
     }
 
     public BO.Call Read(int callId)
@@ -259,10 +259,11 @@ internal class CallImplementation : BlApi.ICall
 
         try
         {
+            BO.Call call = null;
             // Retrieve the call and convert it to a BO.Call object using the GetAdd_update_Call function
             lock (AdminManager.BlMutex) //stage 7
             {
-                BO.Call call = CallManager.GetViewingCall(callId);
+              call = CallManager.GetViewingCall(callId);
 
                 // Check the call's status (must be Open)
                 if (call.Status != BO.CallStatus.Open)
@@ -288,17 +289,14 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"There is no call with the received ID = {callId}");
         }
     }
-
-
     public List<BO.ClosedCallInList> GetCloseCall(int volunteerId, BO.Calltype? callType, ClosedCallInListEnum? closedCallInListEnum)
     {
         try
         {
+            IEnumerable <Assignment> volunteerAssignments = null;
             // Step 1: Get all assignments for the specific volunteer that have been completed (EndOfTime is not null)
             lock (AdminManager.BlMutex) //stage 7
-
-            {
-                var volunteerAssignments = _dal.Assignment.ReadAll()
+                 volunteerAssignments = _dal.Assignment.ReadAll()
                 .Where(a => a.VolunteerId == volunteerId && a.EndOfTime != null)
                 .ToList();
 
@@ -308,7 +306,9 @@ internal class CallImplementation : BlApi.ICall
                     {
                         try
                         {
-                            var call = _dal.Call.Read(assignment.CallId);
+                            DO.Call call = null;
+                            lock (AdminManager.BlMutex)
+                                 call = _dal.Call.Read(assignment.CallId);
                             if (call == null) return null; // Skip if the call is not found
 
                             return new BO.ClosedCallInList
@@ -352,7 +352,7 @@ internal class CallImplementation : BlApi.ICall
                 };
 
                 return boClosedCalls;
-            }
+            
         }
         catch (Exception ex)
         {
@@ -360,21 +360,25 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
-
     public IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
     {
-        lock (AdminManager.BlMutex) //stage 7
+        DO.Volunteer volunteer = null;
+        IEnumerable<BO.CallInList> allCalls = null;
+        IEnumerable<Assignment> allAssignments = null;
 
-        {
-            DO.Volunteer volunteer = _dal.Volunteer.Read(id);
+        lock (AdminManager.BlMutex) //stage 7
+            volunteer = _dal.Volunteer.Read(id);
             if (volunteer == null)
                 throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist");
 
-            // Retrieve all calls from the BO
-            IEnumerable<BO.CallInList> allCalls = GetCallsList(null, null, null);
+        // Retrieve all calls from the BO
+        lock (AdminManager.BlMutex) //stage 7
+        {
+            allCalls = GetCallsList(null, null, null);
 
             // Retrieve all assignments from the DAL
-            var allAssignments = _dal.Assignment.ReadAll();
+             allAssignments = _dal.Assignment.ReadAll();
+        }
             double? lonVol = Tools.GetLongitude(volunteer.FullCurrentAddress);
             double? latVol = Tools.GetLatitude(volunteer.FullCurrentAddress);
 
@@ -427,28 +431,34 @@ internal class CallImplementation : BlApi.ICall
             }
 
             return filteredCalls;
-        }
+        
     }
 
     public void ChooseCall(int idVol, int idCall)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
+        DO.Volunteer vol = null;
+        BO.Call boCall = null;
+        IEnumerable<Assignment> existingAssignments = null;
+
         lock (AdminManager.BlMutex) //stage 7
 
         // Retrieve volunteer and call; throw exception if not found.
-        {
-            DO.Volunteer vol = _dal.Volunteer.Read(idVol) ??
+        
+          {  vol = _dal.Volunteer.Read(idVol) ??
                            throw new BO.BlNullPropertyException($"There is no volunteer with this ID {idVol}");
-            BO.Call boCall = Read(idCall) ??
-                             throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
+            boCall = Read(idCall) ??
+                            throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
+}
 
             // Check if the call is open.
             if (boCall.Status != BO.CallStatus.Open)
                 throw new BO.BlAlreadyExistsException($"The call is not open or is already being handled. IdCall = {idCall}");
 
+        lock (AdminManager.BlMutex)
             // Check if the call already has an open assignment.
-            var existingAssignments = _dal.Assignment.ReadAll()
+            existingAssignments = _dal.Assignment.ReadAll()
                                     .Where(a => a.CallId == idCall && a.time_end_treatment == null)
                                     .ToList();
 
@@ -472,6 +482,7 @@ internal class CallImplementation : BlApi.ICall
 
             try
             {
+            lock (AdminManager.BlMutex)
                 // Try to create the assignment in the database.
                 _dal.Assignment.Create(assigmnetToCreat);
                 //CallManager.Observers.NotifyItemUpdated(assigmnetToCreat.Id);  //stage 5
@@ -483,7 +494,7 @@ internal class CallImplementation : BlApi.ICall
                 // Handle error if creation fails.
                 throw new BO.BlAlreadyExistsException("Impossible to create the assignment.");
             }
-        }
+        
 
         CallManager.Observers.NotifyItemUpdated(idCall);  //stage 5
         CallManager.Observers.NotifyListUpdated();  //stage 5
@@ -498,15 +509,17 @@ internal class CallImplementation : BlApi.ICall
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        lock (AdminManager.BlMutex) //stage 7
+        DO.Assignment assigmnetToCancel = null; 
 
-      { 
-        DO.Assignment assigmnetToCancel = _dal.Assignment.Read(idAssig) ?? throw new BO.BlDeletionImpossibleException("there is no assigment with this ID");
+        lock (AdminManager.BlMutex) //stage 7
+        assigmnetToCancel = _dal.Assignment.Read(idAssig) ?? throw new BO.BlDeletionImpossibleException("there is no assigment with this ID");
+
         bool ismanager = false;
 
         if (assigmnetToCancel.VolunteerId != idVol)
         {
-            if (_dal.Volunteer.Read(idVol).Role == DO.Role.Manager)
+            lock (AdminManager.BlMutex) //stage 7
+                if (_dal.Volunteer.Read(idVol).Role == DO.Role.Manager)
                 ismanager = true;
             else throw new BO.BlDeletionImpossibleException("the volunteer is not manager or not in this call");
         }
@@ -525,6 +538,7 @@ internal class CallImplementation : BlApi.ICall
 
             try
             {
+            lock (AdminManager.BlMutex) //stage 7
                 _dal.Assignment.Update(assigmnetToUP);
             }
 
@@ -532,7 +546,7 @@ internal class CallImplementation : BlApi.ICall
             {
                 throw new BO.BlDeletionImpossibleException("canot delete in DO");
             }
-       }
+       
 
 
         VolunteerManager.Observers.NotifyListUpdated();
@@ -549,10 +563,10 @@ internal class CallImplementation : BlApi.ICall
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
+        DO.Assignment assignmentToClose = null;
         lock (AdminManager.BlMutex) //stage 7
-      {
             // Retrieve the assignment by its ID; throw an exception if not found.
-            DO.Assignment assignmentToClose = _dal.Assignment.Read(idAssig) ?? throw new BO.BlNullPropertyException("There is no assignment with this ID");
+            assignmentToClose = _dal.Assignment.Read(idAssig) ?? throw new BO.BlNullPropertyException("There is no assignment with this ID");
 
         // Check if the volunteer matches the one in the assignment; throw an exception if not.
         if (assignmentToClose.VolunteerId != idVol)
@@ -577,7 +591,8 @@ internal class CallImplementation : BlApi.ICall
 
             try
             {
-                // Attempt to update the assignment in the database.
+            // Attempt to update the assignment in the database.
+            lock (AdminManager.BlMutex) //stage 7
                 _dal.Assignment.Update(assignmentToUP);
 
             }
@@ -586,7 +601,7 @@ internal class CallImplementation : BlApi.ICall
                 // Handle error if updating the assignment fails.
                 throw new DO.Incompatible_ID("Cannot update in DO");
             }
-       }
+       
 
         VolunteerManager.Observers.NotifyListUpdated();
         VolunteerManager.Observers.NotifyItemUpdated(idVol);
