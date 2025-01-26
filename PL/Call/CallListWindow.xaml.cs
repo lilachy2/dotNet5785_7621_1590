@@ -185,7 +185,7 @@ namespace PL.Call
             try
             {
                 CallWindow callWindow = new CallWindow();
-                callWindow.ShowDialog();
+                callWindow.Show();
                 UpdateCallList();
 
                 IsBalloonVisible = true;
@@ -209,7 +209,7 @@ namespace PL.Call
                 try
                 {
                     CallWindow callWindow = new CallWindow(SelectedCall.CallId);
-                    callWindow.ShowDialog();
+                    callWindow.Show();
                 }
                 catch (Exception ex)
                 {

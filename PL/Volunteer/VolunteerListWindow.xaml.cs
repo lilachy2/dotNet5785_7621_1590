@@ -151,7 +151,7 @@ namespace PL.Volunteer
             {
                 // Create and open the volunteer window to add a new volunteer
                 VolunteerWindow volunteerWindow = new VolunteerWindow();
-                volunteerWindow.ShowDialog();
+                volunteerWindow.Show();
 
                 // After adding a volunteer, refresh the list automatically
                 UpdateVolunteerList();
@@ -175,7 +175,7 @@ namespace PL.Volunteer
                 {
                     // Send the ID of the selected volunteer to the new window
                     VolunteerWindow volunteerWindow = new VolunteerWindow(SelectedVolunteer.Id);
-                    volunteerWindow.ShowDialog();
+                    volunteerWindow.Show();
                 }
                 catch (Exception ex)
                 {

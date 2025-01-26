@@ -71,16 +71,6 @@
     <MaxEndTime>2025-01-23T12:57:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.024217786396857</Latitude>
-    <Longitude>34.62003734981006</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1008</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>1501 15th Street, Denver, CO, USA</ReadAddress>
-    <OpeningTime>2025-01-23T07:44:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>32.60246693507082</Latitude>
     <Longitude>35.10678476632248</Longitude>
     <Calltype>resuscitation</Calltype>
@@ -109,16 +99,6 @@
     <ReadAddress>88 Via Spiga, Milan, Italy</ReadAddress>
     <OpeningTime>2025-01-23T20:35:29</OpeningTime>
     <MaxEndTime>2025-01-23T20:52:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.677920792246933</Latitude>
-    <Longitude>34.66712807525999</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1012</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>101 Pitt Street, Sydney, NSW, Australia</ReadAddress>
-    <OpeningTime>2025-01-23T22:43:29</OpeningTime>
-    <MaxEndTime>2025-01-23T22:01:29</MaxEndTime>
   </Call>
   <Call>
     <Latitude>32.74255641314139</Latitude>
@@ -489,5 +469,25 @@
     <ReadAddress>33 Boulevard Saint-Germain, Paris, France</ReadAddress>
     <OpeningTime>2025-01-24T09:46:29</OpeningTime>
     <MaxEndTime>2025-01-24T10:12:29</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>-33.893243</Latitude>
+    <Longitude>151.20404238463595</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1012</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>101 Pitt Street, Sydney, NSW, Australia</ReadAddress>
+    <OpeningTime>2025-01-23T22:43:29</OpeningTime>
+    <MaxEndTime>2025-01-23T22:55:29</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>39.7407944</Latitude>
+    <Longitude>-104.9888647</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1008</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>1501 15th Street, Denver, CO, USA</ReadAddress>
+    <OpeningTime>2025-01-23T07:44:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

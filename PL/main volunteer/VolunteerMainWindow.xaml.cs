@@ -202,12 +202,12 @@ namespace PL.main_volunteer
         private void ViewVolunteerHistoryButton_Click(object sender, RoutedEventArgs e)
         {
             var volunteerHistoryWindow = new VolunteerHistoryWindow(Volunteer.Id, this);
-            volunteerHistoryWindow.ShowDialog();
+            volunteerHistoryWindow.Show();
         }
         private void ChooseCallButton_Click(object sender, RoutedEventArgs e)
         {
             var chooseCallWindow = new ChooseCallWindow(Volunteer.Id);
-            chooseCallWindow.ShowDialog();
+            chooseCallWindow.Show();
             if (Volunteer.CurrentCall == null)
             {
                 CurrentCallVisibility = Visibility.Visible; // מתנדב יכול לבחור קריאה חדשה

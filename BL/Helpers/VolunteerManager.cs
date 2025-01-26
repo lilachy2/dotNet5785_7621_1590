@@ -1,4 +1,5 @@
 ﻿
+using BlApi;
 using BO;
 using DalApi;
 using DO;
@@ -9,7 +10,7 @@ namespace Helpers;
 
 internal static class VolunteerManager
 {
-    private static IDal _dal = Factory.Get; //stage 4
+    private static DalApi.IDal _dal = DalApi.Factory.Get; //stage 4
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
     internal static ObserverManager Observers = new(); //stage 5 
@@ -359,22 +360,21 @@ internal static class VolunteerManager
                         if (new Random().NextDouble() <= 0.2) // הסתברות של 20%
                         {
                             List<BO.Call> availableCalls;
+                            IEnumerable<DO.Call> callsFromDal = null;
                             lock (AdminManager.BlMutex)
-                            {
-                                // שליפת כל הקריאות מהשכבה התחתונה (DAL)
-                                var callsFromDal = _dal.Call.ReadAll().ToList();
+                                callsFromDal= _dal.Call.ReadAll().ToList();
 
-                                // המרת הקריאות ל-BO וסינון על בסיס בדיקה דינמית
-                                availableCalls = callsFromDal
+                            // המרת הקריאות ל-BO וסינון על בסיס בדיקה דינמית
+                            availableCalls = callsFromDal
                                     .Where(c => AreCoordinatesCalculated(c)) // סינון קריאות עם קואורדינטות תקינות
-                                    .Select(c => CallManager.BOConvertDO_Call(c.Id)) // המרה ל-BO
+                                    .Select(c => CallManager.GetViewingCall(c.Id)) // המרה ל-BO
                                     .Where(c => c.Status == BO.CallStatus.Open) // סינון סטטוס פתוח
                                     .ToList();
-                            }
+                            
 
                             if (availableCalls.Any())
                             {
-                                var randomCall = availableCalls[new Random().Next(availableCalls.Count)];
+                                var randomCall = availableCalls[new Random().Next(availableCalls.Count)];//take random call in index next count
                                 lock (AdminManager.BlMutex)
                                 {
                                     s_bl.Call.ChooseCall(volunteer.Id, randomCall.Id);
@@ -395,7 +395,7 @@ internal static class VolunteerManager
                             // סיום הטיפול
                             lock (AdminManager.BlMutex)
                             {
-                                s_bl.Call.UpdateEndTreatment(volunteer.Id, activeAssignment.Id);
+                                s_bl.Call.UpdateEndTreatment(volunteer.Id, activeAssignment.CallId);
 
                             }
                             hasUpdated = true;
@@ -405,7 +405,7 @@ internal static class VolunteerManager
                             // ביטול הטיפול
                             lock (AdminManager.BlMutex)
                             {
-                                s_bl.Call.UpdateCancelTreatment(volunteer.Id, activeAssignment.Id);
+                                s_bl.Call.UpdateCancelTreatment(volunteer.Id, activeAssignment.CallId);
                             }
                             hasUpdated = true;
                         }
@@ -415,8 +415,10 @@ internal static class VolunteerManager
                     if (hasUpdated)
                     {
                         Observers.NotifyItemUpdated(volunteer.Id);
+                        Observers.NotifyListUpdated();
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -430,7 +432,7 @@ internal static class VolunteerManager
         // Placeholder for distance-based time calculation logic
         // You can replace it with a proper distance calculation and time estimation logic
         Random random = new Random();
-        return random.Next(5, 15); // Random time between 5 and 15 minutes
+        return random.Next(10, 30); // Random time between 10 and 30 minutes
     }
     private static bool AreCoordinatesCalculated(DO.Call dalCall)
     {

@@ -203,10 +203,11 @@ internal static class AdminManager //stage 4
 
         //StudentManager.PeriodicStudentsUpdates(oldClock, newClock); //stage 4
         if (_periodicTask is null || _periodicTask.IsCompleted) //stage 7
-            _periodicTask = Task.Run(() => CallManager.UpdateCallsToExpired(oldClock, newClock)); //stage 4
+            _periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
+
+       //     _periodicTask = Task.Run(() => CallManager.UpdateCallsToExpired(oldClock, newClock)); //stage 4
 
             //_periodicTask = Task.Run(() => StudentManager.PeriodicStudentsUpdates(oldClock, newClock));
-            _periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
         //etc ...
 
         //Calling all the observers of clock update
@@ -291,40 +292,6 @@ internal static class AdminManager //stage 4
     }
 
 
-    //internal static void CheckIfExpiredCall() // המתודה לעדכון קריאות שפגו
-    //{
-    //    IEnumerable<DO.Call> calls = s_dal.Call.ReadAll(); // קריאה לכל הקריאות
-    //    IEnumerable<BO.Call> boCalls = from dCall in calls
-    //                                   where (dCall.MaxEndTime == null ? true : dCall.MaxEndTime < s_dal.Config.Clock)
-    //                                   select (CallManager.GetViewingCall(dCall.Id)); // בודקים אם הקריאה פגומה
-
-    //    foreach (BO.Call call in boCalls)
-    //    {
-    //        if (call.CallAssignments == null || call.CallAssignments.Count == 0) // אם אין הקצאה לקריאה
-    //        {
-    //            s_dal.Assignment.Create(new DO.Assignment(0, call.Id, 0, s_dal.Config.Clock, s_dal.Config.Clock, DO.AssignmentCompletionType.Expired));
-    //            CallManager.Observers.NotifyItemUpdated(call.Id);  //עדכון הצופה לקריאה
-    //            CallManager.Observers.NotifyListUpdated(); //עדכון הצופים לכל הקריאות
-    //        }
-    //        else // אם יש הקצאה לקריאה
-    //        {
-    //            var lastAss = call.CallAssignments.OrderByDescending(a => a.EnterTime).First(); // מקבלים את ההקצאה האחרונה
-    //            if (lastAss.CompletionTime == null) // אם ההקצאה לא הושלמה
-    //            {
-    //                var assing = s_dal.Assignment.Read(a => a.VolunteerId == lastAss.VolunteerId && a.EndOfTime == null && a.time_end_treatment == null);
-    //                s_dal.Assignment.Update(new DO.Assignment(assing.Id, assing.VolunteerId, lastAss.VolunteerId??0, lastAss.EnterTime, s_dal.Config.Clock, DO.AssignmentCompletionType.Expired));
-    //                VolunteerManager.Observers.NotifyItemUpdated(assing.VolunteerId); //עדכון הצופה של המתנדב
-    //                VolunteerManager.Observers.NotifyListUpdated(); //עדכון הצופים לכל המתנדבים
-    //            }
-    //        }
-    //    }
-
-    //    // הפעלת המתודה בצורה אסינכרונית אם עדיין לא בוצעה
-    //    if (_periodicTask is null || _periodicTask.IsCompleted)
-    //    {
-    //        _periodicTask = Task.Run(() => CheckIfExpiredCall()); // קריאה אסינכרונית
-    //    }
-    //}
 
     internal static void CheckIfExpiredCall(DateTime oldClock, DateTime newClock) // המתודה לעדכון קריאות שפגו
     {
