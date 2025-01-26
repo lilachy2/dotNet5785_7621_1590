@@ -189,8 +189,6 @@ internal static class CallManager
     {
         return degrees * (Math.PI / 180);
     }
-
-
     public static bool IsInRisk(DO.Call call)
     { //stage 7
         lock (AdminManager.BlMutex) //stage 7
@@ -254,10 +252,7 @@ internal static class CallManager
 
     }
 
-
-
-
-    // CALL - function for viewing, function that checks for correctness (add and update) + helper method
+ // CALL - function for viewing, function that checks for correctness (add and update) + helper method
     // helper method- 1- GetCallAssignmentsForCall 2- CalculateCallStatus
     public static BO.Call GetViewingCall(int CallId)
     {
@@ -298,7 +293,7 @@ internal static class CallManager
 {            var doAssignments = _dal.Assignment.ReadAll().Where(a => a.CallId == callId).ToList();
 
         // If no assignments are found, return null
-        if (/*!doAssignments.Any()*/doAssignments == null)
+        if (doAssignments == null)
         {
             return null; // No assignments found
         }
@@ -370,8 +365,7 @@ internal static class CallManager
         {    DO.Volunteer? doVolunteer = _dal.Volunteer.Read(Id) ?? throw new BlDoesNotExistException("eroor id");// ז
 
         //Find the appropriate CALL  and  Assignmentn by volunteer ID
-        var doAssignment = _dal.Assignment.ReadAll().Where(a => a./*CallId*/VolunteerId == Id /*&& a.EndOfTime == null*/).FirstOrDefault();
-        //var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
+        var doAssignment = _dal.Assignment.ReadAll().Where(a => a.VolunteerId == Id ).FirstOrDefault();
 
 
         if (doAssignment == null)
@@ -399,9 +393,7 @@ internal static class CallManager
 
         {
             var assignmentsForCall = _dal.Assignment.ReadAll(a => a.CallId == doCall.Id) ?? Enumerable.Empty<DO.Assignment>();
-            //var lastAssignmentsForCall = assignmentsForCall.OrderByDescending(item => item.time_entry_treatment).FirstOrDefault();
 
-            ////??
             var lastAssignmentsForCall = assignmentsForCall
          .OrderByDescending(item => item.time_end_treatment)  // מיון לפי time_entry_treatment בסדר יורד
          .LastOrDefault();  // לוקחים את האחרון אחרי המיון
@@ -439,7 +431,6 @@ internal static class CallManager
 
         }
     }
-
 
     // Convert 
     public static DO.Call BOConvertDO_Call(int Id)
@@ -518,41 +509,6 @@ internal static class CallManager
             return completedAssignment.time_end_treatment - completedAssignment.time_entry_treatment;
         }
     }
-    //public static void UpdateCallsToExpired1(DateTime oldClock, DateTime newClock)
-    //{
-    //    var assignmentsToUpdate = _dal.Assignment.ReadAll()
-    //        .Where(a => a.EndOfTime == null && a.time_entry_treatment <= newClock && a.CallId != 0)
-    //        .ToList();
-
-    //    var updatedAssignments = assignmentsToUpdate
-    //        .Select(a => new DO.Assignment
-    //        {
-    //            Id = a.Id,
-    //            CallId = a.CallId,
-    //            VolunteerId = a.VolunteerId,
-    //            time_entry_treatment = a.time_entry_treatment,
-    //            time_end_treatment = newClock, // עדכון זמן סיום
-    //            EndOfTime = DO.AssignmentCompletionType.Expired // סטטוס "פג תוקף"
-    //        }).ToList();
-
-    //    updatedAssignments.ForEach(a => _dal.Assignment.Update(a) );
-
-    //    var callIdsToUpdate = updatedAssignments.Select(a => a.CallId).Distinct().ToList();
-
-    //    var callsToUpdate = _dal.Call.ReadAll()
-    //        .Where(c => callIdsToUpdate.Contains(c.Id))
-    //        .ToList();
-
-    //    callsToUpdate.ForEach(call =>
-    //    {
-    //        lock (AdminManager.BlMutex) //stage 7
-    //            _dal.Call.Update(call); // Update the call in the data layer
-    //        Observers.NotifyItemUpdated(call.Id); // Notify that a single item was updated
-    //    });
-    //    Observers.NotifyListUpdated(); // Notify that the list has been updated
-
-    //}
-
     public static void UpdateCallsToExpired(DateTime oldClock, DateTime newClock)
     {
         List<DO.Assignment> assignmentsToUpdate;
