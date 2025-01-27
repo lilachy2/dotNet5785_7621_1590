@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 namespace Helpers;
 internal static class Tools
 {
-    private static readonly DalApi.IDal _dal = DalApi.Factory.Get; 
-   public static string ToStringProperty<T>(this T t)
+    private static readonly DalApi.IDal _dal = DalApi.Factory.Get;
+    public static string ToStringProperty<T>(this T t)
     {
         if (t == null)
             return string.Empty; // Return an empty string if the object is null.
@@ -99,6 +99,9 @@ internal static class Tools
     /// <returns>A tuple of latitude and longitude, or null if the address is invalid or not found.</returns>
 
 
+    private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
+    private const string BaseUrl = "https://geocode.maps.co/search";
+
     public static async Task<(double Latitude, double Longitude)?> GetCoordinatesAsync(string address)
     {
         if (string.IsNullOrWhiteSpace(address))
@@ -108,11 +111,11 @@ internal static class Tools
 
         try
         {
-            using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) }) // 5 second timeout
+            using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(3) }) // 5 second timeout
             {
                 // Add "User-Agent" header (required in most APIs)
                 client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
-                HttpResponseMessage response = await client.GetAsync(query);
+                HttpResponseMessage response = await client.GetAsync(query).ConfigureAwait(false);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     throw new Exception($"Error in request: {response.StatusCode}");
@@ -205,12 +208,9 @@ internal static class Tools
         }
 
     }
- 
 
-    private const string ApiKey = "67589f7ea5000746604541qlg6b8a20"; // המפתח API שלך
-    private const string BaseUrl = "https://geocode.maps.co/search";
 
-   
+
     public static async Task<bool> IsAddressValidAsync1(string address)
     {
         if (string.IsNullOrWhiteSpace(address))
@@ -442,7 +442,7 @@ internal static class Tools
         // A valid ID has a checksum that is divisible by 10
         if (sum % 10 != 0)
         {
-            throw new BO.BlWrongItemtException($"This ID {id} is not valid.");
+            throw new BO.InvalidOperationException($"This ID {id} is not valid.");
         }
     }
 
@@ -480,8 +480,8 @@ internal static class Tools
 
         // check CurrentCallId
         lock (AdminManager.BlMutex) //stage 7
-         {   var assignment = _dal.Assignment.ReadAll()
-                .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
+        { var assignment = _dal.Assignment.ReadAll()
+               .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
             return assignment?.CallId;
         }
 
@@ -490,19 +490,22 @@ internal static class Tools
     {
         lock (AdminManager.BlMutex) //stage 7
 
-     {       // בדיקת האם יש קריאה בטיפול
+        {       // בדיקת האם יש קריאה בטיפול
             var assignment = _dal.Assignment.ReadAll()
             .FirstOrDefault(a => a.VolunteerId == Id && a.time_end_treatment == null);
 
-        // אם לא קיימת קריאה בטיפולו, מחזיר None
-        if (assignment == null)
-        {
-            return BO.Calltype.None;
-        }
-        var call = _dal.Call.ReadAll()
-           .FirstOrDefault(c => c.Id == assignment.CallId).Calltype;
+            // אם לא קיימת קריאה בטיפולו, מחזיר None
+            if (assignment == null)
+            {
+                return BO.Calltype.None;
+            }
+            var call = _dal.Call.ReadAll()
+               .FirstOrDefault(c => c.Id == assignment.CallId).Calltype;
             return (BO.Calltype)call;
-}
+        }
     }
+
+
+
 
 }

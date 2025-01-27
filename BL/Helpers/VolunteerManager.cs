@@ -23,6 +23,10 @@ internal static class VolunteerManager
             Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress);
             IsStrongPassword(boVolunteer.Password);
         }
+        catch(BO.InvalidOperationException ex)
+        {
+            throw new BO.InvalidOperationException("",ex);
+        }
         catch (BO.BlWrongItemtException ex)
         {
             throw new BO.BlWrongItemtException($"the item have logic problem", ex);

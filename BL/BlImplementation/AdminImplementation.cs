@@ -88,7 +88,16 @@ internal class AdminImplementation : IAdmin
 
 
     public TimeSpan GetMaxRange() => AdminManager.MaxRange;
-    public void SetMaxRange(TimeSpan maxRange) => AdminManager.MaxRange = maxRange;
+    public void SetMaxRange(TimeSpan maxRange)
+    {
+        if (maxRange <= TimeSpan.FromHours(0))
+        {
+            throw new BlRiskRangException("Risk Range must be positive"); 
+        }
+
+        AdminManager.MaxRange = maxRange;
+
+    }
 
 
     public void StartSimulator(int interval)  //stage 7

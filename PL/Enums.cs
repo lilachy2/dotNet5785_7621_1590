@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace PL;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PL
-{
+
     public class VolunteerFilterCollection : IEnumerable
     {
         static readonly IEnumerable<BO.VolInList> s_enums =
@@ -50,7 +50,6 @@ namespace PL
     {
         static readonly IEnumerable<BO.OpenCallInListEnum> OpenCallInListEnums =
             Enum.GetValues(typeof(BO.OpenCallInListEnum)).Cast<BO.OpenCallInListEnum>();
-
         public IEnumerator GetEnumerator() => OpenCallInListEnums.GetEnumerator();
     }
     public class CallInListEnum : IEnumerable
@@ -60,4 +59,4 @@ namespace PL
 
         public IEnumerator GetEnumerator() => CallInListEnums.GetEnumerator();
     }
-}
+

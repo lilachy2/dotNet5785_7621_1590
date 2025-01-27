@@ -65,13 +65,13 @@ internal static class CallManager
         // Validate that the address is not null or empty.
         if (string.IsNullOrWhiteSpace(boCall.FullAddress))
         {
-            throw new ArgumentException("Address cannot be null or empty.");
+            throw new BlInvalidaddress("Address cannot be null or empty.");
         }
 
         // Validate the address format using an external API.
         if (!Tools.IsAddressValidAsync(boCall.FullAddress).Result)
         {
-            throw new ArgumentException("The address is invalid.");
+            throw new BlInvalidaddress("The address is invalid.");
         }
     }
 

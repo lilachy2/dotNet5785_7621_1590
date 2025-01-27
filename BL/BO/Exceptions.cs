@@ -139,3 +139,12 @@ public class BlIsLogicCallException : Exception
 }
 
 
+public class BlRiskRangException : Exception
+{
+    public BlRiskRangException(string? message) : base(message) { }
+    public BlRiskRangException(string message, Exception innerException)
+              : base(message, innerException) { }
+
+}
+
+

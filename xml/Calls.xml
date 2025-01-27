@@ -11,16 +11,6 @@
     <MaxEndTime>2025-01-23T17:23:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.364497971678595</Latitude>
-    <Longitude>35.145100050339536</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1002</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>67 Lillehammer, Norway</ReadAddress>
-    <OpeningTime>2025-01-22T13:41:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>29.631988660302476</Latitude>
     <Longitude>34.66758499388084</Longitude>
     <Calltype>resuscitation</Calltype>
@@ -101,16 +91,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>29.925048630843</Latitude>
-    <Longitude>35.69628877317866</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1014</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
-    <OpeningTime>2025-01-24T12:47:29</OpeningTime>
-    <MaxEndTime>2025-01-24T13:40:29</MaxEndTime>
-  </Call>
-  <Call>
     <Latitude>30.247318917619616</Latitude>
     <Longitude>35.132765878948405</Longitude>
     <Calltype>fainting</Calltype>
@@ -148,16 +128,6 @@
     <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
     <ReadAddress>56 Namba, Osaka, Japan</ReadAddress>
     <OpeningTime>2025-01-24T08:15:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>31.749669667606113</Latitude>
-    <Longitude>34.79404937337293</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1019</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>91 Rue de la République, Lyon, France</ReadAddress>
-    <OpeningTime>2025-01-24T13:15:29</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
@@ -351,16 +321,6 @@
     <MaxEndTime>2025-01-22T18:18:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.550903247409295</Latitude>
-    <Longitude>34.50595037865192</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1040</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>34 Paseo de la Castellana, Madrid, Spain</ReadAddress>
-    <OpeningTime>2025-01-24T13:37:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>29.50990754953962</Latitude>
     <Longitude>35.33400083338701</Longitude>
     <Calltype>broken_bone</Calltype>
@@ -461,23 +421,113 @@
     <MaxEndTime>2025-01-24T10:12:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>-33.893243</Latitude>
-    <Longitude>151.20404238463595</Longitude>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1050</Id>
+    <VerbalDescription>הייי</VerbalDescription>
+    <ReadAddress>67 Rue Paradis, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-27T21:14:47.0268489+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1051</Id>
+    <VerbalDescription>הי</VerbalDescription>
+    <ReadAddress>67 Rue Paradis, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-27T21:15:31.0316963+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1052</Id>
+    <VerbalDescription>ל</VerbalDescription>
+    <ReadAddress>123 5th Avenue, New York, NY, USA</ReadAddress>
+    <OpeningTime>2025-01-27T21:15:58.006865+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1008</Id>
+    <VerbalDescription>ל</VerbalDescription>
+    <ReadAddress>123 5th Avenue, New York, NY, USA</ReadAddress>
+    <OpeningTime>2025-01-27T21:15:58.006865+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>61.1607785</Latitude>
+    <Longitude>10.6531097</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1002</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>67 Lillehammer, Norway</ReadAddress>
+    <OpeningTime>2025-01-22T13:41:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1053</Id>
+    <VerbalDescription>gucs:(((</VerbalDescription>
+    <ReadAddress>67 Rue Paradis, Marseille, France</ReadAddress>
+    <OpeningTime>2025-01-27T21:54:39.0458117+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1054</Id>
+    <VerbalDescription>עובד?</VerbalDescription>
+    <ReadAddress>123 5th Avenue, New York, NY, USA</ReadAddress>
+    <OpeningTime>2025-01-27T21:56:10.0934052+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>0</Latitude>
+    <Longitude>0</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1055</Id>
+    <VerbalDescription>עובד?2</VerbalDescription>
+    <ReadAddress>123 5th Avenue, New York, NY, USA</ReadAddress>
+    <OpeningTime>2025-01-27T21:59:59.8702451+02:00</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>40.67876365</Latitude>
+    <Longitude>-73.97859592680422</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1040</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>34 Paseo de la Castellana, Madrid, Spain</ReadAddress>
+    <OpeningTime>2025-01-24T13:37:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude xsi:nil="true" />
+    <Longitude xsi:nil="true" />
+    <Calltype>heartattack</Calltype>
+    <Id>1014</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>18 Dronningens Gate, Oslo, Norway</ReadAddress>
+    <OpeningTime>2025-01-24T12:47:29</OpeningTime>
+    <MaxEndTime>2025-01-24T13:40:29</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude xsi:nil="true" />
+    <Longitude xsi:nil="true" />
     <Calltype>allergy</Calltype>
     <Id>1012</Id>
     <VerbalDescription>there is not call yet</VerbalDescription>
     <ReadAddress>101 Pitt Street, Sydney, NSW, Australia</ReadAddress>
     <OpeningTime>2025-01-23T22:43:29</OpeningTime>
     <MaxEndTime>2025-01-23T22:55:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>39.7407944</Latitude>
-    <Longitude>-104.9888647</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1008</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>1501 15th Street, Denver, CO, USA</ReadAddress>
-    <OpeningTime>2025-01-23T07:44:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

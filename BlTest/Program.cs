@@ -563,7 +563,10 @@ Call Menu:
 
             try
             {
-                var callsList = s_bl.Call.GetCallsList(filterField, filterValue, sortField);
+                // var callsList = s_bl.Call.GetCallsList(filterField, filterValue, sortField);
+                var callsList = s_bl.Call.GetCallsList(null, filterValue, sortField);
+
+
 
                 if (callsList != null && callsList.Any())
                 {

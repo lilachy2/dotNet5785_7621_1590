@@ -4,6 +4,7 @@ using BO;
 using DalApi;
 using DO;
 using Helpers;
+using System;
 using System.Collections.Generic;
 
 internal class VolunteerImplementation : BlApi.IVolunteer
@@ -249,8 +250,22 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     private async Task UpdateCoordinatesForVolunteerAsync(BO.Volunteer boVolunteer, string address)
     {
         // חישוב אסינכרוני של הקואורדינטות
-        boVolunteer.Latitude = await Tools.GetLatitudeAsync(address);
-        boVolunteer.Longitude = await Tools.GetLongitudeAsync(address);
+      
+        DO.Volunteer doVolunteer = VolunteerManager.BOconvertDO(boVolunteer);
+        if (address is not null)
+        {
+           double lat  = await Tools.GetLatitudeAsync(address);
+           double lot= await Tools.GetLongitudeAsync(address);
+            if (address is not null)
+            {
+                doVolunteer = doVolunteer with { Latitude = lat, Longitude = lot };
+                lock (AdminManager.BlMutex)
+                    _dal.Volunteer.Update(doVolunteer);
+                VolunteerManager.Observers.NotifyListUpdated();
+                VolunteerManager.Observers.NotifyItemUpdated(doVolunteer.Id);
+            }
+        }
+
     }
 
 
@@ -392,7 +407,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             }
 
             // 5. Asynchronously calculate latitude and longitude
-            _ = UpdateCoordinatesForVolunteerAsync(boVolunteer);
+            _ = UpdateCoordinatesForVolunteerAsync(boVolunteer, boVolunteer.FullCurrentAddress);
 
             // 6. Add the volunteer to the data layer
             lock (AdminManager.BlMutex) //stage 7
@@ -420,13 +435,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     }
 
     // פונקציה אסינכרונית לחישוב הקואורדינאטות
-    private async Task UpdateCoordinatesForVolunteerAsync(BO.Volunteer boVolunteer)
-    {
-        // חישוב אסינכרוני של הקואורדינטות
-        boVolunteer.Latitude = await Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress);
-        boVolunteer.Longitude = await Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress);
-    }
-
 
 
 

@@ -62,8 +62,6 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
-
-
     public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy, BO.CallStatus? statusFilter = null)
     {
         IEnumerable<DO.Call> calls = null;
@@ -168,91 +166,85 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.BlDoesNotExistException($"Call with ID={callId} does not exist.", ex);
         }
     }
+    // public void Create(BO.Call boCall)
+    // {
+    //     AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+    //     // we need add 
+    //     boCall.Latitude = Tools.GetLatitudeAsync(boCall.FullAddress).Result;
+    //     boCall.Longitude = Tools.GetLongitudeAsync(boCall.FullAddress).Result;
+
+    //     //boCall.Status = CallManager.CalculateCallStatus();
+    //     //boCall.CallAssignments = null; // for first time not have CallAssignments
+
+    //     CallManager.IsValideCall(boCall);
+    //     CallManager.IsLogicCall(boCall);
+
+    //     //var doCall = CallManager.BOConvertDO_Call(boCall.Id);
+
+    //     try
+    //     {
+    //         DO.Call doCall = new DO.Call(
+    //    boCall.Latitude,            // Latitude
+    //    boCall.Longitude,           // Longitude
+    //    (DO.Calltype)boCall.Calltype,            // Calltype
+    //    boCall.Id,                  // Id
+    //    boCall.Description,         // VerbalDescription
+    //    boCall.FullAddress,         // ReadAddress
+    //    boCall.OpenTime,            // OpeningTime
+    //    boCall.MaxEndTime           // MaxEndTime
+    //);
+
+    //         lock (AdminManager.BlMutex) //stage 7
+    //             _dal.Call.Create(doCall);
+
+    //         CallManager.Observers.NotifyListUpdated(); //stage 5   
+
+    //     }
+    //     catch (DO.DalAlreadyExistsException ex)
+    //     {
+    //         throw new BO.BlAlreadyExistsException($"Call with ID={boCall.Id} already exists", ex);
+    //     }
+
+    // }
+
     public void Create(BO.Call boCall)
     {
-        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-        // we need add 
-        boCall.Latitude = Tools.GetLatitudeAsync(boCall.FullAddress).Result;
-        boCall.Longitude = Tools.GetLongitudeAsync(boCall.FullAddress).Result;
+        AdminManager.ThrowOnSimulatorIsRunning(); // stage 7
 
-        //boCall.Status = CallManager.CalculateCallStatus();
-        //boCall.CallAssignments = null; // for first time not have CallAssignments
-
+        // 1. Validate the call format and logic
         CallManager.IsValideCall(boCall);
         CallManager.IsLogicCall(boCall);
-
-        //var doCall = CallManager.BOConvertDO_Call(boCall.Id);
+        // 4. Asynchronously calculate and update the coordinates
+        _ = UpdateCoordinatesForCallAsync(boCall);
 
         try
         {
+            // 2. Convert BO.Call to DO.Call (without Latitude and Longitude initially)
             DO.Call doCall = new DO.Call(
-       boCall.Latitude,            // Latitude
-       boCall.Longitude,           // Longitude
-       (DO.Calltype)boCall.Calltype,            // Calltype
-       boCall.Id,                  // Id
-       boCall.Description,         // VerbalDescription
-       boCall.FullAddress,         // ReadAddress
-       boCall.OpenTime,            // OpeningTime
-       boCall.MaxEndTime           // MaxEndTime
-   );
+                boCall.Latitude,                      // Latitude (placeholder)
+                boCall.Longitude,                      // Longitude (placeholder)
+                (DO.Calltype)boCall.Calltype,  // Calltype
+                boCall.Id,                // Id
+                boCall.Description,       // VerbalDescription
+                boCall.FullAddress,       // ReadAddress
+                boCall.OpenTime,          // OpeningTime
+                boCall.MaxEndTime         // MaxEndTime
+            );
 
-            lock (AdminManager.BlMutex) //stage 7
+
+            // 3. Add the call to the data layer
+            lock (AdminManager.BlMutex) // stage 7
                 _dal.Call.Create(doCall);
 
-            CallManager.Observers.NotifyListUpdated(); //stage 5   
+       
 
+            // 5. Notify observers about the update
+            CallManager.Observers.NotifyListUpdated(); // stage 5
         }
         catch (DO.DalAlreadyExistsException ex)
         {
             throw new BO.BlAlreadyExistsException($"Call with ID={boCall.Id} already exists", ex);
         }
-
-    }
-    public void Update(BO.Call BOCall)
-    {
-        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-
-        try
-        {
-            CallManager.IsValideCall(BOCall);
-            CallManager.IsLogicCall(BOCall);
-            Tools.IsAddressValidAsync(BOCall.FullAddress);
-            //BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress).Result;
-            //BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
-            //
-            BOCall.Latitude = Tools.GetLatitudeAsync(BOCall.FullAddress).Result;
-            BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
-            //var doCall= CallManager.BOConvertDO_Call(BOCall.Id);
-
-            var doCall = new DO.Call
-            {
-                Id = BOCall.Id,
-                Calltype = (DO.Calltype)BOCall.Calltype, // Explicit cast to BO.Calltype enum
-                VerbalDescription = BOCall.Description,
-                ReadAddress = BOCall.FullAddress,
-                Latitude = BOCall.Latitude, // Convert nullable to non-nullable
-                Longitude = BOCall.Longitude, // Convert nullable to non-nullable
-                OpeningTime = BOCall.OpenTime,
-                MaxEndTime = BOCall.MaxEndTime
-            };
-
-            lock (AdminManager.BlMutex) //stage 7
-                _dal.Call.Update(doCall);
-
-            CallManager.Observers.NotifyListUpdated(); //stage 5   
-            CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
-        }
-        catch (BlIsLogicCallException ex)
-        {
-            throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
-        }
-
-        catch (Exception ex)
-        {
-            throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
-
-        }
-
     }
 
     //public void Update(BO.Call BOCall)
@@ -263,39 +255,95 @@ internal class CallImplementation : BlApi.ICall
     //    {
     //        CallManager.IsValideCall(BOCall);
     //        CallManager.IsLogicCall(BOCall);
+    //        Tools.IsAddressValidAsync(BOCall.FullAddress);
+    //        //BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress).Result;
+    //        //BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
+    //        //
+    //        BOCall.Latitude = Tools.GetLatitudeAsync(BOCall.FullAddress).Result;
+    //        BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
+    //        //var doCall= CallManager.BOConvertDO_Call(BOCall.Id);
 
-    //        // קודם כל, עדכון המידע ב-DAL בלי הקואורדינטות
     //        var doCall = new DO.Call
     //        {
     //            Id = BOCall.Id,
     //            Calltype = (DO.Calltype)BOCall.Calltype, // Explicit cast to BO.Calltype enum
     //            VerbalDescription = BOCall.Description,
     //            ReadAddress = BOCall.FullAddress,
-    //            Latitude = null, // נבצע עדכון בלי קואורדינאטות
-    //            Longitude = null, // נבצע עדכון בלי קואורדינאטות
+    //            Latitude = BOCall.Latitude, // Convert nullable to non-nullable
+    //            Longitude = BOCall.Longitude, // Convert nullable to non-nullable
     //            OpeningTime = BOCall.OpenTime,
     //            MaxEndTime = BOCall.MaxEndTime
     //        };
 
     //        lock (AdminManager.BlMutex) //stage 7
-    //            _dal.Call.Update(doCall); // עדכון ראשוני ללא קואורדינאטות
+    //            _dal.Call.Update(doCall);
 
     //        CallManager.Observers.NotifyListUpdated(); //stage 5   
     //        CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
-
-    //        // שלב שני - חישוב הקואורדינאטות בצורה אסינכרונית
-    //        _ = CallManager.UpdateCoordinatesForCallAsync(doCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
     //    }
     //    catch (BlIsLogicCallException ex)
     //    {
     //        throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
     //    }
-    //    catch (Exception ex)
+    //    catch(BlInvalidaddress ex)
+    //    {
+    //        throw new BO.BlInvalidaddress($"Error: {ex.Message}", ex);
+    //    }
+    //    catch (DO.Incompatible_ID ex) // Exception thrown by the data layer
     //    {
     //        throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
     //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
+
+    //    }
+
     //}
 
+    public void Update(BO.Call BOCall)
+    {
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+
+        try
+        {
+            CallManager.IsValideCall(BOCall);
+            CallManager.IsLogicCall(BOCall);
+
+            // קודם כל, עדכון המידע ב-DAL בלי הקואורדינטות
+            var doCall = new DO.Call
+            {
+                Id = BOCall.Id,
+                Calltype = (DO.Calltype)BOCall.Calltype, // Explicit cast to BO.Calltype enum
+                VerbalDescription = BOCall.Description,
+                ReadAddress = BOCall.FullAddress,
+                Latitude = null, // נבצע עדכון בלי קואורדינאטות
+                Longitude = null, // נבצע עדכון בלי קואורדינאטות
+                OpeningTime = BOCall.OpenTime,
+                MaxEndTime = BOCall.MaxEndTime
+            };
+
+
+            // שלב שני - חישוב הקואורדינאטות בצורה אסינכרונית
+            _ = UpdateCoordinatesForCallAsync(BOCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
+
+
+            lock (AdminManager.BlMutex) //stage 7
+                _dal.Call.Update(doCall); // עדכון ראשוני ללא קואורדינאטות
+            CallManager.Observers.NotifyListUpdated(); //stage 5   
+            CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
+
+           
+        }
+        catch (BlIsLogicCallException ex)
+        {
+            throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
+        }
+        catch (Exception ex)
+        {
+            throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
+        }
+    }
     public void Delete(int callId)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
@@ -332,70 +380,72 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($"There is no call with the received ID = {callId}");
         }
     }
+
+
     public List<BO.ClosedCallInList> GetCloseCall(int volunteerId, BO.Calltype? callType, ClosedCallInListEnum? closedCallInListEnum)
     {
         try
         {
-            IEnumerable <Assignment> volunteerAssignments = null;
+            IEnumerable<Assignment> volunteerAssignments = null;
             // Step 1: Get all assignments for the specific volunteer that have been completed (EndOfTime is not null)
             lock (AdminManager.BlMutex) //stage 7
-                 volunteerAssignments = _dal.Assignment.ReadAll()
-                .Where(a => a.VolunteerId == volunteerId && a.EndOfTime != null)
+                volunteerAssignments = _dal.Assignment.ReadAll()
+               .Where(a => a.VolunteerId == volunteerId && a.EndOfTime != null)
+               .ToList();
+
+            // Step 2: Create list of ClosedCallInList objects using Select and LINQ
+            var boClosedCalls = volunteerAssignments
+                .Select(assignment =>
+                {
+                    try
+                    {
+                        DO.Call call = null;
+                        lock (AdminManager.BlMutex)
+                            call = _dal.Call.Read(assignment.CallId);
+                        if (call == null) return null; // Skip if the call is not found
+
+                        return new BO.ClosedCallInList
+                        {
+                            Id = assignment.CallId,
+                            CallType = (BO.Calltype)call.Calltype,
+                            FullAddress = call.ReadAddress,
+                            OpenTime = call.OpeningTime,
+                            EnterTime = assignment.time_entry_treatment,
+                            EndTime = assignment.time_end_treatment,
+                            CompletionStatus = (BO.CallAssignmentEnum?)assignment.EndOfTime
+                        };
+                    }
+                    catch (Exception)
+                    {
+                        return null; // Return null if there's an error with a particular call
+                    }
+                })
+                .Where(closedCall => closedCall != null) // Filter out null values (calls that failed to process)
                 .ToList();
 
-                // Step 2: Create list of ClosedCallInList objects using Select and LINQ
-                var boClosedCalls = volunteerAssignments
-                    .Select(assignment =>
-                    {
-                        try
-                        {
-                            DO.Call call = null;
-                            lock (AdminManager.BlMutex)
-                                 call = _dal.Call.Read(assignment.CallId);
-                            if (call == null) return null; // Skip if the call is not found
-
-                            return new BO.ClosedCallInList
-                            {
-                                Id = assignment.CallId,
-                                CallType = (BO.Calltype)call.Calltype,
-                                FullAddress = call.ReadAddress,
-                                OpenTime = call.OpeningTime,
-                                EnterTime = assignment.time_entry_treatment,
-                                EndTime = assignment.time_end_treatment,
-                                CompletionStatus = (BO.CallAssignmentEnum?)assignment.EndOfTime
-                            };
-                        }
-                        catch (Exception)
-                        {
-                            return null; // Return null if there's an error with a particular call
-                        }
-                    })
-                    .Where(closedCall => closedCall != null) // Filter out null values (calls that failed to process)
+            // Step 3: Filter by call type if specified
+            if (callType != BO.Calltype.None)
+            {
+                boClosedCalls = boClosedCalls
+                    .Where(c => c.CallType == callType.Value)
                     .ToList();
+            }
 
-                // Step 3: Filter by call type if specified
-                if (callType != BO.Calltype.None)
-                {
-                    boClosedCalls = boClosedCalls
-                        .Where(c => c.CallType == callType.Value)
-                        .ToList();
-                }
+            // Step 4: Sort based on the specified enum
+            boClosedCalls = closedCallInListEnum switch
+            {
+                ClosedCallInListEnum.Id => boClosedCalls.OrderBy(c => c.Id).ToList(),
+                ClosedCallInListEnum.CallType => boClosedCalls.OrderBy(c => c.CallType).ToList(),
+                ClosedCallInListEnum.FullAddress => boClosedCalls.OrderBy(c => c.FullAddress).ToList(),
+                ClosedCallInListEnum.OpenTime => boClosedCalls.OrderBy(c => c.OpenTime).ToList(),
+                ClosedCallInListEnum.EnterTime => boClosedCalls.OrderBy(c => c.EnterTime).ToList(),
+                ClosedCallInListEnum.EndTime => boClosedCalls.OrderBy(c => c.EndTime).ToList(),
+                ClosedCallInListEnum.CompletionStatus => boClosedCalls.OrderBy(c => c.CompletionStatus).ToList(),
+                _ => boClosedCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
+            };
 
-                // Step 4: Sort based on the specified enum
-                boClosedCalls = closedCallInListEnum switch
-                {
-                    ClosedCallInListEnum.Id => boClosedCalls.OrderBy(c => c.Id).ToList(),
-                    ClosedCallInListEnum.CallType => boClosedCalls.OrderBy(c => c.CallType).ToList(),
-                    ClosedCallInListEnum.FullAddress => boClosedCalls.OrderBy(c => c.FullAddress).ToList(),
-                    ClosedCallInListEnum.OpenTime => boClosedCalls.OrderBy(c => c.OpenTime).ToList(),
-                    ClosedCallInListEnum.EnterTime => boClosedCalls.OrderBy(c => c.EnterTime).ToList(),
-                    ClosedCallInListEnum.EndTime => boClosedCalls.OrderBy(c => c.EndTime).ToList(),
-                    ClosedCallInListEnum.CompletionStatus => boClosedCalls.OrderBy(c => c.CompletionStatus).ToList(),
-                    _ => boClosedCalls.OrderBy(c => c.Id).ToList() // Default sorting by Id
-                };
+            return boClosedCalls;
 
-                return boClosedCalls;
-            
         }
         catch (Exception ex)
         {
@@ -403,7 +453,17 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
+    /// <summary>
+    /// ///////////?????
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="type"></param>
+    /// <param name="sortBy"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
+    //public async Task<List<BO.OpenCallInList>> GetOpenCallAsync(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
+
     {
         DO.Volunteer volunteer = null;
         IEnumerable<BO.CallInList> allCalls = null;
@@ -422,11 +482,17 @@ internal class CallImplementation : BlApi.ICall
             // Retrieve all assignments from the DAL
              allAssignments = _dal.Assignment.ReadAll();
         }
-            double? lonVol = Tools.GetLongitudeAsync(volunteer.FullCurrentAddress).Result;
-            double? latVol = Tools.GetLatitudeAsync(volunteer.FullCurrentAddress).Result;
 
-            // Filter for only "Open" or "Risk Open" status
-            IEnumerable<BO.OpenCallInList> filteredCalls = allCalls
+        //double? lonVol = 
+        //    UpdateCoordinatesForCallLON(volunteer.FullCurrentAddress).Result;
+        //double? latVol =
+        //    UpdateCoordinatesForCallLAN(volunteer.FullCurrentAddress).Result;
+
+        double? lonVol = Task.Run(() => UpdateCoordinatesForCallLON(volunteer.FullCurrentAddress)).Result;
+        double? latVol = Task.Run(() => UpdateCoordinatesForCallLAN(volunteer.FullCurrentAddress)).Result;
+
+        // Filter for only "Open" or "Risk Open" status
+        IEnumerable<BO.OpenCallInList> filteredCalls = allCalls
                 .Where(call => call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk)  // Filter by Open or OpenAtRisk status
                 .Select(call =>
                 {
@@ -476,6 +542,7 @@ internal class CallImplementation : BlApi.ICall
             return filteredCalls;
         
     }
+
 
     public void ChooseCall(int idVol, int idCall)
     {
@@ -656,6 +723,62 @@ internal class CallImplementation : BlApi.ICall
 
     }
 
+
+
+    // Function to asynchronously update the coordinates of a call
+    private async Task UpdateCoordinatesForCallAsync(BO.Call boCall)
+    {
+        try
+        {
+            double lat = await Tools.GetLatitudeAsync(boCall.FullAddress);
+            double loc = await Tools.GetLongitudeAsync(boCall.FullAddress);
+            DO.Call doCall = CallManager.BOConvertDO_Call(boCall.Id);
+
+            doCall = doCall with { Latitude = lat, Longitude = loc };
+            lock (AdminManager.BlMutex)
+                _dal.Call.Update(doCall);
+            VolunteerManager.Observers.NotifyListUpdated();
+            VolunteerManager.Observers.NotifyItemUpdated(doCall.Id);
+            // Update the call in the data layer with the new coordinates
+
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions related to coordinate updates
+            throw new BO.BlGeneralException("Failed to update coordinates for the call.", ex);
+        }
+    }
+    public async Task<double> UpdateCoordinatesForCallLON(string adress)
+    {
+        try
+        {
+            // Update the call in the data layer with the new coordinates
+            double lon = await Tools.GetLongitudeAsync(adress);
+            VolunteerManager.Observers.NotifyListUpdated();
+            return lon;
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions related to coordinate updates
+            throw new BO.BlGeneralException("Failed to update coordinates for the call.", ex);
+        }
+    }
+
+        public async Task<double> UpdateCoordinatesForCallLAN(string adress)
+    {
+        try
+        {
+            // Update the call in the data layer with the new coordinates
+            double lan = await Tools.GetLatitudeAsync(adress);
+            VolunteerManager.Observers.NotifyListUpdated();
+            return lan;
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions related to coordinate updates
+            throw new BO.BlGeneralException("Failed to update coordinates for the call.", ex);
+        }
+    }
 
 
 

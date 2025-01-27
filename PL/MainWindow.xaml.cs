@@ -101,8 +101,16 @@ namespace PL
         // Update RiskRange when the "Update Risk Range" button is clicked
         private void UpdateRiskRange_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                s_bl.Admin.SetMaxRange(RiskRange);
+             } // Update the Risk Range in business logic}
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading window: {ex.Message}");
+                return;
+            }
             MessageBox.Show($"Risk Range updated to: {RiskRange}"); // Show confirmation message
-            s_bl.Admin.SetMaxRange(RiskRange); // Update the Risk Range in business logic
         }
 
         private async void InitializeDatabase_Click(object sender, RoutedEventArgs e)

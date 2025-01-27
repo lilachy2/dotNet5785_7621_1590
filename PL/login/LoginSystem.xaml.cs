@@ -32,6 +32,11 @@ namespace PL.login
                     return;
                 }
 
+                if (Password!= volunteer.Password)
+                {
+                    MessageBox.Show("Error: the passward not corect.");
+                    return;
+                }
                 if (volunteer == null)
                 {
                     MessageBox.Show("Error: Volunteer not registered in the system.");

@@ -23,6 +23,7 @@
         <local:CallInListEnum x:Key="CallInListEnumKey" />
         <!--<local:ConvertUpdateToTrue x:Key="ConvertUpdateToTrueKey" />-->
         
+        
         <!-- Define the Back Button Style for bake click-->
         <Style x:Key="BackButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="103"/>
@@ -47,9 +48,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-
-
 
     </Application.Resources>
 </Application>
