@@ -239,36 +239,83 @@ internal static class Tools
         }
     }
 
-    private static readonly HttpClient client = new HttpClient()
+    public static readonly HttpClient client = new HttpClient()
     {
         Timeout = TimeSpan.FromSeconds(3) // הגדרת זמן timeout (10 שניות)
     };
 
+    // it workes
     public static async Task<bool> IsAddressValidAsync(string address)
     {
         if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
+        {
+            Console.WriteLine("Address is null or empty.");
+            return false;
+        }
 
         string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
+        Console.WriteLine($"Querying address: {query}");
 
-        try
+        using (var client = new HttpClient { Timeout = TimeSpan.FromSeconds(10) })
         {
-            // ביצוע בקשה אסינכרונית עם ConfigureAwait(false) כדי למנוע בעיות עם UI thread
-            HttpResponseMessage response = await client.GetAsync(query).ConfigureAwait(false);
+            try
+            {
+                var response = await client.GetAsync(query).ConfigureAwait(false);
 
-            // החזרת True אם הסטטוס הצליח (2xx)
-            bool isValid = response.IsSuccessStatusCode;
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Request failed with status code: {response.StatusCode}");
+                    return false;
+                }
 
-            Console.WriteLine($"Response Status Code: {response.StatusCode}");
-            return isValid;
-        }
-        catch (Exception ex)
-        {
-            // הדפסת השגיאה אם יש חריגה
-            Console.WriteLine($"Error: {ex.Message}");
-            return false; // במקרה של שגיאה מחזירים false
+                string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Console.WriteLine($"Response content: {content}");
+
+                using (JsonDocument document = JsonDocument.Parse(content))
+                {
+                    JsonElement root = document.RootElement;
+
+                    // בדיקה אם התשובה היא מערך
+                    if (root.ValueKind == JsonValueKind.Array && root.GetArrayLength() > 0)
+                    {
+                        foreach (var item in root.EnumerateArray())
+                        {
+                            // בדיקה אם יש שדות lat ו-lon בתגובה
+                            if (item.TryGetProperty("lat", out JsonElement latElement) &&
+                                item.TryGetProperty("lon", out JsonElement lonElement))
+                            {
+                                Console.WriteLine($"Found latitude: {latElement.GetString()}, longitude: {lonElement.GetString()}");
+                                return true;
+                            }
+                        }
+                    }
+                }
+
+                // אם אין קווי אורך ורוחב
+                Console.WriteLine("Address does not contain valid latitude and longitude.");
+                return false;
+            }
+            catch (TaskCanceledException)
+            {
+                Console.WriteLine("Request timed out.");
+                return false;
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"HTTP Request error: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                return false;
+            }
         }
     }
+
+
+
+
 
 
     /// <summary>
