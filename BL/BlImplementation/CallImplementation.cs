@@ -172,8 +172,8 @@ internal class CallImplementation : BlApi.ICall
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
         // we need add 
-        boCall.Latitude = Tools.GetLatitude(boCall.FullAddress);
-        boCall.Longitude = Tools.GetLongitude(boCall.FullAddress);
+        boCall.Latitude = Tools.GetLatitudeAsync(boCall.FullAddress).Result;
+        boCall.Longitude = Tools.GetLongitudeAsync(boCall.FullAddress).Result;
 
         //boCall.Status = CallManager.CalculateCallStatus();
         //boCall.CallAssignments = null; // for first time not have CallAssignments
@@ -216,11 +216,12 @@ internal class CallImplementation : BlApi.ICall
         {
             CallManager.IsValideCall(BOCall);
             CallManager.IsLogicCall(BOCall);
-            Tools.IsAddressValid(BOCall.FullAddress);
+            Tools.IsAddressValidAsync(BOCall.FullAddress);
             //BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress).Result;
-            //BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;  
-            BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress);
-            BOCall.Longitude = Tools.GetLongitude(BOCall.FullAddress);
+            //BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
+            //
+            BOCall.Latitude = Tools.GetLatitudeAsync(BOCall.FullAddress).Result;
+            BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
             //var doCall= CallManager.BOConvertDO_Call(BOCall.Id);
 
             var doCall = new DO.Call
@@ -253,6 +254,48 @@ internal class CallImplementation : BlApi.ICall
         }
 
     }
+
+    //public void Update(BO.Call BOCall)
+    //{
+    //    AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+
+    //    try
+    //    {
+    //        CallManager.IsValideCall(BOCall);
+    //        CallManager.IsLogicCall(BOCall);
+
+    //        // קודם כל, עדכון המידע ב-DAL בלי הקואורדינטות
+    //        var doCall = new DO.Call
+    //        {
+    //            Id = BOCall.Id,
+    //            Calltype = (DO.Calltype)BOCall.Calltype, // Explicit cast to BO.Calltype enum
+    //            VerbalDescription = BOCall.Description,
+    //            ReadAddress = BOCall.FullAddress,
+    //            Latitude = null, // נבצע עדכון בלי קואורדינאטות
+    //            Longitude = null, // נבצע עדכון בלי קואורדינאטות
+    //            OpeningTime = BOCall.OpenTime,
+    //            MaxEndTime = BOCall.MaxEndTime
+    //        };
+
+    //        lock (AdminManager.BlMutex) //stage 7
+    //            _dal.Call.Update(doCall); // עדכון ראשוני ללא קואורדינאטות
+
+    //        CallManager.Observers.NotifyListUpdated(); //stage 5   
+    //        CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
+
+    //        // שלב שני - חישוב הקואורדינאטות בצורה אסינכרונית
+    //        _ = CallManager.UpdateCoordinatesForCallAsync(doCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
+    //    }
+    //    catch (BlIsLogicCallException ex)
+    //    {
+    //        throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
+    //    }
+    //}
+
     public void Delete(int callId)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
@@ -379,8 +422,8 @@ internal class CallImplementation : BlApi.ICall
             // Retrieve all assignments from the DAL
              allAssignments = _dal.Assignment.ReadAll();
         }
-            double? lonVol = Tools.GetLongitude(volunteer.FullCurrentAddress);
-            double? latVol = Tools.GetLatitude(volunteer.FullCurrentAddress);
+            double? lonVol = Tools.GetLongitudeAsync(volunteer.FullCurrentAddress).Result;
+            double? latVol = Tools.GetLatitudeAsync(volunteer.FullCurrentAddress).Result;
 
             // Filter for only "Open" or "Risk Open" status
             IEnumerable<BO.OpenCallInList> filteredCalls = allCalls

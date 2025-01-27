@@ -20,7 +20,7 @@ internal static class VolunteerManager
         {
             CheckPhonnumber(boVolunteer.Number_phone);
             CheckEmail(boVolunteer.Email);
-            Tools.IsAddressValid(boVolunteer.FullCurrentAddress);
+            Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress);
             IsStrongPassword(boVolunteer.Password);
         }
         catch (BO.BlWrongItemtException ex)
@@ -193,7 +193,8 @@ internal static class VolunteerManager
                 TotalCancelledCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id &&
                     (a.EndOfTime == AssignmentCompletionType.AdminCancelled || a.EndOfTime == AssignmentCompletionType.VolunteerCancelled)), // ביטול עצמי או מהנל
                 TotalExpiredCalls = _dal.Assignment.ReadAll().Count(a => a.VolunteerId == doVolunteer.Id && a.EndOfTime == AssignmentCompletionType.Expired),
-                CurrentCall = CallManager.GetCallInProgress(doVolunteer.Id), //CallAssignInProgress  בפונקצית עזר של 
+                //CurrentCall = CallManager.GetCallInProgress(doVolunteer.Id), //CallAssignInProgress  בפונקצית עזר של 
+                CurrentCall = CallManager.GetCallInProgressAsync(doVolunteer.Id).Result, //CallAssignInProgress  בפונקצית עזר של 
             };
         }
     }
@@ -298,11 +299,9 @@ internal static class VolunteerManager
                 throw new BlDoesNotExistException("Call not found.");
             }
 
-            // Get latitude and longitude of the volunteer's address asynchronously
-            //double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-            //double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
-            double? latitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
-            double? longitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
+            //Get latitude and longitude of the volunteer's address asynchronously
+            double? latitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            double? longitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
 
             // Ensure latitude and longitude are valid before using them
             if (!latitudeVolunteer.HasValue || !longitudeVolunteer.HasValue)
@@ -327,6 +326,7 @@ internal static class VolunteerManager
 
     internal static void SimulationVolunteerActivity()
     {
+        ////??????
         Task.Run(() =>
         {
             try

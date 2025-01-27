@@ -102,33 +102,109 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
 
     }
+    //public void Update(BO.Volunteer boVolunteer, int requesterId)
+    //{
+    //    AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+
+    //    DO.Volunteer requester = null;
+
+    //        try
+    //        {
+    //        lock (AdminManager.BlMutex) //stage 7
+    //            requester = _dal.Volunteer.Read(requesterId);
+
+
+    //        if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result== true)
+    //        {
+    //            boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
+    //            boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
+
+    //        }
+    //        else
+    //            throw new BlInvalidaddress("The address is not valid");
+
+    //        var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
+
+    //        if (boVolunteer.Id != requesterId && DOVolunteer.Role != DO.Role.Manager)
+    //        {
+    //            throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
+    //        }
+
+    //        // check format
+    //        //Tools.ValidateVolunteerData(boVolunteer);
+    //        VolunteerManager.CheckFormat(boVolunteer);
+    //        // check logic
+    //        //If the address format is correct, enter the latitude and longitude.
+
+    //        BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
+    //        VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
+
+    //        lock (AdminManager.BlMutex) //stage 7
+    //            _dal.Volunteer.Update(DOVolunteer);
+
+
+    //    }
+    //    catch (DO.DalDoesNotExistException ex)
+    //    {
+    //        Console.WriteLine($"Error: Volunteer with ID={boVolunteer.Id} does not exist. Exception: {ex.Message}");
+    //        throw new BO.BlDoesNotExistException($"Volunteer with ID={boVolunteer.Id} does not exist.", ex);
+    //    }
+    //    catch (BO.Incompatible_ID ex)
+    //    {
+    //        throw new BO.Incompatible_ID($"Volunteer with ID {boVolunteer.Id} has an incompatible ID.", ex);
+    //    }
+    //    catch (BlCheckPhonnumberException ex)
+    //    {
+    //        throw new BlCheckPhonnumberException($"Phone number validation failed for volunteer with ID {boVolunteer.Id}.", ex);
+    //    }
+    //    catch (BlIncorrectPasswordException ex)
+    //    {
+    //        throw new BlIncorrectPasswordException($"Incorrect password provided for volunteer with ID {boVolunteer.Id}.", ex);
+    //    }
+    //    catch (BlCan_chang_to_NotActivException ex)
+    //    {
+    //        throw new BlCan_chang_to_NotActivException($"Cannot change volunteer with ID {boVolunteer.Id} to Not Active.", ex);
+    //    }
+    //    catch (BlInvalidaddress ex)
+    //    {
+    //        throw new BlInvalidaddress($"Invalid address provided for volunteer with ID {boVolunteer.Id}.", ex);
+    //    } 
+    //    catch (BlIsLogicCallException ex)
+    //    {
+    //        throw new BlIsLogicCallException($"update volunteer with id  {boVolunteer.Id}.only positive number", ex);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw new BO.BlGeneralException("An unexpected error occurred while updating volunteer details.", ex);
+    //    }
+
+    //    VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  // stage 5
+    //    VolunteerManager.Observers.NotifyListUpdated(); // stage 5   
+
+    //}
+
+    // פונקציה אסינכרונית לחישוב הקואורדינאטות
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
         DO.Volunteer requester = null;
 
-            try
-            {
+        try
+        {
             lock (AdminManager.BlMutex) //stage 7
                 requester = _dal.Volunteer.Read(requesterId);
 
-            //if (Tools.IsAddressValid(requester.FullCurrentAddress)/*.Result*/== true)
-            //{
-            //    //boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
-            //    //boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
-            //    boVolunteer.Latitude = Tools.GetLatitude(requester.FullCurrentAddress);
-            //    boVolunteer.Longitude = Tools.GetLongitude(requester.FullCurrentAddress);
-            //}
-            if (Tools.IsAddressValid(boVolunteer.FullCurrentAddress)/*.Result*/== true)
+            // אם כתובת תקינה, התחל חישוב קואורדינטות אסינכרוני
+            if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result)
             {
-                //boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
-                //boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
-                boVolunteer.Latitude = Tools.GetLatitude(boVolunteer.FullCurrentAddress);
-                boVolunteer.Longitude = Tools.GetLongitude(boVolunteer.FullCurrentAddress);
+                // התחלת החישוב של הקואורדינטות ברקע, לא מחכים לו
+                _ = UpdateCoordinatesForVolunteerAsync(boVolunteer, requester.FullCurrentAddress); // תחילת חישוב אסינכרוני
             }
             else
+            {
                 throw new BlInvalidaddress("The address is not valid");
+            }
 
             var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
 
@@ -137,18 +213,14 @@ internal class VolunteerImplementation : BlApi.IVolunteer
                 throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
             }
 
-            // check format
-            //Tools.ValidateVolunteerData(boVolunteer);
+            // בדיקות נוספות (לוגיקה ופורמט)
             VolunteerManager.CheckFormat(boVolunteer);
-            // check logic
-            //If the address format is correct, enter the latitude and longitude.
 
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
             VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
 
             lock (AdminManager.BlMutex) //stage 7
-                _dal.Volunteer.Update(DOVolunteer);
-         
+                _dal.Volunteer.Update(DOVolunteer); // עדכון סינכרוני מתבצע כאן
 
         }
         catch (DO.DalDoesNotExistException ex)
@@ -160,25 +232,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         {
             throw new BO.Incompatible_ID($"Volunteer with ID {boVolunteer.Id} has an incompatible ID.", ex);
         }
-        catch (BlCheckPhonnumberException ex)
-        {
-            throw new BlCheckPhonnumberException($"Phone number validation failed for volunteer with ID {boVolunteer.Id}.", ex);
-        }
-        catch (BlIncorrectPasswordException ex)
-        {
-            throw new BlIncorrectPasswordException($"Incorrect password provided for volunteer with ID {boVolunteer.Id}.", ex);
-        }
-        catch (BlCan_chang_to_NotActivException ex)
-        {
-            throw new BlCan_chang_to_NotActivException($"Cannot change volunteer with ID {boVolunteer.Id} to Not Active.", ex);
-        }
         catch (BlInvalidaddress ex)
         {
             throw new BlInvalidaddress($"Invalid address provided for volunteer with ID {boVolunteer.Id}.", ex);
-        } 
-        catch (BlIsLogicCallException ex)
-        {
-            throw new BlIsLogicCallException($"update volunteer with id  {boVolunteer.Id}.only positive number", ex);
         }
         catch (Exception ex)
         {
@@ -187,7 +243,14 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
         VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  // stage 5
         VolunteerManager.Observers.NotifyListUpdated(); // stage 5   
+    }
 
+    // פונקציה אסינכרונית לחישוב הקואורדינאטות
+    private async Task UpdateCoordinatesForVolunteerAsync(BO.Volunteer boVolunteer, string address)
+    {
+        // חישוב אסינכרוני של הקואורדינטות
+        boVolunteer.Latitude = await Tools.GetLatitudeAsync(address);
+        boVolunteer.Longitude = await Tools.GetLongitudeAsync(address);
     }
 
 
@@ -227,21 +290,87 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
     }
 
+    //public void Create(BO.Volunteer boVolunteer)
+    //{
+    //    AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
+    //    DO.Volunteer existingVolunteer = null;  
+
+    //    try
+    //        {
+    //        // 1. Format checks
+    //        VolunteerManager.CheckFormat(boVolunteer); // Validate the format of the volunteer's data (phone number, email, address)
+
+    //        //VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+
+    //        // 2. Check if the volunteer already exists in the data layer
+    //        lock (AdminManager.BlMutex) //stage 7
+    //             existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
+    //        if (existingVolunteer != null)
+    //        {
+    //            throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists."); // If exists, throw an exception
+    //        }
+
+    //        // 3. Convert BO.Volunteer to DO.Volunteer
+    //        var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // Convert BO object to DO object
+
+    //        // 4. Logic checks
+    //        // If the volunteer already exists, send the existing volunteer for comparison, otherwise send null for a new volunteer
+    //        if (existingVolunteer != null)
+    //        {
+    //            // If the volunteer already exists in DAL, send the existing volunteer for logic validation
+    //            var BOexistingVolunteer = VolunteerManager.GetVolunteer(existingVolunteer.Id); // Retrieve existing volunteer as BO object
+    //            VolunteerManager.CheckLogic(boVolunteer, BOexistingVolunteer, false); // false means no manager is performing the action
+    //        }
+    //        else
+    //        {
+    //            // If the volunteer is new, perform logic check without comparison to an existing volunteer
+    //            VolunteerManager.CheckLogic(boVolunteer, null, false); // Pass null for a new volunteer
+    //        }
+
+    //        // we need add 
+    //        boVolunteer.Latitude = Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress).Result;
+    //        boVolunteer.Longitude = Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress).Result;
+
+    //        // 5. Add the volunteer to the data layer
+    //        lock (AdminManager.BlMutex) //stage 7
+    //            _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
+
+    //    }
+    //    catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
+    //    {
+    //        throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists.", ex); // Re-throw the exception with the appropriate message
+    //    }
+    //    catch (BO.BlWrongItemtException ex) // Handle format or logic issue exception
+    //    {
+    //        throw new BO.BlWrongItemtException("There was an issue with the format or logic of the data.", ex); // Re-throw the exception with a message indicating format or logic issues
+    //    }
+    //    catch (BO.BlPermissionException ex) // Handle permission error when adding a volunteer
+    //    {
+    //        throw new BO.BlPermissionException("Permission error during volunteer addition.", ex); // Re-throw the permission exception with a relevant message
+    //    }
+    //    catch (Exception ex) // Catch any other general exceptions
+    //    {
+    //        throw new BO.BlGeneralException("Failed to add volunteer.", ex); // Re-throw the general exception with a message indicating the failure
+    //    }
+
+
+    //    VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+
+    //}
+
     public void Create(BO.Volunteer boVolunteer)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-        DO.Volunteer existingVolunteer = null;  
+        DO.Volunteer existingVolunteer = null;
 
         try
-            {
+        {
             // 1. Format checks
             VolunteerManager.CheckFormat(boVolunteer); // Validate the format of the volunteer's data (phone number, email, address)
 
-            //VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-
             // 2. Check if the volunteer already exists in the data layer
             lock (AdminManager.BlMutex) //stage 7
-                 existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
+                existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
             if (existingVolunteer != null)
             {
                 throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists."); // If exists, throw an exception
@@ -254,46 +383,51 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             // If the volunteer already exists, send the existing volunteer for comparison, otherwise send null for a new volunteer
             if (existingVolunteer != null)
             {
-                // If the volunteer already exists in DAL, send the existing volunteer for logic validation
                 var BOexistingVolunteer = VolunteerManager.GetVolunteer(existingVolunteer.Id); // Retrieve existing volunteer as BO object
                 VolunteerManager.CheckLogic(boVolunteer, BOexistingVolunteer, false); // false means no manager is performing the action
             }
             else
             {
-                // If the volunteer is new, perform logic check without comparison to an existing volunteer
-                VolunteerManager.CheckLogic(boVolunteer, null, false); // Pass null for a new volunteer
+                VolunteerManager.CheckLogic(boVolunteer, null, false); // Logic check for new volunteer
             }
 
-            // we need add 
-            boVolunteer.Latitude = Tools.GetLatitude(boVolunteer.FullCurrentAddress);
-            boVolunteer.Longitude = Tools.GetLongitude(boVolunteer.FullCurrentAddress);
+            // 5. Asynchronously calculate latitude and longitude
+            _ = UpdateCoordinatesForVolunteerAsync(boVolunteer);
 
-            // 5. Add the volunteer to the data layer
+            // 6. Add the volunteer to the data layer
             lock (AdminManager.BlMutex) //stage 7
                 _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
 
         }
         catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
         {
-            throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists.", ex); // Re-throw the exception with the appropriate message
+            throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists.", ex);
         }
         catch (BO.BlWrongItemtException ex) // Handle format or logic issue exception
         {
-            throw new BO.BlWrongItemtException("There was an issue with the format or logic of the data.", ex); // Re-throw the exception with a message indicating format or logic issues
+            throw new BO.BlWrongItemtException("There was an issue with the format or logic of the data.", ex);
         }
         catch (BO.BlPermissionException ex) // Handle permission error when adding a volunteer
         {
-            throw new BO.BlPermissionException("Permission error during volunteer addition.", ex); // Re-throw the permission exception with a relevant message
+            throw new BO.BlPermissionException("Permission error during volunteer addition.", ex);
         }
         catch (Exception ex) // Catch any other general exceptions
         {
-            throw new BO.BlGeneralException("Failed to add volunteer.", ex); // Re-throw the general exception with a message indicating the failure
+            throw new BO.BlGeneralException("Failed to add volunteer.", ex);
         }
 
-
-        VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-
+        VolunteerManager.Observers.NotifyListUpdated(); // stage 5
     }
+
+    // פונקציה אסינכרונית לחישוב הקואורדינאטות
+    private async Task UpdateCoordinatesForVolunteerAsync(BO.Volunteer boVolunteer)
+    {
+        // חישוב אסינכרוני של הקואורדינטות
+        boVolunteer.Latitude = await Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress);
+        boVolunteer.Longitude = await Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress);
+    }
+
+
 
 
 }

@@ -69,13 +69,15 @@ internal static class CallManager
         }
 
         // Validate the address format using an external API.
-        if (!Tools.IsAddressValid(boCall.FullAddress)/*.Result*/)
+        if (!Tools.IsAddressValidAsync(boCall.FullAddress).Result)
         {
             throw new ArgumentException("The address is invalid.");
         }
     }
 
     //CreateCallInProgress and 3 helper methods
+
+
     public static BO.CallInProgress GetCallInProgress(int VolunteerId)
     {
 
@@ -100,27 +102,35 @@ internal static class CallManager
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
         // בודק האם הכתובת אמיתית ומחזיר קווי אורך ורוחב עבור הכתובת 
 
-        double? LatitudeVolunteer = null;
-        double? LongitudeVolunteer = null;
-        if (Tools.IsAddressValid(doVolunteer.FullCurrentAddress)/*.Result*/ == true)//  כתובת אמיתית 
-        {
-            LongitudeVolunteer = Tools.GetLatitude(doVolunteer.FullCurrentAddress);
-            Thread.Sleep(3000);
-            //LongitudeVolunteer = Task.Run(() => Tools.GetLatitude(doVolunteer.FullCurrentAddress));
-            LatitudeVolunteer = Tools.GetLongitude(doVolunteer.FullCurrentAddress);
-        }
-        else
-            throw new BlInvalidaddress("Invalid address of Volunteer");
-        // Ensure latitude and longitude are valid
-        //double volunteerLatitude = doVolunteer.Latitude ?? Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        //double volunteerLongitude = doVolunteer.Longitude ?? Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        //double? LatitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        //double? LongitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
-        //double? LatitudeVolunteer = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
-        //double? LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+        double LatitudeVolunteer ;
+        double LongitudeVolunteer ;
+            //if (Task.Run(() => Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress)).Result == true)//  כתובת אמיתית 
+            //{
+            //    LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+            //    Thread.Sleep(3000);
+            //    //LongitudeVolunteer = Task.Run(() => Tools.GetLatitude(doVolunteer.FullCurrentAddress));
+            //    LatitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+            //}
+            bool isValidAddress =  Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress).Result;
 
-        //if (CalculateCallStatus(doCall) == CallStatus.Open|| CalculateCallStatus(doCall) ==CallStatus.OpenAtRisk)// status open
-        var callStatus = CalculateCallStatus(doCall);
+            if (isValidAddress)
+            {
+                LongitudeVolunteer =  Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+                LatitudeVolunteer =  Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            }
+
+            else
+            throw new BlInvalidaddress("Invalid address of Volunteer");
+            // Ensure latitude and longitude are valid
+            //double volunteerLatitude = doVolunteer.Latitude ?? Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            //double volunteerLongitude = doVolunteer.Longitude ?? Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            //double? LatitudeVolunteer = Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            //double? LongitudeVolunteer = Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress).Result;
+            //double? LatitudeVolunteer1 = Task.Run(() => Tools.GetLatitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+            //double? LongitudeVolunteer = Task.Run(() => Tools.GetLongitudeAsync(doVolunteer.FullCurrentAddress)).Result;
+
+            //if (CalculateCallStatus(doCall) == CallStatus.Open|| CalculateCallStatus(doCall) ==CallStatus.OpenAtRisk)// status open
+            var callStatus = CalculateCallStatus(doCall);
             if ((callStatus == CallStatus.InProgressAtRisk) || (callStatus == CallStatus.InProgress))// status open
                 return new BO.CallInProgress
 
@@ -141,6 +151,106 @@ internal static class CallManager
                 return null;// not found call open
 }
     }
+
+    public static async Task<BO.CallInProgress?> GetCallInProgressAsync(int VolunteerId)
+    {
+        DO.Volunteer? doVolunteer = null;
+        DO.Assignment? doAssignment = null;
+        DO.Call? doCall = null;
+
+        // קריאה סינכרונית לבדוק אם המתנדב קיים
+        lock (AdminManager.BlMutex)
+        {
+            doVolunteer = _dal.Volunteer.Read(VolunteerId)
+                ?? throw new BlDoesNotExistException("Volunteer with the specified ID does not exist.");
+        }
+
+        // קריאה סינכרונית לקרוא את ההקצאות של המתנדב
+        lock (AdminManager.BlMutex)
+        {
+            doAssignment = _dal.Assignment.ReadAll()
+                .Where(a => a.VolunteerId == VolunteerId)
+                .OrderByDescending(a => a.Id)
+                .FirstOrDefault();
+        }
+
+        if (doAssignment == null)
+            return null;
+
+        // קריאה סינכרונית לקרוא את הקריאה
+        lock (AdminManager.BlMutex)
+        {
+            doCall = _dal.Call.ReadAll().FirstOrDefault(c => c.Id == doAssignment!.CallId);
+        }
+
+        // לא לחכות בתוך הלוק, אלא לעדכן את הקואורדינטות בצורה אסינכרונית
+        _ = UpdateCoordinatesForCallAsync(doVolunteer);
+
+        // ביצוע בדיקות אחרות בצורה סינכרונית
+        BO.CallStatus callStatus = CalculateCallStatus(doCall);
+
+        if (callStatus == BO.CallStatus.InProgressAtRisk || callStatus == BO.CallStatus.InProgress)
+        {
+            return new BO.CallInProgress
+            {
+                Id = doAssignment.Id,
+                CallId = doAssignment.CallId,
+                CallType = (BO.Calltype)doCall.Calltype,
+                Description = doCall.VerbalDescription,
+                FullAddress = doCall.ReadAddress,
+                OpenTime = doCall.OpeningTime,
+                MaxCompletionTime = doCall.MaxEndTime,
+                EnterTime = doAssignment.time_entry_treatment,
+                DistanceFromVolunteer = Air_distance_between_2_addresses(doCall.Latitude, doCall.Longitude, doVolunteer.Latitude, doVolunteer.Longitude),
+                Status = callStatus
+            };
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    // פונקציה אסינכרונית לעדכון הקואורדינטות של המתנדב
+    public static async Task UpdateCoordinatesForCallAsync(DO.Volunteer doVolunteer)
+    {
+        if (doVolunteer.FullCurrentAddress is not null)
+        {
+            // בדוק אם הכתובת תקינה בעולם לפני שמבצע את החישוב
+            if (!await Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress).ConfigureAwait(false))
+            {
+                throw new BlInvalidaddress("The address is not valid in the real world.");
+            }
+
+            // אם הכתובת תקינה, אז חישוב הקואורדינטות
+            var coordinates = await Tools.GetCoordinatesAsync(doVolunteer.FullCurrentAddress);
+            if (coordinates.HasValue)
+            {
+                doVolunteer = doVolunteer with { Latitude = coordinates.Value.Latitude, Longitude = coordinates.Value.Longitude };
+
+                lock (AdminManager.BlMutex)
+                {
+                    _dal.Volunteer.Update(doVolunteer);
+                }
+
+                // התראות עדכון
+                Observers.NotifyListUpdated();
+                Observers.NotifyItemUpdated(doVolunteer.Id);
+            }
+            else
+            {
+                throw new BlInvalidaddress("Failed to calculate coordinates for the address.");
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
     private const double EarthRadiusKm = 6371.0; // Earth's radius in kilometers
 
@@ -322,7 +432,7 @@ internal static class CallManager
         var doCall = _dal.Call.ReadAll().Where(c => c.Id == doAssignment!.CallId).FirstOrDefault();
 
         // logic chack
-        if (Tools.IsAddressValid(doCall.ReadAddress)==false)
+        if (Tools.IsAddressValidAsync(doCall.ReadAddress).Result==false)
             throw new BlInvalidaddress($"The address = {doCall.ReadAddress}provided is invalid.");
         MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime);// If not good throw an exception from within the method
 
@@ -335,11 +445,9 @@ internal static class CallManager
                 Calltype = (BO.Calltype)doCall.Calltype, // Enum conversion
                 Description = doCall.VerbalDescription,
                 FullAddress = doCall.ReadAddress, // Full address that chack above 
-                                                  //Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
-                                                  //Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the addres
+                Latitude = Tools.GetLatitudeAsync(doCall.ReadAddress).Result, // Latitude coordinate of the address
+                Longitude = Tools.GetLongitudeAsync(doCall.ReadAddress).Result, // Longitude coordinate of the addres
 
-                Latitude = Tools.GetLatitude(doCall.ReadAddress), // Latitude coordinate of the address
-                Longitude = Tools.GetLongitude(doCall.ReadAddress), // Longitude coordinate of the addres
                 OpenTime = doCall.OpeningTime, // Time when the call was opened
                 MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
                 Status = CalculateCallStatus(doCall), // Current status of the call

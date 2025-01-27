@@ -76,7 +76,6 @@ internal class VolunteerImplementation : IVolunteer
     }
 
     [MethodImpl(MethodImplOptions.Synchronized)]
-
     public Volunteer? Read(Func<Volunteer, bool> filter)  //stage 2
     {
         return DataSource.Volunteers.FirstOrDefault(filter);
@@ -85,7 +84,6 @@ internal class VolunteerImplementation : IVolunteer
 
 
     [MethodImpl(MethodImplOptions.Synchronized)]
-
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null) //stage 2
     => filter == null
         ? DataSource.Volunteers.Select(item => item)
@@ -94,7 +92,6 @@ internal class VolunteerImplementation : IVolunteer
 
     /// <param name="old">// Searches for the old Assignment
     [MethodImpl(MethodImplOptions.Synchronized)]
-
     public void Update(Volunteer item)
     {
         Volunteer? old = DataSource.Volunteers.Find(x => x?.Id == item.Id);

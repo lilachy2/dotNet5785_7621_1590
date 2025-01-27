@@ -25,7 +25,7 @@ namespace PL.login
         {
             try
             {
-                var volunteer = s_bl.Volunteer.Read(Id);
+                 var volunteer = s_bl.Volunteer.Read(Id);
                 if (Id == 0 || string.IsNullOrEmpty(Password))
                 {
                     MessageBox.Show("Error: Please enter full details.");

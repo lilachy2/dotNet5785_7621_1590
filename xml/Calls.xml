@@ -41,16 +41,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>31.448547329330687</Latitude>
-    <Longitude>35.13222730090976</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1005</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>88 Avenue du Parc, Montreal, QC, Canada</ReadAddress>
-    <OpeningTime>2025-01-23T08:40:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.650066139429686</Latitude>
     <Longitude>34.356225276076785</Longitude>
     <Calltype>broken_bone</Calltype>
