@@ -19,6 +19,8 @@ namespace PL.Volunteer
         private VolInList _selectedFilter = VolInList.None;  // Default to None (no filter)
 
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
+
 
         // Declare the SelectedFilter property with PropertyChanged notifications
         public VolInList SelectedFilter
@@ -30,7 +32,7 @@ namespace PL.Volunteer
                 {
                     _selectedFilter = value;
                     OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
-                    UpdateVolunteerList();  // Update the list when the filter changes
+                    QueryVolunteerList();  // Update the list when the filter changes
                 }
             }
         }
@@ -60,7 +62,7 @@ namespace PL.Volunteer
             InitializeComponent();
             DataContext = this;  // Set the DataContext to the window itself for binding
 
-            UpdateVolunteerList();
+            QueryVolunteerList();
         }
 
         // Handle ComboBox selection change event to update the filter
@@ -76,19 +78,14 @@ namespace PL.Volunteer
 
 
         // Update the volunteer list based on the selected filter
-        private void UpdateVolunteerList()
+        public void QueryVolunteerList()
         {
+
             try
             {
-                // Query and retrieve the list of volunteers filtered by the selected filter
-                //IEnumerable<BO.VolunteerInList> volunteers = queryVolunteerList();
-
-                //// Use the dispatcher to update the UI thread with the new volunteer listdoubl
-                //Application.Current.Dispatcher.Invoke(() =>
-                //{
-                //    VolunteerInList = volunteers;
-                //});
-                QueryVolunteerList();
+                VolunteerInList = (SelectedFilter == BO.VolInList.None) ?
+                   s_bl?.Volunteer.ReadAll(null, null)! :
+                   s_bl?.Volunteer.ReadAll(null, SelectedFilter)!;
             }
             catch (Exception ex)
             {
@@ -96,25 +93,7 @@ namespace PL.Volunteer
                 MessageBox.Show($"An error occurred while loading the volunteer list: {ex.Message}",
                                 "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-
-
-        // This method contains the filtering logic
-        //private IEnumerable<BO.VolunteerInList> queryVolunteerList()
-        //{
-        //    IEnumerable<BO.VolunteerInList> volunteers;
-
-        //    volunteers = s_bl.Volunteer.ReadAll(null, SelectedFilter);
-
-
-        //    return volunteers;
-        //}
-        public void QueryVolunteerList()
-        {
-            VolunteerInList = (SelectedFilter == BO.VolInList.None) ?
-                s_bl?.Volunteer.ReadAll(null, null)! :
-                s_bl?.Volunteer.ReadAll(null, SelectedFilter)!;
+            
         }
 
             //Handle Window loaded event to register the observer for updates
@@ -133,7 +112,9 @@ namespace PL.Volunteer
         }
        private void volunteerListObserver()
         {
-            UpdateVolunteerList();  // Refresh the list after a change occurs
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+                _observerOperation = Dispatcher.BeginInvoke(() => { QueryVolunteerList(); });
+                   // Refresh the list after a change occurs
         }
 
         // INotifyPropertyChanged implementation
@@ -154,7 +135,7 @@ namespace PL.Volunteer
                 volunteerWindow.Show();
 
                 // After adding a volunteer, refresh the list automatically
-                UpdateVolunteerList();
+                    QueryVolunteerList();
             }
             catch (Exception ex)
             {

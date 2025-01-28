@@ -6,9 +6,14 @@ using BO;
 using BlApi;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace PL.main_volunteer
 {
+    /// <summary>
+    ///  תיקנו פה אובזרברים- לבדוק
+    /// </summary>
+    
     public partial class ChooseCallWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
@@ -18,6 +23,9 @@ namespace PL.main_volunteer
         private BO.OpenCallInList _selectedCall;  // This will hold the selected call
         private BO.Calltype _selectedFilter = BO.Calltype.None;  // Default to None (no filter)
         private BO.OpenCallInListEnum _selectedSort = BO.OpenCallInListEnum.None; // Default to None (no sorting)
+
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -56,7 +64,7 @@ namespace PL.main_volunteer
                 {
                     _selectedFilter = value;
                     OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
-                    LoadOpenCalls();  // Update the list when the filter changes
+                    LoadOpenCallsObserve();  // Update the list when the filter changes
                 }
             }
         } 
@@ -69,7 +77,7 @@ namespace PL.main_volunteer
                 {
                     _selectedSort = value;
                     OnPropertyChanged(nameof(_selectedSort));  // Notify the UI of the property change
-                    LoadOpenCalls();  // Update the list when the filter changes
+                    LoadOpenCallsObserve();  // Update the list when the filter changes
                 }
             }
         }
@@ -91,7 +99,7 @@ namespace PL.main_volunteer
                 {
                     _volunteer = value;
                     OnPropertyChanged(nameof(Volunteer));
-                    LoadOpenCalls(); // Reload open calls when volunteer changes
+                    LoadOpenCallsObserve(); // Reload open calls when volunteer changes
                 }
             }
         }
@@ -110,6 +118,11 @@ namespace PL.main_volunteer
         }
 
         // Method to load open calls for the volunteer
+        public void LoadOpenCallsObserve()
+        {
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+                _observerOperation = Dispatcher.BeginInvoke(() => { LoadOpenCalls(); });
+        }
         private void LoadOpenCalls()
         {
             if (Volunteer != null)
@@ -153,7 +166,7 @@ namespace PL.main_volunteer
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Calltype selectedItem)
             {
                 SelectedFilter = selectedItem;
-                LoadOpenCalls();
+                LoadOpenCallsObserve();
 
             }
         }
@@ -162,7 +175,7 @@ namespace PL.main_volunteer
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.OpenCallInListEnum selectedItem)
             {
                 SelectedSort = selectedItem;
-                LoadOpenCalls();
+                LoadOpenCallsObserve();
             }
         }
 

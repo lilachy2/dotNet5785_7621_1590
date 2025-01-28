@@ -1,200 +1,184 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVolunteer>
   <Volunteer>
-    <Id>264522579</Id>
-    <Name>Sara Levi</Name>
-    <Number_phone>0541176694</Number_phone>
-    <Email>sara.levi@volunteer.org</Email>
-    <Password>Hey1234@</Password>
-    <Role>Volunteer</Role>
-    <Distance_Type>Aerial_distance</Distance_Type>
-    <FullCurrentAddress>456 Michigan Avenue, Chicago, IL, USA</FullCurrentAddress>
-    <Latitude>32.94847115786205</Latitude>
-    <Longitude>34.332903655631384</Longitude>
-    <Active>true</Active>
-    <distance>15</distance>
-  </Volunteer>
-  <Volunteer>
-    <Id>251420609</Id>
+    <Id>411855399</Id>
     <Name>Yael Ben David</Name>
-    <Number_phone>0512418628</Number_phone>
+    <Number_phone>0552557815</Number_phone>
     <Email>yael.ben.david@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>789 Market Street, San Francisco, CA, USA</FullCurrentAddress>
-    <Latitude>31.58163369845122</Latitude>
-    <Longitude>35.76503919077577</Longitude>
+    <Latitude>30.141859244882262</Latitude>
+    <Longitude>35.88573746521997</Longitude>
     <Active>true</Active>
-    <distance>13</distance>
+    <distance>18</distance>
   </Volunteer>
   <Volunteer>
-    <Id>331085026</Id>
+    <Id>337300873</Id>
     <Name>Nir Azulay</Name>
-    <Number_phone>0554664173</Number_phone>
+    <Number_phone>0506325292</Number_phone>
     <Email>nir.azulay@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>321 Boylston Street, Boston, MA, USA</FullCurrentAddress>
-    <Latitude>29.736774800536125</Latitude>
-    <Longitude>35.319421450958224</Longitude>
+    <Latitude>30.313927507233434</Latitude>
+    <Longitude>35.23851907626958</Longitude>
     <Active>true</Active>
-    <distance>15</distance>
+    <distance>14</distance>
   </Volunteer>
   <Volunteer>
-    <Id>397298012</Id>
+    <Id>443217301</Id>
     <Name>Tamar Gilad</Name>
-    <Number_phone>0519871539</Number_phone>
+    <Number_phone>0513197974</Number_phone>
     <Email>tamar.gilad@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>654 Broadway, Nashville, TN, USA</FullCurrentAddress>
-    <Latitude>33.302137277631424</Latitude>
-    <Longitude>35.298460108468916</Longitude>
+    <Latitude>31.104415372688408</Latitude>
+    <Longitude>34.74152814460356</Longitude>
     <Active>true</Active>
-    <distance>13</distance>
+    <distance>10</distance>
   </Volunteer>
   <Volunteer>
-    <Id>558513579</Id>
+    <Id>562292289</Id>
     <Name>Roni Shaked</Name>
-    <Number_phone>0503600902</Number_phone>
+    <Number_phone>0508401512</Number_phone>
     <Email>roni.shaked@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>10 Downing Street, London, UK</FullCurrentAddress>
-    <Latitude>32.746743838762704</Latitude>
-    <Longitude>34.56476072195381</Longitude>
+    <Latitude>30.820071707550046</Latitude>
+    <Longitude>35.13760733241494</Longitude>
     <Active>true</Active>
-    <distance>6</distance>
+    <distance>19</distance>
   </Volunteer>
   <Volunteer>
-    <Id>625793557</Id>
+    <Id>579883807</Id>
     <Name>Lior Peretz</Name>
-    <Number_phone>0539453061</Number_phone>
+    <Number_phone>0522074759</Number_phone>
     <Email>lior.peretz@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>45 Oxford Street, London, UK</FullCurrentAddress>
-    <Latitude>30.254275643803723</Latitude>
-    <Longitude>34.67281133492484</Longitude>
+    <Latitude>32.28969895391867</Latitude>
+    <Longitude>34.74254189773916</Longitude>
     <Active>true</Active>
-    <distance>5</distance>
+    <distance>15</distance>
   </Volunteer>
   <Volunteer>
-    <Id>583184614</Id>
+    <Id>853642822</Id>
     <Name>Meir Shechter</Name>
-    <Number_phone>0578198184</Number_phone>
+    <Number_phone>0514651269</Number_phone>
     <Email>meir.shechter@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>78 Prince Street, Edinburgh, Scotland, UK</FullCurrentAddress>
-    <Latitude>30.500401973812885</Latitude>
-    <Longitude>35.453922303000475</Longitude>
+    <Latitude>31.861400585724535</Latitude>
+    <Longitude>34.38733751618313</Longitude>
     <Active>true</Active>
-    <distance>14</distance>
+    <distance>5</distance>
   </Volunteer>
   <Volunteer>
-    <Id>290574024</Id>
+    <Id>340652077</Id>
     <Name>Efrat Halevi</Name>
-    <Number_phone>0511687320</Number_phone>
+    <Number_phone>0501495175</Number_phone>
     <Email>efrat.halevi@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>23 Castle Street, Cardiff, Wales, UK</FullCurrentAddress>
-    <Latitude>33.429486458874386</Latitude>
-    <Longitude>35.575809136251536</Longitude>
+    <Latitude>31.310048353076677</Latitude>
+    <Longitude>35.005011068067375</Longitude>
     <Active>true</Active>
-    <distance>11</distance>
+    <distance>17</distance>
   </Volunteer>
   <Volunteer>
-    <Id>731480230</Id>
+    <Id>777999480</Id>
     <Name>Ofir Bar</Name>
-    <Number_phone>0553729726</Number_phone>
+    <Number_phone>0504741606</Number_phone>
     <Email>ofir.bar@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>56 Victoria Square, Birmingham, UK</FullCurrentAddress>
-    <Latitude>29.546893290978733</Latitude>
-    <Longitude>34.722614740638164</Longitude>
+    <Latitude>31.643728170620008</Latitude>
+    <Longitude>35.847245009967274</Longitude>
     <Active>true</Active>
-    <distance>10</distance>
+    <distance>16</distance>
   </Volunteer>
   <Volunteer>
-    <Id>102909445</Id>
+    <Id>349371728</Id>
     <Name>Maya Tzur</Name>
-    <Number_phone>0556357037</Number_phone>
+    <Number_phone>0538855394</Number_phone>
     <Email>maya.tzur@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>12 Rue de Rivoli, Paris, France</FullCurrentAddress>
-    <Latitude>30.926135103734843</Latitude>
-    <Longitude>34.37165302337671</Longitude>
+    <Latitude>30.331331104132467</Latitude>
+    <Longitude>35.46158129563328</Longitude>
     <Active>true</Active>
-    <distance>5</distance>
+    <distance>6</distance>
   </Volunteer>
   <Volunteer>
-    <Id>852275629</Id>
+    <Id>982865806</Id>
     <Name>Noa Mizrahi</Name>
-    <Number_phone>0578526103</Number_phone>
+    <Number_phone>0505801675</Number_phone>
     <Email>noa.mizrahi@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>34 Avenue des Champs-Élysées, Paris, France</FullCurrentAddress>
-    <Latitude>31.77361966916446</Latitude>
-    <Longitude>34.4588986828486</Longitude>
+    <Latitude>32.834886237651865</Latitude>
+    <Longitude>35.43194154114652</Longitude>
     <Active>true</Active>
-    <distance>8</distance>
+    <distance>19</distance>
   </Volunteer>
   <Volunteer>
-    <Id>802550584</Id>
+    <Id>344720064</Id>
     <Name>David Erez</Name>
-    <Number_phone>0535099882</Number_phone>
+    <Number_phone>0524033562</Number_phone>
     <Email>david.erez@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>67 Rue Paradis, Marseille, France</FullCurrentAddress>
-    <Latitude>30.70406788047296</Latitude>
-    <Longitude>35.79704832179759</Longitude>
+    <Latitude>31.970051980606073</Latitude>
+    <Longitude>35.645640406885434</Longitude>
     <Active>true</Active>
-    <distance>12</distance>
+    <distance>13</distance>
   </Volunteer>
   <Volunteer>
-    <Id>877538245</Id>
+    <Id>272280983</Id>
     <Name>Tal Koren</Name>
-    <Number_phone>0511318566</Number_phone>
+    <Number_phone>0578700103</Number_phone>
     <Email>tal.koren@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>89 Rue de la République, Lyon, France</FullCurrentAddress>
-    <Latitude>29.820791011155894</Latitude>
-    <Longitude>34.51184681425485</Longitude>
+    <Latitude>32.27451991630445</Latitude>
+    <Longitude>35.82136554500489</Longitude>
     <Active>true</Active>
-    <distance>12</distance>
+    <distance>18</distance>
   </Volunteer>
   <Volunteer>
-    <Id>126315609</Id>
+    <Id>634175869</Id>
     <Name>Hila Malka</Name>
-    <Number_phone>0538322672</Number_phone>
+    <Number_phone>0537376593</Number_phone>
     <Email>hila.malka@volunteer.org</Email>
     <Password>Hey1234@</Password>
     <Role>Volunteer</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>23 Place Bellecour, Lyon, France</FullCurrentAddress>
-    <Latitude>31.954916450634933</Latitude>
-    <Longitude>34.89302001095664</Longitude>
+    <Latitude>32.59656156513229</Latitude>
+    <Longitude>35.542195681918834</Longitude>
     <Active>true</Active>
-    <distance>14</distance>
-  </Volunteer>
-	Volunteer
-	VolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteer<Volunteer><Id>809507477</Id><Name>Avi Cohen</Name><Number_phone>0535872035</Number_phone><Email>avi.cohen@volunteer.org</Email><Password>Hey1234@</Password><Role>Manager</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>123 5th Avenue, New York, NY, USA</FullCurrentAddress><Latitude>40.67876365</Latitude><Longitude>-73.97859592680422</Longitude><Active>true</Active><distance>14</distance></Volunteer></ArrayOfVolunteer>
+    <distance>8</distance>
+  </Volunteer>VolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteer<Volunteer><Id>190905359</Id><Name>Sara Levi</Name><Number_phone>0564635139</Number_phone><Email>sara.levi@volunteer.org</Email><Password>Hey1234@</Password><Role>Volunteer</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>456 Michigan Avenue, Chicago, IL, USA</FullCurrentAddress><Latitude>41.4814957</Latitude><Longitude>-87.6128986</Longitude><Active>true</Active><distance>19</distance></Volunteer>VolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteerVolunteer<Volunteer><Id>148881186</Id><Name>Avi Cohen</Name><Number_phone>0528050630</Number_phone><Email>avi.cohen@volunteer.org</Email><Password>Hey1234@</Password><Role>Manager</Role><Distance_Type>Aerial_distance</Distance_Type><FullCurrentAddress>123 5th Avenue, New York, NY, USA</FullCurrentAddress><Latitude>40.67876365</Latitude><Longitude>-73.97859592680422</Longitude><Active>true</Active><distance>6</distance></Volunteer></ArrayOfVolunteer>

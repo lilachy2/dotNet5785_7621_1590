@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace PL.main_volunteer
 {
+    /// <summary>
+    /// / תיקנו פה אובזרברים- לבדוק
+    /// </summary>
     public partial class VolunteerHistoryWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         private int _volunteerId;
         private BO.Calltype? _selectedStatus = BO.Calltype.None;  // Default to None (no filter)
         private BO.ClosedCallInListEnum? _selectedSort = BO.ClosedCallInListEnum.None; // Default to None (no sorting)
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
 
 
         // Event for INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-      
+
         public static readonly DependencyProperty ClosedCallInListProperty =
            DependencyProperty.Register("ClosedCallInList", typeof(IEnumerable<BO.ClosedCallInList>), typeof(VolunteerHistoryWindow), new PropertyMetadata(null));
 
@@ -38,11 +43,11 @@ namespace PL.main_volunteer
                 if (_selectedStatus != value)
                 {
                     _selectedStatus = value;
-                    LoadVolunteerHistory();
+                    LoadVolunteerHistoryObzerv();
                 }
             }
         }
-      
+
         public BO.ClosedCallInListEnum? SelectedSort
         {
             get { return _selectedSort; }
@@ -52,25 +57,38 @@ namespace PL.main_volunteer
                 {
                     _selectedSort = value;
                     OnPropertyChanged(nameof(_selectedSort));  // Notify the UI of the property change
-                    LoadVolunteerHistory();  // Update the list when the filter changes
+                    LoadVolunteerHistoryObzerv();  // Update the list when the filter changes
                 }
             }
         }
 
-      
+
         // Constructor for initializing the window with volunteer ID
-        public VolunteerHistoryWindow(int id, Window previousWindow=null)
+        public VolunteerHistoryWindow(int id, Window previousWindow = null)
         {
             InitializeComponent();
             _volunteerId = id;
             _previousWindow = previousWindow;
             // Load the volunteer's call history asynchronously
-            LoadVolunteerHistory();
+            //LoadVolunteerHistory();
             this.DataContext = this;  // Set the DataContext to this window for binding
+
+            ////?????
+            s_bl.Call.AddObserver(id, LoadVolunteerHistoryObzerv);
+            //s_bl.Volunteer.AddObserver(id, LoadVolunteerHistoryObzerv);
 
         }
 
         // Synchronously load the volunteer's call history
+        public void LoadVolunteerHistoryObzerv()
+        {
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+                _observerOperation = Dispatcher.BeginInvoke(() =>
+{
+    LoadVolunteerHistory();
+});
+
+        }
         private void LoadVolunteerHistory()
         {
             try
@@ -94,7 +112,7 @@ namespace PL.main_volunteer
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Calltype selectedItem)
             {
                 SelectedStatus = selectedItem;
-                LoadVolunteerHistory();
+                LoadVolunteerHistoryObzerv();
 
             }
         }
@@ -105,7 +123,7 @@ namespace PL.main_volunteer
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.ClosedCallInListEnum selectedItem)
             {
                 SelectedSort = selectedItem;
-                LoadVolunteerHistory();
+                LoadVolunteerHistoryObzerv(); 
 
             }
         }

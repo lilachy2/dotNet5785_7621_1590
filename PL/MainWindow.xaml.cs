@@ -9,6 +9,7 @@ using PL.Call;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Threading;
 
 namespace PL
 {
@@ -19,6 +20,9 @@ namespace PL
     public partial class MainWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get(); // stage 5
+
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
+
 
         // Dependency Property for the Current Time
         public DateTime CurrentTime
@@ -210,19 +214,51 @@ namespace PL
             //MessageBox.Show("Starting Simulator...");
         }
 
-        // Observer method to update CurrentTime when it changes
-        private void clockObserver()
+      private void clockObserver()
         {
-            // Update the CurrentTime property on the UI thread
-            Dispatcher.Invoke(() => CurrentTime = s_bl.Admin.GetClock()); // Ensure it's on the UI thread
+            // Ensure the operation is not running or already completed
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+            {
+                _observerOperation = Application.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    try
+                    {
+                        var newTime = s_bl.Admin.GetClock(); // Fetch the updated clock value
+                        if (newTime != CurrentTime) // Update only if the value has changed
+                        {
+                            CurrentTime = newTime;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to update Current Time: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                });
+            }
         }
 
-
         // Observer method to update RiskRange when it changes
+      
         private void configObserver()
         {
-            // Update the RiskRange property on the UI thread
-            Dispatcher.Invoke(() => RiskRange = s_bl.Admin.GetMaxRange()); // Ensure it's on the UI thread
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+            {
+                _observerOperation = Application.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    try
+                    {
+                        var newRange = s_bl.Admin.GetMaxRange();
+                        if (newRange != RiskRange)
+                        {
+                            RiskRange = newRange;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to update Risk Range: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                });
+            }
         }
 
         // MainWindow Loaded event handler

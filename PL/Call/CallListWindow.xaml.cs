@@ -18,8 +18,9 @@ namespace PL.Call
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         private BO.Calltype _selectedFilter = BO.Calltype.None;  // Default to None (no filter)
         private CallInListField _selectedSortField = CallInListField.None; // Default to None (no sorting)
-
         private BO.CallStatus _selectedFilterStatus = BO.CallStatus.NoneToFilter;  // Default to None (no filter)
+
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
 
         private int? volId; // to get volunterrID to oter Window
         public BO.CallStatus SelectedFilterStatus
@@ -31,7 +32,7 @@ namespace PL.Call
                 {
                     _selectedFilterStatus = value;
                     OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
-                    UpdateCallList();  // Update the list when the filter changes
+                    callListObserver();  // Update the list when the filter changes
                 }
             }
         }
@@ -44,7 +45,7 @@ namespace PL.Call
                 {
                     _selectedFilter = value;
                     OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
-                    UpdateCallList();  // Update the list when the filter changes
+                    callListObserver();  // Update the list when the filter changes
                 }
             }
         }
@@ -59,7 +60,7 @@ namespace PL.Call
                 {
                     _selectedSortField = value;
                     OnPropertyChanged(nameof(SelectedSortField));  // Notify the UI of the property change
-                    UpdateCallList();  // Update the list when the sort field changes
+                    callListObserver();  // Update the list when the sort field changes
                 }
             }
         }
@@ -108,7 +109,7 @@ namespace PL.Call
                 SelectedFilterStatus = initialStatusFilter.Value;
             }
 
-            UpdateCallList();
+            callListObserver();
         }
 
 
@@ -134,18 +135,16 @@ namespace PL.Call
         }
 
         // Update the call list based on the selected filter and sort field
-        private void UpdateCallList()
+        private void callListObserver()
         {
             try
             {
                 // Query and retrieve the list of calls filtered and sorted by the selected criteria
-                queryCallList();
+                if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+                    _observerOperation = Dispatcher.BeginInvoke(() => {
+                        queryCallList();});
 
-                // Use the dispatcher to update the UI thread with the new call list
-                //Application.Current.Dispatcher.Invoke(() =>
-                //{
-                //    CallInList = callInLists;
-                //});
+                
             }
             catch (Exception ex)
             {
@@ -165,11 +164,7 @@ namespace PL.Call
             BlApi.Factory.Get().Call.RemoveObserver(callListObserver);
         }
 
-        private void callListObserver()
-        {
-            UpdateCallList();  // Refresh the list after a change occurs
-        }
-
+        
         // INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -186,7 +181,7 @@ namespace PL.Call
             {
                 CallWindow callWindow = new CallWindow();
                 callWindow.Show();
-                UpdateCallList();
+                callListObserver();
 
                 IsBalloonVisible = true;
 

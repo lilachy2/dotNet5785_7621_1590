@@ -111,7 +111,7 @@ internal static class Tools
 
         try
         {
-            using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(3) }) // 5 second timeout
+            using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(6) }) // 5 second timeout
             {
                 // Add "User-Agent" header (required in most APIs)
                 client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");

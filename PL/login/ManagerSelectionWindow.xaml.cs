@@ -1,9 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Threading;
 
 namespace PL.login
 {
     public partial class ManagerSelectionWindow : Window
     {
+
         public int SelectedOption { get; private set; } = -1; // Default value indicating no selection.
 
         public ManagerSelectionWindow()

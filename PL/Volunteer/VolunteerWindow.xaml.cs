@@ -6,12 +6,15 @@ using System.Windows;
 using System.ComponentModel;
 using System.Windows.Controls;
 using DO;
+using System.Windows.Threading;
 
 namespace PL.Volunteer
 {
     public partial class VolunteerWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+        private volatile DispatcherOperation? _updateOperation = null; // מעקב אחר עדכונים
+
         // טקסט הכפתור (הוספה/עדכון)
         public string ButtonText { get; set; }
 
@@ -102,37 +105,6 @@ namespace PL.Volunteer
         {
             s_bl.Volunteer.AddObserver(volunteerId, HandleVolunteerUpdate);
         }
-
-        private void HandleVolunteerUpdate()
-        {
-            try
-            {
-                // טעינה מחדש של הנתונים על ה-UI thread
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    // קריאת המתנדב המעודכן
-                    var updatedVolunteer = s_bl.Volunteer.Read(Volunteer.Id);
-                    Volunteer = updatedVolunteer;
-                    // עדכון הנתונים ב-Volunteer
-                    Volunteer.Name = updatedVolunteer.Name;
-                    Volunteer.Number_phone = updatedVolunteer.Number_phone;
-                    Volunteer.Email = updatedVolunteer.Email;
-                    Volunteer.Active = updatedVolunteer.Active;
-                    Volunteer.Distance = updatedVolunteer.Distance;
-                    Volunteer.DistanceType = updatedVolunteer.DistanceType;
-                    Volunteer.Role = updatedVolunteer.Role;
-                });
-            }
-            catch (Exception ex)
-            {
-                // טיפול בשגיאה ב-UI thread
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    MessageBox.Show($"Error updating volunteer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                });
-            }
-        }
-
         private void Window_Closed(object sender, EventArgs e)
         {
             if (Volunteer != null && Volunteer.Id != 0)
@@ -209,5 +181,41 @@ namespace PL.Volunteer
                 Console.WriteLine($"Selected Role: {selectedRole}");
             }
         }
+
+
+        private void HandleVolunteerUpdate()
+        {
+            if (_updateOperation is null || _updateOperation.Status == DispatcherOperationStatus.Completed)
+            {
+                _updateOperation = Application.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    try
+                    {
+                        // קריאת המתנדב המעודכן
+                        var updatedVolunteer = s_bl.Volunteer.Read(Volunteer.Id);
+                        Volunteer = updatedVolunteer;
+
+                        // עדכון הנתונים
+                        Volunteer.Name = updatedVolunteer.Name;
+                        Volunteer.Number_phone = updatedVolunteer.Number_phone;
+                        Volunteer.Email = updatedVolunteer.Email;
+                        Volunteer.Active = updatedVolunteer.Active;
+                        Volunteer.Distance = updatedVolunteer.Distance;
+                        Volunteer.DistanceType = updatedVolunteer.DistanceType;
+                        Volunteer.Role = updatedVolunteer.Role;
+                    }
+                    catch (Exception ex)
+                    {
+                        // טיפול בשגיאה
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show($"Error updating volunteer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        });
+                    }
+                });
+            }
+        }
+
+
     }
 }

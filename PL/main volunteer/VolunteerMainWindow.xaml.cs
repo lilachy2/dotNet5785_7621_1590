@@ -4,12 +4,15 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace PL.main_volunteer
 {
     public partial class VolunteerMainWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
+
 
         //  DependencyProperty
         public static readonly DependencyProperty CurrentVolunteerProperty =
@@ -230,14 +233,20 @@ namespace PL.main_volunteer
         private void VolunteerObserver()
         {
             // עדכון פרטי המתנדב
-            UpdateVolunteerDetails();
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+                _observerOperation = Dispatcher.BeginInvoke(() =>
+                {
+                    UpdateVolunteerDetails();
+                });
         }
 
         // הוספת Observer לקריאה
         private void CallObserver()
         {
-            // עדכון סטטוס הקריאה
-            UpdateCallStatus();
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+                _observerOperation = Dispatcher.BeginInvoke(() =>
+                // עדכון סטטוס הקריאה
+                    { UpdateCallStatus(); });
         }
 
         // פונקציות לעדכון פרטי המתנדב והקריאה

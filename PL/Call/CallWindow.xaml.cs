@@ -12,16 +12,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PL.Call
 {
     /// <summary>
     /// Interaction logic for CallWindow.xaml
     /// </summary>
+    /// שינינו פה את ה NAMEOF במתמודה של המשקיף HandleCallUpdate 
     public partial class CallWindow : Window, INotifyPropertyChanged
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         // טקסט הכפתור (הוספה/עדכון)
+        private volatile DispatcherOperation? _observerOperation = null; //stage 7
+
         public string ButtonText { get; set; }
 
         // מזהה מתנדב
@@ -110,35 +114,41 @@ namespace PL.Call
 
         private void HandleCallUpdate()
         {
-            try
+            // טעינה מחדש של הנתונים על ה-UI thread
+            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
             {
-                // טעינה מחדש של הנתונים על ה-UI thread
-                //Application.Current.Dispatcher.Invoke(() =>
-                //{
-                //    // קריאת הקריאה המעודכנת
-                //    var updatedCall = s_bl.Call.Read(call.Id);
-                //    call = updatedCall;
-
-                //    // עדכון הנתונים בשדות המתאימים
-                //    call.Calltype = updatedCall.Calltype;
-                //    call.Description = updatedCall.Description;
-                //    call.FullAddress = updatedCall.FullAddress;
-                //    call.Latitude = updatedCall.Latitude;
-                //    call.Longitude = updatedCall.Longitude;
-                //    call.OpenTime = updatedCall.OpenTime;
-                //    call.MaxEndTime = updatedCall.MaxEndTime;
-                //    call.Status = updatedCall.Status;
-                //    call.CallAssignments = updatedCall.CallAssignments;
-                //});
-                OnPropertyChanged(nameof(call));
-
-            }
-            catch (Exception ex)
-            {
-                // טיפול בשגיאה ב-UI thread
-                Application.Current.Dispatcher.Invoke(() =>
+                _observerOperation = Dispatcher.BeginInvoke(() =>
                 {
-                    MessageBox.Show($"Error updating call: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    try
+                    {
+                        // קריאת הקריאה המעודכנת
+                        var updatedCall = s_bl.Call.Read(call.Id);
+
+                        // עדכון הנתונים בשדות המתאימים
+                        call.Calltype = updatedCall.Calltype;
+                        call.Description = updatedCall.Description;
+                        call.FullAddress = updatedCall.FullAddress;
+                        call.Latitude = updatedCall.Latitude;
+                        call.Longitude = updatedCall.Longitude;
+                        call.OpenTime = updatedCall.OpenTime;
+                        call.MaxEndTime = updatedCall.MaxEndTime;
+                        call.Status = updatedCall.Status;
+                        call.CallAssignments = updatedCall.CallAssignments;
+
+                        // מפעיל את האירוע PropertyChanged
+                        //כאשר משתמשים ב-Binding עם Mode=TwoWay ו/או UpdateSourceTrigger=PropertyChanged,
+                        //ה-nameof שנרשם באירוע OnPropertyChanged מתייחס למאפיין ה-ViewModel 
+                        // אם משהו מתשנה זה מעדכןפה, מפעיל את האירוע ואז משנה בBINDING
+                        OnPropertyChanged(nameof(call));
+                    }
+                    catch (Exception ex)
+                    {
+                        // טיפול בשגיאה ב-UI thread
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show($"Error updating call: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        });
+                    }
                 });
             }
         }
@@ -192,13 +202,9 @@ namespace PL.Call
             }
         }
 
-        //void refresh()
-        //{
-        //    s_bl.Call.(null, null);
-        //}
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        //הנתונים בבזאמל מאחורה נרשמים לאירוע 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
