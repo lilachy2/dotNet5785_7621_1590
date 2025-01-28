@@ -34,5 +34,6 @@ public interface IVolunteer : IObservable //stage 5
     void Delete(int id);
 
     void Create(BO.Volunteer boVolunteer);
+     void SimulationVolunteerActivity();
 
 }

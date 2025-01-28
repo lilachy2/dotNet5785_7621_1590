@@ -203,6 +203,9 @@ namespace PL
 
         private void StartSimulator_Click(object sender, RoutedEventArgs e)
         {
+            //s_bl.Volunteer.SimulationVolunteerActivity(); // Start the simulator    
+            //s_bl.Volunteer.SimulationVolunteerActivity(1); // Start the simulator    
+
             // Logic to start the simulator, implement as needed
             //MessageBox.Show("Starting Simulator...");
         }

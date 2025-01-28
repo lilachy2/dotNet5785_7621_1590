@@ -445,5 +445,27 @@ internal static class VolunteerManager
                && dalCall.Latitude.Value != 0 && dalCall.Longitude.Value != 0;
     }
 
+    public static async Task UpdateCoordinatesForVolunteerAsync( string address, BO.Volunteer? boVolunteer , DO.Volunteer? doVolunteer)
+    {
+        // חישוב אסינכרוני של הקואורדינטות
+        if (doVolunteer==null)
+       /* DO.Volunteer*/ doVolunteer = VolunteerManager.BOconvertDO(boVolunteer);
+        if (address is not null)
+        {
+            double lat = await Tools.GetLatitudeAsync(address);
+            double lot = await Tools.GetLongitudeAsync(address);
+            if (address is not null)
+            {
+                doVolunteer = doVolunteer with { Latitude = lat, Longitude = lot };
+                lock (AdminManager.BlMutex)
+                    _dal.Volunteer.Update(doVolunteer);
+                VolunteerManager.Observers.NotifyListUpdated();
+                VolunteerManager.Observers.NotifyItemUpdated(doVolunteer.Id);
+            }
+        }
+
+    }
+
+
 
 }

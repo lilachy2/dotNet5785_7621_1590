@@ -25,12 +25,12 @@ namespace PL.main_volunteer
            
             get
             {
-                //  UI thread
-                if (Application.Current.Dispatcher.CheckAccess())
-                {
-                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
-                }
-                else
+                ////  UI thread
+                //if (Application.Current.Dispatcher.CheckAccess())
+                //{
+                //    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
+                //}
+                //else
                 {
                     // Dispatcher
                     return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));

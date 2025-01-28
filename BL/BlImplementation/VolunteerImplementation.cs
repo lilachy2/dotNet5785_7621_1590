@@ -200,7 +200,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result)
             {
                 // התחלת החישוב של הקואורדינטות ברקע, לא מחכים לו
-                _ = UpdateCoordinatesForVolunteerAsync(boVolunteer, requester.FullCurrentAddress); // תחילת חישוב אסינכרוני
+                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( requester.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
             }
             else
             {
@@ -247,25 +247,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     }
 
     // פונקציה אסינכרונית לחישוב הקואורדינאטות
-    private async Task UpdateCoordinatesForVolunteerAsync(BO.Volunteer boVolunteer, string address)
+    private async Task UpdateCoordinatesForVolunteerAsyncHELP(BO.Volunteer boVolunteer, string address)
     {
-        // חישוב אסינכרוני של הקואורדינטות
-      
-        DO.Volunteer doVolunteer = VolunteerManager.BOconvertDO(boVolunteer);
-        if (address is not null)
-        {
-           double lat  = await Tools.GetLatitudeAsync(address);
-           double lot= await Tools.GetLongitudeAsync(address);
-            if (address is not null)
-            {
-                doVolunteer = doVolunteer with { Latitude = lat, Longitude = lot };
-                lock (AdminManager.BlMutex)
-                    _dal.Volunteer.Update(doVolunteer);
-                VolunteerManager.Observers.NotifyListUpdated();
-                VolunteerManager.Observers.NotifyItemUpdated(doVolunteer.Id);
-            }
-        }
-
+       VolunteerManager. UpdateCoordinatesForVolunteerAsync(address,boVolunteer, null);
     }
 
 
@@ -407,7 +391,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             }
 
             // 5. Asynchronously calculate latitude and longitude
-            _ = UpdateCoordinatesForVolunteerAsync(boVolunteer, boVolunteer.FullCurrentAddress);
+            _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( boVolunteer.FullCurrentAddress,  boVolunteer,null);
 
             // 6. Add the volunteer to the data layer
             lock (AdminManager.BlMutex) //stage 7
@@ -435,7 +419,10 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     }
 
     // פונקציה אסינכרונית לחישוב הקואורדינאטות
-
+    public  void SimulationVolunteerActivity()
+    {
+        VolunteerManager.SimulationVolunteerActivity();
+    }
 
 
 }

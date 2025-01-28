@@ -184,7 +184,8 @@ internal static class CallManager
         }
 
         // לא לחכות בתוך הלוק, אלא לעדכן את הקואורדינטות בצורה אסינכרונית
-        _ = UpdateCoordinatesForCallAsync(doVolunteer);
+        //_ = UpdateCoordinatesForCallAsync(doVolunteer);
+        _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( doVolunteer.FullCurrentAddress, null, doVolunteer);
 
         // ביצוע בדיקות אחרות בצורה סינכרונית
         BO.CallStatus callStatus = CalculateCallStatus(doCall);
@@ -212,12 +213,13 @@ internal static class CallManager
     }
 
     // פונקציה אסינכרונית לעדכון הקואורדינטות של המתנדב
-    public static async Task UpdateCoordinatesForCallAsync(DO.Volunteer doVolunteer)
+    public static async Task UpdateCoordinatesForCallAsync1(DO.Volunteer doVolunteer)
     {
         if (doVolunteer.FullCurrentAddress is not null)
         {
             // בדוק אם הכתובת תקינה בעולם לפני שמבצע את החישוב
             if (!await Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress).ConfigureAwait(false))
+            //if (!await Task.Run(() => Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress)).ConfigureAwait(false))
             {
                 throw new BlInvalidaddress("The address is not valid in the real world.");
             }
@@ -244,6 +246,63 @@ internal static class CallManager
         }
     }
 
+    public static async Task UpdateCoordinatesForCallAsync(DO.Volunteer doVolunteer)
+    {
+        if (doVolunteer.FullCurrentAddress is not null)
+        {
+            Console.WriteLine($"Checking address validity: {doVolunteer.FullCurrentAddress}");
+
+
+            try
+            {
+                // קריאה לפונקציה אסינכרונית עם CancellationToken
+                if (!await Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress).ConfigureAwait(false))
+                {
+                    Console.WriteLine("The address is not valid in the real world.");
+                    throw new BlInvalidaddress("The address is not valid in the real world.");
+                }
+
+                // חישוב הקואורדינטות (אסינכרונית)
+                var coordinates = await Tools.GetCoordinatesAsync(doVolunteer.FullCurrentAddress).ConfigureAwait(false);
+
+                if (coordinates.HasValue)
+                {
+                    Console.WriteLine($"Coordinates calculated: Latitude={coordinates.Value.Latitude}, Longitude={coordinates.Value.Longitude}");
+
+                    // עדכון האובייקט עם הקואורדינטות החדשות
+                    var updatedVolunteer = doVolunteer with
+                    {
+                        Latitude = coordinates.Value.Latitude,
+                        Longitude = coordinates.Value.Longitude
+                    };
+
+                    lock (AdminManager.BlMutex)
+                    {
+                        _dal.Volunteer.Update(updatedVolunteer);
+                        Console.WriteLine($"Volunteer updated in the database: {updatedVolunteer}");
+                    }
+
+                    // שליחת התראות על עדכון
+                    Observers.NotifyListUpdated();
+                    Observers.NotifyItemUpdated(updatedVolunteer.Id);
+                    Console.WriteLine("Observers notified about the update.");
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to calculate coordinates for address: {doVolunteer.FullCurrentAddress}");
+                    throw new BlInvalidaddress("Failed to calculate coordinates for the address.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Address is null, no update performed.");
+        }
+    }
 
 
 
