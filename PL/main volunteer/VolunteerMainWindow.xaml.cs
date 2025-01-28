@@ -15,6 +15,29 @@ namespace PL.main_volunteer
         private volatile DispatcherOperation? _observerOperation = null; //stage 7
 
 
+        public BO.Volunteer Volunteer
+        {
+            get
+            {
+                ////  UI thread
+                //if (Application.Current.Dispatcher.CheckAccess())
+                {
+                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
+                }
+                //else
+                //{
+                //    // Dispatcher
+                //    return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
+                //}
+            }
+            set
+            {
+                SetValue(CurrentVolunteerProperty, value);
+                //OnPropertyChanged(nameof(Volunteer));
+            }
+        }
+
+
         //  DependencyProperty
         public static readonly DependencyProperty CurrentVolunteerProperty =
             DependencyProperty.Register(
@@ -24,28 +47,6 @@ namespace PL.main_volunteer
                 new PropertyMetadata(null));
 
         //  Volunteer
-        public BO.Volunteer Volunteer
-        {
-           
-            get
-            {
-                ////  UI thread
-                if (Application.Current.Dispatcher.CheckAccess())
-                {
-                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
-                }
-                else
-                {
-                    // Dispatcher
-                    return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
-                }
-            }
-            set
-            {
-                SetValue(CurrentVolunteerProperty, value);
-                OnPropertyChanged(nameof(Volunteer));
-            }
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -88,7 +89,10 @@ namespace PL.main_volunteer
                 // הגדרת Observer למתנדב
                 if (Volunteer != null)
                 {
-                    VolunteerObserver();                }
+                    //VolunteerObserver();
+                    s_bl.Volunteer.AddObserver(Volunteer.Id, VolunteerObserver);
+
+                }
 
                 // הגדרת Observer לקריאה
                 if (Volunteer?.CurrentCall != null)
@@ -247,7 +251,8 @@ namespace PL.main_volunteer
             if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
                 _observerOperation = Dispatcher.BeginInvoke(() =>
                 {
-                    UpdateVolunteerDetails();
+                    //UpdateVolunteerDetails();
+                    UpdateCallStatus();
                 });
         }
 

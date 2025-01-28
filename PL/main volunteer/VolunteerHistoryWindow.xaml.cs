@@ -70,7 +70,7 @@ namespace PL.main_volunteer
             _volunteerId = id;
             _previousWindow = previousWindow;
             // Load the volunteer's call history asynchronously
-            //LoadVolunteerHistory();
+            LoadVolunteerHistory();
             this.DataContext = this;  // Set the DataContext to this window for binding
 
             ////?????
