@@ -1,4 +1,5 @@
 ﻿using BO;
+using DO;
 using PL.Volunteer;
 using System;
 using System.ComponentModel;
@@ -29,11 +30,11 @@ namespace PL.main_volunteer
             get
             {
                 ////  UI thread
-                //if (Application.Current.Dispatcher.CheckAccess())
-                //{
-                //    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
-                //}
-                //else
+                if (Application.Current.Dispatcher.CheckAccess())
+                {
+                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
+                }
+                else
                 {
                     // Dispatcher
                     return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
@@ -87,8 +88,7 @@ namespace PL.main_volunteer
                 // הגדרת Observer למתנדב
                 if (Volunteer != null)
                 {
-                    s_bl.Volunteer.AddObserver(Volunteer.Id, VolunteerObserver);
-                }
+                    VolunteerObserver();                }
 
                 // הגדרת Observer לקריאה
                 if (Volunteer?.CurrentCall != null)
@@ -125,6 +125,17 @@ namespace PL.main_volunteer
         }
 
         private bool _originalActiveStatus; // משתנה לשמירת הסטטוס המקורי
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            
+                s_bl.Volunteer.RemoveObserver(Volunteer.Id, VolunteerObserver);
+            
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            s_bl.Volunteer.AddObserver(Volunteer.Id, VolunteerObserver);
+        }
 
         private void UpdateVolunteerButton_Click(object sender, RoutedEventArgs e)
         {

@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Volunteer Information" Height="600" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-        FontWeight="Bold">
+        FontWeight="Bold"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        >
     <Grid>
         <!-- Name -->
         <StackPanel Orientation="Horizontal" Margin="10,10,0,0" VerticalAlignment="Top">

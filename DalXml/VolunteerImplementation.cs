@@ -132,7 +132,7 @@ internal class VolunteerImplementation : IVolunteer
 
         volunteerElem.Remove();
 
-        volunteersRoot.Add("Volunteer", CreateVolunteerElement(item));
+        volunteersRoot.Add(/*"Volunteer", */CreateVolunteerElement(item));
         XMLTools.SaveListToXMLElement(volunteersRoot, Config.s_Volunteers_xml);
     }
 }
