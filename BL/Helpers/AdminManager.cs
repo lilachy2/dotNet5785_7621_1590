@@ -203,9 +203,9 @@ internal static class AdminManager //stage 4
 
         //StudentManager.PeriodicStudentsUpdates(oldClock, newClock); //stage 4
         if (_periodicTask is null || _periodicTask.IsCompleted) //stage 7
-            _periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
+          //  _periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
 
-       //     _periodicTask = Task.Run(() => CallManager.UpdateCallsToExpired(oldClock, newClock)); //stage 4
+           _periodicTask = Task.Run(() => CallManager.UpdateCallsToExpired(oldClock, newClock)); //stage 4
 
             //_periodicTask = Task.Run(() => StudentManager.PeriodicStudentsUpdates(oldClock, newClock));
         //etc ...

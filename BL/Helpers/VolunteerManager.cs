@@ -4,6 +4,7 @@ using BO;
 using DalApi;
 using DO;
 using Microsoft.VisualBasic;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Helpers;
@@ -328,6 +329,70 @@ internal static class VolunteerManager
         }
     }
 
+
+
+
+    //internal static void SimulateVolunteerActivity() //stage 7
+    //{
+    //    // var volunteerImplementation = new VolunteerImplementation();
+    //    Thread.CurrentThread.Name = $"Simulator{++s_simulatorCounter}";
+
+    //    // var volunteerList = volunteerImplementation.GetVolunteerList(true,null);
+    //    // var volunteerlist = GetVolunteerListHelp(true, null)/.ToList()/;
+    //    double probability = 0.2;
+
+    //    // יצירת מספר אקראי בטווח 0 עד 1
+    //    double randomValue = s_rand.NextDouble(); // מספר בין 0.0 ל-1.0
+    //    var volunteerList = GetVolunteerListHelp(true, null).ToList();
+    //    int size = volunteerList.Count();
+    //    // בדיקה אם המספר האקראי קטן מההסתברות
+    //    for (int i = 0; i < size; i++)
+    //    {
+    //        var volunteer = readHelp(volunteerList[i].Id);
+    //        if (volunteer.CallIn == null && randomValue < probability)
+    //        {
+    //            var openCallInListsToChose = CallManager.GetOpenCallHelp(volunteer.Id, null, null).ToList();
+
+    //            if (openCallInListsToChose != null && openCallInListsToChose.Count > 0)
+    //            {
+    //                //choose random call for volunteer
+    //                var randomIndex = s_rand.Next(openCallInListsToChose.Count);
+    //                var chosenCall = openCallInListsToChose[randomIndex];
+
+    //                CallManager.ChoseForTreatHelp(volunteer.Id, chosenCall.Id);
+    //            }
+    //        }
+
+    //        else if (volunteer.CallIn != null)    //there is call in treat
+    //        {
+    //            var callin = readHelp(volunteer.Id).CallIn!;
+    //            if ((AdminManager.Now - callin.StartTreat) >= TimeSpan.FromHours(3))
+    //            {
+    //                CallManager.CloseTreatHelp(volunteer.Id, callin.Id);
+    //            }
+    //            else
+    //            {
+    //                int probability1 = s_rand.Next(1, 101); // מספר אקראי בין 1 ל-100
+
+    //                if (probability1 <= 10) // הסתברות של 10%
+    //                {
+    //                    // ביטול הטיפול
+    //                    CallManager.CancelTreatHelp(volunteer.Id, callin.Id);
+    //                }
+    //            }
+    //        }
+
+    //    }
+    //}
+
+
+
+    internal static List<BO.Call> GetOpenCallsimulator()
+    {
+       return _dal.Call.ReadAll().Select(v=>CallManager.GetViewingCall(v.Id)).Where(v=> v.Status== BO.CallStatus.OpenAtRisk|| v.Status == BO.CallStatus.Open ).Where(c => AreCoordinatesCalculated(c)).ToList();
+    }
+
+
     internal static void SimulationVolunteerActivity()
     {
         ////??????
@@ -336,12 +401,12 @@ internal static class VolunteerManager
             try
             {
                 // קבלת רשימת המתנדבים הפעילים והפיכתם לרשימה קונקרטית
-                List<DO.Volunteer> activeVolunteers;
+                List<BO.Volunteer> activeVolunteers;
                 lock (AdminManager.BlMutex)
                 {
                     activeVolunteers = _dal.Volunteer.ReadAll()
                         .Where(v => v.Active)
-                        .ToList();
+                        .Select(v => GetVolunteer(v.Id)).ToList();
                 }
 
                 foreach (var volunteer in activeVolunteers)
@@ -349,32 +414,18 @@ internal static class VolunteerManager
                     bool hasUpdated = false;
 
                     // בדיקה אם למתנדב יש קריאה בטיפולו
-                    // var calls = s_bl.Call.GetOpenCall(_volunteerId, SelectedFilter, SelectedSort);  // Get open calls
-                    //volunteer.CurrentCall==null???
-                    DO.Assignment activeAssignment;
-                    lock (AdminManager.BlMutex)
-                    {
-                        activeAssignment = _dal.Assignment.ReadAll()
-                            .FirstOrDefault(a => a.VolunteerId == volunteer.Id && a.time_end_treatment == null);
-                    }
+                  
+                    BO.CallInProgress activeAssignment = volunteer.CurrentCall;
 
                     if (activeAssignment == null)
                     {
                         // למתנדב אין קריאה פעילה
-                        if (new Random().NextDouble() <= 0.2) // הסתברות של 20%
+                        if (new Random().NextDouble() <= 0.5) // הסתברות של 20%
                         {
-                            List<BO.Call> availableCalls;
-                            IEnumerable<DO.Call> callsFromDal = null;
+                            List<BO.Call> availableCalls = null;
                             lock (AdminManager.BlMutex)
-                                callsFromDal= _dal.Call.ReadAll().ToList();
-
-                            // המרת הקריאות ל-BO וסינון על בסיס בדיקה דינמית
-                            availableCalls = callsFromDal
-                                    .Where(c => AreCoordinatesCalculated(c)) // סינון קריאות עם קואורדינטות תקינות
-                                    .Select(c => CallManager.GetViewingCall(c.Id)) // המרה ל-BO
-                                    .Where(c => c.Status == BO.CallStatus.Open) // סינון סטטוס פתוח
-                                    .ToList();
-                            
+                                availableCalls = GetOpenCallsimulator();
+                                                  
 
                             if (availableCalls.Any())
                             {
@@ -387,14 +438,15 @@ internal static class VolunteerManager
                                 hasUpdated = true;
                             }
                         }
+                    
                     }
                     else
                     {
                         // למתנדב יש קריאה פעילה
-                        var timeSinceStart = (AdminManager.Now - activeAssignment.time_entry_treatment).TotalMinutes;
-                        double estimatedTime = CalculateEstimatedTime(volunteer, activeAssignment.CallId);
+                        var TotalMinutesOfMyTreatment = (AdminManager.Now - activeAssignment.EnterTime).TotalMinutes;
+                        double TimeMakeSance = new Random().Next(10, 30); ;
 
-                        if (timeSinceStart >= estimatedTime)
+                        if (TotalMinutesOfMyTreatment >= TimeMakeSance)
                         {
                             // סיום הטיפול
                             lock (AdminManager.BlMutex)
@@ -404,14 +456,16 @@ internal static class VolunteerManager
                             }
                             hasUpdated = true;
                         }
-                        else if (new Random().NextDouble() <= 0.1) // הסתברות של 10%
+                        else 
                         {
                             // ביטול הטיפול
-                            lock (AdminManager.BlMutex)
-                            {
+                            if (new Random().NextDouble() <= 0.1)
+                              {
+                                lock (AdminManager.BlMutex)
                                 s_bl.Call.UpdateCancelTreatment(volunteer.Id, activeAssignment.CallId);
+                            
+                                hasUpdated = true;
                             }
-                            hasUpdated = true;
                         }
                     }
 
@@ -431,18 +485,12 @@ internal static class VolunteerManager
             }
         });
     }
-    private static double CalculateEstimatedTime(DO.Volunteer volunteer, int callId)
-    {
-        // Placeholder for distance-based time calculation logic
-        // You can replace it with a proper distance calculation and time estimation logic
-        Random random = new Random();
-        return random.Next(10, 30); // Random time between 10 and 30 minutes
-    }
-    private static bool AreCoordinatesCalculated(DO.Call dalCall)
+ 
+    private static bool AreCoordinatesCalculated(BO.Call dalCall)
     {
         // בדיקה אם קווי אורך ורוחב אינם null ואינם שווים לאפס
-        return dalCall.Latitude.HasValue && dalCall.Longitude.HasValue
-               && dalCall.Latitude.Value != 0 && dalCall.Longitude.Value != 0;
+        return dalCall.Latitude != null && dalCall.Longitude != null
+               && dalCall.Latitude != 0 && dalCall.Longitude != 0;
     }
 
     public static async Task UpdateCoordinatesForVolunteerAsync( string address, BO.Volunteer? boVolunteer , DO.Volunteer? doVolunteer)
