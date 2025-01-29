@@ -21,6 +21,7 @@
         <local:CallInListEnumToBackgroundConverter x:Key="CallInListEnumToBackgroundConverterKey" />
         <local:CalltypeToBackgroundConverter x:Key="CalltypeToBackgroundConverterKey" />
         <local:CallInListEnum x:Key="CallInListEnumKey" />
+        <local:ConverterSimulatorState x:Key="ConverterSimulatorStateKey"/>
         <!--<local:ConvertUpdateToTrue x:Key="ConvertUpdateToTrueKey" />-->
         
         

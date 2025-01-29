@@ -62,7 +62,7 @@ internal class CallImplementation : BlApi.ICall
         }
     }
 
-    public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy, BO.CallStatus? statusFilter = null)
+    public IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy, BO.CallStatus? statusFilter)
     {
         IEnumerable<DO.Call> calls = null;
         IEnumerable<BO.CallInList> boCallsInList = null;
@@ -287,13 +287,13 @@ internal class CallImplementation : BlApi.ICall
 
             // שלב שני - חישוב הקואורדינאטות בצורה אסינכרונית
             //_ = UpdateCoordinatesForCallAsync(BOCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
-            _ = UpdateCoordinatesForCallAsync(null, doCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
 
 
             lock (AdminManager.BlMutex) //stage 7
                 _dal.Call.Update(doCall); // עדכון ראשוני ללא קואורדינאטות
             CallManager.Observers.NotifyListUpdated(); //stage 5   
             CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
+            _ = UpdateCoordinatesForCallAsync(null, doCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
 
 
         }
@@ -439,7 +439,7 @@ internal class CallImplementation : BlApi.ICall
         // Retrieve all calls from the BO
         lock (AdminManager.BlMutex) //stage 7
         {
-            allCalls = GetCallsList(null, null, null);
+            allCalls = GetCallsList(null, null, null, null);
 
             // Retrieve all assignments from the DAL
             allAssignments = _dal.Assignment.ReadAll();

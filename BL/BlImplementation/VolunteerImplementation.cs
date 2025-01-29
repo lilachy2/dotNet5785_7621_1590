@@ -196,16 +196,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             lock (AdminManager.BlMutex) //stage 7
                 requester = _dal.Volunteer.Read(requesterId);
 
-            // אם כתובת תקינה, התחל חישוב קואורדינטות אסינכרוני
-            if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result)
-            {
-                // התחלת החישוב של הקואורדינטות ברקע, לא מחכים לו
-                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( requester.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
-            }
-            else
-            {
-                throw new BlInvalidaddress("The address is not valid");
-            }
+          
 
             var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
 
@@ -222,6 +213,17 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
             lock (AdminManager.BlMutex) //stage 7
                 _dal.Volunteer.Update(DOVolunteer); // עדכון סינכרוני מתבצע כאן
+
+            // אם כתובת תקינה, התחל חישוב קואורדינטות אסינכרוני
+            if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result)
+            {
+                // התחלת החישוב של הקואורדינטות ברקע, לא מחכים לו
+                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync(requester.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
+            }
+            else
+            {
+                throw new BlInvalidaddress("The address is not valid");
+            }
 
         }
         catch (DO.DalDoesNotExistException ex)

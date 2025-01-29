@@ -294,9 +294,9 @@ namespace PL.Call
        
         public void queryCallList()
         {
-            CallInList = (_selectedFilter == BO.Calltype.None) ?
-                s_bl?.Call.GetCallsList(null, null, null)! :
-               s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField, SelectedFilterStatus)!;
+            CallInList = ((_selectedFilter == BO.Calltype.None) ?
+               s_bl?.Call.GetCallsList(null, null, SelectedSortField,null)! :
+               s_bl.Call.GetCallsList(SelectedFilter, SelectedFilter, SelectedSortField, SelectedFilterStatus)!);
         }
 
     }

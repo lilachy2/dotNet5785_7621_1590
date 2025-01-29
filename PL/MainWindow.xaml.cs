@@ -73,7 +73,6 @@ namespace PL
 
             CallStatusesCounts = new ObservableCollection<KeyValuePair<string, int>>();
 
-
         }
 
         // Button click handlers to manipulate the system clock
@@ -205,16 +204,38 @@ namespace PL
             new VolunteerListWindow(this).Show();
         }
 
-        private void StartSimulator_Click(object sender, RoutedEventArgs e)
-        {
-            //s_bl.Volunteer.SimulationVolunteerActivity(); // Start the simulator    
-            //s_bl.Volunteer.SimulationVolunteerActivity(1); // Start the simulator    
 
-            // Logic to start the simulator, implement as needed
-            //MessageBox.Show("Starting Simulator...");
+        // משתנה פרטי לשמירת הערך
+        private int _interval = 0;
+
+        // מתודה לקליטת ערך מה-TextBox
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // קבלת ערך מה-TextBox
+            var textBox = sender as TextBox;
+            if (textBox != null && int.TryParse(textBox.Text, out int result))
+            {
+                _interval = result; // שמירת הערך
+            }
+            else
+            {
+                _interval = 0; // ערך ברירת מחדל במקרה של שגיאה
+            }
         }
 
-      private void clockObserver()
+        // מתודה להפעלת הסימולטור
+        private void StartSimulator_Click(object sender, RoutedEventArgs e)
+        {
+            // שימוש בערך שנשמר במשתנה _interval
+            s_bl.Admin.StartSimulator(_interval);
+
+            // הודעה על תחילת סימולציה (אופציונלי)
+            MessageBox.Show($"Simulator started with interval: {_interval} minutes.");
+        }
+
+
+
+        private void clockObserver()
         {
             // Ensure the operation is not running or already completed
             if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
@@ -334,13 +355,6 @@ namespace PL
         {
 
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-
         private void CallList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListView listView && listView.SelectedItem is KeyValuePair<string, int> selectedItem)

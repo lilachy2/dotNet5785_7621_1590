@@ -45,7 +45,7 @@ namespace PL.Volunteer
 
         public static readonly DependencyProperty CurrentVolunteerProperty =
             DependencyProperty.Register("Volunteer", typeof(BO.Volunteer), typeof(VolunteerWindow),
-                new PropertyMetadata(null, OnVolunteerChanged));
+                new PropertyMetadata(null));
 
 
         public VolunteerWindow(int id = 0)
@@ -77,11 +77,11 @@ namespace PL.Volunteer
                         CurrentCall = null
                     };
 
-                // הרשמה למשקיפים אם קיים ID
-                if (Volunteer != null && Volunteer.Id != 0)
-                {
-                    SubscribeToVolunteerUpdates(Volunteer.Id);
-                }
+                //// הרשמה למשקיפים אם קיים ID
+                //if (Volunteer != null && Volunteer.Id != 0)
+                //{
+                //    SubscribeToVolunteerUpdates(Volunteer.Id);
+                //}
             }
             catch (Exception ex)
             {
@@ -154,10 +154,10 @@ namespace PL.Volunteer
             }
         }
 
-        void refresh()
-        {
-            s_bl.Volunteer.ReadAll(null, null);
-        }
+        //void refresh()
+        //{
+        //    s_bl.Volunteer.ReadAll(null, null);
+        //}
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -192,17 +192,18 @@ namespace PL.Volunteer
                     try
                     {
                         // קריאת המתנדב המעודכן
-                        var updatedVolunteer = s_bl.Volunteer.Read(Volunteer.Id);
-                        Volunteer = updatedVolunteer;
+                        //var updatedVolunteer 
+                        Volunteer = s_bl.Volunteer.Read(Volunteer.Id);
+                        //Volunteer = updatedVolunteer;
 
-                        // עדכון הנתונים
-                        Volunteer.Name = updatedVolunteer.Name;
-                        Volunteer.Number_phone = updatedVolunteer.Number_phone;
-                        Volunteer.Email = updatedVolunteer.Email;
-                        Volunteer.Active = updatedVolunteer.Active;
-                        Volunteer.Distance = updatedVolunteer.Distance;
-                        Volunteer.DistanceType = updatedVolunteer.DistanceType;
-                        Volunteer.Role = updatedVolunteer.Role;
+                        //// עדכון הנתונים
+                        //Volunteer.Name = updatedVolunteer.Name;
+                        //Volunteer.Number_phone = updatedVolunteer.Number_phone;
+                        //Volunteer.Email = updatedVolunteer.Email;
+                        //Volunteer.Active = updatedVolunteer.Active;
+                        //Volunteer.Distance = updatedVolunteer.Distance;
+                        //Volunteer.DistanceType = updatedVolunteer.DistanceType;
+                        //Volunteer.Role = updatedVolunteer.Role;
                     }
                     catch (Exception ex)
                     {

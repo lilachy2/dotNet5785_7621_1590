@@ -17,6 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -26,11 +27,10 @@
                 Padding="20" 
                 Margin="0,0,0,10">
             <Label Content="{Binding CurrentTime, StringFormat='{}{0:HH:mm:ss}'}" 
-       HorizontalAlignment="Center" 
-       Foreground="White"
-       FontSize="40" 
-       FontWeight="Light"/>
-
+                   HorizontalAlignment="Center" 
+                   Foreground="White"
+                   FontSize="40" 
+                   FontWeight="Light"/>
         </Border>
 
         <!-- Clock Advancement Buttons -->
@@ -79,8 +79,7 @@
         <Grid Grid.Row="2" Margin="244,10,244,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="81*"/>
-                <ColumnDefinition Width="82*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
@@ -91,30 +90,20 @@
 
             <TextBox Text="{Binding Path=RiskRange, Mode=TwoWay}" 
                      Grid.Column="1"
-                     Margin="10,0,3,0"
-                     Width="150"
+                     Margin="10,0"
                      TextChanged="RiskRangeTextBox_TextChanged"
                      BorderBrush="#3498DB"
                      BorderThickness="1"
-                     Padding="5" Grid.ColumnSpan="2"/>
+                     Padding="5"/>
 
             <Button Content="Update" 
-                    Grid.Column="3"
+                    Grid.Column="2"
                     Click="UpdateRiskRange_Click"
-                    Margin="5,5,5,5"
+                    Margin="5"
                     Padding="15,10"
                     Background="#E74C3C"
                     Foreground="White"
-                    BorderThickness="0" RenderTransformOrigin="0.5,0.5">
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.4"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
-            </Button>
+                    BorderThickness="0"/>
         </Grid>
 
         <!-- Navigation Buttons -->
@@ -145,40 +134,69 @@
                     BorderThickness="0"/>
         </StackPanel>
 
-        <!-- Call Handling and Volunteer Buttons -->
+        <!-- Simulator Controls -->
         <StackPanel Grid.Row="4" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
-                    VerticalAlignment="Top" 
                     Margin="0,10">
-            <Button Content="Handle Calls" 
-                    Click="HandleCalls_Click"
-                    Margin="5"
+            <Label Content="Enter time to simulate (in minute)"
+                   FontWeight="Bold"
+                   VerticalAlignment="Center"
+                   Margin="5,0"/>
+            <TextBox Text="{Binding Interval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Width="100"
+                     Height="30"
+                     VerticalAlignment="Center"
+                     Padding="5"
+                     Margin="5,0"
+                     TextChanged="TextBox_TextChanged"/>
+            <Button Content="{Binding IsSimulatorRunning, Converter={StaticResource ConverterSimulatorStateKey}}"
+                    Click="StartSimulator_Click"
+                    Margin="5,0"
                     Padding="15,10"
-                    Background="#E74C3C"
-                    Foreground="White"
-                    BorderThickness="0"/>
-            <Button Content="Handle Volunteers" 
-                    Click="HandleVolunteers_Click"
-                    Margin="5"
-                    Padding="15,10"
-                    Background="#E74C3C"
-                    Foreground="White"
-                    BorderThickness="0"/>
+                    VerticalAlignment="Center"/>
         </StackPanel>
 
-        <!-- Call Statuses ListView -->
-        <ListView Grid.Row="4" 
-                  ItemsSource="{Binding CallStatusesCounts, UpdateSourceTrigger=PropertyChanged}" 
-                  Margin="161,128,192,48"
-                  Height="150"
-                  MouseDoubleClick="CallList_MouseDoubleClick">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Key}" />
-                    <GridViewColumn Header="Count" Width="100" DisplayMemberBinding="{Binding Value}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <!-- Call Handling Section -->
+        <Grid Grid.Row="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Call Handling and Volunteer Buttons -->
+            <StackPanel Grid.Row="0" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Margin="0,10">
+                <Button Content="Handle Calls" 
+                        Click="HandleCalls_Click"
+                        Margin="5"
+                        Padding="15,10"
+                        Background="#E74C3C"
+                        Foreground="White"
+                        BorderThickness="0"/>
+                <Button Content="Handle Volunteers" 
+                        Click="HandleVolunteers_Click"
+                        Margin="5"
+                        Padding="15,10"
+                        Background="#E74C3C"
+                        Foreground="White"
+                        BorderThickness="0"/>
+            </StackPanel>
+
+            <!-- Call Statuses ListView -->
+            <ListView Grid.Row="1" 
+                      ItemsSource="{Binding CallStatusesCounts, UpdateSourceTrigger=PropertyChanged}" 
+                      Margin="20"
+                      MouseDoubleClick="CallList_MouseDoubleClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Key}"/>
+                        <GridViewColumn Header="Count" Width="100" DisplayMemberBinding="{Binding Value}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
