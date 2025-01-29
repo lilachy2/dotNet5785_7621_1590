@@ -152,19 +152,9 @@ internal class CallImplementation : BlApi.ICall
 
     public BO.Call Read(int callId)
     {
-        try
-        {
-            lock (AdminManager.BlMutex) //stage 7
-            {
-                var call = _dal.Call.Read(callId);
-                return CallManager.GetViewingCall(call.Id);
-            }
+        AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        }
-        catch (DO.DalDoesNotExistException ex)
-        {
-            throw new BO.BlDoesNotExistException($"Call with ID={callId} does not exist.", ex);
-        }
+        return CallManager.Read(callId);
     }
 
 
@@ -509,183 +499,21 @@ internal class CallImplementation : BlApi.ICall
     public void ChooseCall(int idVol, int idCall)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-
-        DO.Volunteer vol = null;
-        BO.Call boCall = null;
-        IEnumerable<Assignment> existingAssignments = null;
-
-        lock (AdminManager.BlMutex) //stage 7
-
-        // Retrieve volunteer and call; throw exception if not found.
-
-        {
-            vol = _dal.Volunteer.Read(idVol) ??
-                         throw new BO.BlNullPropertyException($"There is no volunteer with this ID {idVol}");
-            boCall = Read(idCall) ??
-                            throw new BO.BlNullPropertyException($"There is no call with this ID {idCall}");
-        }
-
-        // Check if the call is open.
-        if (boCall.Status != BO.CallStatus.Open)
-            throw new BO.BlAlreadyExistsException($"The call is not open or is already being handled. IdCall = {idCall}");
-
-        lock (AdminManager.BlMutex)
-            // Check if the call already has an open assignment.
-            existingAssignments = _dal.Assignment.ReadAll()
-                                    .Where(a => a.CallId == idCall && a.time_end_treatment == null)
-                                    .ToList();
-
-        if (existingAssignments.Any())
-            throw new BO.BlAlreadyExistsException($"The call is already assigned to another volunteer. IdCall = {idCall}");
-
-        // Check if the call has expired.
-        if (boCall.Status == (BO.CallStatus.Expired))
-            throw new BO.BlAlreadyExistsException($"The call has expired. IdCall = {idCall}");
-
-        // Create a new assignment for the volunteer and the call.
-        DO.Assignment assigmnetToCreat = new DO.Assignment
-        {
-            Id = 0, // ID will be generated automatically
-            CallId = idCall,
-            VolunteerId = idVol,
-            time_entry_treatment = AdminManager.Now,
-            time_end_treatment = null,
-            EndOfTime = null
-        };
-
-        try
-        {
-            lock (AdminManager.BlMutex)
-                // Try to create the assignment in the database.
-                _dal.Assignment.Create(assigmnetToCreat);
-            //CallManager.Observers.NotifyItemUpdated(assigmnetToCreat.Id);  //stage 5
-            // CallManager.Observers.NotifyListUpdated();  //stage 5
-
-        }
-        catch (Exception e)
-        {
-            // Handle error if creation fails.
-            throw new BO.BlAlreadyExistsException("Impossible to create the assignment.");
-        }
-
-
-        CallManager.Observers.NotifyItemUpdated(idCall);  //stage 5
-        CallManager.Observers.NotifyListUpdated();  //stage 5
-
-        VolunteerManager.Observers.NotifyItemUpdated(idVol);  //stage 5
-        VolunteerManager.Observers.NotifyListUpdated();  //stage 5
-
-
+        CallManager.ChooseCall(idVol, idCall);  
     }
-
     public void UpdateCancelTreatment(int idVol, int idAssig)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        DO.Assignment assigmnetToCancel = null;
-
-        lock (AdminManager.BlMutex) //stage 7
-            assigmnetToCancel = _dal.Assignment.Read(idAssig) ?? throw new BO.BlDeletionImpossibleException("there is no assigment with this ID");
-
-        bool ismanager = false;
-
-        if (assigmnetToCancel.VolunteerId != idVol)
-        {
-            lock (AdminManager.BlMutex) //stage 7
-                if (_dal.Volunteer.Read(idVol).Role == DO.Role.Manager)
-                    ismanager = true;
-                else throw new BO.BlDeletionImpossibleException("the volunteer is not manager or not in this call");
-        }
-        if (assigmnetToCancel.time_end_treatment != null)//// לבדוק
-            throw new BO.BlDeletionImpossibleException("The assigmnet not open or exspaired");
-
-        DO.Assignment assigmnetToUP = new DO.Assignment
-        {
-            Id = assigmnetToCancel.Id,
-            CallId = assigmnetToCancel.CallId,
-            VolunteerId = assigmnetToCancel.VolunteerId,
-            time_entry_treatment = assigmnetToCancel.time_entry_treatment,
-            time_end_treatment = AdminManager.Now,
-            EndOfTime = ismanager ? DO.AssignmentCompletionType.AdminCancelled : DO.AssignmentCompletionType.VolunteerCancelled,
-        };
-
-        try
-        {
-            lock (AdminManager.BlMutex) //stage 7
-                _dal.Assignment.Update(assigmnetToUP);
-        }
-
-        catch (Exception ex)
-        {
-            throw new BO.BlDeletionImpossibleException("canot delete in DO");
-        }
-
-
-
-        VolunteerManager.Observers.NotifyListUpdated();
-        VolunteerManager.Observers.NotifyItemUpdated(idVol);
-
-        //CallManager.Observers.NotifyItemUpdated(assigmnetToCancel.CallId);  //stage 5
-        CallManager.Observers.NotifyItemUpdated(idAssig);  //stage 5
-        CallManager.Observers.NotifyListUpdated();  //stage 5
-
+        CallManager.UpdateCancelTreatment(idVol, idAssig);  
     }
 
     public void UpdateEndTreatment(int idVol, int idAssig)
-
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        DO.Assignment assignmentToClose = null;
-        lock (AdminManager.BlMutex) //stage 7
-            // Retrieve the assignment by its ID; throw an exception if not found.
-            assignmentToClose = _dal.Assignment.Read(idAssig) ?? throw new BO.BlNullPropertyException("There is no assignment with this ID");
-
-        // Check if the volunteer matches the one in the assignment; throw an exception if not.
-        if (assignmentToClose.VolunteerId != idVol)
-        {
-            throw new BO.BlNullPropertyException("The volunteer is not treating in this assignment");
-        }
-
-        // Ensure the assignment is still open (not already closed); throw an exception if it is.
-        if (assignmentToClose.EndOfTime != null || assignmentToClose.time_end_treatment != null)
-            throw new BO.BlNullPropertyException("The assignment is not open");
-
-        // Update the assignment to mark it as closed, setting end time and status.
-        DO.Assignment assignmentToUP = new DO.Assignment
-        {
-            Id = assignmentToClose.Id,
-            CallId = assignmentToClose.CallId,
-            VolunteerId = assignmentToClose.VolunteerId,
-            time_entry_treatment = assignmentToClose.time_entry_treatment,
-            time_end_treatment = AdminManager.Now,
-            EndOfTime = DO.AssignmentCompletionType.TreatedOnTime,
-        };
-
-        try
-        {
-            // Attempt to update the assignment in the database.
-            lock (AdminManager.BlMutex) //stage 7
-                _dal.Assignment.Update(assignmentToUP);
-
-        }
-        catch (DO.Incompatible_ID ex)
-        {
-            // Handle error if updating the assignment fails.
-            throw new DO.Incompatible_ID("Cannot update in DO");
-        }
-
-
-        VolunteerManager.Observers.NotifyListUpdated();
-        VolunteerManager.Observers.NotifyItemUpdated(idVol);
-
-        //CallManager.Observers.NotifyItemUpdated(assignmentToClose.CallId);  //stage 5
-        CallManager.Observers.NotifyItemUpdated(idAssig);  //stage 5
-        CallManager.Observers.NotifyListUpdated();  //stage 5
-
-
+        CallManager.UpdateEndTreatment(idVol, idAssig); 
     }
-
 
 
     // Function to asynchronously update the coordinates of a call

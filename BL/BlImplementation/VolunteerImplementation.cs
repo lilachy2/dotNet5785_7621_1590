@@ -103,88 +103,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
 
     }
-    //public void Update(BO.Volunteer boVolunteer, int requesterId)
-    //{
-    //    AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-
-    //    DO.Volunteer requester = null;
-
-    //        try
-    //        {
-    //        lock (AdminManager.BlMutex) //stage 7
-    //            requester = _dal.Volunteer.Read(requesterId);
-
-
-    //        if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result== true)
-    //        {
-    //            boVolunteer.Latitude = Tools.GetLatitudeAsync(requester.FullCurrentAddress).Result;
-    //            boVolunteer.Longitude = Tools.GetLongitudeAsync(requester.FullCurrentAddress).Result;
-
-    //        }
-    //        else
-    //            throw new BlInvalidaddress("The address is not valid");
-
-    //        var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // convert
-
-    //        if (boVolunteer.Id != requesterId && DOVolunteer.Role != DO.Role.Manager)
-    //        {
-    //            throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
-    //        }
-
-    //        // check format
-    //        //Tools.ValidateVolunteerData(boVolunteer);
-    //        VolunteerManager.CheckFormat(boVolunteer);
-    //        // check logic
-    //        //If the address format is correct, enter the latitude and longitude.
-
-    //        BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);
-    //        VolunteerManager.CheckLogic(boVolunteer, boVolunteerForLogic, requesterId, requester.Role);
-
-    //        lock (AdminManager.BlMutex) //stage 7
-    //            _dal.Volunteer.Update(DOVolunteer);
-
-
-    //    }
-    //    catch (DO.DalDoesNotExistException ex)
-    //    {
-    //        Console.WriteLine($"Error: Volunteer with ID={boVolunteer.Id} does not exist. Exception: {ex.Message}");
-    //        throw new BO.BlDoesNotExistException($"Volunteer with ID={boVolunteer.Id} does not exist.", ex);
-    //    }
-    //    catch (BO.Incompatible_ID ex)
-    //    {
-    //        throw new BO.Incompatible_ID($"Volunteer with ID {boVolunteer.Id} has an incompatible ID.", ex);
-    //    }
-    //    catch (BlCheckPhonnumberException ex)
-    //    {
-    //        throw new BlCheckPhonnumberException($"Phone number validation failed for volunteer with ID {boVolunteer.Id}.", ex);
-    //    }
-    //    catch (BlIncorrectPasswordException ex)
-    //    {
-    //        throw new BlIncorrectPasswordException($"Incorrect password provided for volunteer with ID {boVolunteer.Id}.", ex);
-    //    }
-    //    catch (BlCan_chang_to_NotActivException ex)
-    //    {
-    //        throw new BlCan_chang_to_NotActivException($"Cannot change volunteer with ID {boVolunteer.Id} to Not Active.", ex);
-    //    }
-    //    catch (BlInvalidaddress ex)
-    //    {
-    //        throw new BlInvalidaddress($"Invalid address provided for volunteer with ID {boVolunteer.Id}.", ex);
-    //    } 
-    //    catch (BlIsLogicCallException ex)
-    //    {
-    //        throw new BlIsLogicCallException($"update volunteer with id  {boVolunteer.Id}.only positive number", ex);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new BO.BlGeneralException("An unexpected error occurred while updating volunteer details.", ex);
-    //    }
-
-    //    VolunteerManager.Observers.NotifyItemUpdated(boVolunteer.Id);  // stage 5
-    //    VolunteerManager.Observers.NotifyListUpdated(); // stage 5   
-
-    //}
-
-    // פונקציה אסינכרונית לחישוב הקואורדינאטות
+    
     public void Update(BO.Volunteer boVolunteer, int requesterId)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
@@ -214,11 +133,11 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             lock (AdminManager.BlMutex) //stage 7
                 _dal.Volunteer.Update(DOVolunteer); // עדכון סינכרוני מתבצע כאן
 
-            // אם כתובת תקינה, התחל חישוב קואורדינטות אסינכרוני
+              // אם כתובת תקינה, התחל חישוב קואורדינטות אסינכרוני
             if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result)
             {
                 // התחלת החישוב של הקואורדינטות ברקע, לא מחכים לו
-                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync(requester.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
+                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( requester.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
             }
             else
             {

@@ -154,11 +154,7 @@ namespace PL.Volunteer
             }
         }
 
-        //void refresh()
-        //{
-        //    s_bl.Volunteer.ReadAll(null, null);
-        //}
-
+       
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -166,21 +162,21 @@ namespace PL.Volunteer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.DistanceType selectedDistanceType)
-            {
-                Console.WriteLine($"Selected DistanceType: {selectedDistanceType}");
-            }
-        }
+        //private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.DistanceType selectedDistanceType)
+        //    {
+        //        Console.WriteLine($"Selected DistanceType: {selectedDistanceType}");
+        //    }
+        //}
 
-        private void cbRoles_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Role selectedRole)
-            {
-                Console.WriteLine($"Selected Role: {selectedRole}");
-            }
-        }
+        //private void cbRoles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Role selectedRole)
+        //    {
+        //        Console.WriteLine($"Selected Role: {selectedRole}");
+        //    }
+        //}
 
 
         private void HandleVolunteerUpdate()

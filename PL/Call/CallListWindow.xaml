@@ -32,13 +32,6 @@
                     <GridViewColumn Header="TimeRemaining" DisplayMemberBinding="{Binding TimeRemaining}" />
                     <GridViewColumn Header="TotalAssignments" DisplayMemberBinding="{Binding TotalAssignments}" />
                     <GridViewColumn Header="Current Volunteer" DisplayMemberBinding="{Binding VolunteerName}" />
-                    <!--<GridViewColumn Header="Handled">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsEnabled="False" IsChecked="{Binding IsHandled}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
                     <GridViewColumn Header="">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

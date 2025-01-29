@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
+using System.Text;
 
 namespace PL
 {
@@ -22,7 +23,6 @@ namespace PL
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get(); // stage 5
 
         private volatile DispatcherOperation? _observerOperation = null; //stage 7
-
 
         // Dependency Property for the Current Time
         public DateTime CurrentTime
@@ -43,6 +43,22 @@ namespace PL
         public static readonly DependencyProperty RiskRangeProperty =
             DependencyProperty.Register("RiskRange", typeof(TimeSpan), typeof(MainWindow),
                 new PropertyMetadata(TimeSpan.FromHours(1), OnRiskRangeChanged));
+
+        private bool _isSimulatorRunning;
+        public bool IsSimulatorRunning
+        {
+            get => _isSimulatorRunning;
+            set
+            {
+                if (_isSimulatorRunning != value)
+                {
+                    _isSimulatorRunning = value;
+                    OnPropertyChanged(nameof(IsSimulatorRunning));
+                }
+            }
+        }
+
+
 
         // Event handler when the RiskRange property changes
         private static void OnRiskRangeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -107,7 +123,7 @@ namespace PL
             try
             {
                 s_bl.Admin.SetMaxRange(RiskRange);
-             } // Update the Risk Range in business logic}
+            } // Update the Risk Range in business logic}
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading window: {ex.Message}");
@@ -226,12 +242,27 @@ namespace PL
         // מתודה להפעלת הסימולטור
         private void StartSimulator_Click(object sender, RoutedEventArgs e)
         {
-            // שימוש בערך שנשמר במשתנה _interval
-            s_bl.Admin.StartSimulator(_interval);
+            if (IsSimulatorRunning == false)
+            {
+                IsSimulatorRunning = true;
+                // שימוש בערך שנשמר במשתנה _interval
+                // הודעה על תחילת סימולציה (אופציונלי)
+                MessageBox.Show($"Simulator started with interval: {_interval} minutes.");
+                s_bl.Admin.StartSimulator(_interval);
 
-            // הודעה על תחילת סימולציה (אופציונלי)
-            MessageBox.Show($"Simulator started with interval: {_interval} minutes.");
+            }
+            else
+            {
+                IsSimulatorRunning = false;
+                // שימוש בערך שנשמר במשתנה _interval
+                s_bl.Admin.StopSimulator();
+                MessageBox.Show("Simulator stopped.");
+
+            }
+
+
         }
+
 
 
 
@@ -245,7 +276,7 @@ namespace PL
                     try
                     {
                         var newTime = s_bl.Admin.GetClock(); // Fetch the updated clock value
-                        if (newTime != CurrentTime) // Update only if the value has changed
+                         if (newTime != CurrentTime) // Update only if the value has changed
                         {
                             CurrentTime = newTime;
                         }
@@ -259,7 +290,7 @@ namespace PL
         }
 
         // Observer method to update RiskRange when it changes
-      
+
         private void configObserver()
         {
             if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)

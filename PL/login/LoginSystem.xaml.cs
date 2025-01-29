@@ -26,6 +26,13 @@ namespace PL.login
             try
             {
                  var volunteer = s_bl.Volunteer.Read(Id);
+
+                if (volunteer == null)
+                {
+                    MessageBox.Show("Error: Volunteer not registered in the system.");
+                    return;
+                }
+
                 if (Id == 0 || string.IsNullOrEmpty(Password))
                 {
                     MessageBox.Show("Error: Please enter full details.");
@@ -37,11 +44,7 @@ namespace PL.login
                     MessageBox.Show("Error: the passward not corect.");
                     return;
                 }
-                if (volunteer == null)
-                {
-                    MessageBox.Show("Error: Volunteer not registered in the system.");
-                    return;
-                }
+              
 
                 if (volunteer.Role == BO.Role.Volunteer)
                 {

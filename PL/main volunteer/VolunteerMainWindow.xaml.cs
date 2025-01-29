@@ -19,16 +19,9 @@ namespace PL.main_volunteer
         {
             get
             {
-                ////  UI thread
-                //if (Application.Current.Dispatcher.CheckAccess())
-                {
-                    return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
-                }
-                //else
-                //{
-                //    // Dispatcher
-                //    return (BO.Volunteer)Application.Current.Dispatcher.Invoke(() => GetValue(CurrentVolunteerProperty));
-                //}
+
+                return (BO.Volunteer)GetValue(CurrentVolunteerProperty);
+
             }
             set
             {
@@ -36,7 +29,6 @@ namespace PL.main_volunteer
                 //OnPropertyChanged(nameof(Volunteer));
             }
         }
-
 
         //  DependencyProperty
         public static readonly DependencyProperty CurrentVolunteerProperty =
@@ -94,12 +86,13 @@ namespace PL.main_volunteer
 
                 }
 
-                // הגדרת Observer לקריאה
+                //// הגדרת Observer לקריאה
                 if (Volunteer?.CurrentCall != null)
                 {
-                    s_bl.Call.AddObserver(Volunteer.CurrentCall.Id, CallObserver);
+                    s_bl.Call.AddObserver(Volunteer.CurrentCall.Id, VolunteerObserver);
                 }
-                ////////////////////////////////////////////////
+
+                //////////////////////////////////////////////////
 
                 // בדוק אם Volunteer לא שווה ל-null
                 if (Volunteer == null)
@@ -190,6 +183,7 @@ namespace PL.main_volunteer
 
                 // עדכון הקריאה הפעילה
                 Volunteer.CurrentCall = null;
+
                 CurrentCallVisibility = Visibility.Visible;
                 CurrentCallVisibilityEnd = Visibility.Hidden;
             }
@@ -205,9 +199,9 @@ namespace PL.main_volunteer
                 // עדכון סיום קריאה
                 s_bl.Call.UpdateCancelTreatment(Volunteer.Id, Volunteer.CurrentCall.Id);
                 MessageBox.Show("The call has been marked as completed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
                 // עדכון הקריאה הפעילה
                 Volunteer.CurrentCall = null;
+
                 CurrentCallVisibility = Visibility.Visible;
                 CurrentCallVisibilityEnd = Visibility.Hidden;
             }
@@ -226,6 +220,8 @@ namespace PL.main_volunteer
         {
             var chooseCallWindow = new ChooseCallWindow(Volunteer.Id);
             chooseCallWindow.ShowDialog();
+            UpdateVolunteerDetails();
+
             if (Volunteer.CurrentCall == null)
             {
                 CurrentCallVisibility = Visibility.Visible; // מתנדב יכול לבחור קריאה חדשה
@@ -240,10 +236,6 @@ namespace PL.main_volunteer
         }
 
         
-
-
-
-
         // הוספת Observer למתנדב
         private void VolunteerObserver()
         {
@@ -251,19 +243,19 @@ namespace PL.main_volunteer
             if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
                 _observerOperation = Dispatcher.BeginInvoke(() =>
                 {
-                    //UpdateVolunteerDetails();
+                    //נגענו בזה
                     UpdateCallStatus();
                 });
         }
 
         // הוספת Observer לקריאה
-        private void CallObserver()
-        {
-            if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
-                _observerOperation = Dispatcher.BeginInvoke(() =>
-                // עדכון סטטוס הקריאה
-                    { UpdateCallStatus(); });
-        }
+        //private void CallObserver()
+        //{
+        //    if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+        //        _observerOperation = Dispatcher.BeginInvoke(() =>
+        //        // עדכון סטטוס הקריאה
+        //            { UpdateCallStatus(); });
+        //}
 
         // פונקציות לעדכון פרטי המתנדב והקריאה
         private void UpdateVolunteerDetails()

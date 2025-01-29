@@ -1,5 +1,6 @@
 ﻿
 using BlApi;
+using BlImplementation;
 using BO;
 using DalApi;
 using DO;
@@ -389,7 +390,8 @@ internal static class VolunteerManager
 
     internal static List<BO.Call> GetOpenCallsimulator()
     {
-       return _dal.Call.ReadAll().Select(v=>CallManager.GetViewingCall(v.Id)).Where(v=> v.Status== BO.CallStatus.OpenAtRisk|| v.Status == BO.CallStatus.Open ).Where(c => AreCoordinatesCalculated(c)).ToList();
+        lock (AdminManager.BlMutex)
+            return _dal.Call.ReadAll().Select(v=>CallManager.GetViewingCall(v.Id)).Where(v=> v.Status== BO.CallStatus.OpenAtRisk|| v.Status == BO.CallStatus.Open ).Where(c => AreCoordinatesCalculated(c)).ToList();
     }
 
 
@@ -414,31 +416,31 @@ internal static class VolunteerManager
                     bool hasUpdated = false;
 
                     // בדיקה אם למתנדב יש קריאה בטיפולו
-                  
+
                     BO.CallInProgress activeAssignment = volunteer.CurrentCall;
 
                     if (activeAssignment == null)
                     {
                         // למתנדב אין קריאה פעילה
-                        if (new Random().NextDouble() <= 0.5) // הסתברות של 20%
+                        //if (new Random().NextDouble() <= 0.5) // הסתברות של 20%
                         {
                             List<BO.Call> availableCalls = null;
                             lock (AdminManager.BlMutex)
                                 availableCalls = GetOpenCallsimulator();
-                                                  
+
 
                             if (availableCalls.Any())
                             {
                                 var randomCall = availableCalls[new Random().Next(availableCalls.Count)];//take random call in index next count
                                 lock (AdminManager.BlMutex)
                                 {
-                                    s_bl.Call.ChooseCall(volunteer.Id, randomCall.Id);
+                                    CallManager.ChooseCall(volunteer.Id, randomCall.Id);
 
                                 }
                                 hasUpdated = true;
                             }
                         }
-                    
+
                     }
                     else
                     {
@@ -451,19 +453,19 @@ internal static class VolunteerManager
                             // סיום הטיפול
                             lock (AdminManager.BlMutex)
                             {
-                                s_bl.Call.UpdateEndTreatment(volunteer.Id, activeAssignment.CallId);
+                                CallManager.UpdateEndTreatment(volunteer.Id, activeAssignment.CallId);
 
                             }
                             hasUpdated = true;
                         }
-                        else 
+                        else
                         {
                             // ביטול הטיפול
-                            if (new Random().NextDouble() <= 0.1)
-                              {
+                            //if (new Random().NextDouble() <= 0.1)
+                            {
                                 lock (AdminManager.BlMutex)
-                                s_bl.Call.UpdateCancelTreatment(volunteer.Id, activeAssignment.CallId);
-                            
+                                    CallManager.UpdateCancelTreatment(volunteer.Id, activeAssignment.CallId);
+
                                 hasUpdated = true;
                             }
                         }
@@ -485,7 +487,14 @@ internal static class VolunteerManager
             }
         });
     }
+
+
  
+
+
+
+
+
     private static bool AreCoordinatesCalculated(BO.Call dalCall)
     {
         // בדיקה אם קווי אורך ורוחב אינם null ואינם שווים לאפס

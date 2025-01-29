@@ -329,12 +329,20 @@ namespace PL
         {
             return (bool)value ? "Stop Simulator" : "Start Simulator";
         }
+        //public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        //{
+        //    if (value is bool booleanValue)
+        //        return booleanValue ? "Stop Simulator" : "Start Simulator";
+
+        //    return "Start Simulator"; // ערך ברירת מחדל אם הערך אינו תקין
+        //}
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
     }
+
 
 
 }

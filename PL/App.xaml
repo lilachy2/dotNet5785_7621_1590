@@ -22,9 +22,10 @@
         <local:CalltypeToBackgroundConverter x:Key="CalltypeToBackgroundConverterKey" />
         <local:CallInListEnum x:Key="CallInListEnumKey" />
         <local:ConverterSimulatorState x:Key="ConverterSimulatorStateKey"/>
-        <!--<local:ConvertUpdateToTrue x:Key="ConvertUpdateToTrueKey" />-->
-        
-        
+        <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
+        <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
+
+
         <!-- Define the Back Button Style for bake click-->
         <Style x:Key="BackButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="103"/>

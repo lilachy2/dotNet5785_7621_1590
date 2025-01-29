@@ -2,9 +2,12 @@
 using DalApi;
 using DO;
 using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Net;
+using System.Numerics;
+using System.Xml.Linq;
 
 // <param name="s_dalVolunteer">fields of the appropriate interface type.</param>
 // <param name="s_dalCall">fields of the appropriate interface type.</param>
@@ -38,218 +41,60 @@ public static class Initialization
         "Maya Tzur", "Noa Mizrahi", "David Erez", "Tal Koren", "Hila Malka"
     };
 
-    static string[] Addresses =  // <param name="Addresses">List of possible addresses.</param>
-    {
-         "7 Presidents St, Petah Tikva, Israel","Lev Academic Center, Jerusalem, Israel",
-    "45 Rothschild Blvd, Tel Aviv, Israel", "12 Herzl St, Haifa, Israel",
-    "20 King David St, Jerusalem, Israel","3 HaNasi Blvd, Be'er Sheva, Israel",
-    "14 Jabotinsky St, Rishon LeZion, Israel","10 Arlozorov St, Tel Aviv, Israel",
-    "22 Hillel St, Jerusalem, Israel","8 Dizengoff St, Tel Aviv, Israel",
-    "5 Ben Yehuda St, Haifa, Israel", "16 Weizmann St, Rehovot, Israel",
-    "9 Begin Ave, Ashdod, Israel", "11 Allenby St, Tel Aviv, Israel",
-    "4 Hanegev St, Eilat, Israel"
-    };
-
     // Israeli Addresses
-    static string[] israeliAddresses = new string[]
+    static string[] israeliAddressesHebrow = new string[]
     {
-    "1 Rothschild Blvd, Tel Aviv",
-    "2 Jabotinsky St, Ramat Gan",
-    "3 Herzl St, Haifa",
-    "4 Ben Yehuda St, Jerusalem",
-    "5 Weizmann St, Rehovot",
-    "6 Dizengoff St, Tel Aviv",
-    "7 Haneviim St, Jerusalem",
-    "8 Hahistadrut Blvd, Haifa",
-    "9 Begin Blvd, Beersheba",
-    "10 Hahagana St, Ashdod",
-    "11 Hahistadrut St, Netanya",
-    "12 Hahistadrut St, Holon",
-    "13 Hahistadrut St, Bat Yam",
-    "14 Hahistadrut St, Rishon LeZion",
-    "15 Hahistadrut St, Petah Tikva",
-    "16 Hahistadrut St, Bnei Brak",
-    "17 Hahistadrut St, Ashkelon",
-    "18 Hahistadrut St, Herzliya",
-    "19 Hahistadrut St, Kfar Saba",
-    "20 Hahistadrut St, Hadera",
-    "21 Hahistadrut St, Modiin",
-    "22 Hahistadrut St, Nazareth",
-    "23 Hahistadrut St, Ramat Gan",
-    "24 Hahistadrut St, Raanana",
-    "25 Hahistadrut St, Givatayim",
-    "26 Hahistadrut St, Acre (Akko)",
-    "27 Hahistadrut St, Eilat",
-    "28 Hahistadrut St, Kiryat Gat",
-    "29 Hahistadrut St, Kiryat Motzkin",
-    "30 Hahistadrut St, Kiryat Yam",
-    "31 Hahistadrut St, Kiryat Bialik",
-    "32 Hahistadrut St, Kiryat Ata",
-    "33 Hahistadrut St, Nahariya",
-    "34 Hahistadrut St, Tiberias",
-    "35 Hahistadrut St, Rosh HaAyin",
-    "36 Hahistadrut St, Yavne",
-    "37 Hahistadrut St, Or Yehuda",
-    "38 Hahistadrut St, Lod",
-    "39 Hahistadrut St, Ramla",
-    "40 Hahistadrut St, Kfar Yona",
-    "41 Hahistadrut St, Sderot",
-    "42 Hahistadrut St, Dimona",
-    "43 Hahistadrut St, Arad",
-    "44 Hahistadrut St, Ma'alot-Tarshiha",
-    "45 Hahistadrut St, Migdal HaEmek",
-    "46 Hahistadrut St, Karmiel",
-    "47 Hahistadrut St, Sakhnin",
-    "48 Hahistadrut St, Tamra",
-    "49 Hahistadrut St, Umm al-Fahm",
-    "50 Hahistadrut St, Qalansawe"
+    "שדרות רוטשילד 1, תל אביב",
+    "ז'בוטינסקי 2, רמת גן",
+    "הרצל 3, חיפה",
+    "בן יהודה 4, ירושלים",
+    "ויצמן 5, רחובות",
+    "דיזנגוף 6, תל אביב",
+    "הנביאים 7, ירושלים",
+    "שדרות ההסתדרות 8, חיפה",
+    "שדרות בגין 9, באר שבע",
+    "ההגנה 10, אשדוד",
+    "ההסתדרות 11, נתניה",
+    "ההסתדרות 12, חולון",
+    "ההסתדרות 13, בת ים",
+    "ההסתדרות 14, ראשון לציון",
+    "ההסתדרות 15, פתח תקווה",
+    "ההסתדרות 16, בני ברק",
+    "ההסתדרות 17, אשקלון",
+    "ההסתדרות 18, הרצליה",
+    "ההסתדרות 19, כפר סבא",
+    "ההסתדרות 20, חדרה",
+    "ההסתדרות 21, מודיעין",
+    "ההסתדרות 22, נצרת",
+    "ההסתדרות 23, רמת גן",
+    "ההסתדרות 24, רעננה",
+    "ההסתדרות 25, גבעתיים",
+    "ההסתדרות 26, עכו",
+    "ההסתדרות 27, אילת",
+    "ההסתדרות 28, קריית גת",
+    "ההסתדרות 29, קריית מוצקין",
+    "ההסתדרות 30, קריית ים",
+    "ההסתדרות 31, קריית ביאליק",
+    "ההסתדרות 32, קריית אתא",
+    "ההסתדרות 33, נהריה",
+    "ההסתדרות 34, טבריה",
+    "ההסתדרות 35, ראש העין",
+    "ההסתדרות 36, יבנה",
+    "ההסתדרות 37, אור יהודה",
+    "ההסתדרות 38, לוד",
+    "ההסתדרות 39, רמלה",
+    "ההסתדרות 40, כפר יונה",
+    "ההסתדרות 41, שדרות",
+    "ההסתדרות 42, דימונה",
+    "ההסתדרות 43, ערד",
+    "ההסתדרות 44,ירושלים",
+    "ההסתדרות 45, מגדל העמק",
+    "ההסתדרות 46, כרמיאל",
+    "ההסתדרות 47, ירושלים",
+    "ההסתדרות 48, ירושלים",
+    "ההסתדרות 49,ירושלים",
+    "ההסתדרות 50, ירושלים"
     };
-
-    // International Addresses
-    static string[] internationalAddresses = new string[]
-    {
-    // ארצות הברית
-    "123 5th Avenue, New York, NY, USA",
-    "456 Michigan Avenue, Chicago, IL, USA",
-    "789 Market Street, San Francisco, CA, USA",
-    "321 Boylston Street, Boston, MA, USA",
-    "654 Broadway, Nashville, TN, USA",
-    
-    // בריטניה
-    "10 Downing Street, London, UK",
-    "45 Oxford Street, London, UK",
-    "78 Prince Street, Edinburgh, Scotland, UK",
-    "23 Castle Street, Cardiff, Wales, UK",
-    "56 Victoria Square, Birmingham, UK",
-    
-    // צרפת
-    "12 Rue de Rivoli, Paris, France",
-    "34 Avenue des Champs-Élysées, Paris, France",
-    "67 Rue Paradis, Marseille, France",
-    "89 Rue de la République, Lyon, France",
-    "23 Place Bellecour, Lyon, France",
-    
-    // גרמניה
-    "45 Kurfürstendamm, Berlin, Germany",
-    "78 Maximilianstrasse, Munich, Germany",
-    "90 Zeil, Frankfurt, Germany",
-    "12 Neuer Wall, Hamburg, Germany",
-    "34 Königsallee, Düsseldorf, Germany",
-    
-    // איטליה
-    "56 Via del Corso, Rome, Italy",
-    "78 Via Monte Napoleone, Milan, Italy",
-    "90 Via Roma, Florence, Italy",
-    "23 Via Toledo, Naples, Italy",
-    "45 Via Garibaldi, Venice, Italy",
-    
-    // ספרד
-    "67 Gran Via, Madrid, Spain",
-    "89 Las Ramblas, Barcelona, Spain",
-    "12 Calle Sierpes, Seville, Spain",
-    "34 Plaza Mayor, Valencia, Spain",
-    "56 Plaza del Pilar, Zaragoza, Spain",
-    
-    // קנדה
-    "78 Yonge Street, Toronto, ON, Canada",
-    "90 Rue Sainte-Catherine, Montreal, QC, Canada",
-    "23 Robson Street, Vancouver, BC, Canada",
-    "45 Stephen Avenue, Calgary, AB, Canada",
-    "67 Spring Garden Road, Halifax, NS, Canada",
-    
-    // אוסטרליה
-    "89 George Street, Sydney, NSW, Australia",
-    "12 Collins Street, Melbourne, VIC, Australia",
-    "34 Queen Street, Brisbane, QLD, Australia",
-    "56 Rundle Mall, Adelaide, SA, Australia",
-    "78 Murray Street, Perth, WA, Australia",
-    
-    // יפן
-    "90 Ginza Street, Chuo City, Tokyo, Japan",
-    "23 Shijo Dori, Kyoto, Japan",
-    "45 Midosuji, Osaka, Japan",
-    "67 Tenjin, Fukuoka, Japan",
-    "89 Motomachi, Yokohama, Japan",
-    
-    // נורבגיה
-    "12 Karl Johans Gate, Oslo, Norway",
-    "34 Torgallmenningen, Bergen, Norway",
-    "56 Olav Tryggvasons Gate, Trondheim, Norway",
-    "78 Strandgata, Tromsø, Norway",
-    "90 Kirkegata, Stavanger, Norway"
-    };
-    static string[] internationalAddresses2 = new string[]
-  {
-    // ארצות הברית
-    "1200 Pennsylvania Avenue, Washington, DC, USA",
-    "1501 15th Street, Denver, CO, USA",
-    "800 N Michigan Avenue, Chicago, IL, USA",
-    "2000 Market Street, Philadelphia, PA, USA",
-    "1025 Connecticut Avenue, Washington, DC, USA",
-
-    // בריטניה
-    "1 Piccadilly Circus, London, UK",
-    "56 Regent Street, London, UK",
-    "88 Southwark Street, London, UK",
-    "10 Princes Street, Edinburgh, Scotland, UK",
-    "22 The Parade, Cardiff, Wales, UK",
-
-    // צרפת
-    "5 Rue de la Paix, Paris, France",
-    "22 Rue Saint-Antoine, Paris, France",
-    "33 Boulevard Saint-Germain, Paris, France",
-    "54 Rue de la Liberté, Marseille, France",
-    "91 Rue de la République, Lyon, France",
-
-    // גרמניה
-    "24 Unter den Linden, Berlin, Germany",
-    "34 Maximilianstrasse, Munich, Germany",
-    "55 Friedrichstrasse, Berlin, Germany",
-    "77 Königstrasse, Stuttgart, Germany",
-    "102 Mönckebergstraße, Hamburg, Germany",
-
-    // איטליה
-    "101 Via del Babuino, Rome, Italy",
-    "88 Via Spiga, Milan, Italy",
-    "44 Via San Gregorio, Milan, Italy",
-    "12 Piazza del Duomo, Florence, Italy",
-    "56 Via San Vitale, Bologna, Italy",
-
-    // ספרד
-    "34 Paseo de la Castellana, Madrid, Spain",
-    "12 Gran Via de les Corts Catalanes, Barcelona, Spain",
-    "8 Calle de Preciados, Madrid, Spain",
-    "45 Calle de Fuencarral, Madrid, Spain",
-    "67 Avenida Diagonal, Barcelona, Spain",
-
-    // קנדה
-    "120 Queen Street West, Toronto, ON, Canada",
-    "30 King Street West, Toronto, ON, Canada",
-    "88 Avenue du Parc, Montreal, QC, Canada",
-    "60 Granville Street, Vancouver, BC, Canada",
-    "70 Bay Street, Toronto, ON, Canada",
-
-    // אוסטרליה
-    "101 Pitt Street, Sydney, NSW, Australia",
-    "200 George Street, Sydney, NSW, Australia",
-    "100 Swanston Street, Melbourne, VIC, Australia",
-    "10 Collins Street, Melbourne, VIC, Australia",
-    "15 King Street, Brisbane, QLD, Australia",
-
-    // יפן
-    "45 Roppongi, Minato City, Tokyo, Japan",
-    "12 Omotesando, Shibuya, Tokyo, Japan",
-    "78 Shinjuku, Tokyo, Japan",
-    "56 Namba, Osaka, Japan",
-    "34 Sapporo, Hokkaido, Japan",
-
-    // נורבגיה
-    "18 Dronningens Gate, Oslo, Norway",
-    "12 Markens Gate, Kristiansand, Norway",
-    "22 Torggata, Oslo, Norway",
-    "33 Søndre Gate, Trondheim, Norway",
-    "67 Lillehammer, Norway"
-  };
 
 
     static readonly string[] Descriptions =  // <param name="Descriptions">List of event descriptions.</param>
@@ -317,7 +162,7 @@ public static class Initialization
             //int p1 = int.Parse(phone); // To perform conversion for the constructor
             string email = name.Replace(" ", ".").ToLower() + "@volunteer.org";
             string? password = "Hey1234@"; // Initial password or null until the volunteer updates it
-            string? address = /*Addresses*/internationalAddresses[i];
+            string? address = /*Addresses*/israeliAddressesHebrow[i];
             //string? address = "Eiffel Tower, Paris, France";
             Role role;
             role = Role.Volunteer;
@@ -342,6 +187,9 @@ public static class Initialization
             s_dal!.Volunteer.Create(new Volunteer(id, name, phone, email, password, role, distanceType, active, address, randomLatitude, randomLongitude, maxDistance)); //stage2
             i = i + 1;
         }
+        s_dal!.Volunteer.Create(new Volunteer(326017621, "lilach", "0524031048", "l@gmail.com", "Mamy1234@", Role.Manager, distance_type.Aerial_distance, true, "חיים תורן 25, ירושלים", 30, 30, 12)); //stage2
+        s_dal!.Volunteer.Create(new Volunteer(324291590, "yalin", "0528050630", "y@gmail.com", "yalin1234@", Role.Manager, distance_type.Aerial_distance, true, "צופים", 30, 30, 12)); //stage2
+
     }
 
     private static (double latitude, double longitude) GetHardcodedCoordinates(string address)
@@ -401,7 +249,7 @@ public static class Initialization
     /// <param name="extraHours"> // Random extra hours added to the max end time </param>
     /// <param name="extraMinutes"> // Random extra minutes added to the max end time </param>
 
-    
+
 
 
     public static void CreateCalls()
@@ -415,10 +263,10 @@ public static class Initialization
         for (int i = 0; i < 50; i++)
         {
             // יצירת אינדקסים רנדומליים בכל איטרציה
-            int index1 = s_rand.Next(0, internationalAddresses2.Length);
+            int index1 = s_rand.Next(0, israeliAddressesHebrow.Length);
             int index2 = s_rand.Next(0, CalltypeArray.Length);
 
-            string? address = internationalAddresses2[index1];
+            string? address = israeliAddressesHebrow[index1];
             Calltype calltype = CalltypeArray[index2];
             string? VerbalDescription = Descriptions[index2];
 
@@ -429,41 +277,36 @@ public static class Initialization
             DateTime openTime = s_dal!.Config.Clock.AddMinutes(-s_rand.Next(0, 2880));
 
             // יצירת זמן סיום רנדומלי בהתאם לטווח זמנים שונים ליצירת כל הסטטוסים
-            DateTime? maxEndTime;
+            DateTime? maxEndTime = null;
 
             int randomStatus = s_rand.Next(0, 6); // בחירה רנדומלית של סטטוס
 
             switch (randomStatus)
             {
                 case 0: // Open
-                    maxEndTime = null;
+                    maxEndTime = openTime.AddHours(1);
+
                     break;
 
                 case 1: // OpenAtRisk
-                    maxEndTime = null;
+                    maxEndTime = openTime.AddHours(1);
                     openTime = s_dal.Config.Clock.AddMinutes(-s_rand.Next(0, 30)); // זמן פתיחה קרוב מאוד לזמן הנוכחי
                     break;
 
                 case 2: // InProgress
-                    maxEndTime = null;
                     openTime = s_dal.Config.Clock.AddMinutes(-s_rand.Next(30, 1440)); // פתיחה בטווח של עד 24 שעות
                     break;
 
                 case 3: // InProgressAtRisk
-                    maxEndTime = null;
                     openTime = s_dal.Config.Clock.AddMinutes(-s_rand.Next(1440, 2880)); // פתיחה רחוקה מאוד
                     break;
 
                 case 4: // Closed
-                    maxEndTime = openTime.AddMinutes(s_rand.Next(10, 60)); // זמן סיום תקין אחרי זמן הפתיחה
+                    maxEndTime = openTime.AddMinutes(s_rand.Next(10, 30)); // זמן סיום תקין בין 10 ל-30 דקות אחרי זמן הפתיחה
                     break;
 
                 case 5: // Expired
-                    maxEndTime = openTime.AddMinutes(-s_rand.Next(10, 60)); // זמן סיום שפג לפני זמן ה-Clock
-                    break;
-
-                default:
-                    maxEndTime = null;
+                    maxEndTime = openTime.AddMinutes(s_rand.Next(10, 30)); // זמן סיום אחרי זמן הפתיחה אבל בטווח בטוח
                     break;
             }
 
@@ -492,22 +335,22 @@ public static class Initialization
 
             if (callToAssign.MaxEndTime != null && callToAssign.MaxEndTime < s_dal!.Config!.Clock)
             {
-                finish = AssignmentCompletionType.Expired;
+                finish = AssignmentCompletionType.Open;
 
             }
             else
             {
-                int randFinish = s_rand.Next(0, 3); 
+                int randFinish = s_rand.Next(0, 3);
                 switch (randFinish)
                 {
                     case 0:
                         finish = AssignmentCompletionType.TreatedOnTime;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(300, 3000)); 
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(300, 3000));
 
                         break;
                     case 1:
                         finish = AssignmentCompletionType.VolunteerCancelled;
-                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 300)); 
+                        finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 300));
 
                         break;
                     case 2:
@@ -518,22 +361,21 @@ public static class Initialization
                         finish = AssignmentCompletionType.Open;
                         finishTime = null;
                         break;
-                   
-                     
+
+
 
                 }
             }
 
-                s_dal.Assignment?.Create(new Assignment(
-                0,
-                callToAssign.Id,
-                volunteerToAssign.Id,
-                s_dal!.Config!.Clock,
-                finishTime,
-                finish));
+            s_dal.Assignment?.Create(new Assignment(
+            0,
+            callToAssign.Id,
+            volunteerToAssign.Id,
+            s_dal!.Config!.Clock,
+            finishTime,
+            finish));
         }
     }
-
     //public static void Do(IDal dal) //stage 2
     public static void Do() //stage 4
     {
