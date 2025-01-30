@@ -388,7 +388,7 @@ public static class Initialization
             }
             else
             {
-                int randFinish = s_rand.Next(0, 3);
+                int randFinish = s_rand.Next(0, 2);
                 switch (randFinish)
                 {
                     case 0:
@@ -405,10 +405,10 @@ public static class Initialization
                         finish = AssignmentCompletionType.AdminCancelled;
                         finishTime = s_dal!.Config!.Clock.AddSeconds(s_rand.Next(10, 300));
                         break;
-                    case 3:
-                        finish = AssignmentCompletionType.Open;
-                        finishTime = null;
-                        break;
+                    //case 3:
+                    //    finish = AssignmentCompletionType.Open;
+                    //    finishTime = null;
+                    //    break;
 
 
 

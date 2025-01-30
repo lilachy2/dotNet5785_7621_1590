@@ -371,16 +371,7 @@ internal static class CallManager
         if (doCall.MaxEndTime < _dal.Config.Clock)
             return BO.CallStatus.Expired;
 
-        //// 2. Retrieve the latest assignment related to the call
-        //var /*last*/Assignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id)
-        //                                     .OrderByDescending(a => a.time_entry_treatment)
-        //                                     .FirstOrDefault();
-
-        // עושה בעיות עם סיום טיפול
-        //var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id && ass.time_end_treatment == null)
-        //                             .OrderByDescending(a => a.time_entry_treatment)
-        //                             .FirstOrDefault();
-
+      
         lock (AdminManager.BlMutex) //stage 7
         {
             var lastAssignment = _dal.Assignment.ReadAll(ass => ass.CallId == doCall.Id).OrderByDescending(a => a.Id).FirstOrDefault();

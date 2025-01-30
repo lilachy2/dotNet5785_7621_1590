@@ -351,7 +351,7 @@ internal static class VolunteerManager
         for (int i = 0; i < size; i++)
         {
             var volunteer = Read(volunteerList[i].Id);
-            if (volunteer.CurrentCall == null /*&& randomValue < probability*/)
+            if (volunteer.CurrentCall == null && randomValue < probability)
             {
                 var openCallInListsToChose = CallManager.GetOpenCall(volunteer.Id, null, null).ToList();
 
@@ -368,11 +368,11 @@ internal static class VolunteerManager
             else if (volunteer.CurrentCall != null)    //there is call in treat
             {
                 var callin = Read(volunteer.Id).CurrentCall!;
-                if ((AdminManager.Now - callin.EnterTime) >= TimeSpan.FromHours(3))
+                if ((AdminManager.Now - callin.EnterTime) >= TimeSpan.FromMinutes(15))
                 {
                     CallManager.UpdateEndTreatment(volunteer.Id, callin.Id);
                 }
-                else
+                else 
                 {
                     int probability1 = s_rand.Next(1, 101); // מספר אקראי בין 1 ל-100
 
