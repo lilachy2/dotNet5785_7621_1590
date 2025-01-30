@@ -115,6 +115,7 @@ internal static class Tools
             {
                 // Add "User-Agent" header (required in most APIs)
                 client.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
+                
                 HttpResponseMessage response = await client.GetAsync(query).ConfigureAwait(false);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {

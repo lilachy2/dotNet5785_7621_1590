@@ -290,6 +290,9 @@ internal class CallImplementation : BlApi.ICall
         catch (BlIsLogicCallException ex)
         {
             throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
+        }catch (BlInvalidaddress ex)
+        {
+            throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
         }
         catch (Exception ex)
         {
@@ -538,6 +541,8 @@ internal class CallImplementation : BlApi.ICall
             doCall = doCall with { Latitude = lat, Longitude = loc };
             lock (AdminManager.BlMutex)
                 _dal.Call.Update(doCall);
+
+
             VolunteerManager.Observers.NotifyListUpdated();
             VolunteerManager.Observers.NotifyItemUpdated(doCall.Id);
             // Update the call in the data layer with the new coordinates

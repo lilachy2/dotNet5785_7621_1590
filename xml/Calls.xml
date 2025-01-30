@@ -1,503 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Call>
-    <Latitude>30.294520887692563</Latitude>
-    <Longitude>35.30012368339868</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1000</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>שדרות ההסתדרות 8, חיפה</ReadAddress>
-    <OpeningTime>2025-01-28T08:41:09</OpeningTime>
-    <MaxEndTime>2025-01-28T09:02:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.6904912229034</Latitude>
-    <Longitude>35.2536901127461</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1001</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 40, כפר יונה</ReadAddress>
-    <OpeningTime>2025-01-28T07:09:09</OpeningTime>
-    <MaxEndTime>2025-01-28T07:31:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.55024420399337</Latitude>
-    <Longitude>34.360206361221266</Longitude>
-    <Calltype>resuscitation</Calltype>
+    <Latitude>30.779131637746378</Latitude>
+    <Longitude>34.719782461803746</Longitude>
+    <Calltype>heartattack</Calltype>
     <Id>1002</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>שדרות בגין 9, באר שבע</ReadAddress>
-    <OpeningTime>2025-01-29T23:29:09</OpeningTime>
-    <MaxEndTime>2025-01-28T15:55:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.45972910188043</Latitude>
-    <Longitude>35.60597519508608</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1004</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 25, גבעתיים</ReadAddress>
-    <OpeningTime>2025-01-29T23:13:09</OpeningTime>
-    <MaxEndTime>2025-01-28T11:19:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.971603669680366</Latitude>
-    <Longitude>35.64951521541047</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1007</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>דיזנגוף 6, תל אביב</ReadAddress>
-    <OpeningTime>2025-01-28T12:49:09</OpeningTime>
-    <MaxEndTime>2025-01-28T13:05:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.43239360410627</Latitude>
-    <Longitude>34.57907510111006</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1008</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>ז'בוטינסקי 2, רמת גן</ReadAddress>
-    <OpeningTime>2025-01-28T05:08:09</OpeningTime>
-    <MaxEndTime>2025-01-28T05:31:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.138593825181676</Latitude>
-    <Longitude>35.83521022142696</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1009</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>ההסתדרות 16, בני ברק</ReadAddress>
-    <OpeningTime>2025-01-28T16:36:09</OpeningTime>
-    <MaxEndTime>2025-01-28T16:46:09</MaxEndTime>
+    <ReadAddress>הסופר 28, קריית מוצקין</ReadAddress>
+    <OpeningTime>2025-01-30T12:06:16</OpeningTime>
+    <MaxEndTime>2025-01-28T14:01:16</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>30.31064521125415</Latitude>
-    <Longitude>35.36620577841757</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1010</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>ההסתדרות 44,ירושלים</ReadAddress>
-    <OpeningTime>2025-01-28T14:09:09</OpeningTime>
-    <MaxEndTime>2025-01-28T15:09:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.824180890646613</Latitude>
-    <Longitude>35.22402068644863</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1011</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 27, אילת</ReadAddress>
-    <OpeningTime>2025-01-29T12:12:09</OpeningTime>
-    <MaxEndTime>2025-01-29T13:12:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.091096670431295</Latitude>
-    <Longitude>35.868778469333286</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1012</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>ההסתדרות 45, מגדל העמק</ReadAddress>
-    <OpeningTime>2025-01-28T00:10:09</OpeningTime>
-    <MaxEndTime>2025-01-28T00:38:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.946349970936133</Latitude>
-    <Longitude>35.73749633213719</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1013</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>ההסתדרות 39, רמלה</ReadAddress>
-    <OpeningTime>2025-01-29T16:13:09</OpeningTime>
-    <MaxEndTime>2025-01-29T17:13:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.565572904481456</Latitude>
-    <Longitude>35.700003239005845</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1015</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 22, נצרת</ReadAddress>
-    <OpeningTime>2025-01-29T14:13:09</OpeningTime>
-    <MaxEndTime>2025-01-29T15:13:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.927116048137936</Latitude>
-    <Longitude>34.91425222543161</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1017</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 41, שדרות</ReadAddress>
-    <OpeningTime>2025-01-29T08:03:09</OpeningTime>
-    <MaxEndTime>2025-01-29T08:27:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.65476146184974</Latitude>
-    <Longitude>35.227190911049334</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1018</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 37, אור יהודה</ReadAddress>
-    <OpeningTime>2025-01-29T08:16:09</OpeningTime>
-    <MaxEndTime>2025-01-29T08:26:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.347053677341474</Latitude>
-    <Longitude>34.99567791882618</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1019</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 17, אשקלון</ReadAddress>
-    <OpeningTime>2025-01-29T23:10:09</OpeningTime>
-    <MaxEndTime>2025-01-28T03:22:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.246121117107773</Latitude>
-    <Longitude>35.62807147625404</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1020</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 11, נתניה</ReadAddress>
-    <OpeningTime>2025-01-29T10:19:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>29.994159484945598</Latitude>
-    <Longitude>35.072894249748785</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1022</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>ההסתדרות 18, הרצליה</ReadAddress>
-    <OpeningTime>2025-01-28T02:23:09</OpeningTime>
-    <MaxEndTime>2025-01-28T02:35:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.836931588356556</Latitude>
-    <Longitude>35.61252425340451</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1023</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>ההסתדרות 28, קריית גת</ReadAddress>
-    <OpeningTime>2025-01-29T23:07:09</OpeningTime>
-    <MaxEndTime>2025-01-29T10:33:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.39434493125664</Latitude>
-    <Longitude>34.78894711160541</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1028</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 40, כפר יונה</ReadAddress>
-    <OpeningTime>2025-01-28T05:59:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>30.208640928565643</Latitude>
-    <Longitude>35.22996599466025</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1029</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>ההסתדרות 46, כרמיאל</ReadAddress>
-    <OpeningTime>2025-01-29T23:16:09</OpeningTime>
-    <MaxEndTime>2025-01-28T20:12:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.19776787503076</Latitude>
-    <Longitude>35.54897651467183</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1030</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>ההסתדרות 50, ירושלים</ReadAddress>
-    <OpeningTime>2025-01-29T06:04:09</OpeningTime>
-    <MaxEndTime>2025-01-29T06:32:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.736660565131388</Latitude>
-    <Longitude>34.82322479410047</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1031</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>ההסתדרות 35, ראש העין</ReadAddress>
-    <OpeningTime>2025-01-29T23:21:09</OpeningTime>
-    <MaxEndTime>2025-01-28T03:57:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.750989611107848</Latitude>
-    <Longitude>35.48652514404846</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1032</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>ההסתדרות 18, הרצליה</ReadAddress>
-    <OpeningTime>2025-01-29T10:11:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>30.242153738037544</Latitude>
-    <Longitude>34.58549343181609</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1033</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>דיזנגוף 6, תל אביב</ReadAddress>
-    <OpeningTime>2025-01-29T06:59:09</OpeningTime>
-    <MaxEndTime>2025-01-29T07:59:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.179073890585826</Latitude>
-    <Longitude>35.081342895002784</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1034</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 35, ראש העין</ReadAddress>
-    <OpeningTime>2025-01-29T15:07:09</OpeningTime>
-    <MaxEndTime>2025-01-29T15:17:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.572502578929264</Latitude>
-    <Longitude>34.75184964528342</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1035</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 17, אשקלון</ReadAddress>
-    <OpeningTime>2025-01-29T03:50:09</OpeningTime>
-    <MaxEndTime>2025-01-29T04:08:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.583879646299025</Latitude>
-    <Longitude>35.72073911798777</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1036</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>ההסתדרות 31, קריית ביאליק</ReadAddress>
-    <OpeningTime>2025-01-28T21:19:09</OpeningTime>
-    <MaxEndTime>2025-01-28T21:29:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.99110116816585</Latitude>
-    <Longitude>34.49618890856213</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1037</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 39, רמלה</ReadAddress>
-    <OpeningTime>2025-01-29T23:25:09</OpeningTime>
-    <MaxEndTime>2025-01-28T14:03:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.79474652074661</Latitude>
-    <Longitude>35.15981199435632</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1038</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 42, דימונה</ReadAddress>
-    <OpeningTime>2025-01-29T23:05:09</OpeningTime>
-    <MaxEndTime>2025-01-29T12:51:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>33.29829435571596</Latitude>
-    <Longitude>35.11321261492028</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1040</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>ההסתדרות 38, לוד</ReadAddress>
-    <OpeningTime>2025-01-28T20:46:09</OpeningTime>
-    <MaxEndTime>2025-01-28T20:56:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.024650051009758</Latitude>
-    <Longitude>35.79880712981861</Longitude>
-    <Calltype>security_event</Calltype>
-    <Id>1041</Id>
-    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
-    <ReadAddress>ההסתדרות 13, בת ים</ReadAddress>
-    <OpeningTime>2025-01-29T10:43:09</OpeningTime>
-    <MaxEndTime>2025-01-29T11:08:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.766726854657435</Latitude>
-    <Longitude>35.87951599742973</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1045</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 50, ירושלים</ReadAddress>
-    <OpeningTime>2025-01-28T04:20:09</OpeningTime>
-    <MaxEndTime>2025-01-28T04:30:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.917396509326995</Latitude>
-    <Longitude>35.29727703072745</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1047</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>ההסתדרות 33, נהריה</ReadAddress>
-    <OpeningTime>2025-01-28T16:51:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>30.18844821782753</Latitude>
-    <Longitude>35.82151677320003</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1048</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 17, אשקלון</ReadAddress>
-    <OpeningTime>2025-01-28T23:53:09</OpeningTime>
-    <MaxEndTime>2025-01-29T00:13:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.83531650761482</Latitude>
-    <Longitude>35.025504497437545</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1049</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 26, עכו</ReadAddress>
-    <OpeningTime>2025-01-29T23:02:09</OpeningTime>
-    <MaxEndTime>2025-01-28T16:13:09</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>33.34594553429296</Latitude>
-    <Longitude>35.5920830879485</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1021</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>ז'בוטינסקי 2, רמת גן</ReadAddress>
-    <OpeningTime>2025-01-28T09:12:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>33.441228299236165</Latitude>
-    <Longitude>35.04017820312476</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1005</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>דיזנגוף 6, תל אביב</ReadAddress>
-    <OpeningTime>2025-01-28T07:57:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>32.84520627154119</Latitude>
-    <Longitude>34.56534643244684</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1025</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>ההסתדרות 38, לוד</ReadAddress>
-    <OpeningTime>2025-01-28T12:59:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>31.495973578044257</Latitude>
-    <Longitude>35.76391587576747</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1027</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 46, כרמיאל</ReadAddress>
-    <OpeningTime>2025-01-29T12:28:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>32.19877115138433</Latitude>
-    <Longitude>35.824141610133815</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1024</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 28, קריית גת</ReadAddress>
-    <OpeningTime>2025-01-28T11:01:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>32.35714794490246</Latitude>
-    <Longitude>35.43123433240805</Longitude>
+    <Latitude>33.19223959015581</Latitude>
+    <Longitude>34.89470379834254</Longitude>
     <Calltype>broken_bone</Calltype>
     <Id>1003</Id>
     <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 26, עכו</ReadAddress>
-    <OpeningTime>2025-01-29T12:47:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <ReadAddress>הצפון 39, שדרות</ReadAddress>
+    <OpeningTime>2025-01-29T18:54:16</OpeningTime>
+    <MaxEndTime>2025-01-29T19:18:16</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>31.67689741877614</Latitude>
-    <Longitude>34.87406111423851</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1016</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 35, ראש העין</ReadAddress>
-    <OpeningTime>2025-01-28T21:36:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <Latitude>31.506680011055963</Latitude>
+    <Longitude>34.78317769723282</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1004</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>המרכז 34, ראש העין</ReadAddress>
+    <OpeningTime>2025-01-29T16:57:16</OpeningTime>
+    <MaxEndTime>2025-01-29T17:26:16</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.96265381739297</Latitude>
-    <Longitude>34.74884088666582</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1026</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 48, ירושלים</ReadAddress>
-    <OpeningTime>2025-01-29T19:17:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>33.19353142158513</Latitude>
-    <Longitude>34.872310109232</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1039</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>ההסתדרות 12, חולון</ReadAddress>
-    <OpeningTime>2025-01-29T21:24:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>29.611526264019627</Latitude>
-    <Longitude>35.15890951322471</Longitude>
-    <Calltype>resuscitation</Calltype>
-    <Id>1046</Id>
-    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
-    <ReadAddress>ההסתדרות 11, נתניה</ReadAddress>
-    <OpeningTime>2025-01-28T09:05:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>30.388646348338384</Latitude>
-    <Longitude>35.13027012861481</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1042</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>ההסתדרות 41, שדרות</ReadAddress>
-    <OpeningTime>2025-01-28T10:49:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>30.552996193869543</Latitude>
-    <Longitude>35.513203661732064</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1006</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>שדרות רוטשילד 1, תל אביב</ReadAddress>
-    <OpeningTime>2025-01-29T01:54:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>29.736667332239648</Latitude>
-    <Longitude>35.404626824647224</Longitude>
+    <Latitude>33.055542970713105</Latitude>
+    <Longitude>34.35780692370805</Longitude>
     <Calltype>None</Calltype>
-    <Id>1043</Id>
+    <Id>1006</Id>
     <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>ההסתדרות 42, דימונה</ReadAddress>
-    <OpeningTime>2025-01-29T14:28:09</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
+    <ReadAddress>ז'בוטינסקי 2, רמת גן</ReadAddress>
+    <OpeningTime>2025-01-30T12:24:16</OpeningTime>
+    <MaxEndTime>2025-01-28T22:27:16</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.179156839214585</Latitude>
-    <Longitude>35.562110804348855</Longitude>
+    <Latitude>29.947431037691818</Latitude>
+    <Longitude>34.9680637016775</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1007</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>לבון 44, כרמיאל</ReadAddress>
+    <OpeningTime>2025-01-29T21:41:16</OpeningTime>
+    <MaxEndTime>2025-01-29T21:53:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.483966176082287</Latitude>
+    <Longitude>35.64395541075892</Longitude>
     <Calltype>allergy</Calltype>
-    <Id>1014</Id>
+    <Id>1008</Id>
     <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ההסתדרות 20, חדרה</ReadAddress>
-    <OpeningTime>2025-01-29T15:42:09</OpeningTime>
+    <ReadAddress>בן יהודה 4, ירושלים</ReadAddress>
+    <OpeningTime>2025-01-29T10:42:16</OpeningTime>
+    <MaxEndTime>2025-01-29T11:42:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.46668365452254</Latitude>
+    <Longitude>34.62993431633899</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1009</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>לבון 44, כרמיאל</ReadAddress>
+    <OpeningTime>2025-01-30T02:15:16</OpeningTime>
+    <MaxEndTime>2025-01-30T02:35:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.573494116137354</Latitude>
+    <Longitude>34.62454174942989</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1010</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>לוד 37, רמלה</ReadAddress>
+    <OpeningTime>2025-01-29T05:47:16</OpeningTime>
+    <MaxEndTime>2025-01-29T05:59:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>30.596031045298492</Latitude>
+    <Longitude>34.839226721084344</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1011</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>שדרות ירושלים 11, חולון</ReadAddress>
+    <OpeningTime>2025-01-29T08:42:16</OpeningTime>
+    <MaxEndTime>2025-01-29T09:42:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.32283773335951</Latitude>
+    <Longitude>34.53849312600631</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1012</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>חיים ויצמן 24, גבעתיים</ReadAddress>
+    <OpeningTime>2025-01-29T08:26:16</OpeningTime>
+    <MaxEndTime>2025-01-29T09:26:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.283277506212144</Latitude>
+    <Longitude>35.65976813836148</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1013</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>שדרות ירושלים 20, מודיעין</ReadAddress>
+    <OpeningTime>2025-01-29T17:38:16</OpeningTime>
+    <MaxEndTime>2025-01-29T18:38:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.309460828037206</Latitude>
+    <Longitude>34.62678133178368</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1018</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>עין כרם 32, נהריה</ReadAddress>
+    <OpeningTime>2025-01-30T03:56:16</OpeningTime>
+    <MaxEndTime>2025-01-30T04:20:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>29.983245442524936</Latitude>
+    <Longitude>35.33115112408043</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1019</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>כיכר רבין 13, ראשון לציון</ReadAddress>
+    <OpeningTime>2025-01-29T08:50:16</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.959440141141656</Latitude>
-    <Longitude>34.953516325707525</Longitude>
-    <Calltype>heartattack</Calltype>
+    <Latitude>30.757703756563902</Latitude>
+    <Longitude>34.67817073796713</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1021</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>אלוני 40, דימונה</ReadAddress>
+    <OpeningTime>2025-01-28T18:24:16</OpeningTime>
+    <MaxEndTime>2025-01-28T18:38:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.667926291480367</Latitude>
+    <Longitude>34.325618324024</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1022</Id>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>השלום 35, יבנה</ReadAddress>
+    <OpeningTime>2025-01-29T09:42:16</OpeningTime>
+    <MaxEndTime>2025-01-29T09:58:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.461052748406324</Latitude>
+    <Longitude>35.03924365221555</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1025</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>זבולון 42, ירושלים</ReadAddress>
+    <OpeningTime>2025-01-29T18:26:16</OpeningTime>
+    <MaxEndTime>2025-01-29T19:26:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.82679274077465</Latitude>
+    <Longitude>34.5859241884243</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1027</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>ויצמן 5, רחובות</ReadAddress>
+    <OpeningTime>2025-01-29T03:40:16</OpeningTime>
+    <MaxEndTime>2025-01-29T04:40:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>30.761666488194194</Latitude>
+    <Longitude>35.58073273617585</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1028</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>ברזילאי 16, אשקלון</ReadAddress>
+    <OpeningTime>2025-01-30T12:07:16</OpeningTime>
+    <MaxEndTime>2025-01-30T13:04:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>33.46012996903331</Latitude>
+    <Longitude>34.70642700148129</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1029</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>הצפון 39, שדרות</ReadAddress>
+    <OpeningTime>2025-01-30T12:32:16</OpeningTime>
+    <MaxEndTime>2025-01-29T15:34:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.717445434011022</Latitude>
+    <Longitude>35.425663854170736</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1031</Id>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>חיים ויצמן 24, גבעתיים</ReadAddress>
+    <OpeningTime>2025-01-29T07:10:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.803321767185015</Latitude>
+    <Longitude>35.586218427033245</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1032</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>כיכר רבין 13, ראשון לציון</ReadAddress>
+    <OpeningTime>2025-01-30T12:25:16</OpeningTime>
+    <MaxEndTime>2025-01-28T16:38:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.937226827639584</Latitude>
+    <Longitude>34.38587899263201</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1033</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>שדרות ירושלים 20, מודיעין</ReadAddress>
+    <OpeningTime>2025-01-29T09:49:16</OpeningTime>
+    <MaxEndTime>2025-01-29T10:04:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.74211037956702</Latitude>
+    <Longitude>35.37942456075581</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1035</Id>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>הכחול 25, עכו</ReadAddress>
+    <OpeningTime>2025-01-29T09:02:16</OpeningTime>
+    <MaxEndTime>2025-01-29T10:02:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.963633138059944</Latitude>
+    <Longitude>34.91626931162145</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1036</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>הילד 26, אילת</ReadAddress>
+    <OpeningTime>2025-01-30T08:45:16</OpeningTime>
+    <MaxEndTime>2025-01-30T08:57:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.07984789433269</Latitude>
+    <Longitude>34.4692571087257</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1037</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>המרפא 17, הרצליה</ReadAddress>
+    <OpeningTime>2025-01-30T12:35:16</OpeningTime>
+    <MaxEndTime>2025-01-30T02:53:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.397792908743902</Latitude>
+    <Longitude>35.48245577105052</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1038</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>מרכז 38, כפר יונה</ReadAddress>
+    <OpeningTime>2025-01-30T12:13:16</OpeningTime>
+    <MaxEndTime>2025-01-30T03:03:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.85634454350611</Latitude>
+    <Longitude>35.300545071774565</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1039</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>שדרות רוקח 9, באר שבע</ReadAddress>
+    <OpeningTime>2025-01-30T11:03:16</OpeningTime>
+    <MaxEndTime>2025-01-30T11:25:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.30848053083655</Latitude>
+    <Longitude>35.57225100803164</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1040</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>הרב הרצוג 30, קריית ביאליק</ReadAddress>
+    <OpeningTime>2025-01-28T18:53:16</OpeningTime>
+    <MaxEndTime>2025-01-28T19:03:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>33.427580167967925</Latitude>
+    <Longitude>34.358374976082246</Longitude>
+    <Calltype>broken_bone</Calltype>
     <Id>1044</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>קיבוץ גלויות 19, חדרה</ReadAddress>
+    <OpeningTime>2025-01-29T02:11:16</OpeningTime>
+    <MaxEndTime>2025-01-29T02:28:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.949128875358316</Latitude>
+    <Longitude>35.19825490433322</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1046</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>שדרות ירושלים 20, מודיעין</ReadAddress>
+    <OpeningTime>2025-01-29T17:10:16</OpeningTime>
+    <MaxEndTime>2025-01-29T17:31:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.983160742877466</Latitude>
+    <Longitude>35.31021462644413</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1047</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>לוד 37, רמלה</ReadAddress>
+    <OpeningTime>2025-01-29T11:06:16</OpeningTime>
+    <MaxEndTime>2025-01-29T11:34:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>32.179591558429415</Latitude>
+    <Longitude>34.89453345722791</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1048</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>הרב הרצוג 30, קריית ביאליק</ReadAddress>
+    <OpeningTime>2025-01-29T19:40:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.9705647</Latitude>
+    <Longitude>34.773859103470656</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1005</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>כיכר רבין 13, ראשון לציון</ReadAddress>
+    <OpeningTime>2025-01-30T10:33:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.3146633</Latitude>
+    <Longitude>34.8741532</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1000</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>המרכבה 10, נתניה</ReadAddress>
+    <OpeningTime>2025-01-28T16:48:16</OpeningTime>
+    <MaxEndTime>2025-01-28T17:48:16</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>31.765442</Latitude>
+    <Longitude>35.1910369</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1049</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>מכון לב</ReadAddress>
+    <OpeningTime>2025-01-30T08:12:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.07559542486669</Latitude>
+    <Longitude>35.6950891833932</Longitude>
+    <Calltype>security_event</Calltype>
+    <Id>1023</Id>
+    <VerbalDescription>A security event involving a threat or emergency requiring a quick response.</VerbalDescription>
+    <ReadAddress>לוד 37, רמלה</ReadAddress>
+    <OpeningTime>2025-01-28T18:42:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.51007280511078</Latitude>
+    <Longitude>35.46736435547805</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1017</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>ז'בוטינסקי 15, בני ברק</ReadAddress>
+    <OpeningTime>2025-01-30T08:29:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.162407092877324</Latitude>
+    <Longitude>35.0228950922396</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1024</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>מלך ג'ורג' 7, ירושלים</ReadAddress>
+    <OpeningTime>2025-01-30T07:39:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.4215673122533</Latitude>
+    <Longitude>34.866088911700395</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1026</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>לוד 37, רמלה</ReadAddress>
+    <OpeningTime>2025-01-29T05:24:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.82560035320585</Latitude>
+    <Longitude>35.76494690144042</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1034</Id>
     <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>ההסתדרות 33, נהריה</ReadAddress>
-    <OpeningTime>2025-01-29T00:05:09</OpeningTime>
+    <ReadAddress>עין כרם 32, נהריה</ReadAddress>
+    <OpeningTime>2025-01-28T23:06:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.31912586537199</Latitude>
+    <Longitude>35.42396216834441</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1030</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>הרב הרצוג 30, קריית ביאליק</ReadAddress>
+    <OpeningTime>2025-01-30T06:56:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.827353598837078</Latitude>
+    <Longitude>34.32437275338166</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1041</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>סיני 43, מגדל העמק</ReadAddress>
+    <OpeningTime>2025-01-29T15:39:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.831237764366655</Latitude>
+    <Longitude>34.88433653621756</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1001</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>מרכז 38, כפר יונה</ReadAddress>
+    <OpeningTime>2025-01-28T23:37:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.31727521248746</Latitude>
+    <Longitude>34.48817911505587</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1014</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>שדרות רוטשילד 1, תל אביב</ReadAddress>
+    <OpeningTime>2025-01-30T07:23:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.695683609805293</Latitude>
+    <Longitude>35.3626241776472</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1016</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>הכחול 25, עכו</ReadAddress>
+    <OpeningTime>2025-01-29T11:34:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.91621247952023</Latitude>
+    <Longitude>35.6509915628973</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1043</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>קיבוץ גלויות 19, חדרה</ReadAddress>
+    <OpeningTime>2025-01-29T16:45:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.97551399387363</Latitude>
+    <Longitude>34.92795517408669</Longitude>
+    <Calltype>resuscitation</Calltype>
+    <Id>1015</Id>
+    <VerbalDescription>A resuscitation call where CPR or other life-saving measures are needed.</VerbalDescription>
+    <ReadAddress>סוקולוב 8, חיפה</ReadAddress>
+    <OpeningTime>2025-01-30T08:42:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.580960584291454</Latitude>
+    <Longitude>35.28427957938303</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1042</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>דיזנגוף 6, תל אביב</ReadAddress>
+    <OpeningTime>2025-01-28T19:15:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.417038979947044</Latitude>
+    <Longitude>34.47130544933565</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1020</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>ז'בוטינסקי 2, רמת גן</ReadAddress>
+    <OpeningTime>2025-01-30T08:47:16</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.88339008535147</Latitude>
+    <Longitude>35.59947121948916</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1045</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>קיבוץ גלויות 19, חדרה</ReadAddress>
+    <OpeningTime>2025-01-28T23:33:16</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>
