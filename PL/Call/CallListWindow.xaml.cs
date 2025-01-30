@@ -155,13 +155,13 @@ namespace PL.Call
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            BlApi.Factory.Get().Call.AddObserver(callListObserver);
+           s_bl.Call.AddObserver(callListObserver);
         }
 
         // Handle Window closed event to remove the observer
         private void Window_Closed(object sender, EventArgs e)
         {
-            BlApi.Factory.Get().Call.RemoveObserver(callListObserver);
+            s_bl.Call.RemoveObserver(callListObserver);
         }
 
         

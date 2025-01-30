@@ -39,24 +39,36 @@ namespace PL
         {
             get { return (TimeSpan)GetValue(RiskRangeProperty); }
             set { SetValue(RiskRangeProperty, value); }
+        }  
+        public bool IsSimulatorRunning
+        {
+            get { return (bool)GetValue(IsSimulatorRunningProperty); }
+            set { SetValue(IsSimulatorRunningProperty, value); }
         }
+
         public static readonly DependencyProperty RiskRangeProperty =
             DependencyProperty.Register("RiskRange", typeof(TimeSpan), typeof(MainWindow),
                 new PropertyMetadata(TimeSpan.FromHours(1), OnRiskRangeChanged));
 
-        private bool _isSimulatorRunning;
-        public bool IsSimulatorRunning
-        {
-            get => _isSimulatorRunning;
-            set
-            {
-                if (_isSimulatorRunning != value)
-                {
-                    _isSimulatorRunning = value;
-                    OnPropertyChanged(nameof(IsSimulatorRunning));
-                }
-            }
-        }
+            public static readonly DependencyProperty IsSimulatorRunningProperty =
+            DependencyProperty.Register("IsSimulatorRunning", typeof(bool), typeof(MainWindow),
+                new PropertyMetadata(null));
+
+
+
+        //private bool _isSimulatorRunning;
+        //public bool IsSimulatorRunning
+        //{
+        //    get => _isSimulatorRunning;
+        //    set
+        //    {
+        //        if (_isSimulatorRunning != value)
+        //        {
+        //            _isSimulatorRunning = value;
+        //            OnPropertyChanged(nameof(IsSimulatorRunning));
+        //        }
+        //    }
+        //}
 
 
 

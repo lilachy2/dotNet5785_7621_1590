@@ -49,13 +49,13 @@ namespace PL.Call
             set
             {
                 SetValue(CurrentCallProperty, value);
-                OnPropertyChanged(nameof(call));
+               // OnPropertyChanged(nameof(call));
             }
         }
 
         public static readonly DependencyProperty CurrentCallProperty =
        DependencyProperty.Register("Call", typeof(BO.Call), typeof(CallWindow),
-           new PropertyMetadata(null, OnCallChanged));
+           new PropertyMetadata(null /*OnCallChanged*/));
 
         public bool IsReadOnlyFields => Id != 0; // true אם זה עדכון, false אם זה הוספה
 
@@ -139,7 +139,7 @@ namespace PL.Call
                         //כאשר משתמשים ב-Binding עם Mode=TwoWay ו/או UpdateSourceTrigger=PropertyChanged,
                         //ה-nameof שנרשם באירוע OnPropertyChanged מתייחס למאפיין ה-ViewModel 
                         // אם משהו מתשנה זה מעדכןפה, מפעיל את האירוע ואז משנה בBINDING
-                        OnPropertyChanged(nameof(call));
+                        //OnPropertyChanged(nameof(call));
                     }
                     catch (Exception ex)
                     {
@@ -205,10 +205,10 @@ namespace PL.Call
         public event PropertyChangedEventHandler? PropertyChanged;
 
         //הנתונים בבזאמל מאחורה נרשמים לאירוע 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //protected virtual void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
         private void cbDistanceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

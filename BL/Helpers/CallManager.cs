@@ -185,7 +185,7 @@ internal static class CallManager
 
         // לא לחכות בתוך הלוק, אלא לעדכן את הקואורדינטות בצורה אסינכרונית
         //_ = UpdateCoordinatesForCallAsync(doVolunteer);
-        _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( doVolunteer.FullCurrentAddress, null, doVolunteer);
+//        _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( doVolunteer.FullCurrentAddress, null, doVolunteer);
 
         // ביצוע בדיקות אחרות בצורה סינכרונית
         BO.CallStatus callStatus = CalculateCallStatus(doCall);
@@ -434,8 +434,8 @@ internal static class CallManager
                 Calltype = (BO.Calltype)doCall.Calltype, // Enum conversion
                 Description = doCall.VerbalDescription,
                 FullAddress = doCall.ReadAddress, // Full address of the call
-                Latitude = (double)doCall.Latitude, // Latitude coordinate of the address
-                Longitude = (double)doCall.Longitude, // Longitude coordinate of the address
+                Latitude = doCall.Latitude ??0, // Latitude coordinate of the address
+                Longitude = doCall.Longitude??0, // Longitude coordinate of the address
                 OpenTime = doCall.OpeningTime, // Time when the call was opened
                 MaxEndTime = doCall.MaxEndTime, // Maximum completion time for the call
                 Status = CalculateCallStatus(doCall), // Current status of the call

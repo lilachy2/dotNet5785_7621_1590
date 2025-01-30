@@ -31,7 +31,7 @@ namespace PL.Volunteer
                 if (_selectedFilter != value)
                 {
                     _selectedFilter = value;
-                    OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
+                    //OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
                     QueryVolunteerList();  // Update the list when the filter changes
                 }
             }
@@ -120,10 +120,10 @@ namespace PL.Volunteer
         // INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //protected virtual void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
 
         private void AddVolunteerButton_Click(object sender, RoutedEventArgs e)

@@ -26,7 +26,7 @@ namespace PL.main_volunteer
             set
             {
                 SetValue(CurrentVolunteerProperty, value);
-                //OnPropertyChanged(nameof(Volunteer));
+                OnPropertyChanged(nameof(Volunteer));
             }
         }
 
@@ -266,7 +266,7 @@ namespace PL.main_volunteer
         private void UpdateCallStatus()
         {
             // עדכון סטטוס הקריאה
-            if (Volunteer.CurrentCall != null)
+           //if (Volunteer.CurrentCall != null)
             {
                 // בצע עדכון לפי הקריאה
                 s_bl.Volunteer.Read(Volunteer.Id);

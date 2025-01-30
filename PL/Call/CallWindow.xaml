@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="Call Management" Height="640" Width="800"
         Background="#F5F5F5"
-    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+               DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+
+    <!--DataContext="{Binding RelativeSource={RelativeSource Self}}">-->
 
 
     <Window.Resources>

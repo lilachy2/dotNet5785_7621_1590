@@ -63,7 +63,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        DO.Volunteer requester = null;
+        DO.Volunteer? requester = null;
 
         try
         {
@@ -92,7 +92,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
             if (Tools.IsAddressValidAsync(boVolunteer.FullCurrentAddress).Result)
             {
                 // התחלת החישוב של הקואורדינטות ברקע, לא מחכים לו
-                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( requester.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
+                _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync(DOVolunteer.FullCurrentAddress, boVolunteer, null); // תחילת חישוב אסינכרוני
             }
             else
             {
@@ -125,7 +125,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     // פונקציה אסינכרונית לחישוב הקואורדינאטות
     private async Task UpdateCoordinatesForVolunteerAsyncHELP(BO.Volunteer boVolunteer, string address)
     {
-       VolunteerManager. UpdateCoordinatesForVolunteerAsync(address,boVolunteer, null);
+      await VolunteerManager. UpdateCoordinatesForVolunteerAsync(address,boVolunteer, null);
     }
 
 
