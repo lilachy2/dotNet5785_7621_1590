@@ -331,60 +331,61 @@ internal static class VolunteerManager
     }
 
 
+    private static Random s_rand = new Random();
+    private static int s_simulatorCounter;
 
+    internal static void SimulateVolunteerActivity() //stage 7
+    {
+        // var volunteerImplementation = new VolunteerImplementation();
+        Thread.CurrentThread.Name = $"Simulator{++s_simulatorCounter}";
 
-    //internal static void SimulateVolunteerActivity() //stage 7
-    //{
-    //    // var volunteerImplementation = new VolunteerImplementation();
-    //    Thread.CurrentThread.Name = $"Simulator{++s_simulatorCounter}";
+        // var volunteerList = volunteerImplementation.GetVolunteerList(true,null);
+        // var volunteerlist = GetVolunteerListHelp(true, null)/.ToList()/;
+        double probability = 0.2;
 
-    //    // var volunteerList = volunteerImplementation.GetVolunteerList(true,null);
-    //    // var volunteerlist = GetVolunteerListHelp(true, null)/.ToList()/;
-    //    double probability = 0.2;
+        // יצירת מספר אקראי בטווח 0 עד 1
+        double randomValue = s_rand.NextDouble(); // מספר בין 0.0 ל-1.0
+        var volunteerList = ReadAll(true, null).Where(v=> v.IsActive).ToList();
+        int size = volunteerList.Count();
+        // בדיקה אם המספר האקראי קטן מההסתברות
+        for (int i = 0; i < size; i++)
+        {
+            var volunteer = Read(volunteerList[i].Id);
+            if (volunteer.CurrentCall == null /*&& randomValue < probability*/)
+            {
+                var openCallInListsToChose = CallManager.GetOpenCall(volunteer.Id, null, null).ToList();
 
-    //    // יצירת מספר אקראי בטווח 0 עד 1
-    //    double randomValue = s_rand.NextDouble(); // מספר בין 0.0 ל-1.0
-    //    var volunteerList = GetVolunteerListHelp(true, null).ToList();
-    //    int size = volunteerList.Count();
-    //    // בדיקה אם המספר האקראי קטן מההסתברות
-    //    for (int i = 0; i < size; i++)
-    //    {
-    //        var volunteer = readHelp(volunteerList[i].Id);
-    //        if (volunteer.CallIn == null && randomValue < probability)
-    //        {
-    //            var openCallInListsToChose = CallManager.GetOpenCallHelp(volunteer.Id, null, null).ToList();
+                if (openCallInListsToChose != null && openCallInListsToChose.Count > 0)
+                {
+                    //choose random call for volunteer
+                    var randomIndex = s_rand.Next(openCallInListsToChose.Count);
+                    var chosenCall = openCallInListsToChose[randomIndex];
 
-    //            if (openCallInListsToChose != null && openCallInListsToChose.Count > 0)
-    //            {
-    //                //choose random call for volunteer
-    //                var randomIndex = s_rand.Next(openCallInListsToChose.Count);
-    //                var chosenCall = openCallInListsToChose[randomIndex];
+                    CallManager.ChooseCall(volunteer.Id, chosenCall.Id);
+                }
+            }
 
-    //                CallManager.ChoseForTreatHelp(volunteer.Id, chosenCall.Id);
-    //            }
-    //        }
+            else if (volunteer.CurrentCall != null)    //there is call in treat
+            {
+                var callin = Read(volunteer.Id).CurrentCall!;
+                if ((AdminManager.Now - callin.EnterTime) >= TimeSpan.FromHours(3))
+                {
+                    CallManager.UpdateEndTreatment(volunteer.Id, callin.Id);
+                }
+                else
+                {
+                    int probability1 = s_rand.Next(1, 101); // מספר אקראי בין 1 ל-100
 
-    //        else if (volunteer.CallIn != null)    //there is call in treat
-    //        {
-    //            var callin = readHelp(volunteer.Id).CallIn!;
-    //            if ((AdminManager.Now - callin.StartTreat) >= TimeSpan.FromHours(3))
-    //            {
-    //                CallManager.CloseTreatHelp(volunteer.Id, callin.Id);
-    //            }
-    //            else
-    //            {
-    //                int probability1 = s_rand.Next(1, 101); // מספר אקראי בין 1 ל-100
+                    if (probability1 <= 10) // הסתברות של 10%
+                    {
+                        // ביטול הטיפול
+                        CallManager.UpdateCancelTreatment(volunteer.Id, callin.Id);
+                    }
+                }
+            }
 
-    //                if (probability1 <= 10) // הסתברות של 10%
-    //                {
-    //                    // ביטול הטיפול
-    //                    CallManager.CancelTreatHelp(volunteer.Id, callin.Id);
-    //                }
-    //            }
-    //        }
-
-    //    }
-    //}
+        }
+    }
 
 
 
@@ -395,98 +396,98 @@ internal static class VolunteerManager
     }
 
 
-    internal static void SimulationVolunteerActivity()
-    {
-        ////??????
-        Task.Run(() =>
-        {
-            try
-            {
-                // קבלת רשימת המתנדבים הפעילים והפיכתם לרשימה קונקרטית
-                List<BO.Volunteer> activeVolunteers;
-                lock (AdminManager.BlMutex)
-                {
-                    activeVolunteers = _dal.Volunteer.ReadAll()
-                        .Where(v => v.Active)
-                        .Select(v => GetVolunteer(v.Id)).ToList();
-                }
+    //internal static void SimulationVolunteerActivity()
+    //{
+    //    ////??????
+    //    Task.Run(() =>
+    //    {
+    //        try
+    //        {
+    //            // קבלת רשימת המתנדבים הפעילים והפיכתם לרשימה קונקרטית
+    //            List<BO.Volunteer> activeVolunteers;
+    //            lock (AdminManager.BlMutex)
+    //            {
+    //                activeVolunteers = _dal.Volunteer.ReadAll()
+    //                    .Where(v => v.Active)
+    //                    .Select(v => GetVolunteer(v.Id)).ToList();
+    //            }
 
-                foreach (var volunteer in activeVolunteers)
-                {
-                    bool hasUpdated = false;
+    //            foreach (var volunteer in activeVolunteers)
+    //            {
+    //                bool hasUpdated = false;
 
-                    // בדיקה אם למתנדב יש קריאה בטיפולו
+    //                // בדיקה אם למתנדב יש קריאה בטיפולו
 
-                    BO.CallInProgress activeAssignment = volunteer.CurrentCall;
+    //                BO.CallInProgress mycurrentCall = volunteer.CurrentCall;
 
-                    if (activeAssignment == null)
-                    {
-                        // למתנדב אין קריאה פעילה
-                        //if (new Random().NextDouble() <= 0.5) // הסתברות של 20%
-                        {
-                            List<BO.Call> availableCalls = null;
-                            lock (AdminManager.BlMutex)
-                                availableCalls = GetOpenCallsimulator();
+    //                if (mycurrentCall == null)
+    //                {
+    //                    // למתנדב אין קריאה פעילה
+    //                //    if (new Random().NextDouble() <= 0.5) // הסתברות של 50%
+    //                    {
+    //                        List<BO.Call> availableCalls = null;
+    //                        lock (AdminManager.BlMutex)
+    //                            availableCalls = GetOpenCallsimulator();
 
 
-                            if (availableCalls.Any())
-                            {
-                                var randomCall = availableCalls[new Random().Next(availableCalls.Count)];//take random call in index next count
-                                lock (AdminManager.BlMutex)
-                                {
-                                    CallManager.ChooseCall(volunteer.Id, randomCall.Id);
+    //                        if (availableCalls.Any())
+    //                        {
+    //                            var randomCall = availableCalls[new Random().Next(availableCalls.Count)];//take random call in index next count
+    //                            lock (AdminManager.BlMutex)
+    //                            {
+    //                                CallManager.ChooseCall(volunteer.Id, randomCall.Id);
 
-                                }
-                                hasUpdated = true;
-                            }
-                        }
+    //                            }
+    //                            hasUpdated = true;
+    //                        }
+    //                    }
 
-                    }
-                    else
-                    {
-                        // למתנדב יש קריאה פעילה
-                        var TotalMinutesOfMyTreatment = (AdminManager.Now - activeAssignment.EnterTime).TotalMinutes;
-                        double TimeMakeSance = new Random().Next(10, 30); ;
+    //                }
+    //                else if(mycurrentCall!=null)
+    //                {
+    //                    // למתנדב יש קריאה פעילה
+    //                    var TotalMinutesOfMyTreatment = (AdminManager.Now - mycurrentCall.EnterTime).TotalMinutes;
+    //                    double TimeMakeSance = new Random().Next(10, 30); ;
 
-                        if (TotalMinutesOfMyTreatment >= TimeMakeSance)
-                        {
-                            // סיום הטיפול
-                            lock (AdminManager.BlMutex)
-                            {
-                                CallManager.UpdateEndTreatment(volunteer.Id, activeAssignment.CallId);
+    //                    if (TotalMinutesOfMyTreatment >= TimeMakeSance)
+    //                    {
+    //                        // סיום הטיפול
+    //                        lock (AdminManager.BlMutex)
+    //                        {
+    //                            CallManager.UpdateEndTreatment(volunteer.Id, mycurrentCall.Id);
 
-                            }
-                            hasUpdated = true;
-                        }
-                        else
-                        {
-                            // ביטול הטיפול
-                            //if (new Random().NextDouble() <= 0.1)
-                            {
-                                lock (AdminManager.BlMutex)
-                                    CallManager.UpdateCancelTreatment(volunteer.Id, activeAssignment.CallId);
+    //                        }
+    //                        hasUpdated = true;
+    //                    }
+    //                    else if (mycurrentCall != null)
+    //                    {
+    //                        // ביטול הטיפול
+    //                       // if (new Random().NextDouble() <= 0.1)
+    //                        {
+    //                            lock (AdminManager.BlMutex)
+    //                                CallManager.UpdateCancelTreatment(volunteer.Id, mycurrentCall.Id);
 
-                                hasUpdated = true;
-                            }
-                        }
-                    }
+    //                            hasUpdated = true;
+    //                        }
+    //                    }
+    //                }
 
-                    // עדכון הודעה על שינוי מחוץ ל-lock
-                    if (hasUpdated)
-                    {
-                        Observers.NotifyItemUpdated(volunteer.Id);
-                        Observers.NotifyListUpdated();
-                    }
-                }
+    //                // עדכון הודעה על שינוי מחוץ ל-lock
+    //                if (hasUpdated)
+    //                {
+    //                    Observers.NotifyItemUpdated(volunteer.Id);
+    //                    Observers.NotifyListUpdated();
+    //                }
+    //            }
 
-            }
-            catch (Exception ex)
-            {
-                // טיפול בשגיאות
-                Console.WriteLine($"Error in SimulationVolunteerActivity: {ex.Message}");
-            }
-        });
-    }
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            // טיפול בשגיאות
+    //            Console.WriteLine($"Error in SimulationVolunteerActivity: {ex.Message}");
+    //        }
+    //    });
+    //}
 
 
  
@@ -523,6 +524,61 @@ internal static class VolunteerManager
 
     }
 
+    public static IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
+    {
+        IEnumerable<DO.Volunteer> volunteers = null;
+        lock (AdminManager.BlMutex) //stage 7
+            volunteers = _dal.Volunteer.ReadAll();
 
+        // Filter by activity status
+        if (Active.HasValue)
+        {
+            volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
+        }
+        // Sort by the selected parameter
+        switch (sortBy)
+        {
+            case BO.VolInList.Name:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // Sort by name
+                break;
+
+            case BO.VolInList.IsActive:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // Sort by activity status (active/inactive)
+                break;
+            default:
+                volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // Default sorting by ID
+                break;
+        }
+
+        // Convert the list to a list of volunteers by their ID
+        var volunteerList = volunteers
+            .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
+            .ToList();
+
+        // Filter by call type after the conversion
+
+        return volunteerList;
+
+    }
+
+    public static BO.Volunteer Read(int id)
+    {
+        lock (AdminManager.BlMutex) //stage 7
+
+            try
+            {
+                var fordebug = GetVolunteer(id);
+                return fordebug;
+
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (optional, for debugging purposes)
+                Console.WriteLine($"Error while reading volunteer with ID {id}: {ex.Message}");
+                return null;
+            }
+
+
+    }
 
 }

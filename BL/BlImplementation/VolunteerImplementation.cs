@@ -25,41 +25,9 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
     public IEnumerable<VolunteerInList> ReadAll(bool? Active, BO.VolInList? sortBy)
     {
-        IEnumerable<DO.Volunteer> volunteers = null;
-        lock (AdminManager.BlMutex) //stage 7
-            volunteers = _dal.Volunteer.ReadAll();
 
-        // Filter by activity status
-        if (Active.HasValue)
-        {
-            volunteers = volunteers.Where(volunteer => volunteer.Active == Active.Value);
-        }
-        // Sort by the selected parameter
-        switch (sortBy)
-        {
-            case BO.VolInList.Name:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Name); // Sort by name
-                break;
-
-            case BO.VolInList.IsActive:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Active); // Sort by activity status (active/inactive)
-                break;
-            default:
-                volunteers = volunteers.OrderBy(volunteer => volunteer.Id); // Default sorting by ID
-                break;
-        }
-    
-        // Convert the list to a list of volunteers by their ID
-        var volunteerList = volunteers
-            .Select(volunteer => VolunteerManager.GetVolunteerInList(volunteer.Id))
-            .ToList();
-
-        // Filter by call type after the conversion
-
-        return volunteerList;
-    
+        return VolunteerManager.ReadAll(Active, sortBy);
     }
-
     public DO.Role PasswordEntered(int Id, string password)
     {
         /// <summary>
@@ -86,21 +54,8 @@ internal class VolunteerImplementation : BlApi.IVolunteer
 
     public BO.Volunteer Read(int id)
     {
-        lock (AdminManager.BlMutex) //stage 7
 
-            try
-            {
-            var fordebug = VolunteerManager.GetVolunteer(id);
-            return (/*VolunteerManager.GetVolunteer(id)*/ fordebug);
-
-        }
-        catch (Exception ex)
-        {
-            // Log the exception (optional, for debugging purposes)
-            Console.WriteLine($"Error while reading volunteer with ID {id}: {ex.Message}");
-            return null;
-        } 
-
+       return VolunteerManager.Read(id);
 
     }
     
@@ -342,7 +297,7 @@ internal class VolunteerImplementation : BlApi.IVolunteer
     // פונקציה אסינכרונית לחישוב הקואורדינאטות
     public  void SimulationVolunteerActivity()
     {
-        VolunteerManager.SimulationVolunteerActivity();
+        VolunteerManager.SimulateVolunteerActivity();
     }
 
 

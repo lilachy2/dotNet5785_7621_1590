@@ -758,7 +758,7 @@ internal static class CallManager
         }
 
         // Check if the call is open.
-        if (boCall.Status != BO.CallStatus.Open)
+        if (boCall.Status != BO.CallStatus.Open && boCall.Status != BO.CallStatus.OpenAtRisk)
             throw new BO.BlAlreadyExistsException($"The call is not open or is already being handled. IdCall = {idCall}");
 
         lock (AdminManager.BlMutex)
@@ -932,6 +932,208 @@ internal static class CallManager
         CallManager.Observers.NotifyItemUpdated(idAssig);  //stage 5
         CallManager.Observers.NotifyListUpdated();  //stage 5
 
+    }
+
+    public static IEnumerable<BO.OpenCallInList> GetOpenCall(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
+    //public async Task<List<BO.OpenCallInList>> GetOpenCallAsync(int id, BO.Calltype? type, BO.OpenCallInListEnum? sortBy)
+
+    {
+        DO.Volunteer volunteer = null;
+        IEnumerable<BO.CallInList> allCalls = null;
+        IEnumerable<Assignment> allAssignments = null;
+
+        lock (AdminManager.BlMutex) //stage 7
+            volunteer = _dal.Volunteer.Read(id);
+        if (volunteer == null)
+            throw new BO.BlDoesNotExistException($"Volunteer with ID={id} does not exist");
+
+        // Retrieve all calls from the BO
+        lock (AdminManager.BlMutex) //stage 7
+        {
+            allCalls = GetCallsList(null, null, null, null);
+
+            // Retrieve all assignments from the DAL
+            allAssignments = _dal.Assignment.ReadAll();
+        }
+
+        //double? lonVol = 
+        //    UpdateCoordinatesForCallLON(volunteer.FullCurrentAddress).Result;
+        //double? latVol =
+        //    UpdateCoordinatesForCallLAN(volunteer.FullCurrentAddress).Result;
+
+        //double? lonVol = Task.Run(() => UpdateCoordinatesForCallLON(volunteer.FullCurrentAddress)).Result;
+        //double? latVol = Task.Run(() => UpdateCoordinatesForCallLAN(volunteer.FullCurrentAddress)).Result;
+
+        // Filter for only "Open" or "Risk Open" status
+        IEnumerable<BO.OpenCallInList> filteredCalls = allCalls
+                .Where(call => call.Status == BO.CallStatus.Open || call.Status == BO.CallStatus.OpenAtRisk)  // Filter by Open or OpenAtRisk status
+                .Select(call =>
+                {
+                    var boCall = Read(call.CallId);  // Get full details of the call
+                    var assignment = allAssignments.FirstOrDefault(a => a.CallId == call.Id);  // Find the assignment if any
+
+                    return new BO.OpenCallInList
+                    {
+                        Id = call.CallId,
+                        CallType = call.CallType,
+                        Description = boCall.Description,
+                        FullAddress = boCall.FullAddress,
+                        OpenTime = call.OpenTime,
+                        MaxEndTime = boCall.MaxEndTime,
+                        DistanceFromVolunteer = volunteer?.FullCurrentAddress != null
+                       //     ? CallManager.Air_distance_between_2_addresses(latVol, lonVol, boCall.Latitude, boCall.Longitude)
+                            ? CallManager.Air_distance_between_2_addresses(volunteer.Latitude, volunteer.Longitude, boCall.Latitude, boCall.Longitude)
+                            : 0  // Calculate the distance between the volunteer and the call
+                    };
+                });
+
+        // Filter by call type if provided
+        if (type.HasValue && type != BO.Calltype.None)
+        {
+            filteredCalls = filteredCalls.Where(c => c.CallType == type.Value);
+        }
+
+        // Sort by the requested field or by default (call ID)
+        if (sortBy.HasValue)
+        {
+            filteredCalls = sortBy.Value switch
+            {
+                BO.OpenCallInListEnum.Id => filteredCalls.OrderBy(c => c.Id),
+                BO.OpenCallInListEnum.CallType => filteredCalls.OrderBy(c => c.CallType),
+                BO.OpenCallInListEnum.Description => filteredCalls.OrderBy(c => c.Description),
+                BO.OpenCallInListEnum.FullAddress => filteredCalls.OrderBy(c => c.FullAddress),
+                BO.OpenCallInListEnum.OpenTime => filteredCalls.OrderBy(c => c.OpenTime),
+                BO.OpenCallInListEnum.MaxEndTime => filteredCalls.OrderBy(c => c.MaxEndTime),
+                BO.OpenCallInListEnum.DistanceFromVolunteer => filteredCalls.OrderBy(c => c.DistanceFromVolunteer),
+                _ => filteredCalls.OrderBy(c => c.Id)
+            };
+        }
+        else
+        {
+            filteredCalls = filteredCalls.OrderBy(c => c.Id);
+        }
+
+        return filteredCalls;
+
+    }
+    public static IEnumerable<BO.CallInList> GetCallsList(BO.Calltype? filter, object? obj, BO.CallInListField? sortBy, BO.CallStatus? statusFilter)
+    {
+        IEnumerable<DO.Call> calls = null;
+        IEnumerable<BO.CallInList> boCallsInList = null;
+        lock (AdminManager.BlMutex) //stage 7
+
+        {
+            calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
+            //IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
+            boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call)).ToList();
+        }
+
+        // סינון לפי Calltype
+        if (filter != null && obj != null)
+        {
+            switch (filter)
+            {
+                case BO.Calltype.allergy:
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+                    break;
+                case BO.Calltype.birth:
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+                    break;
+                case BO.Calltype.broken_bone:
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+                    break;
+                case BO.Calltype.heartattack:
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+                    break;
+                case BO.Calltype.resuscitation:
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+                    break;
+                case BO.Calltype.security_event:
+                    boCallsInList = boCallsInList.Where(item => item.CallType == (BO.Calltype)obj);
+                    break;
+                case BO.Calltype.None:
+                    break;
+            }
+        }
+
+        // סינון לפי CallStatus, אם מתקבל NoneToFilter לא מבצעים סינון
+        if (statusFilter != BO.CallStatus.NoneToFilter && statusFilter != null)
+        {
+            boCallsInList = boCallsInList.Where(item => item.Status == statusFilter);
+        }
+
+        // אם לא הוגדר סינון לפי שדה, יש לסנן לפי CallId כברירת מחדל
+        if (sortBy == null)
+            sortBy = BO.CallInListField.CallId;
+
+        // סינון לפי שדות
+        switch (sortBy)
+        {
+            case BO.CallInListField.Id:
+                boCallsInList = boCallsInList.OrderBy(item => item.Id.HasValue ? 0 : 1)
+                                             .ThenBy(item => item.Id)
+                                             .ToList();
+                break;
+            case BO.CallInListField.CallId:
+                boCallsInList = boCallsInList.OrderBy(item => item.CallId).ToList();
+                break;
+            case BO.CallInListField.CallType:
+                boCallsInList = boCallsInList.OrderBy(item => item.CallType).ToList();
+                break;
+            case BO.CallInListField.OpenTime:
+                boCallsInList = boCallsInList.OrderBy(item => item.OpenTime).ToList();
+                break;
+            case BO.CallInListField.TimeRemaining:
+                boCallsInList = boCallsInList.OrderBy(item => item.TimeRemaining).ToList();
+                break;
+            case BO.CallInListField.VolunteerName:
+                boCallsInList = boCallsInList.OrderBy(item => item.VolunteerName).ToList();
+                break;
+            case BO.CallInListField.CompletionTime:
+                boCallsInList = boCallsInList.OrderBy(item => item.CompletionTime).ToList();
+                break;
+            case BO.CallInListField.Status:
+                boCallsInList = boCallsInList.OrderBy(item => item.Status).ToList();
+                break;
+            case BO.CallInListField.TotalAssignments:
+                boCallsInList = boCallsInList.OrderBy(item => item.TotalAssignments).ToList();
+                break;
+        }
+
+        return boCallsInList;
+
+    }
+
+    public static async Task<double> UpdateCoordinatesForCallLON(string adress)
+    {
+        try
+        {
+            // Update the call in the data layer with the new coordinates
+            double lon = await Tools.GetLongitudeAsync(adress);
+            VolunteerManager.Observers.NotifyListUpdated();
+            return lon;
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions related to coordinate updates
+            throw new BO.BlGeneralException("Failed to update coordinates for the call.", ex);
+        }
+    }
+
+    public static async Task<double> UpdateCoordinatesForCallLAN(string adress)
+    {
+        try
+        {
+            // Update the call in the data layer with the new coordinates
+            double lan = await Tools.GetLatitudeAsync(adress);
+            VolunteerManager.Observers.NotifyListUpdated();
+            return lan;
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions related to coordinate updates
+            throw new BO.BlGeneralException("Failed to update coordinates for the call.", ex);
+        }
     }
 
 
