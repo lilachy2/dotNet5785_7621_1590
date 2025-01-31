@@ -147,4 +147,18 @@ public class BlRiskRangException : Exception
 
 }
 
+public class BlEmailException : Exception
+{
+    public BlEmailException(string? message) : base(message) { }
+    public BlEmailException(string message, Exception innerException)
+              : base(message, innerException) { }
+
+}public class BlCheckIdException : Exception
+{
+    public BlCheckIdException(string? message) : base(message) { }
+    public BlCheckIdException(string message, Exception innerException)
+              : base(message, innerException) { }
+
+}
+
 

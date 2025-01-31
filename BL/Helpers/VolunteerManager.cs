@@ -29,6 +29,17 @@ internal static class VolunteerManager
         {
             throw new BO.InvalidOperationException("",ex);
         }
+        catch(BO.BlCheckPhonnumberException ex)
+        {
+            throw new BO.BlCheckPhonnumberException("",ex);
+        }
+        catch(BO.BlEmailException ex)
+        {
+            throw new BO.BlEmailException("",ex);
+        }  catch(BO.BlIncorrectPasswordException ex)
+        {
+            throw new BO.BlIncorrectPasswordException("",ex);
+        }
         catch (BO.BlWrongItemtException ex)
         {
             throw new BO.BlWrongItemtException($"the item have logic problem", ex);
@@ -39,7 +50,7 @@ internal static class VolunteerManager
     {
         if (!Regex.IsMatch(Email, @"^(?("")(""[^""]+?""@)|(([0-9a-zA-Z](([\.\-]?)(?![\.\-])))*[0-9a-zA-Z]@))([0-9a-zA-Z][\-0-9a-zA-Z]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,}$"))
         {
-            throw new ArgumentException("Invalid Email format.");
+            throw new BlEmailException("Invalid Email format.");
         }
 
     }
@@ -95,8 +106,14 @@ internal static class VolunteerManager
 
     internal static void CheckLogic(BO.Volunteer boVolunteer, BO.Volunteer existingVolunteer, bool isManager)
     {
+        try
+{        Tools.CheckId(boVolunteer.Id);
+}   
+      catch(BlCheckIdException ex)
+        {
+            throw new BlCheckIdException("", ex);
+        }   
 
-        Tools.CheckId(boVolunteer.Id);
         if (existingVolunteer != null)
         {
             // Check if the role was changed

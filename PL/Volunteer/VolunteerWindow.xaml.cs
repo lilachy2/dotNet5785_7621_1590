@@ -144,17 +144,71 @@ namespace PL.Volunteer
                     });
                 }
             }
-            catch (Exception ex)
+            //catch (Exception ex)
+            //{
+            //    // טיפול בשגיאות
+            //    Application.Current.Dispatcher.Invoke(() =>
+            //    {
+            //        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    });
+            //}
+            catch (DO.DalDoesNotExistException ex)
             {
-                // טיפול בשגיאות
-                Application.Current.Dispatcher.Invoke(() =>
+                MessageBox.Show($"Volunteer with ID {Volunteer.Id} does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.Incompatible_ID ex)
+            {
+                MessageBox.Show($"Volunteer with ID {Volunteer.Id} has an incompatible ID.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BlInvalidaddress ex) // הודעה אסינכרונית
+            {
+                Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Invalid address provided for volunteer with ID {Volunteer.Id}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 });
             }
+            catch (BO.InvalidOperationException ex)
+            {
+                MessageBox.Show("Invalid operation attempted.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlCheckIdException ex)
+            {
+                MessageBox.Show("Invalid ID format.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlCheckPhonnumberException ex)
+            {
+                MessageBox.Show("Invalid phone number format.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlEmailException ex)
+            {
+                MessageBox.Show("Invalid email format.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlIncorrectPasswordException ex)
+            {
+                MessageBox.Show("Incorrect password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlCan_chang_to_NotActivException ex)
+            {
+                MessageBox.Show("Cannot change status to 'Not Active'.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlWrongItemtException ex)
+            {
+                MessageBox.Show("There was an issue with the format or logic of the data.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BlPermissionException ex)
+            {
+                MessageBox.Show("Permission error occurred.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
+
         }
 
-       
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

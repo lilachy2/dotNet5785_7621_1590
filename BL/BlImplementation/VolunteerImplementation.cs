@@ -113,6 +113,30 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         {
             throw new BlInvalidaddress($"Invalid address provided for volunteer with ID {boVolunteer.Id}.", ex);
         }
+        catch (BO.InvalidOperationException ex)
+        {
+            throw new BO.InvalidOperationException("", ex);
+        }
+        catch (BO.BlCheckPhonnumberException ex)
+        {
+            throw new BO.BlCheckPhonnumberException("", ex);
+        }
+        catch (BO.BlEmailException ex)
+        {
+            throw new BO.BlEmailException("", ex);
+        }
+        catch (BO.BlIncorrectPasswordException ex)
+        {
+            throw new BO.BlIncorrectPasswordException("", ex);
+        }
+        catch (BO.BlPermissionException ex)
+        {
+            throw new BO.BlPermissionException("", ex);
+        }   
+        catch (BO.BlCan_chang_to_NotActivException ex)
+        {
+            throw new BO.BlCan_chang_to_NotActivException("", ex);
+        }
         catch (Exception ex)
         {
             throw new BO.BlGeneralException("An unexpected error occurred while updating volunteer details.", ex);
@@ -164,75 +188,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         
             VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
     }
-
-    //public void Create(BO.Volunteer boVolunteer)
-    //{
-    //    AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-    //    DO.Volunteer existingVolunteer = null;  
-
-    //    try
-    //        {
-    //        // 1. Format checks
-    //        VolunteerManager.CheckFormat(boVolunteer); // Validate the format of the volunteer's data (phone number, email, address)
-
-    //        //VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-
-    //        // 2. Check if the volunteer already exists in the data layer
-    //        lock (AdminManager.BlMutex) //stage 7
-    //             existingVolunteer = _dal.Volunteer.Read(boVolunteer.Id); // Check if a volunteer with the same ID already exists
-    //        if (existingVolunteer != null)
-    //        {
-    //            throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists."); // If exists, throw an exception
-    //        }
-
-    //        // 3. Convert BO.Volunteer to DO.Volunteer
-    //        var DOVolunteer = VolunteerManager.BOconvertDO(boVolunteer); // Convert BO object to DO object
-
-    //        // 4. Logic checks
-    //        // If the volunteer already exists, send the existing volunteer for comparison, otherwise send null for a new volunteer
-    //        if (existingVolunteer != null)
-    //        {
-    //            // If the volunteer already exists in DAL, send the existing volunteer for logic validation
-    //            var BOexistingVolunteer = VolunteerManager.GetVolunteer(existingVolunteer.Id); // Retrieve existing volunteer as BO object
-    //            VolunteerManager.CheckLogic(boVolunteer, BOexistingVolunteer, false); // false means no manager is performing the action
-    //        }
-    //        else
-    //        {
-    //            // If the volunteer is new, perform logic check without comparison to an existing volunteer
-    //            VolunteerManager.CheckLogic(boVolunteer, null, false); // Pass null for a new volunteer
-    //        }
-
-    //        // we need add 
-    //        boVolunteer.Latitude = Tools.GetLatitudeAsync(boVolunteer.FullCurrentAddress).Result;
-    //        boVolunteer.Longitude = Tools.GetLongitudeAsync(boVolunteer.FullCurrentAddress).Result;
-
-    //        // 5. Add the volunteer to the data layer
-    //        lock (AdminManager.BlMutex) //stage 7
-    //            _dal.Volunteer.Create(DOVolunteer); // Add the volunteer to the data layer (DAL)
-
-    //    }
-    //    catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
-    //    {
-    //        throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists.", ex); // Re-throw the exception with the appropriate message
-    //    }
-    //    catch (BO.BlWrongItemtException ex) // Handle format or logic issue exception
-    //    {
-    //        throw new BO.BlWrongItemtException("There was an issue with the format or logic of the data.", ex); // Re-throw the exception with a message indicating format or logic issues
-    //    }
-    //    catch (BO.BlPermissionException ex) // Handle permission error when adding a volunteer
-    //    {
-    //        throw new BO.BlPermissionException("Permission error during volunteer addition.", ex); // Re-throw the permission exception with a relevant message
-    //    }
-    //    catch (Exception ex) // Catch any other general exceptions
-    //    {
-    //        throw new BO.BlGeneralException("Failed to add volunteer.", ex); // Re-throw the general exception with a message indicating the failure
-    //    }
-
-
-    //    VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-
-    //}
-
     public void Create(BO.Volunteer boVolunteer)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
@@ -277,6 +232,32 @@ internal class VolunteerImplementation : BlApi.IVolunteer
         catch (DO.DalDoesNotExistException ex) // Handle existing volunteer exception
         {
             throw new BO.BlDoesNotExistException($"Volunteer with ID {boVolunteer.Id} already exists.", ex);
+        }
+     
+        catch (BO.InvalidOperationException ex)
+        {
+            throw new BO.InvalidOperationException("", ex);
+        }
+        catch (BO.BlCheckIdException ex)
+        {
+            throw new BO.BlCheckIdException("", ex);
+        }
+        catch (BO.BlCheckPhonnumberException ex)
+        {
+            throw new BO.BlCheckPhonnumberException("", ex);
+        }
+        catch (BO.BlEmailException ex)
+        {
+            throw new BO.BlEmailException("", ex);
+        }
+        catch (BO.BlIncorrectPasswordException ex)
+        {
+            throw new BO.BlIncorrectPasswordException("", ex);
+        }
+       
+        catch (BO.BlCan_chang_to_NotActivException ex)
+        {
+            throw new BO.BlCan_chang_to_NotActivException("", ex);
         }
         catch (BO.BlWrongItemtException ex) // Handle format or logic issue exception
         {

@@ -225,16 +225,30 @@
     <distance>12</distance>
   </Volunteer>
   <Volunteer>
-    <Id>324291590</Id>
-    <Name>yalin</Name>
+    <Id>324291608</Id>
+    <Name>מעוז</Name>
     <Number_phone>0528050630</Number_phone>
+    <Email>y@gmail.com</Email>
+    <Password>Yalin1234@</Password>
+    <Role>Volunteer</Role>
+    <Distance_Type>Aerial_distance</Distance_Type>
+    <FullCurrentAddress>כפר סבא</FullCurrentAddress>
+    <Latitude>32.1773471</Latitude>
+    <Longitude>34.907459</Longitude>
+    <Active>true</Active>
+    <distance>12</distance>
+  </Volunteer>
+  <Volunteer>
+    <Id>324291590</Id>
+    <Name>yalin9</Name>
+    <Number_phone>0528050639</Number_phone>
     <Email>y@gmail.com</Email>
     <Password>Yalin1234@</Password>
     <Role>Manager</Role>
     <Distance_Type>Aerial_distance</Distance_Type>
     <FullCurrentAddress>צופים</FullCurrentAddress>
-    <Latitude>30</Latitude>
-    <Longitude>30</Longitude>
+    <Latitude>32.1981952</Latitude>
+    <Longitude>35.0096527</Longitude>
     <Active>true</Active>
     <distance>12</distance>
   </Volunteer>

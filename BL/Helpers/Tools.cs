@@ -413,7 +413,7 @@ internal static class Tools
         // Ensure the ID is exactly 9 digits long
         if (idString.Length != 9)
         {
-            throw new BO.BlWrongItemtException($"This ID {id} is not valid (must be 9 digits long).");
+            throw new BO.BlCheckIdException($"This ID {id} is not valid (must be 9 digits long).");
         }
 
         int sum = 0;
