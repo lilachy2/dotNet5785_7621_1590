@@ -111,6 +111,13 @@ namespace PL.Volunteer
             {
                 s_bl.Volunteer.RemoveObserver(Volunteer.Id, HandleVolunteerUpdate);
             }
+        }  
+        private void Window_Loaded(object sender, EventArgs e)
+        {
+            if (Volunteer != null && Volunteer.Id != 0)
+            {
+                s_bl.Volunteer.AddObserver(Volunteer.Id, HandleVolunteerUpdate);
+            }
         }
 
         private void btnAddUpdate_Click(object sender, RoutedEventArgs e)

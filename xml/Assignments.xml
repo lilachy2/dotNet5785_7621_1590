@@ -880,4 +880,12 @@
     <time_end_treatment>2025-02-01T06:28:56</time_end_treatment>
     <EndOfTime>VolunteerCancelled</EndOfTime>
   </Assignment>
+  <Assignment>
+    <Id>1110</Id>
+    <CallId>1021</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-02-01T06:28:56</time_entry_treatment>
+    <time_end_treatment>2025-02-01T06:28:56</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
 </ArrayOfAssignment>

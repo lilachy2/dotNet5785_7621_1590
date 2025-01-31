@@ -4,6 +4,8 @@
         xmlns:local="clr-namespace:PL"
         Title="Volunteer Details"
         Height="600" Width="450"
+            Loaded="Window_Loaded"
+    Closed="Window_Closed"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
