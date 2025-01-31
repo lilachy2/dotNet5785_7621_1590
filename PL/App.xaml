@@ -24,6 +24,7 @@
         <local:ConverterSimulatorState x:Key="ConverterSimulatorStateKey"/>
         <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
+        <local:InverseBooleanConverter x:Key="InverseBooleanConverterKey"/>
 
 
         <!-- Define the Back Button Style for bake click-->

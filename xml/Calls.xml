@@ -451,36 +451,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>32.31685056325723</Latitude>
-    <Longitude>35.03173890597876</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1021</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>יונתן 41, ערד</ReadAddress>
-    <OpeningTime>2025-01-31T04:41:56</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>31.893447375684186</Latitude>
-    <Longitude>35.24827102011781</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1009</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>המרכז 21, נצרת</ReadAddress>
-    <OpeningTime>2025-01-29T12:18:56</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>32.942691808106886</Latitude>
-    <Longitude>35.2776305284647</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1023</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>שדרות ירושלים 29, קריית ים</ReadAddress>
-    <OpeningTime>2025-01-29T10:50:56</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>32.33812020498849</Latitude>
     <Longitude>34.63103460967237</Longitude>
     <Calltype>broken_bone</Calltype>
@@ -498,6 +468,36 @@
     <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
     <ReadAddress>שלום</ReadAddress>
     <OpeningTime>2025-01-29T19:20:56</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.942691808106886</Latitude>
+    <Longitude>35.2776305284647</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1023</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>שדרות ירושלים 29, קריית ים</ReadAddress>
+    <OpeningTime>2025-01-29T10:50:56</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.31685056325723</Latitude>
+    <Longitude>35.03173890597876</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1021</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>יונתן 41, ערד</ReadAddress>
+    <OpeningTime>2025-01-31T04:41:56</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.893447375684186</Latitude>
+    <Longitude>35.24827102011781</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1009</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>המרכז 21, נצרת</ReadAddress>
+    <OpeningTime>2025-01-29T12:18:56</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
 </ArrayOfCall>

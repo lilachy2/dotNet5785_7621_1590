@@ -22,6 +22,27 @@ namespace PL
             return value;
         }
     }
+    public class InverseBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is bool)
+            {
+                return !(bool)value;
+            }
+            return true;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is bool)
+            {
+                return !(bool)value;
+            }
+            return true;
+        }
+    }
+
 
     // Converter שממיר את ערך ה-Id למצב Visibility
     public class ConvertUpdateToVisibleKey : IValueConverter

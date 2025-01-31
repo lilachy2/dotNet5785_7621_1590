@@ -252,31 +252,49 @@ namespace PL
         }
 
         // מתודה להפעלת הסימולטור
+        //private void StartSimulator_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (IsSimulatorRunning == false)
+        //    {
+        //        IsSimulatorRunning = true;
+        //        // שימוש בערך שנשמר במשתנה _interval
+        //        // הודעה על תחילת סימולציה (אופציונלי)
+        //        MessageBox.Show($"Simulator started with interval: {_interval} minutes.");
+        //        s_bl.Admin.StartSimulator(_interval);
+
+        //    }
+        //    else
+        //    {
+        //        IsSimulatorRunning = false;
+        //        // שימוש בערך שנשמר במשתנה _interval
+        //        s_bl.Admin.StopSimulator();
+        //        MessageBox.Show("Simulator stopped.");
+
+        //    }
+
+
+        //}
+
         private void StartSimulator_Click(object sender, RoutedEventArgs e)
         {
             if (IsSimulatorRunning == false)
             {
                 IsSimulatorRunning = true;
-                // שימוש בערך שנשמר במשתנה _interval
-                // הודעה על תחילת סימולציה (אופציונלי)
+                // Disable Interval input and clock control buttons while simulator is running
                 MessageBox.Show($"Simulator started with interval: {_interval} minutes.");
                 s_bl.Admin.StartSimulator(_interval);
-
             }
             else
             {
                 IsSimulatorRunning = false;
-                // שימוש בערך שנשמר במשתנה _interval
+                // Enable Interval input and clock control buttons when simulator stops
                 s_bl.Admin.StopSimulator();
                 MessageBox.Show("Simulator stopped.");
-
             }
-
-
         }
 
 
-
+       
 
         private void clockObserver()
         {
@@ -392,6 +410,11 @@ namespace PL
             // Remove observers when the window is closed
             s_bl.Admin.RemoveClockObserver(clockObserver);
             s_bl.Admin.RemoveConfigObserver(configObserver);
+
+            if (IsSimulatorRunning)
+            {
+                s_bl.Admin.StopSimulator();
+            }
         }
 
         private void RiskRangeTextBox_TextChanged(object sender, TextChangedEventArgs e)

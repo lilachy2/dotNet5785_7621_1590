@@ -857,22 +857,6 @@
     <EndOfTime>TreatedOnTime</EndOfTime>
   </Assignment>
   <Assignment>
-    <Id>1107</Id>
-    <CallId>1023</CallId>
-    <VolunteerId>151540486</VolunteerId>
-    <time_entry_treatment>2025-02-01T06:28:56</time_entry_treatment>
-    <time_end_treatment xsi:nil="true" />
-    <EndOfTime xsi:nil="true" />
-  </Assignment>
-  <Assignment>
-    <Id>1108</Id>
-    <CallId>1009</CallId>
-    <VolunteerId>161260175</VolunteerId>
-    <time_entry_treatment>2025-02-01T06:28:56</time_entry_treatment>
-    <time_end_treatment xsi:nil="true" />
-    <EndOfTime xsi:nil="true" />
-  </Assignment>
-  <Assignment>
     <Id>1109</Id>
     <CallId>1021</CallId>
     <VolunteerId>324291590</VolunteerId>
@@ -887,5 +871,37 @@
     <time_entry_treatment>2025-02-01T06:28:56</time_entry_treatment>
     <time_end_treatment>2025-02-01T06:28:56</time_end_treatment>
     <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1107</Id>
+    <CallId>1023</CallId>
+    <VolunteerId>151540486</VolunteerId>
+    <time_entry_treatment>2025-02-01T06:28:56</time_entry_treatment>
+    <time_end_treatment>2025-02-01T06:38:56</time_end_treatment>
+    <EndOfTime>Expired</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1108</Id>
+    <CallId>1009</CallId>
+    <VolunteerId>161260175</VolunteerId>
+    <time_entry_treatment>2025-02-01T06:28:56</time_entry_treatment>
+    <time_end_treatment>2025-02-01T06:38:56</time_end_treatment>
+    <EndOfTime>Expired</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1111</Id>
+    <CallId>1021</CallId>
+    <VolunteerId>119761112</VolunteerId>
+    <time_entry_treatment>2025-02-01T07:08:56</time_entry_treatment>
+    <time_end_treatment>2025-02-01T07:18:56</time_end_treatment>
+    <EndOfTime>Expired</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1112</Id>
+    <CallId>1009</CallId>
+    <VolunteerId>151540486</VolunteerId>
+    <time_entry_treatment>2025-02-01T07:08:56</time_entry_treatment>
+    <time_end_treatment>2025-02-01T07:18:56</time_end_treatment>
+    <EndOfTime>Expired</EndOfTime>
   </Assignment>
 </ArrayOfAssignment>
