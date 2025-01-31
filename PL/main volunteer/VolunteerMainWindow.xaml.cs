@@ -269,7 +269,7 @@ namespace PL.main_volunteer
            //if (Volunteer.CurrentCall != null)
             {
                 // בצע עדכון לפי הקריאה
-                s_bl.Volunteer.Read(Volunteer.Id);
+                Volunteer= s_bl.Volunteer.Read(Volunteer.Id);
 
             }
         }
