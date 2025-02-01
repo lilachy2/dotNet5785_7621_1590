@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6CC8AE7-ED68-4CA8-BF71-1075A7E12AAA}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		דוח סופי לפרוייקט- בלי בונוסים.pdf = דוח סופי לפרוייקט- בלי בונוסים.pdf
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalFacade", "DalFacade\DalFacade.csproj", "{EDEBED65-B6E6-401C-97BF-985D288CEDE6}"
@@ -29,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlTest", "BlTest\BlTest.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{403F9615-3450-47DE-8B33-399CB4BA9E27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{5B543C7C-03EB-4109-98AA-A61E80C195D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{5B543C7C-03EB-4109-98AA-A61E80C195D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
