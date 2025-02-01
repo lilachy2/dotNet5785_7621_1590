@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 /// <param name="Clock"> // Property to get and set the system Clock from Config </param>
 /// <param name="Reset()"> // Method to reset configuration values in Config </param>>
 
-internal class ConfigImplementation : IConfig
+internal class ConfigImplementation : IConfig // like Admin
 {
      public int NextCallId
         {

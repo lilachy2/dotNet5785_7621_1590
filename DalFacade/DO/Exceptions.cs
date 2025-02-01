@@ -1,5 +1,6 @@
 ﻿namespace DO
 {
+    //🔹 Serialization היא טכניקה שבה ניתן להמיר אובייקט למבנה נתונים (כגון JSON, XML, או זרם ביטים) כדי לשמור אותו או להעביר אותו ברשת.
     [Serializable]
     public class DalDoesNotExistException : Exception
     {

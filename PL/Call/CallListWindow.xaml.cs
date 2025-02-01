@@ -32,7 +32,7 @@ namespace PL.Call
                 {
                     _selectedFilterStatus = value;
                     OnPropertyChanged(nameof(SelectedFilter));  // Notify the UI of the property change
-                    callListObserver();  // Update the list when the filter changes
+                     callListObserver();  // Update the list when the filter changes
                 }
             }
         }
@@ -91,6 +91,7 @@ namespace PL.Call
         }
 
         // Register the DependencyProperty for CallInList
+        // לBINDIG - מאזין לשינויים מהזמאל 
         public static readonly DependencyProperty CallListProperty =
             DependencyProperty.Register("CallInList", typeof(IEnumerable<BO.CallInList>),
                 typeof(CallListWindow), new PropertyMetadata(null));
@@ -114,6 +115,9 @@ namespace PL.Call
 
 
         // Handle ComboBox selection change event to update the filter
+        // המתודה מאזינה לשינוי בבחירת פריט ברשימה.
+        // כאשר המשתמש בוחר פריט חדש, המתודה בודקת אם הוא מהסוג הנכון.
+        // אם כן, היא מעדכנת את מסנן הקריאות ומבצעת פעולה לעדכון רשימת הקריאות המוצגות לפי הבחירה.
         private void FilterCallListByCriteria(object _, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is BO.Calltype selectedItem)
@@ -135,6 +139,7 @@ namespace PL.Call
         }
 
         // Update the call list based on the selected filter and sort field
+        // כל פעם שיש שינוי ב DO ,איפה שקראתי לcallListObserver אני רוצה ששם ישתנה
         private void callListObserver()
         {
             try

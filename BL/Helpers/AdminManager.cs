@@ -203,12 +203,9 @@ internal static class AdminManager //stage 4
 
         //StudentManager.PeriodicStudentsUpdates(oldClock, newClock); //stage 4
         if (_periodicTask is null || _periodicTask.IsCompleted) //stage 7
-          //  _periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
+            //_periodicTask = Task.Run(() => AdminManager.CheckIfExpiredCall(oldClock, newClock));
 
            _periodicTask = Task.Run(() => CallManager.UpdateCallsToExpired(oldClock, newClock)); //stage 4
-
-            //_periodicTask = Task.Run(() => StudentManager.PeriodicStudentsUpdates(oldClock, newClock));
-        //etc ...
 
         //Calling all the observers of clock update
         ClockUpdatedObservers?.Invoke(); //prepared for stage 5
@@ -290,58 +287,6 @@ internal static class AdminManager //stage 4
             catch (ThreadInterruptedException) { }
         }
     }
-
-
-
-    internal static void CheckIfExpiredCall(DateTime oldClock, DateTime newClock) // המתודה לעדכון קריאות שפגו
-    {
-        List<DO.Call> calls; // שינוי ל-ToList()
-        lock (AdminManager.BlMutex) // עטיפה של קריאת ה-DAL ב-lock
-        {
-            calls = s_dal.Call.ReadAll().ToList(); // קריאה ל-DAL והפיכת התוצאה לרשימה קונקרטית
-        }
-
-        var boCalls = from dCall in calls
-                      where (dCall.MaxEndTime == null ? true : dCall.MaxEndTime < s_dal.Config.Clock)
-                      select CallManager.GetViewingCall(dCall.Id);
-
-        List<int> updatedCalls = new List<int>(); // רשימה לשמירת הקריאות המעדכנות את המשקיפים
-
-        foreach (BO.Call call in boCalls)
-        {
-            if (call.CallAssignments == null || call.CallAssignments.Count == 0) // אם אין הקצאה לקריאה
-            {
-                lock (AdminManager.BlMutex) // עטיפה ב-lock עבור כתיבה ל-DAL
-                {
-                    s_dal.Assignment.Create(new DO.Assignment(0, call.Id, 0, s_dal.Config.Clock, s_dal.Config.Clock, DO.AssignmentCompletionType.Expired));
-                }
-                updatedCalls.Add(call.Id); // שמירה של המזהה להודעה לצופה
-            }
-            else // אם יש הקצאה לקריאה
-            {
-                var lastAss = call.CallAssignments.OrderByDescending(a => a.EnterTime).First(); // מקבלים את ההקצאה האחרונה
-                if (lastAss.CompletionTime == null) // אם ההקצאה לא הושלמה
-                {
-                    DO.Assignment assing; // הגדרת סוג המשתנה
-                    lock (AdminManager.BlMutex) // עטיפה ב-lock עבור קריאת DAL
-                    {
-                        assing = s_dal.Assignment.Read(a => a.VolunteerId == lastAss.VolunteerId && a.EndOfTime == null && a.time_end_treatment == null);
-                        s_dal.Assignment.Update(new DO.Assignment(assing.Id, assing.VolunteerId, lastAss.VolunteerId ?? 0, lastAss.EnterTime, s_dal.Config.Clock, DO.AssignmentCompletionType.Expired));
-                    }
-                    updatedCalls.Add(assing.VolunteerId); // שמירה של המזהה להודעה לצופה
-                }
-            }
-        }
-
-        // ביצוע עדכוני הצופים מחוץ לבלוק ה-lock
-        foreach (var callId in updatedCalls)
-        {
-            CallManager.Observers.NotifyItemUpdated(callId); // עדכון הצופה לקריאה
-        }
-
-        CallManager.Observers.NotifyListUpdated(); // עדכון הצופים לכל הקריאות
-    }
-
 
     #endregion Stage 7 base
 }

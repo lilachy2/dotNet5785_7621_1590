@@ -1,6 +1,6 @@
 ﻿namespace DalApi;
 
-public interface IDal
+public interface IDal // Dallist is the only class that implements this interface
 {
 
     IConfig Config { get; }

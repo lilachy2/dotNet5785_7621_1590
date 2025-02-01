@@ -42,6 +42,7 @@ internal class CallImplementation : BlApi.ICall
                 .ToDictionary(group => (int)group.Key, group => group.Count());
 
             // Creating the result array with specific order and summing at the last position
+            // ContainsKey- האם המפתח קיים במילון   
             var quantities = new int[7];
             quantities[0] = groupedCalls.ContainsKey((int)CallStatus.Open) ? groupedCalls[(int)CallStatus.Open] : 0;
             quantities[1] = groupedCalls.ContainsKey((int)CallStatus.Closed) ? groupedCalls[(int)CallStatus.Closed] : 0;
@@ -114,61 +115,6 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.BlAlreadyExistsException($"Call with ID={boCall.Id} already exists", ex);
         }
     }
-
-    //public void Update(BO.Call BOCall)
-    //{
-    //    AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
-
-    //    try
-    //    {
-    //        CallManager.IsValideCall(BOCall);
-    //        CallManager.IsLogicCall(BOCall);
-    //        Tools.IsAddressValidAsync(BOCall.FullAddress);
-    //        //BOCall.Latitude = Tools.GetLatitude(BOCall.FullAddress).Result;
-    //        //BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
-    //        //
-    //        BOCall.Latitude = Tools.GetLatitudeAsync(BOCall.FullAddress).Result;
-    //        BOCall.Longitude = Tools.GetLongitudeAsync(BOCall.FullAddress).Result;
-    //        //var doCall= CallManager.BOConvertDO_Call(BOCall.Id);
-
-    //        var doCall = new DO.Call
-    //        {
-    //            Id = BOCall.Id,
-    //            Calltype = (DO.Calltype)BOCall.Calltype, // Explicit cast to BO.Calltype enum
-    //            VerbalDescription = BOCall.Description,
-    //            ReadAddress = BOCall.FullAddress,
-    //            Latitude = BOCall.Latitude, // Convert nullable to non-nullable
-    //            Longitude = BOCall.Longitude, // Convert nullable to non-nullable
-    //            OpeningTime = BOCall.OpenTime,
-    //            MaxEndTime = BOCall.MaxEndTime
-    //        };
-
-    //        lock (AdminManager.BlMutex) //stage 7
-    //            _dal.Call.Update(doCall);
-
-    //        CallManager.Observers.NotifyListUpdated(); //stage 5   
-    //        CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
-    //    }
-    //    catch (BlIsLogicCallException ex)
-    //    {
-    //        throw new BO.BlIsLogicCallException($"Error: {ex.Message}", ex);
-    //    }
-    //    catch(BlInvalidaddress ex)
-    //    {
-    //        throw new BO.BlInvalidaddress($"Error: {ex.Message}", ex);
-    //    }
-    //    catch (DO.Incompatible_ID ex) // Exception thrown by the data layer
-    //    {
-    //        throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
-
-    //    }
-
-    //}
-
     public void Update(BO.Call BOCall)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7

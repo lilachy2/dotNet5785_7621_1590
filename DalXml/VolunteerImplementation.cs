@@ -8,15 +8,15 @@ using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 
 //XElement
-
-
+// שאותה עליכם לממש באמצעות Linq to xml (המחלקה XElement)
 
 internal class VolunteerImplementation : IVolunteer
 {
     [MethodImpl(MethodImplOptions.Synchronized)]
     static Volunteer GetVolunteer(XElement v)
     {
-        Volunteer s= new DO.Volunteer()
+        // מקבל XML ומחזיר אובייקט   VOLUNTEER
+        Volunteer s = new DO.Volunteer()
         {
             Id = int.TryParse((string?)v.Element("Id"), out var ID) ? ID : throw new FormatException("can't convert id"),
             Name = (string?)v.Element("Name") ?? "",

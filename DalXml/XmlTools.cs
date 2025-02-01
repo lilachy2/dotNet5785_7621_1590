@@ -15,8 +15,13 @@ static class XMLTools
     }
 
     #region SaveLoadWithXMLSerializer
+    // האזור מכיל הגדרות של מתודות עזר לצורך מהלך עבודה תקין עם קבצי XML ע"פ שיטה 1 (המחלקה XmlSerializer).
+    // באזור זה מוגדרות 2 מתודות סטטיות גנריות:
+
     public static void SaveListToXMLSerializer<T>(List<T> list, string xmlFileName) where T : class
     {
+        // את הרשימה של היישות להעביר לXAML
+
         string xmlFilePath = s_xmlDir + xmlFileName;
 
         try
@@ -31,6 +36,7 @@ static class XMLTools
     }
     public static List<T> LoadListFromXMLSerializer<T>(string xmlFileName) where T : class
     {
+        // XMAL לקחת את הרשימה של היישות
         string xmlFilePath = s_xmlDir + xmlFileName;
 
         try
@@ -48,8 +54,10 @@ static class XMLTools
     #endregion
 
     #region SaveLoadWithXElement
+    // לעבודה עם XELEMAT 
     public static void SaveListToXMLElement(XElement rootElem, string xmlFileName)
     {
+        // מקבלת את השורש של האלמנט ושם הקובץ ושומרת את האלמנט לדוגמא VOLUNTEER     
         string xmlFilePath = s_xmlDir + xmlFileName;
 
         try
@@ -63,7 +71,11 @@ static class XMLTools
     }
     public static XElement LoadListFromXMLElement(string xmlFileName)
     {
-        string xmlFilePath = s_xmlDir + xmlFileName;
+        // למשל: עבור ישות Student תקבל את שמו המלא של הקובץ שיצרנו  בשם students.xml
+      //  מחזירה שורש מסוג XElement שמכיל בתוכו אוסף אלמנטים של ישויות מסוג
+      //  IEnumerable<XElement> x עבור אותה ישות
+        
+                string xmlFilePath = s_xmlDir + xmlFileName;
 
         try
         {
@@ -81,6 +93,7 @@ static class XMLTools
     #endregion
 
     #region XmlConfig
+    //האזור מכיל הגדרות של מתודות עזר לצורך גישה למשתנים בקובץ התצורה.
     public static int GetAndIncreaseConfigIntVal(string xmlFileName, string elemName)
     {
         XElement root = XMLTools.LoadListFromXMLElement(xmlFileName);
@@ -132,6 +145,7 @@ static class XMLTools
 
 
     #region ExtensionFuctions
+    //האזור מכיל הגדרות של מתודות הרחבה למחלקת XElement לצורך המרה של ערכים טקסטואלים מקובץ XML.
     public static T? ToEnumNullable<T>(this XElement element, string name) where T : struct, Enum =>
         Enum.TryParse<T>((string?)element.Element(name), out var result) ? (T?)result : null;
     public static DateTime? ToDateTimeNullable(this XElement element, string name) =>

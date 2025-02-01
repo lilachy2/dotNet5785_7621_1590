@@ -26,8 +26,9 @@
                 <Label Content="ENTER ID" 
                        VerticalAlignment="Top" 
                        Margin="-104,4,114,0" />
-
+                <!--משמעותו שה-Binding הוא דו-כיווני Mode=TwoWay-->
                 <TextBox 
+                    
                          Text="{Binding Path=Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          Padding="10" 
                          FontSize="16" Grid.ColumnSpan="2" />

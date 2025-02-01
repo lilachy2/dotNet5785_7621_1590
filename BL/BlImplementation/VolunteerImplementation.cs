@@ -79,7 +79,6 @@ internal class VolunteerImplementation : BlApi.IVolunteer
                 throw new BO.Incompatible_ID("Requester is not authorized to update this volunteer.");
             }
 
-            // בדיקות נוספות (לוגיקה ופורמט)
             VolunteerManager.CheckFormat(boVolunteer);
 
             BO.Volunteer boVolunteerForLogic = VolunteerManager.GetVolunteer(DOVolunteer.Id);

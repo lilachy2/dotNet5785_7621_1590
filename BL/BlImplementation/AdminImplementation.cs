@@ -11,6 +11,7 @@ internal class AdminImplementation : IAdmin
 {
     private readonly DalApi.IDal _dal = DalApi.Factory.Get;
     #region Stage 5
+    // הרשמה או ביטול הרשמה לאירוע של שעון
     public void AddClockObserver(Action clockObserver) =>
     AdminManager.ClockUpdatedObservers += clockObserver;
     public void RemoveClockObserver(Action clockObserver) =>

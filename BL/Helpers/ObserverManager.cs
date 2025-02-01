@@ -70,6 +70,7 @@ class ObserverManager //stage 5
     /// Notify all the observers that there is a change for one or more entities in the list
     /// that may affect the whole list presentation
     /// </summary>
+    /// כל מי שנרשם לאירוע מופעל כאשר קוראים ל NotifyListUpdated
     internal void NotifyListUpdated() => _listObservers?.Invoke();
 
     /// <summary>

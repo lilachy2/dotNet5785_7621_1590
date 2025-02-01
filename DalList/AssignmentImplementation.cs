@@ -23,6 +23,7 @@ internal class AssignmentImplementation : IAssignment
     public void Create(Assignment item)
     {
         int newId1 = Config.NextAssignmentId;
+        // with - במקום לשנות את item ישירות, נוצר עותק חדש של item DPS 
         Assignment newItem = item with { Id = newId1 };
         DataSource.Assignments.Add(newItem);
         ///return newItem.Id;

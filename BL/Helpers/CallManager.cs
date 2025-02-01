@@ -184,8 +184,10 @@ internal static class CallManager
         }
 
         // לא לחכות בתוך הלוק, אלא לעדכן את הקואורדינטות בצורה אסינכרונית
+        // בגלל שהוא קורא לעדכון בתוך READ אז זה בתצוגה אחרי עדכון הולך ובא בגלל האובזרברים 
         //_ = UpdateCoordinatesForCallAsync(doVolunteer);
 //        _ = VolunteerManager.UpdateCoordinatesForVolunteerAsync( doVolunteer.FullCurrentAddress, null, doVolunteer);
+
 
         // ביצוע בדיקות אחרות בצורה סינכרונית
         BO.CallStatus callStatus = CalculateCallStatus(doCall);
@@ -213,38 +215,38 @@ internal static class CallManager
     }
 
     // פונקציה אסינכרונית לעדכון הקואורדינטות של המתנדב
-    public static async Task UpdateCoordinatesForCallAsync1(DO.Volunteer doVolunteer)
-    {
-        if (doVolunteer.FullCurrentAddress is not null)
-        {
-            // בדוק אם הכתובת תקינה בעולם לפני שמבצע את החישוב
-            if (!await Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress).ConfigureAwait(false))
-            //if (!await Task.Run(() => Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress)).ConfigureAwait(false))
-            {
-                throw new BlInvalidaddress("The address is not valid in the real world.");
-            }
+    //public static async Task UpdateCoordinatesForCallAsync1(DO.Volunteer doVolunteer)
+    //{
+    //    if (doVolunteer.FullCurrentAddress is not null)
+    //    {
+    //        // בדוק אם הכתובת תקינה בעולם לפני שמבצע את החישוב
+    //        if (!await Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress).ConfigureAwait(false))
+    //        //if (!await Task.Run(() => Tools.IsAddressValidAsync(doVolunteer.FullCurrentAddress)).ConfigureAwait(false))
+    //        {
+    //            throw new BlInvalidaddress("The address is not valid in the real world.");
+    //        }
 
-            // אם הכתובת תקינה, אז חישוב הקואורדינטות
-            var coordinates = await Tools.GetCoordinatesAsync(doVolunteer.FullCurrentAddress);
-            if (coordinates.HasValue)
-            {
-                doVolunteer = doVolunteer with { Latitude = coordinates.Value.Latitude, Longitude = coordinates.Value.Longitude };
+    //        // אם הכתובת תקינה, אז חישוב הקואורדינטות
+    //        var coordinates = await Tools.GetCoordinatesAsync(doVolunteer.FullCurrentAddress);
+    //        if (coordinates.HasValue)
+    //        {
+    //            doVolunteer = doVolunteer with { Latitude = coordinates.Value.Latitude, Longitude = coordinates.Value.Longitude };
 
-                lock (AdminManager.BlMutex)
-                {
-                    _dal.Volunteer.Update(doVolunteer);
-                }
+    //            lock (AdminManager.BlMutex)
+    //            {
+    //                _dal.Volunteer.Update(doVolunteer);
+    //            }
 
-                // התראות עדכון
-                Observers.NotifyListUpdated();
-                Observers.NotifyItemUpdated(doVolunteer.Id);
-            }
-            else
-            {
-                throw new BlInvalidaddress("Failed to calculate coordinates for the address.");
-            }
-        }
-    }
+    //            // התראות עדכון
+    //            Observers.NotifyListUpdated();
+    //            Observers.NotifyItemUpdated(doVolunteer.Id);
+    //        }
+    //        else
+    //        {
+    //            throw new BlInvalidaddress("Failed to calculate coordinates for the address.");
+    //        }
+    //    }
+    //}
 
     public static async Task UpdateCoordinatesForCallAsync(DO.Volunteer doVolunteer)
     {
@@ -485,7 +487,6 @@ internal static class CallManager
         if (Tools.IsAddressValidAsync(doCall.ReadAddress).Result==false)
             throw new BlInvalidaddress($"The address = {doCall.ReadAddress}provided is invalid.");
         MaxEndTimeCheck(doCall.MaxEndTime, doCall.OpeningTime);// If not good throw an exception from within the method
-
 
             // Create the object
             return new BO.Call
@@ -890,7 +891,7 @@ internal static class CallManager
                     ismanager = true;
                 else throw new BO.BlDeletionImpossibleException("the volunteer is not manager or not in this call");
         }
-        if (assigmnetToCancel.time_end_treatment != null)//// לבדוק
+        if (assigmnetToCancel.time_end_treatment != null)
             throw new BO.BlDeletionImpossibleException("The assigmnet not open or exspaired");
 
         DO.Assignment assigmnetToUP = new DO.Assignment
@@ -1015,7 +1016,6 @@ internal static class CallManager
 
         {
             calls = _dal.Call.ReadAll() ?? throw new BO.BlNullPropertyException("There are no calls in the database");
-            //IEnumerable<BO.CallInList> boCallsInList = calls.Select(call => CallManager.GetCallInList(call));
             boCallsInList = _dal.Call.ReadAll().Select(call => CallManager.GetCallInList(call)).ToList();
         }
 

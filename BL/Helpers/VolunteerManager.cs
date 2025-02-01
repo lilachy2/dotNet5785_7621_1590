@@ -506,13 +506,6 @@ internal static class VolunteerManager
     //    });
     //}
 
-
- 
-
-
-
-
-
     private static bool AreCoordinatesCalculated(BO.Call dalCall)
     {
         // בדיקה אם קווי אורך ורוחב אינם null ואינם שווים לאפס

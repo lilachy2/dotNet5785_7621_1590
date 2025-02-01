@@ -210,36 +210,6 @@ internal static class Tools
 
     }
 
-
-
-    public static async Task<bool> IsAddressValidAsync1(string address)
-    {
-        if (string.IsNullOrWhiteSpace(address))
-            throw new ArgumentException("Address cannot be null or empty.");
-
-        string query = $"{BaseUrl}?q={Uri.EscapeDataString(address)}&api_key={ApiKey}";
-
-        try
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                // שליחת בקשה אסינכרונית
-                HttpResponseMessage response = await client.GetAsync(query);
-
-                // בדיקה אם הסטטוס הצליח
-                bool isValid = response.IsSuccessStatusCode;
-
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
-                return isValid;
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-            return false; // במקרה של שגיאה, מחזירים false
-        }
-    }
-
     public static readonly HttpClient client = new HttpClient()
     {
         Timeout = TimeSpan.FromSeconds(3) // הגדרת זמן timeout (10 שניות)

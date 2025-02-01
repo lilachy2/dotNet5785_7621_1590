@@ -84,11 +84,22 @@ internal class VolunteerImplementation : IVolunteer
 
 
     [MethodImpl(MethodImplOptions.Synchronized)]
+    // IEnumerable
     public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null) //stage 2
     => filter == null
         ? DataSource.Volunteers.Select(item => item)
         : DataSource.Volunteers.Where(filter);
 
+    // linq
+
+   // public IEnumerable<Volunteer> ReadAll(Func<Volunteer, bool>? filter = null) //stage 2
+   //=> filter == null
+   //    ? from item in DataSource.Volunteers
+   //      select item :
+   //    from item in DataSource.Volunteers
+   //    where filter(item)
+   //    select item; 
+    
 
     /// <param name="old">// Searches for the old Assignment
     [MethodImpl(MethodImplOptions.Synchronized)]
