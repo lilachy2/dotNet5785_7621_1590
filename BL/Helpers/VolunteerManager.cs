@@ -13,7 +13,6 @@ namespace Helpers;
 internal static class VolunteerManager
 {
     private static DalApi.IDal _dal = DalApi.Factory.Get; //stage 4
-    static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
     internal static ObserverManager Observers = new(); //stage 5 
     internal static void CheckFormat(BO.Volunteer boVolunteer)
