@@ -119,6 +119,7 @@ internal class CallImplementation : BlApi.ICall
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
+        var assimat= _dal.Assignment.ReadAll().Where(a => a.CallId == BOCall.Id).FirstOrDefault();
         try
         {
             CallManager.IsValideCall(BOCall);
@@ -146,6 +147,12 @@ internal class CallImplementation : BlApi.ICall
                 _dal.Call.Update(doCall); // עדכון ראשוני ללא קואורדינאטות
             CallManager.Observers.NotifyListUpdated(); //stage 5   
             CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
+
+               //  VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+            //VolunteerManager.Observers.NotifyItemUpdated(assimat.VolunteerId);  //stage 5
+
+            
+
             _ = UpdateCoordinatesForCallAsync(null, doCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
 
 

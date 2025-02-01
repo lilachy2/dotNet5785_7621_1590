@@ -185,6 +185,7 @@ namespace PL.Call
                     // במקרה של עדכון מתנדב קיים
                     s_bl.Call.Update(call);
 
+
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         MessageBox.Show("call Update successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);

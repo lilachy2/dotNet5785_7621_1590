@@ -235,27 +235,41 @@ namespace PL.main_volunteer
 
         }
 
-        
+
         // הוספת Observer למתנדב
+        //private void VolunteerObserver()
+        //{
+        //    // עדכון פרטי המתנדב
+        //    if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
+        //        _observerOperation = Dispatcher.BeginInvoke(() =>
+        //        {
+        //            //נגענו בזה
+        //            UpdateCallStatus();
+        //        });
+        //}
+
         private void VolunteerObserver()
         {
             // עדכון פרטי המתנדב
             if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
                 _observerOperation = Dispatcher.BeginInvoke(() =>
                 {
-                    //נגענו בזה
+                    // עדכון סטטוס הקריאה בכל פעם שהסטטוס משתנה
                     UpdateCallStatus();
+
+                    // עדכון המצב של הכפתורים בהתבסס על קריאה פעילה או לא
+                    if (Volunteer.CurrentCall == null)
+                    {
+                        CurrentCallVisibility = Visibility.Visible;  // אם אין קריאה פעילה, המתנדב יכול לבחור קריאה חדשה
+                        CurrentCallVisibilityEnd = Visibility.Hidden; // כפתור סיום קריאה מוסתר
+                    }
+                    else
+                    {
+                        CurrentCallVisibility = Visibility.Hidden;   // כפתור סיום קריאה מוסתר
+                        CurrentCallVisibilityEnd = Visibility.Visible; // כפתור לסיים קריאה מוצג
+                    }
                 });
         }
-
-        // הוספת Observer לקריאה
-        //private void CallObserver()
-        //{
-        //    if (_observerOperation is null || _observerOperation.Status == DispatcherOperationStatus.Completed)
-        //        _observerOperation = Dispatcher.BeginInvoke(() =>
-        //        // עדכון סטטוס הקריאה
-        //            { UpdateCallStatus(); });
-        //}
 
         // פונקציות לעדכון פרטי המתנדב והקריאה
         private void UpdateVolunteerDetails()
@@ -263,14 +277,32 @@ namespace PL.main_volunteer
             // אם נדרש, אתה יכול כאן לקרוא שוב את המתנדב מה-BL ולבצע שינויים.
             Volunteer = s_bl.Volunteer.Read(Volunteer.Id);
         }
+        //private void UpdateCallStatus()
+        //{
+        //    // עדכון סטטוס הקריאה
+        //   //if (Volunteer.CurrentCall != null)
+        //    {
+        //        // בצע עדכון לפי הקריאה
+        //        Volunteer= s_bl.Volunteer.Read(Volunteer.Id);
+
+        //    }
+        //}
+
         private void UpdateCallStatus()
         {
             // עדכון סטטוס הקריאה
-           //if (Volunteer.CurrentCall != null)
-            {
-                // בצע עדכון לפי הקריאה
-                Volunteer= s_bl.Volunteer.Read(Volunteer.Id);
+            Volunteer = s_bl.Volunteer.Read(Volunteer.Id);
 
+            // עדכון ה-Visibility של הכפתורים על פי סטטוס הקריאה
+            if (Volunteer.CurrentCall == null)
+            {
+                CurrentCallVisibility = Visibility.Visible;  // אם אין קריאה פעילה, המתנדב יכול לבחור קריאה חדשה
+                CurrentCallVisibilityEnd = Visibility.Hidden; // כפתור סיום קריאה מוסתר
+            }
+            else
+            {
+                CurrentCallVisibility = Visibility.Hidden;   // כפתור סיום קריאה מוסתר
+                CurrentCallVisibilityEnd = Visibility.Visible; // כפתור לסיים קריאה מוצג
             }
         }
 

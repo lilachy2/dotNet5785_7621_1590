@@ -130,13 +130,13 @@
                     Background="#8E44AD"
                     Foreground="White"
                     BorderThickness="0"/>
-            <Button Content="Simulator" 
+            <!--<Button Content="Simulator" 
                     Click="StartSimulator_Click"
                     Margin="5"
                     Padding="15,10"
                     Background="#16A085"
                     Foreground="White"
-                    BorderThickness="0"/>
+                    BorderThickness="0"/>-->
         </StackPanel>
 
         <!-- Simulator Controls -->
@@ -158,6 +158,7 @@
                      TextChanged="TextBox_TextChanged"/>
             <Button Content="{Binding IsSimulatorRunning, Converter={StaticResource ConverterSimulatorStateKey}}"
                     Click="StartSimulator_Click"
+                      Background="#16A085"
                     Margin="5,0"
                     Padding="15,10"
                     VerticalAlignment="Center"/>

@@ -10,14 +10,14 @@
     <Grid>
         <!-- Name -->
         <StackPanel Orientation="Horizontal" Margin="10,10,0,0" VerticalAlignment="Top">
-            <TextBlock Width="120" Text="Name:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Width="100" Text="Name:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244"/>
         </StackPanel>
 
         <!-- Id -->
         <StackPanel Orientation="Horizontal" Margin="10,40,0,0" VerticalAlignment="Top">
-            <TextBlock Width="120" Text="ID:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Width="100" Text="ID:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="244" 
                      IsReadOnly="True"/>
@@ -25,14 +25,14 @@
 
         <!-- Phone -->
         <StackPanel Orientation="Horizontal" Margin="10,70,0,0" VerticalAlignment="Top">
-            <TextBlock Width="80" Text="Phone:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Width="100" Text="Phone:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Number_phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="241"/>
         </StackPanel>
 
         <!-- Email -->
         <StackPanel Orientation="Horizontal" Margin="10,100,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Email:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock  Width="100" Text="Email:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="247"/>
         </StackPanel>
@@ -65,7 +65,7 @@
 
         <!-- Distance -->
         <StackPanel Orientation="Horizontal" Margin="10,220,0,0" VerticalAlignment="Top">
-            <TextBlock Text="Distance:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Width="100" Text="Distance:" FontSize="14" VerticalAlignment="Center"/>
             <TextBox Text="{Binding Volunteer.Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" Width="226"/>
         </StackPanel>

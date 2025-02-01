@@ -33,7 +33,7 @@ namespace PL.login
                     return;
                 }
 
-                if (Id == 0 || string.IsNullOrEmpty(Password))
+                if (Id == null || string.IsNullOrEmpty(Password))
                 {
                     MessageBox.Show("Error: Please enter full details.");
                     return;
@@ -50,7 +50,7 @@ namespace PL.login
                 {
                  
                     VolunteerMainWindow volunteerWindow = new VolunteerMainWindow(Id);
-                    volunteerWindow.ShowDialog();
+                    volunteerWindow.Show();
                 }
                 else if (volunteer.Role == BO.Role.Manager)
                 {
