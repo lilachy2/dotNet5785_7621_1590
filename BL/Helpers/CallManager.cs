@@ -510,7 +510,7 @@ internal static class CallManager
         {
             assignmentsToUpdate = _dal.Assignment.ReadAll()
                 .Where(a => a.EndOfTime == null && a.time_entry_treatment <= newClock && a.CallId != 0)
-                .ToList();
+                .ToList();// ביצוע מידי , אם לא זFORECH למטה הוא יעשה השהיה ארוכה 
         }
 
         // יצירת רשימת הקצאות מעודכנות
@@ -532,9 +532,11 @@ internal static class CallManager
         }
 
         // יצירת רשימת מזהי השיחות שדורשות עדכון
+        // Distinct מסירה כפילויות 
         callIdsToUpdate = updatedAssignments.Select(a => a.CallId).Distinct().ToList();
 
         // נעילה לקריאת כל השיחות שדורשות עדכון
+        // Contains בודק אם מכילה CALLID 
         lock (AdminManager.BlMutex)
         {
             callsToUpdate = _dal.Call.ReadAll()
