@@ -7,6 +7,7 @@ using DO;
 using Helpers;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 internal class CallImplementation : BlApi.ICall
 {
@@ -105,8 +106,6 @@ internal class CallImplementation : BlApi.ICall
             lock (AdminManager.BlMutex) // stage 7
                 _dal.Call.Create(doCall);
 
-
-
             // 5. Notify observers about the update
             CallManager.Observers.NotifyListUpdated(); // stage 5
         }
@@ -119,7 +118,6 @@ internal class CallImplementation : BlApi.ICall
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
 
-        var assimat= _dal.Assignment.ReadAll().Where(a => a.CallId == BOCall.Id).FirstOrDefault();
         try
         {
             CallManager.IsValideCall(BOCall);
@@ -148,13 +146,29 @@ internal class CallImplementation : BlApi.ICall
             CallManager.Observers.NotifyListUpdated(); //stage 5   
             CallManager.Observers.NotifyItemUpdated(doCall.Id);  //stage 5
 
-               //  VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
-            //VolunteerManager.Observers.NotifyItemUpdated(assimat.VolunteerId);  //stage 5
 
-            
+
+            DO.Assignment? lastAssignment = null;
+
+            lock (AdminManager.BlMutex) //stage 7
+                                        //  VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+                lastAssignment = _dal.Assignment
+                 .ReadAll()
+                 .Where(a => a.CallId == BOCall.Id)
+                 .OrderByDescending(a => a.Id) // מיון כך שהאחרון שנוסף יהיה ראשון
+                 .FirstOrDefault(); // מחזיר את ההקצאה האחרונה
+
+            //= _dal.Assignment.ReadAll().Where(a => a.CallId == BOCall.Id).FirstOrDefault();
+            if (lastAssignment != null)
+            {
+                VolunteerManager.Observers.NotifyItemUpdated(lastAssignment.VolunteerId);  //stage 5
+            }
+
 
             _ = UpdateCoordinatesForCallAsync(null, doCall); // שליחה של הבקשה בצורה אסינכרונית לחישוב הקואורדינאטות
 
+            //  VolunteerManager.Observers.NotifyListUpdated(); //stage 5   
+            //VolunteerManager.Observers.NotifyItemUpdated(assimat.VolunteerId);  //stage 5
 
         }
         catch (BlIsLogicCallException ex)
@@ -169,6 +183,8 @@ internal class CallImplementation : BlApi.ICall
             throw new BO.Incompatible_ID($" There is no call with the number identifying ={BOCall.Id}");
         }
     }
+
+
     public void Delete(int callId)
     {
         AdminManager.ThrowOnSimulatorIsRunning();  //stage 7
@@ -215,8 +231,18 @@ internal class CallImplementation : BlApi.ICall
             // Step 1: Get all assignments for the specific volunteer that have been completed (EndOfTime is not null)
             lock (AdminManager.BlMutex) //stage 7
                 volunteerAssignments = _dal.Assignment.ReadAll()
-               .Where(a => a.VolunteerId == volunteerId && a.EndOfTime != null)
-               .ToList();
+            .Where(a => a.VolunteerId == volunteerId && a.EndOfTime != null)
+            .ToList();
+
+            //var filteredAssignments = from item in volunteerAssignments
+            //                          where item.VolunteerId == volunteerId && item.EndOfTime != null
+            //                          select item;
+
+            //// אם אתה רוצה להמיר את התוצאה לרשימה, השתמש ב-ToList()
+            //var result = filteredAssignments.ToList();
+
+            // כדי שישתנה אוטמטית ולא נצטרך לעשות FORECHE + תמיכה ב LIST 
+
 
             // Step 2: Create list of ClosedCallInList objects using Select and LINQ
             var boClosedCalls = volunteerAssignments
@@ -326,7 +352,7 @@ internal class CallImplementation : BlApi.ICall
             {
                 FullAddress = doCall.ReadAddress;
             }
-
+            
             double lat = await Tools.GetLatitudeAsync(FullAddress);
             double loc = await Tools.GetLongitudeAsync(FullAddress);
 

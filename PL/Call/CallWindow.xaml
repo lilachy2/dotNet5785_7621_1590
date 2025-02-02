@@ -69,9 +69,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- שדות הטופס -->
-            <Label Content="ID:" Grid.Row="0" Grid.Column="0"/>
-            <TextBox Text="{Binding Call.Id}" Grid.Row="0" Grid.Column="1" IsReadOnly="{Binding Call.Id}" />
-
+          
             <Label Content="Description:" Grid.Row="1" Grid.Column="0"/>
             <TextBox Text="{Binding Call.Description, UpdateSourceTrigger=PropertyChanged}" 
                      Grid.Row="1" Grid.Column="1" />
