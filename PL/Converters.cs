@@ -365,5 +365,27 @@ namespace PL
     }
 
 
+    /// Checking whether it is possible to delete a call (CanDelete)
+    /// If so → returns Visibility.Visible(the element will be visible).
+    /// If not → returns Visibility.Collapsed(the element is hidden).
+    /// </summary>
+    public class ConvertIsCanDeletCall : IValueConverter
+    {
+        static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (s_bl.Call.CanDelete((int)value))
+            {
+                return Visibility.Visible;
+            }
+            return Visibility.Collapsed;
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+   
 }

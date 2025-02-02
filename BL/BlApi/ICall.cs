@@ -28,4 +28,6 @@ public interface ICall : IObservable //stage 5
     void UpdateEndTreatment(int id, int callid);
     void UpdateCancelTreatment(int id, int callid);
     void ChooseCall(int id, int callid);
+      bool CanDelete(int id);
+
 }

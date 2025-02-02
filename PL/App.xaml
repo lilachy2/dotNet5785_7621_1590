@@ -25,6 +25,7 @@
         <local:ConvertUpdateToTrueKey x:Key="ConvertUpdateToTrueKey"/>
         <local:ConvertUpdateToVisibleKey x:Key="ConvertUpdateToVisibleKey"/>
         <local:InverseBooleanConverter x:Key="InverseBooleanConverterKey"/>
+        <local:ConvertIsCanDeletCall x:Key="ConvertIsCanDeletCallKey"/>
 
 
         <!-- Define the Back Button Style for bake click-->

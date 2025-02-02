@@ -382,6 +382,10 @@ internal class CallImplementation : BlApi.ICall
         return await CallManager.UpdateCoordinatesForCallLAN(adress);
 
     }
+    public  bool CanDelete(int id)
+    {
+        return CallManager.CanDelete(id);   
+    }
 
 
 

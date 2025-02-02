@@ -36,8 +36,15 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Delete" Background="#FF6347" Foreground="White"
-                                        Click="DeleteCallButton_Click" CommandParameter="{Binding}" />
+        Click="DeleteCallButton_Click" 
+        CommandParameter="{Binding}">
+                                    <Button.Visibility>
+                                        <Binding Path="CallId" Converter="{StaticResource ConvertIsCanDeletCallKey}" />
+                                    </Button.Visibility>
+                                </Button>
+
                             </DataTemplate>
+
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="">
@@ -52,36 +59,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <!-- ComboBox for Filtering Calls by different criteria -->
-        <!--<ComboBox
-            Width="120"
-            Margin="700,6,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding Source={StaticResource CallFilterCollectionKey}}" 
-            SelectedItem="{Binding SelectedFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            SelectionChanged="FilterCallListByCriteria"
-            Height="21">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Background="{Binding Converter={StaticResource CallInListEnumToBackgroundConverterKey}}">
-                        <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
-                    </Grid>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>-->
-
-        <!-- Place the "ADD Call" button outside the ListView -->
-        <!--<Button Content="ADD Call" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Width="98" Height="31" 
-                Click="AddCallButton_Click" 
-                Margin="467,575,0,0" 
-                Background="#B0E0E6" 
-                Foreground="White" 
-                FontWeight="Bold"/>-->
 
         <Button Content="ADD Call"
         HorizontalAlignment="Left"

@@ -3,6 +3,7 @@ using PL.main_volunteer;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PL.login
 {
@@ -133,5 +134,13 @@ namespace PL.login
             LoginSystem.isManagerLoggedIn = false;
         }
 
+        // enter 
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoginButton_Click(sender, e);             }
+        }
     }
 }
