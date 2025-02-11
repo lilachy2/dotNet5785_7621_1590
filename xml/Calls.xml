@@ -21,16 +21,6 @@
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
-    <Latitude>30.137602195013628</Latitude>
-    <Longitude>34.300097665416445</Longitude>
-    <Calltype>birth</Calltype>
-    <Id>1002</Id>
-    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
-    <ReadAddress>דב הוז 12, בת ים</ReadAddress>
-    <OpeningTime>2025-02-01T04:10:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.262690371461208</Latitude>
     <Longitude>34.986035432795966</Longitude>
     <Calltype>resuscitation</Calltype>
@@ -71,16 +61,6 @@
     <MaxEndTime>2025-02-01T04:12:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.06510984751861</Latitude>
-    <Longitude>34.67277740170818</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1007</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>שדרות רוקח 9, באר שבע</ReadAddress>
-    <OpeningTime>2025-02-01T12:43:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>31.595574207579695</Latitude>
     <Longitude>35.89741047652766</Longitude>
     <Calltype>fainting</Calltype>
@@ -88,16 +68,6 @@
     <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
     <ReadAddress>הכחול 25, עכו</ReadAddress>
     <OpeningTime>2025-02-01T19:46:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
-    <Latitude>31.567671841385618</Latitude>
-    <Longitude>35.057143399697765</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1009</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>ז'בוטינסקי 15, בני ברק</ReadAddress>
-    <OpeningTime>2025-02-01T03:41:29</OpeningTime>
     <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
@@ -119,16 +89,6 @@
     <ReadAddress>סיני 43, מגדל העמק</ReadAddress>
     <OpeningTime>2025-02-02T04:20:29</OpeningTime>
     <MaxEndTime>2025-02-02T04:35:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>30.68554903103015</Latitude>
-    <Longitude>35.34227188071626</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1013</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>ז'בוטינסקי 15, בני ברק</ReadAddress>
-    <OpeningTime>2025-01-31T17:43:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
     <Latitude>31.37531110011829</Latitude>
@@ -171,16 +131,6 @@
     <MaxEndTime>2025-01-31T19:17:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>33.07939457030498</Latitude>
-    <Longitude>35.551230003718395</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1018</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>הרב הרצוג 30, קריית ביאליק</ReadAddress>
-    <OpeningTime>2025-02-01T04:10:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.345267926994868</Latitude>
     <Longitude>34.52545981568467</Longitude>
     <Calltype>allergy</Calltype>
@@ -189,16 +139,6 @@
     <ReadAddress>אבן גבירול 14, פתח תקווה</ReadAddress>
     <OpeningTime>2025-01-31T17:18:29</OpeningTime>
     <MaxEndTime>2025-01-31T17:33:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>31.258429226713673</Latitude>
-    <Longitude>35.232582888502456</Longitude>
-    <Calltype>fainting</Calltype>
-    <Id>1020</Id>
-    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
-    <ReadAddress>דב הוז 12, בת ים</ReadAddress>
-    <OpeningTime>2025-02-01T05:25:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
     <Latitude>30.69487568791557</Latitude>
@@ -219,16 +159,6 @@
     <ReadAddress>קיבוץ גלויות 19, חדרה</ReadAddress>
     <OpeningTime>2025-02-02T13:24:29</OpeningTime>
     <MaxEndTime>2025-02-02T14:24:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.24298929481558</Latitude>
-    <Longitude>35.54137208284397</Longitude>
-    <Calltype>allergy</Calltype>
-    <Id>1023</Id>
-    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
-    <ReadAddress>דב הוז 12, בת ים</ReadAddress>
-    <OpeningTime>2025-01-31T16:45:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
     <Latitude>33.04469746879386</Latitude>
@@ -259,16 +189,6 @@
     <ReadAddress>ברזילאי 16, אשקלון</ReadAddress>
     <OpeningTime>2025-02-02T13:06:29</OpeningTime>
     <MaxEndTime>2025-02-01T01:50:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>32.402722636381895</Latitude>
-    <Longitude>34.428385407242246</Longitude>
-    <Calltype>broken_bone</Calltype>
-    <Id>1027</Id>
-    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
-    <ReadAddress>סיני 43, מגדל העמק</ReadAddress>
-    <OpeningTime>2025-02-01T10:01:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
     <Latitude>30.727825650271072</Latitude>
@@ -311,16 +231,6 @@
     <MaxEndTime>2025-02-01T02:49:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>31.93594732104278</Latitude>
-    <Longitude>34.68767039802438</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1032</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>מרכז העיר 18, כפר סבא</ReadAddress>
-    <OpeningTime>2025-02-01T12:06:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.13792311029918</Latitude>
     <Longitude>35.74680550976945</Longitude>
     <Calltype>broken_bone</Calltype>
@@ -329,16 +239,6 @@
     <ReadAddress>זבולון 42, ירושלים</ReadAddress>
     <OpeningTime>2025-02-01T09:41:29</OpeningTime>
     <MaxEndTime>2025-02-01T10:08:29</MaxEndTime>
-  </Call>
-  <Call>
-    <Latitude>29.717441280174754</Latitude>
-    <Longitude>35.72234044970605</Longitude>
-    <Calltype>heartattack</Calltype>
-    <Id>1034</Id>
-    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
-    <ReadAddress>אלוני 40, דימונה</ReadAddress>
-    <OpeningTime>2025-02-01T11:59:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
     <Latitude>32.54058480808188</Latitude>
@@ -441,16 +341,6 @@
     <MaxEndTime>2025-02-01T01:12:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>31.277587722904457</Latitude>
-    <Longitude>35.09700780785397</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1045</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>מרכז 38, כפר יונה</ReadAddress>
-    <OpeningTime>2025-02-01T22:03:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.444798168561807</Latitude>
     <Longitude>35.67543541242894</Longitude>
     <Calltype>fainting</Calltype>
@@ -479,6 +369,116 @@
     <ReadAddress>שדרות רוטשילד 1, תל אביב</ReadAddress>
     <OpeningTime>2025-02-02T13:25:29</OpeningTime>
     <MaxEndTime>2025-01-31T23:37:29</MaxEndTime>
+  </Call>
+  <Call>
+    <Latitude>30.137602195013628</Latitude>
+    <Longitude>34.300097665416445</Longitude>
+    <Calltype>birth</Calltype>
+    <Id>1002</Id>
+    <VerbalDescription>A birth event requiring medical personnel to assist with delivery.</VerbalDescription>
+    <ReadAddress>דב הוז 12, בת ים</ReadAddress>
+    <OpeningTime>2025-02-01T04:10:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.06510984751861</Latitude>
+    <Longitude>34.67277740170818</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1007</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>שדרות רוקח 9, באר שבע</ReadAddress>
+    <OpeningTime>2025-02-01T12:43:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.567671841385618</Latitude>
+    <Longitude>35.057143399697765</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1009</Id>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>ז'בוטינסקי 15, בני ברק</ReadAddress>
+    <OpeningTime>2025-02-01T03:41:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>33.07939457030498</Latitude>
+    <Longitude>35.551230003718395</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1018</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>הרב הרצוג 30, קריית ביאליק</ReadAddress>
+    <OpeningTime>2025-02-01T04:10:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.258429226713673</Latitude>
+    <Longitude>35.232582888502456</Longitude>
+    <Calltype>fainting</Calltype>
+    <Id>1020</Id>
+    <VerbalDescription>A situation where someone has fainted and needs assistance.</VerbalDescription>
+    <ReadAddress>דב הוז 12, בת ים</ReadAddress>
+    <OpeningTime>2025-02-01T05:25:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.402722636381895</Latitude>
+    <Longitude>34.428385407242246</Longitude>
+    <Calltype>broken_bone</Calltype>
+    <Id>1027</Id>
+    <VerbalDescription>A call for a broken bone injury that needs stabilization and treatment.</VerbalDescription>
+    <ReadAddress>סיני 43, מגדל העמק</ReadAddress>
+    <OpeningTime>2025-02-01T10:01:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>29.717441280174754</Latitude>
+    <Longitude>35.72234044970605</Longitude>
+    <Calltype>heartattack</Calltype>
+    <Id>1034</Id>
+    <VerbalDescription>A heart attack event requiring urgent medical intervention.</VerbalDescription>
+    <ReadAddress>אלוני 40, דימונה</ReadAddress>
+    <OpeningTime>2025-02-01T11:59:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.93594732104278</Latitude>
+    <Longitude>34.68767039802438</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1032</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>מרכז העיר 18, כפר סבא</ReadAddress>
+    <OpeningTime>2025-02-01T12:06:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>30.68554903103015</Latitude>
+    <Longitude>35.34227188071626</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1013</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>ז'בוטינסקי 15, בני ברק</ReadAddress>
+    <OpeningTime>2025-01-31T17:43:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>32.24298929481558</Latitude>
+    <Longitude>35.54137208284397</Longitude>
+    <Calltype>allergy</Calltype>
+    <Id>1023</Id>
+    <VerbalDescription>An allergy attack, possibly involving severe reactions such as anaphylaxis.</VerbalDescription>
+    <ReadAddress>דב הוז 12, בת ים</ReadAddress>
+    <OpeningTime>2025-01-31T16:45:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
+  </Call>
+  <Call>
+    <Latitude>31.277587722904457</Latitude>
+    <Longitude>35.09700780785397</Longitude>
+    <Calltype>None</Calltype>
+    <Id>1045</Id>
+    <VerbalDescription>there is not call yet</VerbalDescription>
+    <ReadAddress>מרכז 38, כפר יונה</ReadAddress>
+    <OpeningTime>2025-02-01T22:03:29</OpeningTime>
+    <MaxEndTime xsi:nil="true" />
   </Call>
   <Call>
     <Latitude>0</Latitude>

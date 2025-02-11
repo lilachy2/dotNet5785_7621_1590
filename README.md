@@ -53,4 +53,10 @@
 
 
 
+בחלון CHOOCHECALLWINDOE 
+ControlTemplate - עיצוב מותאם אישית לכפתור בעזרת ControlTemplate, שמספק גבול עם עיצוב מותאם אישית.
+-1 נקודה 
+Datatriger -אם זה התקף לב זה מסומן באדום
+
+
 
