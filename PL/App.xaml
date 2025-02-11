@@ -53,5 +53,18 @@
             </Setter>
         </Style>
 
+            <Style x:Key="HeartAttackStyle" TargetType="Grid">
+                <Style.Setters>
+                    <Setter Property="Background" Value="Red"/>
+                </Style.Setters>
+            </Style>
+
+            <!-- הגדרת נושא מותאם אישית עבור צבע רקע לקריאות אחרות -->
+            <Style x:Key="NormalCallStyle" TargetType="Grid">
+                <Style.Setters>
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Style.Setters>
+            </Style>
+
     </Application.Resources>
 </Application>

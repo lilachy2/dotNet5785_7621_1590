@@ -111,16 +111,6 @@
     <MaxEndTime>2025-02-02T04:49:29</MaxEndTime>
   </Call>
   <Call>
-    <Latitude>32.06475755609578</Latitude>
-    <Longitude>35.240495193103364</Longitude>
-    <Calltype>None</Calltype>
-    <Id>1011</Id>
-    <VerbalDescription>there is not call yet</VerbalDescription>
-    <ReadAddress>קיבוץ גלויות 19, חדרה</ReadAddress>
-    <OpeningTime>2025-02-01T21:19:29</OpeningTime>
-    <MaxEndTime xsi:nil="true" />
-  </Call>
-  <Call>
     <Latitude>30.231109066589095</Latitude>
     <Longitude>34.61889599315389</Longitude>
     <Calltype>None</Calltype>

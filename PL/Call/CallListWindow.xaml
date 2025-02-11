@@ -18,14 +18,59 @@
 
         <!-- ListView for displaying calls -->
         <ListView Grid.Column="0" Margin="5,5,5,57" ItemsSource="{Binding CallInList}" 
-                  SelectedItem="{Binding SelectedCall}" 
+                  SelectedItem="{Binding SelectedCall , Mode=TwoWay}" 
                   MouseDoubleClick="CallList_MouseDoubleClick"
                   SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <!-- Columns for call details (ID, Type, Status, etc.) -->
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CallId}" />
-                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding CallType}" />
+                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding CallType}">
+                        <GridViewColumn.CellTemplate>
+                            <!-- Template for displaying emergency type with an image -->
+                            
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="Source" Value="/image/None.png"/>
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding CallType}" Value="fainting">
+                                                        <Setter Property="Source" Value="/image/fainting.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="birth">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/birth.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="resuscitation">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/resuscitation.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="allergy">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/allergy.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="heartattack">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/heartattack.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="broken_bone">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/broken_bone.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="security_event">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/security_event.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding CallType}" Value="None">
+                                                        <Setter Property="Source" Value="pack://application:,,,/PL;component/image/None.png"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                    <TextBlock Text="{Binding CallType}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                     <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" />
                     <GridViewColumn Header="OpenTime" DisplayMemberBinding="{Binding OpenTime}" />
                     <GridViewColumn Header="Completion Time" DisplayMemberBinding="{Binding CompletionTime}" />

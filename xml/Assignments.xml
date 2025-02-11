@@ -480,4 +480,36 @@
     <time_end_treatment>2025-02-02T13:34:20</time_end_treatment>
     <EndOfTime>TreatedOnTime</EndOfTime>
   </Assignment>
+  <Assignment>
+    <Id>1060</Id>
+    <CallId>1002</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-03-02T13:26:29</time_entry_treatment>
+    <time_end_treatment>2025-03-02T13:26:29</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1061</Id>
+    <CallId>1034</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-03-02T13:26:29</time_entry_treatment>
+    <time_end_treatment>2025-03-02T13:26:29</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1062</Id>
+    <CallId>1032</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-03-02T13:26:29</time_entry_treatment>
+    <time_end_treatment>2025-03-02T13:26:29</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
+  <Assignment>
+    <Id>1063</Id>
+    <CallId>1002</CallId>
+    <VolunteerId>324291590</VolunteerId>
+    <time_entry_treatment>2025-03-02T13:26:29</time_entry_treatment>
+    <time_end_treatment>2025-03-02T13:26:29</time_end_treatment>
+    <EndOfTime>VolunteerCancelled</EndOfTime>
+  </Assignment>
 </ArrayOfAssignment>
